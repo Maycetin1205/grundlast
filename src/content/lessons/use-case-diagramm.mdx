@@ -1,0 +1,216 @@
+# UML Use-Case-Diagramm – Akteure, Anwendungsfälle, Beziehungen
+
+<MetaBar
+  lesezeit="18 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 5 — Softwareentwicklung, Anforderungsanalyse"
+  slug="use-case-diagramm"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du ein Use-Case-Diagramm lesen, ergänzen und selbst zeichnen. Du erkennst Akteure und Anwendungsfälle, beschriftest sie korrekt, weißt wann du **«include»** und wann **«extend»** verwendest und kannst die Vererbungsbeziehung zwischen Akteuren einsetzen. Du erkennst typische Fehler — fehlende Akteure, vermischte Detailtiefen, falsch herumgesetzte Pfeilrichtungen.
+
+## 01 · Warum existiert das überhaupt?
+
+Bevor jemand Software baut, muss klar sein: **wer** macht **was** mit dem System? Genau diese Frage beantwortet ein Use-Case-Diagramm. Es zeigt das **äußere Verhalten** eines Systems — die Außensicht der Nutzer und ihrer Anliegen — und ignoriert bewusst, wie das System intern funktioniert.
+
+In der Prüfung wird das Thema fast immer als Ergänzungsaufgabe gestellt: Du bekommst ein vorgezeichnetes Diagramm, in dem **Akteure** oder **Anwendungsfälle** fehlen. Du sollst die fehlenden Elemente eintragen und mit den richtigen Beziehungspfeilen anbinden. Wer die fünf Bestandteile kennt — Systemgrenze, Akteur, Anwendungsfall, Assoziation, Spezialisierungen — und die «include»/«extend»-Falle vermeidet, holt sich hier zuverlässig 4 bis 8 Punkte.
+
+Im Betrieb dient das Diagramm der Verständigung zwischen Auftraggeber, Fachabteilung und Entwicklung. Ein Use-Case-Diagramm passt auf eine Seite, kann von Nicht-IT-Personen gelesen werden und wird im Lasten-/Pflichtenheft regelmäßig als visuelle Übersicht eingesetzt.
+
+<Analogie>
+Stell dir ein Use-Case-Diagramm vor wie den Aushang eines Bürgeramts: außen am Gebäude steht eine Tafel mit „Was kannst du hier erledigen?". Personalausweis beantragen, Wohnsitz ummelden, Führerschein abholen — das sind die **Anwendungsfälle**. Die Menschen, die kommen, sind die **Akteure**: Bürger, Außendienstmitarbeiter, Polizei. Das Gebäude selbst ist die **Systemgrenze** — alles innen ist das System, alles außen sind die Beteiligten. Wie der Sachbearbeiter den Ausweis tatsächlich druckt, steht **nicht** auf der Tafel. Genau das ist der Sinn: außen sichtbar machen, was möglich ist, ohne den Innenbetrieb zu zeigen.
+</Analogie>
+
+---
+
+## 02 · Die fünf Bausteine
+
+| Baustein | Notation | Bedeutung |
+|---|---|---|
+| **Systemgrenze** | Rechteck mit Systemname oben | trennt System (innen) von Akteuren (außen) |
+| **Akteur** | Strichmännchen mit Name | Rolle außerhalb des Systems, die mit ihm interagiert (Mensch, externes System) |
+| **Anwendungsfall** | Ellipse mit Verb-Phrase im Inneren | etwas, was ein Akteur mit dem System tun kann |
+| **Assoziation** | durchgezogene Linie | „Akteur nutzt Anwendungsfall" |
+| **Beziehung zwischen Anwendungsfällen** | gestrichelter Pfeil mit Stereotyp | «include», «extend» oder Generalisierung |
+
+### Anwendungsfälle richtig benennen
+
+Ein Anwendungsfall ist eine **Handlung** aus Nutzersicht — also ein Verb + Objekt. Gut: *„Bestellung aufgeben"*, *„Passwort zurücksetzen"*, *„Rechnung archivieren"*. Schlecht: *„Bestellung"* (kein Verb), *„Datenbankzugriff"* (technische Sicht statt Nutzeranliegen).
+
+### Akteure: Rolle, nicht Person
+
+Ein Akteur ist eine **Rolle**, kein Individuum. „Sabine Müller" ist kein Akteur, „Service-Mitarbeiter" ist einer. Dieselbe Person kann mehrere Rollen einnehmen — wird dann mehrfach als Akteur eingezeichnet.
+
+Akteure können auch **externe Systeme** sein. Wenn dein Online-Shop die Zahlung an einen externen Bezahldienst delegiert, ist *„Bezahldienst"* ein Akteur. Strichmännchen-Notation passt zwar lexikalisch nicht, ist aber Konvention.
+
+<Tipp titel="Welche Akteure gehören wirklich rein?">
+Faustregel: ein Akteur gehört rein, wenn er das System aktiv anstößt **oder** wenn das System ihn von außen anfragt. Vorgesetzte, die nur über Ergebnisberichte informiert werden, sind in der Regel **keine** Akteure am System selbst.
+</Tipp>
+
+---
+
+## 03 · Beziehungen zwischen Anwendungsfällen
+
+Hier liegt die Hauptpunktezahl in Klausuraufgaben — und das größte Verwechslungsrisiko.
+
+### Assoziation (Akteur ↔ Anwendungsfall)
+
+Durchgezogene Linie zwischen Strichmännchen und Ellipse. Bedeutung: *„dieser Akteur löst diesen Anwendungsfall aus oder ist daran beteiligt."*
+
+### «include» — Pflicht-Einschluss
+
+Gestrichelter Pfeil mit Stereotyp `«include»` von Anwendungsfall **A** zu Anwendungsfall **B**.
+
+Bedeutung: *„A schließt B immer mit ein."* Ohne B kann A nicht ablaufen. Beispiel: *„Bestellung aufgeben"* schließt **immer** *„Anmeldung prüfen"* mit ein — keine Bestellung ohne Identität.
+
+Notation: A ─ ─ ─»─ ─ ─ B, Stereotyp `«include»` an der Pfeillinie.
+
+### «extend» — optionale Erweiterung
+
+Gestrichelter Pfeil mit Stereotyp `«extend»` von Anwendungsfall **B** zu Anwendungsfall **A** (Pfeilrichtung umgekehrt zu «include»!).
+
+Bedeutung: *„B erweitert A unter bestimmten Bedingungen."* B ist optional. Beispiel: *„Rabatt anwenden"* erweitert *„Bestellung aufgeben"* nur, wenn der Kunde einen Gutschein hat.
+
+### Generalisierung zwischen Akteuren
+
+Pfeil mit leerem Dreieck als Spitze, vom spezielleren Akteur zum allgemeineren. Bedeutung: *„der spezielle Akteur kann alles, was der allgemeine kann — plus mehr."*
+
+Beispiel: *„Premium-Kunde"* ist eine Generalisierung von *„Kunde"* — er kann alles tun was ein Kunde tut, plus z. B. *„Vorbestellung abgeben"*.
+
+<Warnung titel="Die «include»/«extend»-Pfeilrichtung — Lieblingsfehler in Klausuren">
+**`«include»`** geht vom **anrufenden** zum **inkludierten** Anwendungsfall.
+„Bestellung aufgeben ──«include»──> Anmeldung prüfen" heißt: die Bestellung *braucht* die Anmeldung.
+
+**`«extend»`** geht vom **erweiternden** zum **erweiterten** Anwendungsfall.
+„Rabatt anwenden ──«extend»──> Bestellung aufgeben" heißt: der Rabatt erweitert die Bestellung *optional*.
+
+Eselsbrücke: der **include**-Pfeil zeigt auf das, was **immer dazu** gehört. Der **extend**-Pfeil zeigt auf das, was **erweitert wird**.
+</Warnung>
+
+---
+
+## 04 · Vorgehen: Use-Case-Diagramm Schritt für Schritt erstellen
+
+<Schritte
+  items={[
+    { titel: '1. Systemgrenze festlegen', text: 'Was gehört zum System, was nicht? Ein Rechteck zeichnen, Systemname (z.B. „Online-Shop") oben hineinschreiben.' },
+    { titel: '2. Akteure identifizieren', text: 'Wer benutzt das System? Welche externen Systeme greifen darauf zu? Pro Rolle ein Strichmännchen außerhalb des Rechtecks.' },
+    { titel: '3. Anwendungsfälle sammeln', text: 'Welche Tätigkeit will jeder Akteur durchführen? Pro Tätigkeit eine Ellipse mit Verb-Phrase im Rechteck.' },
+    { titel: '4. Assoziationen ziehen', text: 'Verbindungslinie zwischen Akteur und jedem seiner Anwendungsfälle.' },
+    { titel: '5. «include»-Beziehungen prüfen', text: 'Gibt es Anwendungsfälle, die mehrere andere immer mitnutzen? Dann «include»-Pfeile setzen (vom umfassenden zum eingeschlossenen Anwendungsfall).' },
+    { titel: '6. «extend»-Beziehungen prüfen', text: 'Gibt es Anwendungsfälle, die nur in Sonderfällen ablaufen? Dann «extend»-Pfeile setzen (vom optionalen zum erweiterten Anwendungsfall).' },
+    { titel: '7. Akteurs-Generalisierungen prüfen', text: 'Gibt es spezialisierte Akteure, die alle Anwendungsfälle eines allgemeineren Akteurs erben? Dann Generalisierungspfeil setzen.' },
+    { titel: '8. Plausibilität prüfen', text: 'Hat jeder Akteur mindestens eine Assoziation? Heißt jeder Anwendungsfall mit einem Verb? Sind die Stereotypen korrekt geschrieben (mit Gänsefüßchen «»)?' },
+  ]}
+/>
+
+---
+
+## 05 · Beispiel: Use-Case-Diagramm für ein Ticketsystem
+
+<Beispiel titel="Service-Desk eines IT-Dienstleisters">
+Ein IT-Dienstleister betreibt ein Ticketsystem. Folgende Rollen wurden in einem Workshop identifiziert:
+
+- **Kunde**: meldet eine Störung
+- **First-Level-Support**: nimmt Tickets entgegen, versucht Standardlösung
+- **Second-Level-Support**: übernimmt eskalierte Tickets, hat tiefere Rechte
+
+Anwendungsfälle innerhalb des Systems:
+
+1. *Ticket erstellen* — wird vom Kunden ausgelöst
+2. *Ticket bearbeiten* — wird vom First-Level ausgelöst
+3. *Ticket eskalieren* — erweitert *Ticket bearbeiten* nur dann, wenn First-Level nicht lösen kann
+4. *Lösung dokumentieren* — wird bei jedem Bearbeitungsschritt mitausgelöst
+5. *Wissensdatenbank durchsuchen* — wird bei der Bearbeitung mit eingeschlossen
+
+Resultierendes Diagramm in Textform:
+
+```
++--------------------------- Ticketsystem ---------------------------+
+|                                                                    |
+|    (Ticket erstellen) <─── ─── ─── Kunde                           |
+|                                                                    |
+|    (Ticket bearbeiten) <─── First-Level-Support                    |
+|         |                                                          |
+|         | «include»                                                |
+|         v                                                          |
+|    (Wissensdatenbank durchsuchen)                                  |
+|                                                                    |
+|    (Ticket eskalieren) ──«extend»──> (Ticket bearbeiten)           |
+|         |                                                          |
+|         +──── Second-Level-Support                                 |
+|                                                                    |
+|    (Lösung dokumentieren) <───«include»── (Ticket bearbeiten)      |
+|                                                                    |
++--------------------------------------------------------------------+
+```
+
+**Lesart:**
+- Der Kunde löst „Ticket erstellen" aus (Assoziation).
+- Der First-Level löst „Ticket bearbeiten" aus.
+- „Ticket bearbeiten" schließt **immer** „Wissensdatenbank durchsuchen" und „Lösung dokumentieren" ein («include»).
+- „Ticket eskalieren" erweitert „Ticket bearbeiten" **nur dann**, wenn nicht gelöst werden kann («extend»). Der Second-Level wird hier aktiv.
+</Beispiel>
+
+---
+
+## 06 · Fehlerfallen
+
+<Warnung titel="Die sechs häufigsten Fehler in Klausuraufgaben">
+1. **Pfeilrichtung von «include» und «extend» vertauscht.** Siehe Box oben — das ist der mit Abstand häufigste Punktverlust.
+2. **Anwendungsfälle als Substantive statt Verb-Phrasen.** „Bestellung" ist falsch, „Bestellung aufgeben" ist richtig.
+3. **Akteure mit konkreten Personennamen statt Rollen.** „Frau Müller" geht nicht, „Buchhalterin" geht.
+4. **Vorgesetzte als Akteure**, obwohl sie nur Berichte lesen und das System nicht aktiv nutzen.
+5. **Detailtiefen vermischt.** Ein Diagramm zeigt entweder grobe Anwendungsfälle („Bestellung abwickeln") oder feine Schritte („Adresse eingeben", „Zahlungsart wählen") — nicht beides durcheinander.
+6. **Stereotypen falsch geschrieben.** Korrekt sind die französischen Gänsefüßchen «include» und «extend». Eckige Klammern `<<include>>` sind tolerierbar, normale Anführungsstriche `"include"` gelten als Notationsfehler.
+</Warnung>
+
+---
+
+## 07 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** Ein Unternehmen plant ein neues Online-Buchungssystem für Konferenzräume. Drei Rollen wurden identifiziert: **Mitarbeiter** (bucht Raum), **Empfangsmitarbeiter** (verwaltet Buchungen, kann Raumreinigung beauftragen), **Reinigungsdienst** (externer Anbieter, wird automatisch benachrichtigt). Anwendungsfälle: *Raum buchen*, *Buchung stornieren*, *Reinigung anfragen*. Eine Reinigungsanfrage ist optional und nur bei mehrtägigen Buchungen sinnvoll. Eine Stornierung schließt eine Benachrichtigung des Reinigungsdienstes mit ein, falls bereits eine Reinigung beauftragt war. Zeichne das Use-Case-Diagramm.
+
+**Musterlösung (Textform):**
+
+- **Systemgrenze**: Rechteck mit Beschriftung „Konferenzraum-Buchungssystem".
+- **Akteure außen**: Mitarbeiter, Empfangsmitarbeiter, Reinigungsdienst.
+- **Anwendungsfälle innen**: *Raum buchen*, *Buchung stornieren*, *Reinigung anfragen*, *Reinigungsdienst benachrichtigen*.
+- **Assoziationen**:
+  - Mitarbeiter ── *Raum buchen*
+  - Mitarbeiter ── *Buchung stornieren*
+  - Empfangsmitarbeiter ── *Raum buchen* (kann auch buchen)
+  - Empfangsmitarbeiter ── *Buchung stornieren*
+  - Empfangsmitarbeiter ── *Reinigung anfragen*
+  - Reinigungsdienst ── *Reinigungsdienst benachrichtigen*
+- **«extend»**: *Reinigung anfragen* ──«extend»──> *Raum buchen* (nur bei mehrtägigen Buchungen)
+- **«include»**: *Buchung stornieren* ──«include»──> *Reinigungsdienst benachrichtigen* (immer mit eingeschlossen, falls relevant — vereinfachende Lösung)
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'OMG — Unified Modeling Language Specification 2.5.1',
+      href: 'https://www.omg.org/spec/UML/2.5.1/',
+      detail: 'Normative Spezifikation der UML durch die Object Management Group; Kapitel über Use Cases definiert Notation und Semantik.'
+    },
+    {
+      label: 'KMK — Rahmenlehrplan Fachinformatiker',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Verortet UML-Diagramme in Lernfeld 5 (Software zur Verwaltung von Daten anpassen) und Lernfeld 8.'
+    },
+    {
+      label: 'BIBB — IT-Berufe, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Beschreibt Anforderungsanalyse und Modellierung als Pflichtinhalt der AP1.'
+    },
+    {
+      label: 'Balzert — Lehrbuch der Softwaretechnik',
+      href: 'https://link.springer.com/book/10.1007/978-3-642-01365-9',
+      detail: 'Standardlehrbuch deutscher Softwaretechnik; Kapitel zu Use-Case-Diagrammen mit zahlreichen Praxisbeispielen.'
+    },
+  ]}
+/>
