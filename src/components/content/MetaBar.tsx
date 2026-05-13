@@ -1,7 +1,9 @@
 import { cn } from '../../lib/cn'
+import { findLesson } from '../../lib/toc'
 
 interface MetaBarProps {
-  lesezeit: string
+  slug?: string
+  lesezeit?: string
   schwierigkeit: string
   lernfeld: string
   prüfungsrelevanz: string
@@ -9,18 +11,21 @@ interface MetaBarProps {
 }
 
 export default function MetaBar({
+  slug,
   lesezeit,
   schwierigkeit,
   lernfeld,
   prüfungsrelevanz,
   className,
 }: MetaBarProps) {
+  const lessonMinutes = slug ? findLesson(slug)?.lesson.minutes : undefined
+  const resolvedLesezeit = lesezeit ?? (lessonMinutes ? `${lessonMinutes} Minuten` : undefined)
   const items = [
-    { label: 'Lesezeit', value: lesezeit },
+    resolvedLesezeit ? { label: 'Lesezeit', value: resolvedLesezeit } : null,
     { label: 'Schwierigkeit', value: schwierigkeit },
     { label: 'Lernfeld', value: lernfeld },
     { label: 'Prüfung', value: prüfungsrelevanz },
-  ]
+  ].filter((item): item is { label: string; value: string } => item !== null)
 
   return (
     <dl className={cn('my-8 flex flex-wrap gap-x-10 gap-y-4 border-y border-rule py-5 font-ui', className)}>

@@ -45,11 +45,6 @@ export default function Glossary() {
             zu. Hier findest du jeden registrierten Begriff alphabetisch, mit
             Kurzdefinition und Sprung zur Quell-Lektion.
           </p>
-          <div className="hero-cta">
-            <Link to="/musterseite" className="btn btn-ghost no-underline">
-              Term-Komponente sehen
-            </Link>
-          </div>
         </div>
 
         <div className="hero-side">

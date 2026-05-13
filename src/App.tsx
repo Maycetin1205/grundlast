@@ -9,7 +9,6 @@ const Exams = lazy(() => import('./routes/Exams'))
 const Tools = lazy(() => import('./routes/Tools'))
 const Sources = lazy(() => import('./routes/Sources'))
 const AP1Modus = lazy(() => import('./routes/AP1Modus'))
-const Musterseite = lazy(() => import('./pages/Musterseite'))
 
 function withPageFallback(element: ReactNode) {
   return (
@@ -39,7 +38,6 @@ export default function App() {
           <Route path="werkzeuge" element={withPageFallback(<Tools />)} />
           <Route path="glossar" element={withPageFallback(<Glossary />)} />
           <Route path="quellen" element={withPageFallback(<Sources />)} />
-          <Route path="musterseite" element={withPageFallback(<Musterseite />)} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
