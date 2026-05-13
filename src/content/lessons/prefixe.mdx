@@ -1,0 +1,84 @@
+﻿# SI- und Binärpräfixe (KB vs. KiB)
+
+## Worum geht's
+
+Du lernst den Unterschied zwischen dezimalen Einheiten (KB, MB, GB) und binären Einheiten (KiB, MiB, GiB)
+und kannst IHK-Rechenaufgaben mit Dateigrößen sicher lösen.
+
+---
+
+## Das Problem
+
+Du kaufst eine Festplatte mit „500 GB". Windows zeigt 465 GB an. Kaputt? Betrug?
+
+**Nein — zwei verschiedene Definitionen:**
+
+- **Hersteller (dezimal):** 500 GB = 500 × 1.000.000.000 Byte = 500.000.000.000 Byte
+- **Windows (binär):** zeigt GiB an — 1 GiB = 1.073.741.824 Byte
+
+500.000.000.000 ÷ 1.073.741.824 ≈ **465,7 GiB** → das ist die 465, die Windows zeigt.
+
+---
+
+## Dezimal vs. Binär
+
+| Dezimal (SI) | Basis | Byte | Binär (IEC) | Basis | Byte |
+|---|---|---|---|---|---|
+| KB (Kilobyte) | 10³ | 1.000 | KiB (Kibibyte) | 2¹⁰ | 1.024 |
+| MB (Megabyte) | 10⁶ | 1.000.000 | MiB (Mebibyte) | 2²⁰ | 1.048.576 |
+| GB (Gigabyte) | 10⁹ | 1.000.000.000 | GiB (Gibibyte) | 2³⁰ | 1.073.741.824 |
+| TB (Terabyte) | 10¹² | 1.000.000.000.000 | TiB (Tebibyte) | 2⁴⁰ | 1.099.511.627.776 |
+
+**Faustregel:** Binärpräfixe (KiB, MiB, GiB) enden immer auf **-ibyte**. Dezimalpräfixe (KB, MB, GB) nicht.
+
+---
+
+## Rechenweg: immer über Byte
+
+Das wichtigste Prinzip für Umrechnungsaufgaben:
+
+```
+1. Alles in Byte umrechnen (gemeinsame Basis)
+2. Dann in die Zieleinheit
+```
+
+**Beispiel 1:** 500 GB → GiB
+
+```
+Schritt 1: 500 GB = 500 × 10⁹ Byte = 500.000.000.000 Byte
+Schritt 2: 1 GiB = 2³⁰ = 1.073.741.824 Byte
+Schritt 3: 500.000.000.000 ÷ 1.073.741.824 ≈ 465,7 GiB
+```
+
+**Beispiel 2:** 2.048.000 Bit → KiB
+
+```
+Schritt 1: 2.048.000 Bit ÷ 8 = 256.000 Byte
+Schritt 2: 256.000 Byte ÷ 1024 = 250 KiB
+```
+
+**Beispiel 3:** 4 MiB → Byte
+
+```
+4 MiB = 4 × 2²⁰ = 4 × 1.048.576 = 4.194.304 Byte
+```
+
+---
+
+## Typische Fehler
+
+**1. KB mit KiB verwechseln**
+Wenn die Aufgabe „KB" sagt → 1.000 Byte. Wenn „KiB" → 1.024 Byte.
+Wenn unklar: dezimal annehmen und im Rechenweg begründen.
+
+**2. Bit und Byte vertauschen**
+1 Byte = 8 Bit. Immer zuerst: Bit ÷ 8 = Byte, dann weiterrechnen.
+
+**3. Zwischenschritt überspringen**
+Nie direkt von Gbit in MiB rechnen — immer über Byte als Zwischenschritt.
+
+**4. Einheit vergessen**
+In der IHK gibt es Punktabzug ohne Einheit. Immer hinschreiben: KiB, MB, Byte usw.
+
+---
+

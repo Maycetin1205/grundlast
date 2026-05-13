@@ -1,0 +1,119 @@
+﻿# Firewall & DMZ
+
+## Worum geht's
+
+Wie schützt ein Unternehmen sein Netzwerk, wenn es gleichzeitig einen Webserver betreiben möchte,
+der von außen erreichbar ist? Die Antwort: **Firewall** und **DMZ**.
+Diese Konzepte sind in der Prüfung wichtig — Sicherheitszonen erkennen, Firewall-Regeln
+interpretieren, DMZ-Aufbau erklären.
+
+---
+
+## Konzept
+
+### Was ist eine Firewall?
+
+**Firewall** = Eine Software oder Hardware, die Netzwerkverkehr anhand von Regeln **filtert**.
+Sie entscheidet: Darf dieses Datenpaket durch — ja oder nein?
+
+### Das Grundprinzip: Default Deny
+
+Die wichtigste Firewall-Regel lautet **„Alles verbieten, was nicht ausdrücklich erlaubt ist"**.
+Das bedeutet: Standardmäßig ist alles blockiert. Nur freigegebene Verbindungen (bestimmte Ports,
+bestimmte IPs) dürfen durch.
+
+### Firewall-Typen im Vergleich
+
+| Typ | Was wird geprüft? | Merkmale |
+|---|---|---|
+| **Paketfilter** | IP-Adresse, Port, Protokoll | Jedes Paket einzeln, kein Verbindungsgedächtnis |
+| **Stateful Firewall** | Zustand aktiver Verbindungen | Merkt sich Verbindungen, erlaubt nur Antworten auf eigene Anfragen |
+| **Application-Layer Firewall** | Inhalt auf Anwendungsebene (HTTP, FTP) | Versteht Protokolle tiefer, teurer |
+
+**Merkhilfe**: Stateful = hat ein „Gedächtnis" für Verbindungen. Paketfilter = vergisst nach jedem Paket alles.
+
+### Was ist eine DMZ?
+
+**DMZ** (Demilitarisierte Zone) = ein eigenes Netzwerksegment zwischen dem Internet und dem internen LAN.
+
+Analogie: Der Eingangsbereich eines Bürogebäudes. Besucher dürfen rein (= Internet → DMZ),
+aber nicht ins Büro (= DMZ → LAN). Mitarbeiter dürfen beides (= LAN → DMZ und LAN → Internet).
+
+**In der DMZ stehen Systeme, die öffentlich erreichbar sein müssen:**
+- Webserver (HTTP/HTTPS)
+- E-Mail-Server (SMTP)
+- FTP-Server
+
+### Die vier Grundregeln
+
+| Von | Nach | Erlaubt? | Warum? |
+|---|---|---|---|
+| Internet | DMZ | ✅ JA | Webserver muss erreichbar sein |
+| DMZ | LAN | ❌ NEIN | Gehackter Webserver darf nicht ins interne Netz |
+| LAN | DMZ | ✅ JA | Admins müssen Server verwalten |
+| LAN | Internet | ✅ JA | Mitarbeiter surfen, E-Mail etc. |
+
+```
+Internet ←──→ [Firewall] ←──→ DMZ (Webserver) ←──X──→ [Firewall] ←──→ LAN (interne PCs)
+```
+
+### Regelbeispiel (Firewall-Tabelle)
+
+So sieht eine typische Firewall-Regel in der Praxis aus:
+
+| Quelle | Ziel | Protokoll | Port | Aktion |
+|---|---|---|---|---|
+| ANY | 192.168.1.10 | TCP | 80 | ALLOW |
+| ANY | 192.168.1.10 | TCP | 443 | ALLOW |
+| DMZ | LAN | ANY | ANY | DENY |
+| ANY | ANY | ANY | ANY | DENY (Default) |
+
+> Die letzte Zeile ist die Default-Deny-Regel — sie sperrt alles, was nicht durch vorherige Regeln erlaubt wurde.
+
+---
+
+## Beispiele
+
+### Szenario: Online-Shop mit DMZ
+
+Ein Unternehmen betreibt einen Online-Shop. Der Webserver ist öffentlich erreichbar,
+die Datenbank mit Kundendaten aber nicht.
+
+**Ohne DMZ** (gefährlich):
+- Webserver steht im LAN
+- Wenn der Webserver gehackt wird → Angreifer ist direkt im internen Netz mit Zugriff auf alle PCs, Dateiserver, Datenbanken
+
+**Mit DMZ** (richtig):
+- Webserver steht in der DMZ
+- Wenn der Webserver gehackt wird → Angreifer ist in der DMZ, aber die Firewall blockiert den Weg ins LAN
+- Kundendaten-Datenbank steht im LAN — nur der Webserver selbst darf Datenbankabfragen machen (gezielt freigeschaltet)
+
+### Prüfungs-Zuordnungsaufgabe
+
+*Ordnen Sie zu: a) LAN  b) DMZ  c) Internet*
+
+- Internes, geschütztes Netz → **a) LAN**
+- Zone für öffentlich erreichbare Server → **b) DMZ**
+- Öffentliches, unsicheres Netz → **c) Internet**
+
+---
+
+## Typische Fehler
+
+- **Webserver ins LAN stellen**: Ein öffentlich erreichbarer Server gehört in die DMZ, nicht ins LAN.
+  Im LAN ist er von außen direkt erreichbar und ein Angriff gefährdet das gesamte interne Netz.
+
+- **Default Deny vergessen**: Eine Firewall ohne Default-Deny-Regel am Ende erlaubt alles, was
+  nicht explizit verboten ist — das ist das Gegenteil von sicher. In der Aufgabe: Grundprinzip ist
+  immer „alles verbieten, außer explizit erlaubt".
+
+- **Paketfilter = Stateful verwechseln**: Paketfilter prüft jedes Paket einzeln ohne Kontext.
+  Stateful merkt sich aktive Verbindungen und ist deshalb sicherer (blockiert unerwartete Pakete
+  ohne vorherige Verbindungsanfrage).
+
+- **DMZ = extra sicheres Netz**: Falsch. Die DMZ ist bewusst ein weniger sicheres Segment,
+  das von außen erreichbar ist. Das Ziel ist Isolation — wenn ein DMZ-Server gehackt wird,
+  kommt der Angreifer nicht ins LAN.
+
+---
+

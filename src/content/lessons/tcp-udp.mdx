@@ -1,0 +1,84 @@
+# TCP vs. UDP
+
+## Worum geht's
+
+Du lernst den Unterschied zwischen <Term id="tcp">TCP</Term> und <Term id="udp">UDP</Term> —
+den zwei wichtigsten Transportprotokollen auf OSI-Schicht 4.
+Danach kannst du für jede Anwendung sagen, welches Protokoll passt und warum.
+
+---
+
+## Die Analogie
+
+**TCP = Einschreiben mit Rückschein**
+
+Du schickst einen Brief — die Post bestätigt: „Angekommen!" Wenn nicht: wird nochmal geschickt.
+Langsamer, aber sicher. Beispiel: Wichtiger Vertrag, Gehaltsabrechnung.
+
+**UDP = Postkarte einfach einwerfen**
+
+Du wirfst die Karte ein — keine Bestätigung, keine Garantie. Hoffentlich kommt sie an.
+Schneller, aber ohne Sicherheitsnetz. Beispiel: Urlaubsgrüße (eine verlorenging? Egal.).
+
+---
+
+## Der Vergleich
+
+| Merkmal | TCP | UDP |
+|---|---|---|
+| Verbindung | Verbindungsorientiert (3-Way-Handshake) | Verbindungslos („Fire and Forget") |
+| Zuverlässigkeit | Hoch — Wiederholung bei Fehler | Niedrig — keine Garantie |
+| Reihenfolge | Garantiert korrekt | Kann durcheinander sein |
+| Geschwindigkeit | Langsamer (viel Overhead) | Schneller (wenig Overhead) |
+| Header-Größe | Mindestens 20 Byte | Fix 8 Byte |
+| Fehlerkorrektur | Checksumme + Retransmit | Nur Checksumme, kein Retransmit |
+| Typische Anwendungen | HTTP/S, E-Mail (SMTP), SSH, FTP | DNS, DHCP, VoIP, Streaming, Gaming |
+
+### Typische Ports
+
+| Protokoll | Port | Transportprotokoll |
+|---|---|---|
+| HTTP | 80 | TCP |
+| HTTPS | 443 | TCP |
+| FTP | 21 | TCP |
+| SSH | 22 | TCP |
+| SMTP | 25 | TCP |
+| DNS | 53 | UDP (meistens) |
+| DHCP | 67/68 | UDP |
+
+---
+
+## Der TCP-3-Way-Handshake
+
+Bevor TCP Daten überträgt, wird eine Verbindung aufgebaut — in 3 Schritten:
+
+```
+Client               Server
+  |                     |
+  |--- SYN ------------>|   "Kann ich mit dir reden?"
+  |<-- SYN-ACK ---------|   "Ja, ich auch!"
+  |--- ACK ------------>|   "Verbindung steht!"
+  |                     |
+  |=== Datentransfer ===|
+```
+
+- **SYN** = Synchronize — „Lass uns eine Verbindung aufbauen"
+- **ACK** = Acknowledge — „Bestätigt, erhalten!"
+- **SYN-ACK** = beides zusammen
+
+---
+
+## Wann TCP, wann UDP?
+
+**Nimm TCP wenn:**
+- Vollständigkeit wichtig ist (Datei-Download, E-Mail, Webseite)
+- Reihenfolge wichtig ist (Datenbank-Abfrage)
+- Fehler nicht tolerierbar sind (Banküberweisung, Login)
+
+**Nimm UDP wenn:**
+- Geschwindigkeit wichtiger ist als Vollständigkeit
+- Latenz kritisch ist (VoIP, Online-Gaming, Video-Livestream)
+- Ein verlorenes Paket lieber verworfen als wiederholt wird — ein verzögerter Frame im Video ist schlimmer als ein fehlender
+
+---
+

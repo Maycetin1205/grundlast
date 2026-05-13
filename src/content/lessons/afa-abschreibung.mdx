@@ -1,0 +1,147 @@
+﻿# AfA – lineare Abschreibung
+
+## Worum geht's
+
+Wenn eine Firma einen Server kauft, darf sie die Kosten steuerlich nicht sofort komplett absetzen —
+sie verteilt sie über die Nutzungsdauer. Das heißt **AfA** (Abschreibung für Abnutzung).
+In der Prüfung kommen regelmäßig Aufgaben: Jahres-AfA berechnen, Buchwert nach X Jahren, Tabellen befüllen.
+
+---
+
+## Konzept
+
+**AfA** = Abschreibung für Abnutzung = der jährliche Wertverlust eines Wirtschaftsguts.
+
+Wirtschaftsgut = alles, was eine Firma anschafft und über mehrere Jahre nutzt: Server, PC, Laptop, PKW, Drucker.
+
+### Analogie: Das neue Auto
+
+Du kaufst ein neues Auto für **30.000 €**. Nach einem Jahr ist es nicht mehr 30.000 € wert —
+der Wert sinkt jedes Jahr um denselben Betrag. Das ist lineare Abschreibung.
+
+| Jahr | Buchwert zu Beginn | AfA (Jahresverlust) | Buchwert am Ende |
+|------|-------------------|---------------------|------------------|
+| 1 | 30.000 € | 6.000 € | 24.000 € |
+| 2 | 24.000 € | 6.000 € | 18.000 € |
+| 3 | 18.000 € | 6.000 € | 12.000 € |
+| 4 | 12.000 € | 6.000 € | 6.000 € |
+| 5 | 6.000 € | 6.000 € | 0 € |
+
+→ Jedes Jahr derselbe Betrag (**linear**). Nach 5 Jahren: Wert = 0 € (abgeschrieben).
+
+### Die Formeln
+
+<Rechenweg
+  title="AfA-Formeln auf einen Blick"
+  steps={[
+    {
+      title: "Jährliche AfA (ohne Restwert)",
+      formula: "AfA = Anschaffungskosten / Nutzungsdauer",
+      explanation: "Wenn kein Restwert angegeben ist, wird er als 0 € angenommen. Das ist der Standardfall in Aufgaben."
+    },
+    {
+      title: "Jährliche AfA (mit Restwert)",
+      formula: "AfA = (Anschaffungskosten − Restwert) / Nutzungsdauer",
+      explanation: "Steht in der Aufgabe ein Restwert (z. B. 500 €), zieht man ihn ab bevor man dividiert. Restwert = was das Gut am Ende noch wert ist (z. B. Schrottwert)."
+    },
+    {
+      title: "Buchwert nach n Jahren",
+      formula: "Buchwert = Anschaffungskosten − (AfA × n)",
+      explanation: "n = Anzahl der abgeschlossenen Jahre. Nach der vollen Nutzungsdauer ist der Buchwert 0 €."
+    }
+  ]}
+/>
+
+### Typische Nutzungsdauern (prüfungsrelevant)
+
+| Anschaffung | Nutzungsdauer |
+|---|---|
+| PC / Laptop | 3 Jahre |
+| Server | 4–5 Jahre |
+| Drucker / Scanner | 3 Jahre |
+| Netzwerk-Hardware (Switch, Router) | 5 Jahre |
+| Software-Lizenzen | 3 Jahre |
+| Büromöbel | 13 Jahre |
+| PKW | 6 Jahre |
+
+> Diese Werte sind Richtwerte aus dem deutschen AfA-Tabellenkatalog (BMF). In Aufgaben steht die Nutzungsdauer immer explizit dabei.
+
+---
+
+## Beispiele – Schritt für Schritt
+
+<Rechenweg
+  title="Beispiel 1: 5 Server, 4 Jahre Nutzungsdauer"
+  steps={[
+    {
+      title: "Gegebenes festhalten",
+      formula: "Anzahl Server: 5 Stück\nPreis pro Server: 4.000 €\nNutzungsdauer: 4 Jahre\nRestwert: 0 € (nicht angegeben → Standard)",
+      explanation: "Immer zuerst alle Größen aus der Aufgabe sammeln, bevor man rechnet. Der häufigste Fehler: man vergisst, alle Geräte zu addieren und rechnet nur mit einem."
+    },
+    {
+      title: "Schritt 1: Gesamte Anschaffungskosten",
+      formula: "Anschaffungskosten = 5 × 4.000 € = 20.000 €",
+      explanation: "ERST alle Geräte addieren! Wenn man direkt mit 4.000 € rechnet, bekommt man die AfA für nur 1 Server — ein klassischer Prüfungsfehler."
+    },
+    {
+      title: "Schritt 2: Jährliche AfA berechnen",
+      formula: "AfA = 20.000 € / 4 Jahre = 5.000 € pro Jahr",
+      explanation: "20.000 € verteilt auf 4 Jahre ergibt 5.000 € pro Jahr. Jedes Jahr verlieren die Server gemeinsam 5.000 € an Buchwert."
+    },
+    {
+      title: "Schritt 3: Buchwert nach 2 Jahren",
+      formula: "Buchwert = 20.000 € − (5.000 € × 2) = 20.000 € − 10.000 € = 10.000 €",
+      explanation: "Nach 2 Jahren sind 10.000 € abgeschrieben. Der Buchwert in der Buchhaltung beträgt noch 10.000 €."
+    },
+    {
+      title: "Schritt 4: Buchwert nach 4 Jahren (Ende der Nutzungsdauer)",
+      formula: "Buchwert = 20.000 € − (5.000 € × 4) = 20.000 € − 20.000 € = 0 €",
+      explanation: "Nach der vollen Nutzungsdauer ist der Buchwert 0 €. Das Gut ist vollständig abgeschrieben — es steht noch im Unternehmen, hat aber bilanziell keinen Wert mehr."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Beispiel 2: PC mit Restwert (200 €), 3 Jahre Nutzungsdauer"
+  steps={[
+    {
+      title: "Gegebenes festhalten",
+      formula: "Anschaffungskosten: 1.800 €\nNutzungsdauer: 3 Jahre\nRestwert: 200 € (angegeben!)",
+      explanation: "Wenn ein Restwert angegeben ist, muss er abgezogen werden. Das vergessen viele in der Aufgabe."
+    },
+    {
+      title: "Schritt 1: Abschreibbare Basis berechnen",
+      formula: "Abschreibbare Basis = 1.800 € − 200 € = 1.600 €",
+      explanation: "Der Restwert (was das Gut am Ende noch wert ist, z. B. als Altgerät) wird nicht abgeschrieben. Nur der Wertverlust von 1.600 € wird auf 3 Jahre verteilt."
+    },
+    {
+      title: "Schritt 2: Jährliche AfA",
+      formula: "AfA = 1.600 € / 3 Jahre ≈ 533,33 € pro Jahr",
+      explanation: "Ergebnis auf 2 Dezimalstellen runden. In Aufgaben ist meistens eine glatte Zahl gewählt — wenn nicht, runde auf Cent."
+    },
+    {
+      title: "AfA-Tabelle für alle 3 Jahre",
+      formula: "Jahr 0 (Kauf):  Buchwert = 1.800 €\nJahr 1:         Buchwert = 1.800 − 533,33 = 1.266,67 €\nJahr 2:         Buchwert = 1.266,67 − 533,33 = 733,34 €\nJahr 3:         Buchwert = 733,34 − 533,33 = 200,01 € ≈ 200 € (Restwert)",
+      explanation: "Am Ende der Nutzungsdauer entspricht der Buchwert dem Restwert. Kleine Rundungsabweichungen sind in der Aufgabe akzeptabel."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Mehrere Geräte vergessen zu addieren**: Die Aufgabe sagt „5 Server à 4.000 €" — viele rechnen
+  nur mit 4.000 € statt 20.000 €. Immer ERST alle Geräte addieren, DANN die AfA berechnen.
+
+- **Restwert nicht abziehen**: Steht „Restwert 500 €" in der Aufgabe, muss dieser vor der
+  Division abgezogen werden: `AfA = (Anschaffung − Restwert) / Nutzungsdauer`. Standard (kein Restwert angegeben) = 0 €.
+
+- **Buchwert im Jahr 0 falsch ansetzen**: Im Jahr 0 (= Kaufjahr, noch keine Abschreibung) ist der
+  Buchwert gleich den vollen Anschaffungskosten. Erst nach dem ersten abgeschlossenen Jahr greift die AfA.
+
+- **Stückzahl in der Tabelle**: Manche Aufgaben fragen nach der AfA pro Stück und die für alle zusammen.
+  Aufgabenstellung genau lesen — was ist gefragt?
+
+---
+

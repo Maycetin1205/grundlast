@@ -1,0 +1,131 @@
+﻿# Backup-Strategien (Voll, Inkrementell, Differenziell)
+
+## Worum geht's
+
+Daten sind das wertvollste Gut einer Firma. Du lernst die drei Backup-Arten — Vollbackup,
+differenzielles und inkrementelles Backup — und wann welche Strategie sinnvoll ist.
+In der Prüfung musst du die Unterschiede erklären und wissen, wie viele Dateien zur
+Wiederherstellung nötig sind.
+
+---
+
+## Erklärung
+
+**Backup** = Datensicherung = Kopie wichtiger Daten zum Schutz vor Datenverlust.
+
+Datenverlust kann auftreten durch: Festplattenausfall, Ransomware, versehentliches Löschen,
+Naturkatastrophen (Feuer, Hochwasser) oder Hackerangriffe.
+
+### Analogie: Familienfotos sichern
+
+Stell dir vor, du hast 10.000 Familienfotos auf deinem Handy und sicherst sie regelmäßig:
+
+**Vollbackup** = Jeden Sonntag alle 10.000 Fotos auf externe Festplatte kopieren.
+Dauert lang, braucht viel Platz — aber zur Wiederherstellung reicht genau diese eine Datei.
+
+**Differenzielles Backup** = Nur neue Fotos **seit dem letzten Vollbackup** sichern:
+- Montag: 10 neue Fotos → sichere die 10
+- Dienstag: 5 neue dazu → sichere 15 (10 + 5 seit Sonntag!)
+- Mittwoch: 20 neue dazu → sichere 35 (10 + 5 + 20 seit Sonntag!)
+
+Jedes Differenz-Backup wird größer, weil es immer vom letzten Vollbackup zählt.
+
+**Inkrementelles Backup** = Nur neue Fotos **seit dem letzten Backup** (egal welcher Art):
+- Montag: 10 neue Fotos → sichere die 10
+- Dienstag: 5 neue dazu → sichere nur die 5 (nicht nochmal die 10!)
+- Mittwoch: 20 neue dazu → sichere nur die 20
+
+Jedes Inkrement-Backup ist immer nur der neueste „Happen".
+
+### Vergleichstabelle
+
+| Backup-Art | Was wird gesichert? | Backup-Dauer | Speicherbedarf | Wiederherstellung |
+|---|---|---|---|---|
+| **Vollbackup** | ALLE Daten | Sehr lang | Sehr viel | Einfach — 1 Datei genügt |
+| **Differenziell** | Alle Änderungen seit letztem **Vollbackup** | Mittel (täglich länger) | Mittel (täglich größer) | Mittel — Vollbackup + letztes Diff |
+| **Inkrementell** | Nur Änderungen seit letztem **Backup** | Sehr schnell | Wenig | Aufwendig — Vollbackup + **alle** Inkremente |
+
+### Generationenprinzip (Großvater-Vater-Sohn)
+
+Professionelle Backup-Konzepte nutzen mehrere Generationen, damit auch verzögerte
+Schäden (z. B. Virus war schon seit einer Woche aktiv) behoben werden können:
+
+| Generation | Was? | Rhythmus | Aufbewahrung |
+|---|---|---|---|
+| **Sohn** | Tägliches Backup | Mo–Fr | 1 Woche |
+| **Vater** | Wöchentliches Backup | Jeden Freitag | 4 Wochen |
+| **Großvater** | Monatliches Backup | Letzter Werktag | 12 Monate |
+
+### 3-2-1-Regel
+
+Die wichtigste Faustformel für sichere Datensicherung:
+
+- **3** Kopien der Daten (1 Original + 2 Backups)
+- **2** verschiedene Speichermedien (z. B. Festplatte + Cloud)
+- **1** Kopie extern lagern (anderes Gebäude, damit Brand/Diebstahl nichts vernichtet)
+
+---
+
+## Beispiele – Schritt für Schritt
+
+<Rechenweg
+  title="Backup-Plan einer Woche (differenziell)"
+  steps={[
+    {
+      title: "Szenario festlegen",
+      formula: "Sonntag 00:00: VOLLBACKUP\n→ 100 GB Firmendaten gesichert\n→ Dauer: ca. 2 Stunden",
+      explanation: "Das Vollbackup ist die Basis jeder Backup-Strategie. Alle anderen Backups der Woche beziehen sich auf diesen Stand."
+    },
+    {
+      title: "Tägliche differenzielle Backups",
+      formula: "Montag:   5 GB neu seit Sonntag → Diff-Backup: 5 GB\nDienstag: 7 GB neu → Diff-Backup: 12 GB (5+7 seit Sonntag)\nMittwoch: 8 GB neu → Diff-Backup: 20 GB (5+7+8 seit Sonntag)",
+      explanation: "Das differenzielle Backup zählt immer ab dem letzten Vollbackup — deshalb wird es täglich größer. Am Mittwoch sind 20 GB neue Daten seit Sonntag vorhanden."
+    },
+    {
+      title: "Wiederherstellung am Donnerstag",
+      formula: "Benötigte Dateien:\n① Sonntag Vollbackup (100 GB)\n② Mittwoch Differenz-Backup (20 GB)\n→ Gesamt: 2 Dateien",
+      explanation: "Das ist der große Vorteil des differenziellen Backups: Zur Wiederherstellung brauche ich nur das Vollbackup + das letzte Differenz-Backup. Immer genau 2 Dateien."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Backup-Plan einer Woche (inkrementell) — Vergleich"
+  steps={[
+    {
+      title: "Gleicher Start: Vollbackup Sonntag",
+      formula: "Sonntag: VOLLBACKUP (100 GB)",
+      explanation: "Der Start ist identisch. Der Unterschied zeigt sich bei den täglichen Backups."
+    },
+    {
+      title: "Tägliche inkrementelle Backups",
+      formula: "Montag:   5 GB neu seit Sonntag → Inkrement: 5 GB\nDienstag: 7 GB neu seit MONTAG → Inkrement: 7 GB\nMittwoch: 8 GB neu seit DIENSTAG → Inkrement: 8 GB",
+      explanation: "Das inkrementelle Backup zählt immer ab dem letzten Backup (egal welcher Art). Deshalb ist jedes Inkrement nur der neueste 'Happen' — klein und schnell."
+    },
+    {
+      title: "Wiederherstellung am Donnerstag",
+      formula: "Benötigte Dateien:\n① Sonntag Vollbackup\n② Montag Inkrement (5 GB)\n③ Dienstag Inkrement (7 GB)\n④ Mittwoch Inkrement (8 GB)\n→ Gesamt: 4 Dateien",
+      explanation: "Das ist der Nachteil: Ich brauche das Vollbackup + ALLE Inkremente seitdem. Fehlt ein Inkrement in der Kette, ist die Wiederherstellung unvollständig. Je mehr Tage, desto mehr Dateien."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Differenziell vs. Inkrementell verwechseln**: Das ist die häufigste Falle.
+  Differenziell = immer seit letztem **Vollbackup** (wird täglich größer).
+  Inkrementell = seit letztem **Backup** (bleibt täglich klein).
+
+- **Wiederherstellung Inkrementell**: Viele denken, nur das letzte Inkrement reicht.
+  Falsch — du brauchst Vollbackup + **alle** Inkremente seitdem, lückenlos.
+
+- **RAID ist kein Backup**: RAID schützt vor Festplattenausfall in Echtzeit.
+  Ransomware verschlüsselt aber alle RAID-Platten gleichzeitig — das hilft RAID nicht.
+
+- **3-2-1-Regel vergessen**: Zwei Backups auf derselben Festplatte oder im selben Gebäude
+  erfüllen die 3-2-1-Regel nicht. Bei Brand wären beide Kopien weg.
+
+---
+

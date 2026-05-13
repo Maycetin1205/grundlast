@@ -1,0 +1,117 @@
+﻿# Variable & fixe Kosten
+
+## Worum geht's
+
+Du lernst den Unterschied zwischen fixen und variablen Kosten — und warum das eine der häufigsten
+Rechenaufgaben in Prüfung ist. Wer diese Unterscheidung beherrscht, kann Break-Even, Gewinnermittlung
+und Kostenplanung sicher lösen.
+
+---
+
+## Erklärung
+
+Jedes Unternehmen hat Kosten. Aber nicht alle Kosten verhalten sich gleich — manche fallen immer
+an, andere nur wenn produziert wird.
+
+### Fixkosten
+
+**Fixkosten** sind Kosten, die **unabhängig von der produzierten Menge** anfallen.
+Sie entstehen auch dann, wenn gar nichts hergestellt oder verkauft wird.
+
+Typische Fixkosten: Miete, Gehälter, Abschreibungen, Versicherungen, Leasingraten.
+
+> **Merksatz:** Fixkosten sind "fix" wie festgenagelt — sie ändern sich nicht, egal wie viel du
+> produzierst.
+
+### Variable Kosten
+
+**Variable Kosten** sind Kosten, die **mit der produzierten Menge steigen oder fallen**.
+Bei 0 Stück = 0 €. Bei 1.000 Stück = 1.000 × Kosten pro Stück.
+
+Typische variable Kosten: Rohstoffe, Verpackungsmaterial, Strom für Maschinen,
+Stückprovisionen.
+
+### Die Gesamtkosten-Formel
+
+```
+Gesamtkosten = Fixkosten + (Menge × variable Kosten pro Stück)
+K_ges = K_fix + (x × k_var)
+```
+
+| Kostenart | Kurzform | Verhalten |
+|---|---|---|
+| Fixkosten | K_fix | Konstant — auch bei 0 Stück |
+| Variable Kosten pro Stück | k_var | Pro Stück gleich, Summe steigt mit Menge |
+| Gesamtkosten | K_ges | K_fix + x × k_var |
+
+### Sprungfixe Kosten
+
+Ein Sonderfall: **Sprungfixe Kosten** sind Fixkosten, die ab einer bestimmten Menge
+**sprunghaft** steigen. Beispiel: Eine Maschine reicht bis 5.000 Stück — ab 5.001 Stück
+muss eine zweite Maschine angeschafft werden → Fixkosten springen auf ein höheres Niveau.
+
+---
+
+## Beispiele
+
+<Rechenweg
+  title="Beispiel 1: Gesamtkosten bei verschiedenen Mengen"
+  steps={[
+    {
+      title: "Gegebene Werte",
+      formula: "Fixkosten K_fix = 10.000 €/Monat\nVariable Kosten k_var = 5 €/Stück",
+      explanation: "Typische Aufgabe: Fixkosten und variable Kosten pro Stück gegeben, Gesamtkosten gesucht."
+    },
+    {
+      title: "Bei 0 Stück produziert",
+      formula: "K_ges = 10.000 + (0 × 5) = 10.000 €",
+      explanation: "Selbst wenn gar nichts produziert wird, fallen die 10.000 € Fixkosten an. Variable Kosten = 0, weil keine Einheit produziert wurde."
+    },
+    {
+      title: "Bei 1.000 Stück produziert",
+      formula: "K_ges = 10.000 + (1.000 × 5)\nK_ges = 10.000 + 5.000 = 15.000 €",
+      explanation: "Die Fixkosten bleiben gleich (10.000 €). Variable Kosten steigen auf 5.000 € (1.000 Stück × 5 €)."
+    },
+    {
+      title: "Bei 2.000 Stück produziert",
+      formula: "K_ges = 10.000 + (2.000 × 5)\nK_ges = 10.000 + 10.000 = 20.000 €",
+      explanation: "Doppelte Menge → doppelte variable Kosten. Fixkosten bleiben unverändert bei 10.000 €."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Beispiel 2: Kostenart bestimmen und rechnen"
+  steps={[
+    {
+      title: "Aufgabe: Welche Kosten sind fix, welche variabel?",
+      formula: "Miete Büro: 2.000 €/Monat\nRohstoffe: 8 €/Stück\nGeschäftsführergehalt: 5.000 €/Monat\nVerpackung: 0,50 €/Stück",
+      explanation: "Miete und Gehalt entstehen unabhängig von der Produktion → fix. Rohstoffe und Verpackung entstehen nur bei Produktion → variabel."
+    },
+    {
+      title: "Gesamtkosten bei 500 Stück",
+      formula: "K_fix = 2.000 + 5.000 = 7.000 €\nk_var = 8 + 0,50 = 8,50 €/Stück\n\nK_ges = 7.000 + (500 × 8,50)\nK_ges = 7.000 + 4.250 = 11.250 €",
+      explanation: "Zuerst alle Fixkosten addieren, alle variablen Kosten pro Stück addieren — dann die Gesamtkostenformel anwenden."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **„Fixkosten bei 0 Produktion = 0 €"** — FALSCH. Fixkosten fallen immer an, auch ohne
+  jede Produktion. Die Miete läuft weiter, egal ob produziert wird oder nicht.
+
+- **„Variable Kosten sind beliebig variabel"** — FALSCH. „Variabel" bedeutet hier nur,
+  dass sie von der Ausbringungsmenge abhängen. Pro Stück bleiben sie konstant (5 €/Stück
+  sind immer 5 €/Stück — egal ob 10 oder 10.000 Stück).
+
+- **„Alle Fixkosten sind immer fix"** — NICHT GANZ. Sprungfixe Kosten können ab bestimmten
+  Mengenschwellen sprunghaft ansteigen. Ab dann gilt ein neues, höheres Fixkostenniveau.
+
+- **Variable Kosten mit Gesamtkosten verwechseln:** Wenn die Aufgabe „variable Gesamtkosten
+  bei 200 Stück = 1.600 €" angibt, ist k_var = 1.600 / 200 = 8 €/Stück — nicht 1.600 €.
+
+---
+

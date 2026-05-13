@@ -1,0 +1,356 @@
+﻿# Make-or-Buy-Entscheidung
+
+<MetaBar
+  lesezeit="18 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 1 - Wirtschaftliche Entscheidungen im Betrieb"
+  pruefungsrelevanz="PFLICHT · 4/5"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du eine <Term id="make-or-buy">Make-or-Buy-Entscheidung</Term>
+fachlich sauber begruenden. Du unterscheidest <Term id="eigenfertigung">Eigenfertigung</Term>
+und <Term id="fremdbezug">Fremdbezug</Term>, vergleichst
+<Term id="fixkosten">fixe Kosten</Term> und
+<Term id="variable-kosten">variable Kosten</Term>, berechnest die
+<Term id="kritische-menge">kritische Menge</Term> und beziehst IT-typische
+Kriterien wie Know-how, Abhaengigkeit, Datenschutz, Wartbarkeit und Zeitdruck ein.
+
+Das ist prüfungsrelevant, weil wirtschaftliche Entscheidungen oft als IT-Situation gestellt
+werden: Eine Loesung kann intern entwickelt, selbst betrieben oder als externe Leistung
+eingekauft werden. Punkte gibt es fuer den sauberen Kostenvergleich, die richtige
+Richtung der kritischen Menge und eine Empfehlung, die Kosten und Risiken trennt.
+
+<Analogie>
+Make-or-Buy ist wie die Frage, ob du einen Schreibtisch selbst baust oder kaufst.
+Selbst bauen lohnt sich, wenn du Werkzeug, Zeit und viele gleiche Tische brauchst.
+Kaufen lohnt sich, wenn es schnell gehen muss, Spezialwissen fehlt oder ein Anbieter
+schon ein gutes Standardprodukt hat. Entscheidend ist nicht Stolz auf Eigenleistung,
+sondern was zur Situation passt.
+</Analogie>
+
+## Fachliche Definition
+
+Make-or-Buy bedeutet: Ein Unternehmen entscheidet, ob eine Leistung intern erbracht
+wird (**make**) oder extern beschafft wird (**buy**). In der BWL geht es dabei um den
+Umfang der eigenen Wertschoepfung: Was bleibt im Unternehmen, was wird am Markt
+eingekauft?
+
+Für die Prüfung reicht dieser Kern:
+
+```text
+Make = Eigenleistung, Eigenentwicklung, Eigenbetrieb, interne Fertigung
+Buy  = Fremdbezug, Kauf, Outsourcing, Dienstleister, SaaS oder Standardprodukt
+```
+
+Eine gute Entscheidung vergleicht nicht nur den Preis. Sie betrachtet Gesamtkosten,
+<Term id="transaktionskosten">Transaktionskosten</Term>, Kapazitaet, strategisches
+Know-how, Qualitaet, Sicherheit und Abhaengigkeiten.
+
+<Warnung titel="Make ist nicht kostenlos">
+Interne Arbeit hat Kosten: Arbeitszeit, Schulung, Test, Dokumentation, Wartung,
+Vertretung und <Term id="opportunitaetskosten">Opportunitaetskosten</Term>. Wenn eine
+Fachkraft intern entwickelt, arbeitet sie in dieser Zeit nicht an Kundenprojekten,
+Tickets oder anderen Verbesserungen.
+</Warnung>
+
+## Der Faktenkern
+
+| Frage | Make spricht eher dafuer | Buy spricht eher dafuer |
+|---|---|---|
+| Kostenstruktur | hohe Fixkosten, niedrige variable Kosten je Einheit | niedrige Startkosten, laufende Preise je Einheit |
+| Menge | hohe oder wiederkehrende Menge | niedrige, einmalige oder unsichere Menge |
+| Know-how | Thema gehoert zur <Term id="kernkompetenz">Kernkompetenz</Term> | Spezialwissen fehlt oder ist nur kurz noetig |
+| Zeit | genug Zeit fuer Analyse, Umsetzung und Test | knapper Termin, Standardloesung verfuegbar |
+| Kontrolle | Daten, Code, Betrieb und Anpassung sollen intern bleiben | Standardisierung und Anbieterbetrieb sind akzeptabel |
+| Risiko | Abhaengigkeit vom Dienstleister soll vermieden werden | Ausfall-, Wartungs- oder Betriebsrisiko soll abgegeben werden |
+| IT-Beispiel | eigenes Deployment-Skript, internes Tool, eigener Serverbetrieb | SaaS, Standardsoftware, externer Support, Cloud-Dienst |
+
+Merksatz: **Make lohnt oft bei hoher Menge, strategischem Know-how und Wunsch nach
+Kontrolle. Buy lohnt oft bei geringer Menge, Zeitdruck, fehlendem Spezialwissen oder
+bewaehrten Standards.**
+
+## Kostenvergleich: die Grundformel
+
+In Aufgaben bekommst du haeufig eine fixe Anfangskomponente und variable Kosten pro
+Einheit. Dann rechnest du beide Alternativen auf dieselbe Menge und denselben Zeitraum.
+
+```text
+K_make = Fixkosten_make + Menge * variable Kosten_make
+K_buy  = Fixkosten_buy  + Menge * variable Kosten_buy
+
+Kritische Menge:
+Fixkosten_make + x * variable Kosten_make
+= Fixkosten_buy + x * variable Kosten_buy
+```
+
+Die kritische Menge ist der Punkt, an dem beide Alternativen gleich teuer sind. Danach
+entscheidest du die Richtung:
+
+| Ergebnis | Bedeutung |
+|---|---|
+| Menge unter kritischer Menge | meist ist die Alternative mit niedrigeren Fixkosten guenstiger |
+| Menge ueber kritischer Menge | meist ist die Alternative mit niedrigeren variablen Kosten guenstiger |
+| Menge genau an kritischer Menge | beide sind rechnerisch gleich teuer; qualitative Kriterien entscheiden |
+
+<Tipp titel="Richtung immer pruefen">
+Setze nach der kritischen Menge eine kleine Testmenge ein, zum Beispiel 10 oder 100.
+So erkennst du, ob unterhalb wirklich Buy und oberhalb wirklich Make guenstiger ist.
+</Tipp>
+
+## Vorgehen in der Aufgabe
+
+<Schritte
+  items={[
+    {
+      titel: 'Entscheidungsobjekt abgrenzen',
+      text: 'Klaere, worum es geht: Software entwickeln, Support betreiben, Hardware warten, Schnittstelle bauen oder Cloud-Dienst nutzen. Nur gleiche Leistungen duerfen verglichen werden.',
+    },
+    {
+      titel: 'Muss-Kriterien pruefen',
+      text: 'Datenschutz, Sicherheitsvorgaben, Kompatibilitaet, Termin, gesetzliche Vorgaben oder Kundenanforderungen koennen eine Alternative ausschliessen.',
+    },
+    {
+      titel: 'Kosten auf dieselbe Basis bringen',
+      text: 'Vergleiche gleiche Laufzeit, gleiche Menge, gleichen Leistungsumfang und dieselbe Steuerbasis. Einmalige und laufende Kosten getrennt notieren.',
+    },
+    {
+      titel: 'Gesamtkosten berechnen',
+      text: 'Fuer Make und Buy jeweils Fixkosten plus Menge mal variable Kosten rechnen. Bei Bedarf Integrations-, Vertrags-, Schulungs- oder Wartungskosten einbeziehen.',
+    },
+    {
+      titel: 'Kritische Menge bestimmen',
+      text: 'Setze beide Kostenfunktionen gleich und loese nach x. Danach pruefst du mit einer Beispielmenge, welche Seite unterhalb und oberhalb guenstiger ist.',
+    },
+    {
+      titel: 'Qualitative Kriterien bewerten',
+      text: 'Bewerte Know-how-Aufbau, Abhaengigkeit, Wartbarkeit, Support, Reaktionszeit, Sicherheit, Skalierbarkeit und Flexibilitaet getrennt von der reinen Rechnung.',
+    },
+    {
+      titel: 'Empfehlung formulieren',
+      text: 'Eine starke Empfehlung nennt Ergebnis, Differenz, Bedingung und wichtigste Risiken: "Bei 160 Clients ist Make 1.200 EUR guenstiger; bei knapper Deadline waere Buy trotzdem vertretbar."',
+    },
+  ]}
+/>
+
+## Beispiel: Deployment-Automatisierung
+
+<Beispiel titel="Ausgangslage">
+Ein Ausbildungsbetrieb will die Einrichtung von Windows-Clients automatisieren. Zwei
+Varianten stehen zur Wahl:
+
+| Variante | Einmalige Kosten | Variable Kosten je Client |
+|---|---:|---:|
+| Make: internes Skript entwickeln und testen | 4.800 EUR | 8 EUR |
+| Buy: Standard-Tool einkaufen und integrieren | 1.200 EUR | 38 EUR |
+
+Geplant sind **160 Clients**. Welche Variante ist rechnerisch guenstiger, und ab
+welcher Clientzahl lohnt sich Make?
+</Beispiel>
+
+<StepByStep titel="Gesamtkosten und kritische Menge berechnen">
+  <Schritt nr={1} titel="Kostenfunktionen aufstellen">
+    Make: K_make = 4.800 EUR + x * 8 EUR.
+    Buy: K_buy = 1.200 EUR + x * 38 EUR.
+  </Schritt>
+  <Schritt nr={2} titel="Make bei 160 Clients berechnen">
+    K_make = 4.800 + 160 x 8
+    = 4.800 + 1.280
+    = **6.080 EUR**.
+  </Schritt>
+  <Schritt nr={3} titel="Buy bei 160 Clients berechnen">
+    K_buy = 1.200 + 160 x 38
+    = 1.200 + 6.080
+    = **7.280 EUR**.
+  </Schritt>
+  <Schritt nr={4} titel="Differenz bilden">
+    7.280 EUR - 6.080 EUR = **1.200 EUR**.
+    Bei 160 Clients ist Make rechnerisch 1.200 EUR guenstiger.
+  </Schritt>
+  <Schritt nr={5} titel="Kritische Menge berechnen">
+    4.800 + 8x = 1.200 + 38x
+    3.600 = 30x
+    x = **120 Clients**.
+  </Schritt>
+  <Schritt nr={6} titel="Richtung interpretieren">
+    Unter 120 Clients ist Buy guenstiger, weil die Startkosten niedriger sind.
+    Ueber 120 Clients ist Make guenstiger, weil die variablen Kosten je Client
+    deutlich niedriger sind.
+  </Schritt>
+  <Ergebnis>
+    Rein rechnerisch ist bei 160 Clients **Make** zu empfehlen. Die Empfehlung gilt,
+    wenn der Betrieb genug internes Know-how und Zeit fuer Entwicklung, Test,
+    Dokumentation und Wartung hat.
+  </Ergebnis>
+</StepByStep>
+
+<Warnung titel="Kostenvergleich ist noch keine fertige Entscheidung">
+Wenn der Rollout in einer Woche fertig sein muss oder niemand die Wartung uebernehmen
+kann, kann Buy trotz hoeherer Kosten sinnvoller sein. Die Rechnung zeigt den
+Kostenpunkt, nicht automatisch die strategisch beste Loesung.
+</Warnung>
+
+## IT-Kriterien fuer die Begruendung
+
+| Kriterium | Prüfungsfrage | Typische Begruendung |
+|---|---|---|
+| Know-how | Soll Wissen intern aufgebaut werden? | Make, wenn die Faehigkeit langfristig wichtig ist |
+| Zeitdruck | Gibt es einen festen Starttermin? | Buy, wenn eine getestete Standardloesung schneller einsetzbar ist |
+| Datenschutz | Werden sensible Daten verarbeitet? | Make oder strenger Anbietercheck, wenn Datenhoheit kritisch ist |
+| Sicherheit | Wer patcht, haertet und ueberwacht? | Buy kann gut sein, wenn <Term id="sla">SLA</Term> und Security-Prozess stark sind |
+| Abhaengigkeit | Entsteht <Term id="vendor-lock-in">Vendor-Lock-in</Term>? | Make oder offene Standards, wenn Wechselbarkeit wichtig ist |
+| Skalierbarkeit | Waechst die Nutzung stark? | Make, wenn variable Kosten sonst zu stark steigen; Buy, wenn Anbieter elastisch skaliert |
+| Wartbarkeit | Wer behebt Fehler in zwei Jahren? | Buy mit Supportvertrag oder Make mit Dokumentation und Vertretung |
+
+Bei mehreren qualitativen Kriterien kannst du eine <Term id="nutzwertanalyse">Nutzwertanalyse</Term>
+nutzen. Wichtig ist die Trennung: Kosten werden in Euro berechnet, qualitative Kriterien
+werden begruendet oder mit Punkten bewertet.
+
+## Typische Aufgabe mit Musterloesung
+
+**Aufgabe.** Ein Unternehmen benoetigt ein kleines Dashboard fuer 90 interne Nutzer.
+Variante A ist Eigenentwicklung: 3.600 EUR einmalig, danach 10 EUR je Nutzer fuer
+Betrieb und Pflege. Variante B ist ein externes Tool: 600 EUR Einrichtung, danach
+45 EUR je Nutzer fuer Lizenz und Support.
+
+1. Berechne die Gesamtkosten beider Varianten fuer 90 Nutzer.
+2. Berechne die kritische Nutzerzahl.
+3. Gib eine Empfehlung, wenn Datenschutz unkritisch ist und das Dashboard dauerhaft
+   genutzt werden soll.
+
+**Musterloesung.**
+
+```text
+Variante A: Make
+K_make = 3.600 EUR + 90 x 10 EUR
+K_make = 3.600 EUR + 900 EUR
+K_make = 4.500 EUR
+
+Variante B: Buy
+K_buy = 600 EUR + 90 x 45 EUR
+K_buy = 600 EUR + 4.050 EUR
+K_buy = 4.650 EUR
+
+Differenz:
+4.650 EUR - 4.500 EUR = 150 EUR
+```
+
+Kritische Nutzerzahl:
+
+```text
+3.600 + 10x = 600 + 45x
+3.000 = 35x
+x = 85,71
+```
+
+Ab **86 Nutzern** ist Make guenstiger, weil ganze Nutzerzahlen betrachtet werden.
+Bei 90 Nutzern gewinnt Make rechnerisch um **150 EUR**. Da das Dashboard dauerhaft
+genutzt wird und Datenschutz unkritisch ist, ist Make vertretbar, wenn intern genug
+Know-how fuer Wartung und Vertretung vorhanden ist. Fehlt dieses Know-how oder ist der
+Termin sehr knapp, waere Buy trotz Mehrkosten fachlich begruendbar.
+
+## Fehlerfallen
+
+1. **Nur Anschaffungspreise vergleichen.** Einmalige Kosten reichen nicht. Laufende
+   Lizenz-, Wartungs-, Support- und Integrationskosten gehoeren dazu.
+2. **Interne Arbeitszeit mit 0 EUR ansetzen.** Arbeitszeit ist eine knappe Ressource.
+   Sie verursacht Personalkosten und Opportunitaetskosten.
+3. **Fixkosten und variable Kosten verwechseln.** Entwicklungskosten sind meist fix,
+   Lizenzkosten pro Nutzer oder Client meist variabel.
+4. **Kritische Menge falsch herum interpretieren.** Nach dem Rechnen immer eine
+   Testmenge unterhalb und oberhalb einsetzen.
+5. **Ungleichen Leistungsumfang vergleichen.** Buy kann Support, Updates oder SLA
+   enthalten. Make braucht dafuer eigene Zeit, Prozesse und Dokumentation.
+6. **Muss-Kriterien uebersehen.** Datenschutz, Schnittstellen, Betriebssystemvorgaben
+   oder Sicherheitsanforderungen koennen eine rechnerisch guenstige Alternative
+   ausschliessen.
+7. **Buy mit "keine Verantwortung" gleichsetzen.** Auch externe Leistungen muessen
+   beschafft, geprueft, vertraglich geregelt, integriert und ueberwacht werden.
+8. **Make aus Bauchgefuehl waehlen.** Eigenentwicklung ist nur stark, wenn sie Kosten,
+   Know-how, Kontrolle oder strategische Vorteile wirklich verbessert.
+
+## Merksatz
+
+Wenn du eine Make-or-Buy-Aufgabe siehst, schreibe dir zuerst diese Reihenfolge auf:
+
+```text
+1. Leistung abgrenzen
+2. Muss-Kriterien pruefen
+3. Make-Kosten = Fix + Menge x variabel
+4. Buy-Kosten  = Fix + Menge x variabel
+5. Kritische Menge berechnen und Richtung pruefen
+6. Empfehlung = Zahl + qualitative Begruendung + Bedingung
+```
+
+<Glossar
+  eintraege={[
+    {
+      term: 'Eigenfertigung',
+      definition: 'Interne Erstellung einer Leistung durch eigene Mitarbeitende, eigene Systeme oder eigene Prozesse.'
+    },
+    {
+      term: 'Fremdbezug',
+      definition: 'Beschaffung einer Leistung von einem externen Anbieter, zum Beispiel Kauf, Dienstleistung, Outsourcing oder SaaS.'
+    },
+    {
+      term: 'Kernkompetenz',
+      definition: 'Faehigkeit, die fuer den langfristigen Erfolg eines Unternehmens besonders wichtig ist und deshalb oft intern gehalten wird.'
+    },
+    {
+      term: 'Kritische Menge',
+      definition: 'Menge, bei der zwei Alternativen gleich hohe Gesamtkosten haben. Unterhalb und oberhalb kann jeweils eine andere Alternative guenstiger sein.'
+    },
+    {
+      term: 'Make-or-Buy',
+      definition: 'Entscheidung, ob eine Leistung intern erbracht oder extern beschafft wird.'
+    },
+    {
+      term: 'Opportunitaetskosten',
+      definition: 'Entgangener Nutzen der besten nicht gewaehlten Alternative, zum Beispiel verlorene Projektzeit durch interne Entwicklung.'
+    },
+    {
+      term: 'Transaktionskosten',
+      definition: 'Kosten fuer Suche, Abstimmung, Vertrag, Integration, Kontrolle und Koordination einer Leistung.'
+    },
+    {
+      term: 'Vendor-Lock-in',
+      definition: 'Abhaengigkeit von einem Anbieter, die einen Wechsel technisch, organisatorisch oder wirtschaftlich erschwert.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'Springer Gabler Wirtschaftslexikon - Make or Buy',
+      href: 'https://wirtschaftslexikon.gabler.de/definition/make-or-buy-38068',
+      detail: 'Fachliche Grundlage zur Entscheidung zwischen Eigenproduktion und Fremdbezug einschliesslich Transaktionskosten.'
+    },
+    {
+      label: 'Springer Gabler Wirtschaftslexikon - Transaktionskosten',
+      href: 'https://wirtschaftslexikon.gabler.de/definition/transaktionskosten-48987',
+      detail: 'Fachliche Grundlage fuer Kosten, die bei Anbahnung, Abwicklung und Koordination wirtschaftlicher Transaktionen entstehen.'
+    },
+    {
+      label: 'Springer Gabler Wirtschaftslexikon - Nutzwertanalyse',
+      href: 'https://wirtschaftslexikon.gabler.de/definition/nutzwertanalyse-42926',
+      detail: 'Fachliche Grundlage fuer die Bewertung von Alternativen mit mehreren gewichteten Kriterien.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Offizieller Ausbildungskontext der IT-Berufe mit betrieblichem Handeln und Prüfungsbezug.'
+    },
+    {
+      label: 'Fachinformatikerausbildungsverordnung (FIAusbV)',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Grundlage der Fachinformatiker-Ausbildung und der gestreckten Abschlusspruefung.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Lernfeldbezug zu betrieblichem Handeln, Beschaffung, Wirtschaftlichkeit und Kundenorientierung.'
+    },
+  ]}
+/>

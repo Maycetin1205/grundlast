@@ -1,0 +1,101 @@
+﻿# Virtualisierung & Hypervisor
+
+## Worum geht's
+
+Früher hatte jede Software ihren eigenen physischen Server — teuer und ineffizient.
+Virtualisierung erlaubt es, mehrere **virtuelle Maschinen (VMs)** auf einem einzigen physischen
+Server zu betreiben. In der Prüfung kommen direkte Aufgaben: Was ist Virtualisierung?
+Typ-1 vs. Typ-2 Hypervisor? Vor- und Nachteile nennen.
+
+---
+
+## Konzept
+
+### Was ist Virtualisierung?
+
+**Virtualisierung** = Mehrere **virtuelle Maschinen (VMs)** auf einem **physischen Server** betreiben.
+Jede VM verhält sich wie ein eigenständiger Computer — mit eigenem Betriebssystem, eigenem RAM-Anteil,
+eigener CPU-Zeit.
+
+### Analogie: Wohnungen im Hochhaus
+
+Stell dir ein Gebäude (= physischer Server) vor. Früher wohnte dort nur eine Familie (= ein Betriebssystem).
+Jetzt teilt das Gebäude eine Hausverwaltung (= Hypervisor) in viele Wohnungen (= VMs) auf.
+Jede Wohnung ist unabhängig, teilt sich aber die Gebäudeinfrastruktur (Strom, Wasser = Hardware).
+
+### Der Hypervisor
+
+**Hypervisor** = die Software, die zwischen der Hardware und den VMs sitzt und die Ressourcen verteilt.
+
+Es gibt zwei Typen:
+
+| | **Typ-1 Hypervisor** | **Typ-2 Hypervisor** |
+|---|---|---|
+| **Andere Namen** | Bare-Metal, Nativ | Hosted |
+| **Wie er läuft** | Direkt auf der Hardware (kein Hostbetriebssystem) | Auf einem normalen Betriebssystem (Windows/Linux) |
+| **Beispiele** | VMware ESXi, Microsoft Hyper-V, Proxmox | VirtualBox, VMware Workstation |
+| **Einsatz** | Rechenzentrum, Produktivumgebung | Entwicklung, Testen, Schule |
+| **Performance** | Sehr hoch (kein OS-Overhead) | Etwas niedriger |
+
+**Merkhilfe:** Typ-1 = steht allein auf der Hardware (kein Wirt nötig). Typ-2 = braucht ein Host-OS als Wirt.
+
+### VM vs. Container
+
+| | **Virtuelle Maschine (VM)** | **Container** |
+|---|---|---|
+| **Enthält** | Ganzes Betriebssystem + Anwendung | Nur Anwendung + Abhängigkeiten |
+| **Isolation** | Vollständig (eigener Kernel) | Teilt Kernel mit Host |
+| **Startzeit** | Sekunden bis Minuten | Millisekunden |
+| **Speicherbedarf** | Mehrere GB | Wenige MB–GB |
+| **Beispiele** | VMs auf ESXi | Docker Container |
+
+> Container sind **keine** Virtualisierung im klassischen Sinne — sie sind OS-Level-Isolation.
+> In der Aufgabe: wenn nach Hypervisor oder VM gefragt, ist Container die falsche Antwort.
+
+---
+
+## Beispiele
+
+### Szenario: Serverkonsolidierung im Unternehmen
+
+Ein Unternehmen betreibt 3 physische Server (je 10 % ausgelastet = 90 % Ressourcen ungenutzt).
+Mit Virtualisierung werden alle 3 auf einem Server virtualisiert.
+
+**Ergebnis:**
+- Statt 3 × Strom + Kühlung + Wartung → nur 1 physischer Server
+- Jede VM bleibt isoliert (Fehler in VM 1 betrifft VM 2 nicht)
+- Neue VM in Minuten erstellt (statt Wochen für neue Hardware)
+
+### Typische Prüfungsaufgabe
+
+*„Was ist Virtualisierung? Nennen Sie 2 Vorteile und 1 Nachteil."*
+
+**Definition**: Virtualisierung ermöglicht, mehrere virtuelle Maschinen (VMs) auf einem physischen
+Server zu betreiben. Jede VM hat ein eigenes Betriebssystem und verhält sich wie ein eigenständiger Computer.
+
+**Vorteile:**
+1. **Bessere Hardware-Auslastung** — ein Server hostet mehrere Systeme, Ressourcen werden effizient verteilt
+2. **Flexibilität** — VMs können schnell erstellt, kopiert, gesichert oder gelöscht werden; einfaches Testen neuer Software ohne neue Hardware
+
+**Nachteil:**
+1. **Hypervisor-Overhead** — der Hypervisor selbst verbraucht Ressourcen (RAM, CPU); VMs sind etwas langsamer als native Installationen
+
+---
+
+## Typische Fehler
+
+- **Typ-1 und Typ-2 verwechseln**: Typ-1 läuft direkt auf der Hardware (kein Host-OS). Typ-2 braucht
+  ein vorhandenes Betriebssystem als Unterlage. In Rechenzentren immer Typ-1.
+
+- **Container ≠ Virtualisierung**: Container teilen sich den Kernel des Host-Betriebssystems —
+  das ist keine vollständige Virtualisierung. Container wie Docker sind OS-Level-Isolation.
+  In Aufgaben nicht als Alternative zu VMs nennen, wenn explizit nach Hypervisor/VM gefragt.
+
+- **Hypervisor ist nicht das Betriebssystem**: Der Hypervisor verwaltet VMs — er ist nicht selbst ein
+  Betriebssystem. Die VMs haben eigene Betriebssysteme (Windows, Linux, etc.).
+
+- **„Eine VM = ein Programm"**: Eine VM ist ein ganzes virtuelles System mit Betriebssystem.
+  Ein Programm auf einer VM ist was anderes als die VM selbst.
+
+---
+

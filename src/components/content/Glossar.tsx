@@ -1,0 +1,50 @@
+import { useId, type ReactNode } from 'react'
+import { cn } from '../../lib/cn'
+
+export interface GlossarEintrag {
+  term: string
+  definition: ReactNode
+}
+
+interface GlossarProps {
+  eintraege: GlossarEintrag[]
+  titel?: string
+  className?: string
+}
+
+export default function Glossar({
+  eintraege,
+  titel = 'Glossar - Begriffe aus diesem Kapitel',
+  className,
+}: GlossarProps) {
+  const headingId = useId()
+  const sortedEntries = [...eintraege].sort((a, b) =>
+    a.term.localeCompare(b.term, 'de', { sensitivity: 'base' }),
+  )
+
+  return (
+    <section className={cn('my-8 border border-rule bg-paper', className)} aria-labelledby={headingId}>
+      <h2
+        id={headingId}
+        className="m-0 border-b border-rule bg-paper-deep px-6 py-4 font-ui text-xs font-semibold uppercase tracking-widest text-accent"
+      >
+        {titel}
+      </h2>
+      <dl>
+        {sortedEntries.map((entry) => (
+          <div
+            key={entry.term}
+            className="grid gap-3 border-b border-rule px-6 py-5 last:border-b-0 sm:grid-cols-[12rem_minmax(0,1fr)]"
+          >
+            <dt className="font-display text-lg font-bold leading-snug text-ink">
+              {entry.term}
+            </dt>
+            <dd className="font-body text-base leading-relaxed text-muted">
+              {entry.definition}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )
+}

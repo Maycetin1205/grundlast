@@ -1,0 +1,73 @@
+﻿# Bit & Byte – die kleinsten Einheiten
+
+## Worum geht's
+
+Du lernst, was die kleinsten Informationseinheiten im Computer sind und wie sie zusammenhängen.
+Danach kannst du Dateigrößen und Übertragungsraten sicher einordnen — und im Kopf ausrechnen,
+wie viele Buchstaben in eine bestimmte Datei passen.
+
+---
+
+## Erklärung
+
+Ein Computer versteht nur zwei Zustände: **Strom an** und **Strom aus**.
+Diese Zustände werden als **1** und **0** dargestellt.
+Die kleinste Einheit, die genau einen solchen Zustand speichert, heißt
+<Term id="bit">**Bit**</Term> (kurz für *Binary Digit* — deutsch: Binärstelle).
+
+8 Bit zusammen ergeben 1 <Term id="byte">**Byte**</Term>.
+Ein Byte kann 2⁸ = **256 verschiedene Werte** annehmen (von 0 bis 255).
+Das reicht genau, um einen einzigen <Term id="ascii">ASCII</Term>-Buchstaben zu speichern.
+
+### Die Stufenleiter der Datenmengen
+
+| Einheit | Abkürzung | Größe |
+|---|---|---|
+| Bit | b | 1 Bit |
+| <Term id="nibble">Nibble</Term> | — | 4 Bit |
+| Byte | B | 8 Bit |
+| Kilobyte | KB | 1.000 Byte *(dezimal)* |
+| Kibibyte | KiB | 1.024 Byte *(binär)* |
+| Megabyte | MB | 1.000.000 Byte |
+| Gigabyte | GB | 1.000.000.000 Byte |
+
+> **Achtung:** Festplattenhersteller rechnen in Dezimal (KB = 1.000 B).
+> Betriebssysteme rechnen meist in Binär (KiB = 1.024 B).
+> Deshalb zeigt Windows eine neue 1-TB-Festplatte als ~931 GB an — kein Fehler!
+
+---
+
+## Beispiel
+
+Eine einfache E-Mail mit dem Text „Hallo" hat 5 Zeichen.
+Jedes Zeichen belegt 1 Byte (im ASCII-Standard).
+
+```
+"Hallo" = 5 Zeichen × 1 Byte = 5 Byte = 40 Bit
+```
+
+Ein HD-Film mit 4 GB belegt:
+
+```
+4 GB = 4 × 1.000.000.000 Byte = 4.000.000.000 Byte
+     = 32.000.000.000 Bit
+```
+
+Das sind 32 Milliarden Einsen und Nullen — für einen einzigen Film.
+
+---
+
+## Typische Fehler
+
+- **Groß- vs. Kleinschreibung:** `b` (kleines b) = Bit, `B` (großes B) = Byte.
+  Übertragungsraten (z. B. DSL 16 **M**bit/s) sind in Bit angegeben — nicht Byte!
+  Zum Umrechnen: Mbit/s ÷ 8 = MByte/s.
+
+- **Dezimal vs. Binär:** Die IHK fragt manchmal explizit nach KiB/MiB (binär).
+  Wenn „1 KiB" gefragt ist, antworte 1.024 Byte — nicht 1.000 Byte.
+
+- **Bit vs. Byte verwechseln:** 1 Byte = 8 Bit. Wenn du Byte in Bit umrechnen
+  willst, **multiplizierst** du mit 8. Andersherum **dividierst** du durch 8.
+
+---
+

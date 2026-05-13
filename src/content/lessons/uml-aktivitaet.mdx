@@ -1,0 +1,170 @@
+﻿# UML-Aktivitätsdiagramm
+
+## Worum geht's
+
+Du lernst, Abläufe und Prozesse grafisch darzustellen — mit dem UML-Aktivitätsdiagramm.
+Du kannst die Symbole benennen, ein einfaches Diagramm lesen und beschreiben,
+was Fork, Join und Entscheidung bedeuten.
+
+In der Prüfung werden Aktivitätsdiagramme regelmäßig abgefragt — sowohl Symbole erkennen als auch Abläufe interpretieren.
+
+---
+
+## Was ist UML?
+
+**UML** = Unified Modeling Language = eine einheitliche grafische Sprache zur Beschreibung von Software.
+
+Statt langen Texten nutzt man standardisierte Diagramme. Das **Aktivitätsdiagramm** zeigt dabei, *wie* ein Prozess abläuft — Schritt für Schritt, mit Entscheidungen und parallelen Abläufen.
+
+**Analogie: Kochrezept als Diagramm**
+
+Als Text: „Wasser kochen. Nudeln rein. 10 Minuten warten. Parallel: Soße erhitzen. Wenn Nudeln fertig, abgießen. Mischen."
+
+Als Aktivitätsdiagramm sieht man sofort:
+- Was passiert in welcher Reihenfolge?
+- Was läuft parallel?
+- Wo gibt es eine Entscheidung?
+
+Diagramme machen Abläufe für alle sofort verständlich — ohne dass man lesen muss.
+
+---
+
+## Die 6 Grundelemente
+
+| Element | Symbol | Bedeutung | Beispiel |
+|---|---|---|---|
+| **Startknoten** | ⚫ gefüllter Kreis | Wo beginnt der Prozess? | „Bestellung eingeht" |
+| **Aktivität** | ▭ Rechteck, abgerundet | Eine konkrete Aktion | „Artikel verpacken", „Daten prüfen" |
+| **Entscheidung** | ◇ Raute | Verzweigung: Ja/Nein-Frage | „Ist Zahlung eingegangen?" |
+| **Fork** | ━━━ dicker Balken | Prozess teilt sich — **parallel** weiter | Rechnung erstellen ║ Ware verpacken |
+| **Join** | ━━━ dicker Balken | Parallele Pfade **zusammenführen** — wartet auf alle | Erst wenn Rechnung + Ware fertig: Versand |
+| **Endknoten** | ◉ Kreis mit Punkt | Prozess ist abgeschlossen | „Bestellung abgeschlossen" |
+
+**Merkhilfe für Start und Ende:**
+- Start ⚫ = voller schwarzer Kreis (wie ein Startknopf)
+- Ende ◉ = Kreis mit Punkt innen (wie ein Zielring)
+
+---
+
+## Die Entscheidung (Raute) im Detail
+
+Die **Raute** zeigt eine Verzweigung — genau **ein** Pfad wird weiterverfolgt.
+
+```
+           ◇
+     [Ja] / \ [Nein]
+          ↓    ↓
+```
+
+**Regeln:**
+- Genau **eine** Linie geht in die Raute hinein
+- **Zwei oder mehr** Linien kommen heraus
+- Jeder ausgehende Pfad **muss beschriftet** sein: [Ja] / [Nein] oder [>0] / [=0]
+
+**Merge (Zusammenführung von Entscheidungen):** Auch eine Raute!
+Mehrere Pfade laufen wieder zusammen — auch wieder mit einer Raute, aber diesmal gehen mehrere Linien rein und eine raus. Kein Warten!
+
+**Gute Beschriftung:**
+
+| Element | Gut | Schlecht |
+|---|---|---|
+| Aktivität | „Daten validieren" (Verb + Objekt) | „Validierung" |
+| Entscheidung | „Ist User angemeldet?" | „User" |
+| Pfeilbeschriftung | [Ja] / [Nein] | (ohne Beschriftung) |
+
+---
+
+## Fork und Join im Detail
+
+Fork und Join haben dasselbe Symbol (dicker Balken) — aber gegensätzliche Bedeutung:
+
+**Fork (Gabelung):**
+```
+         [Aktivität]
+              ↓
+    ━━━━━━━━━━━━━━━━━  ← Fork
+    ↓               ↓
+[Pfad A]        [Pfad B]
+(gleichzeitig!) (gleichzeitig!)
+```
+→ Ein Prozess teilt sich in **mehrere parallele** Pfade auf.
+→ Beide laufen **gleichzeitig** weiter.
+
+**Join (Synchronisation):**
+```
+    ↓               ↓
+[Pfad A]        [Pfad B]
+(wartet...)     (wartet...)
+    ↓               ↓
+    ━━━━━━━━━━━━━━━━━  ← Join
+              ↓
+         [Nächste Aktivität]
+```
+→ Der Prozess wartet, bis **ALLE** parallelen Pfade fertig sind — erst dann geht's weiter.
+
+**Unterschied zwischen Fork und Entscheidung:**
+
+| | Fork / Join | Entscheidung (Raute) |
+|---|---|---|
+| Pfade | **Alle** laufen parallel | **Nur ein** Pfad wird gewählt |
+| Wann? | Immer | Je nach Bedingung |
+| Symbol | Dicker Balken | Raute |
+| Beispiel | Rechnung UND Ware gleichzeitig | Zahlung eingegangen ODER nicht? |
+
+---
+
+## Vollständiges Beispiel: Online-Bestellung
+
+Ablauf einer Bestellung als Aktivitätsdiagramm (textuell beschrieben):
+
+```
+⚫ START
+  ↓
+[Artikel auswählen]
+  ↓
+◇ Ist User eingeloggt?
+  → [Nein] → [Login / Registrierung] → zurück zu ◇
+  → [Ja]
+  ↓
+[Bezahldaten eingeben]
+  ↓
+━━━━━━━━━━━━━━━━━━━━━━━  FORK (parallel!)
+↓                        ↓
+[Rechnung erstellen]    [Ware verpacken]
+↓                        ↓
+━━━━━━━━━━━━━━━━━━━━━━━  JOIN (warten bis beides fertig!)
+  ↓
+[Versand auslösen]
+  ↓
+◉ ENDE
+```
+
+**Was passiert hier?**
+1. Benutzer wählt Artikel aus
+2. Falls nicht eingeloggt → Login-Schleife (zurück zur Aufgabe)
+3. Bezahldaten eingeben
+4. **Fork:** Gleichzeitig läuft Rechnungserstellung und Warenverpackung
+5. **Join:** Erst wenn BEIDES fertig ist, wird der Versand ausgelöst
+6. Prozess endet
+
+---
+
+## Typische Fehler
+
+**Falle 1: Fork und Entscheidung verwechseln**
+- Falsch: „Beides teilt den Prozess auf — gleiche Bedeutung"
+- Richtig: **Fork** → alle Pfade laufen parallel (und). **Entscheidung** → nur ein Pfad wird gewählt (oder)
+
+**Falle 2: Join falsch verstanden**
+- Falsch: „Der erste fertige Pfad läuft weiter"
+- Richtig: Join **wartet**, bis **ALLE** parallelen Pfade abgeschlossen sind
+
+**Falle 3: Aktivitäten schlecht beschriften**
+- Falsch: „Validierung" (was passiert damit? unklar)
+- Richtig: „Eingabedaten validieren" (Verb + Objekt = klar)
+
+**Falle 4: Entscheidungs-Pfade ohne Beschriftung**
+- Jede ausgehende Linie einer Raute muss eine Bedingung tragen: [Ja]/[Nein], [>0]/[=0]
+
+---
+

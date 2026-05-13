@@ -1,0 +1,688 @@
+﻿# Pseudocode, Algorithmen & Kontrollstrukturen
+
+<MetaBar
+  lesezeit="30 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 5 - Softwareentwicklung, Algorithmen und Kontrollstrukturen"
+  pruefungsrelevanz="PFLICHT · 5/5"
+/>
+
+Ein *<Term id="pseudocode">Pseudocode</Term>* ist die Brücke zwischen Problem und Programm. Du formulierst die Logik so präzise, dass ein Mensch sie prüfen und ein Entwickler sie später in Python, Java, C# oder eine andere Sprache übersetzen kann. In der Prüfung taucht das oft als Leseaufgabe, Schreibtischtest, Fehlersuche oder kleine Schreibaufgabe auf.
+
+---
+
+## 01 · Warum existiert das überhaupt?
+
+Programmieren beginnt nicht mit Syntax, sondern mit einer Entscheidung: Was soll in welcher Reihenfolge passieren? Genau dafür brauchst du Pseudocode. Er nimmt die Ablenkung durch konkrete Sprache weg und legt die Logik frei. Ob später `if`, `wenn`, `falls`, `while`, `solange` oder `for` im echten Code steht, ist zweitrangig. Entscheidend ist, ob die Idee vollständig, eindeutig und prüfbar ist.
+
+In der Aufgabe ist das wertvoll, weil du nicht raten musst, welche Programmiersprache gemeint ist. Du liest Anweisungen, Variablen, Bedingungen und Schleifen wie eine Ablaufbeschreibung. Dann führst du sie sauber von Hand aus oder formulierst einen eigenen Ablauf.
+
+<Analogie>
+Pseudocode ist wie ein Kochrezept: Erst kommen die Zutaten, dann die Arbeitsschritte in der richtigen Reihenfolge. Manche Schritte laufen immer ab, andere nur unter einer Bedingung: Wenn das Wasser kocht, kommen die Nudeln hinein. Wieder andere werden wiederholt: Rühre alle zwei Minuten um, bis die Nudeln weich sind. Ein gutes Rezept ist sprachneutral genug, dass verschiedene Köche es verstehen, aber präzise genug, dass am Ende dasselbe Gericht entsteht. Guter Pseudocode macht genau das mit Softwarelogik.
+</Analogie>
+
+<Tipp titel="Prüfungsperspektive">
+Wenn eine Pseudocode-Aufgabe schwer wirkt, lies sie nicht wie Quellcode. Lies sie wie einen Arbeitsauftrag: Eingabe erfassen, Werte speichern, Bedingung prüfen, Schleife laufen lassen, Ausgabe notieren. Diese Reihenfolge trägt fast jede Aufgabe.
+</Tipp>
+
+---
+
+## 02 · Das Grundprinzip
+
+Ein *<Term id="algorithmus">Algorithmus</Term>* ist eine endliche, deterministische Folge von Anweisungen zur Lösung eines Problems. Endlich heißt: Der Ablauf muss irgendwann enden. Deterministisch heißt: Bei gleicher Eingabe entsteht derselbe Ablauf und dasselbe Ergebnis. Wenn ein Ablauf "irgendwie" oder "solange es sinnvoll ist" sagt, ist er als Algorithmus noch zu ungenau.
+
+Der Kern lässt sich mit dem *<Term id="eva-prinzip">EVA-Prinzip</Term>* lesen:
+
+| Phase | Frage | Beispiel |
+|---|---|---|
+| Eingabe | Welche Daten kommen hinein? | Liste von Preisen, Anzahl der Tickets, Benutzerrolle |
+| Verarbeitung | Welche Regeln werden angewendet? | Summe bilden, Maximum suchen, Berechtigung prüfen |
+| Ausgabe | Was soll am Ende sichtbar sein? | Ergebniszahl, Warnung, Entscheidung wahr/falsch |
+
+### Drei Strukturkategorien
+
+Die klassische strukturierte Programmierung reduziert Programmabläufe auf drei Grundformen. Die theoretische Grundlage wird häufig mit Böhm/Jacopini verbunden: Kontrollfluss lässt sich ohne freie Sprünge aus wenigen strukturierten Bausteinen aufbauen. Für Aufgaben reicht die praktische Konsequenz:
+
+| Kategorie | Idee | Typische Pseudocode-Form |
+|---|---|---|
+| *<Term id="sequenz">Sequenz</Term>* | Schritte laufen nacheinander | `a ← 3`, dann `b ← a + 2` |
+| *<Term id="selektion">Selektion</Term>* | eine *<Term id="bedingung">Bedingung</Term>* entscheidet den Zweig | `WENN ... DANN ... SONST ...` |
+| *<Term id="iteration">Iteration</Term>* | ein Block wird wiederholt | `FÜR`, `SOLANGE`, `WIEDERHOLE ... BIS` |
+
+Eine *<Term id="schleife">Schleife</Term>* ist also keine zusätzliche Magie, sondern eine Iteration: derselbe Block wird mehrfach ausgeführt, bis eine Zählgrenze erreicht oder eine Bedingung falsch beziehungsweise wahr wird.
+
+<svg
+  viewBox="0 0 760 300"
+  role="img"
+  aria-label="Skizze: Drei Strukturkategorien im Pseudocode. Links Sequenz mit drei Blöcken untereinander, Mitte Selektion mit einer Raute und zwei Zweigen, rechts Iteration mit Schleifenpfeil zurück zur Bedingung. Akzentrot markiert Entscheidung und Wiederholung."
+  className="my-8 w-full max-w-3xl border border-rule bg-paper"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <style>{`
+      .pseudo-hdr { font: 600 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
+      .pseudo-lbl { font: 500 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; }
+      .pseudo-sub { font: 400 11px 'IBM Plex Sans', sans-serif; fill: #4a5568; }
+      .pseudo-box { fill: none; stroke: #1a2332; stroke-width: 1.3; }
+      .pseudo-accent { fill: none; stroke: #8b2f1d; stroke-width: 1.8; }
+      .pseudo-arrow { stroke: #1a2332; stroke-width: 1.3; fill: none; }
+      .pseudo-arrow-accent { stroke: #8b2f1d; stroke-width: 1.7; fill: none; }
+    `}</style>
+    <marker id="pseudo-struct-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a2332" />
+    </marker>
+    <marker id="pseudo-struct-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b2f1d" />
+    </marker>
+  </defs>
+
+  <text className="pseudo-hdr" x="24" y="32">Drei Strukturkategorien</text>
+
+  <text className="pseudo-lbl" x="72" y="68">Sequenz</text>
+  <rect className="pseudo-box" x="40" y="90" width="150" height="36" />
+  <text className="pseudo-sub" x="62" y="113">Eingabe lesen</text>
+  <line className="pseudo-arrow" x1="115" y1="126" x2="115" y2="148" markerEnd="url(#pseudo-struct-arrow)" />
+  <rect className="pseudo-box" x="40" y="152" width="150" height="36" />
+  <text className="pseudo-sub" x="62" y="175">Wert berechnen</text>
+  <line className="pseudo-arrow" x1="115" y1="188" x2="115" y2="210" markerEnd="url(#pseudo-struct-arrow)" />
+  <rect className="pseudo-box" x="40" y="214" width="150" height="36" />
+  <text className="pseudo-sub" x="62" y="237">Ausgabe schreiben</text>
+
+  <text className="pseudo-lbl" x="320" y="68">Selektion</text>
+  <polygon className="pseudo-accent" points="365,90 430,125 365,160 300,125" />
+  <text className="pseudo-sub" x="333" y="129">Bedingung?</text>
+  <line className="pseudo-arrow-accent" x1="300" y1="125" x2="250" y2="190" markerEnd="url(#pseudo-struct-arrow-accent)" />
+  <line className="pseudo-arrow-accent" x1="430" y1="125" x2="480" y2="190" markerEnd="url(#pseudo-struct-arrow-accent)" />
+  <rect className="pseudo-box" x="210" y="194" width="120" height="36" />
+  <text className="pseudo-sub" x="236" y="217">Ja-Zweig</text>
+  <rect className="pseudo-box" x="440" y="194" width="120" height="36" />
+  <text className="pseudo-sub" x="462" y="217">Nein-Zweig</text>
+
+  <text className="pseudo-lbl" x="620" y="68">Iteration</text>
+  <polygon className="pseudo-accent" points="650,90 715,125 650,160 585,125" />
+  <text className="pseudo-sub" x="621" y="129">nochmal?</text>
+  <rect className="pseudo-box" x="588" y="194" width="126" height="36" />
+  <text className="pseudo-sub" x="614" y="217">Block</text>
+  <line className="pseudo-arrow-accent" x1="650" y1="160" x2="650" y2="194" markerEnd="url(#pseudo-struct-arrow-accent)" />
+  <path className="pseudo-arrow-accent" d="M714 212 C742 212 742 110 715 110" markerEnd="url(#pseudo-struct-arrow-accent)" />
+  <text className="pseudo-sub" x="610" y="262">Wiederholung bis Abbruch</text>
+</svg>
+
+---
+
+## 03 · Die Mechanik / Regeln
+
+### 03.1 · Variablen, Datentypen und Zuweisung
+
+Eine *<Term id="variable">Variable</Term>* ist ein benannter Speicherplatz. Ein *<Term id="datentyp">Datentyp</Term>* beschreibt, welche Art von Wert darin liegt und welche Operationen sinnvoll sind.
+
+| Datentyp | Bedeutung | Beispielwert | Typische Operation |
+|---|---|---|---|
+| `int` | ganze Zahl | `42` | zählen, indizieren, Rest mit `MOD` |
+| `float` | Kommazahl | `12.5` | Durchschnitt, Preis, Messwert |
+| `string` | Text | `"Admin"` | ausgeben, vergleichen, zusammensetzen |
+| `bool` | Wahrheitswert | `wahr` oder `falsch` | Bedingungen steuern |
+
+In diesem Kapitel nutze ich für Zuweisungen den Pfeil `←`, weil er die Richtung klar zeigt:
+
+```text
+zaehler ← 0
+name ← "Murat"
+preis ← 49.99
+istGueltig ← falsch
+```
+
+Vergleiche liefern einen booleschen Wert:
+
+| Vergleich | Bedeutung |
+|---|---|
+| `=` | gleich |
+| `≠` | ungleich |
+| `<`, `>` | kleiner, größer |
+| `≤`, `≥` | kleiner/gleich, größer/gleich |
+
+<Warnung titel="Zuweisung und Vergleich trennen">
+In Pseudocode ist `←` eine Zuweisung: `x ← 5` bedeutet, dass x den Wert 5 bekommt. `x = 5` ist ein Vergleich und ergibt wahr oder falsch. Manche Aufgaben verwenden stattdessen `=` für Zuweisung und `==` für Vergleich. Prüfe immer die Legende der Aufgabe.
+</Warnung>
+
+### 03.2 · Operatoren
+
+| Operatorart | Operatoren | Beispiel |
+|---|---|---|
+| arithmetisch | `+`, `-`, `*`, `/`, `MOD` | `rest ← zahl MOD 2` |
+| vergleichend | `=`, `≠`, `<`, `>`, `≤`, `≥` | `alter ≥ 18` |
+| logisch | `UND`, `ODER`, `NICHT` | `rolle = "Admin" UND aktiv = wahr` |
+
+Der Operator `MOD` liefert den Rest einer ganzzahligen Division. `17 MOD 5` ergibt `2`, weil 17 durch 5 den Rest 2 lässt. In Aufgaben ist `MOD` typisch für gerade/ungerade, Teilbarkeit, Schaltjahr und zyklische Abläufe.
+
+### 03.3 · Kontrollstrukturen lesen
+
+<Schritte
+  items={[
+    { titel: 'Sequenz: von oben nach unten', text: 'Jede Anweisung wird genau einmal in der geschriebenen Reihenfolge ausgeführt. Neue Werte überschreiben alte Werte. Ein Schreibtischtest muss deshalb immer den aktuellsten Variablenwert notieren.' },
+    { titel: 'Selektion: Bedingung auswerten', text: 'Bei WENN/DANN/SONST wird zuerst die Bedingung zu wahr oder falsch ausgewertet. Danach läuft nur der passende Zweig. Der andere Zweig wird übersprungen.' },
+    { titel: 'FOR-Schleife: bekannte Anzahl', text: 'Eine FÜR-Schleife eignet sich, wenn die Anzahl der Durchläufe feststeht: etwa alle Elemente einer Liste, fünf Noten, zehn Messwerte. Prüfe, ob Anfang und Ende inklusive gemeint sind.' },
+    { titel: 'WHILE-Schleife: Bedingung vor dem Block', text: 'SOLANGE oder WHILE prüft vor jedem Durchlauf. Ist die Bedingung am Anfang falsch, läuft der Schleifenkörper nullmal. Das ist gewollt, wenn eine Liste leer sein kann.' },
+    { titel: 'REPEAT-UNTIL: Bedingung nach dem Block', text: 'WIEDERHOLE ... BIS führt den Block mindestens einmal aus. Das passt zu Eingaben wie PIN, Menüwahl oder Wiederholung bis gültige Daten vorliegen.' },
+    { titel: 'Verschachtelung: Einrückung zählt', text: 'Eine eingerückte Zeile gehört zum aktuellen Block. Ist eine Zeile eine Ebene zu weit links oder rechts, ändert sich der Algorithmus. Bei Pseudocode ist Einrückung Teil der Logik.' },
+  ]}
+/>
+
+### 03.4 · Standardformen
+
+```text
+Sequenz:
+  eingabe lesen
+  wert berechnen
+  wert ausgeben
+
+Selektion:
+  WENN bedingung DANN
+    anweisungA
+  SONST
+    anweisungB
+  ENDE_WENN
+
+FOR:
+  FÜR i VON 1 BIS n
+    anweisung
+  ENDE_FÜR
+
+WHILE:
+  SOLANGE bedingung
+    anweisung
+    bedingung veraendern
+  ENDE_SOLANGE
+
+REPEAT-UNTIL:
+  WIEDERHOLE
+    anweisung
+  BIS abbruchbedingung
+```
+
+<Tipp titel="Blockende markieren">
+Wenn du Pseudocode selbst schreibst, markiere Blockenden konsequent: `ENDE_WENN`, `ENDE_FÜR`, `ENDE_SOLANGE`. Das wirkt etwas trocken, verhindert aber genau die Einrückungsfehler, die in der Prüfung Punkte kosten.
+</Tipp>
+
+---
+
+## 04 · Konkretes Beispiel / Rechenweg
+
+<Beispiel titel="Drei typische Prüfungswege">
+In der Aufgabe begegnet dir Pseudocode meistens auf drei Arten: Du führst vorgegebenen Code von Hand aus, du formulierst einen kleinen Algorithmus selbst, oder du findest Fehler in einem fast richtigen Ablauf. Die folgenden drei Wege decken genau diese Aufgabenformen ab.
+</Beispiel>
+
+### 04.1 · Pseudocode lesen und Schreibtischtest durchführen
+
+Der *<Term id="schreibtischtest">Schreibtischtest</Term>* bedeutet: Du spielst Computer. Du gehst Zeile für Zeile durch, führst jede Zuweisung aus, prüfst jede Bedingung und führst Variablen in einer Trace-Tabelle.
+
+```text
+liste ← [7, 3, 9, 9, 2]
+summe ← 0
+max ← liste[0]
+anzahlMax ← 0
+
+FÜR i VON 0 BIS 4
+  summe ← summe + liste[i]
+  WENN liste[i] > max DANN
+    max ← liste[i]
+    anzahlMax ← 1
+  SONST WENN liste[i] = max DANN
+    anzahlMax ← anzahlMax + 1
+  ENDE_WENN
+ENDE_FÜR
+
+AUSGABE summe, max, anzahlMax
+```
+
+<StepByStep titel="Schreibtischtest - Summe, Maximum und Zähler">
+  <Schritt nr={1} titel="Variablen als Tabelle anlegen">
+    Lege Spalten für `i`, `liste[i]`, `summe`, `max`, `anzahlMax` und Ausgabe an. Trage die Startwerte ein: `summe = 0`, `max = 7`, `anzahlMax = 0`. Markiere, dass die Liste bei Index 0 beginnt.
+  </Schritt>
+  <Schritt nr={2} titel="Ersten Durchlauf ausführen">
+    Bei `i = 0` ist `liste[i] = 7`. Die Summe wird `0 + 7 = 7`. Danach prüfst du `7 > 7` (falsch) und `7 = 7` (wahr). Deshalb wird `anzahlMax ← 1`.
+  </Schritt>
+  <Schritt nr={3} titel="Mittlere Durchläufe eintragen">
+    Bei `i = 1` kommt 3 dazu, Summe wird 10, Maximum bleibt 7. Bei `i = 2` kommt 9 dazu, Summe wird 19, `9 > 7` ist wahr: `max ← 9`, `anzahlMax ← 1`. Bei `i = 3` ist wieder 9, also zählt der SONST-WENN-Zweig auf `anzahlMax ← 2`.
+  </Schritt>
+  <Schritt nr={4} titel="Letzten Durchlauf und Ausgabe notieren">
+    Bei `i = 4` kommt 2 dazu, Summe wird 30. `2 > 9` ist falsch und `2 = 9` ist falsch, also bleiben `max = 9` und `anzahlMax = 2`.
+  </Schritt>
+  <Schritt nr={5} titel="Trace-Tabelle kontrollieren">
+    | i | liste[i] | summe nach Addition | max | anzahlMax |
+    |---:|---:|---:|---:|---:|
+    | Start | - | 0 | 7 | 0 |
+    | 0 | 7 | 7 | 7 | 1 |
+    | 1 | 3 | 10 | 7 | 1 |
+    | 2 | 9 | 19 | 9 | 1 |
+    | 3 | 9 | 28 | 9 | 2 |
+    | 4 | 2 | 30 | 9 | 2 |
+  </Schritt>
+  <Ergebnis>
+    Die Ausgabe lautet `summe = 30`, `max = 9`, `anzahlMax = 2`. Der wichtige Prüfpunkt ist der erste Durchlauf: Weil `max` mit `liste[0]` startet, muss der gleiche Wert auch als erstes Maximum gezählt werden.
+  </Ergebnis>
+</StepByStep>
+
+<svg
+  viewBox="0 0 760 280"
+  role="img"
+  aria-label="Skizze: Trace-Tabelle für einen Schreibtischtest. Links stehen die Schleifendurchläufe i 0 bis 4, oben die Variablen summe, max und anzahlMax. Akzentrot hebt die Änderung des Maximums bei i gleich 2 hervor."
+  className="my-8 w-full max-w-3xl border border-rule bg-paper"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <style>{`
+      .trace-hdr { font: 600 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
+      .trace-cell { fill: none; stroke: #1a2332; stroke-width: 1; }
+      .trace-accent { fill: none; stroke: #8b2f1d; stroke-width: 2; }
+      .trace-txt { font: 500 12px 'JetBrains Mono', monospace; fill: #1a2332; }
+      .trace-sub { font: 400 11px 'IBM Plex Sans', sans-serif; fill: #4a5568; }
+    `}</style>
+  </defs>
+  <text className="trace-hdr" x="24" y="30">Trace-Tabelle / Schreibtischtest</text>
+  <text className="trace-sub" x="24" y="52">Jede Zeile zeigt den Zustand nach einem Schleifendurchlauf.</text>
+
+  <rect className="trace-cell" x="50" y="76" width="110" height="30" />
+  <rect className="trace-cell" x="160" y="76" width="120" height="30" />
+  <rect className="trace-cell" x="280" y="76" width="120" height="30" />
+  <rect className="trace-cell" x="400" y="76" width="120" height="30" />
+  <rect className="trace-cell" x="520" y="76" width="140" height="30" />
+  <text className="trace-txt" x="82" y="96">i</text>
+  <text className="trace-txt" x="182" y="96">liste[i]</text>
+  <text className="trace-txt" x="304" y="96">summe</text>
+  <text className="trace-txt" x="438" y="96">max</text>
+  <text className="trace-txt" x="544" y="96">anzahlMax</text>
+
+  <rect className="trace-cell" x="50" y="106" width="110" height="30" />
+  <rect className="trace-cell" x="160" y="106" width="120" height="30" />
+  <rect className="trace-cell" x="280" y="106" width="120" height="30" />
+  <rect className="trace-cell" x="400" y="106" width="120" height="30" />
+  <rect className="trace-cell" x="520" y="106" width="140" height="30" />
+  <text className="trace-txt" x="78" y="126">0</text>
+  <text className="trace-txt" x="198" y="126">7</text>
+  <text className="trace-txt" x="326" y="126">7</text>
+  <text className="trace-txt" x="448" y="126">7</text>
+  <text className="trace-txt" x="580" y="126">1</text>
+
+  <rect className="trace-cell" x="50" y="136" width="110" height="30" />
+  <rect className="trace-cell" x="160" y="136" width="120" height="30" />
+  <rect className="trace-cell" x="280" y="136" width="120" height="30" />
+  <rect className="trace-cell" x="400" y="136" width="120" height="30" />
+  <rect className="trace-cell" x="520" y="136" width="140" height="30" />
+  <text className="trace-txt" x="78" y="156">1</text>
+  <text className="trace-txt" x="198" y="156">3</text>
+  <text className="trace-txt" x="320" y="156">10</text>
+  <text className="trace-txt" x="448" y="156">7</text>
+  <text className="trace-txt" x="580" y="156">1</text>
+
+  <rect className="trace-accent" x="50" y="166" width="610" height="30" />
+  <text className="trace-txt" x="78" y="186">2</text>
+  <text className="trace-txt" x="198" y="186">9</text>
+  <text className="trace-txt" x="320" y="186">19</text>
+  <text className="trace-txt" x="448" y="186">9</text>
+  <text className="trace-txt" x="580" y="186">1</text>
+
+  <rect className="trace-cell" x="50" y="196" width="110" height="30" />
+  <rect className="trace-cell" x="160" y="196" width="120" height="30" />
+  <rect className="trace-cell" x="280" y="196" width="120" height="30" />
+  <rect className="trace-cell" x="400" y="196" width="120" height="30" />
+  <rect className="trace-cell" x="520" y="196" width="140" height="30" />
+  <text className="trace-txt" x="78" y="216">3</text>
+  <text className="trace-txt" x="198" y="216">9</text>
+  <text className="trace-txt" x="320" y="216">28</text>
+  <text className="trace-txt" x="448" y="216">9</text>
+  <text className="trace-txt" x="580" y="216">2</text>
+
+  <rect className="trace-cell" x="50" y="226" width="110" height="30" />
+  <rect className="trace-cell" x="160" y="226" width="120" height="30" />
+  <rect className="trace-cell" x="280" y="226" width="120" height="30" />
+  <rect className="trace-cell" x="400" y="226" width="120" height="30" />
+  <rect className="trace-cell" x="520" y="226" width="140" height="30" />
+  <text className="trace-txt" x="78" y="246">4</text>
+  <text className="trace-txt" x="198" y="246">2</text>
+  <text className="trace-txt" x="320" y="246">30</text>
+  <text className="trace-txt" x="448" y="246">9</text>
+  <text className="trace-txt" x="580" y="246">2</text>
+</svg>
+
+### 04.2 · Algorithmus selbst formulieren
+
+Aufgabe: Schreibe Pseudocode, der den Mittelwert einer Liste berechnet. Wenn die Liste leer ist, soll keine Division durch 0 passieren, sondern eine passende Meldung ausgegeben werden.
+
+<StepByStep titel="Algorithmus formulieren - Mittelwert einer Liste">
+  <Schritt nr={1} titel="Eingabe und Grenzfall festlegen">
+    Eingabe ist eine Liste `werte`. Der erste Prüfpunkt ist die Länge. Wenn `laenge(werte) = 0`, gibt es keinen Mittelwert. Dieser Grenzfall muss vor jeder Division abgefangen werden.
+  </Schritt>
+  <Schritt nr={2} titel="Verarbeitung strukturieren">
+    Für eine nicht leere Liste brauchst du einen Akkumulator `summe`. Er startet bei 0. Danach läufst du über alle Elemente und addierst jeden Wert auf `summe`.
+  </Schritt>
+  <Schritt nr={3} titel="Mittelwert berechnen">
+    Nach der Schleife ist die Summe vollständig. Der Mittelwert ist `summe / laenge(werte)`. Weil Division Kommazahlen erzeugen kann, ist das Ergebnis ein `float`.
+  </Schritt>
+  <Schritt nr={4} titel="Pseudocode schreiben">
+    ```text
+    EINGABE werte
+
+    WENN laenge(werte) = 0 DANN
+      AUSGABE "Kein Mittelwert fuer leere Liste"
+    SONST
+      summe ← 0
+      FÜR i VON 0 BIS laenge(werte) - 1
+        summe ← summe + werte[i]
+      ENDE_FÜR
+      mittelwert ← summe / laenge(werte)
+      AUSGABE mittelwert
+    ENDE_WENN
+    ```
+  </Schritt>
+  <Schritt nr={5} titel="Kurz testen">
+    Teste mindestens zwei Fälle: `werte = [2, 4, 6]` ergibt `summe = 12`, `mittelwert = 4`. `werte = []` läuft in den WENN-Zweig und gibt die Meldung aus, ohne zu teilen.
+  </Schritt>
+  <Ergebnis>
+    Ein guter selbst formulierter Algorithmus trennt Eingabe, Verarbeitung und Ausgabe, behandelt Grenzfälle zuerst und nutzt klare Variablennamen. Genau daran erkennt die Korrektur, dass du nicht nur Syntax, sondern Logik beherrschst.
+  </Ergebnis>
+</StepByStep>
+
+### 04.3 · Fehler finden und korrigieren
+
+Der folgende Pseudocode soll den Gesamtpreis einer Liste berechnen. Er enthält drei typische Fehler: falsche Initialisierung, einen *<Term id="off-by-one">Off-by-One-Fehler</Term>* und eine verwechselte Zuweisung.
+
+```text
+preise ← [12.50, 8.00, 4.50]
+gesamt ← 1
+
+FÜR i VON 0 BIS laenge(preise)
+  gesamt = gesamt + preise[i]
+ENDE_FÜR
+
+AUSGABE gesamt
+```
+
+<StepByStep titel="Fehler im Pseudocode finden und korrigieren">
+  <Schritt nr={1} titel="Ziel des Algorithmus lesen">
+    Ziel ist eine Summe. Eine Summe startet neutral bei 0, nicht bei 1. `gesamt ← 1` würde jeden Gesamtpreis um 1 erhöhen.
+  </Schritt>
+  <Schritt nr={2} titel="Schleifengrenze prüfen">
+    Die Liste hat drei Elemente mit den Indizes 0, 1 und 2. `laenge(preise)` ist 3. Eine Schleife von 0 bis 3 würde bei `preise[3]` außerhalb der Liste landen. Korrekt ist `laenge(preise) - 1`.
+  </Schritt>
+  <Schritt nr={3} titel="Zuweisung gegen Vergleich prüfen">
+    `gesamt = gesamt + preise[i]` ist in dieser Konvention ein Vergleich. Es speichert nichts. Korrekt ist `gesamt ← gesamt + preise[i]`.
+  </Schritt>
+  <Schritt nr={4} titel="Korrigierten Pseudocode schreiben">
+    ```text
+    preise ← [12.50, 8.00, 4.50]
+    gesamt ← 0
+
+    FÜR i VON 0 BIS laenge(preise) - 1
+      gesamt ← gesamt + preise[i]
+    ENDE_FÜR
+
+    AUSGABE gesamt
+    ```
+  </Schritt>
+  <Schritt nr={5} titel="Mit Mini-Trace gegenprüfen">
+    `gesamt` läuft über `0 → 12.50 → 20.50 → 25.00`. Die Ausgabe ist `25.00`. Wenn dein Trace eine vierte Iteration versucht, ist die Schleifengrenze noch falsch.
+  </Schritt>
+  <Ergebnis>
+    Die drei Klassiker sind gefunden: Akkumulator muss bei 0 starten, Listenindex endet bei `laenge - 1`, und neue Werte werden mit `←` gespeichert.
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## 05 · Vertiefung / Sonderfälle
+
+### Rekursion vs. Iteration
+
+Iteration löst Wiederholung mit einer Schleife. Rekursion löst Wiederholung, indem eine Funktion sich selbst aufruft. Beide können dasselbe Problem beschreiben, zum Beispiel Fakultät:
+
+```text
+Iteration:
+  ergebnis ← 1
+  FÜR i VON 1 BIS n
+    ergebnis ← ergebnis * i
+  ENDE_FÜR
+
+Rekursion:
+  FAKULTAET(n)
+    WENN n = 0 DANN RÜCKGABE 1
+    SONST RÜCKGABE n * FAKULTAET(n - 1)
+```
+
+Für Aufgaben ist Iteration meist sicherer: leichter zu tracen, weniger Gefahr einer fehlenden Abbruchbedingung. Rekursion ist wichtig als Konzept, aber du musst sie nicht erzwingen, wenn eine einfache Schleife klarer ist.
+
+### Komplexität grundlegend lesen
+
+Komplexität beschreibt grob, wie der Aufwand mit der Eingabegröße wächst.
+
+| Muster | Bedeutung | Beispiel |
+|---|---|---|
+| `O(n)` | einmal über n Elemente laufen | Summe einer Liste, Maximum suchen |
+| `O(n²)` | verschachtelt über Paare laufen | jedes Element mit jedem anderen vergleichen |
+
+Du musst in der Prüfung normalerweise keine formalen Beweise liefern. Es reicht, wenn du erkennst: Eine einzelne Schleife über eine Liste wächst linear. Zwei verschachtelte Schleifen über dieselbe Liste wachsen quadratisch und werden bei großen Listen viel teurer.
+
+### Trace-Tabelle als Prüfwerkzeug
+
+Eine Trace-Tabelle ist nicht nur für Schreibtischtests da. Du kannst damit auch eigene Algorithmen prüfen:
+
+| Wann einsetzen? | Warum hilfreich? |
+|---|---|
+| Schleife zählt falsch | zeigt jeden Index und jede Grenze |
+| Maximum/Minimum falsch | zeigt, wann der Vergleich wahr wird |
+| Summe/Durchschnitt falsch | zeigt Initialisierung und Akkumulator |
+| Bedingung unklar | zeigt wahr/falsch je Durchlauf |
+
+### Pseudocode, Struktogramm und Programmablaufplan
+
+Pseudocode ist freier Text mit Konventionen. Ein Struktogramm nach Nassi-Shneiderman stellt dieselbe Logik als geschachtelte Blöcke dar. Ein Programmablaufplan nutzt genormte Sinnbilder wie Start/Ende, Verarbeitung, Entscheidung und Pfeile. DIN 66001 behandelt Sinnbilder für Programmablaufpläne, DIN 66261 Sinnbilder für Struktogramme nach Nassi-Shneiderman. Für dich heißt das: Die Darstellungsform kann wechseln, die Logik bleibt gleich.
+
+| Darstellung | Stärke | Prüfungsblick |
+|---|---|---|
+| Pseudocode | schnell zu schreiben, sprachneutral | Zeilen lesen, Trace erstellen, Fehler korrigieren |
+| Struktogramm | blockorientiert, keine freien Sprünge | Verschachtelung und Struktur erkennen |
+| Programmablaufplan | grafischer Kontrollfluss | Start, Entscheidung, Schleife und Ende verfolgen |
+
+### Best Practices
+
+- Nutze aussagekräftige Bezeichner: `summe`, `maxPreis`, `anzahlFehler` statt `x`, `a`, `tmp`.
+- Rücken Blöcke konsequent ein.
+- Initialisiere Akkumulatoren bewusst: Summe bei 0, Produkt bei 1, Maximum oft mit erstem Listenelement.
+- Kommentiere nur, wenn die Absicht nicht direkt sichtbar ist.
+- Schreibe zuerst den Grenzfall auf: leere Liste, 0 Elemente, ungültige Eingabe.
+- Teste mit kleinen Daten, bei denen du das Ergebnis im Kopf kennst.
+
+---
+
+## 06 · Typische Fehler & typische Fehler
+
+| Falle | Woran du sie erkennst | Korrektur |
+|---|---|---|
+| Off-by-One bei `<` und `≤` | Schleife läuft einmal zu viel oder zu wenig | Indizes und Anzahl getrennt zählen |
+| Akkumulator nicht initialisiert | Summe, Produkt oder Zähler startet mit Zufallswert | `summe ← 0`, `produkt ← 1`, `zaehler ← 0` |
+| Vergleich statt Zuweisung | Wert ändert sich trotz Anweisung nicht | in dieser Konvention `←` nutzen |
+| WHILE-Bedingung kippt nie | Endlosschleife | im Schleifenkörper Zähler oder Zustand ändern |
+| Leere Eingabe nicht abgefangen | Division durch 0 oder Zugriff auf `liste[0]` | Grenzfall vor der Schleife prüfen |
+| Schleifenkörper falsch eingerückt | Anweisung läuft einmal statt je Durchlauf | Blockgrenzen markieren |
+| Index außerhalb der Liste | Zugriff auf `liste[laenge]` | letzter Index ist `laenge - 1` |
+| `int` und `float` verwechselt | Durchschnitt wird abgeschnitten | Ergebnis als Kommazahl behandeln |
+| `UND` und `ODER` verwechselt | Bedingung ist zu streng oder zu locker | Wahrheitstabelle mit zwei Testfällen bauen |
+| Maximum falsch initialisiert | negative Werte liefern falsches Ergebnis | erstes Element als Startwert verwenden |
+
+<Warnung titel="Endlosschleife">
+Eine WHILE-Schleife muss etwas verändern, das die Bedingung irgendwann falsch macht. Wenn `i` nie erhöht wird oder der Status nie wechselt, bleibt der Algorithmus hängen. In Pseudocode-Aufgaben ist das fast immer Absicht der Fehlersuche.
+</Warnung>
+
+---
+
+## 07 · So fragt die IHK das
+
+### Aufgabe 1 · Schreibtischtest mit Trace-Tabelle
+
+Gegeben ist folgender Pseudocode:
+
+```text
+x ← 2
+y ← 5
+summe ← 0
+
+SOLANGE x < y
+  summe ← summe + x
+  x ← x + 1
+ENDE_SOLANGE
+
+AUSGABE summe
+```
+
+Führe einen Schreibtischtest durch. Lege eine Trace-Tabelle mit `x`, `y` und `summe` an und gib die Ausgabe an.
+
+**Lösungsansatz:** Durchläufe für `x = 2`, `3`, `4`. Bei `x = 5` ist `x < y` falsch. Summe: `0 + 2 + 3 + 4 = 9`.
+
+### Aufgabe 2 · Algorithmus schreiben
+
+Schreibe Pseudocode für eine Liste `temperaturen`. Der Algorithmus soll zählen, wie viele Werte über 30 liegen. Ist die Liste leer, soll `0` ausgegeben werden.
+
+**Lösungsansatz:** `zaehler ← 0`, FOR über alle Indizes, WENN `temperaturen[i] > 30` DANN `zaehler ← zaehler + 1`, am Ende `zaehler` ausgeben. Leere Liste ist automatisch 0, wenn die FOR-Schleife nullmal läuft.
+
+### Aufgabe 3 · Fehler suchen
+
+Der folgende Code soll prüfen, ob mindestens ein Preis über 100 liegt:
+
+```text
+gefunden ← falsch
+i ← 0
+
+SOLANGE i ≤ laenge(preise)
+  WENN preise[i] > 100 DANN
+    gefunden = wahr
+  ENDE_WENN
+ENDE_SOLANGE
+
+AUSGABE gefunden
+```
+
+Nenne mindestens drei Fehler und korrigiere sie.
+
+**Lösungsansatz:** Schleifengrenze `i < laenge(preise)` oder `i ≤ laenge(preise) - 1`; Zuweisung `gefunden ← wahr`; `i ← i + 1` fehlt; optional Abbruch, wenn gefunden bereits wahr ist.
+
+### Aufgabe 4 · Kontrollstruktur begründen
+
+Ein Programm soll so lange nach einer PIN fragen, bis eine vierstellige Zahl eingegeben wurde. Welche Schleifenart passt besser: WHILE oder REPEAT-UNTIL? Begründe.
+
+**Lösungsansatz:** REPEAT-UNTIL passt, weil mindestens eine Eingabe nötig ist. Danach wird geprüft, ob die PIN vierstellig ist.
+
+### Aufgabe 5 · Komplexität grob einschätzen
+
+Algorithmus A läuft einmal über alle Kundendatensätze und zählt aktive Kunden. Algorithmus B vergleicht jeden Kunden mit jedem anderen Kunden, um doppelte Einträge zu finden. Ordne grob `O(n)` und `O(n²)` zu.
+
+**Lösungsansatz:** A ist `O(n)`, weil jeder Datensatz einmal betrachtet wird. B ist `O(n²)`, weil die Vergleiche paarweise verschachtelt sind.
+
+<Glossar
+  eintraege={[
+    {
+      term: 'Algorithmus',
+      definition: 'Endliche, deterministische Folge von Anweisungen zur Lösung eines Problems. Gleiche Eingabe führt bei einem deterministischen Algorithmus zum gleichen Ergebnis.'
+    },
+    {
+      term: 'Pseudocode',
+      definition: 'Sprachneutrale, menschenlesbare Beschreibung eines Algorithmus. Präzise genug zum Prüfen und Umsetzen, aber nicht an eine konkrete Programmiersprache gebunden.'
+    },
+    {
+      term: 'EVA-Prinzip',
+      definition: 'Grundmuster Eingabe, Verarbeitung, Ausgabe. Hilft, Pseudocode-Aufgaben zu strukturieren und fehlende Schritte zu erkennen.'
+    },
+    {
+      term: 'Sequenz',
+      definition: 'Kontrollstruktur, bei der Anweisungen nacheinander ausgeführt werden. Neue Zuweisungen überschreiben alte Werte.'
+    },
+    {
+      term: 'Selektion',
+      definition: 'Kontrollstruktur mit Auswahl: Eine Bedingung entscheidet, welcher Zweig ausgeführt wird, etwa WENN/DANN/SONST.'
+    },
+    {
+      term: 'Iteration',
+      definition: 'Kontrollstruktur für Wiederholung. Ein Block läuft mehrfach, zum Beispiel mit FÜR, SOLANGE oder WIEDERHOLE-BIS.'
+    },
+    {
+      term: 'Schleife',
+      definition: 'Konkrete Form der Iteration. Sie wiederholt einen Block, bis eine Zählgrenze erreicht oder eine Bedingung erfüllt beziehungsweise nicht mehr erfüllt ist.'
+    },
+    {
+      term: 'Bedingung',
+      definition: 'Ausdruck, der zu wahr oder falsch ausgewertet wird. Bedingungen steuern Verzweigungen und Schleifen.'
+    },
+    {
+      term: 'Variable',
+      definition: 'Benannter Speicherplatz für einen Wert. Der Wert kann sich im Ablauf durch Zuweisungen ändern.'
+    },
+    {
+      term: 'Datentyp',
+      definition: 'Art eines Werts, zum Beispiel int, float, string oder bool. Der Datentyp bestimmt sinnvolle Operationen und Vergleiche.'
+    },
+    {
+      term: 'Schreibtischtest',
+      definition: 'Manuelles Ausführen von Pseudocode Zeile für Zeile. Variablenwerte werden in einer Trace-Tabelle nachgeführt.'
+    },
+    {
+      term: 'Trace-Tabelle',
+      definition: 'Tabelle für den Variablenverlauf während eines Schreibtischtests. Jede Zeile beschreibt einen Schritt oder Schleifendurchlauf.'
+    },
+    {
+      term: 'Off-by-One',
+      definition: 'Grenzfehler um genau einen Durchlauf oder Index. Häufig bei Listen, wenn `laenge` statt `laenge - 1` als letzter Index verwendet wird.'
+    },
+    {
+      term: 'Akkumulator',
+      definition: 'Variable, die in einer Schleife schrittweise ein Ergebnis sammelt, etwa eine Summe, ein Produkt oder einen Zähler.'
+    },
+    {
+      term: 'Rekursion',
+      definition: 'Wiederholung durch Selbstaufruf einer Funktion. Benötigt immer einen klaren Basisfall, sonst endet der Ablauf nicht.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe für die Ausbildungspraxis',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Offizielle Umsetzungshilfe zur modernisierten Fachinformatiker-Ausbildung, gestreckten Abschlussprüfung und betrieblichen Handlungskompetenz.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin, Beschluss vom 13.12.2019',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizieller Rahmenlehrplan mit Lernfeldlogik und Ziel der methodengeleiteten Problemlösung.'
+    },
+    {
+      label: 'Böhm/Jacopini - Flow diagrams, Turing machines and languages with only two formation rules',
+      href: 'https://cacm.acm.org/research/flow-diagrams-turing-machines-and-languages-with-only-two-formation-rules/',
+      detail: 'Communications of the ACM, 1966, DOI 10.1145/355592.365646. Theoretische Grundlage der strukturierten Programmierung.'
+    },
+    {
+      label: 'DIN 66001:1983-12 - Information processing; graphical symbols and their application',
+      href: 'https://www.dinmedia.de/en/standard/din-66001/1080044',
+      detail: 'Offizielle DIN-Media-Seite zur aktuellen DIN 66001 für Sinnbilder und ihre Anwendung in Ablaufdarstellungen.'
+    },
+    {
+      label: 'DIN 66261:1985-11 - Sinnbilder für Struktogramme nach Nassi-Shneiderman',
+      href: 'https://www.dinmedia.de/de/norm/din-66261/1255956',
+      detail: 'Offizielle DIN-Media-Seite zur aktuellen Norm für Struktogramm-Sinnbilder.'
+    },
+    {
+      label: 'Rheinwerk Openbook - IT-Handbuch für Fachinformatiker, Grundlagen der Programmierung',
+      href: 'https://openbook.rheinwerk-verlag.de/it_handbuch/09_001.html',
+      detail: 'Fachportal mit Grundlagen zu Kontrollstrukturen, Fallunterscheidungen und Schleifen.'
+    },
+    {
+      label: 'Elektronik-Kompendium - MicroPython: Operatoren für Berechnungen und Bedingungen',
+      href: 'https://www.elektronik-kompendium.de/sites/raspberry-pi/2803041.htm',
+      detail: 'Fachportal zu arithmetischen, logischen, Vergleichs- und Zuweisungsoperatoren.'
+    },
+    {
+      label: 'Rheinwerk Openbook - IT-Handbuch für Fachinformatiker, mathematische und technische Grundlagen',
+      href: 'https://openbook.rheinwerk-verlag.de/it_handbuch/02_004.html',
+      detail: 'Einordnung von Algorithmen, Datenstrukturen und Komplexität mit Best-, Average- und Worst-Case-Grundidee.'
+    },
+  ]}
+/>

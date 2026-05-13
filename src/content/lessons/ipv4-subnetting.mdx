@@ -1,0 +1,634 @@
+﻿# IPv4 & Subnetting
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du eine <Term id="ipv4">IPv4-Adresse</Term> lesen, den
+<Term id="netzanteil">Netzanteil</Term> und den <Term id="hostanteil">Hostanteil</Term>
+erkennen, eine <Term id="subnetzmaske">Subnetzmaske</Term> in
+<Term id="cidr">CIDR-Schreibweise</Term> verstehen und für ein Subnetz die
+<Term id="netzadresse">Netzadresse</Term>, die <Term id="broadcast">Broadcast-Adresse</Term>,
+den nutzbaren Hostbereich und die Anzahl der nutzbaren Hosts berechnen.
+
+Das Kapitel baut von ganz vorne auf. Du brauchst nur die Idee, dass Computer mit
+<Term id="bit">Bits</Term> arbeiten: Ein Bit ist entweder `0` oder `1`.
+
+---
+
+## Grundidee
+
+Ein Netzwerk braucht Adressen, damit Daten beim richtigen Gerät ankommen. Eine
+IPv4-Adresse ist so eine Adresse. Sie sieht zum Beispiel so aus:
+
+```text
+192.168.10.50
+```
+
+Das ist aber nur die menschenlesbare Schreibweise. Technisch besteht eine IPv4-Adresse
+aus **32 Bit**. Diese 32 Bit werden als vier Blöcke zu je 8 Bit geschrieben. So ein
+8-Bit-Block heißt <Term id="oktett">Oktett</Term>.
+
+```text
+192       .168       .10        .50
+11000000  10101000   00001010   00110010
+```
+
+Jedes Oktett kann Werte von `0` bis `255` enthalten. Der Grund ist einfach:
+8 Bit haben `2^8 = 256` mögliche Muster. Weil bei 0 gezählt wird, ist der größte
+Wert `255`.
+
+```text
+kleinster Wert: 00000000 = 0
+größter Wert: 11111111 = 255
+```
+
+Eine IPv4-Adresse allein reicht aber nicht. Der Computer muss auch wissen:
+
+- Welche anderen Adressen gehören zu meinem eigenen Netz?
+- Welche Adresse beschreibt das Netz selbst?
+- Welche Adresse ist die Broadcast-Adresse?
+- Welche Adressen darf ich echten Geräten geben?
+- Wann muss ich ein Paket an das Standardgateway schicken?
+
+Genau dafür brauchst du die Subnetzmaske.
+
+---
+
+## Die Analogie
+
+Stell dir ein Unternehmen mit mehreren Gebäuden vor.
+
+```text
+Adresse:       192.168.10.50
+Netzanteil:    192.168.10
+Hostanteil:             .50
+```
+
+Der Netzanteil ist wie die Gebäudeadresse: Alle Geräte mit demselben Netzanteil
+stehen im selben logischen Netz. Der Hostanteil ist wie die Zimmernummer: Er zeigt
+auf ein konkretes Gerät innerhalb dieses Netzes.
+
+Die Subnetzmaske ist die Regel, die sagt, wo die Gebäudeadresse endet und wo die
+Zimmernummer beginnt.
+
+Bei `192.168.10.50/24` bedeutet `/24`:
+
+```text
+Die ersten 24 Bit gehören zum Netz.
+Die letzten 8 Bit gehören zu den Hosts.
+```
+
+Bei `192.168.10.50/26` bedeutet `/26`:
+
+```text
+Die ersten 26 Bit gehören zum Netz.
+Die letzten 6 Bit gehören zu den Hosts.
+```
+
+Mehr Netz-Bits bedeuten kleinere Netze, weil weniger Host-Bits übrig bleiben.
+Weniger Netz-Bits bedeuten größere Netze, weil mehr Host-Bits übrig bleiben.
+
+---
+
+## Begriffe, die du wirklich brauchst
+
+| Begriff | Kurz erklärt |
+|---|---|
+| <Term id="host">Host</Term> | adressierbares Gerät oder System im Netzwerk, zum Beispiel Client, Server, Drucker, VM oder Router-Interface |
+| <Term id="interface">Interface</Term> | Netzwerkschnittstelle, über die ein Gerät am Netz teilnimmt |
+| <Term id="ipv4">IPv4-Adresse</Term> | 32-Bit-Adresse für ein Interface in einem IPv4-Netz |
+| <Term id="subnetzmaske">Subnetzmaske</Term> | trennt Netz-Bits von Host-Bits |
+| <Term id="cidr">CIDR</Term> | Kurzschreibweise wie `/24`, `/26` oder `/30` |
+| <Term id="netzanteil">Netzanteil</Term> | Teil der Adresse, der das Netz beschreibt |
+| <Term id="hostanteil">Hostanteil</Term> | Teil der Adresse, der einzelne Adressen im Netz bildet |
+| <Term id="netzadresse">Netzadresse</Term> | erste Adresse im Subnetz; alle Host-Bits sind `0` |
+| <Term id="broadcast">Broadcast-Adresse</Term> | letzte Adresse im Subnetz; alle Host-Bits sind `1` |
+| <Term id="hostadresse">Hostadresse</Term> | nutzbare Adresse für ein Gerät zwischen Netzadresse und Broadcast |
+| <Term id="gateway">Standardgateway</Term> | Router-Adresse im eigenen Subnetz für Ziele außerhalb des eigenen Netzes |
+
+Der wichtigste Satz:
+
+```text
+IP-Adresse + Subnetzmaske = eigenes Subnetz erkennen
+```
+
+Ein <Term id="host">Host</Term> ist in Netzwerkthemen jedes System, das im Netzwerk
+adressierbar ist. Das kann ein Notebook, ein Server, ein Drucker, eine virtuelle
+Maschine oder ein Router-Port sein. Wenn Aufgaben von "Hosts" sprechen, meinen sie
+meist: Wie viele nutzbare IP-Adressen gibt es für solche Teilnehmer?
+
+Ein <Term id="interface">Interface</Term> ist die konkrete Netzwerkschnittstelle. Ein
+Notebook kann zum Beispiel ein WLAN-Interface und ein LAN-Interface haben. Ein Router
+hat oft mehrere Interfaces, weil er mehrere Netze verbindet. Fachlich sitzt eine
+IPv4-Adresse also nicht "irgendwie am Gerät", sondern auf einem Interface.
+
+Das ist wichtig für Subnetting:
+
+```text
+Gerät     = physischer oder virtueller Rechner
+Interface  = konkrete Netzwerkschnittstelle
+IP-Adresse = Adresse auf dieser Schnittstelle
+Host       = adressierbarer Teilnehmer im Netz
+```
+
+---
+
+## IPv4-Adresse und Subnetzmaske zusammen lesen
+
+Eine häufige Schreibweise ist:
+
+```text
+192.168.10.50/24
+```
+
+Das ist dasselbe wie:
+
+```text
+IP-Adresse:    192.168.10.50
+Subnetzmaske:  255.255.255.0
+```
+
+Die `/24` heißt: Die ersten 24 Bit sind Netz-Bits. Eine Subnetzmaske besteht aus
+lauter Einsen für den Netzanteil und lauter Nullen für den Hostanteil.
+
+```text
+/24:
+11111111.11111111.11111111.00000000
+255     .255     .255     .0
+```
+
+Die Einsen sind der Netzanteil. Die Nullen sind der Hostanteil.
+
+Bei `/26` sieht es so aus:
+
+```text
+/26:
+11111111.11111111.11111111.11000000
+255     .255     .255     .192
+```
+
+Die ersten drei Oktette sind voll Netzanteil. Im vierten Oktett gehören noch zwei
+Bits zum Netz, sechs Bits bleiben für Hosts.
+
+---
+
+## Warum Netzadresse und Broadcast nicht nutzbar sind
+
+In einem normalen IPv4-Subnetz gibt es zwei besondere Adressen:
+
+```text
+alle Host-Bits = 0  -> Netzadresse
+alle Host-Bits = 1  -> Broadcast-Adresse
+```
+
+Beispiel `192.168.10.0/24`:
+
+```text
+Netzadresse:       192.168.10.0
+Erster Host:       192.168.10.1
+Letzter Host:      192.168.10.254
+Broadcast-Adresse: 192.168.10.255
+```
+
+Die Netzadresse bezeichnet das Netz selbst. Sie ist kein normales Gerät.
+Die Broadcast-Adresse steht für alle Hosts im Subnetz. Sie wird nicht einem einzelnen
+Gerät gegeben.
+
+Deshalb gilt für normale Subnetze:
+
+```text
+Nutzbare Hosts = Anzahl aller Adressen - 2
+```
+
+Der `-2`-Teil steht für Netzadresse und Broadcast-Adresse.
+
+Ausnahme: `/31` wird auf Punkt-zu-Punkt-Verbindungen besonders behandelt. Dort können
+die zwei Adressen gemäß RFC 3021 als Hostadressen verwendet werden. Für normale
+Client-, Server- und LAN-Subnetze rechnest du aber mit `-2`.
+
+---
+
+## Die Host-Formel
+
+Wenn du die Präfixlänge kennst, kennst du auch die Anzahl der Host-Bits:
+
+```text
+Host-Bits = 32 - Präfixlänge
+```
+
+Dann:
+
+```text
+Adressen gesamt = 2^Host-Bits
+Nutzbare Hosts  = 2^Host-Bits - 2
+```
+
+Beispiel `/26`:
+
+```text
+Host-Bits = 32 - 26 = 6
+Adressen gesamt = 2^6 = 64
+Nutzbare Hosts = 64 - 2 = 62
+```
+
+Wichtige Werte:
+
+| CIDR | Subnetzmaske | Host-Bits | Adressen gesamt | Nutzbare Hosts |
+|---|---:|---:|---:|---:|
+| /16 | 255.255.0.0 | 16 | 65.536 | 65.534 |
+| /24 | 255.255.255.0 | 8 | 256 | 254 |
+| /25 | 255.255.255.128 | 7 | 128 | 126 |
+| /26 | 255.255.255.192 | 6 | 64 | 62 |
+| /27 | 255.255.255.224 | 5 | 32 | 30 |
+| /28 | 255.255.255.240 | 4 | 16 | 14 |
+| /29 | 255.255.255.248 | 3 | 8 | 6 |
+| /30 | 255.255.255.252 | 2 | 4 | 2 |
+| /31 | 255.255.255.254 | 1 | 2 | Sonderfall Punkt-zu-Punkt |
+| /32 | 255.255.255.255 | 0 | 1 | einzelne Adresse, kein normales Subnetz |
+
+---
+
+## Methode 1: Netzadresse mit bitweisem UND berechnen
+
+Die technisch saubere Methode ist das <Term id="bitweises-und">bitweise UND</Term>.
+Dabei werden IP-Adresse und Subnetzmaske Bit für Bit verglichen.
+
+Regel:
+
+```text
+1 UND 1 = 1
+1 UND 0 = 0
+0 UND 1 = 0
+0 UND 0 = 0
+```
+
+Nur wenn beide Bits `1` sind, bleibt eine `1` übrig.
+
+<StepByStep titel="192.168.10.50/26 mit bitweisem UND berechnen">
+  <Schritt nr={1} titel="Präfix in Subnetzmaske umwandeln">
+    <p>`/26` bedeutet: 26 Einsen, danach 6 Nullen.</p>
+    <pre><code>{`11111111.11111111.11111111.11000000
+255     .255     .255     .192`}</code></pre>
+  </Schritt>
+  <Schritt nr={2} titel="Nur das interessante Oktett betrachten">
+    <p>Die ersten drei Oktette sind bei `/26` komplett Netzanteil. Interessant ist nur das vierte Oktett.</p>
+    <pre><code>{`IP:     50  = 00110010
+Maske:  192 = 11000000`}</code></pre>
+  </Schritt>
+  <Schritt nr={3} titel="Bitweises UND anwenden">
+    <p>Vergleiche jedes Bit der IP mit dem passenden Bit der Maske.</p>
+    <pre><code>{`00110010
+11000000
+--------
+00000000`}</code></pre>
+  </Schritt>
+  <Schritt nr={4} titel="Netzadresse zusammensetzen">
+    <p>Das Ergebnis im vierten Oktett ist `0`. Die ersten drei Oktette bleiben `192.168.10`.</p>
+    <pre><code>{`Netzadresse = 192.168.10.0`}</code></pre>
+  </Schritt>
+  <Schritt nr={5} titel="Broadcast und Hostbereich bestimmen">
+    <p>Ein `/26`-Netz hat 64 Adressen. Wenn es bei `.0` beginnt, endet es bei `.63`.</p>
+    <pre><code>{`Netzadresse:       192.168.10.0
+Erster Host:       192.168.10.1
+Letzter Host:      192.168.10.62
+Broadcast-Adresse: 192.168.10.63`}</code></pre>
+  </Schritt>
+  <Ergebnis>
+    <p>`192.168.10.50/26` liegt im Subnetz `192.168.10.0/26`. Es gibt 62 nutzbare Hostadressen.</p>
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## Methode 2: Magic Number
+
+Die bitweise Methode ist exakt, aber im Alltag und in Aufgaben ist die
+<Term id="magic-number">Magic Number</Term> oft schneller.
+
+Du brauchst sie, wenn die Subnetzmaske nicht genau bei einem Oktett endet, also zum
+Beispiel bei `/25`, `/26`, `/27`, `/28`, `/29` oder `/30`.
+
+Die Regel:
+
+```text
+Magic Number = 256 - Maskenwert im interessanten Oktett
+```
+
+Beispiel `/26`:
+
+```text
+/26 = 255.255.255.192
+Magic Number = 256 - 192 = 64
+```
+
+Die Netze beginnen dann in 64er-Schritten:
+
+```text
+192.168.10.0   - 192.168.10.63
+192.168.10.64  - 192.168.10.127
+192.168.10.128 - 192.168.10.191
+192.168.10.192 - 192.168.10.255
+```
+
+Wenn die IP `192.168.10.50` lautet, liegt `50` im Bereich `0-63`.
+Also:
+
+```text
+Netzadresse:       192.168.10.0
+Broadcast-Adresse: 192.168.10.63
+```
+
+Wenn die IP `192.168.10.130/26` lautet, liegt `130` im Bereich `128-191`.
+Also:
+
+```text
+Netzadresse:       192.168.10.128
+Broadcast-Adresse: 192.168.10.191
+```
+
+---
+
+## Die wichtigsten Subnetz-Schritte als festes Verfahren
+
+Wenn du eine IP mit Präfix bekommst, gehst du immer gleich vor.
+
+<StepByStep titel="Standardverfahren für IPv4-Subnetting">
+  <Schritt nr={1} titel="Präfix lesen">
+    <p>Bei `192.168.10.130/26` ist `/26` die Präfixlänge. Sie sagt, wie viele Bits zum Netzanteil gehören.</p>
+  </Schritt>
+  <Schritt nr={2} titel="Host-Bits berechnen">
+    <p>`32 - 26 = 6`. Es bleiben also 6 Host-Bits.</p>
+  </Schritt>
+  <Schritt nr={3} titel="Anzahl Adressen berechnen">
+    <p>`2^6 = 64`. Das Subnetz hat insgesamt 64 Adressen.</p>
+  </Schritt>
+  <Schritt nr={4} titel="Nutzbare Hosts berechnen">
+    <p>`64 - 2 = 62`. In normalen Subnetzen fallen Netzadresse und Broadcast weg.</p>
+  </Schritt>
+  <Schritt nr={5} titel="Schrittweite bestimmen">
+    <p>`/26` entspricht `255.255.255.192`. Also: `256 - 192 = 64`.</p>
+  </Schritt>
+  <Schritt nr={6} titel="Passenden Bereich finden">
+    <p>Die Bereiche sind `0-63`, `64-127`, `128-191`, `192-255`. Die `130` liegt im Bereich `128-191`.</p>
+  </Schritt>
+  <Schritt nr={7} titel="Netz, Broadcast und Hosts notieren">
+    <pre><code>{`Netzadresse:       192.168.10.128
+Erster Host:       192.168.10.129
+Letzter Host:      192.168.10.190
+Broadcast-Adresse: 192.168.10.191
+Nutzbare Hosts:    62`}</code></pre>
+  </Schritt>
+  <Ergebnis>
+    <p>Das Ergebnis ist vollständig, weil es nicht nur eine einzelne Zahl nennt, sondern den gesamten Adressbereich beschreibt.</p>
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## Live-Werkzeug: Subnetz selbst berechnen lassen
+
+Das Werkzeug ist nicht zum Raten da. Es soll den Rechenweg sichtbar machen. Gib eine
+IPv4-Adresse und ein Präfix ein und vergleiche die Ausgabe mit den Schritten aus dem
+Kapitel.
+
+<SubnettingRechner />
+
+---
+
+## Beispiel: Ein größeres Netz in kleinere Netze teilen
+
+Angenommen, du hast das Netz:
+
+```text
+192.168.20.0/24
+```
+
+Du willst vier gleich große Teilnetze bilden. Ein `/24` hat 256 Adressen. Vier Teilnetze
+bedeuten:
+
+```text
+256 / 4 = 64 Adressen pro Teilnetz
+```
+
+64 Adressen entsprechen `2^6`. Also bleiben 6 Host-Bits. Die Präfixlänge ist:
+
+```text
+32 - 6 = /26
+```
+
+Die vier Teilnetze sind:
+
+| Teilnetz | Netzadresse | Hostbereich | Broadcast |
+|---:|---|---|---|
+| 1 | 192.168.20.0/26 | 192.168.20.1 - 192.168.20.62 | 192.168.20.63 |
+| 2 | 192.168.20.64/26 | 192.168.20.65 - 192.168.20.126 | 192.168.20.127 |
+| 3 | 192.168.20.128/26 | 192.168.20.129 - 192.168.20.190 | 192.168.20.191 |
+| 4 | 192.168.20.192/26 | 192.168.20.193 - 192.168.20.254 | 192.168.20.255 |
+
+Das ist Subnetting: Ein größeres Netz wird in kleinere logisch getrennte Netze
+aufgeteilt.
+
+---
+
+## Beispiel: Wie viele Hosts passen?
+
+Du brauchst ein Subnetz für 30 Clients. Welche Präfixlänge reicht?
+
+Du suchst die kleinste Adressanzahl, bei der nach `-2` noch mindestens 30 nutzbare
+Hostadressen übrig bleiben.
+
+```text
+2 Host-Bits: 2^2 = 4 Adressen, 2 nutzbar
+3 Host-Bits: 2^3 = 8 Adressen, 6 nutzbar
+4 Host-Bits: 2^4 = 16 Adressen, 14 nutzbar
+5 Host-Bits: 2^5 = 32 Adressen, 30 nutzbar
+```
+
+5 Host-Bits reichen genau. Also:
+
+```text
+Präfix = 32 - 5 = /27
+```
+
+Antwort:
+
+```text
+Ein /27-Netz reicht für 30 nutzbare Hosts.
+```
+
+Wenn du Wachstum einplanst, wäre `/26` oft sinnvoller, weil es 62 nutzbare Hosts bietet.
+Fachlich musst du also unterscheiden: mathematisch reicht `/27`, praktisch kann ein
+größeres Netz sinnvoll sein.
+
+---
+
+## Private IPv4-Adressen
+
+Viele interne Netze verwenden <Term id="private-ipv4-adresse">private IPv4-Adressen</Term>.
+Diese Bereiche sind durch RFC 1918 für private Internets vorgesehen:
+
+| Bereich | CIDR | Typische Verwendung |
+|---|---:|---|
+| 10.0.0.0 - 10.255.255.255 | 10.0.0.0/8 | große Unternehmensnetze |
+| 172.16.0.0 - 172.31.255.255 | 172.16.0.0/12 | mittlere interne Netze |
+| 192.168.0.0 - 192.168.255.255 | 192.168.0.0/16 | Heimnetze, kleine Standorte, Labore |
+
+Private IPv4-Adressen sind intern normal, aber nicht global eindeutig. Zwei verschiedene
+Unternehmen können beide `192.168.10.0/24` intern verwenden. Im Internet wäre das
+nicht eindeutig genug. Deshalb werden private Adressen im globalen Internet nicht wie
+öffentliche Adressen geroutet.
+
+Der Weg nach draußen läuft in vielen Netzen über Router, Firewall und NAT. Das ist
+ein eigenes Thema, aber für Subnetting wichtig ist:
+
+```text
+Private Adresse = intern verwendbar
+Öffentliche Adresse = global eindeutig und im Internet routbar
+```
+
+---
+
+## Gateway und eigenes Subnetz
+
+Das <Term id="gateway">Standardgateway</Term> ist die Router-Adresse, die ein Host nutzt,
+wenn das Ziel nicht im eigenen Subnetz liegt.
+
+Beispiel:
+
+```text
+Host:             192.168.10.50/24
+Standardgateway:  192.168.10.1
+```
+
+Das passt, weil beide im Netz `192.168.10.0/24` liegen.
+
+Dieses Beispiel passt nicht:
+
+```text
+Host:             192.168.10.50/24
+Standardgateway:  192.168.20.1
+```
+
+Der Host liegt in `192.168.10.0/24`. Das Gateway liegt in `192.168.20.0/24`.
+Der Host kann sein Gateway dann nicht direkt erreichen. Lokale Kommunikation im eigenen
+Subnetz kann trotzdem funktionieren, aber Ziele außerhalb des Subnetzes sind nicht
+sauber erreichbar.
+
+Eine einfache Diagnose-Regel:
+
+```text
+Kann der Host sein Standardgateway nicht erreichen, kommt er nicht sinnvoll aus seinem Subnetz heraus.
+```
+
+---
+
+## Subnetz, VLAN und Broadcast-Domain
+
+Ein Subnetz ist eine IP-logische Einteilung. Ein <Term id="vlan">VLAN</Term> ist eine
+Layer-2-Trennung auf Switch-Ebene. In vielen echten Netzen werden beide zusammen geplant:
+
+```text
+VLAN 10 -> 192.168.10.0/24
+VLAN 20 -> 192.168.20.0/24
+VLAN 30 -> 192.168.30.0/24
+```
+
+Das ist kein Naturgesetz, aber eine sehr übliche Struktur. Ein VLAN trennt die lokale
+Broadcast-Domain. Ein IPv4-Subnetz gibt den passenden Layer-3-Adressbereich. Kommunikation
+zwischen VLANs/Subnetzen braucht Routing, meistens auf einem Router, einer Firewall oder
+einem Layer-3-Switch.
+
+Merke:
+
+```text
+Subnetz = IP-Adressbereich
+VLAN    = logische Trennung auf Switch-Ebene
+Routing = Verbindung zwischen verschiedenen Subnetzen
+```
+
+---
+
+## Typische Fehler
+
+| Fehler | Warum es falsch ist | Korrekt denken |
+|---|---|---|
+| `192.168.10.0/24` einem PC geben | `.0` ist in diesem Netz die Netzadresse | erste normale Hostadresse ist `.1` |
+| `192.168.10.255/24` einem Drucker geben | `.255` ist in diesem Netz Broadcast | letzte normale Hostadresse ist `.254` |
+| `/26` wie `/24` behandeln | `/26` hat nur 64 Adressen pro Teilnetz | Bereiche sind `0-63`, `64-127`, `128-191`, `192-255` |
+| `2^Host-Bits` als nutzbare Hosts nennen | Netzadresse und Broadcast fehlen noch | bei normalen Subnetzen immer `-2` rechnen |
+| Gateway außerhalb des eigenen Subnetzes eintragen | der Host erreicht sein Gateway nicht direkt | Gateway muss im selben Subnetz liegen |
+| Private Adresse mit öffentlicher Adresse verwechseln | private Bereiche sind nicht global geroutet | RFC-1918-Bereiche erkennen |
+| Subnetz und VLAN gleichsetzen | sie gehören oft zusammen, sind aber unterschiedliche Ebenen | VLAN trennt Layer 2, Subnetz adressiert Layer 3 |
+
+---
+
+## Zusammenfassung
+
+IPv4-Adressen bestehen aus 32 Bit und werden als vier Oktette geschrieben. Die
+Subnetzmaske trennt Netzanteil und Hostanteil. In CIDR-Schreibweise sagt die Zahl nach
+dem Schrägstrich, wie viele Bits zum Netz gehören.
+
+Die wichtigsten Formeln:
+
+```text
+Host-Bits = 32 - Präfixlänge
+Adressen gesamt = 2^Host-Bits
+Nutzbare Hosts = 2^Host-Bits - 2
+```
+
+Die wichtigsten Adressen:
+
+```text
+Netzadresse       = erste Adresse im Subnetz
+Broadcast-Adresse = letzte Adresse im Subnetz
+Hostbereich       = alles dazwischen
+```
+
+Die zwei wichtigsten Rechenwege:
+
+```text
+Exakt:  IP-Adresse UND Subnetzmaske = Netzadresse
+Schnell: Magic Number = 256 - Maskenwert im interessanten Oktett
+```
+
+Wenn du ein Subnetz vollständig beschreiben willst, nennst du immer:
+
+```text
+CIDR
+Subnetzmaske
+Netzadresse
+erster Host
+letzter Host
+Broadcast-Adresse
+nutzbare Hosts
+```
+
+<Quellen
+  titel="Offizielle Quellen"
+  quellen={[
+    {
+      label: 'RFC 791 - Internet Protocol',
+      href: 'https://www.rfc-editor.org/rfc/rfc791',
+      detail: 'Grundlage für IPv4 und die 32-Bit-Adressierung.',
+    },
+    {
+      label: 'RFC 1918 - Address Allocation for Private Internets',
+      href: 'https://www.rfc-editor.org/rfc/rfc1918',
+      detail: 'Definiert die privaten IPv4-Adressbereiche.',
+    },
+    {
+      label: 'RFC 4632 - Classless Inter-domain Routing (CIDR)',
+      href: 'https://www.rfc-editor.org/rfc/rfc4632',
+      detail: 'Beschreibt CIDR und Präfixnotation.',
+    },
+    {
+      label: 'RFC 3021 - 31-Bit Prefixes on IPv4 Point-to-Point Links',
+      href: 'https://www.rfc-editor.org/rfc/rfc3021',
+      detail: 'Beschreibt den /31-Sonderfall für Punkt-zu-Punkt-Verbindungen.',
+    },
+    {
+      label: 'IANA - IPv4 Special-Purpose Address Space',
+      href: 'https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml',
+      detail: 'Aktuelles offizielles Register besonderer IPv4-Adressbereiche.',
+    },
+  ]}
+/>

@@ -1,0 +1,642 @@
+﻿# Hardware, Schnittstellen und Peripherie auswählen
+
+<MetaBar
+  lesezeit="28 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 2 — Arbeitsplätze nach Kundenwunsch ausstatten"
+  pruefungsrelevanz="PFLICHT · 5/5"
+/>
+
+## 01 · Warum existiert das überhaupt?
+
+Jeder Arbeitsplatz, der in einem Betrieb aufgebaut wird, ist ein kleines Hardware-Projekt:
+Du wählst eine *<Term id="cpu">CPU</Term>*, dimensionierst den *<Term id="ram">RAM</Term>*,
+entscheidest dich für eine *<Term id="ssd">SSD</Term>* oder eine *<Term id="hdd">HDD</Term>*,
+prüfst, ob die Schnittstellen am *<Term id="mainboard">Mainboard</Term>* zu Monitor,
+Tastatur und Drucker passen — und am Ende muss alles zur Aufgabe und zum Budget passen.
+
+Die Prüfung fragt genau diesen Vorgang ab. Du bekommst ein Szenario („CAD-Arbeitsplatz für
+das Konstruktionsbüro“, „Notebook plus Dock plus zwei 4K-Monitore“, „Multifunktionsgerät
+für 30 Mitarbeiter“), eine Liste mit Komponenten oder Angeboten und musst eine
+Empfehlung mit Zahlen begründen. Wer die Standards und ihre Grenzen kennt, gewinnt
+hier zuverlässig zweistellige Punktzahlen.
+
+<Analogie>
+Hardware ist ein Werkzeugkoffer. Eine Säge, eine Bohrmaschine und ein Schraubendreher
+nutzen alle dieselbe Steckdose, aber sie passen unterschiedlich gut zur jeweiligen
+Aufgabe. Wer nur die teuerste Maschine kauft, braucht trotzdem die richtigen Bits,
+und ohne passenden Adapter bleibt auch der beste Akkuschrauber kalt. Beim PC ist es
+genauso: Ein guter Prozessor allein nützt nichts, wenn der Sockel des Mainboards
+nicht passt oder das Netzteil zu klein ist.
+</Analogie>
+
+---
+
+## 02 · Das Grundprinzip
+
+Jede Hardware-Auswahl in der Prüfung lässt sich auf **vier Fragen** reduzieren:
+
+1. **Leistung** — Reichen Rechenleistung, Speicher und Bandbreite für die Aufgabe?
+2. **Kompatibilität** — Passen Sockel, Stecker, Spannungen und Protokolle zueinander?
+3. **Erweiterbarkeit** — Bleiben Slots, Schächte und Anschlüsse für spätere Aufrüstungen frei?
+4. **Standards** — Welche Norm gilt für die Schnittstelle, und welche Version brauchst du?
+
+Wer eine dieser Fragen ausspart, baut entweder einen überdimensionierten oder einen
+nicht funktionsfähigen Arbeitsplatz. In der Aufgabe kostet ein vergessener Punkt
+verlässlich Teilpunkte.
+
+<Tipp titel="Merksatz">
+Hardware-Auswahl ist Passung, nicht Maximierung. Die schnellste Komponente nützt
+nichts, wenn der schwächste Standard im System sie ausbremst — der Bus, das Kabel
+oder die Schnittstelle setzen das Limit.
+</Tipp>
+
+---
+
+## 03 · Die Mechanik — das Werkzeugregal
+
+### 03.1 · CPU: Takt, Kerne, Cache, Sockel
+
+Bei der CPU zählen vier Kennwerte und ein technischer Zwang:
+
+| Kennwert | Bedeutung | Worauf du achtest |
+|---|---|---|
+| Takt (GHz) | Operationen pro Sekunde je Kern | Hoch bei Singlethread-Lasten (Office, viele Geschäftsanwendungen) |
+| Kerne und Threads | parallele Rechenstränge | Viele Kerne bei Compilern, Rendering, Datenbanken, Virtualisierung |
+| Cache (L1/L2/L3) | sehr schneller Zwischenspeicher | Mehr Cache hilft bei häufigen Wiederzugriffen |
+| Architekturgeneration | Effizienz pro Takt | Neuere Generation schlägt oft höheren Takt einer alten |
+| Sockel | physische Passung zum Mainboard | Sockel und Chipsatz müssen zur CPU passen, sonst läuft nichts |
+
+Sockel und Chipsatz sind in der Aufgabe beliebt, weil sie eine harte Bedingung sind:
+Eine moderne Intel-CPU passt nur in einen kompatiblen LGA-Sockel, eine aktuelle AMD-CPU
+nur in einen passenden AM-Sockel. Mischen geht nicht — auch nicht mit Adaptern.
+
+### 03.2 · RAM: Größe, Generation, ECC
+
+| Eigenschaft | Konsequenz |
+|---|---|
+| Größe (GB) | bestimmt, wie viele Programme gleichzeitig schnell laufen können |
+| Generation (DDR4/DDR5) | nicht mischbar, andere Kerbe im Slot, anderes Spannungsniveau |
+| Takt (MHz/MT/s) | begrenzt vom Mainboard und vom Speichercontroller der CPU |
+| Dual-Channel | zwei gleiche Riegel verdoppeln die Bandbreite zur CPU |
+| *<Term id="ecc-ram">ECC</Term>* | erkennt und korrigiert einzelne Bitfehler, Pflicht bei Servern |
+
+Faustregeln aus der Praxis:
+
+```
+Office, Browser:           8–16 GB
+Entwicklung, Bildbearbeitung:  16–32 GB
+Virtualisierung, Video, CAD:   32–64 GB oder mehr
+```
+
+Bei Servern und Workstations mit kritischen Daten ist ECC-RAM vorgeschrieben — eine
+unbemerkte Bit-Kippung im Arbeitsspeicher führt sonst zu falschen Datenbankinhalten
+oder fehlerhaften Berechnungen, ohne dass der Rechner abstürzt.
+
+### 03.3 · Massenspeicher: HDD, SSD, NVMe
+
+| Typ | Schnittstelle | Bandbreite (typisch) | Stärke | Schwäche |
+|---|---|---|---|---|
+| HDD | *<Term id="sata">SATA</Term>* | 100–250 MB/s | groß, günstig | langsam, mechanisch |
+| SATA-SSD | SATA | ca. 500 MB/s | leise, robust | von SATA gebremst |
+| *<Term id="nvme">NVMe</Term>*-SSD | M.2 / *<Term id="pcie">PCIe</Term>* | 3.000–7.000 MB/s | extrem schnell | belegt PCIe-Lanes |
+
+Wichtig in der Aufgabe: NVMe ist **nicht** die Bauform, sondern das Protokoll. NVMe-SSDs
+werden meist im M.2-Steckplatz verbaut, sind aber nur dann schnell, wenn der Slot
+tatsächlich PCIe-Lanes bekommt. Manche M.2-Slots auf günstigen Mainboards akzeptieren
+nur SATA-SSDs — dann landet eine NVMe-Platte mit 7.000 MB/s bei 500 MB/s.
+
+### 03.4 · Bus- und Schnittstellenstandards
+
+Schnittstellen führen Daten, Bild oder Strom zwischen Geräten. Die häufigsten in der
+Prüfung:
+
+| Standard | Träger | Typische Bandbreite | Typischer Einsatz |
+|---|---|---|---|
+| *<Term id="usb">USB 2.0</Term>* | A/B/Mini/Micro | 480 Mbit/s | Tastatur, Maus, einfache Geräte |
+| USB 3.2 Gen 1 | A oder C | 5 Gbit/s | externe Festplatten, Webcams |
+| USB 3.2 Gen 2 | meist C | 10 Gbit/s | schnelle externe SSDs |
+| USB4 | C | bis 40 Gbit/s | Docks, externe Speicher, Displays |
+| *<Term id="thunderbolt">Thunderbolt</Term>* 4 | C | 40 Gbit/s + DP + PD | Docks, Multi-4K, eGPU |
+| *<Term id="hdmi">HDMI</Term>* 2.0 / 2.1 | HDMI-Stecker | 4K@60 / bis 8K@60 | Monitore, Beamer, TV |
+| *<Term id="displayport">DisplayPort</Term>* 1.4 / 2.1 | DP / USB-C | 4K@120 / bis 8K | Monitore, Daisy-Chain, Pro-Setup |
+| PCIe x4 / x16 | Slot auf Mainboard | 8 GB/s / 32 GB/s (Gen 4) | Grafikkarten, NVMe-SSDs, Karten |
+
+USB-C ist nur ein Stecker. Was im Kabel transportiert wird, hängt vom Host und vom
+Kabel selbst ab. Ein USB-C-Kabel kann USB 2.0 mit 480 Mbit/s, USB4 mit 40 Gbit/s,
+Thunderbolt 4 oder *<Term id="usb-pd">USB Power Delivery</Term>* führen — oder
+Kombinationen davon. Steht es nicht auf dem Kabel, ist es im Zweifel langsam.
+
+### 03.5 · Peripherie und Mensch-Maschine-Schnittstelle
+
+Die wichtigsten Peripheriegeräte und ihre typischen Auswahlkriterien:
+
+- **Monitor:** Diagonale, Auflösung, Bildwiederholrate, Anschluss (HDMI/DP/USB-C),
+  Höhenverstellbarkeit, ergonomische Eignung.
+- **Tastatur und Maus:** kabellos vs. kabelgebunden, Layout, Funkstandard (USB-Dongle,
+  Bluetooth), Akkulaufzeit.
+- **Drucker und Multifunktionsgeräte (MFG):** Druckverfahren (Laser/Tinte), Druckleistung,
+  Kosten je Seite, Netzwerkanbindung (LAN/WLAN), Duplex, Scanleistung, Sicherheitsfunktionen.
+- **Headset und Konferenztechnik:** Bauform (Over-Ear/On-Ear), Mikrofonqualität,
+  USB- oder Bluetooth-Anbindung, Zertifizierung für gängige UC-Plattformen.
+- *<Term id="kvm-switch">KVM-Switch</Term>*: schaltet Tastatur, Maus und Bildschirm
+  zwischen mehreren Rechnern um, klassisch im Serverraum, modern als USB-C-Dock am
+  Doppelarbeitsplatz aus Firmen- und Privatlaptop.
+
+### 03.6 · Auswahlprozess in vier Schritten
+
+<Schritte
+  items={[
+    { titel: 'Anforderung festhalten', text: 'Aufgabe, Software, gewünschte Leistung, Anzahl Geräte und Budget schriftlich fixieren — am besten mit Zahlen (Auflösung, Druckseiten, Speicherbedarf, Laufzeit).' },
+    { titel: 'Kennwerte ableiten', text: 'Aus der Anforderung die nötigen Hardware-Kennwerte ableiten: CPU-Klasse, RAM in GB, Speichertyp und -größe, Anschlussart, Druckleistung, Standards.' },
+    { titel: 'Kompatibilität prüfen', text: 'Sockel, Generation, Stecker und Versionen abgleichen. Was passt physisch zusammen, welche Version des Standards ist nötig, welcher Bus bremst?' },
+    { titel: 'Empfehlung mit Begründung', text: 'Variante wählen, in einem Satz mit Zahl begründen, mindestens eine Alternative nennen und benennen, warum sie unterlegen ist.' },
+  ]}
+/>
+
+---
+
+## 04 · Konkrete Auswahlwege
+
+<Beispiel titel="Drei Arbeitsplätze konfigurieren — CAD, Office, Datenbank-Server">
+
+Ein Systemhaus muss drei Arbeitsplätze ausstatten:
+
+- **CAD-PC:** AutoCAD und Inventor, große Baugruppen, ein 4K-Monitor.
+- **Office-PC:** Outlook, Word, Excel, Teams, Browser, zwei Full-HD-Monitore.
+- **Datenbank-Server:** PostgreSQL für ein ERP-System, 24/7-Betrieb, 30 Anwender,
+  Datenintegrität ist kritisch.
+
+Welche Komponenten passen jeweils — und warum?
+
+</Beispiel>
+
+<StepByStep titel="Komponenten je Arbeitsplatz auswählen">
+  <Schritt nr={1} titel="Anforderungen sortieren">
+    CAD: hohe Singlethread-Leistung, dedizierte GPU, viel RAM, schnelle SSD.
+    Office: solide Mehrkern-CPU der Mittelklasse, integrierte Grafik genügt, 16 GB RAM.
+    Server: viele Kerne, ECC-RAM, redundante Speicher, robustes Netzteil.
+  </Schritt>
+  <Schritt nr={2} titel="CPU und Mainboard wählen">
+    CAD: aktuelle Desktop-CPU mit hoher Boost-Frequenz, 8 oder mehr Kerne, Sockel passend
+    zum Mainboard, Mainboard mit PCIe x16 für die Grafikkarte und einem M.2-NVMe-Slot.
+    Office: sparsame Mittelklasse-CPU mit integrierter Grafik (iGPU), reicht für zwei
+    Full-HD-Monitore, Mainboard mit zwei Display-Ausgängen.
+    Server: Server-CPU (Xeon oder EPYC) mit vielen Kernen, Server-Mainboard mit
+    ECC-Unterstützung, IPMI für Fernzugriff.
+  </Schritt>
+  <Schritt nr={3} titel="RAM dimensionieren">
+    CAD: 32 GB DDR5 als 2 × 16 GB im Dual-Channel — Reserve für große Modelle.
+    Office: 16 GB DDR5 als 2 × 8 GB, Dual-Channel der iGPU spürbar zugutekommt.
+    Server: 64 GB ECC, Aufrüstung auf 128 GB möglich; ECC ist Pflicht, ein gekipptes
+    Bit in einer ERP-Tabelle ist ein stiller Datenverlust.
+  </Schritt>
+  <Schritt nr={4} titel="Massenspeicher festlegen">
+    CAD: 1 TB NVMe-SSD (System und Projekte), zusätzlich 4 TB SATA-HDD als
+    Archiv für ältere Konstruktionsdaten.
+    Office: 500 GB NVMe-SSD reicht für System und alle Office-Daten, kein zweites
+    Laufwerk nötig.
+    Server: 2 × NVMe-SSD im RAID 1 für die Datenbank, 4 × SATA-HDD im RAID 5 oder 10
+    für Backups; Backup separat, weil RAID kein Backup ersetzt.
+  </Schritt>
+  <Schritt nr={5} titel="Schnittstellen und Peripherie zuordnen">
+    CAD: Grafikkarte mit 2 × DisplayPort 1.4 für 4K@60 plus Reserve.
+    Office: zwei DP- oder HDMI-Anschlüsse vom Mainboard, 4-Port-USB-Hub am Monitor.
+    Server: redundantes Netzteil, ans Rack-KVM angeschlossen, eigener Management-Port.
+  </Schritt>
+  <Ergebnis>
+    Drei Konfigurationen mit klarer Begründung: CAD für Singlethread plus GPU, Office
+    für sparsame Effizienz, Server für Verfügbarkeit und Datenintegrität. Die
+    technische Trennung schlägt sich direkt in der Beschaffungsempfehlung nieder.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel titel="Notebook plus Dock — drei Monitore, Webcam, Drucker, externe SSD">
+
+Ein Außendienstmitarbeiter bekommt ein Business-Notebook mit nur **einem
+Thunderbolt-4-Port und einem USB-C-Port**. Am Schreibtisch sollen angeschlossen sein:
+
+- 1 × 4K-Monitor (60 Hz, DisplayPort)
+- 2 × Full-HD-Monitor (HDMI)
+- 1 × Webcam und Headset (USB)
+- 1 × externe NVMe-SSD (USB 3.2 Gen 2, 10 Gbit/s)
+- 1 × Multifunktionsgerät über LAN
+- Stromversorgung über USB-C (90 W)
+
+Welche Schnittstellen-Topologie funktioniert ohne Engpass?
+
+</Beispiel>
+
+<StepByStep titel="Schnittstellen-Mapping ans Notebook">
+  <Schritt nr={1} titel="Limitierungen sammeln">
+    Das Notebook hat genau einen Thunderbolt-4-Port (40 Gbit/s, DP, PD) und einen
+    USB-C-Port (10 Gbit/s, kein PD). Insgesamt sollen sieben Geräte und drei Displays
+    bedient werden — das geht nur über ein Dock.
+  </Schritt>
+  <Schritt nr={2} titel="Dock auswählen">
+    Ein Thunderbolt-4-Dock liefert über das eine TB4-Kabel: 90 W Power Delivery, zwei
+    DisplayPort-Ausgänge, mehrere USB-A/C-Ports und einen Ethernet-Port. Damit wandern
+    Stromversorgung, zwei Monitore, Webcam, Headset und LAN über genau ein Kabel ins
+    Notebook.
+  </Schritt>
+  <Schritt nr={3} titel="Dritten Monitor anbinden">
+    Der dritte Monitor (HDMI) wird entweder per zweitem DP-Ausgang plus DP-zu-HDMI-Adapter
+    angesteuert oder via DisplayPort-Daisy-Chain (MST), wenn alle Monitore MST können.
+    Alternativ: HDMI-Ausgang am Dock nutzen, falls vorhanden.
+  </Schritt>
+  <Schritt nr={4} titel="Externe NVMe-SSD positionieren">
+    Die externe SSD braucht volle 10 Gbit/s. Sie geht an einen USB-3.2-Gen-2-Port am
+    Dock — oder direkt an den zweiten USB-C-Port am Notebook, wenn sicher feststeht,
+    dass dieser 10 Gbit/s liefert. Ein gemeinsamer USB-Hub mit niedrigem Tempo würde
+    sie ausbremsen.
+  </Schritt>
+  <Schritt nr={5} titel="Bandbreite gegenrechnen">
+    Thunderbolt 4 hat 40 Gbit/s. Davon belegen 4K@60 ca. 12 Gbit/s, zwei Full-HD@60
+    je ca. 3 Gbit/s, USB-Geräte plus Ethernet zusammen unter 5 Gbit/s. Reserve für
+    die externe SSD bleibt — solange beide Monitore nicht gleichzeitig 4K@120 laufen.
+  </Schritt>
+  <Ergebnis>
+    Ein Thunderbolt-4-Dock plus ein direkter USB-C-Port am Notebook decken alle sieben
+    Geräte ab. Wichtig: TB4-zertifiziertes Kabel verwenden, sonst fällt das Dock
+    automatisch auf USB-C-Niveau zurück und die Bandbreite für drei Monitore reicht
+    nicht.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel titel="Multifunktionsgerät beschaffen — Druckleistung, Verbrauch, Netzwerk">
+
+Eine Kanzlei mit **30 Mitarbeitern** ersetzt ihren alten Laserdrucker. Geplant sind
+**45.000 Seiten pro Jahr** (90 % Schwarzweiß, 10 % Farbe). Der Lieferant bietet zwei
+Modelle:
+
+- **Modell A:** Anschaffung 1.800 €, Toner Schwarz 4.000 Seiten für 95 €,
+  Toner Farbe 2.500 Seiten für 130 € (je Farbe), 18 Watt Standby, 600 Watt Druck,
+  Duplex und Netzwerk inklusive.
+- **Modell B:** Anschaffung 950 €, Tonersatz Schwarz 1.500 Seiten für 65 €, Farbe
+  900 Seiten für 95 € je Farbe, 4 Watt Standby, 400 Watt Druck, Netzwerk gegen Aufpreis
+  120 €.
+
+Welches Gerät ist über drei Jahre günstiger — und reicht es überhaupt?
+
+</Beispiel>
+
+<StepByStep titel="Multifunktionsgerät kalkulieren">
+  <Schritt nr={1} titel="Mengen aufteilen">
+    Pro Jahr 45.000 Seiten. Davon 90 % SW = 40.500 SW-Seiten und 10 % Farbe = 4.500
+    Farbseiten. Über drei Jahre macht das **121.500 SW-Seiten** und **13.500 Farbseiten**.
+  </Schritt>
+  <Schritt nr={2} titel="Toner-Bedarf je Modell">
+    Modell A: SW 121.500 / 4.000 ≈ 31 Tonereinheiten, Farbe 13.500 / 2.500 ≈ 6 je
+    Farbe (CMY) = 18 Farbtonereinheiten.
+    Modell B: SW 121.500 / 1.500 = 81 Tonereinheiten, Farbe 13.500 / 900 = 15 je
+    Farbe (CMY) = 45 Farbtonereinheiten.
+  </Schritt>
+  <Schritt nr={3} titel="Verbrauchsmaterial in Euro">
+    Modell A: 31 × 95 € + 18 × 130 € = 2.945 € + 2.340 € = **5.285 €**.
+    Modell B: 81 × 65 € + 45 × 95 € = 5.265 € + 4.275 € = **9.540 €**.
+  </Schritt>
+  <Schritt nr={4} titel="Anschaffung und Netzwerk addieren">
+    Modell A: 1.800 € + 5.285 € = **7.085 €**.
+    Modell B: 950 € + 120 € (Netzwerkmodul) + 9.540 € = **10.610 €**.
+  </Schritt>
+  <Schritt nr={5} titel="Energiekosten überschlagen">
+    Annahme: 3 h Druckbetrieb pro Tag, 220 Arbeitstage, sonst Standby (24 / 7 abzüglich
+    Druckzeit ≈ 8.000 h Standby pro Jahr).
+    Modell A: 0,6 kW × 660 h + 0,018 kW × 8.100 h ≈ 396 + 146 = **542 kWh/Jahr**, drei
+    Jahre rund 1.625 kWh.
+    Modell B: 0,4 kW × 660 h + 0,004 kW × 8.100 h ≈ 264 + 32 = **296 kWh/Jahr**, drei
+    Jahre rund 890 kWh.
+    Bei 0,30 €/kWh: A ca. 488 €, B ca. 267 € über drei Jahre.
+  </Schritt>
+  <Schritt nr={6} titel="Empfehlung formulieren">
+    Gesamtkosten über drei Jahre: A ≈ 7.573 €, B ≈ 10.877 €. Modell A ist trotz
+    höherer Anschaffung deutlich günstiger, weil Toner und Energie pro Seite günstiger
+    sind. Die Druckleistung beider Geräte deckt den Bedarf, die Netzwerk- und
+    Duplex-Funktionen sind bei A bereits enthalten.
+  </Schritt>
+  <Ergebnis>
+    Empfehlung: **Modell A**. Vorteil über drei Jahre rund 3.300 €, plus deutlich
+    geringere Service-Reibung durch enthaltene Netzwerk- und Duplex-Funktionen.
+    Bei stark schwankendem Druckaufkommen wäre zusätzlich ein Klick-Vertrag
+    (Pauschale je gedruckter Seite) zu prüfen.
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## 05 · Vertiefung — wo sich der Standard rächt
+
+### Bus-Engpässe verstehen
+
+Ein PCIe-Slot kann mechanisch x16 sein, aber elektrisch nur x4 — sichtbar erst im
+Handbuch des Mainboards. Wer eine NVMe-Erweiterungskarte in einen mechanisch passenden,
+elektrisch zu schmalen Slot steckt, bekommt nur einen Bruchteil der Geschwindigkeit.
+
+Auch Chipsatz-Lanes sind oft *geteilt*: Ein zweiter NVMe-Slot kann automatisch zwei
+SATA-Ports oder einen USB-Port deaktivieren, sobald er belegt wird. In der Prüfung reicht
+es, das Prinzip zu kennen — im Detail sagt das Mainboard-Handbuch, welche Kombination
+funktioniert.
+
+### Hot-Plug, Hot-Swap und USB-Power-Delivery
+
+USB, Thunderbolt und SATA mit AHCI sind *<i>hot-plug</i>*-fähig: Geräte dürfen im
+laufenden Betrieb gesteckt und gezogen werden. *Hot-Swap* (RAID-Festplatten,
+Server-Netzteile) geht noch weiter — der Austausch erfolgt ohne Systemstillstand.
+PCIe-Karten und RAM hingegen erfordern einen Shutdown.
+
+USB-PD verhandelt Spannung und Stromstärke dynamisch. Ein 100-W-Notebook lädt an
+einem 65-W-Netzteil nur langsam oder gar nicht — die maximale Watt-Zahl ist im Profil
+hinterlegt, nicht im Stecker. Beim Dock entscheidet das Profil des Hub-Chips, wie viel
+Watt am Endgerät ankommen.
+
+### KVM-Switch und Mehrfacharbeitsplätze
+
+Der klassische KVM-Switch im Serverraum schaltet Tastatur, Maus und Monitor zwischen
+mehreren physischen Servern um. In modernen Büros werden zunehmend *USB-C-Docks mit
+KVM-Funktion* verbaut: Zwei Notebooks (Firma und Privat oder Firma und Kunde) hängen
+parallel am Dock, eine Taste schaltet Tastatur, Maus, Webcam und Monitorausgabe um.
+*KVM-over-IP* ergänzt das Konzept für Fernzugriff über das Netzwerk.
+
+### Ergonomie und Arbeitsschutz
+
+Hardware-Auswahl ist nicht nur eine technische, sondern auch eine arbeitsschutzrechtliche
+Aufgabe (Arbeitsstättenverordnung, DGUV Information 215-410). Höhenverstellbare
+Monitore, blendfreie Bildschirme, ergonomische Tastaturen und ausreichend Platz auf dem
+Tisch sind keine Komfortextras, sondern Pflichtteil eines konformen Bildschirmarbeitsplatzes.
+In der Prüfung wird das oft als „nicht-funktionale Anforderung“ verlangt — nenne es konkret,
+auch wenn die Aufgabe vor allem nach Anschlüssen fragt.
+
+### Mehrere Standards parallel: USB-C und Thunderbolt
+
+USB-C ist nur die Stecker-Form. Was sie überträgt, hängt vom Host und vom Kabel ab:
+
+```
+USB-C-Stecker  →  USB 2.0       (480 Mbit/s, kein DP, kein PD)
+USB-C-Stecker  →  USB 3.2 Gen 2 (10 Gbit/s, optional DP-Alt-Mode)
+USB-C-Stecker  →  USB4          (bis 40 Gbit/s, DP-Tunnel, PD)
+USB-C-Stecker  →  Thunderbolt 4 (40 Gbit/s + DP + 100 W PD, zertifiziert)
+```
+
+Wenn die Aufgabe „USB-C“ schreibt, ist das eine Stecker-Aussage, keine Bandbreiten-Aussage.
+Frage immer nach dem konkreten Protokoll und der Version.
+
+---
+
+## 06 · Typische Fehler und typische Fehler
+
+- **USB-Versionen verwechseln.** USB 3.0, USB 3.1 Gen 1 und USB 3.2 Gen 1 sind
+  *dieselbe Geschwindigkeit* (5 Gbit/s) — die Namensgebung ist mehrfach umbenannt
+  worden. Wer sich von der Bezeichnung ins Bockshorn jagen lässt, ordnet die
+  Bandbreite falsch zu.
+- **DisplayPort und HDMI gleichsetzen.** HDMI 1.4 schafft 4K nur mit 30 Hz.
+  Wer 4K@60 oder gar 4K@120 will, braucht HDMI 2.0/2.1 oder DisplayPort 1.2/1.4.
+  Adapter helfen nicht, wenn der Quell-Port den Standard nicht beherrscht.
+- **DDR-Generationen mischen.** DDR4 und DDR5 haben unterschiedliche Kerben und
+  unterschiedliche Spannungsniveaus. Die Riegel passen physisch nicht in den falschen
+  Slot — und wenn doch, wäre die elektrische Beschädigung garantiert.
+- **NVMe ohne PCIe-Anbindung erwarten.** Manche M.2-Slots auf günstigen Mainboards
+  unterstützen nur SATA. Eine darauf gesteckte NVMe-SSD funktioniert nicht. Im
+  Mainboard-Handbuch steht, welcher Slot welches Protokoll führt.
+- **Falscher CPU-Sockel.** Eine Ryzen-CPU passt nicht in einen Intel-Sockel und
+  umgekehrt. Auch innerhalb eines Herstellers ändert sich der Sockel zwischen
+  Generationen — neue CPU plus altes Mainboard ist meist nicht kompatibel.
+- **Watt am USB-PD-Netzteil unterschätzen.** Ein 100-W-Notebook am 65-W-Netzteil
+  lädt nicht voll. Die Aufgabe nennt manchmal die Wattzahl, manchmal nur das
+  Netzteil-Modell — du musst die Wattzahl explizit prüfen.
+- **PCIe-Slots mechanisch und elektrisch verwechseln.** Ein x16-Slot kann elektrisch
+  nur x4 sein. Eine GPU darin verliert spürbar Leistung. Steht im Mainboard-Handbuch.
+- **„HDMI-Kabel reicht für alles“.** Stimmt nicht — Kabel sind für bestimmte HDMI-
+  oder DP-Versionen zertifiziert. Ein altes HDMI-Kabel überträgt 4K@120 nicht stabil,
+  auch wenn der Stecker passt.
+- **Standby-Leistung vergessen.** Bei der Multifunktions- oder Server-Kalkulation
+  ist die Standby-Leistung über das Jahr oft größer als die Volllastleistung, weil
+  das Gerät 90 % der Zeit im Standby hängt.
+
+---
+
+## 07 · So fragt die IHK das
+
+**Aufgabe 1 — Arbeitsplatz konfigurieren (8 Punkte).**
+Ein Konstruktionsbüro stattet einen neuen CAD-Arbeitsplatz aus. Der Anwender öffnet
+große Baugruppen in Inventor, nutzt einen 4K-Monitor und arbeitet zusätzlich mit einem
+Full-HD-Zweitmonitor. Begründe Auswahl und Mindestkennwerte für: CPU, RAM,
+Massenspeicher, Grafikkarte und Anschlussart der Monitore. Nenne mindestens eine
+sinnvolle Erweiterungsreserve.
+
+**Aufgabe 2 — Schnittstellen-Mapping (6 Punkte).**
+Ein Notebook besitzt einen Thunderbolt-4-Port und einen USB-C-Port (USB 3.2 Gen 2).
+Anzuschließen sind: zwei 4K-Monitore, eine externe SSD mit 10 Gbit/s, eine USB-Webcam,
+ein Headset, ein LAN-Kabel und ein 90-W-Netzteil. Skizziere eine technisch saubere
+Topologie und benenne den limitierenden Faktor.
+
+**Aufgabe 3 — Multifunktionsgerät kalkulieren (7 Punkte).**
+Eine Kanzlei druckt 60.000 Seiten pro Jahr (80 % Schwarzweiß, 20 % Farbe). Geboten
+werden zwei Modelle mit unterschiedlicher Anschaffung und unterschiedlichen
+Toner-Reichweiten. Berechne die Gesamtkosten über drei Jahre und gib eine Empfehlung.
+Beziehe Standby-Energie mit ein und nenne zwei nicht-monetäre Auswahlkriterien.
+
+**Aufgabe 4 — Kompatibilität prüfen (4 Punkte).**
+Ein Kollege möchte eine vorhandene DDR4-Mainboard-Konfiguration auf eine aktuelle
+Intel-Core-CPU der 14. Generation umrüsten. Begründe in zwei Sätzen, ob das ohne
+Mainboard-Tausch möglich ist, und nenne die zwei zentralen Hindernisse.
+
+**Aufgabe 5 — Ergonomie und Arbeitsschutz (4 Punkte).**
+Beschreibe vier Anforderungen an einen Bildschirmarbeitsplatz, die über die reine
+Hardware-Leistung hinausgehen. Ordne jede Anforderung einer konkreten Komponente
+oder Eigenschaft zu (z. B. Monitor, Tastatur, Beleuchtung).
+
+<Tipp titel="Lösungsansatz zu Aufgabe 4 (Kurzform)">
+Eine Intel-Core-CPU der 14. Generation nutzt den Sockel LGA 1700. Ist das vorhandene
+Mainboard ein älteres LGA-1200-Modell, ist die CPU ohne Mainboard-Tausch nicht
+einsetzbar. Selbst bei passendem Sockel braucht es einen kompatiblen Chipsatz und ein
+aktuelles BIOS-Update — andernfalls bootet das System nicht.
+</Tipp>
+
+---
+
+<svg
+  viewBox="0 0 760 360"
+  role="img"
+  aria-label="Skizze: Notebook mit Thunderbolt-Dock, drei Monitoren, Drucker, externer SSD und Headset; typische Schnittstellen sind beschriftet."
+  className="my-8 w-full max-w-3xl border border-rule bg-paper"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <style>{`
+      .lbl { font: 500 12px 'IBM Plex Sans', sans-serif; fill: #1a2332; }
+      .sub { font: 400 10px 'IBM Plex Sans', sans-serif; fill: #4a5568; }
+      .hdr { font: 600 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
+      .accent { stroke: #8b2f1d; stroke-width: 2; fill: none; }
+      .rule { stroke: #1a2332; stroke-width: 1.2; fill: none; }
+      .tag { font: 500 10px 'JetBrains Mono', monospace; fill: #8b2f1d; }
+    `}</style>
+  </defs>
+
+  <text className="hdr" x="20" y="28">Arbeitsplatz · Notebook + TB4-Dock</text>
+
+  {/* Notebook */}
+  <rect className="rule" x="40" y="60" width="180" height="110" rx="4" />
+  <text className="lbl" x="60" y="88">Business-Notebook</text>
+  <text className="sub" x="60" y="106">Thunderbolt 4 · USB-C</text>
+  <text className="sub" x="60" y="120">USB 3.2 Gen 2</text>
+
+  {/* Dock */}
+  <rect className="accent" x="290" y="60" width="180" height="110" rx="4" />
+  <text className="lbl" x="310" y="88">TB4-Dock</text>
+  <text className="sub" x="310" y="106">2× DP · USB-A/C · LAN</text>
+  <text className="sub" x="310" y="120">90 W USB-PD</text>
+
+  {/* Connection notebook->dock */}
+  <line className="accent" x1="220" y1="115" x2="290" y2="115" />
+  <text className="tag" x="225" y="108">TB4 · 40 Gbit/s</text>
+
+  {/* Monitor 4K */}
+  <rect className="rule" x="540" y="40" width="180" height="80" rx="4" />
+  <text className="lbl" x="560" y="68">4K-Monitor</text>
+  <text className="sub" x="560" y="86">DisplayPort 1.4</text>
+  <line className="rule" x1="470" y1="90" x2="540" y2="80" />
+  <text className="tag" x="480" y="80">DP</text>
+
+  {/* Monitor FHD 1 */}
+  <rect className="rule" x="540" y="140" width="180" height="60" rx="4" />
+  <text className="lbl" x="560" y="166">Full-HD-Monitor</text>
+  <text className="sub" x="560" y="184">DP / HDMI</text>
+  <line className="rule" x1="470" y1="130" x2="540" y2="170" />
+  <text className="tag" x="480" y="148">DP</text>
+
+  {/* Monitor FHD 2 (daisy chain via MST oder HDMI) */}
+  <rect className="rule" x="540" y="220" width="180" height="60" rx="4" />
+  <text className="lbl" x="560" y="246">Full-HD-Monitor</text>
+  <text className="sub" x="560" y="264">HDMI · Daisy-Chain</text>
+  <line className="rule" x1="470" y1="155" x2="540" y2="250" />
+  <text className="tag" x="480" y="200">HDMI/MST</text>
+
+  {/* USB external SSD */}
+  <rect className="rule" x="40" y="220" width="180" height="60" rx="4" />
+  <text className="lbl" x="60" y="246">Externe NVMe-SSD</text>
+  <text className="sub" x="60" y="264">USB 3.2 Gen 2 · 10 Gbit/s</text>
+  <line className="rule" x1="130" y1="170" x2="130" y2="220" />
+  <text className="tag" x="140" y="200">USB-C direkt</text>
+
+  {/* Drucker LAN */}
+  <rect className="rule" x="290" y="220" width="180" height="60" rx="4" />
+  <text className="lbl" x="310" y="246">Multifunktionsgerät</text>
+  <text className="sub" x="310" y="264">Ethernet · LAN am Dock</text>
+  <line className="rule" x1="380" y1="170" x2="380" y2="220" />
+  <text className="tag" x="390" y="200">RJ45</text>
+
+  {/* Headset/Webcam */}
+  <rect className="rule" x="290" y="300" width="430" height="40" rx="4" />
+  <text className="lbl" x="310" y="324">Headset · Webcam · Tastatur · Maus</text>
+  <text className="sub" x="560" y="324">USB-A/USB-C am Dock</text>
+</svg>
+
+<Glossar
+  eintraege={[
+    {
+      term: 'CPU (Central Processing Unit)',
+      definition: 'Hauptprozessor; arbeitet Programmbefehle ab. Wichtige Kennwerte: Takt (GHz), Anzahl Kerne und Threads, Cache, Architekturgeneration und Sockel.'
+    },
+    {
+      term: 'RAM (Random Access Memory)',
+      definition: 'Flüchtiger Arbeitsspeicher, deutlich schneller als SSD/HDD. DDR4 und DDR5 sind nicht mischbar; Dual-Channel verdoppelt die Bandbreite zur CPU.'
+    },
+    {
+      term: 'ECC-RAM',
+      definition: 'Speicher mit Fehlerkorrektur. Erkennt und korrigiert einzelne Bitfehler im Betrieb. Pflicht in Servern und Workstations mit kritischen Daten.'
+    },
+    {
+      term: 'SSD',
+      definition: 'Massenspeicher auf Flash-Basis, ohne mechanische Teile. Über SATA bis ca. 500 MB/s, über NVMe deutlich mehr.'
+    },
+    {
+      term: 'HDD',
+      definition: 'Magnetische Festplatte mit rotierenden Scheiben. Großes Volumen zu kleinem Preis pro GB; mechanisch empfindlich und langsam.'
+    },
+    {
+      term: 'NVMe',
+      definition: 'Protokoll für Flash-Speicher direkt über PCIe. Im M.2-Slot eingebaut; typische Bandbreiten 3.000–7.000 MB/s.'
+    },
+    {
+      term: 'PCIe',
+      definition: 'Erweiterungsbus aus mehreren Lanes (x1, x4, x8, x16). Pro Generation verdoppelt sich die Bandbreite je Lane.'
+    },
+    {
+      term: 'SATA',
+      definition: 'Etablierte Schnittstelle für interne HDDs und 2,5-Zoll-SSDs. SATA-III liefert netto rund 550–600 MB/s.'
+    },
+    {
+      term: 'USB',
+      definition: 'Universal Serial Bus. Generationen reichen von 480 Mbit/s (USB 2.0) bis 40 Gbit/s (USB4). Der Stecker (A/B/C) sagt nichts über die Geschwindigkeit aus.'
+    },
+    {
+      term: 'Thunderbolt',
+      definition: 'Hochleistungsschnittstelle (40 Gbit/s) über USB-C, kombiniert Daten, DisplayPort und USB-PD bis 100 W. Ideal für Docks und Multi-Display-Setups.'
+    },
+    {
+      term: 'DisplayPort',
+      definition: 'VESA-Standard für Bild- und Tonübertragung. Unterstützt Daisy-Chaining, hohe Auflösungen und Bildraten; im Profibereich Standardanschluss.'
+    },
+    {
+      term: 'HDMI',
+      definition: 'Audio/Video-Standard im Consumer-Bereich. Maximale Auflösung und Bildrate hängen stark von der Version ab (1.4 bis 2.1).'
+    },
+    {
+      term: 'USB Power Delivery',
+      definition: 'USB-C-Stromversorgungsstandard. Spannung und Stromstärke werden dynamisch ausgehandelt, aktuell bis 240 Watt möglich.'
+    },
+    {
+      term: 'Mainboard',
+      definition: 'Hauptplatine mit CPU-Sockel, RAM-Slots, Chipsatz, PCIe- und M.2-Steckplätzen. Sockel und Chipsatz bestimmen, welche CPU passt.'
+    },
+    {
+      term: 'KVM-Switch',
+      definition: 'Schaltet Keyboard, Video und Mouse zwischen mehreren Rechnern um. Klassisch im Serverraum, modern als USB-C-Dock am Doppelarbeitsplatz.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'USB Implementers Forum — USB-Spezifikationen',
+      href: 'https://www.usb.org/documents',
+      detail: 'Offizielle Dokumente zu USB 2.0, USB 3.2, USB4 und USB Power Delivery — verbindliche Quelle für Versionen und Bandbreiten.'
+    },
+    {
+      label: 'VESA — DisplayPort Standards',
+      href: 'https://www.vesa.org/displayport-developer/',
+      detail: 'VESA-Standards zu DisplayPort 1.4 und 2.1 inklusive Multi-Stream-Transport (Daisy-Chain).'
+    },
+    {
+      label: 'HDMI Forum — Specifications',
+      href: 'https://www.hdmi.org/spec/index',
+      detail: 'Versionen und Funktionsumfang von HDMI 1.4, 2.0 und 2.1 — verbindliche Referenz für Bandbreite und maximale Auflösung.'
+    },
+    {
+      label: 'BIBB — Berufsprofil Fachinformatiker und Rahmenlehrplan',
+      href: 'https://www.bibb.de/de/berufeinfo.php',
+      detail: 'Bundesinstitut für Berufsbildung mit Umsetzungshilfen zur Prüfung und Rahmenlehrplan Lernfeld 2.'
+    },
+    {
+      label: 'BSI IT-Grundschutz — Baustein SYS.2 IT-Systeme',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz_node.html',
+      detail: 'Anforderungen an Hardware-Auswahl, Beschaffung und Lebenszyklus von Clients und Servern.'
+    },
+    {
+      label: 'DGUV Information 215-410 — Bildschirm- und Büroarbeitsplätze',
+      href: 'https://publikationen.dguv.de/regelwerk/dguv-informationen/3445/bildschirm-und-bueroarbeitsplaetze',
+      detail: 'Praxis-Leitfaden der gesetzlichen Unfallversicherung zu ergonomischen Anforderungen am Arbeitsplatz.'
+    },
+    {
+      label: 'Elektronik-Kompendium — Hardware-Schnittstellen',
+      href: 'https://www.elektronik-kompendium.de/sites/com/index.htm',
+      detail: 'Fachportal mit detaillierten Erklärungen zu USB, PCIe, SATA, DisplayPort, HDMI und Thunderbolt.'
+    },
+    {
+      label: 'heise online — Hardware-Standards und Tests',
+      href: 'https://www.heise.de/thema/Hardware',
+      detail: 'Aktuelle redaktionelle Berichterstattung zu CPU-Generationen, Mainboard-Chipsätzen und Schnittstellen.'
+    },
+  ]}
+/>

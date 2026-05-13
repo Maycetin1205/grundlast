@@ -1,0 +1,173 @@
+﻿# USV-Systeme
+
+## Worum geht's
+
+Eine <Term id="usv">USV</Term> (Unterbrechungsfreie Stromversorgung) schützt Server und
+Netzwerkgeräte vor Stromausfällen. Du lernst, wie lange eine USV Geräte überbrücken kann
+und wie man Verfügbarkeit berechnet — beides kommt in Prüfungs-Rechenaufgaben vor.
+
+---
+
+## Erklärung
+
+### Was macht eine USV?
+
+Wenn der Strom ausfällt, liefert die USV sofort Energie aus ihren Akkus — übergangslos.
+Das gibt IT-Systemen Zeit, sich **geordnet herunterzufahren**, ohne Datenverlust.
+
+> **Analogie:** Eine USV ist wie ein Notstrom-Akku im Laptop. Wenn der Stecker zufällig
+> rausgezogen wird, läuft der Laptop weiter, bis du ihn sauber herunterfahren kannst.
+
+### Die Grundformel: Energie in Wattstunden
+
+Akkus werden in **Volt (V)** und **Amperestunden (Ah)** angegeben:
+
+```
+Wh (Wattstunden) = V × Ah
+```
+
+- Eine Akku-Zelle mit 12 V und 4,5 Ah hat eine Kapazität von: 12 × 4,5 = **54 Wh**
+
+Mehrere Akkus zusammen:
+```
+Gesamt-Wh = Wh_pro_Akku × Anzahl_Akkus
+```
+
+### Restladung berücksichtigen
+
+In der Praxis darf ein Akku nie komplett entladen werden (schadet der Lebensdauer).
+Wenn eine Restladung von z.B. 30 % angegeben ist, sind nur **70 %** nutzbar:
+
+```
+Nutzbare Wh = Gesamt-Wh × (1 − Restladung_als_Dezimalzahl)
+```
+
+Beispiel: 30 % Restladung → 1 − 0,30 = 0,70 → 70 % nutzbar.
+
+### Überbrückungszeit berechnen
+
+Wenn die nutzbare Energie und die angeschlossene Last bekannt sind:
+
+```
+t (Stunden) = Nutzbare Wh / Last in W
+t (Minuten) = t × 60
+```
+
+Auf **volle Minuten abrunden** — in der Praxis kannst du keine halbe Minute schätzen.
+
+### kWh-Variante (direkt gegeben)
+
+Manchmal gibt die Aufgabe die USV-Kapazität direkt in kWh an (bereits nutzbar):
+
+```
+t (Stunden) = Kapazität in kWh / Last in kW
+```
+
+Einheiten müssen passen: kWh ÷ kW = Stunden.
+
+### Verfügbarkeit
+
+Verfügbarkeit (Availability) beschreibt, wie oft ein System tatsächlich läuft:
+
+```
+A = (Gesamtzeit − Ausfallzeit) / Gesamtzeit
+```
+
+Ergebnis als Dezimalzahl (z.B. 0,9977) oder in Prozent (99,77 %).
+
+---
+
+## Beispiele
+
+<Rechenweg
+  title="Beispiel 1: Akkus + Restladung → Überbrückungszeit in Minuten"
+  steps={[
+    {
+      title: "Gesamtlast der angeschlossenen Geräte bestimmen",
+      formula: "2 Disk-Arrays à 400 W → Last = 2 × 400 = 800 W",
+      explanation: "Alle angeschlossenen Geräte addieren."
+    },
+    {
+      title: "Energie pro Akku berechnen",
+      formula: "Wh_Akku = 12 V × 4,5 Ah = 54 Wh",
+      explanation: "Wattstunden = Volt mal Amperestunden. Das ist die Kapazität eines einzelnen Akkus."
+    },
+    {
+      title: "Gesamt-Kapazität aller 20 Akkus",
+      formula: "Gesamt = 54 Wh × 20 = 1080 Wh",
+      explanation: "Alle 20 Akkus zusammen liefern 1080 Wh."
+    },
+    {
+      title: "Nutzbare Energie (Restladung 30 % → 70 % nutzbar)",
+      formula: "Nutzbar = 1080 Wh × 0,70 = 756 Wh",
+      explanation: "30 % Restladung bedeutet: nur 70 % der Kapazität darf verwendet werden."
+    },
+    {
+      title: "Überbrückungszeit berechnen",
+      formula: "t = 756 Wh / 800 W = 0,945 h\nt (min) = 0,945 × 60 = 56,7 min → 56 Minuten",
+      explanation: "Auf volle Minuten abrunden. Die USV überbrückt 56 Minuten."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Beispiel 2: kWh-Angabe + Laständerung"
+  steps={[
+    {
+      title: "Gesamtlast: 4 Racks à 2,75 kW",
+      formula: "P_gesamt = 4 × 2,75 kW = 11,0 kW",
+      explanation: "Alle Racks addieren."
+    },
+    {
+      title: "Überbrückungszeit bei voller Last",
+      formula: "t = 6 kWh / 11,0 kW = 0,545 h = 32,7 min",
+      explanation: "Einheiten passen: kWh ÷ kW = h. 0,545 × 60 = 32,7 Minuten."
+    },
+    {
+      title: "Überbrückungszeit wenn 1 Rack abgeschaltet wird",
+      formula: "P_neu = 3 × 2,75 kW = 8,25 kW\nt_neu = 6 kWh / 8,25 kW = 0,727 h = 43,6 min",
+      explanation: "Weniger Last → längere Überbrückungszeit. Das macht Sinn: mit weniger Verbrauch hält der Akku länger."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Beispiel 3: Verfügbarkeit berechnen"
+  steps={[
+    {
+      title: "Gesamtbetriebszeit des Jahres berechnen",
+      formula: "Gesamtzeit = 365 Tage × 24 h = 8760 h",
+      explanation: "Ein Jahr bei 24/7-Betrieb = 8760 Stunden."
+    },
+    {
+      title: "Gesamte Ausfallzeit addieren",
+      formula: "Ausfallzeit = 2 h + 4 h + 6 h + 8 h = 20 h",
+      explanation: "Alle gemeldeten Ausfälle summieren."
+    },
+    {
+      title: "Verfügbarkeit berechnen",
+      formula: "A = (8760 − 20) / 8760 = 8740 / 8760 ≈ 0,9977 = 99,77 %",
+      explanation: "Verfügbarkeit ist fast immer nahe 100 % bei gut gewarteter Hardware. 99,77 % ist realistisch für Unternehmens-IT."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Ah mit Wh verwechseln:** 4,5 Ah ist noch keine Energie — erst mit der Spannung (V) multiplizieren
+  ergibt Wattstunden. Formel: Wh = V × Ah.
+
+- **Restladung falsch anwenden:** 30 % Restladung → nutzbar sind **70 %**, nicht 30 %.
+  Rechne: Nutzbar = Gesamt-Wh × (1 − 0,30) = Gesamt-Wh × 0,70.
+
+- **kVA ≠ kW:** USVen werden manchmal in Kilovoltampere (kVA) angegeben. Ohne Leistungsfaktor
+  (cos φ) kann man nicht exakt umrechnen. Die Aufgabe gibt meist explizit kW an oder sagt,
+  dass kVA ≈ kW gesetzt werden soll.
+
+- **Einheiten mischen:** Bei der kWh-Variante muss die Last in kW angegeben sein — nicht in W.
+  Wenn die Last in W angegeben ist: erst durch 1000 teilen, dann rechnen.
+
+---
+

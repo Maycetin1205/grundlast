@@ -1,0 +1,334 @@
+﻿# SQL-Grundlagen
+
+## Worum geht's
+
+Du lernst, wie man mit SQL Daten aus einer Datenbank abfragt, filtert, sortiert
+und verknüpft. SQL-Abfragen (besonders SELECT, WHERE, JOIN) kommen in der Prüfung regelmäßig vor.
+
+---
+
+## Was ist SQL?
+
+**SQL** = Structured Query Language = strukturierte Abfragesprache
+
+SQL ist die Sprache, mit der man mit relationalen Datenbanken kommuniziert:
+- Daten **abfragen** (lesen)
+- Daten **einfügen**
+- Daten **ändern**
+- Daten **löschen**
+
+SQL ist keine Programmiersprache im klassischen Sinne — es ist eine **deklarative** Sprache:
+Du sagst **was** du willst, nicht **wie** der Computer es finden soll.
+
+---
+
+## Beispiel-Datenbank für diese Lektion
+
+Wir arbeiten mit zwei Tabellen:
+
+**Tabelle: kunden**
+
+| kunden_id | name | stadt | alter |
+|---|---|---|---|
+| 1 | Murat | München | 22 |
+| 2 | Sarah | Berlin | 25 |
+| 3 | Tom | München | 30 |
+| 4 | Lisa | Hamburg | 22 |
+
+**Tabelle: bestellungen**
+
+| bestell_id | kunden_id | produkt | preis |
+|---|---|---|---|
+| 101 | 1 | Laptop | 999.00 |
+| 102 | 1 | Maus | 29.99 |
+| 103 | 2 | Tastatur | 49.99 |
+| 104 | 3 | Monitor | 349.00 |
+
+---
+
+## SELECT – Daten abfragen
+
+`SELECT` ist der wichtigste SQL-Befehl. Er liest Daten aus einer Tabelle.
+
+**Grundstruktur:**
+```sql
+SELECT spalte1, spalte2
+FROM tabellenname;
+```
+
+**Alle Spalten abfragen (mit *):**
+```sql
+SELECT *
+FROM kunden;
+```
+→ Gibt alle Zeilen und alle Spalten der Tabelle „kunden" zurück.
+
+**Nur bestimmte Spalten:**
+```sql
+SELECT name, stadt
+FROM kunden;
+```
+Ergebnis:
+
+| name | stadt |
+|---|---|
+| Murat | München |
+| Sarah | Berlin |
+| Tom | München |
+| Lisa | Hamburg |
+
+---
+
+## WHERE – Ergebnisse filtern
+
+Mit `WHERE` schränkt man ein, welche Zeilen zurückgegeben werden.
+
+**Beispiel: Nur Kunden aus München:**
+```sql
+SELECT name, alter
+FROM kunden
+WHERE stadt = 'München';
+```
+Ergebnis:
+
+| name | alter |
+|---|---|
+| Murat | 22 |
+| Tom | 30 |
+
+**Vergleichsoperatoren in WHERE:**
+
+| Operator | Bedeutung | Beispiel |
+|---|---|---|
+| `=` | Gleich | `WHERE stadt = 'München'` |
+| `!=` oder `<>` | Ungleich | `WHERE stadt != 'Berlin'` |
+| `>` | Größer als | `WHERE alter > 24` |
+| `<` | Kleiner als | `WHERE alter < 24` |
+| `>=` | Größer oder gleich | `WHERE alter >= 25` |
+| `<=` | Kleiner oder gleich | `WHERE preis <= 50` |
+| `LIKE` | Muster-Vergleich (% = beliebige Zeichen) | `WHERE name LIKE 'M%'` |
+| `IS NULL` | Kein Wert vorhanden | `WHERE telefon IS NULL` |
+
+**LIKE-Beispiel:**
+```sql
+SELECT name
+FROM kunden
+WHERE name LIKE 'M%';
+```
+→ Gibt alle Kunden zurück, deren Name mit „M" beginnt. Ergebnis: Murat.
+
+**Mehrere Bedingungen mit AND / OR:**
+```sql
+SELECT name
+FROM kunden
+WHERE stadt = 'München' AND alter < 25;
+```
+→ Nur Kunden aus München, die jünger als 25 sind. Ergebnis: Murat (22 Jahre).
+
+---
+
+## ORDER BY – Ergebnisse sortieren
+
+```sql
+SELECT name, alter
+FROM kunden
+ORDER BY alter ASC;
+```
+→ Sortiert nach Alter aufsteigend (kleinste Zahl zuerst). `ASC` = ascending = aufsteigend.
+
+`DESC` = descending = absteigend (größte Zahl zuerst):
+```sql
+SELECT name, alter
+FROM kunden
+ORDER BY alter DESC;
+```
+Ergebnis (absteigend nach Alter):
+
+| name | alter |
+|---|---|
+| Tom | 30 |
+| Sarah | 25 |
+| Murat | 22 |
+| Lisa | 22 |
+
+---
+
+## Aggregatfunktionen – Berechnungen über Spalten
+
+SQL kann automatisch **Berechnungen** über alle Zeilen durchführen:
+
+| Funktion | Bedeutung | Beispiel |
+|---|---|---|
+| `COUNT(*)` | Anzahl der Zeilen | `SELECT COUNT(*) FROM kunden;` → 4 |
+| `SUM(spalte)` | Summe aller Werte | `SELECT SUM(preis) FROM bestellungen;` → 1427.98 |
+| `AVG(spalte)` | Durchschnitt | `SELECT AVG(alter) FROM kunden;` → 24.75 |
+| `MAX(spalte)` | Größter Wert | `SELECT MAX(preis) FROM bestellungen;` → 999.00 |
+| `MIN(spalte)` | Kleinster Wert | `SELECT MIN(preis) FROM bestellungen;` → 29.99 |
+
+**Rechenweg AVG:**
+`AVG(alter)` = (22 + 25 + 30 + 22) / 4 = 99 / 4 = **24.75**
+
+---
+
+## JOIN – Tabellen verknüpfen
+
+Ein `JOIN` verbindet zwei Tabellen über einen gemeinsamen Schlüssel (PK + FK).
+
+**Warum braucht man JOIN?**
+Die Kundennamen stehen in der Tabelle „kunden", die Bestellungen in „bestellungen".
+Ohne JOIN kann man nicht gleichzeitig den Kundennamen und die Bestellung sehen.
+
+**INNER JOIN — nur übereinstimmende Zeilen:**
+
+```sql
+SELECT kunden.name, bestellungen.produkt, bestellungen.preis
+FROM kunden
+INNER JOIN bestellungen ON kunden.kunden_id = bestellungen.kunden_id;
+```
+
+**Was passiert hier Schritt für Schritt:**
+1. `FROM kunden` → Ausgangstabelle: kunden
+2. `INNER JOIN bestellungen` → verknüpfe mit bestellungen
+3. `ON kunden.kunden_id = bestellungen.kunden_id` → Verbindung: wo die IDs übereinstimmen
+4. `SELECT kunden.name, bestellungen.produkt, bestellungen.preis` → diese Spalten ausgeben
+
+Ergebnis:
+
+| name | produkt | preis |
+|---|---|---|
+| Murat | Laptop | 999.00 |
+| Murat | Maus | 29.99 |
+| Sarah | Tastatur | 49.99 |
+| Tom | Monitor | 349.00 |
+
+**Beachte:** Lisa (kunden_id = 4) hat keine Bestellung — sie taucht im Ergebnis **nicht** auf, weil INNER JOIN nur Zeilen zeigt, die in **beiden** Tabellen einen passenden Eintrag haben.
+
+**Tabellenaliase — kürzere Schreibweise:**
+```sql
+SELECT k.name, b.produkt, b.preis
+FROM kunden k
+INNER JOIN bestellungen b ON k.kunden_id = b.kunden_id;
+```
+→ `k` und `b` sind Kurzbezeichnungen (Aliase) für die Tabellennamen.
+
+---
+
+## Vollständiges Beispiel: Kombination von SELECT, WHERE, JOIN, ORDER BY
+
+**Aufgabe:** Zeige den Namen und das Produkt aller Kunden aus München, sortiert nach Preis absteigend.
+
+```sql
+SELECT k.name, b.produkt, b.preis
+FROM kunden k
+INNER JOIN bestellungen b ON k.kunden_id = b.kunden_id
+WHERE k.stadt = 'München'
+ORDER BY b.preis DESC;
+```
+
+**Schritt für Schritt:**
+1. `FROM kunden k` + `INNER JOIN bestellungen b ON ...` → Tabellen verknüpfen
+2. `WHERE k.stadt = 'München'` → nur Münchener Kunden: Murat und Tom
+3. `SELECT k.name, b.produkt, b.preis` → diese Spalten
+4. `ORDER BY b.preis DESC` → teuerste zuerst
+
+Ergebnis:
+
+| name | produkt | preis |
+|---|---|---|
+| Tom | Monitor | 349.00 |
+| Murat | Laptop | 999.00 |
+| Murat | Maus | 29.99 |
+
+Warte — nach Preis absteigend sortiert:
+
+| name | produkt | preis |
+|---|---|---|
+| Murat | Laptop | 999.00 |
+| Tom | Monitor | 349.00 |
+| Murat | Maus | 29.99 |
+
+---
+
+## Daten ändern: INSERT, UPDATE, DELETE
+
+Diese drei Befehle verändern die Daten (sie werden oft als **DML** zusammengefasst = Data Manipulation Language).
+
+### INSERT – Neuen Datensatz einfügen
+
+```sql
+INSERT INTO kunden (kunden_id, name, stadt, alter)
+VALUES (5, 'Anna', 'Frankfurt', 28);
+```
+→ Fügt einen neuen Kunden mit der ID 5 ein.
+
+**Wichtig:** Die Reihenfolge der Werte muss zur Reihenfolge der Spaltennamen passen.
+
+---
+
+### UPDATE – Vorhandene Daten ändern
+
+```sql
+UPDATE kunden
+SET stadt = 'Stuttgart'
+WHERE kunden_id = 1;
+```
+→ Ändert die Stadt von Kunde 1 (Murat) auf Stuttgart.
+
+**ACHTUNG:** Ohne `WHERE` werden **alle** Zeilen geändert!
+```sql
+UPDATE kunden
+SET stadt = 'Stuttgart';   -- Alle Kunden bekommen stadt = 'Stuttgart'!
+```
+
+---
+
+### DELETE – Datensatz löschen
+
+```sql
+DELETE FROM kunden
+WHERE kunden_id = 4;
+```
+→ Löscht Lisa (kunden_id = 4) aus der Tabelle.
+
+**ACHTUNG:** Ohne `WHERE` werden **alle** Zeilen gelöscht!
+```sql
+DELETE FROM kunden;   -- Tabelle ist danach leer!
+```
+
+---
+
+## Die SQL-Befehlsreihenfolge
+
+Wenn mehrere Klauseln zusammen verwendet werden, muss die Reihenfolge stimmen:
+
+```sql
+SELECT   spalten          -- 1. Was will ich sehen?
+FROM     tabelle          -- 2. Aus welcher Tabelle?
+JOIN     ...  ON ...      -- 3. Welche Tabellen verknüpfen?
+WHERE    bedingung        -- 4. Welche Zeilen filtern?
+ORDER BY spalte ASC/DESC  -- 5. Wie sortieren?
+```
+
+**Merkhilfe:** **S**ehr **F**lotte **J**äger **W**ollen **O**ft = SELECT FROM JOIN WHERE ORDER BY
+
+---
+
+## Typische Fehler
+
+**Falle 1: WHERE-Bedingung vergessen bei UPDATE/DELETE**
+→ `UPDATE kunden SET ...` ohne WHERE ändert ALLE Kunden — nie vergessen!
+→ In der Aufgabe: immer prüfen, ob eine WHERE-Bedingung gebraucht wird.
+
+**Falle 2: JOIN-Bedingung falsch schreiben**
+→ `ON kunden.kunden_id = bestellungen.kunden_id` — PK der einen Tabelle = FK der anderen.
+→ Richtung beachten: `kunden.kunden_id` = PK, `bestellungen.kunden_id` = FK.
+
+**Falle 3: Spaltennamen bei JOIN eindeutig machen**
+→ Wenn beide Tabellen eine Spalte mit gleichem Namen haben, muss man den Tabellennamen voranstellen: `kunden.name` statt nur `name`.
+
+**Falle 4: INNER JOIN vs. vollständige Liste**
+→ INNER JOIN zeigt nur Zeilen, die in beiden Tabellen einen passenden Eintrag haben.
+→ Kunden ohne Bestellung tauchen im Ergebnis eines INNER JOINs nicht auf.
+
+---
+

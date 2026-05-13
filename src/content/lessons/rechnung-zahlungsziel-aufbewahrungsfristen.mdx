@@ -1,0 +1,366 @@
+﻿# Rechnung, Zahlungsziel und Aufbewahrungsfristen
+
+<MetaBar
+  lesezeit="22 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 1 - Das Unternehmen und die eigene Rolle im Betrieb"
+  pruefungsrelevanz="PFLICHT · 5/5"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du eine <Term id="rechnung">Rechnung</Term> fachlich lesen:
+Du erkennst Pflichtangaben, rechnest Netto, Umsatzsteuer und Brutto sicher auseinander
+und beurteilst, ob ein <Term id="zahlungsziel">Zahlungsziel</Term> mit Skonto korrekt
+ausgewertet wurde.
+
+Du kannst ausserdem einordnen, welche Dokumente wie lange aufbewahrt werden muessen:
+Rechnungen und andere <Term id="buchungsbeleg">Buchungsbelege</Term> regelmaessig
+8 Jahre, Handels- und Geschaeftsbriefe 6 Jahre, Jahresabschluesse und Buecher
+10 Jahre. Genau diese Zahlen sind prüfungsstark, weil sie in Beschaffung, ERP/DMS,
+Angebotsvergleich, Mahnwesen und IT-Dokumentation immer wieder auftauchen.
+
+<Analogie>
+Eine Rechnung ist wie ein Paketaufkleber fuer Geld: Wer hat geliefert, wer soll zahlen,
+was steckt drin, wann wurde geliefert und welcher Steueranteil gehoert dazu? Das
+Zahlungsziel ist der Termin auf dem Aufkleber. Die Aufbewahrungsfrist ist die Regalzeit:
+Solange die Frist laeuft, muss der Beleg auffindbar, lesbar und pruefbar bleiben.
+</Analogie>
+
+## Fachliche Definition
+
+Eine Rechnung ist jedes Dokument, mit dem ueber eine Lieferung oder sonstige Leistung
+abgerechnet wird. Entscheidend ist nicht die Ueberschrift, sondern die Funktion: Das
+Dokument fordert oder dokumentiert eine Zahlung fuer eine konkrete Leistung.
+
+Eine <Term id="e-rechnung">E-Rechnung</Term> ist seit 2025 im deutschen B2B-Kontext
+grundsaetzlich eine Rechnung in einem strukturierten elektronischen Format, das
+elektronisch verarbeitet werden kann. Ein einfaches PDF ist seitdem keine E-Rechnung,
+sondern eine sonstige Rechnung. Fuer die Prüfung reicht: **E-Rechnung = strukturierte Daten,
+nicht nur Datei per Mail.**
+
+Ein Zahlungsziel legt fest, bis wann eine Forderung bezahlt werden soll. Ohne besondere
+Vereinbarung kann eine faellige Geldleistung sofort verlangt werden. Zahlt der Schuldner
+trotz Faelligkeit nicht, kann <Term id="zahlungsverzug">Zahlungsverzug</Term> eintreten:
+typisch nach Mahnung, bei kalendermässig bestimmtem Termin auch ohne Mahnung, oder
+spaetestens 30 Tage nach Faelligkeit und Zugang der Rechnung.
+
+## Der Faktenkern
+
+| Thema | Prüfungskern | Merksatz |
+|---|---|---|
+| Rechnung | Abrechnung ueber Lieferung oder Leistung | Ueberschrift egal, Inhalt zaehlt |
+| Pflichtangaben | zeigen Aussteller, Empfaenger, Leistung, Zeitpunkt, Preis, Steuer | Ohne saubere Angaben wackelt der Vorsteuerabzug |
+| Netto/Brutto | Netto + Umsatzsteuer = Brutto | Brutto herausrechnen: `Brutto / 1,19` bei 19 % |
+| Zahlungsziel | Termin oder Frist fuer die Zahlung | "10 Tage 2 %, 30 Tage netto" zuerst Skonto pruefen |
+| Verzug | Rechtsfolge bei verspaeteter Zahlung | Mahnung, Fixtermin oder 30-Tage-Regel |
+| Aufbewahrung | Belege geordnet, lesbar, verfuegbar halten | Rechnung/Buchungsbeleg meist 8 Jahre |
+
+## Pflichtangaben einer Rechnung
+
+Fuer eine normale Rechnung an ein Unternehmen oder eine juristische Person brauchst du
+die Pflichtangaben aus Paragraf 14 UStG. In der Prüfung werden sie selten als kompletter
+Gesetzestext abgefragt. Haeufiger musst du fehlende Angaben erkennen oder beurteilen,
+ob ein ERP-/DMS-Prozess eine Rechnung sauber pruefen kann.
+
+| Pflichtangabe | Warum sie wichtig ist | Typische Falle |
+|---|---|---|
+| Vollstaendiger Name und Anschrift von Leistendem und Empfaenger | Zuordnung der Parteien | Nur Ansprechpartner statt Firma |
+| Steuernummer oder Umsatzsteuer-Identifikationsnummer des Leistenden | steuerliche Identifikation | USt-IdNr. des Kunden statt des Leistenden |
+| Ausstellungsdatum | Startpunkt fuer Beleglogik | Rechnungsdatum mit Leistungsdatum verwechseln |
+| Einmalige fortlaufende Rechnungsnummer | eindeutige Identifikation | Nummer doppelt vergeben |
+| Menge und Art der Lieferung oder Umfang und Art der Leistung | Nachweis, was abgerechnet wird | "IT-Leistung" zu ungenau |
+| Zeitpunkt der Lieferung oder Leistung | ordnet Umsatz zeitlich zu | Leistungsmonat fehlt |
+| Nettoentgelt nach Steuersaetzen plus vereinbarte Minderungen | Basis fuer Steuer und Zahlung | Skonto/Rabatt nicht erkennbar |
+| Steuersatz und Steuerbetrag oder Hinweis auf Steuerbefreiung | Umsatzsteuer pruefbar machen | Nur Bruttobetrag ohne Steuerangabe |
+| Sonderhinweise, wenn einschlaegig | z. B. Aufbewahrungspflicht oder Gutschrift | "Gutschrift" nicht angegeben |
+
+<Tipp titel="Kleinbetragsrechnung">
+Bei Rechnungen bis 250 EUR brutto gelten vereinfachte Angaben: Name und Anschrift des
+leistenden Unternehmers, Ausstellungsdatum, Menge/Art der Lieferung oder Leistung,
+Bruttobetrag sowie Steuersatz oder Steuerbefreiung. Eine fortlaufende Rechnungsnummer
+und der Empfaengername sind dort nicht wie bei der normalen Rechnung Pflicht.
+</Tipp>
+
+<Warnung titel="PDF ist nicht automatisch E-Rechnung">
+Seit 2025 ist im B2B-Kontext die echte E-Rechnung strukturiert, zum Beispiel als
+XRechnung oder passendes ZUGFeRD-Format. Ein per Mail gesendetes PDF kann praktisch
+nuetzlich sein, ist aber umsatzsteuerlich eine sonstige Rechnung, nicht die neue
+E-Rechnung.
+</Warnung>
+
+## Netto, Umsatzsteuer und Brutto
+
+In betrieblichen Aufgaben wird meist netto gerechnet, weil Unternehmen die Umsatzsteuer
+ueber den Vorsteuerabzug separat behandeln. Privatkundenpreise sind dagegen typischerweise
+brutto.
+
+```text
+Umsatzsteuerbetrag = Nettobetrag x Steuersatz
+Bruttobetrag       = Nettobetrag + Umsatzsteuerbetrag
+Brutto bei 19 %    = Netto x 1,19
+Netto bei 19 %     = Brutto / 1,19
+```
+
+| Gegeben | Gesucht | Rechenweg |
+|---|---|---|
+| Netto 1.200,00 EUR, 19 % USt | Brutto | 1.200,00 x 1,19 = 1.428,00 EUR |
+| Brutto 595,00 EUR, 19 % USt | Netto | 595,00 / 1,19 = 500,00 EUR |
+| Netto 800,00 EUR, 7 % USt | Brutto | 800,00 x 1,07 = 856,00 EUR |
+| Brutto 107,00 EUR, 7 % USt | Netto | 107,00 / 1,07 = 100,00 EUR |
+
+<Warnung titel="Umsatzsteuer herausrechnen">
+19 % Umsatzsteuer aus einem Bruttobetrag herauszurechnen heisst **nicht**:
+`Brutto x 0,81`. Korrekt ist `Brutto / 1,19`, weil die 19 % auf den Nettobetrag
+aufgeschlagen wurden.
+</Warnung>
+
+## Zahlungsziel, Skonto und Verzug
+
+Ein Zahlungsziel steht oft direkt auf der Rechnung. Es sagt, wann der Betrag ohne
+weitere Folgen zu zahlen ist. Skonto ist ein freiwillig vereinbarter Preisnachlass fuer
+schnelle Zahlung.
+
+| Formulierung | Bedeutung | Prüfungsreaktion |
+|---|---|---|
+| "zahlbar sofort" | Forderung soll sofort beglichen werden | Faelligkeit sofort annehmen |
+| "zahlbar bis 31.05.2026" | kalendermässig bestimmter Termin | nach dem Termin kann Verzug ohne Mahnung eintreten |
+| "14 Tage netto" | voller Rechnungsbetrag innerhalb von 14 Tagen | keinen Skontoabzug rechnen |
+| "2 % Skonto innerhalb 10 Tagen, 30 Tage netto" | bei Zahlung bis Tag 10 2 % Abzug, sonst voller Betrag bis Tag 30 | Skonto nur abziehen, wenn schnelle Zahlung moeglich ist |
+| "Vorkasse" | Zahlung vor Lieferung/Leistung | Zahlungsfluss vor Leistung, kein normales Zahlungsziel |
+
+Bei B2B-Forderungen gilt als sichere Prüfungsregel: Ist kein besonderer Termin genannt,
+kann die Zahlung grundsaetzlich sofort verlangt werden. Verzug entsteht durch eine
+Mahnung nach Faelligkeit oder ohne Mahnung, wenn ein Zahlungstermin nach dem Kalender
+bestimmt ist. Ausserdem gibt es die 30-Tage-Regel: Spaetestens 30 Tage nach Faelligkeit
+und Zugang der Rechnung kommt der Schuldner einer Entgeltforderung in Verzug. Gegenueber
+Verbrauchern gilt diese 30-Tage-Folge nur, wenn die Rechnung besonders darauf hinweist.
+
+<Tipp titel="Zahlungsfrist zaehlen">
+In einfachen Aufgaben zaehlst du die Frist ab Rechnungszugang oder ab dem genannten
+Rechnungsdatum, wenn die Aufgabe das so vorgibt. Schreibe immer dazu, welche Grundlage
+du benutzt: "10 Tage ab Rechnungsdatum" oder "30 Tage nach Rechnungseingang".
+</Tipp>
+
+## Aufbewahrungsfristen
+
+Die <Term id="aufbewahrungsfrist">Aufbewahrungsfrist</Term> beginnt nicht mitten im
+Jahr, sondern mit dem Schluss des Kalenderjahres, in dem der Beleg entstanden, die
+Rechnung ausgestellt, der Handelsbrief empfangen oder abgesandt wurde. Eine Rechnung
+vom 14.03.2026 mit 8 Jahren Aufbewahrungsfrist darf deshalb fruehestens ab
+01.01.2035 ausgesondert werden.
+
+| Dokument | Typische Frist | Prüfungsmerksatz |
+|---|---:|---|
+| Handelsbuecher, Inventare, Eroeffnungsbilanzen, Jahresabschluesse, Lageberichte | 10 Jahre | Abschlussunterlagen bleiben am laengsten |
+| Rechnungen und sonstige Buchungsbelege | 8 Jahre | Rechnung = Buchungsbeleg = 8 Jahre |
+| Empfangene Handels-/Geschaeftsbriefe | 6 Jahre | geschaeftliche Korrespondenz |
+| Wiedergaben abgesandter Handels-/Geschaeftsbriefe | 6 Jahre | Kopie/Archiv der Ausgangspost |
+| Lieferscheine, die keine Buchungsbelege sind | bis Rechnung erhalten bzw. versandt | endet mit Rechnungsbezug |
+| Privatpersonen bei bestimmten grundstuecksbezogenen Leistungen | 2 Jahre | Sonderfall aus dem UStG |
+
+Fuer IT-Aufgaben ist nicht nur die Zahl wichtig, sondern die technische Umsetzung:
+Ein DMS oder ERP muss Dokumente waehrend der Frist geordnet, lesbar, verfuegbar und
+bei digitalen Belegen maschinell auswertbar halten. Eine Rechnung einfach als Datei in
+einem unklaren Ordner abzulegen, ist organisatorisch schwach.
+
+<Warnung titel="Aufbewahrung ist nicht Backup">
+Ein Backup hilft gegen Datenverlust. Aufbewahrung heisst zusaetzlich: Das Dokument ist
+geordnet, unveraendert nachvollziehbar, innerhalb angemessener Zeit lesbar und fuer
+Aufgaben auffindbar. Ein verschluesseltes Archiv ohne Schluessel erfuellt den Zweck
+nicht.
+</Warnung>
+
+## Vorgehen in der Prüfung
+
+<Schritte
+  items={[
+    {
+      titel: 'Rechnungstyp erkennen',
+      text: 'Normale Rechnung, Kleinbetragsrechnung, E-Rechnung oder Gutschrift? Davon haengen Pflichtangaben und typische Sonderhinweise ab.',
+    },
+    {
+      titel: 'Pflichtangaben pruefen',
+      text: 'Parteien, Steuernummer oder USt-IdNr., Datum, Rechnungsnummer, Leistung, Leistungszeitpunkt, Nettoentgelt, Steuersatz und Steuerbetrag abgleichen.',
+    },
+    {
+      titel: 'Netto/Brutto sauber trennen',
+      text: 'Bei betrieblichen Vergleichen meist netto rechnen. Umsatzsteuer aufschlagen mit x 1,19 oder x 1,07; herausrechnen mit Division durch 1,19 oder 1,07.',
+    },
+    {
+      titel: 'Zahlungsziel auswerten',
+      text: 'Ist ein Fixtermin genannt? Gibt es Skonto? Ist Zahlung innerhalb der Skontofrist realistisch? Nur dann Skonto abziehen.',
+    },
+    {
+      titel: 'Verzug beurteilen',
+      text: 'Pruefe Mahnung, kalendermässig bestimmten Termin oder 30-Tage-Regel nach Faelligkeit und Rechnungszugang.',
+    },
+    {
+      titel: 'Aufbewahrungsfrist bestimmen',
+      text: 'Dokumentart bestimmen, Frist aus der Tabelle waehlen und ab Ende des Kalenderjahres rechnen.',
+    },
+  ]}
+/>
+
+## Typische Aufgabe mit Musterloesung
+
+<Beispiel titel="Rechnung fuer einen Router-Pool">
+Ein Systemhaus erhaelt am 04.05.2026 eine Rechnung ueber **25 Router**. Der Nettobetrag
+betraegt **3.000,00 EUR**, Umsatzsteuer **19 %**. Auf der Rechnung steht:
+
+```text
+Zahlungsbedingungen: 2 % Skonto bei Zahlung innerhalb von 10 Tagen,
+sonst 30 Tage netto.
+```
+
+Die Rechnung wurde am 02.05.2026 ausgestellt. Das Unternehmen kann am 09.05.2026 zahlen.
+Berechne Brutto, Skonto und Ueberweisungsbetrag. Bestimme ausserdem, bis wann die
+Rechnung mindestens aufzubewahren ist.
+</Beispiel>
+
+<StepByStep titel="Rechnung, Zahlungsziel und Frist loesen">
+  <Schritt nr={1} titel="Bruttobetrag berechnen">
+    Netto: 3.000,00 EUR.
+    Umsatzsteuer: 3.000,00 x 0,19 = **570,00 EUR**.
+    Brutto: 3.000,00 + 570,00 = **3.570,00 EUR**.
+  </Schritt>
+  <Schritt nr={2} titel="Skontofrist pruefen">
+    Rechnungseingang ist der 04.05.2026. Zahlung am 09.05.2026 liegt innerhalb von
+    10 Tagen. Das Skonto darf genutzt werden.
+  </Schritt>
+  <Schritt nr={3} titel="Skonto berechnen">
+    Skonto wird in der einfachen Prüfungsrechnung auf den Rechnungsbetrag angewendet:
+    3.570,00 x 0,02 = **71,40 EUR**.
+  </Schritt>
+  <Schritt nr={4} titel="Ueberweisungsbetrag berechnen">
+    3.570,00 - 71,40 = **3.498,60 EUR**.
+    Dieser Betrag wird bei rechtzeitiger Zahlung ueberwiesen.
+  </Schritt>
+  <Schritt nr={5} titel="Aufbewahrungsfrist bestimmen">
+    Die Rechnung ist ein Buchungsbeleg. Regelmaessige Frist: **8 Jahre**.
+    Fristbeginn ist der Schluss des Kalenderjahres 2026, also der 31.12.2026.
+  </Schritt>
+  <Ergebnis>
+    Bruttobetrag: **3.570,00 EUR**. Bei Skontozahlung bis innerhalb von 10 Tagen:
+    **3.498,60 EUR** Ueberweisungsbetrag. Aufbewahrung mindestens bis zum
+    **31.12.2034**, frueheste Aussonderung ab **01.01.2035**.
+  </Ergebnis>
+</StepByStep>
+
+## Fehlerfallen
+
+1. **Brutto mit Netto vergleichen.** Im Einkauf werden Angebote meist netto verglichen.
+   Privatkundenpreise sind dagegen brutto. In der Aufgabe immer nach der Steuerbasis
+   suchen.
+2. **Umsatzsteuer falsch herausrechnen.** Aus 119,00 EUR brutto werden 100,00 EUR netto
+   durch `119,00 / 1,19`, nicht durch `119,00 x 0,81`.
+3. **Skonto ziehen, obwohl die Frist nicht eingehalten wird.** Skonto ist kein
+   allgemeiner Rabatt, sondern an schnelle Zahlung gebunden.
+4. **Rechnungsdatum und Leistungsdatum verwechseln.** Beide koennen identisch sein,
+   muessen es aber nicht. Fuer Pflichtangaben ist der Leistungszeitpunkt wichtig.
+5. **PDF als E-Rechnung bezeichnen.** Ein PDF ist nur eine sonstige Rechnung, wenn es
+   kein strukturiertes elektronisches Format enthaelt.
+6. **Alte 10-Jahre-Regel pauschal anwenden.** Rechnungen/Buchungsbelege sind aktuell
+   regelmaessig 8 Jahre aufzubewahren; Jahresabschluesse und Buecher bleiben 10 Jahre.
+7. **Frist ab Belegdatum statt Jahresende rechnen.** Die Frist startet mit Schluss des
+   Kalenderjahres, nicht am Rechnungsdatum selbst.
+8. **Aufbewahrung mit Datensicherung gleichsetzen.** Ein Backup ersetzt keine geordnete,
+   lesbare und pruefbare Archivierung.
+
+## Merksatz
+
+```text
+Rechnung pruefen:
+Wer? Was? Wann? Wie viel netto? Welche Steuer? Welche Nummer?
+
+Zahlungsziel pruefen:
+Skonto nur in der Skontofrist, sonst voller Betrag bis Nettoziel.
+
+Aufbewahrung merken:
+Buecher/Abschluesse 10 Jahre - Rechnungen/Buchungsbelege 8 Jahre -
+Handelsbriefe 6 Jahre.
+```
+
+<Glossar
+  eintraege={[
+    {
+      term: 'Aufbewahrungsfrist',
+      definition: 'Zeitraum, in dem Geschaeftsunterlagen geordnet, lesbar, verfuegbar und pruefbar aufbewahrt werden muessen. Die Frist beginnt in der Regel mit dem Schluss des Kalenderjahres.'
+    },
+    {
+      term: 'Buchungsbeleg',
+      definition: 'Nachweis fuer einen Geschaeftsvorfall in der Buchhaltung, zum Beispiel Eingangsrechnung, Ausgangsrechnung, Quittung oder Zahlungsbeleg.'
+    },
+    {
+      term: 'E-Rechnung',
+      definition: 'Strukturierte elektronische Rechnung, die elektronisch verarbeitet werden kann. Ein einfaches PDF ist seit 2025 im B2B-Kontext keine E-Rechnung mehr.'
+    },
+    {
+      term: 'Rechnung',
+      definition: 'Dokument, mit dem ueber eine Lieferung oder sonstige Leistung abgerechnet wird. Fuer ordnungsgemaesse Rechnungen gelten Pflichtangaben.'
+    },
+    {
+      term: 'Zahlungsziel',
+      definition: 'Vereinbarte Frist oder ein Termin, bis zu dem eine Rechnung bezahlt werden soll.'
+    },
+    {
+      term: 'Zahlungsverzug',
+      definition: 'Situation, in der eine faellige Geldforderung nicht rechtzeitig bezahlt wird und die rechtlichen Verzugsfolgen eintreten koennen.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'Paragraf 14 UStG - Ausstellung von Rechnungen',
+      href: 'https://www.gesetze-im-internet.de/ustg_1980/__14.html',
+      detail: 'Amtliche Grundlage fuer Rechnungsbegriff, E-Rechnung und Pflichtangaben.'
+    },
+    {
+      label: 'Paragraf 14b UStG - Aufbewahrung von Rechnungen',
+      href: 'https://www.gesetze-im-internet.de/ustg_1980/__14b.html',
+      detail: 'Amtliche Grundlage fuer die Aufbewahrung von Rechnungen und Fristbeginn.'
+    },
+    {
+      label: 'Paragraf 147 AO - Ordnungsvorschriften fuer die Aufbewahrung',
+      href: 'https://www.gesetze-im-internet.de/ao_1977/__147.html',
+      detail: 'Steuerliche Aufbewahrungsfristen fuer Buecher, Buchungsbelege und Geschaeftsbriefe.'
+    },
+    {
+      label: 'Paragraf 257 HGB - Aufbewahrung von Unterlagen',
+      href: 'https://www.gesetze-im-internet.de/hgb/__257.html',
+      detail: 'Handelsrechtliche Aufbewahrungsfristen fuer Kaufleute.'
+    },
+    {
+      label: 'Paragraf 271 BGB - Leistungszeit',
+      href: 'https://www.gesetze-im-internet.de/bgb/__271.html',
+      detail: 'Grundregel zur sofortigen Faelligkeit, wenn keine Leistungszeit bestimmt ist.'
+    },
+    {
+      label: 'Paragraf 286 BGB - Verzug des Schuldners',
+      href: 'https://www.gesetze-im-internet.de/bgb/__286.html',
+      detail: 'Mahnung, kalendermässig bestimmter Termin und 30-Tage-Regel fuer Entgeltforderungen.'
+    },
+    {
+      label: 'Paragraf 288 BGB - Verzugszinsen und sonstiger Verzugsschaden',
+      href: 'https://www.gesetze-im-internet.de/bgb/__288.html',
+      detail: 'Verzugszinsregeln und 40-EUR-Pauschale im unternehmerischen Geschaeftsverkehr.'
+    },
+    {
+      label: 'BMF - FAQ zur verpflichtenden E-Rechnung ab 2025',
+      href: 'https://www.bundesfinanzministerium.de/Content/DE/FAQ/e-rechnung.html',
+      detail: 'Aktueller Stand Maerz 2026 zu E-Rechnung, sonstiger Rechnung, Ausnahmen und Uebergangsregeln.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Offizieller Ausbildungskontext fuer betriebliche Prozesse, Beschaffung und Rechnungswesen.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Lernfeldbezug zu Unternehmen, Kundenauftrag, Beschaffung und Dokumentation.'
+    },
+  ]}
+/>

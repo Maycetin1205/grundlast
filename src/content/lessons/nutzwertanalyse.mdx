@@ -1,0 +1,120 @@
+﻿# Nutzwertanalyse
+
+## Worum geht's
+
+Die Nutzwertanalyse ist eine Methode, um Alternativen systematisch zu vergleichen — wenn nicht
+nur der Preis entscheidet. In Prüfung ist sie eine der häufigsten Rechenaufgaben (10–15 Punkte!).
+Du lernst die 5 Schritte auswendig und kannst jede Variante sicher durchrechnen.
+
+---
+
+## Erklärung
+
+Stell dir vor, du sollst für deine Firma drei Laptops vergleichen. Laptop A ist am billigsten,
+Laptop B hat den besten Akku, Laptop C hat die höchste Leistung. Welchen nimmst du?
+
+Nur den Preis zu vergleichen wäre zu einfach — in der Realität zählen viele Faktoren.
+Die **Nutzwertanalyse** macht das systematisch und nachvollziehbar: Jedes Kriterium bekommt
+eine Gewichtung, jede Alternative eine Bewertung — am Ende gewinnt der höchste Nutzwert.
+
+### Die 5 Schritte
+
+```
+SCHRITT 1: Kriterien festlegen    (z. B. Preis, Qualität, Service)
+SCHRITT 2: Gewichtung festlegen   (Summe MUSS 100 % ergeben!)
+SCHRITT 3: Alternativen bewerten  (z. B. 1–10 Punkte)
+SCHRITT 4: Nutzwert berechnen     Nutzwert = Gewichtung × Bewertung (pro Kriterium)
+SCHRITT 5: Summe bilden           → Höchster Gesamtnutzwert gewinnt
+```
+
+**Die Formel:**
+
+```
+Nutzwert gesamt = Σ (Gewichtung × Bewertung)
+```
+
+Das Sigma-Zeichen (Σ) bedeutet: alle Teilprodukte addieren.
+
+| Begriff | Bedeutung |
+|---|---|
+| Kriterium | Was wird bewertet? (Preis, Akku, Design …) |
+| Gewichtung | Wie wichtig ist das Kriterium? (in %, Summe = 100 %) |
+| Bewertung | Wie gut erfüllt die Alternative dieses Kriterium? (z. B. 1–10) |
+| Nutzwert | Gewichtung × Bewertung — pro Kriterium addiert |
+
+---
+
+## Beispiele
+
+<Rechenweg
+  title="Beispiel 1: Laptop-Vergleich (3 Alternativen)"
+  steps={[
+    {
+      title: "Schritt 1+2: Kriterien und Gewichtungen festlegen",
+      formula: "Preis:        40 %\nLeistung:     30 %\nAkkulaufzeit: 20 %\nDesign:       10 %\n─────────────────\nSumme:       100 %  ✓",
+      explanation: "Die Gewichtungen zeigen, was wichtiger ist. Preis (40 %) ist hier das wichtigste Kriterium. Kontrolle: Alle Gewichtungen müssen genau 100 % ergeben."
+    },
+    {
+      title: "Schritt 3: Bewertungen vergeben (1–10 Punkte)",
+      formula: "              Laptop A  Laptop B  Laptop C\nPreis (40 %):    8        9         7\nLeistung (30 %): 9        7        10\nAkku (20 %):     7        8         6\nDesign (10 %):   6        7         9",
+      explanation: "Jede Alternative bekommt pro Kriterium eine Note. Hohe Zahl = gut. Laptop B hat beim Preis die beste Note (9), Laptop C bei der Leistung (10)."
+    },
+    {
+      title: "Schritt 4+5: Nutzwert für Laptop A berechnen",
+      formula: "= (0,40 × 8) + (0,30 × 9) + (0,20 × 7) + (0,10 × 6)\n= 3,20 + 2,70 + 1,40 + 0,60\n= 7,90 Punkte",
+      explanation: "Gewichtung als Dezimalzahl schreiben (40 % = 0,40). Dann jede Gewichtung mit der Bewertung multiplizieren und alles addieren."
+    },
+    {
+      title: "Nutzwert für Laptop B berechnen",
+      formula: "= (0,40 × 9) + (0,30 × 7) + (0,20 × 8) + (0,10 × 7)\n= 3,60 + 2,10 + 1,60 + 0,70\n= 8,00 Punkte",
+      explanation: "Laptop B hat bei Preis und Akku bessere Noten als A — das zeigt sich im Ergebnis."
+    },
+    {
+      title: "Nutzwert für Laptop C berechnen",
+      formula: "= (0,40 × 7) + (0,30 × 10) + (0,20 × 6) + (0,10 × 9)\n= 2,80 + 3,00 + 1,20 + 0,90\n= 7,90 Punkte",
+      explanation: "Laptop C hat die beste Leistung (10), aber beim wichtigsten Kriterium Preis nur 7 — das kostet Punkte."
+    },
+    {
+      title: "Ergebnis auswerten",
+      formula: "Laptop A: 7,90 Punkte\nLaptop B: 8,00 Punkte  ← Gewinner!\nLaptop C: 7,90 Punkte",
+      explanation: "Laptop B gewinnt mit 8,00 Punkten. A und C sind gleichauf — obwohl A bei Preis schlechter ist, holt C den Vorsprung beim Design nicht auf."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Beispiel 2: Server-Angebote vergleichen (IHK-Szenario)"
+  steps={[
+    {
+      title: "Aufgabe und Gewichtungen",
+      formula: "Kriterien:\nAnschaffungskosten: 50 %\nSupport-Reaktionszeit: 30 %\nErweiterbarkeit: 20 %\n────────────────────────\nSumme: 100 % ✓",
+      explanation: "Typisches IHK-Szenario: IT-Abteilung soll einen neuen Server beschaffen. Kosten sind hier mit 50 % am wichtigsten."
+    },
+    {
+      title: "Bewertungen und Berechnung",
+      formula: "           Anbieter X  Anbieter Y\nKosten:        9          6\nSupport:       6          9\nErweiterb.:    7          8\n\nAnbieter X: (0,5×9)+(0,3×6)+(0,2×7)\n          = 4,50 + 1,80 + 1,40 = 7,70\n\nAnbieter Y: (0,5×6)+(0,3×9)+(0,2×8)\n          = 3,00 + 2,70 + 1,60 = 7,30",
+      explanation: "Anbieter X gewinnt (7,70 vs. 7,30) — obwohl Y beim Support besser ist, ziehen die höheren Kosten ihn herunter."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Gewichtungen ergeben nicht 100 %:** Die häufigste Fehlerquelle. Wenn die Aufgabe
+  Gewichtungen vorgibt und sie sich nicht auf 100 % summieren, ist das ein Fehler in der
+  Aufgabe oder du hast eine übersehen. Immer kontrollieren!
+
+- **Höchster Nutzwert = schlechteste Alternative?** NEIN — **höchster Nutzwert = beste
+  Alternative**. Das klingt offensichtlich, aber unter Prüfungsdruck werden die Ergebnisse
+  manchmal falsch interpretiert.
+
+- **Nutzwert in Euro umrechnen:** Der Nutzwert ist eine dimensionslose Punktzahl — kein
+  Geldwert. Man kann ihn nicht in Euro ausdrücken.
+
+- **Dezimal vs. Prozent verwechseln:** 40 % Gewichtung → 0,40 in der Rechnung.
+  Wer mit 40 statt 0,40 multipliziert, kommt auf absurd hohe Zahlen.
+
+---
+

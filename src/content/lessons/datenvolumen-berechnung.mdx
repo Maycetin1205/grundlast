@@ -1,0 +1,703 @@
+﻿# Datenmengen, Scan & Übertragung — komplett rechnen
+
+<MetaBar
+  lesezeit="30 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 2 — Datenmengen, Scan und Übertragung"
+  pruefungsrelevanz="PFLICHT · 5/5"
+/>
+
+Dieses Kapitel ist die zentrale Drehscheibe für alle Rechenaufgaben rund um Datenmengen.
+Es fasst drei Themen zusammen, die in der Prüfung fast immer kombiniert vorkommen: Bit/Byte
+und Präfixe als Fundament, Scan- und Bilddaten als Speicherbedarf-Aufgabe sowie Datenrate
+und Übertragungsdauer als Netzwerk-Aufgabe. Detail-Lessons zu Scan-Bilddaten und
+Datenrate-Downloadzeit bleiben als kürzere Übungswege bestehen.
+
+## 01 · Warum existiert das überhaupt?
+
+In der Aufgabe musst du in unter einer Stunde sagen können, wie viel Speicher ein
+Jahr Belegscan kostet, wie lange ein 8-GB-Backup über VDSL braucht und ob ein Video
+in einer bestimmten Bitrate auf eine 256-GB-SSD passt. Das sind drei Aufgabentypen,
+die immer auf dieselben Bausteine zugreifen: *<Term id="bit">Bit</Term>* und
+*<Term id="byte">Byte</Term>* als kleinste Einheiten, ein paar saubere Formeln und das
+Wissen, dass `b` und `B` nicht dasselbe sind. Wer hier hängt, verliert in den ersten
+zehn Minuten der Prüfung Punkte, die nichts mit Verständnis zu tun haben — sondern nur damit,
+dass eine Einheit nicht umgerechnet wurde.
+
+<Analogie>
+Stell dir Datenübertragung wie Wasser durch ein Rohr vor. Die *Datenmenge* ist das
+Volumen im Eimer, das du transportieren willst. Die *<Term id="bandbreite">Bandbreite</Term>*
+ist der Querschnitt des Rohrs — wie viel Wasser pro Sekunde theoretisch durchpasst. Der
+*<Term id="durchsatz">Durchsatz</Term>* ist das, was am anderen Ende tatsächlich ankommt:
+durch Reibung, Verwirbelung und Lecks immer etwas weniger. Die
+*<Term id="latenz">Latenz</Term>* ist die Zeit, bis der erste Tropfen unten ankommt — egal
+wie dick das Rohr ist. Vier Eigenschaften, die unabhängig voneinander sind und in
+Aufgaben gern verwechselt werden.
+</Analogie>
+
+---
+
+## 02 · Das Grundprinzip
+
+### Bit und Byte — die zwei kleinsten Einheiten
+
+Ein Bit ist die kleinste Informationseinheit und kennt zwei Zustände: 0 oder 1. Acht Bits
+ergeben ein Byte. Das reicht, um ein einzelnes Zeichen aus dem klassischen
+*<Term id="ascii">ASCII</Term>*-Alphabet zu speichern — `Hallo` belegt also 5 Byte.
+
+```
+1 Byte = 8 Bit
+1 KiB  = 1024 Byte           (binär, IEC 80000-13)
+1 KB   = 1000 Byte           (dezimal, SI)
+```
+
+Daraus folgt der wichtigste Faktor jeder Übertragungsaufgabe: **8**.
+
+```
+MB/s   = Mbit/s ÷ 8
+Mbit/s = MB/s × 8
+```
+
+Die Eselsbrücke: kleines `b` ist das kleine Bit, großes `B` das große Byte. Internet-Anbieter
+und Mobilfunktarife rechnen in Mbit/s — Dateimanager und SSDs in MB/s.
+
+### SI-Präfixe (dezimal) gegen IEC-Präfixe (binär)
+
+Zwei Welten teilen sich dieselben Buchstaben — und genau das ist die häufigste Falle:
+
+| Präfix-Typ | Zeichen | Wert | Quelle |
+|---|---|---|---|
+| *<Term id="dezimalpraefix">Dezimal</Term>* | KB, MB, GB, TB | 10³, 10⁶, 10⁹, 10¹² Byte | SI-Brochure (BIPM) |
+| *<Term id="binaerpraefix">Binär</Term>* | KiB, MiB, GiB, TiB | 2¹⁰, 2²⁰, 2³⁰, 2⁴⁰ Byte | IEC 80000-13 |
+
+```
+1 KB  = 1.000 Byte
+1 KiB = 1.024 Byte           (~ 2,4 Prozent grösser)
+1 MB  = 1.000.000 Byte
+1 MiB = 1.048.576 Byte       (~ 4,9 Prozent grösser)
+1 GB  = 1.000.000.000 Byte
+1 GiB = 1.073.741.824 Byte   (~ 7,4 Prozent grösser)
+1 TB  = 10¹² Byte
+1 TiB = 2⁴⁰ Byte             (~ 10,0 Prozent grösser)
+```
+
+Festplattenhersteller geben dezimal an (1 TB = 10¹² Byte). Windows zeigt binär an
+(1 TiB = 2⁴⁰ Byte). Daraus erscheint ein „1 TB"-Datenträger im Explorer als ca. 931 GiB —
+kein Defekt, sondern saubere Mathematik.
+
+### Speicherbedarf — die zwei Grundformeln
+
+**Pro Datei:**
+
+```
+Datenmenge = Pixelanzahl × Farbtiefe ÷ 8
+oder
+Datenmenge = Bitrate × Dauer ÷ 8
+```
+
+**Pro Aufgabe:**
+
+```
+Gesamtspeicher = Datenmenge je Datei × Anzahl Dateien
+```
+
+### Übertragungsdauer — eine einzige Formel
+
+```
+Zeit = Datenmenge ÷ effektive Datenrate
+```
+
+Beide Größen müssen in derselben Einheit sein — also entweder beides in Bit oder beides in Byte.
+
+### Brutto gegen Netto — der Realitäts-Abschlag
+
+Eine Leitung mit 100 Mbit/s liefert nie 100 Mbit/s an die Datei. Header von Ethernet
+(18 Byte je Frame), IP (20 Byte), TCP (20 Byte), TLS-Verschlüsselung, Wiederholungen und
+das Endgerät selbst kosten Anteile. Faustregeln für Aufgaben:
+
+| Übertragungsweg | Realistischer Wirkungsgrad |
+|---|---|
+| Ethernet kabelgebunden | etwa 90 bis 95 Prozent |
+| WLAN (gut, 2,4 GHz) | etwa 40 bis 60 Prozent |
+| WLAN (gut, 5 GHz) | etwa 60 bis 75 Prozent |
+| TCP über DSL/VDSL | etwa 80 bis 90 Prozent |
+
+Die Aufgabe gibt den Wirkungsgrad fast immer vor („nutzbar 80 Prozent"). Wenn nicht: in
+der Antwort den angenommenen Wert kurz nennen — das ist die saubere Prüfungslösung.
+
+<Tipp titel="Merksatz">
+Datenmenge in Byte, Datenrate in Bit/s — oder umgekehrt? Beides geht, aber nicht in
+derselben Rechnung. Erst beides in eine gemeinsame Basis (alles Byte oder alles Bit),
+dann teilen oder multiplizieren. Eine Einheit hinter jedem Zwischenergebnis ist Pflicht.
+</Tipp>
+
+---
+
+## 03 · Die Mechanik — vom Pixel bis zur Sekunde
+
+### 03.1 · Scan- und Bilddaten — die Vier-Schritt-Formel
+
+Die zentrale Formel verbindet drei Größen in fester Reihenfolge: zuerst die Auflösung in
+*<Term id="dpi">DPI</Term>*, dann die *<Term id="farbtiefe">Farbtiefe</Term>* in Bit pro
+Pixel, am Ende ein optionaler Faktor für *<Term id="kompression">Kompression</Term>*.
+
+<Schritte
+  items={[
+    { titel: 'Maße in Pixel umrechnen', text: 'Wenn das Format in Zentimetern angegeben ist (z. B. DIN A4 = 21,0 cm × 29,7 cm), zuerst durch 2,54 teilen für Inch. Dann jede Inch-Zahl mit der DPI-Zahl multiplizieren — getrennt für Breite und Höhe.' },
+    { titel: 'Pixelanzahl berechnen', text: 'Pixelanzahl = Breite_px × Höhe_px. Bei einem A4-Scan mit 600 dpi sind das schon 41,7 Megapixel — also schnell sehr grosse Zahlen.' },
+    { titel: 'Bits aus Pixeln und Farbtiefe', text: 'Bits gesamt = Pixelanzahl × Farbtiefe. Die Farbtiefe ist immer in Bit pro Pixel angegeben: 1 Bit S/W, 8 Bit Graustufen, 24 Bit RGB-Farbe, 32 Bit RGB plus Alpha.' },
+    { titel: 'Bytes und Zieleinheit', text: 'Bytes = Bits ÷ 8. Danach in die geforderte Einheit umrechnen: KiB (÷ 1024), MiB (÷ 1024²), GiB (÷ 1024³), TiB (÷ 1024⁴). Wenn die Aufgabe MB statt MiB nennt, durch 1000-Potenzen teilen.' },
+    { titel: 'Kompressions-Faktor anwenden', text: 'Bei „auf 50 Prozent komprimiert" multiplizierst du das Roh-Ergebnis mit 0,5. „Auf 30 Prozent" heisst × 0,3 — also 70 Prozent werden weggespart, 30 Prozent bleiben übrig.' },
+    { titel: 'Hochrechnen auf die Aufgaben-Periode', text: 'Bei Mengenaufgaben (Scans pro Tag × Arbeitstage) am Ende mit der Stückzahl multiplizieren. Erst zum Schluss runden — Zwischenrundungen erzeugen Punktabzug.' },
+  ]}
+/>
+
+### 03.2 · Datenrate, Datenmenge und Übertragungsdauer
+
+Drei Formeln, die du im Schlaf können musst:
+
+```
+Datenrate    = Datenmenge ÷ Zeit
+Zeit         = Datenmenge ÷ Datenrate
+Datenmenge   = Datenrate × Zeit
+```
+
+Vor jeder Rechnung: Einheiten vereinheitlichen. Wer Datenmenge in MB und die
+*<Term id="datenrate">Datenrate</Term>* in Mbit/s vermischt, rechnet Faktor 8 falsch — der
+häufigste Punktverlust überhaupt.
+
+```
+Mbit/s ÷ 8 = MB/s
+MB/s   × 8 = Mbit/s
+```
+
+Bei Brutto/Netto-Aufgaben:
+
+```
+effektive Datenrate = Bandbreite × Wirkungsgrad
+Zeit                = Datenmenge ÷ effektive Datenrate
+```
+
+### 03.3 · Bitrate für Audio und Video
+
+Audio und Video sind im Kern nichts anderes als „Pixelanzahl je Frame × Farbtiefe ×
+Frames pro Sekunde" — geteilt durch 8 für Bytes, mal Sekunden für die Gesamtdatei:
+
+```
+Roh-Bitrate (Video) = Pixel × Farbtiefe × FPS
+Roh-Bitrate (Audio) = Sample-Rate × Bittiefe × Kanäle
+
+Datenmenge je Sekunde = Roh-Bitrate ÷ 8
+Datenmenge je Stunde  = Datenmenge je Sekunde × 3600
+```
+
+In der Praxis komprimieren Video- und Audio-Codecs so stark, dass die endgültige
+*<Term id="bitrate">Bitrate</Term>* nur ein Bruchteil des Roh-Werts ist. H.264 erreicht für
+ein FullHD-Video bei 30 fps typische Bitraten von 4 bis 12 Mbit/s — der Roh-Wert liegt bei
+ca. 1,5 Gbit/s.
+
+<Tipp titel="Reihenfolge merken">
+Pixel → Bits → Byte → Zieleinheit → Stück. Wer in dieser Reihenfolge bleibt, kommt sicher
+durch jede Scan-Aufgabe. Bei Übertragung gilt: alles in dieselbe Welt (Bit oder Byte),
+dann teilen.
+</Tipp>
+
+---
+
+## 04 · Konkrete Anwendungsfälle
+
+<Beispiel titel="A4-Scan bei 600 dpi — Dateigröße und Speicher für 200 Scans">
+
+Eine Anwaltskanzlei scannt eingehende Verträge mit einem Multifunktionsgerät bei
+**600 dpi** und **24 Bit Farbtiefe** in DIN A4 (**21,0 cm × 29,7 cm**). Die Scans werden
+**unkomprimiert** im TIFF-Format archiviert. Wie groß ist eine einzelne Datei in MiB,
+und wie viel Speicher belegen 200 Scans pro Tag in einer Woche (5 Arbeitstage)?
+
+</Beispiel>
+
+<StepByStep titel="Speicherbedarf für hochauflösende A4-Scans">
+  <Schritt nr={1} titel="Format in Inch umrechnen">
+    Breite: 21,0 cm ÷ 2,54 ≈ **8,2677 Inch**.
+    Höhe: 29,7 cm ÷ 2,54 ≈ **11,6929 Inch**.
+    Inch ist die Einheit, auf die sich DPI bezieht. Ohne diesen Schritt wären die
+    Pixelzahlen falsch um Faktor 2,54.
+  </Schritt>
+  <Schritt nr={2} titel="Pixelanzahl bestimmen">
+    Breite_px = 8,2677 × 600 ≈ **4960 px**.
+    Höhe_px  = 11,6929 × 600 ≈ **7016 px**.
+    Pixelanzahl = 4960 × 7016 = **34 799 360 px**.
+  </Schritt>
+  <Schritt nr={3} titel="Bits und Bytes je Datei">
+    Bits = 34 799 360 × **24 Bit** = **835 184 640 Bit**.
+    Bytes = 835 184 640 ÷ 8 = **104 398 080 Byte**.
+    Die Farbtiefe steht in Bit pro Pixel — wer hier 24 Byte rechnet, hat eine Datei, die
+    achtmal zu gross ist.
+  </Schritt>
+  <Schritt nr={4} titel="In MiB umrechnen">
+    MiB = 104 398 080 ÷ 1 048 576 ≈ **99,56 MiB** je Scan.
+    Eine einzige Seite belegt rund 100 MiB — typischer Wert für unkomprimiertes 600-dpi-TIFF.
+  </Schritt>
+  <Schritt nr={5} titel="Wochenmenge hochrechnen">
+    Scans/Woche = 200 × 5 = **1000 Scans**.
+    Gesamtbytes = 1000 × 104 398 080 ≈ **104 398 080 000 Byte**.
+    GiB = 104 398 080 000 ÷ 1 073 741 824 ≈ **97,23 GiB** für die ganze Woche.
+  </Schritt>
+  <Ergebnis>
+    Eine A4-Seite bei 600 dpi und 24 Bit belegt rund **100 MiB unkomprimiert**. Bei 200
+    Scans pro Tag fallen pro Woche knapp **97 GiB** an — pro Jahr (250 Arbeitstage) wären
+    das **rund 4,75 TiB**. In der Praxis senkt JPEG- oder PDF-Kompression das auf rund
+    ein Zehntel; ohne Kompression wird selbst eine 8-TB-Platte in unter zwei Jahren voll.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel titel="8-GB-Backup über VDSL gegen LAN — Brutto und Netto">
+
+Ein 8-GB-Backup-Image soll wahlweise über die VDSL-Leitung des Standorts (**Bandbreite
+50 Mbit/s**, Wirkungsgrad annahmegemäss **80 Prozent**) oder über einen 100-Mbit/s-LAN-
+Anschluss zu einem internen NAS (**Wirkungsgrad 95 Prozent**) übertragen werden. Wie
+lange dauert die Übertragung in jedem Fall, in Sekunden und in Minuten?
+
+</Beispiel>
+
+<StepByStep titel="Übertragungsdauer im Vergleich VDSL gegen LAN">
+  <Schritt nr={1} titel="Datenmenge in eine konsistente Einheit">
+    8 GB sind dezimal gemeint (Backup-Tools rechnen so): 8 × 10⁹ Byte = **8 000 000 000 Byte**.
+    In Bit: 8 000 000 000 × 8 = **64 000 000 000 Bit**, also **64 Gbit**.
+  </Schritt>
+  <Schritt nr={2} titel="Effektive Datenraten ausrechnen">
+    VDSL: 50 Mbit/s × 0,80 = **40 Mbit/s netto**.
+    LAN:  100 Mbit/s × 0,95 = **95 Mbit/s netto**.
+    Der Wirkungsgrad steht in der Aufgabe — also einfach multiplizieren, kein Schätzen nötig.
+  </Schritt>
+  <Schritt nr={3} titel="VDSL — Zeit berechnen">
+    Zeit = 64 000 Mbit ÷ 40 Mbit/s = **1600 Sekunden**.
+    1600 s ÷ 60 ≈ **26 Minuten 40 Sekunden**.
+    Damit ist die VDSL-Leitung für die Backup-Zeitfenster grenzwertig — wenn parallel
+    noch Telefonate oder Webdienste laufen, wird sie nicht reichen.
+  </Schritt>
+  <Schritt nr={4} titel="LAN — Zeit berechnen">
+    Zeit = 64 000 Mbit ÷ 95 Mbit/s ≈ **673,7 Sekunden**.
+    673,7 s ÷ 60 ≈ **11 Minuten 14 Sekunden**.
+    Das ist deutlich entspannter — und zeigt: ein interner Backup-Pfad ist fast immer der
+    bessere Plan, schon bevor man über Bandbreite nachdenkt.
+  </Schritt>
+  <Schritt nr={5} titel="Konsistenz-Check">
+    Wenn beide Leitungen 100 Prozent Wirkungsgrad hätten: VDSL = 1280 s, LAN = 640 s. Mit
+    Wirkungsgrad werden beide Werte größer — VDSL um Faktor 1/0,8 = 1,25, LAN um 1/0,95
+    ≈ 1,053. Genau das sehen wir oben (1280 × 1,25 = 1600; 640 × 1,053 ≈ 673,7).
+  </Schritt>
+  <Ergebnis>
+    VDSL: **rund 27 Minuten**, LAN: **rund 11 Minuten**. Die nominal doppelte Bandbreite
+    des LAN führt zu mehr als doppelter Geschwindigkeit, weil zusätzlich der Wirkungsgrad
+    besser ist. Wer in der Aufgabe Brutto- und Netto-Werte verwechselt, landet bei den
+    1280 s — und liegt damit in beiden Fällen 20 bis 25 Prozent daneben.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel titel="Videoaufnahme — Roh-Bitrate gegen H.264">
+
+Ein 4K-Sicherheitskamerasystem soll FullHD-Daten archivieren: **Auflösung 1920 × 1080**,
+**Farbtiefe 24 Bit**, **30 Frames pro Sekunde**, **eine Stunde Daueraufnahme**. Wie groß
+ist die Aufnahme **unkomprimiert** in GiB? Und wie viel bleibt nach Kompression mit
+**H.264 bei 8 Mbit/s**?
+
+</Beispiel>
+
+<StepByStep titel="Speicher und Bitrate für eine Stunde FullHD">
+  <Schritt nr={1} titel="Pixel je Frame und Roh-Bitrate">
+    Pixel je Frame = 1920 × 1080 = **2 073 600 px**.
+    Bits je Frame = 2 073 600 × 24 = **49 766 400 Bit**.
+    Roh-Bitrate = 49 766 400 × 30 = **1 492 992 000 Bit/s** ≈ **1,49 Gbit/s**.
+  </Schritt>
+  <Schritt nr={2} titel="Bytes pro Sekunde und Stunde — unkomprimiert">
+    Byte/s = 1 492 992 000 ÷ 8 = **186 624 000 Byte/s** ≈ **177,98 MiB/s**.
+    Byte/h = 186 624 000 × 3600 = **671 846 400 000 Byte**.
+    GiB/h = 671 846 400 000 ÷ 1 073 741 824 ≈ **625,68 GiB**.
+  </Schritt>
+  <Schritt nr={3} titel="H.264 — die komprimierte Variante">
+    Vorgegeben sind 8 Mbit/s. Byte/s = 8 000 000 ÷ 8 = **1 000 000 Byte/s** = **1 MB/s**.
+    Byte/h = 1 000 000 × 3600 = **3 600 000 000 Byte** = **3,6 GB**.
+    Damit liegt der komprimierte Wert bei rund **3,35 GiB** für eine Stunde.
+  </Schritt>
+  <Schritt nr={4} titel="Kompressions-Verhältnis">
+    Verhältnis = 671 846 400 000 ÷ 3 600 000 000 ≈ **186,6 : 1**.
+    H.264 schluckt also über 99 Prozent der Roh-Daten. Das ist möglich, weil der Codec
+    Ähnlichkeiten zwischen Frames (Bewegungsschätzung) und innerhalb eines Frames
+    (Blocktransformation) nutzt.
+  </Schritt>
+  <Schritt nr={5} titel="Speicher-Hochrechnung für 30 Tage Daueraufnahme">
+    Unkomprimiert: 625,68 GiB × 24 × 30 ≈ **450 489 GiB** ≈ **439,93 TiB** — praktisch
+    unbezahlbar.
+    H.264: 3,35 GiB × 24 × 30 ≈ **2412 GiB** ≈ **2,36 TiB** — eine Sache für eine handelsübliche
+    Festplattenanlage mit RAID 5.
+  </Schritt>
+  <Ergebnis>
+    Roh-Daten würden **rund 626 GiB** für eine Stunde FullHD verbrauchen. H.264 bei 8 Mbit/s
+    senkt das auf **etwa 3,35 GiB** — Faktor **~ 187**. Genau dieses Verhältnis macht
+    Video-Archivierung erst praxisreif: ohne Codec ist eine 30-Tage-Aufzeichnung
+    unbezahlbar, mit Codec handhabbar.
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## 05 · Vertiefung — was darüber hinaus wichtig ist
+
+### KB gegen KiB, MB gegen MiB, GB gegen GiB — der ewige Streit
+
+Der Unterschied wirkt klein und kostet im Lauf der Skala viel:
+
+| Größe | dezimal | binär | Differenz |
+|---|---|---|---|
+| 1 K | 1 000 | 1 024 | + 2,4 % |
+| 1 M | 1 000 000 | 1 048 576 | + 4,9 % |
+| 1 G | 10⁹ | 2³⁰ | + 7,4 % |
+| 1 T | 10¹² | 2⁴⁰ | + 10,0 % |
+
+Bei 1 TiB liegen also schon **rund 100 GB Differenz** zur dezimalen Form. Deshalb wirkt
+die neue 1-TB-Festplatte unter Windows als „nur 931 GiB" — der Datenträger hat dezimal
+genau 1 000 000 000 000 Byte, das Betriebssystem zeigt aber binär an. Kein Defekt,
+sondern Konvention.
+
+### Festplattenhersteller-Trick
+
+Die Hersteller geben dezimal an, weil dann auf dem Label größere Zahlen stehen. Eine
+„500-GB-SSD" enthält 500 × 10⁹ Byte ≈ 465,66 GiB. Wer in einer Aufgabe den
+Hersteller-Wert direkt mit einem Windows-Wert vergleicht, muss umrechnen.
+
+### Bandbreite gegen Latenz gegen Durchsatz
+
+Drei unabhängige Eigenschaften einer Verbindung:
+
+| Begriff | Was misst er? | Typische Einheit |
+|---|---|---|
+| Bandbreite | Theoretische Maximalrate | Mbit/s |
+| Durchsatz | Real erreichte Rate | MB/s oder Mbit/s |
+| Latenz | Verzögerung pro Paket | ms |
+
+Eine Standleitung mit 1 Gbit/s und 0,5 ms Latenz ist gut für lokale Übertragung. Eine
+Satellitenleitung mit 1 Gbit/s und 600 ms Latenz hat dieselbe Bandbreite, aber Web-Apps
+fühlen sich zäh an. Wer „zu hohe Latenz" als Lösung für „Datei kommt langsam" anbietet,
+beantwortet die falsche Frage.
+
+### Header-Overhead und der Brutto-Netto-Unterschied
+
+Auf einer 1-Gbit/s-Ethernet-Leitung passt ein Frame von maximal 1518 Byte (Standard-Ethernet)
+oder 9018 Byte (Jumbo-Frames). Header und Trailer kosten: 18 Byte Ethernet, 20 Byte IP,
+20 Byte TCP — bei 1500 Byte Nutzlast also rund 4 Prozent Overhead allein auf Schicht 2/3/4.
+Mit TLS, HTTP/2-Frames und Quittungen sind 10 Prozent Verlust realistisch — daher die
+Faustregel „etwa 90 bis 95 Prozent Wirkungsgrad" bei kabelgebundenem Ethernet.
+
+### Verlustfrei gegen verlustbehaftet
+
+| Verfahren | Beispiel | Typischer Faktor | Wiederherstellbar? |
+|---|---|---|---|
+| ZIP / GZIP | Texte, Quellcode | 2 bis 10 : 1 | ja |
+| PNG | Pixelgrafiken, Logos | 2 bis 5 : 1 | ja |
+| FLAC | Audio | etwa 2 : 1 | ja |
+| JPEG | Fotos | 10 bis 30 : 1 | nein |
+| MP3 | Musik | 10 : 1 | nein |
+| H.264 / H.265 | Video | 100 bis 300 : 1 | nein |
+
+Verlustfrei rechnet sich für Daten, deren Bit-genauer Inhalt zählt (Verträge, Quellcode,
+medizinische Bilder). Verlustbehaftet rechnet sich, wenn das menschliche Auge oder Ohr
+ohnehin nicht alle Details unterscheidet (Webfotos, Streaming).
+
+### Dateiformate kurz eingeordnet
+
+- **JPEG** (ISO/IEC 10918-1): verlustbehaftete Foto-Kompression, Standard im Web. Setzt
+  auf das DCT-Verfahren und nutzt aus, dass das Auge Helligkeit feiner unterscheidet als
+  Farbe.
+- **PNG**: verlustfreie Pixelgrafik, gut für Screenshots, Logos, Diagramme. Unterstützt
+  Transparenz (Alpha-Kanal).
+- **RAW**: Roh-Daten direkt vom Bildsensor, sehr groß. Kein einheitlicher Standard,
+  herstellerspezifisch (Canon CR3, Nikon NEF, Sony ARW).
+- **TIFF**: Container für Roh- oder JPEG-komprimierte Bilder, häufig in der Archivierung.
+- **PDF**: Container; Bilder darin sind meist JPEG- oder JPEG-2000-komprimiert.
+
+### Latenz im Netzwerk — was ein Ping wirklich misst
+
+Ein ICMP-Echo („Ping") misst die Round-Trip-Time: vom Absender zum Ziel **und zurück**.
+Wer also 80 ms misst, hat eine Einweg-Latenz von ca. 40 ms. Voice-over-IP wird ab rund
+150 ms Einweg-Latenz unangenehm — daher die Empfehlung, in IT-Konzepten für VoIP Latenz
+und Jitter (Schwankung der Latenz) explizit zu nennen.
+
+---
+
+## 06 · Typische Fehler und typische Fehler
+
+- **Bit gegen Byte vertauscht.** Ein kleines `b` ist Bit, ein großes `B` ist Byte. 100 Mbit/s
+  sind 12,5 MB/s, nicht 100 MB/s. Wer das einmal vermischt, rechnet jede Folgeaufgabe um
+  Faktor 8 falsch.
+- **Mbit/s und MB/s verwechselt.** Zur Sicherheit immer aufschreiben: „Datenrate in
+  Mbit/s" oder „Datenrate in MB/s". Erst danach rechnen.
+- **Brutto- gegen Netto-Datenrate ignoriert.** Eine 100-Mbit/s-Leitung schickt nicht
+  100 Mbit/s Nutzlast. Aufgabentexte geben den Wirkungsgrad meist explizit an — ihn
+  einfach wegzulassen ist klassischer Punktverlust.
+- **Dezimal- mit Binärpräfix vermischt.** Ein 1-TB-Datenträger hat 10¹² Byte (dezimal),
+  Windows zeigt ihn als 931 GiB an (binär). In Aufgaben mit MiB/GiB konsequent durch
+  1024 teilen, in Aufgaben mit MB/GB durch 1000.
+- **Farbtiefe in Byte statt Bit gerechnet.** „24 Bit Farbtiefe" sind 3 Byte pro Pixel, nicht
+  24 Byte. Erst Pixel × Farbtiefe (in Bit), dann ÷ 8 für Byte.
+- **DPI in nur einer Richtung berücksichtigt.** 600 dpi heißen 600 Punkte je Inch in beide
+  Richtungen. Wer nur die Breite multipliziert, hat ein Bild, das in der Höhe falsch ist.
+- **cm direkt mit DPI multipliziert.** DPI bezieht sich auf Inch, nicht auf cm. Erst durch
+  2,54 teilen, dann mit DPI multiplizieren.
+- **„Auf 50 Prozent komprimiert" als Subtraktion gerechnet.** Das heißt × 0,5, nicht
+  „minus 50 Byte" und auch nicht „÷ 50". Komprimierung ist immer ein Faktor.
+- **Latenz mit niedriger Bandbreite verwechselt.** Eine langsame Antwort kann an hoher
+  Latenz, niedrigem Durchsatz oder beidem liegen. Wer in der Aufgabe nur Bandbreite
+  diagnostiziert, übersieht Routing-, DNS- oder Anwendungs-Verzögerungen.
+- **Zwischenrundungen.** Erst am Ende auf zwei Nachkommastellen runden; sonst verschiebt
+  sich das Ergebnis um Cent- bis Prozentbeträge.
+- **DPI mit PPI gleichgesetzt — und beides ignoriert.** Im Druck/Scan ist DPI Standard
+  (Ausgabe/Erfassung physischer Punkte). Am Bildschirm wird PPI genutzt (Pixel je Inch
+  auf der Anzeige). Für die typische Scan-Aufgabe sind die Begriffe austauschbar; bei
+  Display-Aufgaben streng PPI verwenden.
+
+---
+
+## 07 · So fragt die IHK das
+
+**Aufgabe 1 — Speicherbedarf einer Scan-Strecke (8 Punkte).**
+Eine Notarkanzlei scannt täglich 80 doppelseitige Verträge im Format DIN A4
+(21,0 cm × 29,7 cm). Auflösung: **300 dpi**, Farbtiefe: **24 Bit**, Komprimierung: **auf
+40 Prozent** (Faktor 0,4). Die Kanzlei arbeitet **220 Tage** im Jahr und archiviert die
+Dateien **zehn Jahre** lang. Berechne die Dateigröße einer Seite in **MiB**, den
+Jahresspeicher in **GiB** und den Gesamt-Archivbedarf in **TiB**. Runde Endergebnisse auf
+zwei Nachkommastellen.
+
+**Aufgabe 2 — Datenraten umrechnen (5 Punkte).**
+Berechne die fehlenden Werte und beschrifte jedes Ergebnis mit der korrekten Einheit:
+(a) 1 Gbit/s in MB/s,
+(b) 250 MB/s in Gbit/s,
+(c) 12,5 MB/s in Mbit/s,
+(d) 800 Mbit/s, geteilt auf 32 Nutzer, je Nutzer in Mbit/s,
+(e) 200 Mbit/s mit Wirkungsgrad 85 Prozent in MB/s.
+
+**Aufgabe 3 — Übertragungsdauer mit Brutto und Netto (7 Punkte).**
+Ein Cloud-Backup von **120 GB** (dezimal) soll nachts erstellt werden. Zur Verfügung steht
+ein Anschluss mit **Bandbreite 250 Mbit/s im Upload** und einem **angenommenen
+Wirkungsgrad von 75 Prozent**. Berechne die Übertragungsdauer in Sekunden und in
+Minuten. Beurteile begründet, ob das Backup in einem nächtlichen Wartungsfenster von
+**5 Stunden** durchläuft. Welche organisatorische Massnahme würdest du empfehlen, falls
+das Fenster knapp wird?
+
+**Aufgabe 4 — Bit, Byte, KiB-Falle (5 Punkte).**
+Eine Datei hat **2 048 000 Bit**. Berechne die Dateigröße in **KiB** und in **KB**. Erkläre
+in maximal drei Sätzen den Unterschied zwischen Kilobyte (KB) und Kibibyte (KiB) und
+nenne die zuständige Norm.
+
+**Aufgabe 5 — Video-Bitrate gegen Speicherbedarf (8 Punkte).**
+Eine Webcam-Übertragung soll als unkomprimierter Roh-Stream geprüft werden. Auflösung
+**1280 × 720**, **30 fps**, Farbtiefe **24 Bit**. Berechne (a) die Roh-Bitrate in **Mbit/s**,
+(b) den Speicherbedarf einer Stunde in **GiB**, (c) den Speicherbedarf einer Stunde, wenn
+mit H.264 bei einer Ziel-Bitrate von **3 Mbit/s** komprimiert wird. Bewerte in einem
+Satz, welche Variante für eine 1-TB-Festplatte über 30 Tage Daueraufnahme realistisch ist.
+
+<Tipp titel="Lösungsansatz zu Aufgabe 4 (Kurzform)">
+2 048 000 Bit ÷ 8 = 256 000 Byte. KiB: 256 000 ÷ 1024 = **250 KiB**. KB: 256 000 ÷ 1000 = **256 KB**.
+KB ist dezimal (10³ Byte) und stammt aus dem SI-System; KiB ist binär (2¹⁰ Byte) und ist
+in IEC 80000-13 normiert. Die Werte unterscheiden sich um rund 2,4 Prozent.
+</Tipp>
+
+---
+
+<svg
+  viewBox="0 0 760 360"
+  role="img"
+  aria-label="Skizze: Datenmengen-Pyramide mit Bit, Byte, KiB, MiB, GiB, TiB als Stufenturm; Akzent rot auf der Spitze TiB; rechts die Faktoren 8 und 1024."
+  className="my-8 w-full max-w-3xl border border-rule bg-paper"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <style>{`
+      .lbl { font: 500 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; }
+      .sub { font: 400 11px 'IBM Plex Sans', sans-serif; fill: #4a5568; }
+      .hdr { font: 600 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
+      .accent { stroke: #8b2f1d; stroke-width: 2; fill: none; }
+      .stage { fill: none; stroke: #1a2332; stroke-width: 1.2; }
+      .stage-top { fill: none; stroke: #8b2f1d; stroke-width: 2; }
+      .tag { font: 500 10px 'JetBrains Mono', monospace; fill: #8b2f1d; }
+      .rule { stroke: #1a2332; stroke-width: 1; fill: none; }
+    `}</style>
+  </defs>
+
+  <text className="hdr" x="20" y="28">Datenmengen-Pyramide · vom Bit zum TiB</text>
+
+  <rect className="stage" x="40" y="290" width="500" height="40" />
+  <text className="lbl" x="56" y="316">Bit</text>
+  <text className="sub" x="100" y="316">kleinste Einheit · 0 oder 1</text>
+
+  <rect className="stage" x="60" y="240" width="460" height="40" />
+  <text className="lbl" x="76" y="266">Byte</text>
+  <text className="sub" x="120" y="266">8 Bit · 1 ASCII-Zeichen</text>
+
+  <rect className="stage" x="90" y="190" width="400" height="40" />
+  <text className="lbl" x="106" y="216">KiB</text>
+  <text className="sub" x="150" y="216">1024 Byte · IEC 80000-13</text>
+
+  <rect className="stage" x="130" y="140" width="320" height="40" />
+  <text className="lbl" x="146" y="166">MiB</text>
+  <text className="sub" x="190" y="166">1 048 576 Byte (2^20)</text>
+
+  <rect className="stage" x="170" y="90" width="240" height="40" />
+  <text className="lbl" x="186" y="116">GiB</text>
+  <text className="sub" x="230" y="116">~ 1,07 Mrd. Byte (2^30)</text>
+
+  <rect className="stage-top" x="220" y="40" width="140" height="40" />
+  <text className="lbl" x="236" y="66">TiB</text>
+  <text className="sub" x="276" y="66">2^40 Byte</text>
+
+  <line className="rule" x1="560" y1="60" x2="560" y2="320" />
+  <text className="tag" x="572" y="68">x 1024</text>
+  <text className="tag" x="572" y="116">x 1024</text>
+  <text className="tag" x="572" y="166">x 1024</text>
+  <text className="tag" x="572" y="216">x 1024</text>
+  <text className="tag" x="572" y="266">x 8 (Bit -&gt; Byte)</text>
+  <text className="sub" x="572" y="316">Faktor zwischen Stufen</text>
+</svg>
+
+<svg
+  viewBox="0 0 760 280"
+  role="img"
+  aria-label="Skizze: Bandbreite, Durchsatz und Latenz als drei unabhängige Achsen. Bandbreite ist die theoretische Maximalrate, Durchsatz die effektive Rate nach Overhead, Latenz die Verzögerung pro Paket."
+  className="my-8 w-full max-w-3xl border border-rule bg-paper"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <style>{`
+      .lbl { font: 500 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; }
+      .sub { font: 400 11px 'IBM Plex Sans', sans-serif; fill: #4a5568; }
+      .hdr { font: 600 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
+      .accent { stroke: #8b2f1d; stroke-width: 2; fill: none; }
+      .accent-fill { fill: #8b2f1d; }
+      .rule { stroke: #1a2332; stroke-width: 1.2; fill: none; }
+      .tag { font: 500 10px 'JetBrains Mono', monospace; fill: #8b2f1d; }
+    `}</style>
+  </defs>
+
+  <text className="hdr" x="20" y="28">Bandbreite · Durchsatz · Latenz</text>
+
+  <rect className="rule" x="60" y="80" width="280" height="40" fill="none" />
+  <rect className="accent" x="60" y="80" width="200" height="40" />
+  <text className="lbl" x="76" y="106">Bandbreite</text>
+  <text className="sub" x="76" y="60">Theoretisches Maximum der Leitung (Mbit/s)</text>
+  <text className="tag" x="346" y="106">100 Mbit/s</text>
+
+  <rect className="rule" x="60" y="150" width="280" height="40" fill="none" />
+  <rect className="accent" x="60" y="150" width="160" height="40" fill="none" />
+  <rect x="60" y="150" width="160" height="40" fill="#8b2f1d" fillOpacity="0.08" />
+  <text className="lbl" x="76" y="176">Durchsatz</text>
+  <text className="sub" x="76" y="210">Effektiv erreichte Datenrate (nach Overhead und Wirkungsgrad)</text>
+  <text className="tag" x="346" y="176">~ 80 Mbit/s</text>
+
+  <line className="rule" x1="430" y1="80" x2="430" y2="220" />
+  <line className="accent" x1="430" y1="80" x2="710" y2="80" />
+  <circle className="accent-fill" cx="430" cy="80" r="4" />
+  <circle className="accent-fill" cx="710" cy="80" r="4" />
+  <text className="lbl" x="500" y="68">Latenz · Verzögerung pro Paket</text>
+  <text className="sub" x="500" y="100">Bandbreite ist breit, Latenz kann trotzdem hoch sein</text>
+  <text className="tag" x="430" y="240">0 ms</text>
+  <text className="tag" x="688" y="240">600 ms</text>
+
+  <text className="sub" x="60" y="270">Drei unabhängige Eigenschaften — alle drei prüfen, bevor du eine Verbindung beurteilst.</text>
+</svg>
+
+<Glossar
+  eintraege={[
+    {
+      term: 'Bit (b)',
+      definition: 'Kleinste Informationseinheit, kennt zwei Zustände — 0 oder 1. Acht Bit ergeben ein Byte.'
+    },
+    {
+      term: 'Byte (B)',
+      definition: 'Acht Bit zusammen. Reicht für ein klassisches ASCII-Zeichen und ist die Standard-Grundeinheit für Dateigrößen.'
+    },
+    {
+      term: 'Datenrate',
+      definition: 'Datenmenge pro Zeit, klassisch in bit/s oder Byte/s. Internet-Tarife in Mbit/s, Speichergeräte in MB/s.'
+    },
+    {
+      term: 'Bandbreite',
+      definition: 'Theoretische Maximalrate eines Übertragungswegs. Liegt fast immer über dem real erreichten Durchsatz.'
+    },
+    {
+      term: 'Durchsatz',
+      definition: 'Effektive Datenrate nach Abzug von Header-Overhead, Wiederholungen und Endgeräte-Bremsen — der „Netto-Wert".'
+    },
+    {
+      term: 'Latenz',
+      definition: 'Verzögerung pro Datenpaket, gemessen in Millisekunden. Unabhängig von Bandbreite — eine schnelle Leitung kann trotzdem hohe Latenz haben.'
+    },
+    {
+      term: 'DPI',
+      definition: 'Dots per Inch — Punkte je Zoll, die ein Scanner oder Drucker erfasst bzw. ausgibt. 1 Inch = 2,54 cm.'
+    },
+    {
+      term: 'Farbtiefe',
+      definition: 'Anzahl Bits pro Pixel. Gängig: 1 Bit S/W, 8 Bit Graustufen, 24 Bit RGB-Farbe, 32 Bit RGBA.'
+    },
+    {
+      term: 'Bitrate',
+      definition: 'Datenrate eines Audio- oder Videostreams. Bei Video das Produkt aus Pixelanzahl, Farbtiefe und Frames pro Sekunde — durch Codec dann stark reduziert.'
+    },
+    {
+      term: 'Kompression',
+      definition: 'Verkleinerung der Dateigröße. Verlustfrei (ZIP, PNG, FLAC) oder verlustbehaftet (JPEG, MP3, H.264). „Auf 50 Prozent komprimiert" heißt × 0,5.'
+    },
+    {
+      term: 'Binärpräfix (KiB, MiB, GiB, TiB)',
+      definition: 'Vielfache von 1024 nach IEC 80000-13. Wird vom Betriebssystem zur Anzeige von Datei- und Volumengrößen verwendet.'
+    },
+    {
+      term: 'Dezimalpräfix (KB, MB, GB, TB)',
+      definition: 'Vielfache von 1000 nach SI. Hersteller von Datenträgern und Internet-Anbieter geben in Dezimalpräfixen an.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'IEC 80000-13:2008 — Quantities and units, Part 13: Information science and technology',
+      href: 'https://webstore.iec.ch/publication/31898',
+      detail: 'Internationale Norm, in der die Binärpräfixe Kibi, Mebi, Gibi, Tebi (KiB, MiB, GiB, TiB) als Vielfache von 1024 verbindlich definiert sind.'
+    },
+    {
+      label: 'BIPM — Le Système international d\'unités (SI Brochure, 9. Auflage)',
+      href: 'https://www.bipm.org/en/publications/si-brochure',
+      detail: 'Offizielle Definition der Dezimalpräfixe kilo, mega, giga, tera als Vielfache von 1000 — Quelle der KB/MB/GB/TB-Werte.'
+    },
+    {
+      label: 'ITU-T G.1010 — End-user multimedia QoS categories',
+      href: 'https://www.itu.int/rec/T-REC-G.1010',
+      detail: 'Empfehlung der ITU-T mit Anforderungswerten für Latenz, Jitter und Bandbreite je Mediendienst (Web, VoIP, Streaming).'
+    },
+    {
+      label: 'ISO/IEC 10918-1 — JPEG digital compression',
+      href: 'https://www.iso.org/standard/18902.html',
+      detail: 'Internationale Norm der ISO/IEC für die JPEG-Bildkompression — Grundlage für die JPEG-Faktoren in dieser Lesson.'
+    },
+    {
+      label: 'ITU-T H.264 — Advanced video coding for generic audiovisual services',
+      href: 'https://www.itu.int/rec/T-REC-H.264',
+      detail: 'Empfehlung der ITU-T zur Video-Kompression — gemeinsam mit ISO/IEC 14496-10 normiert. Liefert die im Beispiel verwendete Bitraten-Größenordnung.'
+    },
+    {
+      label: 'BIBB — Berufsprofil Fachinformatiker und Rahmenlehrplan',
+      href: 'https://www.bibb.de/de/berufeinfo.php',
+      detail: 'Bundesinstitut für Berufsbildung mit Rahmenlehrplan und Umsetzungshilfen zu Lernfeld 2 (Hardware, Datenmengen, Schnittstellen).'
+    },
+    {
+      label: 'Westermann — Fachinformatiker / IT-Berufe Lehrwerke',
+      href: 'https://www.westermann.de/reihe/IT-BERUFE/IT-Berufe',
+      detail: 'Fachverlag mit Schulbuchreihen für die IT-Berufe; behandelt Datenmengen-Rechnungen mit Beispielaufgaben im Prüfungsstil.'
+    },
+    {
+      label: 'Elektronik-Kompendium — Datenrate, Bandbreite, Latenz und Durchsatz',
+      href: 'https://www.elektronik-kompendium.de/sites/net/0905011.htm',
+      detail: 'Fachportal mit kompakten Erklärungen zu Bandbreite vs. Durchsatz, Header-Overhead und typischen Wirkungsgraden in Ethernet- und WLAN-Netzen.'
+    },
+  ]}
+/>

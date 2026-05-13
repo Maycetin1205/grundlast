@@ -1,0 +1,270 @@
+﻿# Verschlüsselung & IT-Sicherheit
+
+## Worum geht's
+
+Du lernst, wie Daten verschlüsselt werden, wie Passwörter sicher gespeichert werden
+und welche Angriffsvektoren es gibt.
+In der Prüfung kommen Fragen zu Verschlüsselung, Hashing und Angriffsvektoren regelmäßig vor.
+
+---
+
+## Warum braucht man Verschlüsselung?
+
+**Analogie: Brief in einem Umschlag**
+
+Ein normaler Brief = unverschlüsselte Daten: Jeder, der ihn abfängt, kann ihn lesen.
+
+Ein Brief in einem Safe mit Schloss = verschlüsselte Daten: Nur wer den richtigen Schlüssel hat, kann ihn öffnen.
+
+Wenn Daten unverschlüsselt über das Internet übertragen werden, kann ein Angreifer, der den Datenverkehr abfängt, alles mitlesen — Passwörter, Bankdaten, Nachrichten.
+**Verschlüsselung** macht die Daten für Unbefugte unlesbar — selbst wenn jemand die Daten abfängt, sieht er nur unlesbaren Zeichensalat.
+
+---
+
+## Symmetrische Verschlüsselung
+
+**Grundprinzip:** Sender und Empfänger verwenden **denselben** Schlüssel zum Ver- und Entschlüsseln.
+
+```
+Sender                                Empfänger
+  │                                       │
+  │  Nachricht: "Hallo"                   │
+  │  + Schlüssel: "GEHEIM123"             │
+  │  = Verschlüsselt: "Xk3#nP9!"          │
+  │                                       │
+  │──── "Xk3#nP9!" ──────────────────────▶│
+  │                                       │
+  │              + Schlüssel: "GEHEIM123" │
+  │              = Entschlüsselt: "Hallo" │
+```
+
+**Bekannte Algorithmen:** AES (Advanced Encryption Standard — aktuell sicher), DES (veraltet, unsicher)
+
+| | Symmetrische Verschlüsselung |
+|---|---|
+| **Schlüssel** | Gleicher Schlüssel für Ver- und Entschlüsselung |
+| **Vorteil** | Sehr schnell, wenig Rechenaufwand |
+| **Nachteil** | **Schlüsselverteilungsproblem**: Wie übergibt man den Schlüssel sicher? |
+| **Einsatz** | Große Datenmengen (Festplattenverschlüsselung, Dateiübertragung) |
+
+**Das Schlüsselverteilungsproblem erklärt:**
+Wenn Sender und Empfänger denselben Schlüssel nutzen müssen — wie einigen sie sich darauf, ohne dass ein Angreifer den Schlüssel beim Übertragen abfängt? Man kann den Schlüssel nicht einfach über das Internet schicken (dann könnte ihn jemand abfangen). Das ist das zentrale Problem der symmetrischen Verschlüsselung — gelöst durch asymmetrische Verschlüsselung.
+
+---
+
+## Asymmetrische Verschlüsselung (Public-Key-Verfahren)
+
+**Grundprinzip:** Es gibt **zwei Schlüssel** — einen öffentlichen (Public Key) und einen privaten (Private Key).
+
+**Merkregel:**
+- **Public Key** = das Schloss (darf jeder haben und damit verschlüsseln)
+- **Private Key** = der Schlüssel zum Schloss (nur du hast ihn — damit entschlüsseln)
+
+**Analogie: Briefkasten mit Schloss**
+Du hängst ein offenes Schloss an deinen Briefkasten (= Public Key veröffentlichen).
+Jeder kann einen Brief einwerfen und das Schloss zuklicken — aber nur du hast den Schlüssel (= Private Key), um den Briefkasten zu öffnen.
+
+```
+Sender                                  Empfänger
+  │                                         │
+  │  Nachricht: "Hallo"                     │
+  │  + Public Key des Empfängers            │
+  │  = Verschlüsselt: "Xk3#nP9!"            │
+  │                                         │
+  │──── "Xk3#nP9!" ────────────────────────▶│
+  │                                         │
+  │              + Private Key (nur Empfänger hat ihn!)
+  │              = Entschlüsselt: "Hallo"   │
+```
+
+**Bekannte Algorithmen:** RSA, ECC (Elliptic Curve Cryptography)
+
+| | Asymmetrische Verschlüsselung |
+|---|---|
+| **Schlüssel** | Public Key (öffentlich) + Private Key (geheim, nur du) |
+| **Vorteil** | Kein Schlüsselverteilungsproblem — Public Key darf jeder haben |
+| **Nachteil** | Langsamer als symmetrische Verschlüsselung |
+| **Einsatz** | HTTPS (Webseiten), E-Mail-Verschlüsselung, digitale Signaturen |
+
+---
+
+## Vergleich: Symmetrisch vs. Asymmetrisch
+
+| | Symmetrisch | Asymmetrisch |
+|---|---|---|
+| **Schlüssel** | 1 (gleicher für beide Seiten) | 2 (Public Key + Private Key) |
+| **Geschwindigkeit** | Schnell | Langsamer |
+| **Schlüsselverteilung** | Problem | Kein Problem |
+| **Beispiel-Algorithmus** | AES | RSA |
+| **Typischer Einsatz** | Datei- / Festplattenverschlüsselung | HTTPS, digitale Signaturen |
+
+**In der Praxis (HTTPS):** Beide werden kombiniert — das Beste aus beiden Welten:
+1. **Asymmetrisch** für den sicheren Schlüsselaustausch (kein Verteilungsproblem)
+2. **Symmetrisch** für die schnelle Datenübertragung (weil schneller)
+
+---
+
+## Hashing — Passwörter sicher speichern
+
+**Wichtig:** Hashing ist **keine Verschlüsselung**! Es ist eine **Einwegfunktion** — nicht umkehrbar.
+
+**Was passiert beim Hashing?**
+```
+Passwort: "MeinPasswort123"
+    ↓  Hash-Funktion anwenden (z.B. SHA-256)
+Hash: "a3f5c7b2e1d4..." (immer gleiche Länge, egal wie lang das Passwort war)
+```
+
+Der Hash sieht wie zufälliger Zeichensalat aus. Und: Es gibt **keine** Funktion, die daraus wieder „MeinPasswort123" macht. Das ist Absicht!
+
+**Warum speichern Systeme Hashes, nicht Passwörter?**
+
+Wenn die Datenbank gehackt wird, sieht der Angreifer nur die Hashes — nicht die echten Passwörter.
+
+**Wie funktioniert der Login dann?**
+```
+Nutzer tippt ein: "MeinPasswort123"
+    ↓  Hash-Funktion anwenden
+Ergebnis: "a3f5c7b2e1d4..."
+    ↓  Vergleich mit gespeichertem Hash
+Gespeicherter Hash: "a3f5c7b2e1d4..."
+    ↓  Übereinstimmung? → Login erlaubt!
+```
+
+Gleiche Eingabe → immer gleicher Hash. Aber: Hash → Original nicht möglich!
+
+| | Verschlüsselung | Hashing |
+|---|---|---|
+| **Umkehrbar?** | Ja (mit dem richtigen Schlüssel) | Nein (Einwegfunktion) |
+| **Einsatz** | Nachrichten, Dateien übertragen | Passwörter, Prüfsummen |
+| **Bekannte Algorithmen** | AES, RSA | SHA-256, bcrypt |
+
+---
+
+## Angriffsvektoren
+
+**Angriffsvektor** = der Weg, über den ein Angreifer in ein System oder an Daten gelangt.
+
+### Phishing
+
+**Was ist das?** Gefälschte E-Mails oder Websites, die legitim aussehen, um Zugangsdaten zu stehlen.
+
+**Typischer Ablauf:**
+```
+1. Angreifer schickt E-Mail:
+   "Ihr PayPal-Konto wurde gesperrt! Klicken Sie hier: paypa1.com"
+                     ↓
+2. Opfer klickt auf den Link
+                     ↓
+3. Gefälschte Login-Seite öffnet sich (sieht aus wie PayPal)
+                     ↓
+4. Opfer gibt Passwort ein → Angreifer stiehlt es
+```
+
+**Erkennungsmerkmale:**
+- Domain leicht verändert: paypal.com → **paypa1.com** (1 statt l), **paypai.com** (i statt l)
+- Künstliche Dringlichkeit: „Ihr Konto wird in 24 Stunden gesperrt!"
+- Schreibfehler, schlechte Formatierung
+- Links führen nicht zur echten Website (mit Maus drüberfahren zeigt die echte URL)
+
+---
+
+### Brute-Force-Angriff
+
+**Was ist das?** Der Angreifer probiert **systematisch alle möglichen Passwörter** durch, bis er das richtige findet.
+
+**Beispiel:**
+```
+Passwort: 4-stellige PIN (nur Zahlen)
+Versuche: 0000, 0001, 0002, 0003, ..., 9999
+Maximale Versuche: 10 × 10 × 10 × 10 = 10.000
+```
+
+**Warum helfen lange Passwörter?**
+
+Jede zusätzliche Stelle multipliziert die Anzahl der möglichen Kombinationen:
+
+| Passwort | Zeichenvorrat | Möglichkeiten |
+|---|---|---|
+| 4-stellige PIN (0–9) | 10 Zeichen | 10⁴ = 10.000 |
+| 8-stellig (a–z) | 26 Zeichen | 26⁸ = ca. 200 Milliarden |
+| 12-stellig (a–z, A–Z, 0–9, Sonderzeichen) | ~96 Zeichen | 96¹² = astronomisch groß |
+
+**Rechenweg Beispiel:** 4-stellige PIN: 10 × 10 × 10 × 10 = 10⁴ = 10.000 Möglichkeiten.
+8-stellige PIN: 10 × 10 × 10 × 10 × 10 × 10 × 10 × 10 = 10⁸ = 100.000.000 Möglichkeiten.
+
+**Schutzmaßnahmen:**
+- Lange, komplexe Passwörter (Groß-/Kleinbuchstaben, Zahlen, Sonderzeichen)
+- Kontosperrung nach mehreren Fehlversuchen (z.B. nach 5 falschen Versuchen 30 Minuten sperren)
+- Passwort-Manager verwenden
+
+---
+
+### Social Engineering
+
+**Was ist das?** Der Angreifer manipuliert **Menschen** statt Technik — er nutzt menschliche Schwächen aus (Hilfsbereitschaft, Angst, Neugier).
+
+**Typische Taktiken:**
+
+| Taktik | Was passiert? | Beispiel |
+|---|---|---|
+| **Pretexting** | Angreifer gibt vor, jemand anderes zu sein | „Ich bin vom IT-Support, ich brauche kurz Ihr Passwort für ein Update" |
+| **Phishing** | Gefälschte E-Mails / Websites (s.o.) | Gefälschte PayPal-E-Mail |
+| **Baiting** | Locken mit etwas Verlockendem | USB-Stick mit Aufschrift „Gehaltsübersicht 2025" liegt auf dem Parkplatz — wer ihn einsteckt, installiert Malware |
+| **Tailgating** | Physischer Zugang durch Hinterherfolgen | Angreifer läuft durch eine gesicherte Tür, weil er einer berechtigten Person hinterherschlüpft |
+
+**Warum ist Social Engineering so gefährlich?**
+Kein technischer Schutz (Firewall, Verschlüsselung) hilft, wenn ein Mensch das Passwort freiwillig herausgibt. Der Mensch ist die schwächste Stelle im System.
+
+**Schutz:** Schulungen, Bewusstsein, Misstrauen bei unerwarteten Anfragen — **Passwörter NIEMALS weitergeben** (auch nicht an angeblichen IT-Support!).
+
+---
+
+### Malware (Schadsoftware)
+
+**Malware** = Oberbegriff für alle Schadprogramme.
+
+| Typ | Was tut es? | Besonderheit |
+|---|---|---|
+| **Virus** | Hängt sich an normale Programme an, verbreitet sich beim Ausführen | Braucht Nutzerinteraktion (Datei ausführen) |
+| **Trojaner** | Tarnt sich als nützliches Programm, führt im Hintergrund Schaden an | „Kostenloses Spiel" mit eingebetteter Schadsoftware |
+| **Ransomware** | Verschlüsselt alle Daten und verlangt Lösegeld | WannaCry (2017) — Krankenhäuser lahmgelegt |
+| **Spyware** | Spioniert Aktivitäten aus (Tastatureingaben, Screenshots) | Keylogger zeichnet jedes Passwort auf |
+| **Wurm (Worm)** | Verbreitet sich **selbstständig** im Netzwerk — ohne Nutzerinteraktion | Kann in Minuten ein ganzes Netzwerk infizieren |
+
+**Unterschied Virus vs. Wurm:** Virus braucht eine Träger-Datei und muss vom Nutzer ausgeführt werden. Wurm verbreitet sich selbst — kein Nutzer muss etwas tun.
+
+---
+
+## Schutzmaßnahmen im Überblick
+
+| Bedrohung | Schutzmaßnahme |
+|---|---|
+| Phishing | E-Mails kritisch prüfen, Links nicht blind anklicken, 2-Faktor-Authentifizierung |
+| Brute-Force | Lange, komplexe Passwörter, Kontosperrung nach Fehlversuchen, Passwort-Manager |
+| Social Engineering | Schulungen, Misstrauen bei unerwarteten Anfragen, Passwörter NIEMALS weitergeben |
+| Malware | Antiviren-Software, regelmäßige Updates einspielen, keine unbekannten Programme |
+| Datenverlust | Regelmäßige Backups (3-2-1-Regel: 3 Kopien, 2 verschiedene Medien, 1 außer Haus) |
+
+---
+
+## Typische Fehler
+
+**Falle 1: Hashing ≠ Verschlüsselung**
+→ Hashing ist **nicht umkehrbar** — es gibt keinen „Entschlüsselungs-Schlüssel".
+→ Verschlüsselung kann rückgängig gemacht werden (mit dem richtigen Schlüssel).
+→ Passwörter werden **gehasht**, nicht verschlüsselt.
+
+**Falle 2: Symmetrisch vs. Asymmetrisch verwechseln**
+→ Symmetrisch = **ein** Schlüssel (schnell, aber Schlüsselverteilungsproblem)
+→ Asymmetrisch = **zwei** Schlüssel (Public + Private, kein Verteilungsproblem, aber langsamer)
+
+**Falle 3: Social Engineering = menschliche Schwäche**
+→ Technische Sicherheitsmaßnahmen (Firewall, Verschlüsselung) helfen **nicht** gegen Social Engineering.
+→ Nur Schulungen und menschliches Bewusstsein schützen.
+
+**Falle 4: Phishing-Erkennung**
+→ Auf die Domain achten! paypal.com vs. paypa**1**.com (Zahl 1 statt Buchstabe l)
+
+---
+

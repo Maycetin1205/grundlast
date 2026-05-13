@@ -1,0 +1,130 @@
+﻿# Zahlensysteme
+
+## Worum geht's
+
+Du lernst, wie Computer mit Zahlen umgehen — und wie du zwischen
+Binär (Dual), Dezimal, Hexadezimal und Oktal sicher hin- und her rechnest.
+In der Prüfung kommen solche Umrechnungen regelmäßig vor.
+
+---
+
+## Die Analogie: Wie viele Finger hast du?
+
+**Dezimal = 10 Finger**
+Du zählst 0–9, dann "Überlauf" zur nächsten Stelle. 9 + 1 = 10.
+
+**Binär = 2 "Finger" (an/aus)**
+Stell dir vor, du hast nur zwei Zustände: Daumen hoch (1) oder runter (0).
+Der Überlauf kommt schon nach 1: 1 + 1 = 10 (binär!).
+
+**Hexadezimal = 16 "Finger"**
+Du brauchst mehr Symbole als 0–9 — deshalb kommen Buchstaben dazu: A=10, B=11, … F=15.
+F + 1 = 10 (hex!). Überlauf erst nach 15.
+
+---
+
+## Die 4 Zahlensysteme
+
+| System | Basis | Ziffern | Wo verwendet |
+|---|---|---|---|
+| **Binär (Dual)** | 2 | 0, 1 | Computer intern, IP-Subnetting |
+| **Dezimal** | 10 | 0–9 | Alltag, Menschen |
+| **Hexadezimal** | 16 | 0–9, A–F | Farben (CSS #FF0000), MAC-Adressen, Speicheradressen |
+| **Oktal** | 8 | 0–7 | Linux-Dateiberechtigungen (chmod 755) |
+
+Alle vier sind nur verschiedene **Schreibweisen für dieselbe Zahl**:
+
+| Dezimal | Binär | Hex | Oktal |
+|---|---|---|---|
+| 0 | 0000 | 0 | 0 |
+| 9 | 1001 | 9 | 11 |
+| 10 | 1010 | A | 12 |
+| 15 | 1111 | F | 17 |
+| 16 | 10000 | 10 | 20 |
+| 192 | 11000000 | C0 | 300 |
+| 255 | 11111111 | FF | 377 |
+
+---
+
+## Dezimal → Binär: Die Teilungsmethode
+
+Immer durch 2 teilen, Reste von **unten nach oben** lesen.
+
+**Beispiel: 45 in Binär**
+
+```
+45 ÷ 2 = 22  Rest 1
+22 ÷ 2 = 11  Rest 0
+11 ÷ 2 =  5  Rest 1
+ 5 ÷ 2 =  2  Rest 1
+ 2 ÷ 2 =  1  Rest 0
+ 1 ÷ 2 =  0  Rest 1
+              ↑ Von hier lesen
+```
+
+Von unten nach oben: **101101** → 45₁₀ = **101101₂**
+
+---
+
+## Binär → Dezimal: Die Stellenwert-Methode
+
+Jede Stelle hat einen Wert (2⁰, 2¹, 2², …). Nur die 1er zählen zusammen.
+
+**Beispiel: 11000000 in Dezimal**
+
+| Stelle | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+|---|---|---|---|---|---|---|---|---|
+| Wertigkeit | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+| Bit | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Wert | 128 | 64 | — | — | — | — | — | — |
+
+128 + 64 = **192** → 11000000₂ = **192₁₀**
+
+**Merkhilfe für 8 Bit:** 128 – 64 – 32 – 16 – 8 – 4 – 2 – 1
+
+---
+
+## Dezimal → Hexadezimal
+
+Hex-Ziffern: `0 1 2 3 4 5 6 7 8 9 A B C D E F`
+Merke: A=10, B=11, C=12, D=13, E=14, F=15
+
+Methode: Immer durch 16 teilen, Reste von unten nach oben lesen.
+
+**Beispiel: 192 in Hex**
+
+```
+192 ÷ 16 = 12  Rest 0   → 0
+ 12 ÷ 16 =  0  Rest 12  → C
+```
+
+Von unten: **C0** → 192₁₀ = **C0₁₆**
+
+---
+
+## Hexadezimal → Dezimal
+
+Jede Stelle mit ihrer Potenz von 16 multiplizieren und addieren.
+
+**Beispiel: 0xFF in Dezimal**
+
+```
+F = 15, F = 15
+15 × 16¹ + 15 × 16⁰
+= 15 × 16  + 15 × 1
+= 240      + 15
+= 255
+```
+
+0xFF₁₆ = **255₁₀**
+
+**Kurzweg über Binär:** 1 Hex-Ziffer = genau 4 Bit
+
+```
+C    0
+1100 0000
+= 11000000₂ = 192₁₀
+```
+
+---
+

@@ -1,0 +1,111 @@
+﻿# Lastenheft & Pflichtenheft
+
+## Worum geht's
+
+Du lernst den Unterschied zwischen Lastenheft und Pflichtenheft —
+wer es erstellt, was drin steht, und wann es entsteht.
+Diese Unterscheidung kommt in der Prüfung regelmäßig vor.
+
+---
+
+## Die Analogie: Küche bestellen
+
+Stell dir vor, du willst eine neue Küche beim Tischler bestellen:
+
+**Du als Kunde sagst:**
+„Ich möchte eine L-förmige Küche, mindestens 4 Schränke, hellgrau, Platz für Spülmaschine, Budget 5.000 €."
+
+Das ist das **Lastenheft** — du beschreibst **WAS** du willst.
+
+**Der Tischler antwortet:**
+„Wir nehmen Birke-Furnier in RAL 7035, Scharniere von Hettich, Oberschränke 60×30 cm, Lieferung in 6 Wochen, Montage durch uns."
+
+Das ist das **Pflichtenheft** — der Tischler beschreibt **WIE** er es umsetzt.
+
+---
+
+## Lastenheft vs. Pflichtenheft — der Überblick
+
+| | **Lastenheft** | **Pflichtenheft** |
+|---|---|---|
+| **Ersteller** | **Auftraggeber** (Kunde) | **Auftragnehmer** (Dienstleister, Entwickler) |
+| **Inhalt** | **WAS** soll das System leisten? | **WIE** wird es technisch umgesetzt? |
+| **Sprache** | Fachlich, allgemein verständlich | Technisch, detailliert |
+| **Zeitpunkt** | Vor dem Projekt | Nach dem Lastenheft, vor der Umsetzung |
+| **Beispiel** | „Das System soll 1.000 Nutzer verwalten" | „PostgreSQL-Datenbank, User-Tabelle mit 5 Feldern, REST-API" |
+
+**Merkhilfe:** Lasten**heft** = der Auftraggeber **lädt Lasten** auf den Auftragnehmer ab (gibt Anforderungen vor). Pflichten**heft** = der Auftragnehmer **verpflichtet sich** zur Umsetzung.
+
+---
+
+## Was steht im Lastenheft?
+
+Das Lastenheft enthält die Anforderungen des **Kunden** — aus seiner Sicht, nicht technisch:
+
+**Funktionale Anforderungen** — was soll das System tun?
+- „Nutzer können sich einloggen"
+- „Bestellungen können storniert werden"
+- „Berichte als PDF exportieren"
+
+**Nicht-funktionale Anforderungen** — wie soll es sein?
+- Performance: „Seite lädt in unter 2 Sekunden"
+- Verfügbarkeit: „System ist 99,9 % der Zeit erreichbar"
+- Sicherheit: „Alle Passwörter müssen verschlüsselt gespeichert werden"
+
+**Rahmenbedingungen:**
+- Budget
+- Zeitplan (grob)
+- Zu nutzende Systeme (z. B. „muss mit SAP kompatibel sein")
+
+---
+
+## Was steht im Pflichtenheft?
+
+Das Pflichtenheft ist die **Antwort des Auftragnehmers** auf das Lastenheft — wie er die Anforderungen umsetzt:
+
+- Projekttitel und Beschreibung
+- Beschreibung der Funktionalitäten (technisch)
+- Verwendeter Technologie-Stack (Programmiersprache, Datenbank, Frameworks)
+- Schnittstellen (APIs, externe Systeme)
+- Datenbankstruktur (Tabellen, Felder)
+- Benutzeroberflächen (Mockups, Beschreibungen)
+- Zeit- und Kostenplan mit Meilensteinen
+- Verantwortlichkeiten (wer macht was?)
+
+---
+
+## Die Reihenfolge
+
+```
+1. Auftraggeber schreibt Lastenheft (WAS wird gebraucht?)
+          ↓
+2. Auftragnehmer liest Lastenheft
+          ↓
+3. Auftragnehmer schreibt Pflichtenheft (WIE wird es gebaut?)
+          ↓
+4. Beide stimmen zu → Projekt startet
+```
+
+Das Pflichtenheft kann **erst entstehen, wenn das Lastenheft vorliegt**.
+
+---
+
+## Typische Fehler
+
+**Falle 1: Verwechslung, wer was erstellt**
+- Lastenheft → **Auftraggeber** (der Kunde, der etwas bestellt)
+- Pflichtenheft → **Auftragnehmer** (die Firma, die es baut)
+
+**Falle 2: Verwechslung von WAS und WIE**
+- Lastenheft = WAS (Anforderungen, Ziele, kein Technologie-Details)
+- Pflichtenheft = WIE (technische Lösung, konkrete Umsetzung)
+
+**Falle 3: Reihenfolge**
+- Erst Lastenheft, dann Pflichtenheft — nicht umgekehrt!
+
+**Falle 4: Typische Inhalte zuordnen**
+- „Die Datenbank soll PostgreSQL sein" → Pflichtenheft (technische Entscheidung)
+- „Das System soll 500 gleichzeitige Nutzer unterstützen" → Lastenheft (Anforderung des Kunden)
+
+---
+

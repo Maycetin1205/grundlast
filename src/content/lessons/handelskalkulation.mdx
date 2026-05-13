@@ -1,0 +1,177 @@
+﻿# Handelskalkulation (Vorwärts- & Rückwärtskalkulation)
+
+## Worum geht's
+
+Du lernst, wie ein Händler seinen Verkaufspreis berechnet — vom Einkauf beim Lieferanten
+bis zum Endpreis für den Kunden. In der Prüfung wirst du sowohl vorwärts (Einkaufspreis →
+Verkaufspreis) als auch rückwärts (Verkaufspreis → Einkaufspreis) rechnen müssen.
+
+---
+
+## Erklärung
+
+### Das Kalkulations-Schema
+
+Jeder Händler folgt demselben Schema. Lernt man es einmal auswendig,
+lassen sich alle Aufgaben zur Kalkulation lösen:
+
+```
+Listeneinkaufspreis (LEP)
+  − Liefererrabatt
+= Zieleinkaufspreis (ZEP)
+  − Liefererskonto
+= Bareinkaufspreis (BEP)
+  + Bezugskosten (Fracht, Zoll, Verpackung)
+= Bezugspreis (= Einstandspreis)
+  + Handlungskosten (Miete, Personal, Energie)
+= Selbstkosten
+  + Gewinn
+= Barverkaufspreis
+  + Kundenskonto
+  + Kundenrabatt
+= Nettoverkauffspreis (Netto-VK)
+  + Umsatzsteuer (19 %)
+= Bruttoverkaufspreis (Brutto-VK)
+```
+
+### Die wichtigsten Begriffe
+
+**Listeneinkaufspreis (LEP):** Der Preis aus dem Lieferantenkatalog — vor allen Abzügen.
+
+**Rabatt:** Ein prozentualer Nachlass auf den Listenpreis, den der Lieferant einräumt
+(z. B. für Großbestellungen oder langjährige Kunden).
+
+**Skonto:** Ein prozentualer Nachlass für schnelle Zahlung (z. B. „2 % Skonto bei
+Zahlung innerhalb von 10 Tagen"). Skonto wird auf den Preis **nach** Rabatt berechnet.
+
+**Bezugskosten:** Transportkosten, Zölle, Verpackung — alles was anfällt, um die
+Ware überhaupt ins Lager zu bekommen.
+
+**Bezugspreis / Einstandspreis:** Was die Ware den Händler wirklich kostet, wenn sie
+im Lager ankommt.
+
+**Handlungskosten:** Die laufenden Betriebskosten des Händlers (Miete, Gehälter,
+Strom). Wird oft als prozentualer Aufschlag angegeben.
+
+**Selbstkosten:** Bezugspreis + Handlungskosten — ohne Gewinn.
+
+**Kundenrabatt:** Der Nachlass, den der Händler seinem Kunden gibt.
+**Kundenskonto:** Preisnachlass für schnelle Kundenzahlung.
+
+> Wichtig: Rabatt und Skonto werden **addiert zurückgerechnet**, wenn man vom Netto-VK
+> auf den Barverkaufspreis kommt — sie werden beim Kunden als Abzug gewährt,
+> müssen also im Listenpreis einkalkuliert sein.
+
+### Rückwärtskalkulation: Vom Preis zurück zum Einkauf
+
+Manchmal gibt die Aufgabe den Endpreis und fragt nach dem Einkaufspreis oder
+einem Zwischenwert. Das Schema läuft dann einfach von unten nach oben:
+
+```
+Bruttoverkaufspreis ÷ 1,19       = Netto-VK
+Netto-VK           × (1 − Rabatt%) = Barverkaufspreis   [÷ (1 − Rabatt%)]
+Barverkaufspreis   × (1 − Skonto%) = ...                 [÷ (1 − Skonto%)]
+```
+
+---
+
+## Beispiele – Schritt für Schritt
+
+<Rechenweg
+  title="Vorwärtskalkulation: Laptop, Listenpreis 800 €"
+  steps={[
+    {
+      title: "Ausgangsposition",
+      formula: "Listeneinkaufspreis (LEP) = 800,00 €",
+      explanation: "Das ist der Preis im Katalog des Lieferanten, bevor irgendwelche Abzüge greifen."
+    },
+    {
+      title: "Liefererrabatt abziehen (10 %)",
+      formula: "LEP               = 800,00 €\n− Rabatt (10 %)   =  80,00 €\n= Zieleinkaufspreis = 720,00 €",
+      explanation: "Rabatt = 800 × 0,10 = 80 €. Der Zieleinkaufspreis (ZEP) ist der Preis nach Liefererrabatt."
+    },
+    {
+      title: "Liefererskonto abziehen (2 %)",
+      formula: "ZEP               = 720,00 €\n− Skonto (2 %)    =  14,40 €\n= Bareinkaufspreis  = 705,60 €",
+      explanation: "Skonto = 720 × 0,02 = 14,40 €. Skonto wird auf den ZEP (nach Rabatt) berechnet, nicht auf den LEP!"
+    },
+    {
+      title: "Bezugskosten addieren (30 €)",
+      formula: "Bareinkaufspreis  = 705,60 €\n+ Bezugskosten    =  30,00 €\n= Bezugspreis       = 735,60 €",
+      explanation: "Fracht, Zoll, Verpackung werden addiert. Das ist jetzt der echte Einstandspreis — was der Laptop den Händler kostet, wenn er im Lager steht."
+    },
+    {
+      title: "Handlungskosten aufschlagen (15 %)",
+      formula: "Bezugspreis       = 735,60 €\n+ HK (15 %)       = 110,34 €\n= Selbstkosten      = 845,94 €",
+      explanation: "Handlungskosten = 735,60 × 0,15 = 110,34 €. Jetzt sind alle Kosten des Händlers drin. Verkauft er zum Selbstkostenpreis, macht er keinen Verlust — aber auch keinen Gewinn."
+    },
+    {
+      title: "Gewinn aufschlagen (20 %)",
+      formula: "Selbstkosten      = 845,94 €\n+ Gewinn (20 %)   = 169,19 €\n= Barverkaufspreis  = 1.015,13 €",
+      explanation: "Gewinn = 845,94 × 0,20 = 169,19 €. Der Barverkaufspreis ist der Preis für Barzahlung ohne weitere Rabatte."
+    },
+    {
+      title: "Kundenskonto und Kundenrabatt aufschlagen",
+      formula: "Barverkaufspreis  = 1.015,13 €\n+ Kundenskonto (2%) =   20,72 €  [1.015,13 ÷ 0,98 − 1.015,13]\n+ Kundenrabatt (5%) =   54,54 €  [(1.015,13 + 20,72) ÷ 0,95 × 0,05]\n= Netto-VK          = 1.090,39 €",
+      explanation: "Hier ist Vorsicht geboten: Skonto und Rabatt werden beim Kunden als Abzug gewährt. Um das einzukalkulieren, muss der Barverkaufspreis entsprechend hochgesetzt werden. Formel: Barpreis ÷ (1 − Skontosatz) für den Schritt Kundenskonto."
+    },
+    {
+      title: "Mehrwertsteuer (19 %) aufschlagen",
+      formula: "Netto-VK          = 1.090,39 €\n+ USt (19 %)       =   207,17 €\n= Brutto-VK         = 1.297,56 €",
+      explanation: "USt = 1.090,39 × 0,19 = 207,17 €. Das ist der finale Bruttopreis, den der Endkunde zahlt."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Rückwärtskalkulation: Brutto-VK gegeben, Bezugspreis gesucht"
+  steps={[
+    {
+      title: "Szenario",
+      formula: "Brutto-VK = 595,00 €\nUSt = 19 %\nKundenrabatt = 5 %\nHandlungskosten = 20 %\nGewinn = 10 %",
+      explanation: "Bei der Rückwärtskalkulation kennen wir den Endpreis und rechnen rückwärts bis zum Bezugspreis."
+    },
+    {
+      title: "Schritt 1: USt herausrechnen",
+      formula: "Netto-VK = 595,00 ÷ 1,19\nNetto-VK = 500,00 €",
+      explanation: "Brutto ÷ 1,19 ergibt den Netto-VK. Nie 19 % abziehen (= 595 × 0,81), das wäre falsch!"
+    },
+    {
+      title: "Schritt 2: Kundenrabatt herausrechnen",
+      formula: "Netto-VK = 500,00 €\nBarverkaufspreis = 500,00 × (1 − 0,05)\n= 500,00 × 0,95 = 475,00 €",
+      explanation: "Der Netto-VK enthält den Rabatt bereits als Aufschlag. Durch Multiplizieren mit (1 − Rabattsatz) kommen wir auf den Barverkaufspreis."
+    },
+    {
+      title: "Schritt 3: Selbstkosten bestimmen (Gewinn heraus)",
+      formula: "Barverkaufspreis = Selbstkosten × (1 + Gewinnaufschlag)\n475,00 = Selbstkosten × 1,10\nSelbstkosten = 475,00 ÷ 1,10\nSelbstkosten = 431,82 €",
+      explanation: "Der Gewinn ist ein Aufschlag auf die Selbstkosten. Umgekehrt: Barverkaufspreis ÷ (1 + Gewinnprozent) = Selbstkosten."
+    },
+    {
+      title: "Schritt 4: Bezugspreis bestimmen (Handlungskosten heraus)",
+      formula: "Selbstkosten = Bezugspreis × (1 + HK-Satz)\n431,82 = Bezugspreis × 1,20\nBezugspreis = 431,82 ÷ 1,20\nBezugspreis = 359,85 €",
+      explanation: "Analog: Die Handlungskosten sind ein Aufschlag auf den Bezugspreis. Rückwärts: Selbstkosten ÷ (1 + HK-Satz) = Bezugspreis."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Skonto vor oder nach Rabatt?**: Skonto wird auf den Preis **nach** Liefererrabatt
+  berechnet (also auf den ZEP). Erst Rabatt abziehen, dann Skonto abziehen.
+
+- **USt herausrechnen — nie einfach abziehen**: Um den Netto-VK aus dem Brutto-VK zu
+  berechnen: `Netto = Brutto ÷ 1,19`. NICHT `Brutto × 0,81` — das wäre falsch.
+  Beispiel: 119 € brutto → 119 ÷ 1,19 = 100 € netto. 119 × 0,81 = 96,39 € — falsch!
+
+- **Gewinn als Aufschlag auf Selbstkosten, nicht auf Barverkaufspreis**: Der Gewinn
+  wird auf die Selbstkosten aufgeschlagen. 20 % Gewinn bedeutet Barpreis = Selbstkosten × 1,20.
+
+- **Schema auswendig lernen**: Das Kalkulationsschema muss in der Aufgabe verfügbar
+  sein — entweder auswendig oder direkt aus der Aufgabe ableitbar. Die Reihenfolge
+  LEP → ZEP → BEP → Bezugspreis → Selbstkosten → Barpreis → Netto-VK → Brutto-VK
+  ist unveränderlich.
+
+---
+

@@ -1,0 +1,90 @@
+﻿# Von-Neumann-Architektur
+
+## Worum geht's
+
+Du lernst, nach welchem Grundprinzip (fast) jeder Computer gebaut ist.
+Danach kannst du die 5 Kernkomponenten benennen, den Von-Neumann-Zyklus erklären
+und sagen, was der „Von-Neumann-Flaschenhals" ist.
+
+---
+
+## Die Analogie: Das Computer-Büro
+
+Stell dir einen Büro-Mitarbeiter vor, der Aufgaben aus einem Stapel abarbeitet:
+
+- **Rechenwerk (ALU) = Der Taschenrechner auf dem Schreibtisch** — macht die eigentliche Arbeit: rechnen, vergleichen, logisch entscheiden.
+- **Steuerwerk = Der Dirigent** — holt die nächste Aufgabe, liest sie vor und sagt dem Taschenrechner was zu tun ist. Trifft selbst keine Entscheidungen — führt nur aus.
+- **Speicher (RAM) = Der Aktenschrank** — enthält beides: die Arbeitsanweisungen (Programm) UND die Zahlen (Daten). Das ist die entscheidende Idee!
+- **Ein-/Ausgabe = Telefon & Briefkasten** — Eingabe (Tastatur, Maus) rein, Ausgabe (Monitor, Drucker) raus.
+- **Bus-Systeme = Die Flure** — verbinden alle Teile miteinander.
+
+---
+
+## Die revolutionäre Idee
+
+**Vor Von-Neumann (1945):** Programme waren fest verdrahtet — wie ein Taschenrechner, der nur rechnen kann, was eingebaut ist. Neues Programm = neue Hardware.
+
+**Von-Neumanns Idee:** Programme sind auch nur Daten — sie liegen im gleichen Speicher wie die Zahlen. Laden, starten, austauschen — ohne Hardware zu ändern.
+
+Das ist der Grund, warum du heute Word und dann Spotify öffnen kannst, ohne den Computer umzubauen.
+
+---
+
+## Die 5 Komponenten
+
+| Komponente | Kürzel | Aufgabe |
+|---|---|---|
+| **Rechenwerk** | ALU (Arithmetic Logic Unit) | Rechnen (+, −, ×, ÷) und Vergleiche |
+| **Steuerwerk** | CU (Control Unit) | Befehle holen, decodieren, steuern |
+| **Speicher** | RAM | Programme UND Daten gemeinsam |
+| **Eingabe** | Input | Tastatur, Maus, Netzwerk, Scanner |
+| **Ausgabe** | Output | Monitor, Drucker, Lautsprecher |
+
+ALU + Steuerwerk zusammen = **CPU** (Central Processing Unit).
+
+---
+
+## Der Von-Neumann-Zyklus
+
+Die CPU wiederholt diesen 4-Schritt-Prozess Milliarden Mal pro Sekunde:
+
+```
+1. FETCH    → Steuerwerk holt nächsten Befehl aus dem RAM
+2. DECODE   → Steuerwerk versteht den Befehl ("Ah, addieren!")
+3. EXECUTE  → ALU führt ihn aus (A + B = C)
+4. WRITEBACK → Ergebnis wird zurück in den Speicher geschrieben
+→ Weiter bei Schritt 1
+```
+
+---
+
+## Der Von-Neumann-Flaschenhals
+
+**Das Problem:** CPU und RAM teilen sich einen Bus (eine "Straße").
+Befehle und Daten stehen in der gleichen Warteschlange.
+Die CPU ist um ein Vielfaches schneller als der RAM — sie wartet ständig.
+
+**Analogie:** Ein Sportwagen (CPU) auf einer einspurigen Landstraße (Bus). Die Geschwindigkeit bringt nichts, wenn der Weg zu eng ist.
+
+**Lösung: Cache-Speicher** — kleine, blitzschnelle Puffer direkt in der CPU:
+
+| Cache | Größe | Geschwindigkeit |
+|---|---|---|
+| L1 | 32–128 KB | ~1 Taktzyklus — extrem schnell |
+| L2 | 256–512 KB | ~3–10 Taktzyklen |
+| L3 | 8–64 MB | ~20–40 Taktzyklen |
+| RAM | 8–32 GB | ~100–300 Taktzyklen — langsam |
+
+---
+
+## Typischer Fehler
+
+**Frage:** „Wo werden Programme gespeichert?"
+
+Viele antworten: „Programme auf der Festplatte, Daten im RAM."
+Das ist die **Langzeitspeicherung** (wenn der Computer aus ist).
+
+**Richtig für die Ausführung:** Programme werden aus der Festplatte in den **RAM** geladen — und liegen dort gemeinsam mit den Daten. Genau das ist das Von-Neumann-Prinzip.
+
+---
+

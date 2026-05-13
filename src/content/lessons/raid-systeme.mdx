@@ -1,0 +1,132 @@
+﻿# RAID-Systeme (0, 1, 5, 6, 10)
+
+## Worum geht's
+
+Du lernst, wie mehrere Festplatten zu einem RAID-Verbund zusammengeschaltet werden — und warum
+das in Firmen Standard ist. In der Prüfung musst du RAID-Level unterscheiden, Kapazitäten ausrechnen
+und wissen: **RAID ist kein Backup.**
+
+---
+
+## Erklärung
+
+**RAID** = **R**edundant **A**rray of **I**ndependent **D**isks  
+Übersetzt: Mehrere Festplatten werden zu einem logischen Laufwerk zusammengeschaltet.
+
+Je nach RAID-Level bekommst du entweder mehr **Geschwindigkeit**, mehr **Ausfallsicherheit**
+oder beides — aber immer auf Kosten von Kapazität oder Geschwindigkeit.
+
+### Die Grundidee: Striping vs. Mirroring
+
+Zwei Grundprinzipien stecken hinter allen RAID-Leveln:
+
+| Prinzip | Bedeutung | Merkwort |
+|---|---|---|
+| **Striping** (Streifen) | Daten werden auf mehrere Platten aufgeteilt → schneller | „Verteilen" |
+| **Mirroring** (Spiegelung) | Dieselben Daten liegen auf mehreren Platten → sicherer | „Kopieren" |
+| **Parität** | Wiederherstellungs-Info wird mitgespeichert → 1 Platte darf ausfallen | „Versicherung" |
+
+### Analogie: Pakete ausliefern
+
+**RAID 0 — Zwei schnelle Motorräder:**
+Du teilst deine Pakete auf 2 Fahrer auf → doppelt so schnell!
+Problem: Fällt ein Fahrer aus → die Hälfte der Pakete ist weg. Kein Sicherheitsnetz.
+
+**RAID 1 — Zwei Autos mit denselben Paketen:**
+Beide Autos haben dieselben Pakete (Spiegelung).
+Ein Auto kaputt? Das andere hat noch alles. Aber du brauchst doppelt so viele Pakete.
+
+**RAID 5 — Drei Autos mit cleverer Aufteilung:**
+Pakete werden aufgeteilt + Ersatzinfo wird mitgenommen.
+Ein Auto kaputt? Die anderen zwei können die fehlenden Pakete wiederherstellen.
+
+### Die RAID-Level im Überblick
+
+| RAID | Name | Min. Platten | Nutzbare Kapazität | Ausfall erlaubt | Speed |
+|---|---|---|---|---|---|
+| **RAID 0** | Striping | 2 | 100 % (alle Platten) | **NEIN** — 1 Platte tot = alles weg | Sehr schnell |
+| **RAID 1** | Mirroring | 2 | 50 % (n/2) | JA — 1 Platte darf ausfallen | Lesen schnell, Schreiben normal |
+| **RAID 5** | Striping + Parität | 3 | (n−1)/n | JA — 1 Platte darf ausfallen | Lesen schnell, Schreiben langsam |
+| **RAID 6** | Doppelte Parität | 4 | (n−2)/n | JA — **2 Platten** dürfen ausfallen | Mittel |
+| **RAID 10** | RAID 1+0 (kombiniert) | 4 | 50 % | JA — pro Spiegelpaar 1 Platte | Sehr schnell |
+
+**Wichtig:** RAID ist **kein Backup!**
+RAID schützt nur vor Festplattenausfall — nicht vor Viren, versehentlichem Löschen,
+Bränden oder Hackerangriffen. Ein separates Backup bleibt zwingend erforderlich.
+
+---
+
+## Beispiele – Schritt für Schritt
+
+<Rechenweg
+  title="Nutzbare Kapazität: RAID 1 mit 2 × 2 TB"
+  steps={[
+    {
+      title: "RAID-Level verstehen",
+      formula: "RAID 1 = Mirroring\nJede Platte ist eine vollständige Kopie der anderen.",
+      explanation: "Bei RAID 1 liegen auf beiden Platten exakt dieselben Daten. Fällt eine aus, läuft das System ohne Datenverlust weiter."
+    },
+    {
+      title: "Formel anwenden",
+      formula: "Nutzbar = Größe EINER Platte\nNutzbar = 2 TB",
+      explanation: "Die zweite Platte ist der Spiegel — sie stellt keinen zusätzlichen Speicher bereit. Von 4 TB Rohkapazität sind 2 TB nutzbar."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Nutzbare Kapazität: RAID 5 mit 4 × 2 TB"
+  steps={[
+    {
+      title: "Formel merken",
+      formula: "Nutzbar = (n − 1) × Plattengröße",
+      explanation: "Bei RAID 5 wird das Äquivalent einer Platte für Paritätsdaten verwendet. Diese Parität ist verteilt — nicht auf einer festen Platte, aber die Gesamtkapazität entspricht n−1 Platten."
+    },
+    {
+      title: "Einsetzen",
+      formula: "n = 4 Platten, Plattengröße = 2 TB\nNutzbar = (4 − 1) × 2 TB\nNutzbar = 3 × 2 TB = 6 TB",
+      explanation: "Von 8 TB Rohkapazität sind 6 TB nutzbar. 2 TB gehen für die Parität weg."
+    },
+    {
+      title: "Ergebnis prüfen",
+      formula: "Rohkapazität: 4 × 2 TB = 8 TB\nNutzbar:      6 TB\nOverhead:     2 TB (25 %)",
+      explanation: "25 % Overhead für Sicherheit — deutlich besser als RAID 1 mit 50 % Overhead. Dafür darf nur 1 Platte ausfallen, nicht 2."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Nutzbare Kapazität: RAID 6 mit 6 × 4 TB"
+  steps={[
+    {
+      title: "Formel für RAID 6",
+      formula: "Nutzbar = (n − 2) × Plattengröße",
+      explanation: "RAID 6 speichert doppelte Parität. Zwei Platten dürfen gleichzeitig ausfallen — deshalb gehen zwei Plattenäquivalente für Parität weg."
+    },
+    {
+      title: "Einsetzen",
+      formula: "n = 6, Plattengröße = 4 TB\nNutzbar = (6 − 2) × 4 TB\nNutzbar = 4 × 4 TB = 16 TB",
+      explanation: "Von 24 TB Rohkapazität sind 16 TB nutzbar. 8 TB (2 Platten) gehen für doppelte Parität weg."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **RAID 0 als „sicheres" System**: RAID 0 bietet null Ausfallsicherheit — eine defekte Platte
+  zerstört das gesamte Array. In Aufgaben wird es manchmal als „schnelles" System für kritische
+  Daten präsentiert. Das ist falsch — RAID 0 nur wenn Ausfall tolerierbar ist.
+
+- **Kapazität bei RAID 5 falsch berechnen**: Viele rechnen `n × Größe` und vergessen den Abzug
+  für Parität. Richtig: `(n−1) × Größe`. Bei 4 × 1 TB = 3 TB nutzbar, nicht 4 TB.
+
+- **RAID ist kein Backup**: Diese Falle steht fast immer in Aufgaben. RAID schützt vor
+  Plattenausfall — aber nicht vor Ransomware, die alle Platten gleichzeitig verschlüsselt.
+
+- **RAID 10 Kapazität**: RAID 10 kombiniert Striping + Mirroring. Immer 50 % der Rohkapazität
+  nutzbar — egal wie viele Platten. 8 × 1 TB = 4 TB nutzbar.
+
+---
+

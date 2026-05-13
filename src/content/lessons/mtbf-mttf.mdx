@@ -1,0 +1,106 @@
+﻿# MTBF & MTTF – Ausfallwahrscheinlichkeit
+
+## Worum geht's
+
+Du lernst zwei Kennzahlen, mit denen IT-Profis die Zuverlässigkeit von Hardware bewerten:
+**<Term id="mtbf">MTBF</Term>** für reparierbare Systeme und **<Term id="mttf">MTTF</Term>** für
+Einwegkomponenten. In der Aufgabe erscheinen diese Begriffe bei Hardware-Auswahl und
+Backup-Planung — oft als Multiple-Choice oder kurze Erklärungsaufgabe.
+
+---
+
+## Erklärung
+
+### MTBF — Mean Time Between Failures
+
+**Wort für Wort:** Mittlere Zeit *zwischen* Ausfällen.
+
+Gilt für **reparierbare** Systeme: Ein Server, der ausfällt, wird repariert und läuft weiter.
+MTBF beschreibt, wie lange das System im Schnitt zwischen zwei Ausfällen funktioniert.
+
+| Wert | Bedeutung |
+|------|-----------|
+| MTBF = 50.000 h | Server fällt im Schnitt alle 50.000 h aus |
+| MTBF hoch | System ist zuverlässig — selten Ausfälle |
+| MTBF niedrig | System fällt häufig aus — teuer im Betrieb |
+
+**Umrechnung in Jahre:** 50.000 h ÷ 8.760 h/Jahr ≈ 5,7 Jahre bei Dauerbetrieb (24/7).
+
+### MTTF — Mean Time To Failure
+
+**Wort für Wort:** Mittlere Zeit *bis zum* Ausfall.
+
+Gilt für **nicht reparierbare** Komponenten: Eine Festplatte, die ausfällt, wird komplett
+ersetzt — nicht repariert. MTTF beschreibt die erwartete Lebensdauer bis zum endgültigen Defekt.
+
+| Wert | Bedeutung |
+|------|-----------|
+| MTTF = 100.000 h | Festplatte hält im Schnitt 100.000 h |
+| MTTF hoch | Lange Lebensdauer — weniger häufiger Ersatz |
+| MTTF niedrig | Kurze Lebensdauer — häufiger Austausch nötig |
+
+**Umrechnung in Jahre:** 100.000 h ÷ 8.760 h/Jahr ≈ 11,4 Jahre.
+
+### Die entscheidende Unterscheidung
+
+Der Schlüssel liegt im Wort **„Between"** (zwischen) vs. **„To"** (bis zu):
+
+| Kennzahl | Systemtyp | Schlüsselwort | Typische Geräte |
+|----------|-----------|---------------|-----------------|
+| **MTBF** | Reparierbar | *Between* = dazwischen | Server, RAID-Arrays, Switches |
+| **MTTF** | Nicht reparierbar | *To* = bis zum Ende | Einzelfestplatten, LEDs, Akkus, Kondensatoren |
+
+> **Analogie:** MTBF ist wie ein Auto — nach einer Panne fährt es weiter (reparierbar).
+> MTTF ist wie eine Glühbirne — wenn sie durch ist, kommt eine neue rein (kein Reparieren).
+
+### Wichtige Einschränkung
+
+MTBF und MTTF sind **statistische Durchschnittswerte** — keine Garantien.
+Ein System mit MTBF = 50.000 h kann theoretisch nach 1000 h ausfallen oder erst nach 100.000 h.
+In der Praxis verwendet man diese Werte für Planungszwecke (Ersatzteillager, Wartungsintervalle),
+nicht als feste Vorhersage.
+
+---
+
+## Beispiele
+
+### Hardware-Auswahl in der Praxis
+
+Ein Unternehmen sucht Backup-Festplatten. Zwei Angebote:
+
+| | Angebot A | Angebot B |
+|-|-----------|-----------|
+| MTTF | 500.000 h | 1.000.000 h |
+| Preis | 150 € | 180 € |
+
+**Entscheidung:** Angebot B ist empfehlenswert.
+- Doppelte Lebensdauer (1 Mio. vs. 500.000 h)
+- Nur 20 % teurer
+- Bei Backup-Medien ist Zuverlässigkeit kritisch — ein Datenverlust kostet mehr als 30 €
+
+### Kennzahl in Jahre umrechnen
+
+**Aufgabe:** Ein Server hat MTBF = 87.600 Stunden. Wie viele Jahre entspricht das?
+
+```
+87.600 h ÷ 8.760 h/Jahr = 10 Jahre
+```
+
+(8.760 = 24 h × 365 Tage = Stunden pro Jahr bei Dauerbetrieb)
+
+---
+
+## Typische Fehler
+
+- **MTBF und MTTF verwechseln:** „Der Server hat eine MTTF von 60.000 Stunden" — das wäre falsch,
+  Server sind reparierbar → es müsste MTBF heißen. Wenn die Aufgabe fragt, welche Kennzahl für
+  Servers gilt: immer MTBF.
+
+- **Hoher Wert = gut:** Sowohl hoher MTBF als auch hoher MTTF sind positiv. Manche denken
+  irrtümlich, ein hoher Wert bedeute „fällt schnell aus" — das Gegenteil ist richtig.
+
+- **MTBF als Garantie missdeuten:** Ein MTBF von 100.000 Stunden bedeutet NICHT, dass das Gerät
+  mindestens 100.000 Stunden hält. Es ist ein statistischer Erwartungswert über viele Geräte.
+
+---
+

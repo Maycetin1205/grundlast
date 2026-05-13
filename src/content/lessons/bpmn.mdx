@@ -1,0 +1,109 @@
+﻿# BPMN – Prozesse modellieren
+
+## Worum geht's
+
+Wie beschreibt man einen Geschäftsprozess so, dass alle — Entwickler, Manager, Abteilungsleiter —
+ihn sofort verstehen? Die Antwort: **BPMN** (Business Process Model and Notation).
+Seit 2025 ist BPMN explizit wichtig in der Prüfung. Du musst Symbole kennen,
+kleine Prozesse lesen und typische Abläufe modellieren können.
+
+---
+
+## Konzept
+
+**BPMN** = Business Process Model and Notation = eine standardisierte grafische Sprache,
+um Geschäftsprozesse eindeutig darzustellen.
+
+### Analogie: Rezept schreiben
+
+Ein Kochrezept ist ein Prozess — aber jeder schreibt es anders auf. BPMN ist wie ein
+**einheitlicher Rezept-Standard**, den jeder versteht: feste Symbole, klare Reihenfolgen.
+
+### Die 6 wichtigsten BPMN-Symbole
+
+| Symbol | Name | Bedeutung |
+|---|---|---|
+| ○ (dünner Kreis) | **Start-Ereignis** | Wo der Prozess beginnt |
+| ⊙ (dicker Kreis) | **End-Ereignis** | Wo der Prozess endet |
+| ▭ (abgerundetes Rechteck) | **Aktivität / Task** | Eine Aufgabe die ausgeführt wird |
+| ◇ (Raute) | **Gateway** | Entscheidung oder Verzweigung |
+| → (Pfeil) | **Sequenzfluss** | Reihenfolge der Aktivitäten |
+| ═══ (horizontale Bahn) | **Pool / Lane** | Wer für was zuständig ist (Rollen, Abteilungen) |
+
+### Gateways — die wichtigsten Typen
+
+| Gateway-Typ | Symbol | Bedeutung |
+|---|---|---|
+| **Exklusiv (XOR)** | ◇ mit X | Genau **einer** der Pfade wird gewählt (Ja/Nein) |
+| **Parallel (AND)** | ◇ mit + | **Alle** Pfade werden gleichzeitig ausgeführt |
+| **Inklusiv (OR)** | ◇ mit O | **Einer oder mehrere** Pfade werden gewählt |
+
+**Merkhilfe**: In Prüfung ist das **exklusive Gateway (Ja/Nein-Entscheidung)** der Standardfall.
+
+### Pool vs. Lane
+
+- **Pool** = der gesamte Prozess eines Unternehmens (z. B. „Online-Shop")
+- **Lane** = eine Abteilung oder Rolle im Pool (z. B. „Lager", „Buchhaltung", „Kunde")
+- Aktivitäten liegen in Lanes → sofort klar, wer zuständig ist
+
+---
+
+## Beispiele
+
+### Beispiel 1: Bestellprozess (Textbeschreibung → BPMN)
+
+*Textprozess aus dem Archiv:*
+„Kunde bestellt. Lager prüft Bestand. Wenn Bestand da → Versand. Sonst → Einkauf bestellt nach. Danach Versand. Rechnung geht an Kunde."
+
+**BPMN-Elemente, die du brauchst:**
+
+1. **Start-Ereignis** → „Bestellung eingegangen"
+2. **Task** → „Bestand prüfen" (Lager-Lane)
+3. **Gateway (XOR)** → „Bestand vorhanden?" mit zwei Ausgängen: Ja / Nein
+4. Ja-Pfad → **Task** „Versand vorbereiten"
+5. Nein-Pfad → **Task** „Nachbestelllung auslösen" → **Task** „Versand vorbereiten"
+6. **Task** → „Ware versenden"
+7. **Task** → „Rechnung erstellen"
+8. **End-Ereignis** → „Auftrag abgeschlossen"
+
+**Wichtig:** Die beiden Pfade (Ja und Nein) laufen beim Versand wieder zusammen —
+dafür wird ein zweites XOR-Gateway zum Zusammenführen genutzt.
+
+### Beispiel 2: BPMN mit Lanes
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Pool: Bestellabwicklung                                 │
+├─────────────────────────────────────────────────────────┤
+│ Lane: Kunde    │ Bestellung aufgeben →                  │
+├─────────────────────────────────────────────────────────┤
+│ Lane: Lager    │ → Bestand prüfen → [Gateway] → Versand │
+├─────────────────────────────────────────────────────────┤
+│ Lane: Einkauf  │              → Nachbestellen →          │
+└─────────────────────────────────────────────────────────┘
+```
+
+Jede Aktivität liegt in der Lane der Abteilung, die sie ausführt.
+Sequenzpfeile dürfen Lane-Grenzen überschreiten.
+
+---
+
+## Typische Fehler
+
+- **Gateway statt Task**: Eine Entscheidung (Ja/Nein, Option A/B) muss als **Gateway (Raute)**
+  modelliert werden, nicht als Task. Ein Task ist eine ausführbare Aufgabe, kein Entscheidungspunkt.
+
+- **Pfade konvergieren vergessen**: Wenn ein Gateway zwei Pfade aufteilt (Ja/Nein),
+  müssen die Pfade irgendwann wieder zusammenlaufen — sonst hängt der Prozess bei einem
+  Pfad ohne Ende. Im Exklusiv-Gateway schließt ein zweites Gateway die Pfade wieder zusammen.
+
+- **Pool und Lane verwechseln**: Der Pool ist das Gesamtsystem (z. B. das Unternehmen).
+  Lanes sind die Verantwortungsbereiche innerhalb (z. B. Abteilungen, Rollen).
+  Ein Prozess hat typischerweise 1 Pool mit mehreren Lanes.
+
+- **Sequenzfluss vs. Nachrichtenfluss**: Innerhalb eines Pools werden Aktivitäten mit
+  **Sequenzfluss-Pfeilen** (→) verbunden. Zwischen verschiedenen Pools (z. B. Lieferant und Kunde)
+  werden **Nachrichtenflüsse** (gestrichelter Pfeil) genutzt.
+
+---
+

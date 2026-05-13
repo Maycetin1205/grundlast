@@ -1,0 +1,131 @@
+﻿# Gewinnermittlung & Deckungsbeitrag
+
+## Worum geht's
+
+Du lernst, wie ein Unternehmen seinen Gewinn berechnet und was der
+<Term id="deckungsbeitrag">Deckungsbeitrag</Term> dabei bedeutet.
+Diese Grundrechnung kommt in fast jeder Aufgabe vor — und ist enger verknüpft mit
+Break-Even und Kalkulation als es auf den ersten Blick aussieht.
+
+---
+
+## Erklärung
+
+### Die Grundformel
+
+```
+Gewinn = Umsatz − Gesamtkosten
+```
+
+Klingt einfach — aber was steckt dahinter?
+
+**Umsatz** = Einnahmen aus dem Verkauf:
+```
+Umsatz = Menge × Verkaufspreis pro Stück
+```
+
+**Gesamtkosten** = Fixkosten + variable Kosten für alle Stücke:
+```
+Gesamtkosten = Fixkosten + (Menge × variable Kosten pro Stück)
+```
+
+**Zusammengefasst:**
+```
+Gewinn = (Menge × Preis) − Fixkosten − (Menge × variable Kosten)
+```
+
+### Der Deckungsbeitrag — warum der Name?
+
+Der **Deckungsbeitrag pro Stück** zeigt, wie viel jede verkaufte Einheit zur Deckung der
+Fixkosten beiträgt:
+
+```
+db (pro Stück) = Verkaufspreis − variable Kosten pro Stück
+```
+
+Wenn du alle Stücke zusammenzählst:
+```
+DB (gesamt) = db × Menge
+```
+
+Und daraus der Gewinn:
+```
+Gewinn = DB_gesamt − Fixkosten
+```
+
+> **Analogie:** Stell dir vor, jeder Laptop den du verkaufst, wirft 60 € auf einen Stapel.
+> Sobald der Stapel 120.000 € (= Fixkosten) erreicht hat, fängt das Unternehmen an, Gewinn zu machen.
+> Jeder Laptop darüber hinaus ist purer Gewinn von 60 €.
+
+### Verbindung zum Break-Even
+
+Break-Even-Punkt = wenn DB_gesamt = Fixkosten → Gewinn = 0.
+Das kennst du aus der Lektion `break-even`. Hier gehst du einen Schritt weiter und rechnest
+auch Gewinne (und Verluste) aus.
+
+---
+
+## Beispiele
+
+<Rechenweg
+  title="Beispiel 1: Gewinn direkt berechnen"
+  steps={[
+    {
+      title: "Umsatz berechnen",
+      formula: "Menge = 2000 Stück, Preis = 150 €\nUmsatz = 2000 × 150 = 300.000 €",
+      explanation: "Umsatz = alle Einnahmen aus dem Verkauf."
+    },
+    {
+      title: "Gesamtkosten berechnen",
+      formula: "Fixkosten = 80.000 €, variable Kosten = 90 €/Stück\nVariable Gesamtkosten = 2000 × 90 = 180.000 €\nGesamtkosten = 80.000 + 180.000 = 260.000 €",
+      explanation: "Fixkosten fallen immer an. Variable Kosten mit der Menge multiplizieren."
+    },
+    {
+      title: "Gewinn ermitteln",
+      formula: "Gewinn = Umsatz − Gesamtkosten\nGewinn = 300.000 − 260.000 = 40.000 €",
+      explanation: "Das Unternehmen macht 40.000 € Gewinn."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Beispiel 2: Über den Deckungsbeitrag rechnen"
+  steps={[
+    {
+      title: "Deckungsbeitrag pro Stück berechnen",
+      formula: "Preis = 80 €, variable Kosten = 50 €/Stück\ndb = 80 − 50 = 30 €",
+      explanation: "Jedes verkaufte Stück trägt 30 € zur Deckung der Fixkosten bei."
+    },
+    {
+      title: "Gesamtdeckungsbeitrag berechnen",
+      formula: "Menge = 600 Stück\nDB = 30 × 600 = 18.000 €",
+      explanation: "Die 600 Stücke zusammen decken insgesamt 18.000 € der Fixkosten."
+    },
+    {
+      title: "Gewinn ermitteln",
+      formula: "Fixkosten = 12.000 €\nGewinn = DB − Fixkosten = 18.000 − 12.000 = 6.000 €",
+      explanation: "Da der Gesamtdeckungsbeitrag (18.000 €) die Fixkosten (12.000 €) übersteigt, gibt es einen Gewinn von 6.000 €."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **„Gewinn = Umsatz"** — das ist der häufigste Fehler.
+  Gewinn ist Umsatz **minus** alle Kosten. Ein Unternehmen mit 1 Mio. € Umsatz und 1,1 Mio. € Kosten
+  macht 100.000 € **Verlust**, keinen Gewinn.
+
+- **Variable Gesamtkosten statt Stückkosten verwechseln:** Wenn die Aufgabe sagt
+  „variable Kosten bei 500 Stück = 25.000 €", dann ist die Stückkost **25.000 / 500 = 50 €**.
+  Immer prüfen: ist die genannte Zahl pro Stück oder insgesamt?
+
+- **Deckungsbeitrag mit Gewinn verwechseln:** db ist der Beitrag **je Stück** zur Deckung der
+  Fixkosten — noch kein Gewinn. Erst wenn DB_gesamt > Fixkosten, entsteht Gewinn.
+
+- **Fixkosten mit den Stücken multiplizieren:** Fixkosten sind fixiert — sie ändern sich NICHT
+  mit der Menge. Miete bleibt 5000 €, ob du 10 oder 10.000 Stücke produzierst.
+
+---
+

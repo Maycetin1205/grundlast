@@ -1,0 +1,120 @@
+﻿# Datenrate & Downloadzeit berechnen
+
+## Worum geht's
+
+Du lernst, wie du Datenraten umrechnest (Mbit/s ↔ MB/s) und Downloadzeiten berechnest.
+Diese Rechenaufgaben kommen fast in jeder Aufgabe vor.
+
+---
+
+## Die wichtigste Unterscheidung: Bit vs. Byte
+
+**Internet-Anbieter messen in Megabit pro Sekunde (Mbit/s).**
+**Dateien messen wir in Megabyte (MB).**
+
+```
+1 Byte = 8 Bit
+→ 100 Mbit/s = 100 / 8 = 12,5 MB/s
+```
+
+**Das ist der häufigste Fehler in Aufgaben** — verwechsle nie Mbit und MB.
+
+Eselsbrücke: Das kleine `b` = bit, das große `B` = Byte.
+
+---
+
+## Die drei Grundformeln
+
+```
+Datenrate    = Datenmenge / Zeit
+Zeit         = Datenmenge / Datenrate
+Datenmenge   = Datenrate × Zeit
+```
+
+Und das Umrechnen nicht vergessen:
+```
+MB/s = Mbit/s ÷ 8
+```
+
+---
+
+## Schritt-für-Schritt Beispiel
+
+**Aufgabe:** Eine 2 GB große Datei soll über eine 100 Mbit/s Leitung heruntergeladen werden. Wie lange dauert das?
+
+**Schritt 1: Einheiten vereinheitlichen**
+```
+100 Mbit/s → in MB/s umrechnen:
+100 ÷ 8 = 12,5 MB/s
+```
+
+**Schritt 2: Datenmenge in MB**
+```
+2 GB = 2 × 1000 MB = 2000 MB  (dezimal, wie Hersteller angeben)
+```
+
+**Schritt 3: Zeit berechnen**
+```
+Zeit = 2000 MB ÷ 12,5 MB/s = 160 Sekunden
+```
+
+**Antwort: 160 Sekunden ≈ 2 Minuten 40 Sekunden**
+
+---
+
+## Weitere Rechenbeispiele
+
+### Beispiel 2: Datenrate ausrechnen
+
+**Aufgabe:** Ein Netzwerk überträgt 500 Megabit in 10 Sekunden. Wie groß ist die Datenrate in Mbit/s?
+
+```
+Datenrate = 500 Mbit ÷ 10 s = 50 Mbit/s
+```
+
+### Beispiel 3: Bandbreite pro Nutzer
+
+**Aufgabe:** 300 Mbit/s werden gleichmäßig auf 10 Nutzer verteilt. Wie viel bekommt jeder?
+
+```
+300 Mbit/s ÷ 10 = 30 Mbit/s pro Nutzer
+```
+
+### Beispiel 4: Wie viele Streams?
+
+**Aufgabe:** 200 Mbit/s Leitung, ein HD-Stream benötigt 5 Mbit/s. Wie viele gleichzeitig?
+
+```
+200 ÷ 5 = 40 Streams (theoretisch, ohne Overhead)
+```
+
+### Beispiel 5: Durchschnittliche Datenrate aus Tagesvolumen
+
+**Aufgabe:** Ein Server überträgt 15 TB pro Tag. Welche durchschnittliche Datenrate wird benötigt?
+
+```
+Schritt 1: 15 TB = 15 000 GB = 15 000 000 MB (dezimal)
+Schritt 2: In Megabit: 15 000 000 MB × 8 = 120 000 000 Mbit
+Schritt 3: Sekunden pro Tag: 24 × 60 × 60 = 86 400 s
+Schritt 4: Rate = 120 000 000 Mbit ÷ 86 400 s ≈ 1389 Mbit/s ≈ 1,39 Gbit/s
+```
+
+---
+
+## Einheiten-Tabelle
+
+| Kürzel | Bedeutung | Basis |
+|---|---|---|
+| bit | Einzelnes Bit | 1 |
+| Byte (B) | 8 Bit | 8 |
+| Kilobit (kbit) | 1 000 Bit | 10³ |
+| Megabit (Mbit) | 1 000 000 Bit | 10⁶ |
+| Gigabit (Gbit) | 1 000 000 000 Bit | 10⁹ |
+| Kilobyte (KB) | 1 000 Byte | 10³ |
+| Megabyte (MB) | 1 000 000 Byte | 10⁶ |
+| Gigabyte (GB) | 1 000 000 000 Byte | 10⁹ |
+
+> **Hinweis:** In Aufgaben meist dezimale Werte (GB = 1000 MB). Wenn nicht angegeben → dezimal nehmen.
+
+---
+

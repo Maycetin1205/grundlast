@@ -1,0 +1,251 @@
+﻿# Netzplantechnik (FAZ, FEZ, SAZ, SEZ)
+
+## Worum geht's
+
+Du lernst, wie du ein Projekt zeitlich analysierst: Welche Aufgaben sind zeitkritisch?
+Wo hast du Puffer? Wie lange dauert das Projekt mindestens?
+
+In der Prüfung kommen Netzplan-Aufgaben fast immer vor — oft mit 10–15 Punkten bewertet.
+
+---
+
+## Die Analogie: Hausbau
+
+Stell dir vor, du baust ein Haus. Manche Arbeiten müssen in einer bestimmten Reihenfolge passieren:
+
+- **Fundament gießen** (5 Tage) — muss als Erstes fertig sein
+- **Wände hochziehen** (10 Tage) — erst wenn das Fundament fertig ist
+- **Dach aufsetzen** (7 Tage) — erst wenn die Wände stehen
+- **Fenster bestellen** (8 Tage) — kann parallel zu den Wänden passieren!
+- **Fenster einbauen** (3 Tage) — erst wenn Wände stehen UND Fenster geliefert
+
+Zwei Fragen, die sich daraus ergeben:
+
+1. Was passiert, wenn die Fensterlieferung 2 Tage Verspätung hat? (Puffer prüfen)
+2. Was darf auf keinen Fall in Verzug geraten? (Kritischer Pfad)
+
+Der Netzplan macht das berechenbar.
+
+---
+
+## Was ist ein Vorgang?
+
+Ein **Vorgang** = eine einzelne Aufgabe im Projekt (z. B. „Datenbank einrichten", „Tests schreiben").
+
+Jeder Vorgang hat:
+- eine **Dauer** (in Tagen oder Stunden)
+- **Vorgänger** (welche Aufgaben müssen vorher fertig sein?)
+- **Nachfolger** (welche Aufgaben kommen danach?)
+
+---
+
+## Die 5 Kennzahlen — auswendig lernen!
+
+Jeder Vorgang bekommt 5 berechnete Werte:
+
+| Kürzel | Voller Name | Bedeutung | Berechnung |
+|---|---|---|---|
+| **FAZ** | Frühester Anfangszeitpunkt | Wann kann ich **frühestens anfangen**? | Vorwärtsrechnung |
+| **FEZ** | Frühester Endzeitpunkt | Wann bin ich **frühestens fertig**? | FEZ = FAZ + Dauer |
+| **SAZ** | Spätester Anfangszeitpunkt | Wann muss ich **spätestens anfangen**? | Rückwärtsrechnung |
+| **SEZ** | Spätester Endzeitpunkt | Wann muss ich **spätestens fertig sein**? | SEZ = SAZ + Dauer |
+| **GP** | Gesamtpuffer | Wie viel Reserve habe ich? | **GP = SAZ − FAZ** |
+
+**Merkhilfe:** F = Früh (Vorwärts), S = Spät (Rückwärts). Puffer = SAZ minus FAZ.
+
+---
+
+## So sieht ein Vorgangsknoten aus
+
+Im Netzplan wird jeder Vorgang als Kasten dargestellt:
+
+```
+┌────────────────────────────┐
+│  FAZ  │  Dauer  │   FEZ   │
+├────────────────────────────┤
+│         Vorgangsname       │
+├────────────────────────────┤
+│  SAZ  │   GP    │   SEZ   │
+└────────────────────────────┘
+```
+
+**Ausgefülltes Beispiel** — Vorgang A, Dauer 3, kein Puffer:
+
+```
+┌────────────────────────────┐
+│   0   │    3    │    3    │
+├────────────────────────────┤
+│              A             │
+├────────────────────────────┤
+│   0   │    0    │    3    │
+└────────────────────────────┘
+```
+
+Abgelesen: FAZ=0, Dauer=3, FEZ=3 — SAZ=0, GP=0, SEZ=3.
+GP=0 → Vorgang A ist **kritisch** (kein Spielraum).
+
+---
+
+## Die zwei Rechenrichtungen
+
+### Schritt 1: Vorwärtsrechnung (FAZ und FEZ)
+
+Beginne beim ersten Vorgang, rechne von links nach rechts.
+
+**Regel:** `FAZ = FEZ des Vorgängers` | `FEZ = FAZ + Dauer`
+
+**Erster Vorgang:** FAZ = 0 (jedes Projekt startet bei Zeitpunkt 0)
+
+**Wenn ein Vorgang mehrere Vorgänger hat → MAX-Regel:**
+```
+FAZ = Maximum der FEZ-Werte aller Vorgänger
+```
+
+**Warum MAX?** Du kannst erst anfangen, wenn ALLE Vorgänger fertig sind — also wartest du auf den Letzten.
+
+Beispiel: Vorgänger B ist fertig nach Tag 8, Vorgänger C nach Tag 7.
+→ Ich muss auf B warten: FAZ = **max(8, 7) = 8**
+
+---
+
+### Schritt 2: Rückwärtsrechnung (SAZ und SEZ)
+
+Beginne beim letzten Vorgang, rechne von rechts nach links.
+
+**Regel:** `SEZ = SAZ des Nachfolgers` | `SAZ = SEZ − Dauer`
+
+**Letzter Vorgang:** SEZ = FEZ des letzten Vorgangs (kein Puffer am Projektende!)
+
+**Wenn ein Vorgang mehrere Nachfolger hat → MIN-Regel:**
+```
+SEZ = Minimum der SAZ-Werte aller Nachfolger
+```
+
+**Warum MIN?** Du musst rechtzeitig fertig sein, damit dein frühester Nachfolger starten kann.
+
+Beispiel: Nachfolger X muss spätestens bei Tag 3 anfangen, Nachfolger Y bei Tag 4.
+→ Ich muss bis Tag 3 fertig sein: SEZ = **min(3, 4) = 3**
+
+---
+
+### Schritt 3: Gesamtpuffer (GP)
+
+```
+GP = SAZ − FAZ
+```
+
+Alternativ gilt auch: `GP = SEZ − FEZ` (gleiches Ergebnis — nutze es zur Kontrolle!)
+
+**GP = 0 → Vorgang ist kritisch** — jede Verzögerung verschiebt das Projektende!
+
+---
+
+## Vollständiges Berechnungsbeispiel
+
+### Die Aufgabe
+
+| Vorgang | Dauer (Tage) | Vorgänger |
+|---|---|---|
+| A | 3 | — (erster Vorgang) |
+| B | 5 | A |
+| C | 4 | A |
+| D | 2 | B **und** C |
+
+---
+
+### Schritt 1: Vorwärtsrechnung
+
+```
+Vorgang A (kein Vorgänger):
+  FAZ = 0
+  FEZ = 0 + 3 = 3
+
+Vorgang B (Vorgänger: A):
+  FAZ = FEZ von A = 3
+  FEZ = 3 + 5 = 8
+
+Vorgang C (Vorgänger: A):
+  FAZ = FEZ von A = 3
+  FEZ = 3 + 4 = 7
+
+Vorgang D (Vorgänger: B und C → MAX!):
+  FAZ = max(FEZ_B, FEZ_C) = max(8, 7) = 8
+  FEZ = 8 + 2 = 10  ← Projektende = 10 Tage
+```
+
+---
+
+### Schritt 2: Rückwärtsrechnung
+
+Starte bei Vorgang D — er ist der letzte Vorgang.
+
+```
+Vorgang D (letzter Vorgang):
+  SEZ = FEZ_D = 10  (kein Puffer am Ende!)
+  SAZ = 10 − 2 = 8
+
+Vorgang B (Nachfolger: D):
+  SEZ = SAZ_D = 8
+  SAZ = 8 − 5 = 3
+
+Vorgang C (Nachfolger: D):
+  SEZ = SAZ_D = 8
+  SAZ = 8 − 4 = 4
+
+Vorgang A (Nachfolger: B und C → MIN!):
+  SEZ = min(SAZ_B, SAZ_C) = min(3, 4) = 3
+  SAZ = 3 − 3 = 0
+```
+
+---
+
+### Schritt 3: Gesamtpuffer
+
+```
+Vorgang A: GP = SAZ − FAZ = 0 − 0 = 0  → Kritisch!
+Vorgang B: GP = SAZ − FAZ = 3 − 3 = 0  → Kritisch!
+Vorgang C: GP = SAZ − FAZ = 4 − 3 = 1  → 1 Tag Puffer
+Vorgang D: GP = SAZ − FAZ = 8 − 8 = 0  → Kritisch!
+```
+
+---
+
+### Ergebnistabelle
+
+| Vorgang | FAZ | FEZ | SAZ | SEZ | GP | |
+|---|---|---|---|---|---|---|
+| A | 0 | 3 | 0 | 3 | 0 | Kritisch |
+| B | 3 | 8 | 3 | 8 | 0 | Kritisch |
+| C | 3 | 7 | 4 | 8 | 1 | Puffer |
+| D | 8 | 10 | 8 | 10 | 0 | Kritisch |
+
+**Projektdauer: 10 Tage** (= FEZ des letzten Vorgangs)
+
+**Kritischer Pfad: A → B → D** (alle Vorgänge mit GP = 0)
+
+**Vorgang C** hat 1 Tag Puffer — er kann einen Tag später starten, ohne das Projekt zu verzögern.
+
+---
+
+## Typische Fehler
+
+**Falle 1: MAX und MIN verwechseln**
+- Mehrere Vorgänger (Vorwärts → FAZ) → **MAX** der FEZ-Werte
+- Mehrere Nachfolger (Rückwärts → SEZ) → **MIN** der SAZ-Werte
+
+Eselsbrücke: Vorwärts = warte auf den Langsamsten (MAX). Rückwärts = bediene den Frühesten (MIN).
+
+**Falle 2: „Was ist der kritische Pfad?"**
+- Falsch: „Die längste Kette im Netzplan"
+- Richtig: „Alle Vorgänge, bei denen **GP = 0** gilt"
+
+**Falle 3: Projektdauer falsch bestimmt**
+Projektdauer = **FEZ des letzten Vorgangs** — nicht die Summe aller Dauern.
+(Im Beispiel: D dauert 2 Tage, aber Projektdauer ist 10, weil man erst ab Tag 8 anfängt.)
+
+**Falle 4: GP mit falscher Formel**
+Richtig: `GP = SAZ − FAZ` (oder `GP = SEZ − FEZ`, gleiches Ergebnis).
+Falsch wäre z. B. `SAZ − FEZ` — das ergibt etwas anderes.
+
+---
+

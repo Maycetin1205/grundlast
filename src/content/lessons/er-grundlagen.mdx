@@ -1,0 +1,199 @@
+﻿# Was ist eine Datenbank? & ER-Modell
+
+## Worum geht's
+
+Du lernst, was eine Datenbank ist, wie Daten strukturiert gespeichert werden
+und wie man ein ER-Modell liest und erstellt.
+ER-Modell und Datenbankgrundlagen kommen in der Prüfung regelmäßig vor.
+
+---
+
+## Was ist eine Datenbank?
+
+**Analogie: Tabellenkalkulationsprogramm**
+
+Stell dir eine Excel-Tabelle vor:
+- Jede **Zeile** ist ein Datensatz (z. B. ein Kunde)
+- Jede **Spalte** ist eine Eigenschaft (z. B. Name, Adresse, E-Mail)
+
+Eine **Datenbank** ist das professionelle Pendant: strukturierte, verwaltete Datenspeicherung — aber mit vielen Tabellen, die miteinander verknüpft sind, und mit der Möglichkeit, gezielt Daten abzufragen.
+
+**Warum nicht einfach Excel?**
+- Excel wird bei großen Datenmengen langsam
+- Mehrere Nutzer gleichzeitig → Probleme
+- Keine automatische Konsistenz (z. B. wenn ein Kunde gelöscht wird, bleiben seine Bestellungen verwaist)
+- Keine Zugriffsrechte
+
+Eine **relationale Datenbank** speichert Daten in Tabellen und verknüpft sie über Schlüssel.
+Bekannte Systeme: **MySQL**, **PostgreSQL**, **SQLite**, **Microsoft SQL Server**
+
+---
+
+## Die wichtigsten Grundbegriffe
+
+| Begriff | Bedeutung | Beispiel |
+|---|---|---|
+| **Tabelle** | Speichert Daten einer Art (alle Kunden, alle Produkte) | Tabelle „Kunden" |
+| **Zeile / Datensatz / Tupel** | Ein einzelner Eintrag in der Tabelle | Zeile: Murat, München, 22 Jahre |
+| **Spalte / Attribut / Feld** | Eine Eigenschaft jedes Datensatzes | Spalte: „Name", „Alter" |
+| **Primärschlüssel (PK)** | Eindeutiger Bezeichner für jeden Datensatz — keine zwei Zeilen haben denselben Wert | KundenID: 1, 2, 3, ... |
+| **Fremdschlüssel (FK)** | Verweist auf den Primärschlüssel einer anderen Tabelle — stellt die Verknüpfung her | In Bestellungen: kunden_id = 1 → verweist auf Kunde 1 |
+| **NULL** | Kein Wert vorhanden / unbekannt | Telefonnummer nicht angegeben |
+
+**Beispiel: Tabelle „kunden"**
+
+| kunden_id (PK) | name | stadt | alter |
+|---|---|---|---|
+| 1 | Murat | München | 22 |
+| 2 | Sarah | Berlin | 25 |
+| 3 | Tom | München | 30 |
+
+Der **Primärschlüssel** (PK) ist kunden_id — er ist eindeutig, keine zwei Kunden haben dieselbe ID.
+
+**Beispiel: Tabelle „bestellungen"**
+
+| bestell_id (PK) | kunden_id (FK) | produkt | preis |
+|---|---|---|---|
+| 101 | 1 | Laptop | 999.00 |
+| 102 | 1 | Maus | 29.99 |
+| 103 | 2 | Tastatur | 49.99 |
+
+Der **Fremdschlüssel** kunden_id verweist auf die Tabelle „kunden" — so weiß man, welche Bestellung zu welchem Kunden gehört. Murat (kunden_id = 1) hat zwei Bestellungen (101 und 102).
+
+---
+
+## Was ist ein ER-Modell?
+
+**ER-Modell** = Entity-Relationship-Modell (Entitäten-Beziehungs-Modell)
+
+Es ist eine grafische Darstellung, die zeigt:
+- Welche **Dinge** (Entitäten) es gibt
+- Welche **Eigenschaften** sie haben
+- Wie sie **miteinander zusammenhängen**
+
+Man erstellt es **vor** der Datenbank — als Planungswerkzeug.
+
+**Die drei Bausteine:**
+
+| Baustein | Symbol | Bedeutung | Beispiel |
+|---|---|---|---|
+| **Entität** | Rechteck | Ein „Ding" aus der realen Welt | Kunde, Produkt, Bestellung |
+| **Attribut** | Ellipse | Eine Eigenschaft der Entität | Name, Preis, Datum |
+| **Beziehung** | Raute | Wie zwei Entitäten zusammenhängen | „kauft", „enthält" |
+
+**Darstellung (vereinfacht, textuell):**
+
+```
+[Kunde] ——————<kauft>—————— [Produkt]
+   |                              |
+(KundenID)                   (ProduktID)
+(Name)                       (Name)
+(Adresse)                    (Preis)
+```
+
+---
+
+## Kardinalitäten: Wie viele zu wie viele?
+
+Die **Kardinalität** beschreibt, wie viele Datensätze einer Tabelle mit wie vielen der anderen verknüpft sein können.
+
+### 1:1 — Eins zu Eins
+
+Ein Datensatz in Tabelle A gehört zu **genau einem** Datensatz in Tabelle B — und umgekehrt.
+
+**Beispiel:** Ein Mitarbeiter hat genau **einen** Personalausweis. Ein Personalausweis gehört genau **einem** Mitarbeiter.
+
+```
+[Mitarbeiter] ——1:1—— [Personalausweis]
+```
+
+→ Selten in der Praxis — könnte man auch in eine Tabelle zusammenfassen.
+
+---
+
+### 1:n — Eins zu Viele
+
+Ein Datensatz in Tabelle A gehört zu **vielen** Datensätzen in Tabelle B — aber jeder Datensatz in B gehört zu **genau einem** in A.
+
+**Beispiel:** Ein Kunde hat **viele** Bestellungen. Aber jede Bestellung gehört zu **genau einem** Kunden.
+
+```
+[Kunde] ——1:n—— [Bestellung]
+```
+
+→ Häufigste Beziehung! Der Fremdschlüssel liegt immer auf der „n-Seite" (also in der Bestellungen-Tabelle).
+
+**Merkhilfe:** Die „1" ist der Elternteil, die „n" sind die Kinder. Ein Elternteil hat viele Kinder — aber jedes Kind hat genau einen Elternteil.
+
+---
+
+### m:n — Viele zu Viele
+
+Ein Datensatz in Tabelle A kann mit **vielen** in Tabelle B verknüpft sein — und umgekehrt.
+
+**Beispiel:** Ein Student besucht **viele** Kurse. Ein Kurs hat **viele** Studenten.
+
+```
+[Student] ——m:n—— [Kurs]
+```
+
+→ m:n kann nicht direkt in zwei Tabellen gespeichert werden! Es braucht eine **Zwischentabelle**:
+
+```
+[Student] ——1:n—— [Student_Kurs] ——n:1—— [Kurs]
+```
+
+Die Zwischentabelle „Student_Kurs" enthält die Fremdschlüssel beider Tabellen:
+
+| student_id (FK) | kurs_id (FK) |
+|---|---|
+| 1 | 10 |
+| 1 | 11 |
+| 2 | 10 |
+| 3 | 11 |
+
+→ Student 1 besucht Kurse 10 und 11. Kurs 10 hat Studenten 1 und 2.
+
+---
+
+## Vollständiges Beispiel: Online-Shop ER-Modell
+
+**Entitäten und ihre Beziehungen:**
+
+```
+[Kunde]         [Bestellung]       [Produkt]
+  │                  │                  │
+(KundenID PK)   (BestellID PK)    (ProduktID PK)
+(Name)          (Datum)           (Name)
+(Email)         (kunden_id FK)    (Preis)
+(Stadt)         (Gesamtpreis)     (Lagerbestand)
+```
+
+**Beziehungen:**
+- Kunde → Bestellung: **1:n** (ein Kunde macht viele Bestellungen)
+- Bestellung → Produkt: **m:n** (eine Bestellung enthält viele Produkte; ein Produkt ist in vielen Bestellungen)
+  → Zwischentabelle: **Bestellposition** (bestell_id FK + produkt_id FK + menge)
+
+---
+
+## Typische Fehler
+
+**Falle 1: PK und FK verwechseln**
+→ **Primärschlüssel** = eindeutig in der eigenen Tabelle (jede Zeile hat einen anderen Wert)
+→ **Fremdschlüssel** = verweist auf den PK einer anderen Tabelle (stellt die Verknüpfung her)
+
+**Falle 2: Kardinalität falsch bestimmen**
+→ Immer beide Richtungen prüfen:
+„Kann ein Kunde mehrere Bestellungen haben?" → Ja → n-Seite bei Bestellungen
+„Kann eine Bestellung mehreren Kunden gehören?" → Nein → 1-Seite bei Kunden
+→ Ergebnis: 1:n (Kunde zu Bestellung)
+
+**Falle 3: m:n ohne Zwischentabelle**
+→ m:n-Beziehungen können in relationalen Datenbanken nicht direkt abgebildet werden.
+→ Immer Zwischentabelle mit den beiden Fremdschlüsseln.
+
+**Falle 4: NULL-Werte vergessen**
+→ NULL bedeutet: kein Wert vorhanden (nicht 0, nicht leer — sondern unbekannt / nicht angegeben).
+
+---
+

@@ -1,0 +1,185 @@
+﻿# Vorgehensmodelle (Wasserfall & Agil)
+
+## Worum geht's
+
+Du lernst die wichtigsten Vorgehensmodelle in der Softwareentwicklung kennen:
+Wasserfall und Agil (mit Scrum). Du kannst erklären, wann welches Modell sinnvoll ist
+und was die Unterschiede sind — das kommt in der Prüfung regelmäßig vor.
+
+---
+
+## Was ist ein Vorgehensmodell?
+
+Ein **Vorgehensmodell** = ein strukturierter Plan, wie ein Projekt ablaufen soll —
+vom ersten Tag bis zur Abnahme.
+
+Es beantwortet Fragen wie:
+- In welcher Reihenfolge passiert was?
+- Wer entscheidet was?
+- Wann bekommt der Kunde etwas zu sehen?
+- Was passiert, wenn sich die Anforderungen ändern?
+
+Es gibt zwei grundlegende Typen:
+
+| Typ | Ablauf | Beispiel |
+|---|---|---|
+| **Sequenziell** | Schritt für Schritt, kein Zurück | Wasserfall-Modell |
+| **Iterativ** | In Zyklen (Wiederholungen) | Agil, Scrum |
+
+---
+
+## Die Analogie: Hausbau vs. App-Entwicklung
+
+**Wasserfall = Hausbau**
+
+Du baust ein Haus:
+1. Fundament → 2. Mauern → 3. Dach → 4. Innenausbau → 5. Fertig!
+
+Du kannst **nicht zurück**. Wenn das Dach schon drauf ist, kannst du das Fundament nicht mehr ändern.
+→ Alles muss vorher **genau geplant** sein.
+→ Änderungen sind teuer und kaum möglich.
+
+**Agil = App-Entwicklung**
+
+Du entwickelst eine App:
+- Sprint 1: Login fertig → zeigst dem Kunden → Feedback: „Super!"
+- Sprint 2: Profil-Seite fertig → Feedback: „Das Blau gefällt mir nicht"
+- Sprint 3: Farbe geändert, neues Feature gebaut
+
+→ Du kannst **jederzeit anpassen**. Der Kunde sieht regelmäßig Fortschritt.
+→ Änderungen sind eingeplant, kein Problem.
+
+---
+
+## Das Wasserfall-Modell
+
+### Die 5 Phasen
+
+Jede Phase muss **komplett fertig** sein, bevor die nächste startet:
+
+```
+1. Anforderungsanalyse
+   → Was soll das System können?
+   → Ergebnis: Lastenheft (Kunde sagt, was er will)
+
+2. Design / Entwurf
+   → Wie setzen wir es technisch um?
+   → Ergebnis: Pflichtenheft, Architektur
+
+3. Implementierung
+   → Programmieren
+
+4. Test & Integration
+   → Alles testen, Fehler beheben
+
+5. Wartung / Betrieb
+   → System läuft, Updates, Support
+```
+
+### Stärken und Schwächen
+
+| | Wasserfall |
+|---|---|
+| **Vorteile** | Klare Struktur, gute Planbarkeit, Dokumentation |
+| **Nachteile** | Keine Rückschritte, unflexibel bei Änderungen, Fehler fallen oft erst spät auf |
+| **Passt zu** | Stabilen Anforderungen: Bau, Infrastruktur, Embedded-Systeme |
+| **Passt nicht zu** | Software mit sich ändernden Anforderungen |
+
+---
+
+## Agile Entwicklung
+
+### Das Kernprinzip
+
+Agil bedeutet: statt einmal alles zu planen, entwickelst du in kurzen **Zyklen (Sprints)**.
+
+Jeder Sprint = 2–4 Wochen und liefert ein funktionierendes Teilprodukt.
+
+**Zwei wichtige Begriffe:**
+- **Iterativ** = in Wiederholungen (jeder Sprint ist ein Mini-Zyklus)
+- **Inkrementell** = jeder Sprint liefert ein konkretes, nutzbares Ergebnis
+
+### Ein typischer Sprint-Ablauf
+
+```
+1. Sprint Planning (Planung)
+   → Was wird in diesem Sprint gemacht?
+   → Team wählt Aufgaben aus dem Backlog
+
+2. Entwicklung (2–4 Wochen)
+   → Team arbeitet selbstständig
+
+3. Sprint Review (Demo)
+   → Fertiges wird dem Kunden gezeigt
+   → Feedback einsammeln
+
+4. Sprint Retrospektive
+   → Was lief gut? Was können wir besser machen?
+
+→ Dann startet der nächste Sprint
+```
+
+---
+
+## Scrum — Das bekannteste Agile Framework
+
+**Scrum** ist die bekannteste Umsetzung von Agil. Es definiert feste **Rollen** und **Events**.
+
+### Die 3 Rollen
+
+| Rolle | Verantwortung | Aufgaben |
+|---|---|---|
+| **Product Owner** | „Was?" | Backlog pflegen und priorisieren, fachliche Entscheidungen |
+| **Scrum Master** | „Wie?" | Prozess schützen, Hindernisse beseitigen, Team unterstützen |
+| **Development Team** | „Machen!" | Umsetzung, selbstorganisiert |
+
+**Wichtig:** Es gibt **keinen Projektleiter** in Scrum! Das Team organisiert sich selbst.
+
+Das **Product Backlog** = Liste aller gewünschten Features, priorisiert vom Product Owner.
+
+### Die 4 Scrum Events
+
+| Event | Zweck | Dauer |
+|---|---|---|
+| **Sprint Planning** | Was wird im Sprint gemacht? | ~2–4 Std. |
+| **Daily Standup** | Kurzer Status: Was habe ich gemacht? Was plane ich heute? | 15 Min. |
+| **Sprint Review** | Demo der Ergebnisse für den Kunden | ~1–2 Std. |
+| **Sprint Retrospektive** | Was lief gut? Was verbessern wir? | ~1 Std. |
+
+---
+
+## Vergleich: Wann welches Modell?
+
+| Frage | Wasserfall | Agil / Scrum |
+|---|---|---|
+| Anforderungen klar und stabil? | Ja — gut geeignet | Nein — schlecht |
+| Änderungen während des Projekts erwartet? | Schlecht — teuer | Gut — eingeplant |
+| Kundenfeedback wann? | Am Ende | Nach jedem Sprint |
+| Rückkehr zu vorherigen Phasen möglich? | Nein | Ja — nächster Sprint |
+| Typisch für | Bau, Hardware, Infrastruktur | Software, Apps, Websites |
+
+### Prüfungs-Eselsbrücke
+
+> **Wasserfall = Hausbau** → alles klar, kein Zurück.
+> **Agil = App** → Änderungen willkommen, flexibel.
+
+---
+
+## Typische Fehler
+
+**Frage: „Welches Modell für eine Brücke?"**
+- Falsch: „Agil" — eine Brücke kann man nicht iterativ bauen!
+- Richtig: **„Wasserfall"** — Anforderungen sind klar und stabil, keine Änderungen möglich.
+
+**Frage: „Kunde ändert ständig seine Anforderungen — welches Modell?"**
+- Falsch: „Wasserfall" — der ist unflexibel.
+- Richtig: **„Agil (z. B. Scrum)"** — Änderungen sind jederzeit möglich.
+
+**Frage: „Nachteil von Wasserfall?"**
+- Richtig: „Keine Rückschritte möglich, Fehler fallen oft erst spät auf, unflexibel bei Änderungen."
+
+**Frage: „Wer priorisiert das Backlog in Scrum?"**
+- Richtig: **Product Owner** — nicht der Scrum Master, nicht das Team.
+
+---
+

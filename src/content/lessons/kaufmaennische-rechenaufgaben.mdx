@@ -1,0 +1,567 @@
+﻿# Kaufmännische Rechenaufgaben
+
+<MetaBar
+  lesezeit="25 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 1 — Den Betrieb und die eigene Rolle im Betrieb erfassen"
+  pruefungsrelevanz="PFLICHT · 5/5"
+/>
+
+## 01 · Warum existiert das überhaupt?
+
+Jede IT-Entscheidung im Betrieb endet bei einer Zahl. Der neue *<Term id="leasing">Leasing</Term>*-Vertrag
+für die Clients, der Austausch der alten Server, das Cloud-Abo statt Eigenbetrieb —
+der Einkauf fragt nicht, welche Lösung technisch schöner ist. Er fragt: *Was kostet das
+über die Laufzeit, und was kostet die Alternative?*
+
+Die Prüfung fragt dasselbe. Der Prüfungsbereich Lernfeld 1 verlangt, dass du betriebliche
+Zahlen verstehen, gegeneinander rechnen und eine Empfehlung mit nachvollziehbarem
+Zahlenwerk begründen kannst. Wer hier sicher ist, sammelt regelmäßig zweistellige
+Punktzahlen — und das in jeder einzelnen IHK-Probeprüfung der letzten drei Jahre.
+
+<Analogie>
+Stell dir vor, du kaufst eine Kaffeemaschine für die Küche. Die teure Maschine kostet
+600 € und läuft zehn Jahre. Die günstige kostet 200 € und hält nur drei. Welche ist
+billiger? Ohne zu rechnen siehst du es nicht — denn du musst die günstige dreimal
+kaufen und die Reparaturen einplanen. Kaufmännisches Rechnen ist nichts anderes als
+dieser Vergleich, nur sauberer notiert.
+</Analogie>
+
+---
+
+## 02 · Das Grundprinzip
+
+Alle kaufmännischen Rechenaufgaben in der Prüfung lassen sich auf **drei Grundfragen**
+zurückführen:
+
+1. **Was kostet eine einzelne Alternative über die relevante Laufzeit?** — Das ist die
+   *<Term id="kostenvergleich">Kostenvergleichsrechnung</Term>*.
+2. **Wie setzt sich ein Preis oder ein Einstandspreis zusammen, wenn man das Schema
+   vorwärts oder rückwärts durchläuft?** — Das ist die *<Term id="handelskalkulation">Handelskalkulation</Term>*.
+3. **Ab wann lohnt sich eine Investition — oder: welche Variante ist günstiger, wenn
+   sich die Kosten über mehrere Jahre verteilen?** — Das ist die *<Term id="amortisation">Amortisations</Term>*-
+   oder *<Term id="kapitalwert">Kapitalwert</Term>*-Frage.
+
+Sobald du diese drei Fragen sauber voneinander trennst, zerfällt jede Aufgabe
+in bekannte Bauteile. Der Rest ist Disziplin beim Aufschreiben.
+
+<Tipp titel="Merksatz">
+Jede Kostenaufgabe hat eine Laufzeit, eine Vergleichsbasis und eine Frage. Wer eines
+der drei nicht benennt, rechnet an der Aufgabe vorbei.
+</Tipp>
+
+---
+
+## 03 · Die Mechanik — das Werkzeugregal
+
+### 03.1 · Fixe und variable Kosten unterscheiden
+
+Jede Kostenposition im Betrieb gehört in eine der zwei Schubladen:
+
+| Schublade | Verhalten | Typische Vertreter |
+|---|---|---|
+| *<Term id="fixkosten">Fixkosten</Term>* (K_fix) | fallen unabhängig von der Stückzahl an | Miete, Gehalt, *<Term id="afa">AfA</Term>*, Leasingrate, Wartungspauschale |
+| *<Term id="variable-kosten">Variable Kosten</Term>* (k_var) | steigen proportional mit der Menge | Material, Strom pro Gerät, Porto, Stückprovision |
+
+```
+Gesamtkosten  K_ges = K_fix + x · k_var
+Stückkosten   k_ges = K_fix / x + k_var
+```
+
+Bei IT-Projekten ist die Einordnung manchmal knifflig: Eine *<Term id="sla">SLA</Term>*-Pauschale
+für den Wartungsvertrag ist fix, die Ticket-Bearbeitung pro Störung ist variabel.
+
+### 03.2 · Kostenvergleich zwischen mehreren Alternativen
+
+Der Kostenvergleich ist das häufigste Prüfungswerkzeug. Vier Schritte:
+
+<Schritte
+  items={[
+    { titel: 'Zeitraum festlegen', text: 'Betrachtungszeitraum bestimmen — häufig ein Jahr oder die gemeinsame Nutzungsdauer aller Alternativen.' },
+    { titel: 'Kosten addieren', text: 'Für jede Alternative alle fixen und variablen Kosten über diesen Zeitraum aufsummieren — Einmalkosten und laufende Kosten getrennt notieren.' },
+    { titel: 'Nutzung angleichen', text: 'Gleiche Stückzahlen, Laufzeiten und Leistungsumfänge unterstellen. Sonst werden Äpfel mit Birnen verglichen.' },
+    { titel: 'Differenz begründen', text: 'Differenz bilden, kritische Menge berechnen, Empfehlung in einem Satz mit Zahl begründen.' },
+  ]}
+/>
+
+Die *kritische Menge* ist die Stückzahl, bei der zwei Alternativen gleich teuer sind.
+Darunter lohnt sich die eine, darüber die andere:
+
+```
+K_fix_A + x · k_var_A  =  K_fix_B + x · k_var_B
+                    x  =  (K_fix_A − K_fix_B) / (k_var_B − k_var_A)
+```
+
+### 03.3 · Kauf, Kreditkauf, Leasing und Mietkauf
+
+Vier Beschaffungswege stehen fast immer zur Auswahl:
+
+| Beschaffung | Eigentum | Liquiditätswirkung | Typische Prüfungsfrage |
+|---|---|---|---|
+| **Barkauf** | sofort beim Käufer | voller Kaufpreis heute | Gesamtkosten = Anschaffung + Betrieb |
+| **Kredit-/Ratenkauf** | sofort beim Käufer | Raten + Zins | Gesamtkosten = Anschaffung + Zinsen + Betrieb |
+| **Leasing** | beim Leasinggeber | gleichbleibende Raten, voll absetzbar | Gesamtkosten = Raten × Monate + ggf. Anzahlung + Schlussrate |
+| **<Term id="mietkauf">Mietkauf</Term>** | nach Laufzeit beim Käufer | gleichbleibende Raten, am Ende Eigentumsübergang | Gesamtkosten ähnlich Kreditkauf, Bilanzierung beim Nutzer |
+
+Ein Leasingvertrag ist rechtlich ein *atypischer Mietvertrag* (§ 535 BGB analog) — der
+Leasingnehmer nutzt, der Leasinggeber bleibt zivilrechtlicher Eigentümer. In der Bilanz
+landet das Objekt nur dann beim Leasingnehmer, wenn der Barwert der Raten den Zeitwert
+der Sache nahezu erreicht (HGB §§ 246, 255 in Verbindung mit dem BMF-Leasingerlass).
+
+### 03.4 · Skonto, Rabatt und das Kalkulationsschema
+
+Wenn die Aufgabe nach einem Einkaufs- oder Verkaufspreis fragt, zieht immer dasselbe
+Kalkulationsschema:
+
+```
+  Listeneinkaufspreis (LEP)
+− Liefererrabatt
+= Zieleinkaufspreis (ZEP)
+− Liefererskonto
+= Bareinkaufspreis (BEP)
++ Bezugskosten
+= Bezugspreis / Einstandspreis
++ Handlungskosten
+= Selbstkosten
++ Gewinnzuschlag
+= Barverkaufspreis
++ Kundenskonto
++ Kundenrabatt
+= Zielverkaufspreis (Nettoverkaufspreis)
++ Umsatzsteuer (19 %)
+= Bruttoverkaufspreis
+```
+
+Zwei Regeln sind nicht verhandelbar:
+
+- *<Term id="skonto">Skonto</Term>* wird auf den Preis **nach** *<Term id="rabatt">Rabatt</Term>*
+  berechnet — nicht auf den Listenpreis.
+- Umsatzsteuer rechnet man mit `÷ 1,19` heraus, nicht mit `× 0,81`.
+
+<Warnung titel="Reihenfolge unbedingt einhalten">
+Wer 10 % Rabatt und 2 % Skonto direkt zu 12 % Abzug zusammenzieht, rechnet jedes Jahr
+falsch. Korrekt ist: 8.000 € × 0,90 × 0,98 = 7.056 €. Der falsche Weg käme auf
+7.040 € — eine Differenz, die bei größeren Beträgen schnell vierstellig wird.
+</Warnung>
+
+---
+
+## 04 · Konkrete Rechenwege
+
+<Beispiel titel="Kostenvergleich — Kauf, Leasing und Mietkauf eines Multifunktionsgeräts">
+
+Ein Planungsbüro druckt im Jahr rund **12.000 Seiten**. Drei Alternativen stehen zur
+Auswahl, jeweils auf **vier Jahre** bezogen:
+
+- **Alternative A — Kauf:** Anschaffung 1.800 €, Wartung 80 €/Jahr, 0,03 € pro Seite
+  (Toner + Papier). Restwert nach 4 Jahren 0 €.
+- **Alternative B — Vollservice-Miete (Operate-Leasing):** 45 €/Monat Pauschale,
+  0,02 € pro Seite (alles inklusive, keine Anschaffung).
+- **Alternative C — Mietkauf:** 40 €/Monat über 48 Monate, 0,03 € pro Seite,
+  am Ende Eigentumsübergang ohne weitere Zahlung.
+
+Welche Variante ist über vier Jahre günstiger?
+
+</Beispiel>
+
+<StepByStep titel="Kauf vs. Miete vs. Mietkauf über 4 Jahre">
+  <Schritt nr={1} titel="Betrachtungszeitraum und Nutzung festlegen">
+    Vier Jahre à 12.000 Seiten ergeben **48.000 Seiten** über den Vergleichszeitraum.
+    Alle drei Alternativen werden auf diese Nutzung bezogen — nur so ist der Vergleich
+    fair.
+  </Schritt>
+  <Schritt nr={2} titel="Alternative A — Kauf kumulieren">
+    Fixkosten: 1.800 € Anschaffung + 4 × 80 € Wartung = **2.120 €**.
+    Variable Kosten: 48.000 × 0,03 € = **1.440 €**.
+    Gesamt: 2.120 € + 1.440 € = **3.560 €**.
+  </Schritt>
+  <Schritt nr={3} titel="Alternative B — Vollservice-Miete kumulieren">
+    Fixkosten: 48 Monate × 45 € = **2.160 €**.
+    Variable Kosten: 48.000 × 0,02 € = **960 €**.
+    Gesamt: 2.160 € + 960 € = **3.120 €**.
+  </Schritt>
+  <Schritt nr={4} titel="Alternative C — Mietkauf kumulieren">
+    Fixkosten: 48 Monate × 40 € = **1.920 €**.
+    Variable Kosten: 48.000 × 0,03 € = **1.440 €**.
+    Gesamt: 1.920 € + 1.440 € = **3.360 €** — und am Ende ist das Gerät Eigentum.
+  </Schritt>
+  <Schritt nr={5} titel="Differenz und kritische Menge bestimmen">
+    Reihenfolge: Miete (3.120 €) &lt; Mietkauf (3.360 €) &lt; Kauf (3.560 €).
+    Kritische Menge zwischen Kauf und Miete:
+    x = (2.120 − 2.160) / (0,02 − 0,03) = (−40) / (−0,01) = **4.000 Seiten/Jahr**.
+    Unter 4.000 Seiten/Jahr lohnt der Kauf, darüber die Miete.
+  </Schritt>
+  <Ergebnis>
+    Empfehlung: **Vollservice-Miete**, weil über vier Jahre günstigste Variante
+    (440 € unter Kauf, 240 € unter Mietkauf). Wenn am Ende Eigentum gewünscht ist
+    oder die Nutzung über vier Jahre hinaus geplant wird, kippt die Empfehlung
+    Richtung Mietkauf oder Kauf.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel titel="Skonto richtig anwenden — der Klassiker">
+
+Ein Händler liefert Router für **8.000 € Listenpreis** mit **10 % Rabatt** und
+**2 % Skonto bei Zahlung innerhalb von 10 Tagen**. Wie viel überweist der Einkauf,
+wenn er das Skonto zieht?
+
+</Beispiel>
+
+<StepByStep titel="LEP → ZEP → BEP">
+  <Schritt nr={1} titel="Rabatt abziehen — nicht Skonto!">
+    LEP 8.000 € − 10 % Rabatt (800 €) = ZEP **7.200 €**.
+    Rabatt immer zuerst. Wer gleich 12 % zieht (10 % + 2 %), rechnet falsch.
+  </Schritt>
+  <Schritt nr={2} titel="Skonto vom ZEP abziehen">
+    Skonto = 7.200 € × 0,02 = 144 €.
+    BEP = 7.200 € − 144 € = **7.056 €**.
+  </Schritt>
+  <Schritt nr={3} titel="Gegenprobe mit Faktorform">
+    Schnellrechnung: 8.000 € × 0,90 × 0,98 = **7.056 €**. Passt.
+  </Schritt>
+  <Schritt nr={4} titel="Effektivzins des Skontos prüfen">
+    Wer das Skonto nicht zieht, gewinnt 20 zusätzliche Tage Zahlungsziel — dafür
+    aber 2 % „Aufpreis“. Hochgerechnet aufs Jahr: 2 % × (360 / 20) ≈ **36 % p. a.**
+    Effektivzins. Nahezu jeder Kontokorrentkredit ist günstiger — Skonto also
+    fast immer ziehen.
+  </Schritt>
+  <Ergebnis>
+    Überweisungsbetrag bei Skontonutzung: **7.056 €**. Ein nicht gezogenes
+    Skonto entspricht einem Effektivzins von rund 36 % p. a.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel titel="Rückwärtskalkulation aus dem Bruttopreis">
+
+Der Endkundenpreis eines Servers beträgt **5.950 €** (inkl. 19 % USt). Der Händler
+gewährt dem Kunden **5 % Rabatt** und **2 % Skonto**, der Gewinnzuschlag auf die
+Selbstkosten beträgt **12 %**. Wie hoch sind die Selbstkosten des Händlers?
+
+</Beispiel>
+
+<StepByStep titel="Vom Bruttoverkaufspreis zu den Selbstkosten">
+  <Schritt nr={1} titel="Umsatzsteuer herausrechnen">
+    Netto-VK = 5.950 € ÷ 1,19 = **5.000 €**. Niemals × 0,81 — das wäre 4.819,50 € und
+    falsch.
+  </Schritt>
+  <Schritt nr={2} titel="Kundenrabatt herausrechnen">
+    Der Netto-VK enthält den Rabatt als Aufschlag. Zurück: 5.000 × 0,95 = **4.750 €**
+    (Zwischenwert nach Rabatt-Abzug, vor Skonto-Abzug).
+  </Schritt>
+  <Schritt nr={3} titel="Kundenskonto herausrechnen">
+    4.750 × 0,98 = **4.655 €** Barverkaufspreis.
+  </Schritt>
+  <Schritt nr={4} titel="Gewinnzuschlag herausrechnen">
+    Barverkaufspreis = Selbstkosten × 1,12
+    → Selbstkosten = 4.655 € ÷ 1,12 = **4.156,25 €**.
+  </Schritt>
+  <Ergebnis>
+    Selbstkosten des Händlers: **4.156,25 €**. Sein *<Term id="deckungsbeitrag">Deckungsbeitrag</Term>*
+    je Server beträgt 4.655 − 4.156,25 = **498,75 €**.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel titel="Break-Even-Punkt einer SaaS-Lösung">
+
+Ein Systemhaus plant, eine eigene Backup-Software als Abo zu vertreiben.
+Monatliche Fixkosten (Server, Personal, Lizenzen): **18.000 €**.
+Verkaufspreis je Abo: **45 €/Monat**. Variable Kosten je Abo (Hosting, Support):
+**15 €/Monat**. Ab welcher Kundenzahl trägt das Produkt sich selbst?
+
+</Beispiel>
+
+<StepByStep titel="Break-Even über Deckungsbeitrag">
+  <Schritt nr={1} titel="Werte aus der Aufgabe sammeln">
+    K_fix = 18.000 €/Monat. p = 45 €. k_var = 15 €. Gesucht: Break-Even-Menge x_BE
+    und Break-Even-Umsatz U_BE.
+  </Schritt>
+  <Schritt nr={2} titel="Deckungsbeitrag pro Stück berechnen">
+    db = p − k_var = 45 € − 15 € = **30 €**. Jedes Abo trägt mit 30 € zur Deckung
+    der Fixkosten bei.
+  </Schritt>
+  <Schritt nr={3} titel="Break-Even-Menge berechnen">
+    x_BE = K_fix / db = 18.000 € / 30 € = **600 Abos**. Ab dem 600. Abo ist die
+    Gewinnschwelle erreicht.
+  </Schritt>
+  <Schritt nr={4} titel="Break-Even-Umsatz prüfen">
+    U_BE = x_BE × p = 600 × 45 € = **27.000 €/Monat**. Probe Gesamtkosten:
+    18.000 + 600 × 15 = 27.000 €. Stimmt.
+  </Schritt>
+  <Schritt nr={5} titel="Sicherheitsabstand bewerten">
+    Plant der Vertrieb 800 Abos im ersten Jahr, beträgt der Sicherheitsabstand
+    (800 − 600) / 800 = **25 %**. Das ist die Reserve, bevor das Produkt rote
+    Zahlen schreibt — ein realistischer Puffer.
+  </Schritt>
+  <Ergebnis>
+    Ab **600 Abos** trägt sich die Lösung. Bei der Plan-Absatzmenge von 800 Abos
+    bleibt ein monatlicher Gewinn von 200 × 30 € = **6.000 €** vor Steuern.
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## 05 · Vertiefung — was dich in der Aufgabe stolpern lässt
+
+### Sprungfixe Kosten
+
+Fixkosten sind nur innerhalb einer bestimmten *Kapazitätsstufe* konstant. Ein
+Server-Rack reicht bis 10 kW Verbrauch — ab 10,1 kW braucht es ein zweites Rack,
+und die Fixkosten springen auf ein neues Niveau. In der Prüfung erkennt man solche
+Aufgaben an Formulierungen wie „ab 51 Stück fällt ein zusätzlicher …“ oder
+„ab dem 11. Mitarbeiter wird eine zusätzliche Lizenz fällig“.
+
+### Operate-Leasing vs. Finance-Leasing
+
+Nicht jedes Leasing ist gleich Leasing. In der Aufgabe geht es selten um
+Bilanzdetails, aber die Grundunterscheidung musst du benennen können:
+
+| Merkmal | *<Term id="operate-leasing">Operate-Leasing</Term>* | *<Term id="finance-leasing">Finance-Leasing</Term>* |
+|---|---|---|
+| Laufzeit | kurz, jederzeit kündbar | feste Grundmietzeit (40-90 % Nutzungsdauer) |
+| Wartung | beim Leasinggeber | beim Leasingnehmer |
+| Risiko | beim Leasinggeber | beim Leasingnehmer |
+| Bilanzierung | beim Leasinggeber | meist beim Leasinggeber, vereinzelt beim Nehmer |
+| Charakter | mietähnlich | finanzierungsähnlich |
+
+Operate-Leasing eignet sich für Pool-Geräte mit hohem Wertverlust (Notebooks, Drucker).
+Finance-Leasing wird genutzt, wenn das Objekt langfristig im Betrieb bleiben soll, der
+Liquiditätsabfluss aber gleichmäßig verteilt sein muss.
+
+### Cashflow-Effekte vereinfacht
+
+Der Unterschied zwischen Kauf und Leasing ist nicht nur der Endbetrag, sondern auch
+der *<Term id="cashflow">Cashflow</Term>*-Verlauf:
+
+- **Kauf:** Großer Abfluss in t = 0, anschließend nur kleine laufende Kosten. Belastet
+  die Liquidität sofort, schont sie später.
+- **Kreditkauf:** Anschaffung sofort, Rückzahlung verteilt — aber zusätzliche
+  Zinsbelastung.
+- **Leasing:** Konstanter Abfluss über die ganze Laufzeit. Liquidität bleibt anfangs
+  im Unternehmen, wird aber nie ganz frei.
+
+Für die Investitionsrechnung heißt das: Wer nur die Endsummen vergleicht, übersieht
+das Liquiditätsprofil. In der Prüfung reicht meist der Hinweis auf den
+„gleichmäßigen Liquiditätsabfluss“ als qualitatives Argument für Leasing.
+
+### Mischfinanzierung
+
+Reine Eigen- oder Fremdfinanzierung ist in größeren Investitionen selten. Üblich ist
+eine Mischung: ein Teil der Investition wird aus dem laufenden Cashflow oder
+einbehaltenen Gewinnen gedeckt (Eigenkapital), der Rest über einen Kredit oder ein
+Leasing finanziert. Die Aufgabe will dann meist wissen, **wie viel Eigenkapital nötig
+ist, um eine bestimmte Eigenkapitalquote zu erreichen**, oder welche Variante bei
+gegebener Eigenkapitalausstattung möglich ist.
+
+### Annuität und Kapitalwert als Erweiterung
+
+Wer Zahlungen über viele Jahre vergleicht, darf nicht einfach addieren. Ein Euro
+heute ist mehr wert als ein Euro in fünf Jahren — deshalb wird mit einem
+*Kalkulationszinssatz* auf den heutigen Zeitpunkt abgezinst (*<Term id="barwert">Barwert</Term>*-Methode).
+
+Eine *<Term id="annuitaet">Annuität</Term>* ist dann die Umkehrung: Sie wandelt einen
+einmaligen Investitionsbetrag in gleichbleibende Jahresraten um, sodass Investitionen
+mit unterschiedlichen Laufzeiten direkt vergleichbar werden. Der Kapitalwert summiert
+alle abgezinsten Zahlungen und ist positiv, wenn die Investition den geforderten Zins
+schlägt. Für die Prüfung reicht meist die Summierung über die Laufzeit — Barwert- und
+Annuitätenaufgaben tauchen punktuell auf und nennen den Zinssatz dann explizit.
+
+### Brutto, Netto, Zinseffekt — die Einheitenfalle
+
+Zinssätze werden oft pro Jahr angegeben, Leasingraten pro Monat, Skontofristen in
+Tagen. Vor dem Rechnen immer die Einheiten angleichen — am besten oben auf dem Blatt
+notieren.
+
+---
+
+## 06 · Typische Fehler und typische Fehler
+
+- **Skonto vor Rabatt ziehen.** Falsch: 8.000 € × 0,88 = 7.040 €. Richtig:
+  8.000 × 0,90 × 0,98 = 7.056 €. Die Differenz entsteht jedes Jahr tausendfach
+  in echten Buchhaltungen.
+- **Umsatzsteuer mit 0,81 „herausrechnen“.** 119 € × 0,81 = 96,39 € (falsch).
+  Korrekt: 119 € ÷ 1,19 = 100 €.
+- **Fixkosten bei 0 Stück als 0 € ansetzen.** Miete, Gehalt und Abschreibung
+  laufen weiter, auch wenn nichts produziert wird.
+- **Unterschiedliche Laufzeiten vergleichen.** Ein Kauf über vier Jahre gegen ein
+  Leasing über drei Jahre lässt sich nicht direkt gegenüberstellen. Entweder auf
+  Jahresbasis umrechnen oder den kürzesten gemeinsamen Zeitraum wählen.
+- **Gewinn als Aufschlag auf den Verkaufspreis statt auf die Selbstkosten.** 20 %
+  Gewinn bedeutet *Barverkaufspreis = Selbstkosten × 1,20* — nicht
+  *Selbstkosten = Verkaufspreis × 0,80*.
+- **Leasingraten und Kreditraten gleichsetzen.** Eine Kreditrate enthält Tilgung
+  und Zins und verändert die Bilanz. Eine Leasingrate ist Betriebsausgabe und
+  bleibt bilanzneutral beim Nutzer — solange das Objekt beim Leasinggeber
+  bilanziert wird.
+- **Restwert vergessen.** Wer nach drei Jahren den Laptop für 300 € verkaufen kann,
+  muss diesen Restwert vom Kaufpreis abziehen, sonst wird die Kaufvariante
+  künstlich schlecht gerechnet.
+- **Einmalige und laufende Kosten vermischen.** Eine Anschaffung von 1.800 € ist
+  kein Vergleichswert für 45 €/Monat. Erst auf den gemeinsamen Zeitraum
+  hochrechnen, dann gegenüberstellen.
+- **Irrelevante Kosten einbeziehen.** Kosten, die in beiden Alternativen identisch
+  anfallen (z. B. Stromkosten am Arbeitsplatz), kürzen sich heraus und gehören
+  nicht in den Vergleich. Sie verwässern die Differenz.
+
+---
+
+## 07 · So fragt die IHK das
+
+**Aufgabe 1 — Kostenvergleich (7 Punkte).**
+Ein Systemhaus betreibt 20 Desktop-PCs. Variante A (Neukauf): 950 €/Gerät,
+Nutzungsdauer 5 Jahre, Wartungspauschale 120 €/Jahr je Gerät. Variante B
+(Full-Service-Leasing): 28 €/Monat pro Gerät inkl. Wartung, Laufzeit 36 Monate,
+danach Rückgabe und Neuvertrag. Rechne beide Varianten auf **drei Jahre** gerecht,
+ermittle die Gesamtkosten und gib eine Empfehlung mit einem Satz Begründung ab.
+
+**Aufgabe 2 — Rückwärtskalkulation (6 Punkte).**
+Ein Händler bietet einen Netzwerk-Switch für **357 €** brutto an (19 % USt,
+5 % Kundenrabatt im Angebot enthalten, Gewinnzuschlag 10 %). Berechne die
+Selbstkosten des Händlers und benenne zwei typische Bestandteile der Handlungskosten.
+
+**Aufgabe 3 — Skonto-Entscheidung (5 Punkte).**
+Ein Lieferant bietet einen Router-Pool für **12.400 €** mit „2 % Skonto bei
+Zahlung innerhalb 10 Tagen, sonst 30 Tage netto“. Der Einkauf könnte alternativ
+den Kontokorrentkredit der Hausbank mit 9 % p. a. nutzen. Lohnt sich das Skonto?
+Berechne den effektiven Jahreszins des Skontos und begründe deine Entscheidung.
+
+**Aufgabe 4 — Leasing bilanzieren (4 Punkte).**
+Ein kleiner Betrieb least einen Server für 60 Monate, der Zeitwert entspricht
+dem Barwert der Raten. Begründe in zwei Sätzen, warum das Objekt in diesem Fall
+ausnahmsweise beim Leasingnehmer zu bilanzieren ist, und nenne die einschlägige
+HGB-Rechtsgrundlage.
+
+**Aufgabe 5 — Break-Even (4 Punkte).**
+Ein Cloud-Anbieter plant ein neues Produkt: Fixkosten 12.000 €/Monat, Preis pro
+Lizenz 60 €, variable Kosten pro Lizenz 20 €. Berechne Break-Even-Menge und
+-Umsatz und benenne, ab welcher Lizenzanzahl ein Gewinn von 6.000 € pro Monat
+entsteht.
+
+<Tipp titel="Lösungsansatz zu Aufgabe 3 (Kurzform)">
+Der Skontosatz von 2 % für 20 Tage Zahlungsverkürzung entspricht hochgerechnet
+ca. 2 % × (360 / 20) = **36 % p. a.** effektivem Jahreszins. Selbst wenn der
+Einkauf den Betrag aus dem Kontokorrent (9 % p. a.) zwischenfinanzieren muss,
+liegt das Skonto deutlich darüber. Empfehlung: **Skonto ziehen** und den
+Kontokorrent als Brücke nutzen.
+</Tipp>
+
+---
+
+<Glossar
+  eintraege={[
+    {
+      term: 'Listeneinkaufspreis (LEP)',
+      definition: 'Katalog- oder Bruttoeinkaufspreis vor jedem Abzug. Ausgangspunkt der Vorwärtskalkulation.'
+    },
+    {
+      term: 'Zieleinkaufspreis (ZEP)',
+      definition: 'Einkaufspreis nach Liefererrabatt. Auf diesen Wert wird das Skonto berechnet — nicht auf den LEP.'
+    },
+    {
+      term: 'Bareinkaufspreis (BEP)',
+      definition: 'ZEP abzüglich Liefererskonto. Entspricht dem tatsächlich überwiesenen Betrag bei Skontonutzung.'
+    },
+    {
+      term: 'Selbstkosten',
+      definition: 'Bezugspreis plus Handlungskosten — alles, was der Händler investiert, bevor der Gewinnzuschlag greift.'
+    },
+    {
+      term: 'Skonto',
+      definition: 'Preisnachlass für schnelle Zahlung innerhalb einer Frist. Wird auf den Preis nach Rabatt angewendet, entspricht effektiv einem hohen Jahreszins.'
+    },
+    {
+      term: 'Rabatt',
+      definition: 'Prozentualer Nachlass auf den Listenpreis (Mengen-, Treue-, Sonder-, Naturalrabatt). In der Vorwärtskalkulation der erste Abzug.'
+    },
+    {
+      term: 'Leasing',
+      definition: 'Nutzungsüberlassung einer Sache gegen wiederkehrende Raten. Zivilrechtlich ein atypischer Mietvertrag, bilanziell meist beim Leasinggeber.'
+    },
+    {
+      term: 'Operate-Leasing',
+      definition: 'Kurzfristiges, mietähnliches Leasing, jederzeit kündbar. Wartung und Risiko beim Leasinggeber, Objekt bleibt dort bilanziert.'
+    },
+    {
+      term: 'Finance-Leasing',
+      definition: 'Langfristiges Leasing mit fester Grundmietzeit (40-90 % Nutzungsdauer). Risiko beim Leasingnehmer; finanzierungsähnlicher Charakter.'
+    },
+    {
+      term: 'Mietkauf',
+      definition: 'Beschaffung gegen feste Raten mit automatischem Eigentumsübergang am Laufzeitende. Bilanzierung beim Käufer.'
+    },
+    {
+      term: 'Kostenvergleichsrechnung',
+      definition: 'Statisches Investitionsrechenverfahren: Gesamtkosten zweier Alternativen über eine Periode werden addiert und gegenübergestellt.'
+    },
+    {
+      term: 'Kritische Menge',
+      definition: 'Stückzahl, bei der zwei Kostenfunktionen denselben Wert ergeben. Entscheidungsgrenze zwischen zwei Alternativen.'
+    },
+    {
+      term: 'Cashflow',
+      definition: 'Tatsächliche Zahlungsbewegung eines Zeitraums (Einzahlungen − Auszahlungen). Maß für Liquidität, nicht für buchhalterischen Gewinn.'
+    },
+    {
+      term: 'Annuität',
+      definition: 'Konstanter Jahresbetrag aus Tilgung und Zins; wandelt eine Investition rechnerisch in vergleichbare Jahresraten um.'
+    },
+    {
+      term: 'Kapitalwert',
+      definition: 'Summe aller auf den Startzeitpunkt abgezinsten Zahlungen einer Investition. Positiver Wert: Investition lohnt sich.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: '§ 433 BGB — Vertragstypische Pflichten beim Kaufvertrag',
+      href: 'https://www.gesetze-im-internet.de/bgb/__433.html',
+      detail: 'Grundnorm zu Lieferung, Übereignung und Kaufpreiszahlung — Basis jedes Beschaffungsvergleichs.'
+    },
+    {
+      label: '§ 286 BGB — Verzug des Schuldners',
+      href: 'https://www.gesetze-im-internet.de/bgb/__286.html',
+      detail: 'Voraussetzungen und Folgen des Zahlungsverzugs (relevant für Skontofristen und Mahnungen).'
+    },
+    {
+      label: '§ 488 BGB — Vertragstypische Pflichten beim Darlehensvertrag',
+      href: 'https://www.gesetze-im-internet.de/bgb/__488.html',
+      detail: 'Gesetzliche Grundlage des Kreditkaufs.'
+    },
+    {
+      label: '§ 255 HGB — Bewertungsmaßstäbe',
+      href: 'https://www.gesetze-im-internet.de/hgb/__255.html',
+      detail: 'Anschaffungs- und Herstellungskosten in der Bilanz, Grundlage der Aktivierung.'
+    },
+    {
+      label: '§ 246 HGB — Vollständigkeit, Verrechnungsverbot',
+      href: 'https://www.gesetze-im-internet.de/hgb/__246.html',
+      detail: 'Bilanzierungsgrundsätze, einschlägig bei der Frage, ob Leasingobjekte beim Nehmer aktiviert werden.'
+    },
+    {
+      label: '§ 7 EStG — Absetzung für Abnutzung',
+      href: 'https://www.gesetze-im-internet.de/estg/__7.html',
+      detail: 'Lineare AfA als kalkulatorischer Fixkostenbestandteil des Kaufs.'
+    },
+    {
+      label: 'BIBB — Berufsprofil Fachinformatiker und BIBB-Fachpublikationen',
+      href: 'https://www.bibb.de/de/berufeinfo.php',
+      detail: 'Offizielles Bundesinstitut für Berufsbildung mit Umsetzungshilfen und Rahmenlehrplan zur Prüfung.'
+    },
+    {
+      label: 'Gabler Wirtschaftslexikon — Leasing',
+      href: 'https://wirtschaftslexikon.gabler.de/definition/leasing-39825',
+      detail: 'Fachportal mit ausführlicher Einordnung von Operate- und Finance-Leasing.'
+    },
+    {
+      label: 'BaFin — Merkblatt Finanzierungsleasing',
+      href: 'https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Merkblatt/mb_051220_finanzierungsleasing.html',
+      detail: 'Regulatorische Einordnung des Finance-Leasings durch die Aufsicht.'
+    },
+    {
+      label: 'IHK Pfalz — Preisgestaltung & Kalkulation',
+      href: 'https://www.ihk.de/pfalz/innovation-umwelt-und-existenzgruendung/unternehmensfuehrung/unternehmenssteuerung/preisgestaltung-kalkulation-1279088',
+      detail: 'Kalkulationsschema mit Handlungskosten und Gewinnzuschlag aus IHK-Sicht.'
+    },
+  ]}
+/>

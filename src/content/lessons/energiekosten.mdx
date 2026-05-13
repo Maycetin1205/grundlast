@@ -1,0 +1,147 @@
+﻿# Energiekosten, Wirkungsgrad & Amortisation
+
+## Worum geht's
+
+Du lernst, wie man Stromkosten von IT-Geräten berechnet, was <Term id="wirkungsgrad">Wirkungsgrad</Term>
+bedeutet und wann sich eine teurere aber effizientere Hardware lohnt (Amortisation).
+Das ist ein Prüfungsklassiker: fast jede Aufgabe enthält mindestens eine Energiekostenaufgabe.
+
+---
+
+## Erklärung
+
+### Die Grundformel: Energie
+
+Jedes Gerät verbraucht elektrische Leistung, gemessen in **Watt (W)**.
+Über Zeit entsteht daraus ein Energieverbrauch:
+
+```
+E = P × t
+```
+
+- **E** = Energie in Kilowattstunden (kWh)
+- **P** = Leistung in Kilowatt (kW) — **nicht Watt!**
+- **t** = Zeit in Stunden (h)
+
+> **Faustregel:** 1000 W = 1 kW — immer zuerst umrechnen, bevor du rechnest.
+
+### Kosten berechnen
+
+```
+Kosten = kWh × Preis pro kWh
+```
+
+Der Strompreis wird in €/kWh angegeben. In Deutschland liegt er je nach Aufgabe typisch
+zwischen 0,25 € und 0,45 €/kWh.
+
+### Wirkungsgrad (η — gesprochen: Eta)
+
+Kein Netzteil ist 100% effizient. Ein Teil der aufgenommenen Energie geht als Wärme verloren.
+Der **Wirkungsgrad** beschreibt, wie viel Prozent der aufgenommenen Energie tatsächlich als
+Nutzleistung ankommt:
+
+```
+η = P_out / P_in   →   P_in = P_out / η
+```
+
+- **P_out** = Nutzleistung (was das Gerät intern tatsächlich braucht)
+- **P_in** = Aufnahmeleistung (was die Steckdose liefern muss)
+- Ein Netzteil mit η = 0,94 verliert 6% der Energie als Wärme
+
+**Wichtige Falle:** In vielen Aufgaben ist die angegebene Wattzahl bereits die **Aufnahmeleistung**
+(P_in = was aus der Steckdose kommt). Dann brauchst du η **nicht nochmal** anwenden.
+Lies den Aufgabentext genau: Steht „Leistungsaufnahme" → P_in. Steht „Ausgangsleistung" oder
+„IT-Last" → erst mit η umrechnen.
+
+### Ersparnis und Amortisation
+
+Wenn du ein altes durch ein neues Gerät ersetzt:
+
+```
+Ersparnis kWh = E_alt − E_neu
+Kostenersparnis = Ersparnis_kWh × Preis_pro_kWh
+Amortisationsdauer = Investition / Kostenersparnis_pro_Periode
+```
+
+Die Periode (Monat oder Jahr) muss einheitlich sein — Investition in € durch Ersparnis in €/**Monat**
+oder durch Ersparnis in €/**Jahr** — nicht mischen.
+
+---
+
+## Beispiele
+
+<Rechenweg
+  title="Beispiel 1: Jährliche Serverkosten + Einsparung"
+  steps={[
+    {
+      title: "Leistung in kW umrechnen",
+      formula: "P_alt = 500 W ÷ 1000 = 0,5 kW\nP_neu = 300 W ÷ 1000 = 0,3 kW",
+      explanation: "Immer zuerst Watt in Kilowatt umrechnen, bevor du mit der Zeit multiplizierst."
+    },
+    {
+      title: "Jährlichen Energieverbrauch berechnen (24/7 = 8760 h/Jahr)",
+      formula: "E_alt = 0,5 kW × 8760 h = 4380 kWh/Jahr\nE_neu = 0,3 kW × 8760 h = 2628 kWh/Jahr",
+      explanation: "24h × 365 Tage = 8760 Betriebsstunden pro Jahr bei Dauerbetrieb."
+    },
+    {
+      title: "Energieeinsparung berechnen",
+      formula: "Ersparnis = 4380 − 2628 = 1752 kWh/Jahr",
+      explanation: "Der neue Server spart 1752 kWh pro Jahr ein."
+    },
+    {
+      title: "Kosteneinsparung berechnen (Strompreis 0,30 €/kWh)",
+      formula: "Kostenersparnis = 1752 kWh × 0,30 € = 525,60 €/Jahr",
+      explanation: "Jährliche Einsparung durch den effizienteren Server: 525,60 €."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="Beispiel 2: Wirkungsgrad + Amortisation (450 PCs)"
+  steps={[
+    {
+      title: "Monatliche Betriebsstunden berechnen",
+      formula: "t = 8 h/Tag × 22 Tage/Monat = 176 h/Monat",
+      explanation: "Wenn die Aufgabe Arbeitstage nennt, nicht 30 Tage nehmen — nur die genannten Arbeitstage zählen."
+    },
+    {
+      title: "Aufnahmeleistung mit Wirkungsgrad berechnen",
+      formula: "P_out = 450 W (IT-Last)\nη_alt = 0,85 → P_in,alt = 450 / 0,85 = 529,41 W\nη_neu = 0,94 → P_in,neu = 450 / 0,94 = 478,72 W",
+      explanation: "Formel: P_in = P_out ÷ η. Ein schlechteres Netzteil (η=0,85) muss mehr Strom ziehen als ein gutes (η=0,94) — obwohl beide dieselbe IT-Last versorgen."
+    },
+    {
+      title: "Ersparnis pro PC berechnen",
+      formula: "ΔP = 529,41 − 478,72 = 50,69 W = 0,05069 kW\nΔE_PC = 0,05069 kW × 176 h = 8,92 kWh/Monat",
+      explanation: "Jeder PC spart monatlich 8,92 kWh ein."
+    },
+    {
+      title: "Gesamtersparnis für 450 PCs",
+      formula: "ΔE_gesamt = 8,92 × 450 = 4014 kWh/Monat\nΔK = 4014 × 0,45 €/kWh = 1806,30 €/Monat",
+      explanation: "Die 450 PCs zusammen sparen monatlich 1806,30 € an Stromkosten."
+    },
+    {
+      title: "Amortisationsdauer berechnen",
+      formula: "Amortisation = 52.000 € / 1806,30 €/Monat ≈ 28,8 Monate → 3 Jahre (auf volle Jahre runden)",
+      explanation: "Amortisation = Investition ÷ Ersparnis pro Monat. In Jahren: 28,8 ÷ 12 = 2,4 Jahre. Da Aufgaben oft 'volle Jahre' verlangen, auf 3 aufrunden."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Watt statt Kilowatt:** `E = P × t` braucht P in **kW**, nicht W. 500 W × 8760 h = 4.380.000 (falsch!),
+  aber 0,5 kW × 8760 h = 4380 kWh (richtig).
+
+- **Wirkungsgrad doppelt angewendet:** Steht in der Aufgabe „Leistungsaufnahme = 300 W", dann
+  ist das bereits P_in. Den Wirkungsgrad nochmal zu rechnen verdoppelt den Fehler.
+
+- **Arbeitstage vs. Kalendertage:** 8 h/Tag × 22 Arbeitstage ≠ 8 h/Tag × 30 Tage. Die Aufgabe
+  nennt immer explizit welche Tage zu verwenden sind.
+
+- **Amortisation mit falschem Zeitraum:** Investition 52.000 € und Ersparnis 1806 €/**Monat** ergibt
+  Monate. Wenn du die Jahresersparnis nimmst, kommt Jahre raus — beides richtig, aber nicht mischen.
+
+---
+

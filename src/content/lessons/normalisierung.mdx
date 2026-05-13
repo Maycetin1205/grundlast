@@ -1,0 +1,124 @@
+﻿# Normalisierung (1NF, 2NF, 3NF)
+
+## Worum geht's
+
+Du lernst, wie man fehlerhafte Datenbank-Tabellen Schritt für Schritt aufräumt — von
+Datenbrei in klare, wartbare Strukturen. Die drei Normalformen 1NF, 2NF und 3NF sind
+in der Prüfung wichtig: Du musst erkennen, welche Normalform verletzt ist, und
+wissen, wie du sie herstellst.
+
+---
+
+## Erklärung
+
+### Warum normalisieren?
+
+Eine schlecht strukturierte Tabelle hat drei klassische Probleme:
+
+| Problem | Beispiel |
+|---|---|
+| **Einfüge-Anomalie** | Ein neues Produkt kann nicht eingetragen werden, weil noch kein Kunde es bestellt hat |
+| **Änderungs-Anomalie** | Eine Adresse steht in 50 Zeilen — beim Umzug müssen alle 50 geändert werden |
+| **Lösch-Anomalie** | Der letzte Kunde löscht sich — dabei geht auch die einzige Produktinfo verloren |
+
+Normalisierung löst diese Probleme, indem Daten aufgeteilt werden:
+**Ein Fakt, ein Ort.**
+
+### Die drei Normalformen
+
+**1NF — Atomar:** Jede Zelle enthält genau einen Wert. Keine Listen, keine Mengen.
+
+**2NF — Voll funktional abhängig:** Jede Nicht-Schlüssel-Spalte hängt vom **gesamten**
+Primärschlüssel ab. Relevant nur bei zusammengesetztem Primärschlüssel.
+
+**3NF — Keine transitiven Abhängigkeiten:** Kein Nicht-Schlüssel-Feld darf von einem
+anderen Nicht-Schlüssel-Feld abhängen.
+
+### Merksatz
+
+> **1NF:** Keine Mehrfachwerte in einer Zelle.
+> **2NF:** Alles hängt vom ganzen Schlüssel ab (nicht nur einem Teil).
+> **3NF:** Nichts hängt von einem Nicht-Schlüssel ab.
+
+---
+
+## Beispiele – Schritt für Schritt
+
+<Rechenweg
+  title="1. Normalform herstellen"
+  steps={[
+    {
+      title: "Ausgangstabelle prüfen (verletzt 1NF)",
+      formula: "Tabelle: Mitarbeiter\n┌──────────────┬──────────────────────┐\n│ Mitarbeiter  │ Skills               │\n├──────────────┼──────────────────────┤\n│ Max Müller   │ Java, C++, Python    │\n│ Sara Koch    │ SQL, Excel           │\n└──────────────┴──────────────────────┘",
+      explanation: "Problem: Die Spalte 'Skills' enthält mehrere Werte in einer Zelle (Liste). Das verletzt die 1NF — jede Zelle muss atomar (= unteilbar) sein."
+    },
+    {
+      title: "1NF herstellen: Jeder Wert in eine eigene Zeile",
+      formula: "Tabelle: Mitarbeiter_Skills\n┌──────────────┬────────┐\n│ Mitarbeiter  │ Skill  │\n├──────────────┼────────┤\n│ Max Müller   │ Java   │\n│ Max Müller   │ C++    │\n│ Max Müller   │ Python │\n│ Sara Koch    │ SQL    │\n│ Sara Koch    │ Excel  │\n└──────────────┴────────┘",
+      explanation: "Jetzt steht jeder Skill in einer eigenen Zeile. Die Tabelle ist in 1NF. Primärschlüssel wäre die Kombination (Mitarbeiter, Skill) — da beides zusammen eindeutig ist."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="2. Normalform herstellen"
+  steps={[
+    {
+      title: "Ausgangstabelle prüfen (verletzt 2NF)",
+      formula: "Tabelle: Bestellung\nPrimärschlüssel: (BestellNr, ProduktNr) — zusammengesetzt!\n┌──────────┬──────────┬───────────────┬──────────────┐\n│BestellNr │ProduktNr │ ProduktName   │ KundenName   │\n├──────────┼──────────┼───────────────┼──────────────┤\n│ 1001     │ P01      │ Laptop        │ Max Müller   │\n│ 1001     │ P02      │ Maus          │ Max Müller   │\n│ 1002     │ P01      │ Laptop        │ Sara Koch    │\n└──────────┴──────────┴───────────────┴──────────────┘",
+      explanation: "Problem: 'ProduktName' hängt nur von ProduktNr ab (nicht von BestellNr). 'KundenName' hängt nur von BestellNr ab (nicht von ProduktNr). Beide Spalten hängen nur von einem Teil des zusammengesetzten Schlüssels ab — 2NF verletzt!"
+    },
+    {
+      title: "Abhängigkeiten analysieren",
+      formula: "BestellNr → KundenName (KundenName hängt NUR von BestellNr ab)\nProduktNr → ProduktName (ProduktName hängt NUR von ProduktNr ab)\n(BestellNr, ProduktNr) → Menge (Menge hängt von BEIDEN ab ✓)",
+      explanation: "Wir prüfen für jede Spalte: Von welchem Teil des Schlüssels hängt sie ab? Spalten die nur von einem Teil abhängen, müssen ausgelagert werden."
+    },
+    {
+      title: "2NF herstellen: Aufteilen in mehrere Tabellen",
+      formula: "Tabelle: Produkt\n┌──────────┬───────────────┐\n│ProduktNr │ ProduktName   │\n├──────────┼───────────────┤\n│ P01      │ Laptop        │\n│ P02      │ Maus          │\n└──────────┴───────────────┘\n\nTabelle: Bestellung\n┌──────────┬──────────────┐\n│BestellNr │ KundenName   │\n├──────────┼──────────────┤\n│ 1001     │ Max Müller   │\n│ 1002     │ Sara Koch    │\n└──────────┴──────────────┘\n\nTabelle: BestellPosition\n┌──────────┬──────────┬───────┐\n│BestellNr │ProduktNr │Menge  │\n├──────────┼──────────┼───────┤\n│ 1001     │ P01      │ 1     │\n│ 1001     │ P02      │ 2     │\n│ 1002     │ P01      │ 1     │\n└──────────┴──────────┴───────┘",
+      explanation: "Jetzt hängt jede Spalte vom vollständigen Schlüssel ihrer Tabelle ab. Keine partielle Abhängigkeit mehr — 2NF erfüllt."
+    }
+  ]}
+/>
+
+<Rechenweg
+  title="3. Normalform herstellen"
+  steps={[
+    {
+      title: "Ausgangstabelle prüfen (verletzt 3NF)",
+      formula: "Tabelle: Kunde\nPrimärschlüssel: KundenNr\n┌──────────┬──────────────┬───────┬──────────────┐\n│KundenNr  │ KundenName   │ PLZ   │ Ort          │\n├──────────┼──────────────┼───────┼──────────────┤\n│ K01      │ Max Müller   │ 80331 │ München      │\n│ K02      │ Sara Koch    │ 80331 │ München      │\n│ K03      │ Tom Braun    │ 10115 │ Berlin       │\n└──────────┴──────────────┴───────┴──────────────┘",
+      explanation: "Problem: 'Ort' hängt von 'PLZ' ab — nicht direkt von 'KundenNr'. Das ist eine transitive Abhängigkeit: KundenNr → PLZ → Ort. Ändert sich der Ort einer PLZ, müssten alle Zeilen mit dieser PLZ geändert werden."
+    },
+    {
+      title: "Transitive Abhängigkeit erkennen",
+      formula: "KundenNr → PLZ (direkt ✓)\nKundenNr → Ort (nur über PLZ, transitiv ✗)\nPLZ → Ort (das ist das Problem)",
+      explanation: "Die Spalte 'Ort' hängt nicht direkt vom Primärschlüssel KundenNr ab, sondern vom Nicht-Schlüsselfeld PLZ. Diese transitive Kette muss aufgebrochen werden."
+    },
+    {
+      title: "3NF herstellen: PLZ und Ort auslagern",
+      formula: "Tabelle: PLZ_Ort\n┌───────┬──────────────┐\n│ PLZ   │ Ort          │\n├───────┼──────────────┤\n│ 80331 │ München      │\n│ 10115 │ Berlin       │\n└───────┴──────────────┘\n\nTabelle: Kunde (bereinigt)\n┌──────────┬──────────────┬───────┐\n│KundenNr  │ KundenName   │ PLZ   │\n├──────────┼──────────────┼───────┤\n│ K01      │ Max Müller   │ 80331 │\n│ K02      │ Sara Koch    │ 80331 │\n│ K03      │ Tom Braun    │ 10115 │\n└──────────┴──────────────┴───────┘",
+      explanation: "Jetzt hängt jede Spalte direkt vom Primärschlüssel ihrer Tabelle ab. Ändert sich der Ort der PLZ 80331, muss nur noch eine Zeile geändert werden. 3NF erfüllt."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Mehrfachwerte in einer Zelle übersehen**: „Telefonnummer: 0171/123, 0172/456" —
+  das ist bereits 1NF-Verletzung. Auch Komma-getrennte Listen in einer Zelle sind verboten.
+
+- **2NF gilt nur bei zusammengesetztem Primärschlüssel**: Hat eine Tabelle einen
+  einfachen Primärschlüssel (nur eine Spalte), ist sie automatisch in 2NF — dann
+  gibt es keinen „Teil des Schlüssels", von dem etwas abhängen könnte.
+
+- **PLZ → Ort ist das klassische 3NF-Beispiel**: Fast jede Aufgabe nutzt genau
+  dieses Beispiel. PLZ bestimmt den Ort — beides muss in eine eigene Tabelle.
+
+- **Normalform rückwärts bestimmen**: Wenn die Aufgabe fragt „Welche Normalform liegt vor?",
+  prüfe in dieser Reihenfolge: Erst 1NF (Atomarität), dann 2NF (nur bei zusammengesetztem PK),
+  dann 3NF (transitive Abhängigkeiten). Die höchste erfüllte Normalform ist die Antwort.
+
+---
+

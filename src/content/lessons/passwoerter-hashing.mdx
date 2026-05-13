@@ -1,0 +1,128 @@
+﻿# Passwörter & Hashing
+
+## Worum geht's
+
+Warum speichert kein seriöses System dein Passwort im Klartext — und was ist stattdessen
+in der Datenbank? Du lernst den Unterschied zwischen Hashing und Verschlüsselung, verstehst
+Salt und Pepper, und kennst die häufigsten Angriffe. Prüfungsrelevanz: Direkt im IT-Sicherheitsblock.
+
+---
+
+## Erklärung
+
+### Hashing ist keine Verschlüsselung
+
+Das ist der wichtigste Satz dieser Lektion:
+
+> **Ein Hash ist keine Verschlüsselung.**
+
+| | Verschlüsselung | Hashing |
+|---|---|---|
+| **Umkehrbar?** | Ja — mit dem richtigen Schlüssel | Nein — Einwegfunktion |
+| **Zweck** | Daten sicher übertragen | Daten sicher prüfen (z. B. Passwort) |
+| **Beispiel** | AES, RSA (Datei verschlüsseln) | SHA-256, bcrypt (Passwort speichern) |
+
+**Was ist ein Hash?** Eine Einwegumwandlung: Aus einem Passwort (z. B. `Sommer2026!`) wird
+ein Fingerabdruck (z. B. `9f86d081...`). Zurückrechnen ist praktisch unmöglich.
+
+Kein seriöses System speichert dein Passwort im Klartext. Stattdessen wird beim Registrieren
+der Hash gespeichert — beim Login wird der Hash neu berechnet und verglichen.
+
+---
+
+### Der Ablauf: Registrierung → Login (5 Schritte)
+
+```
+REGISTRIERUNG:
+Schritt 1: System erzeugt einen zufälligen Salt (z. B. "x7k9m2")
+Schritt 2: System berechnet Hash(Passwort + Salt) und speichert Salt + Hash in der DB
+           (NIEMALS das Passwort selbst!)
+
+LOGIN:
+Schritt 3: Nutzer gibt Passwort ein
+Schritt 4: System holt den gespeicherten Salt aus der DB
+           und berechnet Hash(Eingabe + Salt)
+Schritt 5: System vergleicht den berechneten Hash mit dem gespeicherten Hash
+           → gleich? → Login erfolgreich ✓
+```
+
+---
+
+### Salt — warum gleiche Passwörter verschiedene Hashes brauchen
+
+**Problem ohne Salt:** Wenn zwei Nutzer dasselbe Passwort haben, haben sie denselben Hash.
+Ein Angreifer, der eine Datenbank stiehlt, erkennt sofort: „Diese 50 Einträge haben denselben
+Hash → alle haben dasselbe Passwort."
+
+**Lösung: Salt** — ein zufälliger Zusatz pro Benutzer, der zusammen mit dem Passwort gehasht wird.
+
+```
+Nutzer A: Hash("Sommer2026!" + "X7p") → Hash1
+Nutzer B: Hash("Sommer2026!" + "Q2k") → Hash2  (anders, obwohl gleiches Passwort!)
+```
+
+Der Salt wird **zusammen mit dem Hash gespeichert** (er muss beim Login wieder verfügbar sein).
+Er ist kein Geheimnis — sein Zweck ist nur, Hashes einzigartig zu machen.
+
+---
+
+### Pepper — der geheime Zusatz
+
+**Pepper** ist ein weiterer Zusatz, der **nicht** in der Datenbank steht — er liegt z. B.
+in einer Konfigurationsdatei auf dem Server.
+
+| | Salt | Pepper |
+|---|---|---|
+| **Wo gespeichert?** | In der Datenbank (neben dem Hash) | NICHT in der DB (z. B. Konfigurationsdatei) |
+| **Geheim?** | Nein | Ja |
+| **Schutz gegen** | Rainbow-Tables | DB-Leaks (ohne Serverkonfiguration nutzlos) |
+
+---
+
+### Angriffsmethoden und Gegenmaßnahmen
+
+| Angriff | Beschreibung | Gegenmaßnahme |
+|---|---|---|
+| **Brute Force** | Alle möglichen Passwörter ausprobieren | Rate-Limiting, 2FA, langsame Hash-Funktionen |
+| **Dictionary-Angriff** | Wörterlisten ausprobieren (`Passwort123`, `Sommer2026`) | Komplexe Passwörter, Blacklist häufiger Passwörter |
+| **Rainbow-Table** | Vorgefertigte Tabelle „Passwort → Hash" — schnelles Nachschlagen | Salt einsetzen → macht Rainbow-Tables wertlos |
+| **Phishing** | Nutzer auf gefälschte Login-Seite locken | 2FA, Schulung, Login-URL prüfen |
+
+**Warum langsame Hash-Funktionen?** SHA-256 ist für Passwörter zu schnell — ein Angreifer kann
+Milliarden Versuche pro Sekunde testen. Speziell für Passwörter entwickelte Verfahren wie
+**bcrypt** oder **Argon2** sind absichtlich langsam, um Brute-Force unrentabel zu machen.
+
+---
+
+### Datenschutz vs. Datensicherheit (Prüfungsgrundlage)
+
+Diese Unterscheidung taucht regelmäßig in Aufgaben auf:
+
+| Begriff | Bedeutung | Beispiel |
+|---|---|---|
+| **Datenschutz** | Schutz personenbezogener Daten (Fokus: Rechte der Person, DSGVO) | Einwilligung einholen, Datenminimierung |
+| **Datensicherheit** | Schutz aller Daten vor Verlust/Manipulation (CIA-Triad) | Backups, Verschlüsselung, Zugangskontrollen |
+
+Dazu gehört auch: **Zugangskontrolle** (Wer darf ins System?) vs. **Zugriffskontrolle**
+(Was darf man im System tun?). Beispiel: Du loggst dich ein (Zugang), kannst aber nur lesen,
+nicht schreiben (Zugriff).
+
+---
+
+## Typische Fehler
+
+- **„Hashing = Verschlüsselung"** — FALSCH. Verschlüsselung ist umkehrbar, Hashing nicht.
+  Eine verschlüsselte Datei kann mit dem Schlüssel entschlüsselt werden. Einen Hash kann man
+  nicht „enthashen".
+
+- **„Salt muss geheim sein"** — FALSCH. Der Salt wird in der Datenbank gespeichert und ist
+  nicht geheim. Er schützt trotzdem, weil er Rainbow-Tables unwirksam macht.
+
+- **„Rainbow-Table funktioniert auch mit Salt"** — FALSCH. Für jeden einzelnen Salt müsste
+  eine neue komplette Tabelle berechnet werden. Das macht den Angriff unpraktikabel.
+
+- **„bcrypt ist unsicher, weil es langsam ist"** — FALSCH. Die Langsamkeit ist gewollt:
+  Sie macht Brute-Force-Angriffe teuer, schadet aber normalen Login-Vorgängen kaum.
+
+---
+

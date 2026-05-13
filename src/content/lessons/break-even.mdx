@@ -1,0 +1,93 @@
+﻿# Break-Even-Analyse
+
+## Worum geht's
+
+Du lernst, was der <Term id="break-even">Break-Even-Punkt</Term> ist und wie du ihn Schritt für Schritt
+berechnen kannst. Danach erkennst du Break-Even-Aufgaben in der IHK-Aufgabe sofort und kannst sie
+sicher lösen — auch wenn die Zahlen sich ändern.
+
+---
+
+## Erklärung
+
+Jedes Unternehmen hat Kosten, bevor es den ersten Euro verdient.
+Die **Break-Even-Analyse** beantwortet eine simple Frage:
+
+> **Ab wie vielen verkauften Einheiten decken die Erlöse alle Kosten?**
+
+An diesem Punkt — dem Break-Even-Punkt — ist der Gewinn genau **0 €**.
+Darunter: Verlust. Darüber: Gewinn.
+
+### Die drei Kernbegriffe
+
+**Fixkosten (Kf):** Kosten, die immer anfallen — egal wie viel produziert wird.
+Beispiele: Miete, Gehälter, Abschreibungen. Werden **nicht** pro Stück berechnet.
+
+**Variable Kosten (kv):** Kosten pro produzierter Einheit.
+Beispiele: Rohmaterial, Verpackung, Stückprovision.
+
+**<Term id="deckungsbeitrag">Deckungsbeitrag</Term> (db):** Was jede verkaufte Einheit zur Deckung
+der Fixkosten beiträgt — also Verkaufspreis minus variable Kosten pro Stück.
+
+### Die Formeln
+
+```
+Deckungsbeitrag pro Stück:   db = p - kv
+
+Break-Even-Menge:            x_BE = Kf / db
+
+Break-Even-Umsatz:           U_BE = x_BE × p
+```
+
+---
+
+## Beispiel – Schritt für Schritt
+
+<Rechenweg
+  title="Break-Even-Analyse: Software-Abonnement"
+  steps={[
+    {
+      title: "Gegebene Werte sammeln",
+      formula: "Fixkosten Kf = 12.000 €\nVerkaufspreis p = 40 €\nVariable Kosten kv = 10 €",
+      explanation: "Zuerst alle gegebenen Größen aus der Aufgabe herausschreiben und benennen. So verlierst du keinen Überblick."
+    },
+    {
+      title: "Deckungsbeitrag pro Stück berechnen",
+      formula: "db = p - kv\ndb = 40 € - 10 € = 30 €",
+      explanation: "Der Deckungsbeitrag zeigt, wie viel jede verkaufte Einheit zur Deckung der Fixkosten beiträgt. Hier: 30 € pro Abonnement."
+    },
+    {
+      title: "Break-Even-Menge berechnen",
+      formula: "x_BE = Kf / db\nx_BE = 12.000 € / 30 € = 400 Stück",
+      explanation: "Ab 400 verkauften Abonnements sind alle Fixkosten gedeckt. Das Unternehmen macht weder Gewinn noch Verlust."
+    },
+    {
+      title: "Break-Even-Umsatz berechnen (falls gefragt)",
+      formula: "U_BE = x_BE × p\nU_BE = 400 × 40 € = 16.000 €",
+      explanation: "Der Break-Even-Umsatz gibt an, wie viel Umsatz mindestens erzielt werden muss. Nützlich wenn die Aufgabe nach Umsatz statt Menge fragt."
+    }
+  ]}
+/>
+
+---
+
+## Typische Fehler
+
+- **Deckungsbeitrag vergessen:** Manche berechnen direkt `Kf / p` — falsch!
+  Die variablen Kosten müssen erst vom Preis abgezogen werden.
+
+- **Fixkosten vs. variable Kosten verwechseln:** Miete ist immer Fixkosten,
+  Material pro Stück ist immer variable Kosten. Die Aufgabe kann das verschleiern.
+
+- **Einheiten vergessen:** Wenn Kf in Euro und kv in Cent angegeben sind,
+  zuerst einheitlich umrechnen — sonst kommt Unsinn raus.
+
+- **Gesamtkosten statt Stückkosten:** `kv` ist immer **pro Stück**, nicht gesamt.
+  Wenn die Aufgabe sagt „variable Gesamtkosten bei 100 Stück = 500 €", dann ist
+  `kv = 500 / 100 = 5 €` pro Stück.
+
+- **Break-Even-Umsatz statt -Menge gefragt:** Lies die Frage genau.
+  Bei Menge: `Kf / db`. Bei Umsatz: noch mal mit p multiplizieren.
+
+---
+
