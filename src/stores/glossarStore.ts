@@ -33,7 +33,7 @@ function mitNormalisierterId(eintrag: GlossarEintrag): GlossarEintrag {
   }
 }
 
-const initialGlossarEintraege: GlossarEintrag[] = [
+const initialGlossarEinträge: GlossarEintrag[] = [
   {
     id: 'bit',
     begriff: 'Bit',
@@ -3092,7 +3092,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
 ]
 
 const initialGlossarRegister: GlossarRegister = Object.fromEntries(
-  initialGlossarEintraege.map((eintrag) => {
+  initialGlossarEinträge.map((eintrag) => {
     const normalisierterEintrag = mitNormalisierterId(eintrag)
 
     return [normalisierterEintrag.id, normalisierterEintrag]
@@ -3114,14 +3114,14 @@ export const useGlossarStore = create<GlossarStore>((set, get) => ({
   },
   registriereEinträge: (einträge) => {
     set((state) => {
-      const naechsteEintraege = { ...state.einträge }
+      const nächsteEinträge = { ...state.einträge }
 
       for (const eintrag of einträge) {
         const normalisierterEintrag = mitNormalisierterId(eintrag)
-        naechsteEintraege[normalisierterEintrag.id] = normalisierterEintrag
+        nächsteEinträge[normalisierterEintrag.id] = normalisierterEintrag
       }
 
-      return { einträge: naechsteEintraege }
+      return { einträge: nächsteEinträge }
     })
   },
 }))

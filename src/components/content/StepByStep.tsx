@@ -85,7 +85,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
   const primaryLabel = istLetzterSchritt ? 'Alle Schritte einblenden' : 'Nächster Schritt →'
   const resetDisabled = !alleSichtbar && sichererIndex === 0
 
-  function zeigeNaechstenSchritt() {
+  function zeigeNächstenSchritt() {
     if (istLetzterSchritt) {
       setAlleSichtbar(true)
       return
@@ -94,7 +94,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
     setAktiverIndex(index => Math.min(index + 1, letzterIndex))
   }
 
-  function zuruecksetzen() {
+  function zurücksetzen() {
     setAktiverIndex(0)
     setAlleSichtbar(false)
   }
@@ -134,7 +134,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
         {!alleSichtbar && (
           <button
             type="button"
-            onClick={zeigeNaechstenSchritt}
+            onClick={zeigeNächstenSchritt}
             className="inline-flex min-h-11 items-center justify-center border border-accent bg-accent px-4 py-2 font-semibold text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             {primaryLabel}
@@ -142,7 +142,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
         )}
         <button
           type="button"
-          onClick={zuruecksetzen}
+          onClick={zurücksetzen}
           disabled={resetDisabled}
           className={cn(
             'inline-flex min-h-11 items-center justify-center gap-2 border border-rule bg-transparent px-4 py-2 font-semibold text-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',

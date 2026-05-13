@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAPPINGS = {
     "pruefungsrelevanz": "prüfungsrelevanz",
     "eintraege": "einträge",
+    "initialGlossarEintraege": "initialGlossarEinträge",
     "registriereEintraege": "registriereEinträge",
     "naechsteEintraege": "nächsteEinträge",
     "zeigeNaechstenSchritt": "zeigeNächstenSchritt",
@@ -17,14 +18,22 @@ MAPPINGS = {
 }
 
 SUFFIXES = {".ts", ".tsx", ".mdx"}
+SCOPED_SUFFIXES = {
+    "naechsteEintraege": {".ts", ".tsx"},
+    "initialGlossarEintraege": {".ts", ".tsx"},
+    "registriereEintraege": {".ts", ".tsx"},
+    "zeigeNaechstenSchritt": {".ts", ".tsx"},
+    "zuruecksetzen": {".ts", ".tsx"},
+}
 
 
-def target_files() -> list[Path]:
+def target_files(source: str) -> list[Path]:
     backup = ROOT / "src/content/lessons.backup-mojibake"
+    suffixes = SCOPED_SUFFIXES.get(source, SUFFIXES)
     return sorted(
         path
         for path in (ROOT / "src").rglob("*")
-        if path.suffix in SUFFIXES and backup not in path.parents
+        if path.suffix in suffixes and backup not in path.parents
     )
 
 
@@ -39,7 +48,7 @@ def apply_mapping(source: str, apply: bool) -> int:
 
     total = 0
     target = MAPPINGS[source]
-    for path in target_files():
+    for path in target_files(source):
         original = path.read_text(encoding="utf-8-sig")
         updated, count = rename_identifier(original, source, target)
         if count:
