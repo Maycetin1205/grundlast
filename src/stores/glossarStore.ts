@@ -1673,7 +1673,7 @@ const initialGlossarEinträge: GlossarEintrag[] = [
     },
   },
   {
-    id: 'verfuegbarkeit',
+    id: 'verfügbarkeit',
     begriff: 'Verfügbarkeit',
     kurzdefinition: 'Schutzziel: Systeme und Daten sind erreichbar, wenn sie gebraucht werden.',
     definition: [
