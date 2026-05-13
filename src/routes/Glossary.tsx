@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { BookMarked } from 'lucide-react'
-import { useGlossarStore } from '../stores/glossarStore'
-import type { GlossarEintrag } from '../stores/glossarStore'
+import { useGlossarStore } from '../lib/glossar'
+import type { GlossarEintrag } from '../lib/glossar'
 
 export default function Glossary() {
   const einträge = useGlossarStore((state) => state.einträge)

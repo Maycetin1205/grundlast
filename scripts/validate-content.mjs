@@ -8,12 +8,24 @@ const verbose = process.argv.includes('--verbose')
 const paths = {
   tocDataDir: path.join(root, 'src/lib/toc/data'),
   sources: path.join(root, 'src/lib/sources.ts'),
-  glossar: path.join(root, 'src/stores/glossarStore.ts'),
+  glossarDir: path.join(root, 'src/content/glossar'),
   reviewLog: path.join(root, 'REVIEW_LOG.md'),
   lessonsDir: path.join(root, 'src/content/lessons'),
 }
 
 function readTocCombined(dir) {
+  if (!existsSync(dir)) {
+    errors.push(`Pflichtordner fehlt: ${path.relative(root, dir)}`)
+    return ''
+  }
+
+  return readdirSync(dir)
+    .filter((file) => file.endsWith('.ts') && file !== 'index.ts')
+    .map((file) => readFileSync(path.join(dir, file), 'utf8'))
+    .join('\n')
+}
+
+function readGlossarCombined(dir) {
   if (!existsSync(dir)) {
     errors.push(`Pflichtordner fehlt: ${path.relative(root, dir)}`)
     return ''
@@ -166,7 +178,7 @@ function report(title, items, { limit = Infinity } = {}) {
 
 const tocText = readTocCombined(paths.tocDataDir)
 const sourcesText = readRequired(paths.sources)
-const glossarText = readRequired(paths.glossar)
+const glossarText = readGlossarCombined(paths.glossarDir)
 const reviewLogText = readRequired(paths.reviewLog)
 
 const lessons = extractLessons(tocText)

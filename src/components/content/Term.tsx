@@ -4,7 +4,7 @@ import { BookOpen, X } from 'lucide-react'
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '../../lib/cn'
-import { normalisiereGlossarId, useGlossarStore } from '../../stores/glossarStore'
+import { normalisiereGlossarId, useGlossarStore } from '../../lib/glossar'
 
 interface TermProps {
   id: string
