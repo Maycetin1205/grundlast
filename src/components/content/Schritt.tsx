@@ -12,7 +12,7 @@ export default function Schritt({ nr, titel, children, className }: SchrittProps
   return (
     <section
       className={cn(
-        'grid grid-cols-[3rem_minmax(0,1fr)] gap-5 border border-rule bg-paper px-5 py-5 text-ink sm:grid-cols-[4rem_minmax(0,1fr)] sm:px-6',
+        'grid grid-cols-[3rem_minmax(0,1fr)] gap-5 border border-rule-2 bg-paper px-5 py-5 text-ink sm:grid-cols-[4rem_minmax(0,1fr)] sm:px-6',
         className,
       )}
     >
@@ -23,10 +23,10 @@ export default function Schritt({ nr, titel, children, className }: SchrittProps
         {String(nr).padStart(2, '0')}
       </span>
       <div className="min-w-0">
-        <h4 className="mb-3 mt-0 font-ui text-sm font-semibold tracking-wide text-ink">
+        <h4 className="mb-3 mt-0 font-ui text-base font-bold tracking-wide text-ink">
           {titel}
         </h4>
-        <div className="font-body text-base leading-relaxed text-muted [&>p:last-child]:mb-0">
+        <div className="font-ui text-[1.03rem] leading-relaxed text-ink-2 [&>p:last-child]:mb-0">
           {children}
         </div>
       </div>

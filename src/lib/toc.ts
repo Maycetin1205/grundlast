@@ -123,14 +123,14 @@ export const lernfelder: Lernfeld[] = [
         lessons: [
           { slug: "linux-chmod", title: "Linux-Dateiberechtigungen (chmod, rwx)", minutes: 14, importance: 5, exam: true, status: "draft" },
           { slug: "dateisysteme", title: "Dateisysteme (FAT32, NTFS, ext4, APFS)", minutes: 22, importance: 4, exam: true, status: "ready" },
-          { slug: "prozess-thread", title: "Prozesse, Threads & Tasks", minutes: 10, importance: 4, exam: true, status: "stub" },
+          { slug: "prozess-thread", title: "Prozesse, Threads & Tasks", minutes: 18, importance: 4, exam: true, status: "ready" },
         ],
       },
       {
         slug: "it-infrastruktur",
         title: "IT-Infrastruktur & Software",
         lessons: [
-          { slug: "zentral-dezentral", title: "Zentrale vs. dezentrale IT-Systeme", minutes: 10, importance: 4, exam: true, status: "stub" },
+          { slug: "zentral-dezentral", title: "Zentrale vs. dezentrale IT-Systeme", minutes: 20, importance: 4, exam: true, status: "ready" },
           { slug: "virtualisierung", title: "Virtualisierung & Hypervisor", minutes: 14, importance: 5, exam: true, status: "draft" },
           { slug: "crm-erp-dms", title: "CRM, ERP, DMS & CMS – Unternehmenssoftware", minutes: 18, importance: 4, exam: true, status: "ready" },
         ],
@@ -151,7 +151,7 @@ export const lernfelder: Lernfeld[] = [
         title: "Modelle & Protokolle",
         lessons: [
           { slug: "osi-modell", title: "OSI-Modell – sieben Schichten", minutes: 16, importance: 5, exam: true, status: "ready" },
-          { slug: "tcp-udp", title: "TCP vs. UDP", minutes: 8, importance: 5, exam: true, status: "draft" },
+          { slug: "tcp-udp", title: "TCP vs. UDP", minutes: 24, importance: 5, exam: true, status: "ready" },
           { slug: "imap-pop3-smtp", title: "E-Mail-Protokolle (IMAP, POP3, SMTP)", minutes: 12, importance: 5, exam: true, status: "ready" },
         ],
       },
@@ -167,23 +167,23 @@ export const lernfelder: Lernfeld[] = [
         slug: "ipv6",
         title: "IPv6",
         lessons: [
-          { slug: "ipv6-grundlagen", title: "IPv6 – Aufbau & Adressierung", minutes: 14, importance: 4, exam: true, status: "stub" },
+          { slug: "ipv6-grundlagen", title: "IPv6 – Aufbau & Adressierung", minutes: 20, importance: 5, exam: true, status: "ready" },
         ],
       },
       {
         slug: "netz-sicherheit",
         title: "Netzwerksicherheit",
         lessons: [
-          { slug: "firewall-dmz", title: "Firewall & DMZ", minutes: 14, importance: 5, exam: true, status: "draft" },
-          { slug: "port-forwarding", title: "Port Forwarding & NAT", minutes: 10, importance: 3, exam: false, status: "stub" },
-          { slug: "wlan-standards", title: "WLAN-Standards (802.11)", minutes: 10, importance: 4, exam: true, status: "stub" },
+          { slug: "firewall-dmz", title: "Firewall und DMZ", minutes: 24, importance: 5, exam: true, status: "ready" },
+          { slug: "port-forwarding", title: "Port Forwarding und NAT", minutes: 24, importance: 4, exam: true, status: "ready" },
+          { slug: "wlan-standards", title: "WLAN-Standards und WLAN-Sicherheit", minutes: 22, importance: 4, exam: true, status: "ready" },
         ],
       },
       {
         slug: "rechnen-netz",
         title: "Rechenaufgaben",
         lessons: [
-          { slug: "datenrate-berechnung", title: "Datenrate & Downloadzeit berechnen", minutes: 15, importance: 5, exam: true, status: "draft" },
+          { slug: "datenrate-berechnung", title: "Datenrate & Downloadzeit berechnen", minutes: 24, importance: 5, exam: true, status: "ready" },
           { slug: "datenvolumen-berechnung", title: "Datenmengen, Scan & Übertragung — komplett rechnen", minutes: 30, importance: 5, exam: true, status: "ready" },
         ],
       },
@@ -333,7 +333,7 @@ export const lernfelder: Lernfeld[] = [
           { slug: "backup-strategien", title: "Backup-Strategien (Voll, Inkrementell, Differenziell)", minutes: 14, importance: 5, exam: true, status: "draft" },
           { slug: "mtbf-mttf", title: "MTBF & MTTF – Ausfallwahrscheinlichkeit", minutes: 12, importance: 4, exam: true, status: "draft" },
           { slug: "ssh-telnet", title: "SSH vs. Telnet", minutes: 8, importance: 4, exam: true, status: "stub" },
-          { slug: "endpoint-security", title: "Endpoint-Security & Schutzmaßnahmen", minutes: 12, importance: 4, exam: true, status: "stub" },
+          { slug: "endpoint-security", title: "Endpoint-Security & Schutzmaßnahmen", minutes: 14, importance: 5, exam: true, status: "ready" },
           { slug: "malware-grundlagen", title: "Malware — Viren, Würmer, Trojaner, Ransomware", minutes: 22, importance: 5, exam: true, status: "ready" },
         ],
       },
@@ -475,9 +475,9 @@ export const lernfelder: Lernfeld[] = [
         slug: "neue-themen",
         title: "Neue & aktuelle Themen",
         lessons: [
-          { slug: "ki-grundlagen", title: "KI-Grundlagen (ML, neuronale Netze)", minutes: 16, importance: 5, exam: true, status: "stub" },
+          { slug: "ki-grundlagen", title: "KI-Grundlagen (ML, neuronale Netze)", minutes: 20, importance: 5, exam: true, status: "ready" },
           { slug: "cloud-konzepte", title: "Cloud-Konzepte (IaaS, PaaS, SaaS)", minutes: 12, importance: 4, exam: true, status: "stub" },
-          { slug: "lizenzmodelle", title: "Lizenzmodelle (Open Source, proprietär, SaaS)", minutes: 10, importance: 4, exam: true, status: "stub" },
+          { slug: "lizenzmodelle", title: "Lizenzmodelle (Open Source, proprietär, SaaS)", minutes: 14, importance: 5, exam: true, status: "ready" },
         ],
       },
     ],

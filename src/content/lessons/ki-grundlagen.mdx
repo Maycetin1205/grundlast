@@ -1,0 +1,225 @@
+# KI-Grundlagen – ML, neuronale Netze, Einsatz im Betrieb
+
+<MetaBar
+  lesezeit="20 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 7+ — Cyber-physische Systeme, KI im Geschäftsprozess"
+  slug="ki-grundlagen"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du die Begriffe **KI**, **Machine Learning** und **Deep Learning** voneinander abgrenzen. Du kennst die drei Hauptlernarten — **überwacht**, **unüberwacht**, **verstärkend** — und kannst typische Einsatzgebiete im Unternehmen benennen. Du kennst die wichtigsten **Risiken** (Bias, Halluzinationen, Datenschutz) und kannst die zentralen Bestimmungen der **EU-KI-Verordnung** (AI Act) zuordnen. Du beantwortest typische Klausurfragen wie *„Welche Vor- und Nachteile hat der Einsatz eines KI-Chatbots im Kundenservice?"* sicher.
+
+## 01 · Warum existiert das überhaupt?
+
+KI ist seit 2022 (ChatGPT-Veröffentlichung) das dominierende IT-Thema in Unternehmen und Politik. AP1 hat das Thema 2025 erstmals mit 6 Punkten geprüft — voraussichtlich wird es ab jetzt regelmäßig kommen.
+
+In der Prüfung wird KI als **Anwendungsfall-Aufgabe** gestellt: *„Wo könnte eine KI in diesem Geschäftsprozess unterstützen? Welche Vor-/Nachteile entstehen?"*. Wer die drei Lernarten, die Hauptrisiken und ein paar typische Einsatzbeispiele kennt, holt sich hier 5 bis 8 Punkte.
+
+Im Betrieb ist das Thema unausweichlich: Mitarbeiter nutzen KI-Tools, oft ohne dass der Arbeitgeber das aktiv gestaltet. Genau dort liegen Risiken — Datenschutz, Geschäftsgeheimnisse, Urheberrecht. Ein verantwortungsvoller Umgang braucht Regeln und Schulung.
+
+<Analogie>
+Eine KI ist wie ein sehr erfahrener Praktikant, der jede Aufgabe einmal gesehen hat — aber nicht versteht, ob seine Antwort gerade auch passt. Er gibt blitzschnell sinnvolle Vorschläge und macht erstaunliche Fehler, beides mit derselben Selbstsicherheit. Wer ihn richtig einsetzt, gewinnt enorm Zeit. Wer ihn ungeprüft entscheiden lässt, baut Risiko ein. Die Frage ist nie „KI oder nicht?", sondern: *welche Aufgaben gebe ich ihm, und welche Kontrolle behalte ich?*
+</Analogie>
+
+---
+
+## 02 · Begriffsabgrenzung
+
+| Begriff | Definition |
+|---|---|
+| **KI (Künstliche Intelligenz)** | Sammelbegriff für Systeme, die Aufgaben lösen, die normalerweise menschliche Intelligenz erfordern: Sprache, Bildverstehen, Entscheidungen, Mustererkennung |
+| **Machine Learning (ML)** | Teilgebiet der KI: Systeme, die aus Daten lernen, statt fest programmiert zu werden |
+| **Deep Learning** | Teilgebiet von ML: nutzt mehrschichtige künstliche neuronale Netze |
+| **Generative KI** | KI, die neue Inhalte erzeugt (Text, Bild, Code) — z. B. ChatGPT, Stable Diffusion |
+| **LLM (Large Language Model)** | sehr großes Sprachmodell als Spezialform generativer KI |
+
+Mengendarstellung: KI ⊃ ML ⊃ Deep Learning. **Generative KI** ist eine Anwendungsform, die meist auf Deep Learning basiert.
+
+---
+
+## 03 · Die drei Hauptlernarten
+
+| Lernart | Was wird gegeben? | Was passiert? | Beispiel |
+|---|---|---|---|
+| **Überwachtes Lernen** (supervised) | Eingangsdaten + bekannte Lösung | Modell lernt Eingangs-Lösungs-Zuordnung | Spam-Erkennung, Bilderkennung |
+| **Unüberwachtes Lernen** (unsupervised) | nur Eingangsdaten ohne Lösung | Modell findet selbst Muster oder Gruppen | Kunden-Segmentierung, Anomalie-Erkennung |
+| **Verstärkendes Lernen** (reinforcement) | Umgebung mit Belohnung / Bestrafung | Modell lernt durch Versuch und Feedback | Autonomes Fahren, Spiele-KI |
+
+<Tipp titel="Eselsbrücke für die drei Lernarten">
+- **Überwacht** = „Lehrer korrigiert" — du gibst dem Modell die richtigen Antworten zum Üben.
+- **Unüberwacht** = „selbständig erkunden" — keine richtigen Antworten, finde selbst Muster.
+- **Verstärkend** = „Hundetraining" — gutes Verhalten gibt Leckerli, schlechtes nicht.
+</Tipp>
+
+---
+
+## 04 · Typische Einsatzgebiete im Unternehmen
+
+### Service & Kundenkontakt
+- **Chatbot** für FAQ und Tickets erste Stufe
+- **Sentimentanalyse** in Kundenkommunikation
+- **Übersetzungshilfe** für mehrsprachigen Support
+
+### Office & Verwaltung
+- **Text-Generierung** für Standardschreiben
+- **Zusammenfassung** langer Dokumente
+- **Datenextraktion** aus Rechnungen und Verträgen
+- **Terminvorschläge** und Kalender-Optimierung
+
+### Entwicklung & IT-Betrieb
+- **Code-Vorschläge** in IDEs (z. B. GitHub Copilot)
+- **Anomalie-Erkennung** in Log-Daten
+- **Penetration-Test-Vorbereitung**, Schwachstellen-Suche
+- **Test-Generierung**
+
+### Marketing & Vertrieb
+- **Kundensegmentierung** aus Verhaltensdaten
+- **Personalisierte Empfehlungen** (Recommendation Engine)
+- **Bild- und Werbetextgenerierung**
+
+### Produktion & Logistik
+- **Predictive Maintenance** — Wartung vorhersagen aus Sensordaten
+- **Qualitätskontrolle** per Bilderkennung
+- **Lieferketten-Optimierung**
+
+---
+
+## 05 · Vor- und Nachteile
+
+<Beispiel titel="Typische Auswirkungen eines KI-Chatbots im Service">
+
+| Vorteile | Nachteile |
+|---|---|
+| **24/7-Erreichbarkeit** ohne Schichtzulagen | **Oberflächliche Beratung** — komplexe Fälle nicht lösbar |
+| **Schnelle Erstkontaktphase** | **Halluzinationen** — KI erfindet plausibel klingende, aber falsche Antworten |
+| **Übersetzungshilfe** in vielen Sprachen | **Datenschutz** — Kundendaten landen in externen Modellen |
+| **Skaliert mit Nachfrage** | **Persönlicher Kontakt fehlt** — Imageverlust bei sensiblen Themen |
+| **Entlastung der Service-Mitarbeiter** für komplexe Fälle | **Bias** — KI übernimmt Vorurteile aus Trainingsdaten |
+| **Niedrigere Stückkosten** | **Initialaufwand** für Training, Integration, Pflege |
+
+Eine echte Antwort in der Klausuraufgabe nennt **drei Vor- und drei Nachteile** und kann begründen.
+</Beispiel>
+
+---
+
+## 06 · Risiken und Probleme
+
+| Risiko | Beschreibung | Maßnahme |
+|---|---|---|
+| **Halluzinationen** | KI gibt plausibel klingende, aber falsche Auskünfte | Antworten verifizieren, Quellen prüfen, Bestätigung anfordern |
+| **Bias / Diskriminierung** | KI übernimmt Vorurteile aus Trainingsdaten | diverse Trainingsdaten, regelmäßige Audits |
+| **Datenschutz** | Personenbezogene Daten an externe KI-Dienste | DSGVO-konforme Auswahl, On-Premise-Modelle, Anonymisierung |
+| **Urheberrecht** | KI erzeugt potenziell geschützte Inhalte | Nutzungsbedingungen prüfen, Recherche auf Plagiate |
+| **Geschäftsgeheimnisse** | Vertrauliche Daten landen in öffentlichem Modell | klare Richtlinie: was darf in KI-Tool, was nicht |
+| **Job-Verdrängung** | Aufgaben werden automatisiert | Reskilling, neue Rollen schaffen |
+| **Über-Vertrauen** | Nutzer glauben KI-Antworten ungeprüft | Schulung, klare Verantwortlichkeiten |
+| **Energiekosten** | Modelltraining verbraucht enorm viel Strom | effiziente Modelle, vorhandene Modelle nutzen |
+
+---
+
+## 07 · EU-KI-Verordnung (AI Act)
+
+Die **Verordnung (EU) 2024/1689** trat 2024 in Kraft. Sie klassifiziert KI-Systeme in **vier Risikoklassen**:
+
+| Klasse | Beispiele | Anforderungen |
+|---|---|---|
+| **Unannehmbares Risiko** | Social Scoring, biometrische Massenüberwachung | **verboten** in der EU |
+| **Hohes Risiko** | KI in HR, Bildung, kritische Infrastruktur | Konformitätsbewertung, Risikomanagement, menschliche Aufsicht |
+| **Begrenztes Risiko** | Chatbots, generative KI | Transparenzpflicht (Nutzer muss wissen, dass er mit KI spricht) |
+| **Minimales Risiko** | Spam-Filter, KI in Videospielen | keine Sonderpflichten |
+
+**Wichtige Pflichten** für betriebliche Nutzung:
+- **Kennzeichnung** generierter Inhalte
+- **Schulung** der Beschäftigten
+- **Risikobewertung** bei Hochrisiko-Anwendungen
+- **DSGVO-Konformität** zusätzlich beachten
+
+---
+
+## 08 · Vorgehen: KI-Einsatz in einem Geschäftsprozess prüfen
+
+<Schritte
+  items={[
+    { titel: '1. Prozess analysieren', text: 'Welche Schritte sind repetitiv, regelbasiert oder mustererkennend? Wo gibt es Bottlenecks?' },
+    { titel: '2. KI-Tauglichkeit prüfen', text: 'Gibt es genug Daten zum Training oder ein vorhandenes Modell? Sind Entscheidungen automatisierbar?' },
+    { titel: '3. Risiken bewerten', text: 'Personenbezogene Daten? Kritische Entscheidungen? Hochrisiko-Bereich nach AI Act?' },
+    { titel: '4. Anbieter wählen', text: 'On-Premise vs. Cloud? DSGVO-konform? AV-Vertrag möglich? Auftragsverarbeitung?' },
+    { titel: '5. Pilotbetrieb', text: 'Klein anfangen, Ergebnisse messen. Mitarbeiter schulen, Feedback sammeln.' },
+    { titel: '6. Rollout mit Kontrolle', text: 'Klare Regeln: was darf KI entscheiden, was muss Mensch prüfen? Monitoring, Anpassung.' },
+    { titel: '7. Mitarbeiter einbinden', text: 'Schulung, Transparenz, Mitbestimmung. KI ersetzt nicht — sie unterstützt.' },
+  ]}
+/>
+
+---
+
+## 09 · Fehlerfallen
+
+<Warnung titel="Die fünf häufigsten Klausurfehler">
+1. **KI mit ChatGPT gleichsetzen.** ChatGPT ist ein **LLM**, eine Form generativer KI. KI ist viel breiter: Machine Learning, Bilderkennung, Empfehlungssysteme, Spam-Filter, autonome Systeme.
+2. **„KI denkt".** Stimmt nicht. KI rechnet Wahrscheinlichkeiten — sie versteht keinen Inhalt, sondern erkennt Muster aus Trainingsdaten.
+3. **Halluzinationen ignorieren.** Generative KI gibt überzeugend wirkende, aber sachlich falsche Antworten. Ohne Faktencheck nicht in geschäftliche Kommunikation übernehmen.
+4. **Datenschutz vergessen.** Wer Kundendaten in einen öffentlichen Chatbot tippt, verstößt fast immer gegen DSGVO. Geschäftliche Nutzung braucht abgesicherte Tools mit AV-Vertrag.
+5. **„Bessere Mitarbeiter durch KI" als reinen Vorteil.** Falsche Zuspitzung. KI verlangt **mehr Kontrolle**, nicht weniger — und schafft neue Aufgaben (Prompt-Engineering, Audit, Pflege).
+</Warnung>
+
+---
+
+## 10 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** Eine Rechtsanwaltskanzlei überlegt, einen KI-Chatbot für eine kostenlose Erstberatung auf ihrer Website einzusetzen. (a) Nenne drei Aufgaben, die ein solcher Chatbot übernehmen könnte. (b) Nenne zwei Vorteile und zwei Nachteile aus Sicht der Kanzlei. (c) Welche rechtlichen Pflichten ergeben sich nach EU-KI-Verordnung und DSGVO?
+
+**Musterantwort:**
+
+**(a)** Drei Aufgaben:
+1. Erfassen der Kontakt- und Sachverhaltsdaten des Mandanten als Vorbereitung
+2. Vereinbarung eines Termins mit einem passenden Anwalt
+3. Übersetzungshilfe für fremdsprachige Anfragen
+
+**(b)**
+
+Vorteile:
+- **24/7-Erreichbarkeit** ohne Personalaufwand — neue Mandanten können jederzeit anfragen
+- **Entlastung der Anwälte** für die qualifizierte Beratung statt für Erstkontakt
+
+Nachteile:
+- **Risiko fehlerhafter rechtlicher Auskünfte** durch Halluzinationen — kann zu Haftungsfragen führen
+- **Verlust des persönlichen Kontakts** in der heikelsten Phase einer Mandatsanbahnung
+
+**(c)** Rechtliche Pflichten:
+- **AI Act (Verordnung EU 2024/1689):** Chatbots gelten als „begrenztes Risiko" — der Nutzer muss klar erkennen, **dass er mit einer KI** und nicht mit einem Menschen spricht (Transparenzpflicht).
+- **DSGVO:** Verarbeitung personenbezogener Daten erfordert eine **Rechtsgrundlage** (Einwilligung), eine **Datenschutzerklärung** mit Hinweis auf Chatbot-Nutzung und einen **Auftragsverarbeitungsvertrag** mit dem KI-Dienstleister, falls die Daten extern verarbeitet werden.
+- Zusätzlich: **anwaltliche Verschwiegenheit (§ 43a BRAO)** — vertrauliche Mandanten-Informationen dürfen nicht ungesichert an externe KI-Dienste gehen.
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'Verordnung (EU) 2024/1689 — KI-Verordnung (AI Act)',
+      href: 'https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=OJ:L_202401689',
+      detail: 'Erste umfassende KI-Regulierung weltweit. Definiert Risikoklassen, Pflichten und Verbote.'
+    },
+    {
+      label: 'BSI — KI-Sicherheit: Bausteine und Leitfäden',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Kuenstliche-Intelligenz/kuenstliche-intelligenz_node.html',
+      detail: 'BSI-Empfehlungen zum sicheren Einsatz von KI-Systemen im Unternehmen.'
+    },
+    {
+      label: 'BfDI — Datenschutz und Künstliche Intelligenz',
+      href: 'https://www.bfdi.bund.de/DE/Fachthemen/Inhalte/Technik/KI-und-Datenschutz.html',
+      detail: 'Bundesbeauftragte für Datenschutz: Anforderungen an DSGVO-konformen KI-Einsatz.'
+    },
+    {
+      label: 'Bundesregierung — Strategie Künstliche Intelligenz',
+      href: 'https://www.ki-strategie-deutschland.de/',
+      detail: 'Nationale KI-Strategie der Bundesregierung mit Schwerpunkten und Maßnahmen.'
+    },
+    {
+      label: 'OECD — AI Principles',
+      href: 'https://oecd.ai/en/ai-principles',
+      detail: 'International anerkannte Prinzipien für vertrauenswürdige KI: Inklusivität, Transparenz, Robustheit, Verantwortlichkeit.'
+    },
+  ]}
+/>

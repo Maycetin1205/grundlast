@@ -12,7 +12,7 @@ export default function Analogie({ children, icon, className }: AnalogieProps) {
   return (
     <aside
       className={cn(
-        'my-6 flex gap-4 border-l-4 border-accent-soft bg-analogy-bg px-6 py-5 font-body text-base italic leading-relaxed text-ink',
+        'my-8 flex gap-4 border border-rule-2 border-l-[6px] border-l-accent bg-analogy-bg px-6 py-5 font-ui text-[1.03rem] italic leading-relaxed text-ink',
         className,
       )}
     >

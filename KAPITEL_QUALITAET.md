@@ -1,6 +1,10 @@
 ﻿# Kapitel-Qualitaetsstandard
 
-Ziel: Jedes Kapitel soll wie ein sehr gutes Berufsschul-Skript funktionieren: fachlich korrekt, didaktisch klar, quellenbasiert und lesbar fuer jemanden ohne Vorwissen. Pruefungslogik gehoert in eigene Pruefungsmodi, nicht in den normalen Kapiteltext.
+Ziel: Jedes Kapitel soll wie ein sehr gutes Ausbildungsskript funktionieren:
+fachlich korrekt, didaktisch klar, quellenbasiert und lesbar fuer jemanden ohne
+Vorwissen. Das Kapitel erklaert zuerst das Ausbildungswissen. Pruefungslogik
+kommt als klar erkennbare Zusatzschicht dazu, nicht als Ersatz fuer den normalen
+Lerntext.
 
 ## Goldstandard pro Kapitel
 
@@ -28,7 +32,7 @@ Ein Kapitel ist erst final, wenn alle 12 Punkte erfuellt sind.
 
 6. **Anwendungsbeispiele**
    - Das Kapitel zeigt, wie das Thema in Berufsschule, Betrieb oder Projektpraxis verwendet wird.
-   - Aufgabenformate gehoeren in den separaten Pruefungsmodus.
+   - Es gibt mindestens eine echte Handlungssituation oder Entscheidungsfrage.
 
 7. **Musterloesung**
    - Jede Aufgabe hat eine nachvollziehbare Loesung.
@@ -42,9 +46,10 @@ Ein Kapitel ist erst final, wenn alle 12 Punkte erfuellt sind.
    - Das Kapitel zeigt mindestens einen Praxisbezug aus IT-Betrieb, Kundenauftrag oder Projekt.
    - Nicht nur Schulbuchwissen.
 
-10. **Keine Quiz-Bloecke im Kapitel**
-    - Normale Kapitel enthalten keine Quiz-, Karteikarten- oder Selbsttest-Bloecke.
-    - Uebungs- und Pruefungsformate werden getrennt im Pruefungsmodus gepflegt.
+10. **Pruefungsblick klar trennen**
+    - Normale Kapitel duerfen eine kurze Pruefungsbox oder Musteraufgabe enthalten.
+    - Umfangreiche Quiz-, Karteikarten- und Pruefungssimulationen gehoeren in den separaten Uebungs- oder Pruefungsmodus.
+    - Der normale Lerntext darf nicht nur aus Pruefungstricks bestehen.
 
 11. **Quellenqualitaet**
     - Offizielle oder serioese Quellen: BIBB, FIAusbV, KMK, BSI, RFCs, Gesetze, offizielle Spezifikationen, Herstellerdoku nur fuer herstellerspezifische Fakten.
@@ -125,7 +130,9 @@ Bei jedem Kapitel gilt:
 Erst A+ fuer ein Kapitel herstellen, dann zum naechsten.
 ```
 
-Keine halbfertigen Kapitel mehr als `ready` markieren.
+Keine halbfertigen Kapitel mehr als `ready` markieren. AP1-Relevanz allein macht
+ein Kapitel nicht fertig; berufliche Einordnung, Quellen, Glossar und Lesbarkeit
+zaehlen mit.
 
 ## Abschlussregel fuer jeden Chat
 
@@ -139,7 +146,7 @@ Naechster Chat - Prompt:
 Du arbeitest im Projekt:
 C:\Users\mu.aycetin\Desktop\Neuer Ordner\Porjekte\AP1\grundlast
 
-Nutze ROADMAP.md, AP1_LERNPFAD.md und KAPITEL_QUALITAET.md als verbindliche Regeln.
+Nutze AUSBILDUNGS_KOMPASS.md, MASTER_ROADMAP.md, CURRICULUM_MAPPING.md, ROADMAP.md, AP1_LERNPFAD.md und KAPITEL_QUALITAET.md als verbindliche Regeln.
 
 Bitte bearbeite genau diesen Schritt:
 [naechster konkreter Schritt]

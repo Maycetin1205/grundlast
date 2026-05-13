@@ -89,7 +89,7 @@ export default function Layout() {
         ref={mainRef}
         className="h-screen overflow-y-auto bg-paper min-[900px]:ml-[344px]"
       >
-        <div className="w-full px-5 pb-16 pt-20 sm:px-8 min-[900px]:px-14 min-[1200px]:px-20 min-[900px]:pb-24 min-[900px]:pt-14">
+        <div className="mx-auto w-full max-w-[1680px] px-5 pb-16 pt-20 sm:px-8 min-[900px]:px-12 min-[1400px]:px-16 min-[900px]:pb-24 min-[900px]:pt-14">
           <Outlet />
         </div>
       </main>

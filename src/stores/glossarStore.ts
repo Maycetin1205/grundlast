@@ -347,6 +347,188 @@ const initialGlossarEinträge: GlossarEintrag[] = [
     },
   },
   {
+    id: 'oeffentliche-ipv4-adresse',
+    begriff: 'Oeffentliche IPv4-Adresse',
+    kurzdefinition: 'Eine oeffentliche IPv4-Adresse ist global eindeutig und im Internet routbar.',
+    definition: [
+      'Oeffentliche IPv4-Adressen werden im Internet eindeutig vergeben und koennen ueber globale Routingtabellen erreicht werden, sofern Firewall und Routing dies erlauben.',
+      'Bei typischen Heim- und kleinen Unternehmensanschluessen besitzt der Router am WAN-Anschluss eine oeffentliche IPv4-Adresse, waehrend interne Geraete private Adressen verwenden.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'nat',
+    begriff: 'NAT',
+    kurzdefinition: 'NAT uebersetzt IP-Adressen zwischen unterschiedlichen Adressraeumen.',
+    definition: [
+      'NAT steht fuer Network Address Translation. Ein NAT-Geraet veraendert IP-Adressen in Paketen, zum Beispiel zwischen privatem LAN und oeffentlichem Internet.',
+      'NAT wird haeufig eingesetzt, damit private IPv4-Netze ueber eine oeffentliche Adresse kommunizieren koennen. Es ersetzt aber keine durchdachte Firewall- und Sicherheitsarchitektur.',
+    ],
+    kapitel: {
+      titel: 'Port Forwarding und NAT',
+      href: '/lernen/netzwerke/netz-sicherheit/port-forwarding',
+    },
+  },
+  {
+    id: 'napt',
+    begriff: 'NAPT/PAT',
+    kurzdefinition: 'NAPT oder PAT uebersetzt neben IP-Adressen auch Portnummern.',
+    definition: [
+      'NAPT steht fuer Network Address Port Translation, PAT fuer Port Address Translation. Beide Begriffe beschreiben, dass mehrere interne Hosts ueber unterschiedliche Portzuordnungen eine oeffentliche IPv4-Adresse teilen koennen.',
+      'Typisch ist der Heimrouter: Viele Clients bauen Verbindungen nach aussen auf, der Router merkt sich die Zuordnung von interner Adresse, internem Port und externem Port.',
+    ],
+    kapitel: {
+      titel: 'Port Forwarding und NAT',
+      href: '/lernen/netzwerke/netz-sicherheit/port-forwarding',
+    },
+  },
+  {
+    id: 'port-forwarding',
+    begriff: 'Port Forwarding',
+    kurzdefinition: 'Port Forwarding leitet eingehende Verbindungen von einem externen Port an ein internes Ziel weiter.',
+    definition: [
+      'Beim Port Forwarding wird eine Verbindung auf einer oeffentlichen Adresse und einem Port an eine private interne IP-Adresse und einen Zielport weitergeleitet.',
+      'Dadurch werden interne Dienste von aussen erreichbar. Das ist nuetzlich fuer Webserver oder bestimmte Dienste, erhoeht aber die Angriffsoberflaeche und muss mit Firewall, Updates und Authentifizierung abgesichert werden.',
+    ],
+    kapitel: {
+      titel: 'Port Forwarding und NAT',
+      href: '/lernen/netzwerke/netz-sicherheit/port-forwarding',
+    },
+  },
+  {
+    id: 'firewall-regel',
+    begriff: 'Firewall-Regel',
+    kurzdefinition: 'Eine Firewall-Regel erlaubt oder blockiert Netzwerkverkehr nach Kriterien wie Quelle, Ziel, Port und Protokoll.',
+    definition: [
+      'Firewall-Regeln beschreiben, welcher Verkehr erlaubt oder verboten ist. Typische Kriterien sind Quelladresse, Zieladresse, Protokoll, Port, Richtung und Verbindungszustand.',
+      'Bei Port Forwarding muessen NAT-Regel und Firewall-Regel zusammenpassen: Die NAT-Regel uebersetzt, die Firewall entscheidet, ob der Verkehr durch darf.',
+    ],
+    kapitel: {
+      titel: 'Port Forwarding und NAT',
+      href: '/lernen/netzwerke/netz-sicherheit/port-forwarding',
+    },
+  },
+  {
+    id: 'firewall',
+    begriff: 'Firewall',
+    kurzdefinition: 'Eine Firewall kontrolliert Netzwerkverkehr zwischen Netzen oder auf einem Endgeraet anhand von Regeln.',
+    definition: [
+      'Eine Firewall entscheidet anhand eines Regelwerks, ob Verkehr erlaubt oder blockiert wird. Typische Kriterien sind Quelle, Ziel, Port, Protokoll, Richtung und Verbindungszustand.',
+      'Professionell wird eine Firewall nicht als Einzelschutz verstanden, sondern als Baustein einer Sicherheitsarchitektur mit Netzsegmentierung, Updates, Logging, Monitoring und klarer Administration.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'default-deny',
+    begriff: 'Default Deny',
+    kurzdefinition: 'Default Deny bedeutet: Alles ist gesperrt, ausser es wurde ausdruecklich erlaubt.',
+    definition: [
+      'Default Deny ist ein Sicherheitsprinzip fuer Regelwerke. Zuerst werden benoetigte Verbindungen gezielt erlaubt, danach blockiert eine Standardregel den Rest.',
+      'Das Gegenteil waere ein sehr offenes Regelwerk, bei dem nur einzelne bekannte Gefahren gesperrt werden. Das ist schwerer sicher zu beherrschen.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'allowlist',
+    begriff: 'Allowlist',
+    kurzdefinition: 'Eine Allowlist enthaelt ausdruecklich erlaubte Kommunikation oder erlaubte Objekte.',
+    definition: [
+      'Bei einer Allowlist wird definiert, was erlaubt ist. Alles andere bleibt verboten oder wird nicht weitergeleitet.',
+      'Im Firewall-Kontext ist das besonders wichtig: Nur fachlich benoetigte Kombinationen aus Quelle, Ziel, Protokoll und Port sollten freigegeben werden.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'paketfilter',
+    begriff: 'Paketfilter',
+    kurzdefinition: 'Ein Paketfilter bewertet Netzwerkpakete nach technischen Merkmalen wie IP-Adresse, Port und Protokoll.',
+    definition: [
+      'Paketfilter arbeiten mit Informationen aus Netzwerk- und Transportschicht, zum Beispiel Quell-IP, Ziel-IP, TCP/UDP und Portnummer.',
+      'Sie sind schnell und fuer viele Netzgrenzen geeignet, verstehen aber nicht automatisch den fachlichen Inhalt einer Anwendung.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'stateful-firewall',
+    begriff: 'Stateful Firewall',
+    kurzdefinition: 'Eine Stateful Firewall merkt sich den Zustand von Verbindungen.',
+    definition: [
+      'Stateful Firewalls fuehren eine Zustandstabelle. Dadurch koennen sie Antworten auf erlaubte ausgehende oder eingehende Verbindungen erkennen.',
+      'Das ist sicherer und praktischer als ein rein zustandsloser Paketfilter, ersetzt aber keine Anwendungssicherheit oder saubere Segmentierung.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'application-layer-gateway',
+    begriff: 'Application-Layer-Gateway',
+    kurzdefinition: 'Ein Application-Layer-Gateway prueft Netzwerkverkehr auf Anwendungsebene.',
+    definition: [
+      'Ein Application-Layer-Gateway oder Sicherheits-Proxy versteht Teile eines Anwendungsprotokolls, zum Beispiel HTTP, und kann dadurch genauer filtern als ein reiner Paketfilter.',
+      'Der Vorteil ist tiefere Kontrolle. Der Nachteil sind mehr Komplexitaet, mehr Betriebsaufwand und moegliche Performance-Kosten.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'netzsegmentierung',
+    begriff: 'Netzsegmentierung',
+    kurzdefinition: 'Netzsegmentierung teilt ein Netzwerk in getrennte Bereiche mit kontrollierten Uebergaengen.',
+    definition: [
+      'Bei der Netzsegmentierung werden Bereiche wie Clients, Server, DMZ, Management, Produktion oder Gastnetz voneinander getrennt.',
+      'Ziel ist, Kommunikation zu begrenzen und die Ausbreitung von Angriffen oder Fehlkonfigurationen einzudaemmen. Uebergaenge werden typischerweise durch Firewalls oder Layer-3-Regeln kontrolliert.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'dmz',
+    begriff: 'DMZ',
+    kurzdefinition: 'Eine DMZ ist ein getrenntes Netzsegment fuer Systeme, die von aussen erreichbar sein muessen.',
+    definition: [
+      'DMZ steht fuer Demilitarized Zone. In der Netzwerktechnik ist damit ein isoliertes Segment zwischen Internet und internem LAN gemeint.',
+      'Oeffentlich erreichbare Dienste wie Webserver stehen in einer DMZ, damit ein kompromittierter Server nicht direkt Zugriff auf das interne LAN hat.',
+    ],
+    kapitel: {
+      titel: 'Firewall und DMZ',
+      href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+    },
+  },
+  {
+    id: 'carrier-grade-nat',
+    begriff: 'Carrier-Grade NAT',
+    kurzdefinition: 'Carrier-Grade NAT ist NAT beim Provider, bei dem mehrere Kunden oeffentliche IPv4-Adressen teilen.',
+    definition: [
+      'Bei Carrier-Grade NAT befindet sich eine NAT-Schicht nicht nur im Kundennetz, sondern auch beim Provider. Der Kundenrouter hat dann oft keine eigene direkt erreichbare oeffentliche IPv4-Adresse.',
+      'Eingehendes IPv4-Portforwarding funktioniert dadurch nicht wie bei einem Anschluss mit eigener oeffentlicher IPv4. Alternativen sind echte oeffentliche IPv4, IPv6, VPN, Reverse Tunnel oder Cloud-Loesungen.',
+    ],
+    kapitel: {
+      titel: 'Port Forwarding und NAT',
+      href: '/lernen/netzwerke/netz-sicherheit/port-forwarding',
+    },
+  },
+  {
     id: 'magic-number',
     begriff: 'Magic Number',
     kurzdefinition: 'Die Magic Number ist die Schrittweite, mit der Subnetze im relevanten Oktett beginnen.',
@@ -392,6 +574,84 @@ const initialGlossarEinträge: GlossarEintrag[] = [
     definition: [
       'UDP steht für User Datagram Protocol. Es sendet Datagramme ohne Verbindungsaufbau und ohne automatische Wiederholung verlorener Pakete.',
       'Dadurch ist UDP schlank und schnell, aber die Anwendung muss bei Bedarf selbst mit Verlusten umgehen.',
+    ],
+    kapitel: {
+      titel: 'TCP vs. UDP',
+      href: '/lernen/netzwerke/grundlagen-netz/tcp-udp',
+    },
+  },
+  {
+    id: 'transportschicht',
+    begriff: 'Transportschicht',
+    kurzdefinition: 'Die Transportschicht ist OSI-Schicht 4 und verbindet Anwendungen Ende-zu-Ende.',
+    definition: [
+      'Die Transportschicht stellt Kommunikation zwischen Anwendungen auf zwei Hosts her. Sie nutzt Ports, um die richtige Anwendung zu adressieren.',
+      'TCP und UDP sind die wichtigsten Transportprotokolle. TCP bietet Zuverlaessigkeit und Reihenfolge, UDP ist verbindungslos und schlank.',
+    ],
+    kapitel: {
+      titel: 'TCP vs. UDP',
+      href: '/lernen/netzwerke/grundlagen-netz/tcp-udp',
+    },
+  },
+  {
+    id: 'portnummer',
+    begriff: 'Portnummer',
+    kurzdefinition: 'Eine Portnummer adressiert einen Dienst oder Prozess auf einem Host.',
+    definition: [
+      'Portnummern werden auf der Transportschicht genutzt. Zusammen mit IP-Adresse und Protokoll zeigen sie, welche Anwendung die Daten erhalten soll.',
+      'Wichtig fuer Firewall-Regeln: TCP-Port 443 und UDP-Port 443 sind unterschiedliche Ziele. Deshalb muss das Transportprotokoll immer genannt werden.',
+    ],
+    kapitel: {
+      titel: 'TCP vs. UDP',
+      href: '/lernen/netzwerke/grundlagen-netz/tcp-udp',
+    },
+  },
+  {
+    id: 'socket',
+    begriff: 'Socket',
+    kurzdefinition: 'Ein Socket beschreibt einen Kommunikationsendpunkt aus IP-Adresse, Transportprotokoll und Port.',
+    definition: [
+      'Ein Socket verbindet eine IP-Adresse mit einem Transportprotokoll und einer Portnummer, zum Beispiel 192.168.10.20:443/TCP.',
+      'Verbindungen werden oft durch Quell-IP, Quellport, Ziel-IP, Zielport und Protokoll eindeutig unterschieden.',
+    ],
+    kapitel: {
+      titel: 'TCP vs. UDP',
+      href: '/lernen/netzwerke/grundlagen-netz/tcp-udp',
+    },
+  },
+  {
+    id: 'segment',
+    begriff: 'Segment',
+    kurzdefinition: 'Ein Segment ist die typische Dateneinheit von TCP auf der Transportschicht.',
+    definition: [
+      'In der OSI-PDU-Sprache wird die TCP-Dateneinheit auf Schicht 4 meist Segment genannt.',
+      'Ein TCP-Segment enthaelt unter anderem Quellport, Zielport, Sequenznummern, Flags und Nutzdaten.',
+    ],
+    kapitel: {
+      titel: 'TCP vs. UDP',
+      href: '/lernen/netzwerke/grundlagen-netz/tcp-udp',
+    },
+  },
+  {
+    id: 'datagramm',
+    begriff: 'Datagramm',
+    kurzdefinition: 'Ein Datagramm ist eine eigenstaendige Dateneinheit, bei UDP besonders auf der Transportschicht relevant.',
+    definition: [
+      'UDP sendet Daten als Datagramme ohne vorherigen Verbindungsaufbau. Jedes Datagramm wird unabhaengig behandelt.',
+      'Es gibt bei UDP keine automatische Garantie fuer Reihenfolge, Zustellung oder Wiederholung.',
+    ],
+    kapitel: {
+      titel: 'TCP vs. UDP',
+      href: '/lernen/netzwerke/grundlagen-netz/tcp-udp',
+    },
+  },
+  {
+    id: 'three-way-handshake',
+    begriff: 'Three-Way-Handshake',
+    kurzdefinition: 'Der Three-Way-Handshake ist der TCP-Verbindungsaufbau mit SYN, SYN-ACK und ACK.',
+    definition: [
+      'Beim Three-Way-Handshake sendet der Client SYN, der Server antwortet mit SYN-ACK, und der Client bestaetigt mit ACK.',
+      'Erst danach ist die TCP-Verbindung aufgebaut und Nutzdaten koennen als geordneter Byte-Strom uebertragen werden.',
     ],
     kapitel: {
       titel: 'TCP vs. UDP',
@@ -3087,6 +3347,292 @@ const initialGlossarEinträge: GlossarEintrag[] = [
     kapitel: {
       titel: 'Dateisysteme (FAT32, NTFS, ext4, APFS)',
       href: '/lernen/betriebssysteme/os-grundlagen/dateisysteme',
+    },
+  },
+  {
+    id: 'prozess',
+    begriff: 'Prozess',
+    kurzdefinition: 'Laufende Instanz eines Programms mit eigenem Speicherbereich und Betriebssystemressourcen.',
+    definition: [
+      'Ein Prozess entsteht, wenn ein Programm gestartet wird. Er besitzt typischerweise eine Prozess-ID, eigenen virtuellen Speicher, geoeffnete Dateien, Rechte, Umgebung und mindestens einen Thread.',
+      'Pruefungsrelevant: Der Prozess ist die Ressourcengrenze. Ausgefuehrt wird aber ein Thread innerhalb des Prozesses.',
+    ],
+    kapitel: {
+      titel: 'Prozesse, Threads und Tasks',
+      href: '/lernen/betriebssysteme/os-grundlagen/prozess-thread',
+    },
+  },
+  {
+    id: 'thread',
+    begriff: 'Thread',
+    kurzdefinition: 'Ausfuehrungsstrang innerhalb eines Prozesses, dem das Betriebssystem CPU-Zeit zuteilt.',
+    definition: [
+      'Ein Thread laeuft im Kontext eines Prozesses und teilt dessen Speicherbereich und Ressourcen mit anderen Threads desselben Prozesses.',
+      'Threads sind leichter als Prozesse, koennen aber durch gemeinsamen Speicher auch Fehler verursachen, wenn mehrere Threads gleichzeitig dieselben Daten veraendern.',
+    ],
+    kapitel: {
+      titel: 'Prozesse, Threads und Tasks',
+      href: '/lernen/betriebssysteme/os-grundlagen/prozess-thread',
+    },
+  },
+  {
+    id: 'task',
+    begriff: 'Task',
+    kurzdefinition: 'Allgemeiner Begriff fuer eine auszufuehrende Aufgabe; Bedeutung haengt vom Systemkontext ab.',
+    definition: [
+      'Task kann in Oberflaechen eine Anwendung oder einen Prozess meinen, in Scheduler-Kontexten aber allgemeiner eine planbare Arbeitseinheit.',
+      'Deshalb muss bei Aufgaben immer der Kontext beachtet werden: Task-Manager, Betriebssystem-Scheduler oder geplante Hintergrundaufgabe meinen nicht zwingend exakt dasselbe.',
+    ],
+    kapitel: {
+      titel: 'Prozesse, Threads und Tasks',
+      href: '/lernen/betriebssysteme/os-grundlagen/prozess-thread',
+    },
+  },
+  {
+    id: 'scheduler',
+    begriff: 'Scheduler',
+    kurzdefinition: 'Betriebssystem-Komponente, die entscheidet, welcher Thread oder Task CPU-Zeit bekommt.',
+    definition: [
+      'Der Scheduler verteilt Prozessorzeit auf lauffaehige Threads oder Tasks. Dabei spielen Zustand, Prioritaet, Fairness und verfuegbare CPU-Kerne eine Rolle.',
+      'Ohne Scheduler koennte ein Betriebssystem mehrere Programme nicht geordnet scheinbar gleichzeitig ausfuehren.',
+    ],
+    kapitel: {
+      titel: 'Prozesse, Threads und Tasks',
+      href: '/lernen/betriebssysteme/os-grundlagen/prozess-thread',
+    },
+  },
+  {
+    id: 'kontextwechsel',
+    begriff: 'Kontextwechsel',
+    kurzdefinition: 'Wechsel der CPU von einem Thread oder Task zu einem anderen.',
+    definition: [
+      'Bei einem Kontextwechsel speichert das Betriebssystem den aktuellen Ausfuehrungszustand und stellt den Zustand eines anderen Threads oder Tasks wieder her.',
+      'Kontextwechsel ermoeglichen Multitasking, kosten aber Zeit. Sehr viele Wechsel koennen ein System ausbremsen.',
+    ],
+    kapitel: {
+      titel: 'Prozesse, Threads und Tasks',
+      href: '/lernen/betriebssysteme/os-grundlagen/prozess-thread',
+    },
+  },
+  {
+    id: 'multitasking',
+    begriff: 'Multitasking',
+    kurzdefinition: 'Faehigkeit eines Betriebssystems, mehrere Aufgaben scheinbar gleichzeitig auszufuehren.',
+    definition: [
+      'Beim Multitasking teilt das Betriebssystem CPU-Zeit auf mehrere lauffaehige Threads oder Tasks auf. Auf einem Kern geschieht das durch schnelles Umschalten, auf mehreren Kernen kann echte Parallelitaet entstehen.',
+      'Pruefungsrelevant: Multitasking ist nicht automatisch echte parallele Berechnung. Dafuer braucht es mehrere Kerne oder Prozessoren und parallelisierbare Arbeit.',
+    ],
+    kapitel: {
+      titel: 'Prozesse, Threads und Tasks',
+      href: '/lernen/betriebssysteme/os-grundlagen/prozess-thread',
+    },
+  },
+  {
+    id: 'zentralisiertes-it-system',
+    begriff: 'Zentralisiertes IT-System',
+    kurzdefinition: 'IT-Architektur, bei der Daten, Dienste oder Verwaltung an einer zentralen Stelle gebuendelt werden.',
+    definition: [
+      'Ein zentralisiertes IT-System konzentriert wichtige Funktionen wie Dateiablage, Benutzerverwaltung, Datenbanken, Softwareverteilung oder Backup auf zentrale Server oder Dienste.',
+      'Vorteile sind einheitliche Verwaltung, besser kontrollierbare Rechte und zentrale Sicherung. Risiken sind Abhaengigkeit vom zentralen Dienst und hoehere Anforderungen an Verfuegbarkeit, Backup und Notfallplanung.',
+    ],
+    kapitel: {
+      titel: 'Zentrale vs. dezentrale IT-Systeme',
+      href: '/lernen/betriebssysteme/it-infrastruktur/zentral-dezentral',
+    },
+  },
+  {
+    id: 'dezentralisiertes-it-system',
+    begriff: 'Dezentralisiertes IT-System',
+    kurzdefinition: 'IT-Architektur, bei der Daten, Dienste oder Verantwortung auf mehrere Systeme verteilt sind.',
+    definition: [
+      'Ein dezentralisiertes IT-System verteilt Funktionen auf mehrere Rechner, Standorte oder Verantwortungsbereiche. Beispiele sind lokale Benutzerkonten, lokale Dateiablagen oder Peer-to-Peer-Freigaben.',
+      'Dezentrale Loesungen koennen lokal schnell und einfach sein, fuehren aber bei Wachstum oft zu Versionsproblemen, uneinheitlichen Rechten und schwierigerem Backup.',
+    ],
+    kapitel: {
+      titel: 'Zentrale vs. dezentrale IT-Systeme',
+      href: '/lernen/betriebssysteme/it-infrastruktur/zentral-dezentral',
+    },
+  },
+  {
+    id: 'hybrides-it-system',
+    begriff: 'Hybrides IT-System',
+    kurzdefinition: 'IT-Architektur, die zentrale und dezentrale Anteile bewusst kombiniert.',
+    definition: [
+      'Ein hybrides IT-System nutzt zentrale Dienste fuer gemeinsame Daten, Identitaeten oder Backups und erlaubt gleichzeitig lokale Komponenten, etwa Offline-Synchronisation, lokale Caches oder Standortserver.',
+      'Hybride Architekturen sind realistisch, brauchen aber klare Datenfluesse, Verantwortlichkeiten und Synchronisationsregeln.',
+    ],
+    kapitel: {
+      titel: 'Zentrale vs. dezentrale IT-Systeme',
+      href: '/lernen/betriebssysteme/it-infrastruktur/zentral-dezentral',
+    },
+  },
+  {
+    id: 'client-server-modell',
+    begriff: 'Client-Server-Modell',
+    kurzdefinition: 'Architektur, bei der Clients Dienste eines Servers anfordern und nutzen.',
+    definition: [
+      'Im Client-Server-Modell stellen Server zentrale Dienste bereit, zum Beispiel Dateien, Druck, Datenbanken, Webseiten oder Authentifizierung. Clients greifen ueber das Netzwerk darauf zu.',
+      'Pruefungsrelevant: Der Server buendelt Verwaltung und Daten, muss aber gegen Ausfall, Fehlkonfiguration und unberechtigten Zugriff geschuetzt werden.',
+    ],
+    kapitel: {
+      titel: 'Zentrale vs. dezentrale IT-Systeme',
+      href: '/lernen/betriebssysteme/it-infrastruktur/zentral-dezentral',
+    },
+  },
+  {
+    id: 'peer-to-peer',
+    begriff: 'Peer-to-Peer',
+    kurzdefinition: 'Architektur, bei der gleichrangige Systeme direkt miteinander Ressourcen austauschen.',
+    definition: [
+      'Bei Peer-to-Peer gibt es keinen dauerhaft uebergeordneten zentralen Server fuer die betrachtete Funktion. Geraete stellen sich gegenseitig Ressourcen bereit, etwa lokale Ordnerfreigaben.',
+      'Das kann fuer kleine oder kurzfristige Szenarien reichen, wird aber bei vielen Nutzern schnell unuebersichtlich.',
+    ],
+    kapitel: {
+      titel: 'Zentrale vs. dezentrale IT-Systeme',
+      href: '/lernen/betriebssysteme/it-infrastruktur/zentral-dezentral',
+    },
+  },
+  {
+    id: 'verzeichnisdienst',
+    begriff: 'Verzeichnisdienst',
+    kurzdefinition: 'Zentraler Dienst zur Verwaltung von Benutzern, Computern, Gruppen, Ressourcen und Rechten.',
+    definition: [
+      'Ein Verzeichnisdienst speichert Objekte wie Benutzerkonten, Gruppen, Computer, Drucker oder Freigaben strukturiert und macht sie fuer Verwaltung und Zugriffskontrolle nutzbar.',
+      'Active Directory Domain Services ist ein typisches Beispiel. Es erlaubt zentrale Anmeldung, Gruppenrichtlinien und Rechteverwaltung in Windows-Netzen.',
+    ],
+    kapitel: {
+      titel: 'Zentrale vs. dezentrale IT-Systeme',
+      href: '/lernen/betriebssysteme/it-infrastruktur/zentral-dezentral',
+    },
+  },
+  {
+    id: 'single-point-of-failure',
+    begriff: 'Single Point of Failure',
+    kurzdefinition: 'Einzelne Komponente, deren Ausfall einen ganzen Dienst oder Prozess lahmlegt.',
+    definition: [
+      'Ein Single Point of Failure entsteht, wenn ein Dienst von einer einzelnen Komponente abhaengt und es keine Redundanz oder Ersatzroute gibt.',
+      'Zentrale Systeme muessen deshalb mit Backup, Monitoring, Redundanz und Wiederanlaufplan betrieben werden.',
+    ],
+    kapitel: {
+      titel: 'Zentrale vs. dezentrale IT-Systeme',
+      href: '/lernen/betriebssysteme/it-infrastruktur/zentral-dezentral',
+    },
+  },
+  {
+    id: 'wlan',
+    begriff: 'WLAN',
+    kurzdefinition: 'Drahtloses lokales Netzwerk, meist auf Basis der IEEE-802.11-Standardfamilie.',
+    definition: [
+      'WLAN steht fuer Wireless Local Area Network. Es verbindet Geraete per Funk mit einem lokalen Netzwerk, typischerweise ueber Access Points.',
+      'WLAN ist ein geteiltes Medium: Geraete teilen sich Funkzeit, Kanal und Stoerumgebung. Deshalb sind Planung, Verschluesselung und Kanalwahl wichtig.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'access-point',
+    begriff: 'Access Point',
+    kurzdefinition: 'Funkbasisstation, die WLAN-Clients mit einem kabelgebundenen oder logischen Netz verbindet.',
+    definition: [
+      'Ein Access Point sendet eine oder mehrere SSIDs aus und nimmt WLAN-Clients ins Netz auf. Er ist die Bruecke zwischen Funknetz und LAN.',
+      'In Heimroutern sind Access Point, Router, Switch und Firewall oft in einem Geraet kombiniert. In Unternehmen sind Access Points meist separate, zentral verwaltete Geraete.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'ssid',
+    begriff: 'SSID',
+    kurzdefinition: 'Name eines WLANs, den Clients zur Auswahl des Funknetzes sehen.',
+    definition: [
+      'SSID steht fuer Service Set Identifier. Sie ist der sichtbare oder konfigurierbare Name eines WLANs, zum Beispiel Firma-Mitarbeiter oder Firma-Gast.',
+      'Das Verstecken der SSID ist keine echte Sicherheitsmassnahme. Entscheidend sind sichere Authentifizierung, Verschluesselung und Netztrennung.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'frequenzband',
+    begriff: 'Frequenzband',
+    kurzdefinition: 'Funkbereich, in dem ein WLAN arbeitet, zum Beispiel 2,4 GHz, 5 GHz oder 6 GHz.',
+    definition: [
+      'Das Frequenzband beeinflusst Reichweite, Stoeranfaelligkeit, Kanalanzahl und moegliche Datenrate. 2,4 GHz reicht weiter, ist aber oft voller; 5 GHz und 6 GHz bieten mehr Kapazitaet bei kuerzerer Reichweite.',
+      'Bei der Planung muessen Client-Faehigkeiten, Gebaeude, Nachbar-WLANs und Stoerquellen beruecksichtigt werden.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'wlan-kanal',
+    begriff: 'WLAN-Kanal',
+    kurzdefinition: 'Teilbereich eines Frequenzbands, auf dem ein Access Point funkt.',
+    definition: [
+      'Ein WLAN-Kanal ist ein Ausschnitt im Frequenzband. Benachbarte oder ueberlappende Kanaele koennen sich stoeren, besonders im 2,4-GHz-Band.',
+      'In der Praxis werden bei 2,4 GHz haeufig die nicht ueberlappenden Kanaele 1, 6 und 11 verwendet.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'roaming',
+    begriff: 'Roaming',
+    kurzdefinition: 'Wechsel eines WLAN-Clients zwischen Access Points derselben WLAN-Umgebung.',
+    definition: [
+      'Beim Roaming wechselt ein Client von einem Access Point zu einem anderen, ohne dass der Nutzer das WLAN manuell neu auswaehlt.',
+      'Der Client entscheidet wesentlich mit, wann er wechselt. Schlechte AP-Positionierung oder zu hohe Sendeleistung kann dazu fuehren, dass Clients zu lange an einem entfernten AP kleben.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'wpa3',
+    begriff: 'WPA3',
+    kurzdefinition: 'Aktuelle Wi-Fi-Sicherheitsgeneration mit verbessertem Schutz gegen Angriffe auf WLAN-Passwoerter.',
+    definition: [
+      'WPA3 ist der Nachfolger von WPA2 und verbessert unter anderem den Schutz bei der Authentifizierung, besonders gegen Offline-Woerterbuchangriffe auf schwache Passwoerter.',
+      'Wo moeglich sollte WPA3 genutzt werden. In gemischten Umgebungen kann WPA2 weiterhin noetig sein, WEP und altes WPA sollten nicht mehr verwendet werden.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'wpa-personal',
+    begriff: 'WPA-Personal',
+    kurzdefinition: 'WLAN-Sicherheitsmodus mit gemeinsamem Passwort fuer alle berechtigten Nutzer.',
+    definition: [
+      'WPA-Personal nutzt ein gemeinsames Passwort, auch Pre-Shared Key genannt. Das ist einfach und fuer kleine Umgebungen praktisch.',
+      'In Unternehmen ist es problematisch, weil ein bekannt gewordenes Passwort fuer alle geaendert werden muss und einzelne Nutzer nicht sauber getrennt gesperrt werden koennen.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
+    },
+  },
+  {
+    id: 'wpa-enterprise',
+    begriff: 'WPA-Enterprise',
+    kurzdefinition: 'WLAN-Sicherheitsmodus mit individueller Authentifizierung ueber 802.1X und meist RADIUS.',
+    definition: [
+      'WPA-Enterprise nutzt individuelle Benutzeranmeldung oder Zertifikate statt eines gemeinsamen WLAN-Passworts. Haefig wird dafuer 802.1X mit einem RADIUS-Server eingesetzt.',
+      'Das passt besser zu Unternehmen, weil einzelne Konten gesperrt, Rollen getrennt und Zugriffe zentral verwaltet werden koennen.',
+    ],
+    kapitel: {
+      titel: 'WLAN-Standards und WLAN-Sicherheit',
+      href: '/lernen/netzwerke/netz-sicherheit/wlan-standards',
     },
   },
 ]

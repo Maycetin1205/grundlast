@@ -128,6 +128,7 @@ export default function Lesson() {
   }
   return (
     <motion.article
+      className="lesson-shell"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
@@ -153,14 +154,7 @@ export default function Lesson() {
       {meta && (
         <header className="chapter-head">
           <div className="chapter-eyebrow">
-            <span
-              className="font-mono uppercase"
-              style={{
-                fontSize: 11,
-                color: 'var(--color-ink-3)',
-                letterSpacing: '0.06em',
-              }}
-            >
+            <span className="chapter-eyebrow-tag">
               {meta.lernfeld.title} · {meta.modul.title}
             </span>
           </div>

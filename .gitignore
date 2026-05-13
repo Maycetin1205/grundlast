@@ -13,6 +13,8 @@ node_modules
 dist
 dist-ssr
 src/content/lessons.backup-mojibake/
+tmp-screens/
+tmp-vite.log
 *.local
 
 # Editor directories and files

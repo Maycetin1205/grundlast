@@ -1,0 +1,171 @@
+# Zentrale vs. dezentrale IT-Systeme
+
+<MetaBar
+  slug="zentral-dezentral"
+  schwierigkeit="Mittel"
+  lernfeld="LF 2 - Arbeitsplaetze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT - 4/5"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du <Term id="zentralisiertes-it-system">zentrale</Term>, <Term id="dezentralisiertes-it-system">dezentrale</Term> und <Term id="hybrides-it-system">hybride IT-Systeme</Term> unterscheiden. Du kannst fuer Dateiablage, Benutzerverwaltung, Softwareverteilung, Cloud-Dienste und Standortvernetzung begruenden, welche Architektur passt. Ausserdem erkennst du typische Fehler: zentral bedeutet nicht automatisch "sicher", dezentral bedeutet nicht automatisch "ausfallsicher", und Cloud ist nicht einfach nur "Server woanders".
+
+## Warum das wichtig ist
+
+Fast jede IT-Entscheidung hat eine Architekturfrage im Hintergrund: Wo liegen Daten? Wer verwaltet Benutzer? Wo werden Backups erstellt? Wer installiert Updates? Was passiert, wenn Internet, Server oder Standort ausfallen?
+
+In kleinen Betrieben wirkt dezentrale IT oft angenehm: jeder Rechner arbeitet fuer sich, Dateien liegen lokal, Probleme bleiben scheinbar klein. Sobald mehrere Personen gemeinsam arbeiten, entstehen aber Schattenkopien, unterschiedliche Versionen, vergessene Backups und uneinheitliche Rechte.
+
+Zentrale IT bringt Ordnung: Benutzer, Rechte, Dateien, Anwendungen und Sicherungen werden gebuendelt. Dafuer wird der zentrale Dienst kritisch. Faellt er aus, betrifft es viele Nutzer. Genau diese Abwaegung wird in Berufsschule, Betrieb und AP1 gern abgefragt.
+
+<Analogie>
+Stell dir Schulmaterial vor. Bei einer **zentralen** Loesung liegt alles in einer Bibliothek: ein Ort, klare Regeln, Ausleihe, Ordnung, aber die Bibliothek muss offen sein. Bei einer **dezentralen** Loesung hat jeder seine eigene Mappe: schnell griffbereit, aber Versionen, Ordnung und Vollstaendigkeit unterscheiden sich. Eine **hybride** Loesung kombiniert beides: wichtige Unterlagen liegen zentral, persoenliche Notizen bleiben lokal.
+</Analogie>
+
+---
+
+## Grundbegriffe
+
+| Begriff | Bedeutung | Typisches Beispiel |
+|---|---|---|
+| <Term id="zentralisiertes-it-system">Zentrales IT-System</Term> | Daten, Dienste oder Verwaltung liegen an einer zentralen Stelle. | Fileserver, Active Directory, zentraler Druckserver, ERP-Server |
+| <Term id="dezentralisiertes-it-system">Dezentrales IT-System</Term> | Daten, Dienste oder Verwaltung sind auf mehrere Geraete oder Standorte verteilt. | lokale Benutzerkonten, lokale Dateien, Peer-to-Peer-Freigaben |
+| <Term id="hybrides-it-system">Hybrides IT-System</Term> | Zentrale und dezentrale Anteile werden bewusst kombiniert. | Cloud-Speicher plus Offline-Sync, lokale Server plus Cloud-Backup |
+| <Term id="client-server-modell">Client-Server-Modell</Term> | Clients nutzen Dienste eines Servers. | Client greift auf Fileserver oder Datenbankserver zu |
+| <Term id="peer-to-peer">Peer-to-Peer</Term> | Gleichrangige Geraete tauschen direkt Ressourcen aus. | Rechner A gibt Ordner fuer Rechner B frei |
+| <Term id="verzeichnisdienst">Verzeichnisdienst</Term> | Zentrale Verwaltung von Benutzern, Geraeten, Gruppen und Rechten. | Active Directory Domain Services |
+
+<Tipp titel="Merksatz">
+Zentral = Verwaltung und Daten gebuendelt. Dezentral = Verantwortung verteilt. Hybrid = bewusst gemischt.
+</Tipp>
+
+---
+
+## Der Faktenkern
+
+| Kriterium | Zentral | Dezentral | Hybrid |
+|---|---|---|---|
+| Administration | einfacher standardisierbar | auf viele Geraete verteilt | zentral fuer Kernbereiche, lokal fuer Sonderfaelle |
+| Datenstand | einheitlicher, weniger Dubletten | Gefahr unterschiedlicher Versionen | zentrale Wahrheit plus lokale Kopien |
+| Rechteverwaltung | gut zentral steuerbar | oft uneinheitlich | zentrale Identitaet, lokale Berechtigungen moeglich |
+| Verfuegbarkeit | zentraler Dienst wird kritisch | einzelne Ausfaelle bleiben begrenzter | abhaengig von Sync, Offline-Faehigkeit und Redundanz |
+| Backup | zentral planbar | lokale Daten werden leicht vergessen | zentrale Backups plus lokale Schutzmassnahmen |
+| Kosten | mehr Infrastruktur/Planung | anfangs guenstig, spaeter hoher Aufwand | mittlerer Aufwand, mehr Architekturplanung |
+| Datenschutz | zentral kontrollierbar, aber attraktives Ziel | Datenverteilung schwerer kontrollierbar | Rollen und Datenfluesse muessen sauber dokumentiert sein |
+| Skalierung | gut, wenn Infrastruktur sauber geplant | schlecht bei vielen Nutzern | gut, wenn klare Systemgrenzen bestehen |
+
+---
+
+## Typische Einsatzszenarien
+
+### Dateiablage
+
+Eine zentrale Dateiablage auf einem Fileserver oder in einem Cloud-Dienst erleichtert Rechteverwaltung, Backup, Suche und Versionierung. Sie passt, wenn mehrere Personen an denselben Dateien arbeiten oder Nachvollziehbarkeit wichtig ist.
+
+Eine dezentrale Dateiablage auf lokalen Rechnern ist nur sinnvoll, wenn Daten wirklich persoenlich, kurzlebig oder offline benoetigt werden. Sobald mehrere Menschen dieselbe Datei per E-Mail hin und her schicken, entsteht ein Versionsproblem.
+
+### Benutzerverwaltung
+
+Lokale Benutzerkonten auf jedem PC sind in Kleinstumgebungen einfach. In einem Unternehmen werden sie schnell unbeherrschbar: Passwortregeln, Gruppen, Austritte, Rollenwechsel und Geraetezugriffe muessen auf jedem Rechner einzeln gepflegt werden.
+
+Ein <Term id="verzeichnisdienst">Verzeichnisdienst</Term> wie Active Directory Domain Services speichert Benutzer, Computer, Gruppen und Richtlinien zentral. Mit einem zentralen Login koennen Nutzer auf freigegebene Ressourcen zugreifen, und Administratoren koennen Rechte und Richtlinien einheitlich verwalten.
+
+### Softwareverteilung
+
+Dezentrale Installation bedeutet: Jede Anwendung wird einzeln an jedem Arbeitsplatz installiert und aktualisiert. Das ist bei wenigen PCs machbar, aber fehleranfaellig.
+
+Zentrale Softwareverteilung, Paketmanagement oder Mobile-Device-Management sorgt dafuer, dass Versionen, Sicherheitsupdates und Lizenzen kontrollierbar bleiben. In AP1-Aufgaben ist das oft die bessere Antwort, wenn viele gleichartige Clients gepflegt werden sollen.
+
+### Cloud und Standortvernetzung
+
+Cloud-Dienste sind haeufig zentral aus Nutzersicht, aber technisch verteilt im Rechenzentrum des Anbieters. Fuer den Betrieb zaehlen Netzwerkzugang, Vertragslage, Datenschutz, Identitaetsmanagement, Backup, Exit-Strategie und Verfuegbarkeit.
+
+Standorte koennen zentral auf ein Rechenzentrum zugreifen, eigene lokale Dienste betreiben oder hybrid arbeiten. Eine Aussenstelle mit schlechter Internetleitung braucht vielleicht lokale Caches oder Offline-Faehigkeit. Ein Standort mit guter Anbindung kann viele Dienste zentral nutzen.
+
+---
+
+## Schritt fuer Schritt: Architekturentscheidung begruenden
+
+<Schritte
+  items={[
+    { titel: '1. Nutzer und Standorte klaeren', text: 'Wie viele Personen, Geraete und Standorte greifen auf die Daten oder Dienste zu? Ein einzelner Arbeitsplatz braucht weniger Struktur als 80 Clients an drei Standorten.' },
+    { titel: '2. Daten und Rechte einordnen', text: 'Sind personenbezogene, vertrauliche oder gemeinsam bearbeitete Daten betroffen? Je wichtiger Rechte, Protokollierung und Backup sind, desto eher spricht das fuer zentrale Verwaltung.' },
+    { titel: '3. Verfuegbarkeit bewerten', text: 'Was passiert, wenn Server, Internet oder Standort ausfallen? Zentralisierung verlangt Redundanz, Backup und Notfallplan.' },
+    { titel: '4. Administrationsaufwand vergleichen', text: 'Wie oft werden Benutzer, Software, Drucker, Berechtigungen oder Updates geaendert? Viele Wiederholungen sprechen fuer zentrale Steuerung.' },
+    { titel: '5. Kosten ueber Lebensdauer betrachten', text: 'Nicht nur Anschaffung zaehlt. Betrieb, Wartung, Support, Ausfallzeit, Backup und Migration gehoeren in die Bewertung.' },
+    { titel: '6. Entscheidung dokumentieren', text: 'Nenne Architektur, Begruendung, Risiken und Gegenmassnahmen. Eine gute Antwort sagt nicht nur "zentral", sondern "zentral mit Backup, Rollenmodell und Ausfallkonzept".' },
+  ]}
+/>
+
+<Beispiel titel="Betriebliche Situation">
+Ein Betrieb mit 35 Mitarbeitenden speichert Angebote und Projektdateien lokal auf einzelnen PCs. Bei Krankheit sind Dateien nicht erreichbar, mehrere Versionen liegen parallel in E-Mail-Anhaengen, und Backups fehlen. Eine zentrale Dateiablage mit Benutzergruppen, Rechtekonzept und Backup ist hier sinnvoller als weitere lokale Freigaben. Wenn Aussendienstmitarbeiter offline arbeiten muessen, kann eine hybride Loesung mit synchronisierten Offline-Ordnern passen.
+</Beispiel>
+
+---
+
+## Vorteile und Risiken sauber abwaegen
+
+| Architektur | Gute Gruende | Risiken | Gegenmassnahmen |
+|---|---|---|---|
+| Zentral | einheitliche Rechte, Backups, Updates, Datenstand | zentraler Ausfallpunkt, hoher Planungsbedarf | Redundanz, Monitoring, Backup, Notfallhandbuch |
+| Dezentral | lokal schnell, unabhaengiger von zentralem Dienst, kleiner Startaufwand | Versionschaos, lokale Datenverluste, uneinheitliche Sicherheit | klare Regeln, lokale Backups, Standards, Inventar |
+| Hybrid | verbindet zentrale Kontrolle mit lokaler Arbeitsfaehigkeit | Synchronisationsfehler, unklare Verantwortlichkeiten | Sync-Regeln, Datenklassifikation, Tests, Schulung |
+
+<Warnung titel="Single Point of Failure">
+Ein zentraler Server ohne Redundanz ist ein <Term id="single-point-of-failure">Single Point of Failure</Term>: Faellt er aus, steht der abhaengige Dienst fuer viele Nutzer. Zentralisierung ist nur stark, wenn Betrieb, Backup und Wiederanlauf mitgedacht werden.
+</Warnung>
+
+---
+
+## Typische Fehler
+
+1. **Zentral mit sicher gleichsetzen.** Zentral ist leichter zu kontrollieren, aber auch ein attraktives Ziel. Ohne Rechtekonzept, Backup und Härtung ist zentral nicht automatisch sicher.
+2. **Dezentral mit ausfallsicher gleichsetzen.** Wenn Daten nur lokal auf einem Notebook liegen, ist ein Notebook-Ausfall ein Totalausfall dieser Daten.
+3. **Cloud als rein zentral oder rein dezentral einordnen.** Aus Nutzersicht wirkt Cloud zentral; technisch nutzt sie verteilte Ressourcen. Entscheidend sind Vertrag, Identitaet, Datenort, Zugriff und Verfuegbarkeit.
+4. **Nur Anschaffungskosten vergleichen.** Dezentrale Loesungen wirken am Anfang billig, verursachen aber oft mehr Support- und Pflegeaufwand.
+5. **Backup vergessen.** Zentralisierung vereinfacht Backups, ersetzt sie aber nicht.
+6. **Internetabhaengigkeit unterschaetzen.** Zentraler Cloud-Zugriff kann bei Leitungsausfall alle Arbeitsplaetze treffen.
+7. **Lokale Administratorrechte als schnelle Loesung erlauben.** Das loest kurzfristig Installationsprobleme, erzeugt aber Sicherheits- und Standardisierungsrisiken.
+
+---
+
+## Typische Pruefungsaufgabe
+
+> **Aufgabe (Klausur-Stil):** Ein Unternehmen mit 25 Mitarbeitenden nutzt lokale Benutzerkonten auf jedem PC und speichert Projektdateien auf einzelnen Arbeitsplaetzen. Es kommt zu vergessenen Passwoertern, uneinheitlichen Berechtigungen und verlorenen Dateiversionen. Schlage eine passendere Architektur vor und nenne zwei Vorteile sowie zwei Risiken mit Gegenmassnahmen.
+
+**Musterantwort:** Sinnvoll ist eine staerker zentrale Architektur: zentrale Benutzerverwaltung ueber einen Verzeichnisdienst und zentrale Dateiablage auf einem Fileserver oder geeigneten Cloud-Dienst. Vorteile sind einheitliche Benutzer- und Rechteverwaltung, zentrale Backups, weniger Dateiversionen und geringerer Administrationsaufwand bei Benutzerwechseln.
+
+Risiko 1: Der zentrale Dienst kann zum Ausfallpunkt werden. Gegenmassnahmen sind Backup, Redundanz, Monitoring und Wiederanlaufplan. Risiko 2: Fehlkonfigurierte zentrale Rechte koennen viele Daten gleichzeitig betreffen. Gegenmassnahmen sind Rollenmodell, Gruppen statt Einzelrechte, Vier-Augen-Pruefung bei sensiblen Freigaben und regelmaessige Rechtepruefung.
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'Microsoft Learn - Active Directory Domain Services overview',
+      href: 'https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview',
+      detail: 'Offizielle Beschreibung zentraler Verzeichnisdienste, Benutzer-, Computer-, Gruppen- und Rechteverwaltung.'
+    },
+    {
+      label: 'BSI - IT-Grundschutz-Kompendium',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/it-grundschutz-kompendium_node.html',
+      detail: 'Referenz fuer Netzarchitektur, Betrieb, Verfuegbarkeit, Schutzbedarf und organisatorische Massnahmen.'
+    },
+    {
+      label: 'BSI - Cloud Computing Grundlagen',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Cloud-Computing/Grundlagen/grundlagen.html',
+      detail: 'BSI-Grundlagen zu Cloud Computing, gemeinsam genutzten Ressourcen, Skalierbarkeit, Elastizitaet und Selbstbedienung.'
+    },
+    {
+      label: 'NIST SP 800-145 - The NIST Definition of Cloud Computing',
+      href: 'https://www.nist.gov/publications/nist-definition-cloud-computing',
+      detail: 'Standarddefinition von Cloud Computing mit wesentlichen Merkmalen, Service- und Bereitstellungsmodellen.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Berufsschulische Grundlage fuer Arbeitsplatz-, System- und Kundenanforderungen in LF2 und Folge-Lernfeldern.'
+    },
+  ]} 
+/>

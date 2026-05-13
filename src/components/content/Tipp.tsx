@@ -11,12 +11,12 @@ export default function Tipp({ children, titel, className }: TippProps) {
   return (
     <aside
       className={cn(
-        'my-6 border-l-4 border-tipp-border bg-tipp-bg px-6 py-5 font-body text-base leading-relaxed text-ink',
+        'my-8 border border-tipp-border border-l-[6px] bg-tipp-bg px-6 py-5 font-ui text-[1.03rem] leading-relaxed text-ink',
         className,
       )}
     >
       {titel && (
-        <p className="mb-2 font-ui text-sm font-semibold tracking-wide text-ink">
+        <p className="mb-2 font-ui text-sm font-bold tracking-wide text-ink">
           {titel}
         </p>
       )}

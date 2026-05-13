@@ -1,16 +1,25 @@
-# AP1-Lernpfad und Ausbauplan
+# Ausbildungs- und AP1-Lernpfad
 
-Stand: 02.05.2026
+Stand: 13.05.2026
+
+Diese Datei ist nicht das Gesamtziel des Projekts. Das Gesamtziel steht in
+`AUSBILDUNGS_KOMPASS.md`: ein starkes Fachinformatiker-Kompendium fuer die
+Ausbildung, zuerst mit Fokus auf Jahr 1 und 2.
+
+AP1 bleibt hier als Pruefungs- und Priorisierungsschicht erhalten. Das bedeutet:
+Wir bauen Kapitel nicht nur fuer AP1, aber AP1-Relevanz hilft bei Reihenfolge,
+Aufgabenmustern und Fehlerfallen.
 
 ## Jetzt gilt
 
-Die Ordnerfrage ist erledigt. Ab jetzt wird nicht mehr sortiert, sondern Inhalt fertig gemacht.
+Die Ordnerfrage ist erledigt. Ab jetzt wird nicht mehr nur sortiert, sondern
+Inhalt auf Referenz-Niveau gebracht: erst Ausbildungswissen, dann Pruefungsblick.
 
 Aktueller Zustand:
 
 - 58 Kapitel sind ausgearbeitet.
 - 37 Kapitel sind als Platzhalter geplant.
-- Einige pruefungsstarke Themen aus der Heatmap fehlen noch als eigene Kapitel oder sind nur indirekt enthalten.
+- Einige pruefungsstarke und ausbildungszentrale Themen fehlen noch als eigene Kapitel oder sind nur indirekt enthalten.
 
 ## Chat-Arbeitsmodus
 
@@ -24,6 +33,9 @@ C:\Users\mu.aycetin\Desktop\Neuer Ordner\Porjekte\AP1\grundlast
 
 Nutze diese Dateien als verbindliche Arbeitsregeln:
 - ROADMAP.md
+- AUSBILDUNGS_KOMPASS.md
+- MASTER_ROADMAP.md
+- CURRICULUM_MAPPING.md
 - AP1_LERNPFAD.md
 - KAPITEL_QUALITAET.md
 - REVIEW_LOG.md
@@ -157,7 +169,7 @@ Jedes neue Kapitel bekommt diese Struktur:
 3. Pruefungsnahe Definition
 4. Kernwissen in Tabelle oder Liste
 5. Vorgehen oder Rechenweg
-6. Typische AP1-Aufgabe
+6. Berufliche Anwendung oder typische AP1-/Klausuraufgabe
 7. Fehlerfallen
 8. Mini-Quiz
 9. Quellen
@@ -168,20 +180,26 @@ Sprint 2 ist inhaltlich abgeschlossen. `Kauf, Leasing und Miete`,
 `Eigen- & Fremdfinanzierung`, `Angebotsvergleich`, `AIDA-Formel & Werbewirkung`,
 `Make-or-Buy`, `Vertragsarten`, `Rechnung, Zahlungsziel und Aufbewahrungsfristen`
 und `Organisationsformen, Leitbild, Nachhaltigkeit & ESG` sind angelegt und als
-ready markiert. Nach der Sprint-Reihenfolge beginnt jetzt Sprint 3 mit dem ersten
-offenen Stub im Bereich LF2 Arbeitsplaetze und Systeme.
+ready markiert. `Dateisysteme`, `Prozesse, Threads und Tasks` und
+`Zentrale vs. dezentrale IT-Systeme` stehen
+inzwischen ebenfalls auf `ready`, aber noch nicht auf `final`. Nach der
+Sprint-Reihenfolge ist Sprint 3 fachlich weitgehend aufgebraucht. Im Netzwerkbereich
+sind `WLAN-Standards und WLAN-Sicherheit`, `Port Forwarding und NAT`,
+`Firewall und DMZ`, `TCP vs. UDP` sowie `Datenrate und Downloadzeit berechnen`
+jetzt ready. Der naechste sinnvolle Schritt ist, die Zahlen- und Einheitenbasis
+aus Sprint 1 nachzuziehen, damit die Rechenkapitel nicht auf Draft-Fundament stehen.
 
 Naechstes Kapitel:
 
 ```text
-Dateisysteme: FAT32, NTFS, ext4, APFS
+Bit & Byte - die kleinsten Einheiten
 ```
 
 Ziel:
 
-- vorhandenen Stub `dateisysteme` als A+-ready-Kapitel ausarbeiten
-- FAT32, NTFS, ext4 und APFS pruefungsnah vergleichen
-- typische AP1-Abgrenzungen wie Kompatibilitaet, Dateigroessen, Journaling, Rechte, Metadaten und Einsatzszenarien herausarbeiten
-- Vorgehen zur Auswahl eines passenden Dateisystems fuer USB-Stick, Windows-Client, Linux-Server und macOS-Geraet darstellen
-- Quellen aus BIBB/KMK/FIAusbV sowie passenden Hersteller- und Systemspezifikationen nutzen
-- danach Build-Test
+- vorhandenen Draft `bit-byte` fachlich und didaktisch auf Ready-Standard bringen
+- Bit, Byte, Nibble, Wortbreite, Zeichenkodierung und Speicherlogik sauber erklaeren
+- Zusammenhang zu Datenrate, Dateigroesse, RAM, Massenspeicher und Netzwerk herstellen
+- typische AP1-Fallen mit kleinem `b`, grossem `B`, 8er-Faktor und Umrechnungen einbauen
+- passende Quellen aus KMK/BIBB/FIAusbV und offiziellen Einheitenquellen nutzen
+- Glossar/Quellen pruefen und danach Content-Validator sowie Build-Test ausfuehren

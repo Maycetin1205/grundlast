@@ -1,0 +1,230 @@
+# Lizenzmodelle – Open Source, proprietär, SaaS
+
+<MetaBar
+  lesezeit="14 Minuten"
+  schwierigkeit="Leicht"
+  lernfeld="LF 5 — Software zur Verwaltung von Daten anpassen"
+  slug="lizenzmodelle"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du die wichtigsten **Lizenzmodelle** für Software unterscheiden — **Open Source**, **proprietär**, **Freeware**, **Shareware**, **OEM**, **Volumenlizenz**, **Named/Concurrent User**, **SaaS / Pay-per-Use**, **Freemium**. Du kennst die wichtigsten **Open-Source-Lizenztypen** (GPL, LGPL, MIT, Apache, BSD) und kannst typische Klausurfragen wie *„Welche Vor- und Nachteile hat Open Source gegenüber proprietärer Software?"* sicher beantworten.
+
+## 01 · Warum existiert das überhaupt?
+
+Software ist immer **lizenziert**, nicht „gekauft". Was der Käufer erwirbt, ist ein **Nutzungsrecht** in einem festgelegten Rahmen. Wer dieses Modell falsch versteht, riskiert teure Lizenzverletzungen, Audit-Probleme und im schlimmsten Fall Schadensersatz-Forderungen.
+
+In der Prüfung wird das Thema oft als **Vergleichs- und Begriffsaufgabe** gestellt: *„Erkläre Open Source und proprietäre Software"*, *„Welche Vor-/Nachteile?"*. Wer die fünf wichtigsten Modelle und drei OSS-Lizenzbeispiele kennt, holt sich hier 3 bis 6 Punkte.
+
+Im Betrieb steht das Thema bei jeder Software-Beschaffung an: Kaufen oder mieten? Eigene Anpassungen erlaubt? Wie viele Nutzer? Was passiert bei Cloud-Ausfall?
+
+<Analogie>
+Software-Lizenzen sind wie verschiedene Wohn-Modelle: **Kaufen** bedeutet, du besitzt das Haus (alte proprietäre Vollversion). **Mieten** bedeutet, du zahlst monatlich und darfst nichts umbauen (SaaS, Abo). **Open Source** ist wie eine Hausführung mit der Erlaubnis, mit Werkzeug nach Hause zu gehen — du darfst alles ansehen, ändern, weitergeben, aber unter bestimmten Bedingungen. Welches Modell passt, hängt vom Bedarf ab: dauerhaft eigene Lösung, schnelles Einrichten, Anpassbarkeit oder geringe Anfangskosten.
+</Analogie>
+
+---
+
+## 02 · Die zwei Hauptkategorien
+
+### Proprietäre Software
+
+| Merkmal | Beschreibung |
+|---|---|
+| **Quellcode** | nicht öffentlich, Eigentum des Herstellers |
+| **Anpassung** | nur durch Hersteller |
+| **Lizenz** | Nutzungsrecht in eng definiertem Rahmen |
+| **Beispiele** | Microsoft Windows, Adobe Photoshop, SAP, AutoCAD |
+| **Kosten** | meist hoch (Kauf oder Abo) |
+| **Support** | meist beim Hersteller verfügbar |
+
+### Open-Source-Software (OSS)
+
+| Merkmal | Beschreibung |
+|---|---|
+| **Quellcode** | öffentlich einsehbar |
+| **Anpassung** | erlaubt, oft erwünscht (Mitwirkung an Community) |
+| **Lizenz** | OSS-Lizenz (GPL, MIT, BSD, Apache, ...) regelt Bedingungen |
+| **Beispiele** | Linux, Apache, PostgreSQL, Firefox, LibreOffice |
+| **Kosten** | meist kostenlos, kommerzieller Support optional |
+| **Support** | Community + kommerziell (Red Hat, Canonical) |
+
+---
+
+## 03 · Open-Source-Lizenztypen im Vergleich
+
+Open Source ist kein einheitlicher Lizenz-Typ — es gibt grob zwei Familien: **Copyleft** und **Permissive**.
+
+| Lizenz | Familie | Hauptmerkmal |
+|---|---|---|
+| **GPL** (GNU General Public License) | Copyleft (strong) | Wer GPL-Code in eigenes Produkt einbaut, muss das **gesamte** abgeleitete Werk wieder als GPL veröffentlichen |
+| **LGPL** (Lesser GPL) | Copyleft (weak) | Wie GPL, aber Verlinkung erlaubt, ohne dass das Endprodukt selbst GPL sein muss — typisch für Bibliotheken |
+| **MIT** | Permissive | Quasi „mach was du willst", nur Copyright-Hinweis bewahren — auch in proprietären Produkten erlaubt |
+| **Apache 2.0** | Permissive | Wie MIT, zusätzlich expliziter Patent-Schutz |
+| **BSD** | Permissive | Ähnlich MIT, sehr großzügig |
+| **AGPL** | Copyleft (sehr stark) | Wie GPL, plus: auch Nutzung als Online-Service löst Veröffentlichungspflicht aus |
+
+<Tipp titel="Klausur-Eselsbrücke">
+- **GPL** = „Copyleft" = **Vererbung**: was du anbaust, wird auch frei.
+- **MIT** = „Permissive" = **Wegwerfbar**: du darfst auch propriet. Produkt drumherum bauen.
+- **AGPL** = wie GPL + auch für **Web-Dienste**.
+
+In der Praxis ist GPL „Linux-Familie" und MIT/Apache „Bibliotheks-Familie".
+</Tipp>
+
+---
+
+## 04 · Sonderformen jenseits von Open Source vs. proprietär
+
+| Modell | Erklärung |
+|---|---|
+| **Freeware** | kostenlos, aber **proprietär**; Quellcode nicht offen, Weitergabe-Bedingungen vom Hersteller |
+| **Shareware** | kostenlose Testphase, danach kostenpflichtig oder eingeschränkt |
+| **OEM** | Original Equipment Manufacturer; Software vorinstalliert mit Hardware verkauft (z. B. Windows mit Notebook); günstiger, aber an die Hardware gebunden |
+| **Volumenlizenz** | Großmengen-Lizenz für Unternehmen, oft mit Mengenrabatt |
+| **Named User** | Lizenz pro fest zugewiesenem Benutzer |
+| **Concurrent User** | Lizenz pro **gleichzeitigem** Nutzer — z. B. 10 Lizenzen, dann max. 10 parallel aktiv |
+| **Pay-per-Use** | Abrechnung nach tatsächlicher Nutzung (Cloud-Modelle, AWS, Azure) |
+| **Freemium** | Grundversion kostenlos, erweiterte Funktionen kostenpflichtig |
+| **SaaS-Abo** | Software-as-a-Service als Mietmodell mit monatlicher Gebühr |
+| **EULA** | End User License Agreement — der Lizenzvertrag, dem der Nutzer bei Installation zustimmt |
+
+---
+
+## 05 · Vor- und Nachteile
+
+### Open Source vs. proprietär
+
+| | **Open Source** | **Proprietäre Software** |
+|---|---|---|
+| Kosten | meist kostenlos | Lizenzgebühren |
+| Quellcode | offen | geschlossen |
+| Anpassbarkeit | hoch | nur durch Hersteller |
+| Sicherheit | Transparenz, viele Augen — aber Verantwortung beim Nutzer | versteckt, aber Hersteller-Verantwortung |
+| Support | Community + optional kommerziell | meist beim Hersteller |
+| Zukunftssicherheit | Community kann Projekt fortsetzen | abhängig vom Hersteller-Bestand |
+| Integration | offene Standards | oft proprietäre Formate |
+| Einarbeitung | dokumentationsabhängig | typischerweise polierter |
+
+### SaaS / Cloud vs. lokale Installation
+
+| | **SaaS / Cloud** | **lokal installiert** |
+|---|---|---|
+| Investition | gering, monatlich | hoch einmalig |
+| Updates | automatisch | manuell |
+| Datenkontrolle | beim Anbieter | bei Ihnen |
+| Internetbedarf | zwingend | optional |
+| Skalierung | flexibel | Hardware-Limit |
+| DSGVO-Aspekt | AV-Vertrag nötig | volle Kontrolle |
+
+---
+
+## 06 · Vorgehen: Lizenzmodell wählen
+
+<Schritte
+  items={[
+    { titel: '1. Funktionsbedarf prüfen', text: 'Welche Software-Funktionen werden benötigt? Gibt es OSS, das das kann?' },
+    { titel: '2. Anpassungsbedarf abschätzen', text: 'Müssen Sonderfunktionen integriert werden? OSS mit eigenen Anpassungen oder proprietär mit API?' },
+    { titel: '3. Nutzerzahl und Lizenzmodell', text: 'Wie viele Nutzer, gleichzeitig oder benannt? Named, Concurrent, Volumenlizenz prüfen.' },
+    { titel: '4. Total Cost of Ownership rechnen', text: 'Lizenz + Implementierung + Schulung + Support + Updates über Vertragslaufzeit.' },
+    { titel: '5. Rechtliche Aspekte prüfen', text: 'Bei OSS: welche Lizenz, was bedeutet das für ein eigenes Produkt? Bei SaaS: AV-Vertrag, Standort der Server, DSGVO?' },
+    { titel: '6. Exit-Strategie', text: 'Was passiert, wenn Anbieter ausfällt oder gewechselt werden soll? Datenexport möglich?' },
+    { titel: '7. Pilotphase', text: 'Mit kleinem Nutzerkreis testen, dann ausrollen.' },
+  ]}
+/>
+
+---
+
+## 07 · Beispiel
+
+<Beispiel titel="Drei Software-Entscheidungen im Vergleich">
+
+**Beispiel A — Office-Suite für 50 Mitarbeiter:**
+
+| Option | Vorteil | Nachteil |
+|---|---|---|
+| Microsoft 365 (SaaS-Abo) | aktuelle Versionen, Cloud-Integration | laufende Kosten, US-Anbieter (DSGVO-Diskussion) |
+| LibreOffice (OSS) | kostenlos, alle Plattformen | Kompatibilität mit Microsoft Office nicht 100 %, Support nur Community |
+| OnlyOffice (Kombi) | OSS + kommerzieller Cloud-Dienst optional | Marktanteil noch klein |
+
+**Beispiel B — Datenbank-Backend für ein internes Tool:**
+
+| Option | Vorteil | Nachteil |
+|---|---|---|
+| PostgreSQL (OSS, PostgreSQL-Lizenz) | kostenlos, sehr robust | kommerzieller Support optional |
+| Microsoft SQL Server (proprietär) | starke Integration mit Microsoft-Stack | Lizenzkosten je Core |
+| Oracle Database (proprietär) | sehr leistungsfähig, Enterprise-Features | komplexe Lizenzbedingungen, sehr teuer |
+
+**Beispiel C — Helpdesk-Software für 10 Servicemitarbeiter:**
+
+| Option | Vorteil | Nachteil |
+|---|---|---|
+| Zammad (OSS) | selbst hostbar, anpassbar | eigene Pflege nötig |
+| Jira Service Management (SaaS) | sofort einsatzfähig, Cloud-Integration | monatliche Lizenzkosten, Vendor Lock-in |
+| OTRS Community (OSS) | bewährt, vielseitig | Migration auf neue Versionen aufwendig |
+
+</Beispiel>
+
+---
+
+## 08 · Fehlerfallen
+
+<Warnung titel="Die fünf häufigsten Klausurfehler">
+1. **„Open Source = kostenlos" gleichsetzen.** Open Source bedeutet **offener Quellcode**. Kommerzielle OSS-Anbieter wie Red Hat verkaufen Support und Wartung. Kostenlos ist möglich, aber nicht definierend.
+2. **GPL für proprietäre Produkte nutzen.** GPL-Code in einem proprietären Produkt zwingt nach den Lizenzbedingungen zur Veröffentlichung des gesamten Produktcodes. Klassischer Compliance-Fallstrick.
+3. **OEM-Lizenzen frei weiterverkaufen.** OEM-Lizenzen sind an die ursprüngliche Hardware gebunden. Weiterverkauf ohne Hardware ist meist nicht erlaubt.
+4. **„SaaS hat keine DSGVO-Probleme."** Doch — gerade SaaS-Modelle erfordern Auftragsverarbeitungsverträge, klare Datenstandorte und oft zusätzliche Maßnahmen bei US-Anbietern.
+5. **Concurrent und Named User vermischen.** Concurrent = gleichzeitig nutzbar. Named = pro fest zugewiesenem Benutzer. Bei 10 Concurrent können 100 Mitarbeiter abwechselnd zugreifen, bei 10 Named nur 10 bestimmte.
+</Warnung>
+
+---
+
+## 09 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** Ein IT-Dienstleister überlegt, eine eigene Anwendung auf Basis einer Open-Source-Komponente zu entwickeln. Die Komponente steht unter **GPL**, die eigene Anwendung soll später **kommerziell vertrieben** werden. (a) Was bedeutet GPL? (b) Welche Konsequenz hat die GPL für den Vertrieb? (c) Welche Lizenzvarianten wären ggf. besser geeignet?
+
+**Musterantwort:**
+
+**(a) GPL — GNU General Public License:** Eine **Copyleft-Lizenz** für Open Source. Erlaubt Nutzung, Modifikation und Weitergabe — verpflichtet aber, dass jede **abgeleitete Software** wieder unter GPL veröffentlicht wird (mit offenem Quellcode).
+
+**(b) Konsequenz für den kommerziellen Vertrieb:** Wenn die GPL-Komponente fester Bestandteil der eigenen Anwendung ist (statisch oder dynamisch gebunden), muss die **gesamte** eigene Anwendung unter GPL veröffentlicht werden — inklusive Quellcode. Ein klassischer „proprietärer" Verkauf ist nicht möglich. Ein Verkauf des fertigen Produkts ist zwar erlaubt (Kopie verkaufen), der Käufer darf aber die Software frei weiterkopieren und ändern.
+
+**(c) Bessere Lizenzalternativen:**
+- **MIT-Lizenz** — sehr permissiv, eigene Anwendung darf proprietär bleiben
+- **Apache 2.0** — wie MIT, zusätzlich Patentschutz
+- **BSD** — ähnlich permissiv wie MIT
+- **LGPL** — bei Bibliotheken nutzbar, ohne die eigene Anwendung selbst GPL machen zu müssen
+
+Praktisch: nach OSS-Komponente mit kompatibler Lizenz suchen oder kommerziell **dual-licensed** Variante prüfen.
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'Open Source Initiative — OSI Approved Licenses',
+      href: 'https://opensource.org/licenses',
+      detail: 'Offizielle Liste der OSI-anerkannten Open-Source-Lizenzen mit Bedingungen und Erläuterungen.'
+    },
+    {
+      label: 'GNU GPL v3 — Originaltext',
+      href: 'https://www.gnu.org/licenses/gpl-3.0.html',
+      detail: 'Volltext der GPL Version 3 mit Bedingungen für Copyleft-Lizenzierung.'
+    },
+    {
+      label: 'BMI / Bundesamt für Justiz — Software-Beschaffung im öffentlichen Sektor',
+      href: 'https://www.cio.bund.de/Web/DE/IT-Methoden/IT-Beschaffung/it-beschaffung_node.html',
+      detail: 'Leitlinien zur rechtskonformen Software-Beschaffung — gilt sinngemäß für Unternehmen.'
+    },
+    {
+      label: 'Linux Foundation — Open Compliance Program',
+      href: 'https://www.linuxfoundation.org/projects/open-compliance-program',
+      detail: 'Best Practices für die rechtskonforme Nutzung von Open Source in kommerziellen Produkten.'
+    },
+    {
+      label: 'KMK — Rahmenlehrplan Fachinformatiker',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Verortet Lizenzmodelle in Lernfeld 5 und 8.'
+    },
+  ]}
+/>

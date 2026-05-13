@@ -38,14 +38,14 @@ export function Ergebnis({ children, titel = 'Ergebnis', className }: ErgebnisPr
   return (
     <aside
       className={cn(
-        'mt-5 border-l-4 border-accent bg-tipp-bg px-5 py-4 text-ink',
+        'mt-5 border border-accent border-l-[6px] bg-tipp-bg px-5 py-4 text-ink',
         className,
       )}
     >
-      <p className="mb-2 font-ui text-sm font-semibold tracking-wide text-ink">
+      <p className="mb-2 font-ui text-sm font-bold tracking-wide text-ink">
         {titel}
       </p>
-      <div className="font-body text-base leading-relaxed [&>p:last-child]:mb-0">
+      <div className="font-ui text-[1.03rem] leading-relaxed [&>p:last-child]:mb-0">
         {children}
       </div>
     </aside>
@@ -101,7 +101,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
 
   return (
     <section
-      className={cn('my-8 border-y border-rule py-6 text-ink', className)}
+      className={cn('my-10 border border-rule-2 bg-paper-deep p-6 text-ink', className)}
       aria-labelledby={titleId}
     >
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -111,7 +111,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
           </p>
           <h3
             id={titleId}
-            className="m-0 font-display text-2xl font-bold leading-snug text-ink"
+            className="m-0 font-display text-3xl font-bold leading-snug text-ink"
           >
             {titel}
           </h3>
@@ -130,7 +130,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
         {alleSichtbar && ergebnis}
       </div>
 
-      <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-rule pt-5 font-ui text-sm">
+      <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-rule-2 pt-5 font-ui text-sm">
         {!alleSichtbar && (
           <button
             type="button"

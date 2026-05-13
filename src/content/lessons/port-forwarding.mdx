@@ -1,0 +1,283 @@
+# Port Forwarding und NAT
+
+<MetaBar
+  slug="port-forwarding"
+  schwierigkeit="Mittel"
+  lernfeld="LF 3 / LF 9 - Clients in Netzwerke einbinden und Netzwerke bereitstellen"
+  prüfungsrelevanz="WICHTIG - 4/5"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du <Term id="nat">NAT</Term>, <Term id="napt">NAPT/PAT</Term>, <Term id="port-forwarding">Port Forwarding</Term>, private und oeffentliche IPv4-Adressen unterscheiden. Du verstehst, warum ein Client aus einem privaten Netz ins Internet kommt, warum ein Server hinter einem Heimrouter von aussen nicht automatisch erreichbar ist und warum eine offene Portweiterleitung ein Sicherheitsrisiko ist.
+
+Du kannst ausserdem typische Pruefungs- und Betriebssituationen loesen: Webserver hinter NAT freigeben, Remotezugriff bewerten, Firewall-Regeln lesen, Portweiterleitung testen und sichere Alternativen wie VPN oder DMZ einordnen.
+
+## Warum das wichtig ist
+
+Viele Netze verwenden intern <Term id="private-ipv4-adresse">private IPv4-Adressen</Term> wie `192.168.178.0/24` oder `10.0.0.0/8`. Diese Adressen sind im Internet nicht global eindeutig. Dein Router oder deine Firewall uebersetzt deshalb beim Zugriff nach draussen interne Adressen in eine oeffentliche Adresse. Genau hier beginnt NAT.
+
+Im Alltag wirkt das unsichtbar: Notebook, Smartphone und Drucker nutzen alle denselben Internetanschluss. Sobald aber ein Dienst von aussen erreichbar sein soll, wird es ernst. Dann musst du entscheiden: Brauchen wir wirklich Port Forwarding? Steht der Dienst sicher genug? Gibt es eine bessere Loesung ueber VPN, Reverse Proxy, Cloud-Dienst oder DMZ?
+
+<Analogie>
+NAT ist wie der Empfang eines Unternehmens. Intern haben alle Mitarbeitenden Durchwahlnummern, nach aussen sieht man aber zuerst nur die Hauptnummer. Ruft ein Mitarbeiter hinaus, merkt sich der Empfang, welche interne Durchwahl zu welchem Gespraech gehoert. Port Forwarding ist eine feste Regel: "Anrufe auf Durchwahl 443 von aussen bitte direkt zum Webserver im Raum 12 weiterleiten."
+</Analogie>
+
+---
+
+## Grundbegriffe
+
+| Begriff | Bedeutung | Pruefungsblick |
+|---|---|---|
+| <Term id="private-ipv4-adresse">Private IPv4-Adresse</Term> | Adresse aus RFC-1918-Bereichen, nur fuer interne Netze gedacht. | Nicht global geroutet. |
+| <Term id="oeffentliche-ipv4-adresse">Oeffentliche IPv4-Adresse</Term> | Global eindeutige IPv4-Adresse, im Internet routbar. | Wird vom Provider zugeteilt oder ueber Provider-/Cloud-Infrastruktur genutzt. |
+| <Term id="nat">NAT</Term> | Network Address Translation: IP-Adressen werden zwischen Adressraeumen uebersetzt. | Typisch zwischen privatem LAN und Internet. |
+| <Term id="napt">NAPT/PAT</Term> | Network Address Port Translation: Adresse und Port werden uebersetzt. | Viele interne Geraete teilen sich eine oeffentliche IPv4-Adresse. |
+| <Term id="port-forwarding">Port Forwarding</Term> | Eingehende Verbindung auf einem externen Port wird an internes Ziel weitergeleitet. | Macht interne Dienste von aussen erreichbar. |
+| <Term id="firewall-regel">Firewall-Regel</Term> | Erlaubt oder blockiert Verkehr nach Quelle, Ziel, Protokoll, Port und Richtung. | Portweiterleitung ohne passende Firewall-Regel bringt nichts oder ist unsicher. |
+| <Term id="dmz">DMZ</Term> | Separates Netzsegment fuer Systeme, die von aussen erreichbar sein muessen. | Schuetzt das interne LAN, wenn ein oeffentlicher Server angegriffen wird. |
+
+---
+
+## Private und oeffentliche IPv4-Adressen
+
+RFC 1918 definiert drei private IPv4-Bereiche:
+
+| Bereich | CIDR | Typischer Einsatz |
+|---|---:|---|
+| `10.0.0.0` - `10.255.255.255` | `10.0.0.0/8` | grosse Unternehmensnetze |
+| `172.16.0.0` - `172.31.255.255` | `172.16.0.0/12` | mittlere interne Netze |
+| `192.168.0.0` - `192.168.255.255` | `192.168.0.0/16` | Heimnetze, kleine Standorte, Labore |
+
+Private Adressen duerfen mehrfach vorkommen. Zwei Firmen koennen beide intern `192.168.10.0/24` verwenden. Im Internet waere das unmoeglich, weil Router dann nicht eindeutig wuessten, wohin Pakete gehoeren. Darum werden private Adressen im Internet nicht normal geroutet.
+
+Eine oeffentliche IPv4-Adresse ist dagegen global erreichbar, sofern Routing und Firewall es erlauben. Bei einem typischen Heimanschluss hat der Router eine oeffentliche Adresse am WAN-Anschluss und private Adressen im LAN.
+
+```text
+Internet
+  |
+  | oeffentliche IPv4: 203.0.113.25
+[Router/NAT]
+  | private IPv4: 192.168.178.1
+  |
+LAN: 192.168.178.0/24
+  - Notebook: 192.168.178.20
+  - Smartphone: 192.168.178.21
+  - NAS: 192.168.178.50
+```
+
+<Tipp titel="Pruefungsfalle">
+`192.168.x.x`, `10.x.x.x` und `172.16.x.x` bis `172.31.x.x` sind private Adressen. `172.15.x.x` und `172.32.x.x` gehoeren nicht zum privaten RFC-1918-Bereich. Das wird gerne als kleine Falle eingebaut.
+</Tipp>
+
+---
+
+## NAT beim Zugriff nach draussen
+
+Beim normalen Surfen startet der Client im privaten Netz die Verbindung. Der NAT-Router ersetzt die interne Quelladresse durch seine oeffentliche Adresse und merkt sich in einer Tabelle, welcher interne Client zu welcher Verbindung gehoert.
+
+<StepByStep titel="Client ruft eine Website auf">
+  <Schritt nr={1} titel="Client startet Verbindung">
+    <p>Das Notebook `192.168.178.20` verbindet sich per TCP zu `93.184.216.34:443`.</p>
+  </Schritt>
+  <Schritt nr={2} titel="Router uebersetzt nach aussen">
+    <p>Der Router ersetzt die private Quelladresse durch seine oeffentliche Adresse. Bei NAPT/PAT wird zusaetzlich ein Quellport verwendet, damit viele Clients unterscheidbar bleiben.</p>
+    <pre><code>{`Vor NAT:  192.168.178.20:51544 -> 93.184.216.34:443
+Nach NAT: 203.0.113.25:62001   -> 93.184.216.34:443`}</code></pre>
+  </Schritt>
+  <Schritt nr={3} titel="Antwort kommt zurueck">
+    <p>Die Website antwortet an `203.0.113.25:62001`. Der Router findet den passenden Tabelleneintrag.</p>
+  </Schritt>
+  <Schritt nr={4} titel="Router uebersetzt nach innen">
+    <p>Der Router ersetzt das Ziel wieder durch `192.168.178.20:51544` und leitet das Paket ins LAN.</p>
+  </Schritt>
+  <Ergebnis>
+    <p>Der Client kann ins Internet, obwohl seine private Adresse dort nicht geroutet wird.</p>
+  </Ergebnis>
+</StepByStep>
+
+Die wichtigste Idee: Normales NAT fuer ausgehende Verbindungen ist zustandsbehaftet. Der Router merkt sich gestartete Verbindungen. Eine zufaellige neue Verbindung aus dem Internet hat aber keinen passenden Eintrag und wird verworfen, sofern keine Portweiterleitung oder passende Regel existiert.
+
+---
+
+## NAT, NAPT/PAT und Port Forwarding sauber trennen
+
+| Technik | Richtung | Was passiert? | Beispiel |
+|---|---|---|---|
+| NAT allgemein | innen nach aussen oder zwischen Netzen | IP-Adresse wird uebersetzt. | `192.168.178.20` wird zu `203.0.113.25`. |
+| NAPT/PAT | meist innen nach aussen | IP-Adresse und Port werden uebersetzt. | Viele Clients teilen sich eine oeffentliche IPv4. |
+| Statisches NAT | fest definierte Zuordnung | Eine interne Adresse wird dauerhaft einer externen Adresse zugeordnet. | Server `10.0.0.10` nutzt immer externe Adresse `198.51.100.10`. |
+| Port Forwarding | aussen nach innen | Externer Port wird an interne IP und internen Port weitergeleitet. | `203.0.113.25:443` -> `192.168.178.50:443`. |
+
+Im Sprachgebrauch sagen viele einfach "NAT", obwohl sie NAPT/PAT meinen. Fachlich ist das wichtig: Ohne Portuebersetzung koennte nicht ohne Weiteres eine ganze Wohnung oder ein ganzes Buero gleichzeitig ueber eine einzige oeffentliche IPv4-Adresse surfen.
+
+---
+
+## Port Forwarding: Server hinter dem Router erreichbar machen
+
+Ein NAS im LAN hat die private Adresse `192.168.178.50` und bietet HTTPS auf Port `443` an. Von innen funktioniert der Zugriff. Von aussen nicht, weil das Internet keine Route zu `192.168.178.50` hat.
+
+Mit Port Forwarding wird auf dem Router eine feste Regel eingerichtet:
+
+| Externe Adresse | Externer Port | Protokoll | Internes Ziel | Interner Port |
+|---|---:|---|---|---:|
+| `203.0.113.25` | `443` | TCP | `192.168.178.50` | `443` |
+
+Danach gilt:
+
+```text
+Internet-Client -> 203.0.113.25:443
+Router          -> 192.168.178.50:443
+NAS/Webserver   -> antwortet ueber Router zurueck
+```
+
+<Warnung titel="Port Forwarding ist keine Sicherheitsmassnahme">
+Port Forwarding macht einen Dienst erreichbar. Es schuetzt ihn nicht. Sicherheit entsteht durch minimale Freigaben, aktuelle Software, starke Authentifizierung, TLS, Firewall-Regeln, Logging, Updates und gute Netztrennung.
+</Warnung>
+
+Wenn ein Dienst nur fuer Mitarbeitende erreichbar sein soll, ist Port Forwarding oft die falsche erste Idee. Besser ist haeufig ein VPN: Erst authentifizieren, dann intern zugreifen. Auch ein Reverse Proxy mit TLS, MFA und klaren Zugriffskontrollen kann sinnvoll sein. Bei oeffentlichen Servern gehoert der Dienst nicht ungeschuetzt ins normale LAN, sondern in eine DMZ oder eine sauber getrennte Serverzone.
+
+---
+
+## Firewall-Regeln und NAT-Regeln zusammen denken
+
+In vielen Systemen sind NAT-Regel und Firewall-Regel getrennt. Die NAT-Regel sagt, wohin ein Paket uebersetzt wird. Die Firewall-Regel sagt, ob es ueberhaupt erlaubt ist.
+
+| Regeltyp | Frage | Beispiel |
+|---|---|---|
+| NAT/Portweiterleitung | Wohin soll das Paket technisch umgeschrieben werden? | WAN TCP 443 -> `192.168.178.50:443` |
+| Firewall | Darf dieses Paket durch? | Erlaube Internet -> NAS TCP 443 |
+| Server-Firewall | Nimmt der Zielserver den Verkehr an? | Windows/Linux-Firewall erlaubt TCP 443 |
+| Anwendung | Lauscht der Dienst wirklich? | Webserver bindet auf `0.0.0.0:443` oder passender IP |
+
+Fehlt eine dieser Ebenen, klappt der Zugriff nicht. Deshalb reicht "Port ist freigegeben" als Fehlerbeschreibung nicht.
+
+---
+
+## Typische Fehlersuche
+
+<Schritte
+  items={[
+    { titel: '1. Ziel im LAN pruefen', text: 'Ist der Dienst intern erreichbar? Beispiel: https://192.168.178.50. Wenn das intern nicht klappt, ist Port Forwarding nicht das erste Problem.' },
+    { titel: '2. Statische interne Adresse sichern', text: 'Der Server braucht eine feste IP oder DHCP-Reservierung. Sonst zeigt die Weiterleitung nach dem naechsten DHCP-Wechsel auf das falsche Geraet.' },
+    { titel: '3. Richtigen Port und Protokoll pruefen', text: 'TCP und UDP sind getrennt. HTTPS ist TCP 443, DNS kann UDP 53 und TCP 53 nutzen, Minecraft-Server nutzen je nach Edition unterschiedliche Ports.' },
+    { titel: '4. NAT-Regel lesen', text: 'Externer Port, interne Ziel-IP und interner Port muessen passen. Extern 8443 kann intern auf 443 zeigen, muss aber bewusst dokumentiert sein.' },
+    { titel: '5. Firewall-Regeln pruefen', text: 'Router-Firewall, Server-Firewall und Anwendung muessen den Verkehr erlauben. Default-Deny ist gut, aber dann braucht es eine konkrete Erlaubnis.' },
+    { titel: '6. Von ausserhalb testen', text: 'Ein Test aus dem eigenen WLAN prueft oft nicht den echten Weg von aussen. Mobilfunk oder ein externer Testclient ist aussagekraeftiger.' },
+    { titel: '7. Provider-Situation klaeren', text: 'Bei Carrier-Grade NAT oder DS-Lite hat der Anschluss eventuell keine direkt erreichbare oeffentliche IPv4. Dann hilft klassisches IPv4-Portforwarding nicht ohne Zusatzloesung.' },
+  ]}
+/>
+
+<Beispiel titel="Fehlerfall aus dem Betrieb">
+Ein Kunde will von unterwegs auf eine Kamera zugreifen. Intern ist sie unter `192.168.1.80:8080` erreichbar. Im Router ist aber eine Weiterleitung auf `192.168.1.60:80` eingetragen. Ausserdem nutzt der Anschluss DS-Lite. Die richtige Diagnose lautet nicht "Internet kaputt", sondern: Ziel-IP und Port sind falsch, und bei DS-Lite ist eingehendes IPv4-Portforwarding ohne weitere Loesung grundsaetzlich problematisch.
+</Beispiel>
+
+---
+
+## Sicherheitsbewertung: Wann ist Port Forwarding vertretbar?
+
+| Situation | Bewertung | Bessere oder notwendige Massnahmen |
+|---|---|---|
+| Oeffentliche Website | vertretbar, wenn geplant | Webserver in DMZ/Servernetz, TLS, Updates, Logging, Reverse Proxy |
+| NAS-Verwaltung ins Internet freigeben | meist riskant | VPN, MFA, keine Admin-Oberflaeche direkt ins Internet |
+| RDP/SSH direkt ins Internet | kritisch | VPN, Bastion Host, IP-Restriktion, MFA, starke Schluessel, Fail2ban/Monitoring |
+| Spielserver fuer Freunde | moeglich, aber bewusst | nur notwendiger Port, getrenntes System, Updates, keine Adminfreigaben |
+| IoT-Kamera von aussen | haeufig riskant | VPN oder Herstellerloesung bewerten, Firmware-Updates, eigenes VLAN |
+
+<Tipp titel="Gute Pruefungsantwort">
+Eine starke Antwort nennt nicht nur "Port freigeben", sondern auch die Gegenmassnahmen: nur notwendige Ports, Zielsystem patchen, starke Authentifizierung, Firewall einschraenken, DMZ/VLAN nutzen, Logs ueberwachen und VPN als Alternative pruefen.
+</Tipp>
+
+---
+
+## Carrier-Grade NAT und DS-Lite
+
+Nicht jeder Internetanschluss hat eine eigene oeffentliche IPv4-Adresse am Router. Bei <Term id="carrier-grade-nat">Carrier-Grade NAT</Term> teilen sich mehrere Kunden beim Provider oeffentliche IPv4-Adressen. Bei DS-Lite hat der Kunde oft IPv6 nativ, waehrend IPv4 ueber Provider-Infrastruktur getunnelt oder uebersetzt wird.
+
+Folge:
+
+```text
+Wenn dein Router keine eigene oeffentliche IPv4 am WAN hat,
+funktioniert klassisches eingehendes IPv4-Portforwarding nicht wie erwartet.
+```
+
+Moegliche Loesungen:
+
+- echte oeffentliche IPv4 beim Provider buchen, falls verfuegbar
+- IPv6 sauber nutzen und per Firewall absichern
+- VPN mit ausgehend aufgebautem Tunnel verwenden
+- Cloud-Relay oder Reverse Tunnel bewusst einsetzen
+- Dienst in ein Rechenzentrum oder in die Cloud verlagern
+
+Wichtig: IPv6 braucht normalerweise kein NAT fuer Adressknappheit. Das bedeutet aber nicht "alles ist offen". Sicherheit wird dann noch staerker ueber Firewall-Regeln, Segmentierung und sichere Dienste hergestellt.
+
+---
+
+## Typische Fehler
+
+1. **Private Adresse als Internetadresse verwenden.** `192.168.178.50` ist aus dem Internet nicht direkt erreichbar.
+2. **NAT als Firewall missverstehen.** NAT kann eingehende Pakete ohne Zustand faktisch abweisen, ersetzt aber keine Sicherheitsarchitektur.
+3. **Port Forwarding ohne Zielschutz setzen.** Ein ungepatchter Dienst bleibt ungepatcht, nur jetzt weltweit erreichbar.
+4. **TCP und UDP verwechseln.** Eine TCP-Regel hilft keinem Dienst, der UDP braucht.
+5. **Interne IP per DHCP wechseln lassen.** Die Weiterleitung zeigt dann irgendwann auf ein anderes Geraet.
+6. **Admin-Oberflaechen freigeben.** Router-, NAS- oder Kameraverwaltung direkt im Internet ist fast immer eine schlechte Idee.
+7. **DS-Lite/CGNAT ignorieren.** Ohne eigene oeffentliche IPv4 kommt eingehendes IPv4 nicht sauber bis zum Router.
+8. **DMZ im Heimrouter falsch verstehen.** Manche Router nennen "DMZ" eine Weiterleitung aller Ports an ein internes Geraet. Das ist keine echte Unternehmens-DMZ.
+
+---
+
+## Typische Pruefungsaufgabe
+
+> **Aufgabe (Klausur-Stil):** Ein Kleinunternehmen betreibt einen Webserver intern unter `192.168.10.20`. Der Router hat die oeffentliche IPv4 `198.51.100.44`. Die Website soll per HTTPS aus dem Internet erreichbar sein. Beschreibe die notwendige Portweiterleitung, nenne zwei Sicherheitsmassnahmen und erklaere, warum `192.168.10.20` nicht direkt aus dem Internet erreichbar ist.
+
+**Musterantwort:** Die Portweiterleitung lautet: WAN `198.51.100.44`, TCP-Port `443` auf internes Ziel `192.168.10.20`, TCP-Port `443`. Zusaetzlich muss die Firewall eingehenden HTTPS-Verkehr erlauben und der Webserver selbst muss Port 443 annehmen. Sicherheitsmassnahmen: Webserver in DMZ oder getrenntes Servernetz stellen, TLS nutzen, System aktuell halten, nur notwendige Ports freigeben, Logging/Monitoring aktivieren und keinen Adminzugang ins Internet stellen. `192.168.10.20` ist eine private RFC-1918-Adresse und wird im Internet nicht global geroutet; der Zugriff von aussen funktioniert deshalb nur ueber die oeffentliche Adresse des Routers und eine passende Weiterleitung.
+
+---
+
+## Mini-Lerncheck
+
+Beantworte diese Fragen ohne Nachsehen:
+
+1. Welche drei RFC-1918-Bereiche gibt es?
+2. Warum koennen mehrere Clients gleichzeitig ueber eine oeffentliche IPv4-Adresse surfen?
+3. Was ist der Unterschied zwischen NAT und Port Forwarding?
+4. Warum ist Port Forwarding allein keine Sicherheitsmassnahme?
+5. Welche vier Ebenen pruefst du, wenn eine Portweiterleitung nicht funktioniert?
+
+---
+
+<Quellen
+  titel="Offizielle Quellen"
+  quellen={[
+    {
+      label: 'RFC 1918 - Address Allocation for Private Internets',
+      href: 'https://www.rfc-editor.org/rfc/rfc1918',
+      detail: 'Definiert die privaten IPv4-Adressbereiche fuer interne Netze.'
+    },
+    {
+      label: 'RFC 2663 - IP Network Address Translator Terminology',
+      href: 'https://www.rfc-editor.org/rfc/rfc2663',
+      detail: 'Beschreibt NAT-Grundbegriffe, Adressraeume und NAPT.'
+    },
+    {
+      label: 'RFC 3022 - Traditional IP Network Address Translator',
+      href: 'https://www.rfc-editor.org/rfc/rfc3022',
+      detail: 'Erklaert Traditional NAT, NAPT und Grenzen der Uebersetzung.'
+    },
+    {
+      label: 'BSI - Router und WLAN sicher einrichten',
+      href: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/router-wlan-vpn.html',
+      detail: 'BSI-Hinweise zum sicheren Betrieb von Routern als zentrale Schnittstelle zum Internet.'
+    },
+    {
+      label: 'BSI - Firewall - Schutz vor dem Angriff von aussen',
+      href: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Virenschutz-Firewall/Firewall/firewall.html',
+      detail: 'BSI-Grundlagen zur Aufgabe von Firewalls zwischen internem und externem Netz.'
+    },
+    {
+      label: 'BSI - Virtual Private Networks (VPNs)',
+      href: 'https://www.bsi.bund.de/EN/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/Virtual-Private-Networks-VPN/virtual-private-networks-vpn_node.html',
+      detail: 'BSI-Erklaerung zu VPNs und Hinweis, dass Port Forwarding fuer eigene VPN-/NAS-Loesungen risikobehaftet sein kann.'
+    },
+  ]}
+/>

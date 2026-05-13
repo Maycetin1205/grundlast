@@ -1,6 +1,19 @@
-# Grundlast Roadmap zur perfekten Lerndatei
+# Grundlast Roadmap zum Fachinformatiker-Kompendium
 
-Ziel: eine fachlich dichte, didaktisch klare und belegbare Lerndatei fuer das 1. und 2. Ausbildungsjahr Fachinformatiker, mit starkem Fokus auf AP1.
+Ziel: eine fachlich dichte, didaktisch klare und belegbare Lerndatei fuer die
+Fachinformatiker-Ausbildung. Der erste Ausbau konzentriert sich auf das 1. und
+2. Lehrjahr. AP1 bleibt eine wichtige Pruefungsschicht, ist aber nicht das
+Gesamtziel.
+
+Verbindliches Zielbild steht in `AUSBILDUNGS_KOMPASS.md`.
+Die konkrete Release- und Qualitaetsplanung steht in `MASTER_ROADMAP.md`.
+
+## Grundsatz
+
+Grundlast ist kein reines AP1-Skript. Jedes Kapitel erklaert zuerst das
+Ausbildungswissen und die berufliche Handlungssituation. Danach kommt der
+Pruefungsblick: AP1, Berufsschule, typische Aufgabenmuster, Fehlerfallen und
+bei Bedarf AP2-Anschluss.
 
 ## Fertig-Definition fuer Version 1.0
 
@@ -9,15 +22,17 @@ Eine Lektion gilt erst als fertig, wenn sie diese Punkte erfuellt:
 - Einstieg: Worum geht es und warum ist es pruefungsrelevant?
 - Analogie: ein einfaches Bild, das den Kern merktauglich macht.
 - Faktenkern: klare Definitionen, Tabellen oder Regeln ohne Fülltext.
-- Pruefungsmuster: typische AP1-/Berufsschul-Aufgabenstellung.
+- Handlungssituation: typische betriebliche, schulische oder projektbezogene Anwendung.
+- Pruefungsblick: typische AP1-/Berufsschul-Aufgabenstellung, wenn das Thema pruefungsnah ist.
 - Rechenweg oder Vorgehen: Schritt fuer Schritt, falls anwendbar.
 - Fehlerfallen: typische Verwechslungen und Punktabzuege.
-- Mini-Quiz: kurze Selbstkontrolle.
+- Lerncheck: kurze Selbstkontrolle oder Verweis auf den separaten Uebungsmodus.
 - Quellen: passende serioese Quellen aus BIBB, FIAusbV, KMK, BSI, RFCs, Gesetzen oder offiziellen Spezifikationen.
 
 ## Inhaltlicher Scope
 
-Prioritaet A: Lernfelder 1 bis 6, weil sie vor AP1 sitzen und fuer Teil 1 besonders wichtig sind.
+Prioritaet A: Lernfelder 1 bis 6, weil sie die gemeinsame Basis der Ausbildung
+bilden und fuer AP1 besonders wichtig sind.
 
 - LF1: Das Unternehmen und die eigene Rolle im Betrieb beschreiben
 - LF2: Arbeitsplaetze nach Kundenwunsch ausstatten
@@ -26,7 +41,8 @@ Prioritaet A: Lernfelder 1 bis 6, weil sie vor AP1 sitzen und fuer Teil 1 besond
 - LF5: Software zur Verwaltung von Daten anpassen
 - LF6: Serviceanfragen bearbeiten
 
-Prioritaet B: Lernfelder 7 bis 9, weil sie zum 2. Lehrjahr gehoeren und in der Praxis/AP2-Vorbereitung anschliessen.
+Prioritaet B: Lernfelder 7 bis 9, weil sie zum 2. Lehrjahr gehoeren und in der
+Praxis sowie AP2-Vorbereitung anschliessen.
 
 - LF7: Cyber-physische Systeme ergaenzen
 - LF8: Daten systemuebergreifend bereitstellen
@@ -83,8 +99,8 @@ Diese Kapitel sind aktuell im Inhaltsverzeichnis geplant, aber noch nicht inhalt
 ## Perfekt-Arbeitsreihenfolge
 
 1. Encoding pruefen: echte Dateien sind UTF-8; PowerShell zeigt einzelne Zeichen nur falsch an.
-2. AP1-Scope absichern: LF1 bis LF6 gegen BIBB/KMK/FIAusbV mappen.
-3. AP1-Lernpfad bauen: Reihenfolge, Lernzeit, Muss/Kann-Markierung.
+2. Ausbildungsscope absichern: LF1 bis LF9 gegen BIBB/KMK/FIAusbV mappen.
+3. AP1-Schicht bauen: Reihenfolge, Lernzeit, Muss/Kann-Markierung fuer die ersten 18 Monate.
 4. Stubs mit Prioritaet A ausarbeiten.
 5. Stubs mit Prioritaet B ausarbeiten.
 6. Jede Lektion nach der Fertig-Definition vereinheitlichen.
@@ -99,6 +115,9 @@ Diese Kapitel sind aktuell im Inhaltsverzeichnis geplant, aber noch nicht inhalt
 Jeder Chat bearbeitet genau einen klaren Schritt. Die Regeln werden nicht jedes Mal neu erfunden, sondern aus diesen Dateien gelesen:
 
 - `ROADMAP.md`
+- `AUSBILDUNGS_KOMPASS.md`
+- `MASTER_ROADMAP.md`
+- `CURRICULUM_MAPPING.md`
 - `AP1_LERNPFAD.md`
 - `KAPITEL_QUALITAET.md`
 - `REVIEW_LOG.md`
@@ -114,7 +133,7 @@ Minimaler Startprompt fuer einen neuen Chat:
 Du arbeitest im Projekt:
 C:\Users\mu.aycetin\Desktop\Neuer Ordner\Porjekte\AP1\grundlast
 
-Nutze ROADMAP.md, AP1_LERNPFAD.md und KAPITEL_QUALITAET.md als verbindliche Regeln.
+Nutze AUSBILDUNGS_KOMPASS.md, MASTER_ROADMAP.md, CURRICULUM_MAPPING.md, ROADMAP.md, AP1_LERNPFAD.md und KAPITEL_QUALITAET.md als verbindliche Regeln.
 
 Bitte bearbeite genau diesen Schritt:
 [SCHRITT HIER EINFUEGEN]

@@ -1,0 +1,232 @@
+# IPv6 – Aufbau, Adressierung, Präfixe
+
+<MetaBar
+  lesezeit="20 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 3 — Clients in Netzwerke einbinden"
+  slug="ipv6-grundlagen"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du **IPv6-Adressen** lesen, schreiben und kürzen, kennst die **128 Bit** Länge, die **Hex-Schreibweise**, die **Präfixlängen**-Notation und kannst eine **Interface-Identifier-Berechnung** aus einer MAC-Adresse durchführen (EUI-64). Du unterscheidest **Adresstypen** (Global, Link-Local, Unique Local, Multicast, Loopback) und kannst typische Klausurfragen wie *„Wie viele Bits hat eine IPv6-Adresse?"* oder *„Kürze diese Adresse korrekt"* sicher beantworten.
+
+## 01 · Warum existiert das überhaupt?
+
+IPv4 hat nur **~4,3 Milliarden** Adressen (2³² = 4 294 967 296). Davon sind etwa 590 Mio. für private Netze reserviert, weitere für Multicast, Loopback und Sonderzwecke. Schon 2011 wurden die letzten freien IPv4-Blöcke an die regionalen Internet-Registries vergeben. Workarounds wie **NAT** und **CIDR** haben das System künstlich verlängert.
+
+IPv6 löst das Adressproblem dauerhaft: **128 Bit** Adresslänge — das sind **3,4 × 10³⁸** mögliche Adressen. Genug, um jedem Sandkorn auf der Erde eine eigene Adresse zu geben, ungefähr 7×10²⁸ Mal.
+
+In der Prüfung wird das Thema gerne als **Hex-Konvertierungs-** und **Kürzungsaufgabe** gestellt. Frühjahr 2024 hatte 5 Punkte dafür: *„Wie viele Bits hat eine IPv6-Adresse? Ungekürzte Hex-Darstellung? Präfixlänge? Interface-Identifier?"*. Wer die fünf Kernregeln kennt, holt sich diese Punkte mechanisch.
+
+<Analogie>
+IPv4 ist wie ein Postsystem mit nur 4,3 Milliarden Briefkästen. Funktioniert in einer kleinen Stadt — wird eng in einer Megastadt. Jeder Haushalt teilt sich einen Kasten (NAT), Briefträger erkennen Wohnungen erst nach Klingelschild-Studium. IPv6 ist das gleiche System, aber mit **so vielen** Briefkästen, dass jedes Möbelstück in jeder Wohnung einen eigenen bekommen kann — und trotzdem ist der Kasten-Vorrat erst zu einem winzigen Bruchteil verbraucht.
+</Analogie>
+
+---
+
+## 02 · Aufbau einer IPv6-Adresse
+
+### Grundregeln
+
+- **Länge:** 128 Bit (16 Byte)
+- **Schreibweise:** Hexadezimal, gruppiert in **8 Blöcke à 16 Bit**
+- **Trennzeichen:** Doppelpunkt zwischen den Blöcken
+- **Beispiel ungekürzt:** `2001:0db8:0000:0000:0000:ff00:0042:8329`
+
+### Kürzungsregeln (RFC 5952)
+
+| Regel | Anwendung | Beispiel |
+|---|---|---|
+| **Führende Nullen weglassen** | pro Block | `0db8` → `db8` |
+| **Aufeinanderfolgende Nullblöcke** | durch `::` ersetzen | `0000:0000:0000` → `::` |
+| **`::` nur EINMAL** pro Adresse | sonst nicht eindeutig | korrekt: 1× `::`, falsch: 2× `::` |
+| **Kleinbuchstaben** | a-f statt A-F (RFC 5952) | `2001:db8:...` statt `2001:DB8:...` |
+
+**Beispiel-Kürzung:**
+
+```
+ungekürzt:  2001:0db8:0000:0000:0000:ff00:0042:8329
+Schritt 1:  2001:db8 :0   :0   :0   :ff00:42  :8329    (führende Nullen weg)
+Schritt 2:  2001:db8::ff00:42:8329                     (drei Nullblöcke = ::)
+```
+
+<Tipp titel="Klausur-Eselsbrücke">
+- **8 Blöcke** à **4 Hex-Zeichen** macht **8 × 16 = 128 Bit**
+- **Doppelpunkt** trennt Blöcke (nicht Punkt wie bei IPv4)
+- **`::`** ist die Abkürzung für „ein bis mehrere komplette Nullblöcke" — aber nur einmal pro Adresse
+</Tipp>
+
+---
+
+## 03 · Präfix-Notation
+
+IPv6 nutzt **CIDR-Notation** wie IPv4: `Adresse/Präfixlänge`.
+
+- **/64** ist das absolute Standard-Subnetz für Endgeräte. Selbst zu Hause bekommst du beim Provider typisch ein /56 oder /48 — also Platz für viele /64-Subnetze.
+- **/128** wäre ein Host (eine einzelne Adresse).
+- **/0** wäre alle Adressen (Default-Route).
+
+| Präfix | Bedeutung |
+|---|---|
+| `2001:db8::/32` | Dokumentations-Range, immer für Beispiele genutzt |
+| `2001:db8:abcd::/48` | typische Provider-Zuweisung an Endkunden |
+| `fe80::/10` | Link-Local — gilt nur im lokalen Netz |
+| `fc00::/7` | Unique Local — private Adressen (entspricht 10.x bei IPv4) |
+| `ff00::/8` | Multicast |
+| `::1/128` | Loopback (entspricht 127.0.0.1 bei IPv4) |
+| `::/128` | Unspecified |
+
+---
+
+## 04 · Aufbau einer Global-Unicast-Adresse
+
+Eine globale IPv6-Adresse (wie eine öffentliche IPv4) hat drei Teile:
+
+```
+| 48 Bit Globales Routing-Präfix | 16 Bit Subnetz-ID | 64 Bit Interface-Identifier |
+        (vom Provider)                 (lokal vergeben)        (oft aus MAC)
+```
+
+- **Globales Routing-Präfix:** vom Provider zugewiesen
+- **Subnetz-ID:** das Unternehmen / der Kunde organisiert seine internen Subnetze
+- **Interface-Identifier:** identifiziert das einzelne Gerät innerhalb des Subnetzes
+
+---
+
+## 05 · Interface-Identifier per EUI-64
+
+Klassischer IPv6-Trick: aus der **MAC-Adresse** (48 Bit) wird automatisch ein **64-Bit-Interface-Identifier**.
+
+<Schritte
+  items={[
+    { titel: '1. MAC-Adresse notieren', text: 'Beispiel: 50:1a:c5:f2:38:b7' },
+    { titel: '2. In zwei Hälften teilen, mittig FFFE einfügen', text: '50:1a:c5 -- FF FE -- f2:38:b7' },
+    { titel: '3. 7. Bit (Universal/Local) invertieren', text: 'Erstes Byte: 50 = 0101 0000. 7. Bit invertieren: 0101 0010 = 52. Ergebnis: 52:1a:c5:ff:fe:f2:38:b7' },
+    { titel: '4. Als 64-Bit-Interface-ID schreiben', text: '521a:c5ff:fef2:38b7' },
+    { titel: '5. An das /64-Präfix anhängen', text: 'fe80::521a:c5ff:fef2:38b7 (Link-Local-Adresse)' },
+  ]}
+/>
+
+<Warnung titel="Privacy-Bedenken bei EUI-64">
+EUI-64 leitet die Adresse direkt aus der **physischen MAC-Adresse** ab — das Gerät ist überall im Internet wiederzuerkennen, auch im Home-Netz und im Café. Deshalb generieren moderne Betriebssysteme zusätzlich **Privacy Extensions** (RFC 8981) — zufällige, regelmäßig wechselnde Interface-Identifier. EUI-64 bleibt für Link-Local relevant.
+</Warnung>
+
+---
+
+## 06 · Adresstypen im Detail
+
+| Typ | Präfix | Vergleichbar mit IPv4 | Reichweite |
+|---|---|---|---|
+| **Global Unicast** | 2000::/3 | öffentliche IPv4 | weltweit routbar |
+| **Link-Local** | fe80::/10 | 169.254.x.x (APIPA) | nur im gleichen Subnetz |
+| **Unique Local (ULA)** | fc00::/7 | 10.x.x.x, 192.168.x.x | nur intern |
+| **Multicast** | ff00::/8 | 224.0.0.0/4 | mehrere Empfänger |
+| **Loopback** | ::1/128 | 127.0.0.1 | nur dieses Gerät |
+| **Unspecified** | ::/128 | 0.0.0.0 | „keine Adresse" |
+
+**Wichtige Multicast-Adressen:**
+- `ff02::1` — alle Hosts im Link
+- `ff02::2` — alle Router im Link
+
+**Hinweis:** IPv6 nutzt **kein Broadcast** mehr. Was bei IPv4 Broadcast war, ist bei IPv6 Multicast (`ff02::1`).
+
+---
+
+## 07 · Was IPv6 anders macht als IPv4
+
+| Aspekt | IPv4 | IPv6 |
+|---|---|---|
+| Länge | 32 Bit | 128 Bit |
+| Adressen total | 4,3 × 10⁹ | 3,4 × 10³⁸ |
+| Schreibweise | dezimal mit Punkten | hexadezimal mit Doppelpunkten |
+| Broadcast | ja | nein (durch Multicast ersetzt) |
+| Konfiguration | DHCP / statisch | DHCPv6 / SLAAC (autoconfig) |
+| Header-Größe | 20–60 Byte (variabel) | 40 Byte (fest) |
+| NAT | normal | nicht mehr nötig |
+| Fragmentierung | im Router | nur am Endpunkt |
+| Optionen | im Header | als Extension Headers |
+| Prüfsumme | im Header | nicht im IP-Header |
+
+---
+
+## 08 · Beispiel: vollständige Konfiguration
+
+<Beispiel titel="Eine IPv6-Adresse in echt">
+Ein Notebook erhält per SLAAC folgende Konfiguration:
+
+- **Präfix vom Router:** `2001:db8:abcd:1234::/64`
+- **MAC-Adresse:** `50:1a:c5:f2:38:b7`
+- **Berechneter Interface-Identifier** (EUI-64): `521a:c5ff:fef2:38b7`
+- **Resultierende Global-Unicast-Adresse:** `2001:db8:abcd:1234:521a:c5ff:fef2:38b7`
+- **Link-Local-Adresse:** `fe80::521a:c5ff:fef2:38b7`
+
+Beide Adressen sind auf dem Interface gleichzeitig aktiv. Link-Local wird für die Kommunikation mit dem direkten Nachbarn (Router) genutzt, Global-Unicast für alle weiteren Verbindungen.
+
+**Klausurprüfung an dieser Adresse:**
+- Länge: 128 Bit ✓
+- Hex-Blöcke: 8 ✓
+- Präfixlänge: 64 ✓
+- Interface-ID: untere 64 Bit, also `521a:c5ff:fef2:38b7` ✓
+</Beispiel>
+
+---
+
+## 09 · Fehlerfallen
+
+<Warnung titel="Die sechs häufigsten Klausurfehler">
+1. **Doppel-`::` in einer Adresse.** `2001::abcd::1` ist falsch — `::` darf nur einmal vorkommen, sonst wäre die Position der Nullen nicht eindeutig.
+2. **Punkte statt Doppelpunkten.** IPv4 trennt mit `.`, IPv6 mit `:`. Klassischer Tippfehler.
+3. **Großschreibung A–F.** RFC 5952 verlangt **Kleinbuchstaben** für die kanonische Form. Großbuchstaben sind technisch gültig, aber nicht best practice.
+4. **EUI-64-Bit-Invertierung vergessen.** Das 7. Bit (universal/local) im ersten MAC-Byte wird invertiert — vergessene Invertierung gibt falsches Ergebnis.
+5. **Broadcast bei IPv6 annehmen.** IPv6 kennt **keinen** Broadcast. Was bei IPv4 Broadcast war, ist bei IPv6 Multicast `ff02::1`.
+6. **Subnetzmaske wie bei IPv4 angeben.** Bei IPv6 wird **immer** die CIDR-Notation `/N` benutzt, niemals eine Subnetzmaske `ffff:ffff:...`.
+</Warnung>
+
+---
+
+## 10 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** Gegeben ist die IPv6-Adresse `fe80:0000:0000:0000:521a:c5ff:fef2:38b7`. (a) Wie viele Bits hat eine IPv6-Adresse? (b) Schreibe die Adresse in der kanonisch gekürzten Form. (c) Welcher Adresstyp ist das? (d) Was ist der Interface-Identifier?
+
+**Musterantwort:**
+
+**(a)** Eine IPv6-Adresse ist **128 Bit** lang (8 Blöcke à 16 Bit).
+
+**(b)** Kanonisch gekürzt: **`fe80::521a:c5ff:fef2:38b7`** — die drei Null-Blöcke werden durch `::` ersetzt.
+
+**(c)** Das ist eine **Link-Local-Adresse** — erkennbar am Präfix `fe80::/10`. Sie gilt nur im lokalen Netzsegment und wird automatisch vom Betriebssystem generiert.
+
+**(d)** Der Interface-Identifier sind die **unteren 64 Bit**: `521a:c5ff:fef2:38b7`. Das `ff:fe` in der Mitte deutet auf eine EUI-64-Generierung aus einer MAC-Adresse hin.
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'RFC 8200 — Internet Protocol Version 6 (IPv6) Specification',
+      href: 'https://www.rfc-editor.org/rfc/rfc8200',
+      detail: 'Aktuelle normative Spezifikation von IPv6. Definiert Header, Adressformat und Verarbeitung.'
+    },
+    {
+      label: 'RFC 4291 — IP Version 6 Addressing Architecture',
+      href: 'https://www.rfc-editor.org/rfc/rfc4291',
+      detail: 'Adressformat und Adresstypen — Global Unicast, Link-Local, Multicast, Loopback.'
+    },
+    {
+      label: 'RFC 5952 — A Recommendation for IPv6 Address Text Representation',
+      href: 'https://www.rfc-editor.org/rfc/rfc5952',
+      detail: 'Kanonische Form: Kleinbuchstaben, kürzeste Notation, nur ein :: pro Adresse.'
+    },
+    {
+      label: 'RFC 8981 — Temporary Address Extensions for SLAAC',
+      href: 'https://www.rfc-editor.org/rfc/rfc8981',
+      detail: 'Privacy Extensions — temporäre, zufällige Interface-Identifier statt EUI-64.'
+    },
+    {
+      label: 'BSI TR-02102-3 — Kryptografische Verfahren: IPsec',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr02102_node.html',
+      detail: 'BSI-Empfehlung zu IPsec; relevant da IPv6 IPsec standardmäßig unterstützen kann.'
+    },
+  ]}
+/>

@@ -1,0 +1,194 @@
+# Master-Roadmap zur Referenz-Lerndatei
+
+Stand: 13.05.2026
+
+Diese Roadmap ist die fuehrende Arbeitsplanung fuer das Ziel, Grundlast zu einem
+deutschlandweit referenzfaehigen Fachinformatiker-Kompendium auszubauen.
+
+## Ziel
+
+Grundlast soll nicht nur beim Bestehen der AP1 helfen, sondern Ausbildung,
+Berufsschule, Betriebspraxis und Pruefung zusammenbringen.
+
+Der Massstab:
+
+- fachlich korrekt
+- offiziell begruendet
+- didaktisch stark
+- fuer Anfaenger lesbar
+- fuer Wiederholung und Pruefung nutzbar
+- quellenbasiert und reviewfaehig
+
+## Zielgruppen
+
+- Auszubildende Fachinformatiker im 1. und 2. Lehrjahr
+- Lernende vor AP1
+- Berufsschueler, die ein klares Nachschlagewerk brauchen
+- Ausbilder, die Inhalte strukturiert wiederfinden wollen
+- spaeter: Vorbereitung auf AP2 und Fachrichtungen
+
+## Verbindliche Quellenbasis
+
+Jede groessere Inhaltsentscheidung muss gegen diese Ordnungsmittel plausibel
+sein:
+
+- FIAusbV: Ausbildungsordnung, Ausbildungsrahmenplan, AP1/AP2-Struktur
+- KMK-Rahmenlehrplan: Lernfelder und schulische Handlungssituationen
+- BIBB-Umsetzungshilfe: praktische Einordnung der Berufsbildpositionen
+- Primaerquellen je Fachthema: BSI, RFCs, Gesetze, Normen, Herstellerdoku,
+  offizielle Spezifikationen
+
+## Architektur des Lernsystems
+
+Grundlast besteht langfristig aus sechs Schichten:
+
+1. **Kompendium**
+   - normale Kapitel
+   - erklaert Begriffe, Zusammenhaenge, Vorgehen und Praxis
+
+2. **Curriculum-Mapping**
+   - Zuordnung zu KMK-Lernfeld, Ausbildungsrahmenplan, Jahr, AP1/AP2 und Fachrichtung
+   - verhindert blinde Flecken
+
+3. **Pruefungsmodus**
+   - AP1-Aufgabenmuster
+   - typische Operatoren
+   - Rechenwege
+   - Punktverluste und Fehlerfallen
+
+4. **Uebungsmodus**
+   - Karteikarten
+   - Mini-Checks
+   - Rechenaufgaben
+   - Fallaufgaben mit Musterloesung
+
+5. **Quellen- und Reviewschicht**
+   - Quellenbank
+   - REVIEW_LOG
+   - Faktencheck je Kapitel
+
+6. **Release-Build**
+   - normale Web-App
+   - Single-HTML-Build
+   - mobiler Lesetest
+   - Export-/Weitergabeversion
+
+## Qualitaetsstufen
+
+Die App kennt technisch `stub`, `draft`, `ready`, `final`. Inhaltlich gelten
+diese Gates:
+
+| Stufe | Bedeutung | Darf in Navigation? | Gate |
+|---|---|---:|---|
+| `stub` | Thema geplant, noch kein Lerninhalt | nein | Slug, Titel, Prioritaet stehen |
+| `draft` | Inhalt vorhanden, aber noch unvollstaendig | nein | Grundstruktur und erste Quellen |
+| `ready` | lernbar und quellenorientiert | ja | Kapitelstandard erfuellt, Glossar gepflegt, Quellen vorhanden |
+| Review-Gate | Fakten, Quellen und Didaktik manuell geprueft | ja | Eintrag in `REVIEW_LOG.md`, Validator ohne harte Fehler |
+| `final` | fuer Weitergabe freigegeben | ja | Review-Gate plus Lint, Build, Browser-Stichprobe |
+
+Wichtig: Das Review-Gate ist bewusst kein eigener `toc.ts`-Status. Es wird ueber
+`REVIEW_LOG.md` dokumentiert, damit die App nicht durch Zwischenzustaende
+verkompliziert wird.
+
+## Curriculum-Mapping
+
+Jedes Kapitel soll mittelfristig diese Metadaten haben:
+
+- Kapitel-Slug
+- KMK-Lernfeld
+- Ausbildungsjahr
+- FIAusbV-Bezug
+- AP1-Relevanz
+- AP2-Anschluss
+- Fachrichtung: uebergreifend, AE, SI, DPA, DV
+- Prioritaet: Muss, Soll, Vertiefung
+- Quellenstatus: allgemein, spezifisch, geprueft
+- Reviewstatus: offen, geprueft, final
+
+Zunaechst reicht die Pflege in `CURRICULUM_MAPPING.md`. Erst wenn die Matrix
+stabil ist, wird entschieden, ob Metadaten in `toc.ts` oder eine eigene
+Datenstruktur wandern.
+
+## Release-Ziele
+
+### Version 0.1 - Kompass sauber
+
+Ziel: Projektsteuerung widerspruchsfrei.
+
+Pflicht:
+
+- `AUSBILDUNGS_KOMPASS.md` vorhanden
+- `MASTER_ROADMAP.md` vorhanden
+- `CURRICULUM_MAPPING.md` angelegt
+- AP1 als Pruefungsschicht eingeordnet
+- Content-Validator laeuft ohne Fehler
+
+### Version 0.2 - Jahr-1/2-Abdeckung sichtbar
+
+Ziel: Man sieht, was wirklich abgedeckt ist und was fehlt.
+
+Pflicht:
+
+- alle 102 TOC-Kapitel in der Mapping-Matrix erfasst oder bewusst verschoben
+- Stubs priorisiert nach Ausbildungsnutzen und AP1-Relevanz
+- offensichtliche Dubletten und falsche `ready`-Markierungen identifiziert
+
+### Version 0.3 - Zentrale Stubs geschlossen
+
+Ziel: Die groessten Luecken in Jahr 1/2 sind lernbar.
+
+Pflicht:
+
+- alle Prioritaet-Muss-Stubs aus LF1 bis LF9 mindestens `draft`
+- zentrale AP1-Themen mindestens `ready`
+- Quellenbank fuer neue Kapitel ergaenzt
+
+### Version 0.4 - Ready ist wirklich ready
+
+Ziel: `ready` bedeutet zuverlaessig lernbar.
+
+Pflicht:
+
+- Validator-Warnungen fuer `ready`-Kapitel stark reduziert
+- jedes `ready`-Kapitel hat Quellen, Glossar, Fehlerfallen und Handlungssituation
+- keine reinen Pruefungstrick-Kapitel
+
+### Version 0.5 - AP1-Modus stark
+
+Ziel: AP1-Vorbereitung wird eigenstaendig nutzbar.
+
+Pflicht:
+
+- Aufgabenmuster nach Themen
+- Rechenwege mit Einheiten
+- typische Fehler und Operatoren
+- keine kopierten echten IHK-Aufgaben
+
+### Version 1.0 - Weitergabefaehige Referenz
+
+Ziel: belastbare Version fuer andere Lernende.
+
+Pflicht:
+
+- alle Muss-Kapitel Jahr 1/2 mindestens `ready`
+- wichtigste Kapitel formal `final`
+- `npm.cmd run lint` erfolgreich
+- `npm.cmd run build` erfolgreich
+- `npm.cmd run build:single` erfolgreich
+- Browser-Stichprobe Desktop und mobil
+- REVIEW_LOG mit Freigaben
+
+## Arbeitsreihenfolge ab jetzt
+
+1. Mapping-Matrix anlegen und mit den aktuellen TOC-Kapiteln starten.
+2. Zentrale Stubs aus Jahr 1/2 ausarbeiten.
+3. Ready-Kapitel mit Validator-Warnungen reparieren.
+4. Quellenbank und Glossar systematisch nachziehen.
+5. Review-Gate fuer die ersten final-Kandidaten durchlaufen.
+6. AP1-Modus aus den fertigen Kapiteln ableiten.
+
+## Naechster konkreter Schritt
+
+`Bit & Byte - die kleinsten Einheiten` auf den neuen Ready-Standard heben. Das Kapitel
+ist die Basis fuer Datenmengen, Datenrate, Speicher, Codierung und viele AP1-nahe
+Umrechnungsaufgaben; aktuell steht es noch auf Draft.

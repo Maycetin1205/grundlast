@@ -1,0 +1,215 @@
+# Endpoint-Security – Härtung, Updates, Schutzmaßnahmen
+
+<MetaBar
+  lesezeit="14 Minuten"
+  schwierigkeit="Mittel"
+  lernfeld="LF 4 — Schutzbedarfsanalyse und IT-Sicherheit"
+  slug="endpoint-security"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du den Begriff **Endpoint-Security** definieren, kennst die wichtigsten **Härtungs- und Schutzmaßnahmen** für Clients (Notebooks, Desktops, Smartphones) — Updates, Firewall, Virenschutz, Berechtigungen, Datenträgerverschlüsselung. Du verstehst das **Prinzip der geringsten Rechte** und die Bedeutung von **Patch-Management**. Du kannst typische Klausurfragen wie *„Welche Risiken entstehen, wenn ein Nutzer dauerhaft mit Administratorrechten arbeitet?"* sicher beantworten.
+
+## 01 · Warum existiert das überhaupt?
+
+Der **Endpoint** — Notebook, Desktop, Smartphone, Tablet — ist heute das schwächste Glied der Unternehmens-IT. Server stehen oft hinter Firewalls, Endgeräte aber gehen ins Café, ins Hotel-WLAN, nach Hause. Jeder Klick auf einen Phishing-Link, jede unsignierte Software-Installation, jeder fehlende Patch ist eine Einfallstür.
+
+In der Prüfung wird das Thema als **Maßnahmen-Aufgabe** gestellt: *„Nenne drei technische Maßnahmen, um einen Arbeitsplatz abzusichern"* oder *„Welche Folgen hat es, wenn Standardbenutzer dauerhaft Administratorrechte besitzen?"*. Wer die zehn Hauptmaßnahmen kennt und das **Prinzip der geringsten Rechte** sauber erklären kann, holt sich 4 bis 8 Punkte.
+
+Im Betrieb ist Endpoint-Security die **Grundlage** jedes IT-Sicherheitskonzepts — ohne gehärtete Endgeräte nützt die beste Firewall nichts.
+
+<Analogie>
+Stell dir das Firmennetz wie eine Burg mit Außenmauer und Wassergraben vor. Die Firewall ist die Mauer. Aber jedes Notebook, das morgens herein- und abends hinausläuft, ist ein **bewegliches Stück Burgwand**. Wenn das Notebook im Hotel-WLAN infiziert wird und am nächsten Tag wieder im Firmennetz hängt, hat der Angreifer die Mauer ohne Belagerung überwunden. Endpoint-Security härtet deshalb jeden einzelnen Endpunkt, statt nur auf die Außengrenze zu vertrauen.
+</Analogie>
+
+---
+
+## 02 · Die zehn wichtigsten Maßnahmen
+
+| # | Maßnahme | Was es bewirkt |
+|---|---|---|
+| 1 | **Aktuelles Betriebssystem + Patches** | Bekannte Sicherheitslücken werden geschlossen |
+| 2 | **Personal/Host-Firewall aktiv** | unerwünschte eingehende Verbindungen blockiert |
+| 3 | **Virenschutz mit aktuellen Signaturen** | erkennt bekannte Malware |
+| 4 | **EDR / Endpoint Detection and Response** | erkennt unbekannte Schadsoftware per Verhaltensanalyse |
+| 5 | **Standardbenutzer-Konten** (Prinzip der geringsten Rechte) | Schadsoftware bekommt nur Nutzerrechte, nicht Admin |
+| 6 | **Festplattenverschlüsselung** (BitLocker, FileVault, LUKS) | Datenschutz bei Diebstahl |
+| 7 | **Automatische Bildschirmsperre** + sicheres Passwort | unautorisierter physischer Zugriff |
+| 8 | **Application Whitelisting** (AppLocker, SRP) | nur freigegebene Programme dürfen laufen |
+| 9 | **Mail- und Web-Filter** | Phishing, Malware-Downloads im Vorfeld abfangen |
+| 10 | **Mobile Device Management (MDM)** | zentrale Verwaltung mobiler Geräte, Remote-Wipe möglich |
+
+---
+
+## 03 · Patch-Management
+
+**Patches** sind Korrekturen von Sicherheitslücken im Betriebssystem oder in Anwendungen. Werden sie nicht eingespielt, bleiben bekannte Lücken offen — Würmer und Exploits können sie ausnutzen.
+
+### Patch-Prozess
+
+<Schritte
+  items={[
+    { titel: '1. Inventarisierung', text: 'Welche Systeme und Anwendungen sind im Einsatz? Pflicht für jeden Patch-Prozess.' },
+    { titel: '2. Monitoring auf neue Patches', text: 'Hersteller-Meldungen abonnieren (Microsoft Patch Tuesday, Linux-Distributions-Listen).' },
+    { titel: '3. Risikobewertung', text: 'Wie kritisch ist der Patch? CVSS-Score, Auswirkungs-Abschätzung.' },
+    { titel: '4. Test in Pilotgruppe', text: 'Patch zuerst auf wenigen Systemen einspielen, beobachten, ob nichts bricht.' },
+    { titel: '5. Rollout', text: 'Patch auf alle Systeme verteilen, idealerweise per zentraler Software (WSUS, Intune, Ansible).' },
+    { titel: '6. Verifikation', text: 'Prüfen, dass alle Systeme den Patch erhalten haben — Bericht über fehlgeschlagene Updates.' },
+  ]}
+/>
+
+<Tipp titel="Faustregel für Patch-Geschwindigkeit">
+- **Kritisch (Remote Code Execution, in freier Wildbahn ausgenutzt)**: innerhalb von 24–72 Stunden
+- **Hoch**: innerhalb von 7 Tagen
+- **Mittel/Niedrig**: im regulären Monatszyklus
+
+Wer Patches Wochen oder Monate liegen lässt, hat in der Praxis ein „bekannt-offenes Tor" — fast jeder größere Vorfall der letzten Jahre nutzte eine **bekannte und gepatchte** Lücke.
+</Tipp>
+
+---
+
+## 04 · Prinzip der geringsten Rechte (Least Privilege)
+
+Jeder Nutzer und jedes Programm bekommt **nur die Rechte, die er für seine Aufgabe braucht** — nicht mehr. Auf einem Endgerät heißt das konkret:
+
+- **Tägliches Arbeiten** als **Standardbenutzer**, nicht als Administrator
+- **Administrative Aktionen** nur über separates Admin-Konto oder UAC-Aufforderung
+- **Programme** laufen mit den Rechten des Nutzers, nicht mit Systemrechten
+- **Dienste** mit eigenen, eingeschränkten Service-Konten
+
+<Warnung titel="Was passiert, wenn ein Standardnutzer dauerhaft Admin-Rechte hat?">
+1. **Malware bekommt Admin-Rechte** — kann tief ins System eingreifen, Spuren verwischen, Persistenz herstellen.
+2. **Versehentliche System-Änderungen** — Treiber gelöscht, kritische Dienste deaktiviert.
+3. **Unautorisierte Software** wird installiert — Compliance- und Lizenzprobleme.
+4. **Spurenanalyse erschwert** — Aktionen sind nicht von legitimer Administration unterscheidbar.
+5. **Lateral Movement** — kompromittierte Maschine wird zur Sprungbrett für Angriffe auf andere Systeme.
+
+Genau diese Punkte werden in der Klausur als „Folgen" gefragt.
+</Warnung>
+
+---
+
+## 05 · System-Härtung
+
+**Härtung** (Hardening) bedeutet, ein System so zu konfigurieren, dass die Angriffsfläche minimiert wird. Typische Maßnahmen:
+
+| Bereich | Härtungsmaßnahme |
+|---|---|
+| **Dienste** | nicht benötigte Dienste deaktivieren |
+| **Ports** | nur erforderliche Netzwerkports offen |
+| **Benutzerkonten** | Standardkonten umbenennen/deaktivieren, Gast-Konto aus |
+| **Passwörter** | starke Vorgaben, Mindestlänge, 2FA |
+| **Auto-Run** | für Wechseldatenträger deaktivieren |
+| **Makros** | Office-Makros standardmäßig deaktiviert |
+| **Browser** | aktuelle Version, Add-ons kontrolliert |
+| **Logging** | Sicherheitslogs aktiv, zentral gesammelt |
+| **Updates** | automatisch oder mit kurzem Zyklus |
+| **Boot-Schutz** | Secure Boot, BIOS-Passwort |
+
+**Microsoft Security Compliance Toolkit** und **CIS Benchmarks** liefern konkrete Konfigurationsempfehlungen für gängige Systeme.
+
+---
+
+## 06 · EDR vs. klassischer Virenschutz
+
+Klassischer **Virenscanner** vergleicht Dateien mit einer Datenbank bekannter Schadsignaturen. **EDR** (Endpoint Detection and Response) analysiert zusätzlich **Verhalten**: was tut ein Programm gerade? Greift es auf viele Dateien zu? Verschlüsselt es etwas?
+
+| | Virenscanner | EDR |
+|---|---|---|
+| Erkennung | Signaturen bekannter Malware | Verhaltensanalyse + Signaturen |
+| Reaktion | Datei löschen / Quarantäne | Prozess stoppen, Maschine isolieren, Alarm an SOC |
+| Unbekannte Malware | erkennt nicht | erkennt durch verdächtiges Verhalten |
+| Zentrale Sicht | meist nur lokal | Dashboard, Forensik, Korrelation |
+| Kosten | gering | höher (Lizenz + Personal) |
+
+EDR ist heute Standard in mittelständischen und großen Unternehmen.
+
+---
+
+## 07 · Beispiel
+
+<Beispiel titel="Endpoint-Security-Konzept für ein 30-Personen-Unternehmen">
+Ein IT-Dienstleister mit 30 Mitarbeitern hat folgendes Konzept:
+
+| Schicht | Maßnahme |
+|---|---|
+| **Hardware** | Geräte zentral beschafft, einheitlich konfiguriert |
+| **Betriebssystem** | Windows 11 Pro, automatische Updates innerhalb 72h für kritische Patches |
+| **Konten** | Standardbenutzer als Default, Admin-Konto separat für IT |
+| **Verschlüsselung** | BitLocker auf allen Systemen, Wiederherstellungs-Key in Azure AD |
+| **Anti-Malware** | Microsoft Defender + EDR-Lösung mit zentralem Dashboard |
+| **Firewall** | Windows-Firewall aktiv, Ausnahmen zentral verwaltet |
+| **Bildschirmsperre** | nach 5 Min Inaktivität, manuell mit Windows+L |
+| **Software-Installation** | nur über zentralen Software-Katalog erlaubt |
+| **Office-Makros** | per Gruppenrichtlinie deaktiviert |
+| **MDM** | für Smartphones — Remote-Wipe bei Diebstahl |
+| **Schulung** | jährliches Security-Awareness-Training mit Phishing-Simulation |
+| **Notfall** | dokumentierter Incident-Response-Plan, Kontakte für Forensik |
+
+**Ergebnis:** ein einzelner gestohlener Laptop ist verschlüsselt und remote löschbar. Ein Phishing-Klick lädt zwar potenziell Malware, aber sie hat nur Standardbenutzer-Rechte. Patches schließen Lücken innerhalb von Tagen, nicht Wochen.
+</Beispiel>
+
+---
+
+## 08 · Fehlerfallen
+
+<Warnung titel="Die fünf häufigsten Klausurfehler">
+1. **„Virenscanner reicht."** Ein Virenscanner ist eine Schicht von vielen. Ohne Patches, Berechtigungskonzept und Verschlüsselung bleibt das Endgerät unsicher.
+2. **Admin-Rechte für alle.** „Damit die Mitarbeiter selbst Software installieren können" — genau dieser Komfort ist die Sicherheitsbremse. Standardbenutzer ist Default.
+3. **Patches verzögern aus Bequemlichkeit.** Jede Verzögerung erhöht das Risiko, dass eine bekannte Lücke ausgenutzt wird. Vor allem bei kritischen Patches.
+4. **Verschlüsselung übersehen.** Ein Notebook ohne BitLocker / FileVault / LUKS ist bei Diebstahl ein offenes Buch. Datenschutz-Pflichtmaßnahme.
+5. **Awareness vergessen.** Technische Maßnahmen ohne Schulung lassen Lücken — der häufigste Angriffsvektor (Phishing) zielt auf Menschen, nicht auf Maschinen.
+</Warnung>
+
+---
+
+## 09 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** Ein Unternehmen will einen neuen Arbeitsplatz mit Windows einrichten. (a) Nenne vier konkrete technische Maßnahmen zur Absicherung. (b) Welche zwei Risiken entstehen, wenn der Nutzer dauerhaft mit Administrator-Rechten arbeitet?
+
+**Musterantwort:**
+
+**(a)** Vier technische Maßnahmen:
+1. **Automatische Sicherheitsupdates** aktivieren — schließt bekannte Lücken zeitnah
+2. **Festplatten-Verschlüsselung (BitLocker)** — schützt Daten bei Diebstahl
+3. **Standardbenutzer-Konto** für tägliche Arbeit, separates Admin-Konto für Wartung — Prinzip der geringsten Rechte
+4. **Windows-Defender mit EDR-Erweiterung** — erkennt sowohl bekannte als auch unbekannte Schadsoftware
+
+(weitere mögliche Antworten: Firewall, Office-Makros deaktivieren, Application Whitelisting, MDM)
+
+**(b)** Zwei Risiken bei dauerhaften Admin-Rechten:
+1. **Malware bekommt Admin-Rechte** — kann tief ins System eingreifen, kritische Systemdateien verändern, Persistenz herstellen und sich vor dem Virenschutz verstecken.
+2. **Unkontrollierte Software-Installation** durch den Nutzer — führt zu Compliance-Verstößen (Lizenzen), erhöht Angriffsfläche und kann Schadsoftware unbeabsichtigt installieren.
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'BSI — IT-Grundschutz-Kompendium, Baustein SYS.2.1 Allgemeiner Client',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/it-grundschutz-kompendium_node.html',
+      detail: 'Normative Anforderungen an Client-Sicherheit nach BSI-Grundschutz.'
+    },
+    {
+      label: 'BSI TR-02103 — Härtung von Windows-Clients',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02103/tr02103_node.html',
+      detail: 'BSI-Empfehlungen zur Konfigurations-Härtung von Windows-Arbeitsplätzen.'
+    },
+    {
+      label: 'CIS Benchmarks',
+      href: 'https://www.cisecurity.org/cis-benchmarks',
+      detail: 'Konkrete, geprüfte Härtungs-Konfigurationen für gängige Betriebssysteme und Anwendungen.'
+    },
+    {
+      label: 'Microsoft Security Compliance Toolkit',
+      href: 'https://learn.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10',
+      detail: 'Werkzeuge und Vorlagen für die sicherheitsorientierte Windows-Konfiguration.'
+    },
+    {
+      label: 'NIST SP 800-53 / 800-171',
+      href: 'https://csrc.nist.gov/publications/sp',
+      detail: 'US-amerikanische Standards für Informationssicherheit — international anerkannt.'
+    },
+  ]}
+/>

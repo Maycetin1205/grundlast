@@ -28,13 +28,13 @@ export default function MetaBar({
   ].filter((item): item is { label: string; value: string } => item !== null)
 
   return (
-    <dl className={cn('my-8 flex flex-wrap gap-x-10 gap-y-4 border-y border-rule py-5 font-ui', className)}>
+    <dl className={cn('my-8 grid gap-3 border border-rule-2 bg-paper-deep p-4 font-ui sm:grid-cols-2 lg:grid-cols-4', className)}>
       {items.map((item) => (
-        <div key={item.label}>
-          <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-muted">
+        <div key={item.label} className="border-l-4 border-accent bg-paper px-4 py-3">
+          <dt className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-muted">
             {item.label}
           </dt>
-          <dd className="text-sm font-medium text-ink">
+          <dd className="m-0 text-[15px] font-semibold leading-snug text-ink">
             {item.value}
           </dd>
         </div>
