@@ -1,0 +1,187 @@
+# Gantt-Diagramm – Balkenplan im Projekt
+
+<MetaBar
+  lesezeit="12 Minuten"
+  schwierigkeit="Leicht"
+  lernfeld="LF 6 — Projektmanagement"
+  slug="gantt-diagramm"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du ein Gantt-Diagramm **lesen, ergänzen und selbst zeichnen**. Du kennst die Bestandteile (Vorgänge, Zeitachse, Balken, Meilensteine, Abhängigkeiten) und kannst typische Klausuraufgaben — „trage die fehlenden Vorgänge ein, ermittle das Projektende" — sicher beantworten. Du weißt, wann ein Gantt-Diagramm besser passt als ein Netzplan und wann umgekehrt.
+
+## 01 · Warum existiert das überhaupt?
+
+Henry Gantt entwickelte das Diagramm 1910 für die Fabrikproduktion. Heute ist es das am weitesten verbreitete Werkzeug im Projektmanagement, weil es **eine Sache richtig gut kann**: zeitliche Abläufe **visuell auf einen Blick** zeigen. Wann startet was, wie lange dauert es, was läuft parallel?
+
+In der Prüfung wird das Diagramm meist im Vergleich zum **Netzplan** gestellt: „Nenne Vor- und Nachteile". Oder als **Aufgabe zum Ergänzen**: gegebene Vorgänge mit Dauer und Abhängigkeit in einen Balkenplan einzeichnen. Wer das Schema versteht, holt sich hier 3 bis 6 Punkte.
+
+Im Betrieb ist es **das** Standardwerkzeug für Termin- und Kapazitätsplanung. Tools wie MS Project, Jira-Roadmaps, Asana und GanttProject basieren alle auf dem Schema.
+
+<Analogie>
+Ein Gantt-Diagramm ist wie ein Stundenplan in der Schule — nur statt Fächern stehen Projekt-Vorgänge in den Zeilen, und die Zeit läuft horizontal. Jeder Balken zeigt einen Vorgang: links der Anfang, rechts das Ende, die Breite ist die Dauer. Man sieht sofort, was gleichzeitig läuft, was nacheinander kommt, wo Lücken sind. Genau wie beim Stundenplan kann ein Blick „Montag 8 Uhr — was hab ich?" durch einen Blick „Tag 5 — was läuft?" ersetzt werden.
+</Analogie>
+
+---
+
+## 02 · Bestandteile eines Gantt-Diagramms
+
+| Bestandteil | Bedeutung |
+|---|---|
+| **Zeitachse** (horizontal) | Tage, Wochen oder Monate von links nach rechts |
+| **Vorgangsliste** (vertikal) | jeder Vorgang in einer eigenen Zeile, von oben nach unten |
+| **Balken** | Dauer und Lage eines Vorgangs als Rechteck |
+| **Meilenstein** | Punkt-/Rautensymbol für ein wichtiges Datum (z. B. „Abnahme") |
+| **Abhängigkeit** | Pfeil zwischen Balkenenden, zeigt „A muss enden, bevor B startet" |
+| **Fortschrittsbalken** | innerhalb eines Balkens — angezeigter Erledigungsgrad |
+
+---
+
+## 03 · Vier Abhängigkeitstypen
+
+In professionellen Tools werden vier Beziehungstypen unterschieden:
+
+| Typ | Bedeutung | Beispiel |
+|---|---|---|
+| **EA (Ende–Anfang)** | A muss enden, bevor B startet | Bauphase fertig, dann Streichen starten |
+| **AA (Anfang–Anfang)** | A muss gestartet sein, bevor B startet | Schulung beginnt, Doku-Erstellung beginnt |
+| **EE (Ende–Ende)** | A muss enden, bevor B enden kann | Tests laufen, Abnahme erst nach Test-Ende |
+| **AE (Anfang–Ende)** | seltener Sonderfall | meist nicht prüfungsrelevant |
+
+Standardfall in der Prüfung ist fast immer **Ende–Anfang**.
+
+---
+
+## 04 · Vorgehen: Gantt-Diagramm erstellen
+
+<Schritte
+  items={[
+    { titel: '1. Vorgänge auflisten', text: 'Alle Aufgaben des Projekts mit Bezeichnung und Dauer untereinander schreiben.' },
+    { titel: '2. Abhängigkeiten festlegen', text: 'Pro Vorgang: welche Vorgänge müssen vorher abgeschlossen sein? Eintrag als Spalte „Vorgänger".' },
+    { titel: '3. Zeitachse zeichnen', text: 'Horizontale Linie oben, ausreichend Tage/Wochen einteilen — meist eine Spalte je Tag.' },
+    { titel: '4. Balken für ersten Vorgang setzen', text: 'Vorgang ohne Vorgänger startet bei Tag 1. Balken in Höhe der Vorgangszeile, Breite = Dauer.' },
+    { titel: '5. Folgevorgänge anordnen', text: 'Jeder Folgevorgang startet frühestens nach Ende des Vorgängers (EA). Bei parallelen Vorgängen darunter eintragen.' },
+    { titel: '6. Meilensteine eintragen', text: 'Wichtige Datumspunkte (Kick-off, Zwischenpräsentation, Abnahme) als Raute markieren.' },
+    { titel: '7. Projektende ablesen', text: 'Das Ende des spätesten Balkens markiert das Projektende.' },
+  ]}
+/>
+
+---
+
+## 05 · Beispiel
+
+<Beispiel titel="Mini-Projekt — Einrichtung eines Schulungsraums">
+Vorgänge:
+
+| Vorgang | Dauer | Vorgänger |
+|---|---|---|
+| A — Bedarfsanalyse | 2 Tage | — |
+| B — Hardware bestellen | 3 Tage | A |
+| C — Möbel bestellen | 2 Tage | A |
+| D — Lieferung abwarten | 5 Tage | B, C |
+| E — Aufbau | 3 Tage | D |
+| F — Funktionstest | 1 Tag | E |
+
+Gantt-Diagramm (Tage 1–16):
+
+```
+Tag:         1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16
+A Bedarf:    [==]
+B Hardware:        [=====]
+C Möbel:           [===]
+D Liefern:                 [=========]
+E Aufbau:                                  [======]
+F Test:                                              [=]
+Meilenstein:                                            ◆ Abnahme
+```
+
+**Ablesbar:**
+- Projektende: Tag 14 (Funktionstest abgeschlossen)
+- Parallele Vorgänge: B und C laufen gleichzeitig (beide Vorgänger A abhängig)
+- Engpass: D wartet auf BEIDE Vorgänger — B endet Tag 5, C endet Tag 4, also kann D erst Tag 5+1 = Tag 6 starten.
+
+Hinweis: dieses Beispiel hat 13 Tage Projektdauer, nicht 14 — der erste Tag ist Tag 1, Vorgang A belegt Tag 1–2.
+</Beispiel>
+
+---
+
+## 06 · Gantt vs. Netzplan — die Prüfungsfrage
+
+| | **Gantt-Diagramm** | **Netzplan** |
+|---|---|---|
+| Hauptstärke | Zeitachse, visueller Überblick | Abhängigkeiten, kritischer Pfad |
+| Zeigt | Dauer, Lage, Parallelität | Reihenfolge, Pufferzeiten, FAZ/SAZ/FEZ/SEZ |
+| Schwäche | Schwer mit vielen Abhängigkeiten | Keine direkte Zeitachse |
+| Typische Verwendung | Stakeholder-Kommunikation, Termin-Übersicht | Detaillierte Projektplanung |
+
+<Tipp titel="Wann nutzt man was?">
+- **Gantt**: zum **Zeigen** und **Kommunizieren** — Kunden, Management, Team-Übersicht. „Wann ist was fertig?"
+- **Netzplan**: zur **Berechnung** und **Analyse** — kritischer Pfad, Pufferzeiten, Optimierungspotenzial. „Wo kann man eingreifen?"
+
+In großen Projekten werden meist **beide** parallel geführt — der Netzplan als Rechenmodell im Hintergrund, das Gantt-Diagramm als Sichtbarmachung nach außen.
+</Tipp>
+
+---
+
+## 07 · Fehlerfallen
+
+<Warnung titel="Vier häufige Klausurfehler beim Gantt-Diagramm">
+1. **Erster Tag falsch nummeriert.** Konvention: erster Projekttag ist Tag 1, nicht Tag 0. Ein 2-Tage-Vorgang am Anfang belegt Tag 1 und Tag 2.
+2. **Abhängigkeiten ignoriert.** Wenn B von A abhängt, muss B **nach** A starten — nicht parallel. Klausurpunkt geht oft genau hier verloren.
+3. **Mehrere Vorgänger nicht beachtet.** Wenn D von B **und** C abhängt: D startet nach dem späteren von beiden. Wer den frühesten nimmt, rechnet falsch.
+4. **Meilensteine als Balken zeichnen.** Meilenstein = Zeitpunkt, keine Dauer. Notation: Raute auf der Zeitachse, kein Balken.
+</Warnung>
+
+---
+
+## 08 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** Zeichne ein Gantt-Diagramm für ein Software-Rollout-Projekt mit folgenden Vorgängen: Bestandsaufnahme (A, 3 Tage), Beschaffung (B, 4 Tage, nach A), Mitarbeiterschulung (C, 2 Tage, parallel zu B, nach A), Installation (D, 5 Tage, nach B), Go-Live (E, 1 Tag, nach D und C). Wann ist Projektende?
+
+**Musterantwort:**
+
+```
+Tag:        1  2  3  4  5  6  7  8  9 10 11 12 13
+A Bestand:  [=====]
+B Beschaff:        [=======]
+C Schulung:        [===]
+D Install:                  [==========]
+E Go-Live:                                       [=]
+```
+
+**Berechnung:**
+- A endet Tag 3
+- B startet Tag 4, dauert 4 Tage → endet Tag 7
+- C startet Tag 4, dauert 2 Tage → endet Tag 5
+- D wartet auf B (Tag 7) → startet Tag 8, dauert 5 Tage → endet Tag 12
+- E wartet auf D und C → spätester ist D (Tag 12) → startet Tag 13, dauert 1 Tag → endet Tag 13
+
+**Projektende: Tag 13.**
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'DIN 69901 — Projektmanagement-Systeme',
+      href: 'https://www.din.de/de/mitwirken/normenausschuesse/nqsz/normen/wdc-beuth:din21:140456093',
+      detail: 'Deutsche Norm für Projektmanagement. Beschreibt Planungstechniken einschließlich Gantt-Diagrammen und Netzplänen.'
+    },
+    {
+      label: 'GPM — Deutsche Gesellschaft für Projektmanagement: Kompetenzbasis',
+      href: 'https://www.gpm-ipma.de/',
+      detail: 'Branchenstandard für Projektmanagement-Methoden in Deutschland.'
+    },
+    {
+      label: 'PMI — A Guide to the Project Management Body of Knowledge (PMBOK)',
+      href: 'https://www.pmi.org/standards/pmbok',
+      detail: 'Internationaler Standard mit detaillierter Beschreibung von Gantt-Charts (Bar Charts).'
+    },
+    {
+      label: 'KMK — Rahmenlehrplan Fachinformatiker',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Verortet Projektmanagement-Werkzeuge in Lernfeld 6.'
+    },
+  ]}
+/>

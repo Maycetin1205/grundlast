@@ -88,6 +88,7 @@ export const lernfelder: Lernfeld[] = [
         title: "Schnittstellen & Peripherie",
         lessons: [
           { slug: "hardware-schnittstellen", title: "Hardware, Schnittstellen & Peripherie auswählen", minutes: 28, importance: 5, exam: true, status: "ready" },
+          { slug: "homeoffice-ergonomie", title: "Homeoffice, Telearbeit & Ergonomie", minutes: 14, importance: 5, exam: true, status: "ready" },
         ],
       },
       {
@@ -151,6 +152,7 @@ export const lernfelder: Lernfeld[] = [
         lessons: [
           { slug: "osi-modell", title: "OSI-Modell – sieben Schichten", minutes: 16, importance: 5, exam: true, status: "ready" },
           { slug: "tcp-udp", title: "TCP vs. UDP", minutes: 8, importance: 5, exam: true, status: "draft" },
+          { slug: "imap-pop3-smtp", title: "E-Mail-Protokolle (IMAP, POP3, SMTP)", minutes: 12, importance: 5, exam: true, status: "ready" },
         ],
       },
       {
@@ -276,6 +278,7 @@ export const lernfelder: Lernfeld[] = [
           { slug: "bedarfsanalyse-feedback", title: "Bedarfsanalyse, Kommunikation & Feedback", minutes: 30, importance: 5, exam: true, status: "ready" },
           { slug: "mitarbeitermotivation-teamphasen-change", title: "Mitarbeitermotivation, Teamphasen und Change", minutes: 28, importance: 5, exam: true, status: "ready" },
           { slug: "schulung-einweisung-key-user", title: "Schulung, Einweisung, Key User & Multiplikatoren", minutes: 24, importance: 5, exam: true, status: "ready" },
+          { slug: "schulz-von-thun", title: "4-Seiten-Modell nach Schulz von Thun", minutes: 14, importance: 5, exam: true, status: "ready" },
         ],
       },
       {
@@ -283,6 +286,7 @@ export const lernfelder: Lernfeld[] = [
         title: "Projektplanung",
         lessons: [
           { slug: "netzplan", title: "Netzplantechnik (FAZ/FEZ/SAZ/SEZ)", minutes: 18, importance: 5, exam: true, status: "draft" },
+          { slug: "gantt-diagramm", title: "Gantt-Diagramm — Balkenplan", minutes: 12, importance: 5, exam: true, status: "ready" },
           { slug: "vorgehensmodelle", title: "Vorgehensmodelle (Wasserfall & Agil)", minutes: 14, importance: 5, exam: true, status: "draft" },
           { slug: "bpmn", title: "BPMN – Prozesse modellieren", minutes: 14, importance: 5, exam: true, status: "draft" },
           { slug: "scrum", title: "Scrum – Rollen, Events, Artefakte", minutes: 14, importance: 4, exam: true, status: "draft" },
@@ -381,6 +385,7 @@ export const lernfelder: Lernfeld[] = [
         title: "Unternehmen & Organisation",
         lessons: [
           { slug: "organisationsformen-leitbild-nachhaltigkeit-esg", title: "Organisationsformen, Leitbild, Nachhaltigkeit & ESG", minutes: 22, importance: 4, exam: true, status: "ready" },
+          { slug: "aufbauorganisation", title: "Aufbauorganisation, Vollmachten & Prokura", minutes: 14, importance: 4, exam: true, status: "ready" },
         ],
       },
     ],
@@ -442,6 +447,7 @@ export const lernfelder: Lernfeld[] = [
         slug: "webdesign",
         title: "Webdesign & Ergonomie",
         lessons: [
+          { slug: "website-statisch-dynamisch", title: "Statische vs. dynamische Webseiten", minutes: 12, importance: 5, exam: true, status: "ready" },
           { slug: "responsive-webdesign", title: "Responsive Webdesign", minutes: 10, importance: 4, exam: true, status: "stub" },
           { slug: "mockup-wireframe", title: "Mockup & Wireframe", minutes: 8, importance: 4, exam: true, status: "stub" },
           { slug: "softwareergonomie", title: "Softwareergonomie & Barrierefreiheit", minutes: 10, importance: 4, exam: true, status: "stub" },

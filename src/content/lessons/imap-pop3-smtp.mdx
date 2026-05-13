@@ -1,0 +1,201 @@
+# IMAP, POP3 und SMTP – E-Mail-Protokolle
+
+<MetaBar
+  lesezeit="12 Minuten"
+  schwierigkeit="Leicht"
+  lernfeld="LF 3 — Clients in Netzwerke einbinden"
+  slug="imap-pop3-smtp"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du die drei wichtigsten E-Mail-Protokolle **IMAP**, **POP3** und **SMTP** sauber voneinander abgrenzen. Du weißt, welches zum **Senden** und welches zum **Empfangen** dient, kennst die typischen **Portnummern** und die sicheren Varianten **IMAPS, POP3S, SMTPS**. Du kannst entscheiden, ob für eine Anwendung IMAP oder POP3 besser passt, und erklärst die Vorteile von IMAP in einer Mehrgeräte-Umgebung.
+
+## 01 · Warum existiert das überhaupt?
+
+E-Mail ist seit 50 Jahren das Rückgrat geschäftlicher Kommunikation. Damit zwei Mailprogramme verschiedener Hersteller zuverlässig miteinander reden können, gibt es **standardisierte Protokolle**. Die wichtigsten drei sind: SMTP zum **Senden**, POP3 und IMAP zum **Empfangen**.
+
+In der Prüfung wird das Thema gerne als **Vergleichs- und Zuordnungsaufgabe** gestellt: „Welches Protokoll ist für Mehrgeräte-Nutzung geeignet?" — „Welche Ports gehören zu welchem Protokoll?" — „Was passiert mit der Mail auf dem Server bei POP3?". Wer den 3-Protokoll-Trick (Senden vs. Empfangen, Kopie vs. Verschieben) verinnerlicht hat, holt sich 3 bis 5 Punkte zuverlässig.
+
+Im Betrieb relevant, weil Mailclient-Konfigurationen auch heute noch routinemäßig zum Support-Alltag gehören — falsche Portnummern, fehlende Verschlüsselung, IMAP vs. POP3-Frage.
+
+<Analogie>
+Stell dir E-Mail wie ein Briefsystem mit Postamt vor. **SMTP** ist der Briefkasten draußen — du wirfst Briefe ein, sie gehen raus. **POP3** ist wie eine Abholbox am Postamt: du holst Briefe ab und nimmst sie mit nach Hause. Was in der Box war, ist danach weg. **IMAP** ist wie ein **Schließfach am Postamt** mit Synchronisation — du gehst hin, schaust deine Briefe an, kannst sie sortieren, aber sie bleiben im Schließfach. Wenn deine Kollegin mit dem gleichen Schlüssel kommt, sieht sie genau den gleichen Stand.
+</Analogie>
+
+---
+
+## 02 · Die drei Protokolle im Überblick
+
+| Protokoll | Aufgabe | Port (unverschlüsselt) | Port (TLS / SSL) |
+|---|---|:-:|:-:|
+| **SMTP** (Simple Mail Transfer Protocol) | Mail **senden** | 25 (Server-zu-Server), 587 (Submission) | 465 (SMTPS, deprecated), 587 (STARTTLS) |
+| **POP3** (Post Office Protocol v3) | Mail **abholen + lokal speichern** | 110 | 995 (POP3S) |
+| **IMAP** (Internet Message Access Protocol) | Mail **auf Server lassen + synchronisieren** | 143 | 993 (IMAPS) |
+
+<Tipp titel="Merkhilfe für die Ports">
+Drei Zahlen reichen: **25 — Senden, 110 — POP3, 143 — IMAP**. Die sicheren Varianten sind alle dreistellig und enden auf 5 (965, 995, 993... fast — Sonderfall SMTPS 465).
+
+Eselsbrücke: *„Senden mit dem Postwagen 2-5, abholen mit POP-110, synchronisieren mit IMAP-143."*
+</Tipp>
+
+---
+
+## 03 · POP3 — Abholen und mitnehmen
+
+POP3 ist das **ältere** der beiden Empfangsprotokolle. Funktionsweise:
+
+<Schritte
+  items={[
+    { titel: '1. Client verbindet sich mit dem Mailserver', text: 'Über Port 110 (unverschlüsselt) oder Port 995 (POP3S, TLS-verschlüsselt).' },
+    { titel: '2. Authentifizierung', text: 'Benutzername und Passwort werden übergeben.' },
+    { titel: '3. Mailliste abrufen', text: 'Der Client lädt eine Liste aller Mails auf dem Server.' },
+    { titel: '4. Mails herunterladen', text: 'Alle (oder neue) Mails werden vollständig auf den lokalen Client kopiert.' },
+    { titel: '5. Mails auf Server löschen', text: 'Standard-Einstellung: Mails werden nach erfolgreichem Download vom Server entfernt. Optional: „auf Server belassen für X Tage".' },
+    { titel: '6. Verbindung trennen', text: 'Der Client arbeitet danach offline mit den lokalen Kopien.' },
+  ]}
+/>
+
+**Typischer Anwendungsfall:** Ein einziges Gerät, langsame oder teure Verbindung, kein Mehrgeräte-Bedarf. Klassisch z. B. eine reine Desktop-Installation für eine Einzelperson.
+
+---
+
+## 04 · IMAP — Synchronisieren und auf Server lassen
+
+IMAP ist das **modernere** Protokoll. Es lässt die Mails standardmäßig **auf dem Server** und synchronisiert nur die Zustände.
+
+| Eigenschaft | Verhalten |
+|---|---|
+| Mail-Speicherort | Server |
+| Synchronisation | bidirektional — gelesen, gelöscht, markiert wird auf Server gespiegelt |
+| Mehrgeräte-Nutzung | nativ unterstützt |
+| Server-Speicher | wächst mit der Mail-Sammlung |
+| Offline-Modus | Cache auf Client, Synchronisation bei Wiederverbindung |
+| Ordnerstruktur | auf Server, gleich auf allen Clients |
+
+**Typischer Anwendungsfall:** Mehrere Geräte (Laptop, Smartphone, Tablet) — alle Zustände bleiben synchron. Heute der **Standard** für nahezu alle professionellen E-Mail-Konten.
+
+---
+
+## 05 · POP3 vs. IMAP — die Klausurfrage
+
+| Kriterium | **POP3** | **IMAP** |
+|---|---|---|
+| Mehrgeräte-Nutzung | schlecht (Mails sind nur auf einem Gerät) | sehr gut |
+| Server-Speicher | gering (Mails werden entfernt) | hoch (Mails bleiben) |
+| Offline-Arbeit | nativ (alles lokal) | mit Cache möglich |
+| Backup | Verantwortung des Clients | Verantwortung des Servers |
+| Bandbreite | nur einmal Download | wiederholte Synchronisation |
+| Ordner / Markierungen synchron | nein | ja |
+
+<Warnung titel="POP3 löscht standardmäßig — die häufigste Support-Frage">
+Wer POP3 nutzt und gleichzeitig auf mehreren Geräten arbeitet, hat ständig Mails „weg" — sie wurden vom ersten Gerät schon abgeholt und gelöscht. Lösung: entweder auf IMAP wechseln oder beim POP3-Client „Auf Server belassen" aktivieren. Mit zweiter Lösung wird der Server-Speicher allerdings nie automatisch geleert.
+</Warnung>
+
+---
+
+## 06 · SMTP — der Versandweg
+
+SMTP ist immer für das **Senden** zuständig. Es gibt zwei Hauptanwendungen:
+
+| Port | Anwendung | Bemerkung |
+|---|---|---|
+| **25** | Server-zu-Server-Mailrelay | Wird im Internet zwischen Mailservern verwendet |
+| **587** | Submission (Mailclient → eigener Mailserver) | Mit STARTTLS-Verschlüsselung empfohlen |
+| **465** | SMTPS | Implizites TLS; gilt als deprecated (RFC 8314), wird aber noch genutzt |
+
+**SMTP-Authentifizierung** (SMTP AUTH) ist im Submission-Port 587 Pflicht, damit nicht jeder über deinen Mailserver versenden kann (Spam-Schutz).
+
+---
+
+## 07 · Verschlüsselung — TLS, STARTTLS, deprecated Wege
+
+Drei Modelle existieren parallel:
+
+- **Implizites TLS** (SMTPS 465, IMAPS 993, POP3S 995): Verbindung ist von Anfang an verschlüsselt.
+- **STARTTLS** (auf Ports 587, 143, 110): Verbindung startet unverschlüsselt, wird per Kommando in eine verschlüsselte umgewandelt.
+- **Unverschlüsselt** (klassisch 25, 110, 143): heute nur noch in Ausnahmefällen vertretbar — z. B. interne, abgeschottete Netze.
+
+In der Praxis: **Submission 587 + STARTTLS** für SMTP, **IMAPS 993** oder **POP3S 995** für Empfang. Alles andere ist veraltet.
+
+---
+
+## 08 · Beispiel: Konfiguration eines Mailclients
+
+<Beispiel titel="Mailclient für ein Firmenkonto einrichten">
+Ein Mitarbeiter soll ein neues Mailkonto auf Laptop und Smartphone einrichten. Die IT gibt folgende Server-Parameter:
+
+| Wert | Eingabe |
+|---|---|
+| Mail-Adresse | max.mustermann@firma.de |
+| Eingangsserver | mail.firma.de · Protokoll **IMAP** · Port **993** · TLS |
+| Ausgangsserver | mail.firma.de · Protokoll **SMTP** · Port **587** · STARTTLS · Authentifizierung wie Eingangsserver |
+| Benutzername | max.mustermann@firma.de |
+| Passwort | (siehe Erstkennwort) |
+
+**Warum IMAP, nicht POP3:** Der Mitarbeiter arbeitet auf zwei Geräten (Laptop und Smartphone). Mit IMAP sieht er auf beiden Geräten denselben Stand — gelesen ist gelesen, gelöscht ist gelöscht.
+
+**Warum Port 587 mit STARTTLS, nicht 25:** Port 25 ist für Server-zu-Server-Verkehr reserviert; viele Provider blockieren ihn für Endgeräte. Port 587 ist der offizielle Submission-Port mit STARTTLS und SMTP-AUTH — der saubere, sichere Weg.
+</Beispiel>
+
+---
+
+## 09 · Fehlerfallen
+
+<Warnung titel="Die fünf häufigsten Konfigurationsfehler">
+1. **POP3 mit Mehrgeräte-Erwartung.** Mail kommt am Laptop an, ist am Smartphone weg. Lösung: IMAP nutzen oder „auf Server belassen" aktivieren.
+2. **Port 25 für Mailclients.** Wird oft vom Provider blockiert; gehört zwischen Mailservern. Mailclients verwenden 587 (Submission).
+3. **Unverschlüsselt arbeiten.** Mailpasswort und Inhalte sind im Klartext im Netz unterwegs. Heute ein Befund in jeder Sicherheitsprüfung.
+4. **SMTP-Port 465 für neue Konfigurationen.** RFC 8314 empfiehlt 587 mit STARTTLS. 465 funktioniert noch, gilt aber als deprecated.
+5. **„Auf Server belassen" ohne Aufräumen.** POP3-Modus mit dieser Option und nie aufräumen — der Speicher läuft voll. Quoten überschritten, Mailannahme blockiert.
+</Warnung>
+
+---
+
+## 10 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** Ein Mitarbeiter wechselt von einer Einzelplatz-Installation auf eine Konfiguration mit Laptop und Smartphone. Bisher hat er POP3 verwendet. Welches Protokoll empfiehlst du jetzt, und warum? Welche Ports werden benötigt?
+
+**Musterantwort:**
+
+**Empfehlung: Umstellung auf IMAP.** Begründung:
+- POP3 lädt Mails standardmäßig vollständig herunter und löscht sie vom Server. Bei Mehrgeräte-Nutzung würde jede Mail nur auf einem Gerät landen.
+- IMAP lässt Mails auf dem Server und synchronisiert Lese-/Markierungs-/Löschstatus zwischen allen Geräten. Damit sehen Laptop und Smartphone immer denselben Stand.
+
+**Benötigte Ports (verschlüsselt):**
+- **Empfang (IMAP über TLS / IMAPS):** Port **993**
+- **Versand (SMTP Submission mit STARTTLS):** Port **587**
+
+Beide Ports verwenden TLS-Verschlüsselung — heute Standard, kein Klartext-Versand mehr.
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'RFC 3501 — Internet Message Access Protocol (IMAP) Version 4rev1',
+      href: 'https://www.rfc-editor.org/rfc/rfc3501',
+      detail: 'Normative Spezifikation von IMAP. Definiert Befehle, Zustandsmodell und Server-Verhalten.'
+    },
+    {
+      label: 'RFC 1939 — Post Office Protocol — Version 3',
+      href: 'https://www.rfc-editor.org/rfc/rfc1939',
+      detail: 'Spezifikation von POP3. Definiert Abholbetrieb mit Standard-Löschung nach Download.'
+    },
+    {
+      label: 'RFC 5321 — Simple Mail Transfer Protocol',
+      href: 'https://www.rfc-editor.org/rfc/rfc5321',
+      detail: 'Aktuelle SMTP-Spezifikation. Definiert Server-zu-Server-Mailrelay und Erweiterungen.'
+    },
+    {
+      label: 'RFC 6409 — Message Submission for Mail (Port 587)',
+      href: 'https://www.rfc-editor.org/rfc/rfc6409',
+      detail: 'Definiert den Submission-Port 587 für die Trennung von Client-Submission und Server-Relay.'
+    },
+    {
+      label: 'RFC 8314 — Cleartext Considered Obsolete',
+      href: 'https://www.rfc-editor.org/rfc/rfc8314',
+      detail: 'Empfehlung zur Verwendung von TLS bei E-Mail-Submission und -Abruf. Erklärt SMTPS 465 als deprecated.'
+    },
+  ]}
+/>

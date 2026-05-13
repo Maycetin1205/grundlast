@@ -1,0 +1,190 @@
+# Statische vs. dynamische Webseiten
+
+<MetaBar
+  lesezeit="12 Minuten"
+  schwierigkeit="Leicht"
+  lernfeld="LF 5 / LF 8 — Webentwicklung"
+  slug="website-statisch-dynamisch"
+/>
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du **statische** und **dynamische** Webseiten klar voneinander abgrenzen und für jede Variante typische **Einsatzgebiete**, **Technologien** und **Vor-/Nachteile** benennen. Du weißt, was **clientseitig** und **serverseitig** bedeutet, kennst typische Server-Programmiersprachen (**PHP, Python, Node.js, Java, Ruby**) und kannst typische Klausurfragen wie *„Warum ist HTML keine Programmiersprache?"* sicher beantworten.
+
+## 01 · Warum existiert das überhaupt?
+
+Das Web war Anfang der 90er rein statisch: jede HTML-Datei wurde fertig auf dem Server abgelegt und 1:1 an den Browser ausgeliefert. Heute sind Webseiten oft **dynamisch** — der Server generiert HTML zur Laufzeit, abhängig von Nutzereingaben, Datenbank-Inhalten und Sitzungsstatus.
+
+In der Prüfung wird das Thema gerne als **Abgrenzung** und **Beispielfrage** gestellt: „Wann nimmt man was?" — „Welche Sprache läuft serverseitig?". Wer die drei Schichten (Frontend, Backend, Datenbank) sauber trennt und HTML/CSS nicht mit JavaScript verwechselt, holt sich hier 4 bis 6 Punkte.
+
+Im Betrieb ist die Unterscheidung wichtig, weil sie die **Infrastrukturkosten** und **Wartungsanforderungen** stark beeinflusst: eine statische Visitenkartenseite kann ein 10-Euro-Hosting jahrelang tragen, ein dynamisches Buchungssystem braucht Server, Datenbank, Skriptsprache, Backup-Strategie.
+
+<Analogie>
+Statische Webseite = vorgedrucktes Plakat: Der Inhalt steht fest, jeder Besucher sieht genau dasselbe Plakat. Druck einmal, hänge auf, fertig. Dynamische Webseite = Bestelltheke mit Speisekarte: jeder Besucher bestellt etwas anderes, und der Mitarbeiter stellt aus den Zutaten in der Küche individuelle Teller zusammen. Mehr Personal, mehr Zutaten, mehr Möglichkeiten — aber auch mehr Aufwand.
+</Analogie>
+
+---
+
+## 02 · Statische Webseiten
+
+| Eigenschaft | Beschreibung |
+|---|---|
+| **Inhalt** | Vor der Auslieferung fertig erstellt, in HTML-Dateien gespeichert |
+| **Server-Rolle** | Liefert HTML-Datei unverändert aus |
+| **Reaktion auf Nutzer** | gleich für alle Besucher |
+| **Datenbank** | nicht notwendig |
+| **Technologien** | HTML, CSS, JavaScript (für Verhalten im Browser) |
+| **Anpassung** | Datei ändern, neu hochladen |
+| **Typischer Einsatz** | Visitenkarten-Seite, Dokumentation, Landing Page, Portfolio |
+
+### Vor- und Nachteile
+
+| Vorteile | Nachteile |
+|---|---|
+| Sehr schnelle Auslieferung | Inhalt für alle Besucher gleich |
+| Niedrige Hosting-Kosten | Keine Personalisierung |
+| Sicher (kein Server-Code = wenig Angriffsfläche) | Keine Nutzereingaben verarbeitbar (außer per externem Dienst) |
+| Einfach in der Versionsverwaltung (Git) | Inhaltsänderung erfordert technischen Zugriff |
+
+---
+
+## 03 · Dynamische Webseiten
+
+| Eigenschaft | Beschreibung |
+|---|---|
+| **Inhalt** | Wird zur Laufzeit auf dem Server zusammengestellt |
+| **Server-Rolle** | Führt Skriptsprache aus, fragt Datenbank ab, baut HTML |
+| **Reaktion auf Nutzer** | personalisiert: Login-Status, Sprache, Standort, Warenkorb |
+| **Datenbank** | typischerweise Pflicht (MySQL, PostgreSQL, MongoDB) |
+| **Technologien** | HTML/CSS (Ausgabe) + serverseitige Sprache + Datenbank |
+| **Anpassung** | Inhalt über Backend / CMS, ohne Code-Änderung möglich |
+| **Typischer Einsatz** | Online-Shop, Ticketsystem, Forum, Blog mit Admin-Backend |
+
+### Vor- und Nachteile
+
+| Vorteile | Nachteile |
+|---|---|
+| Personalisierte Inhalte | Höhere Komplexität |
+| Datenbank-Integration | Höhere Hosting-Anforderungen |
+| Inhaltspflege ohne Code | Größere Angriffsfläche (SQL-Injection, XSS) |
+| Skalierbar auf große Inhaltsmengen | Höhere Wartungskosten |
+| Funktionen wie Login, Bestellung, Suche | Performance-Optimierung nötig |
+
+---
+
+## 04 · Die drei Schichten — Frontend, Backend, Datenbank
+
+| Schicht | Läuft wo | Sprachen / Technologien | Aufgabe |
+|---|---|---|---|
+| **Frontend** | Browser des Nutzers | HTML, CSS, **JavaScript** | Darstellung, Interaktion im Client |
+| **Backend** | Webserver | PHP, Python, Java, **Node.js**, Ruby, C# / ASP.NET | Logik, Datenverarbeitung |
+| **Datenbank** | DB-Server | SQL (MySQL, PostgreSQL) oder NoSQL (MongoDB) | Speicherung, Abfrage |
+
+<Tipp titel="HTML und CSS sind KEINE Programmiersprachen">
+Häufige Klausurfalle. HTML ist eine **Auszeichnungssprache** (Markup) — sie beschreibt Struktur, kennt aber keine Schleifen, Variablen oder Bedingungen. CSS ist eine **Stylesheet-Sprache** für Aussehen.
+
+**Programmiersprachen** im Web-Kontext sind: **JavaScript** (Browser), **PHP, Python, Java, Ruby, C#, Node.js** (Server).
+</Tipp>
+
+---
+
+## 05 · Typische Server-Sprachen
+
+| Sprache | Typischer Einsatz | Bekannte Frameworks |
+|---|---|---|
+| **PHP** | klassische CMS, Shops | WordPress, Drupal, Laravel, Symfony |
+| **Python** | Data, ML, moderne Webanwendungen | Django, Flask, FastAPI |
+| **JavaScript / Node.js** | Echtzeit-Anwendungen, APIs | Express, NestJS, Next.js |
+| **Java (EE / Spring)** | Unternehmenslogik, Banken | Spring Boot, Jakarta EE |
+| **C# / ASP.NET** | Microsoft-Stack | ASP.NET Core, Blazor |
+| **Ruby** | Startup-Web | Ruby on Rails |
+| **Go** | hochperformante Services | Gin, Echo |
+
+---
+
+## 06 · Vorgehen: Auswahl Statisch vs. Dynamisch
+
+<Schritte
+  items={[
+    { titel: '1. Inhaltsfrage', text: 'Ist der Inhalt für alle gleich oder personalisiert? Gleich → statisch. Personalisiert → dynamisch.' },
+    { titel: '2. Eingaben verarbeiten?', text: 'Sollen Nutzer Daten eingeben (Login, Bestellung, Suche)? Ja → dynamisch.' },
+    { titel: '3. Inhaltsmenge', text: 'Wenige Seiten (<50)? Statisch reicht. Viele dynamisch generierte Einträge (Produkte, Beiträge)? Dynamisch.' },
+    { titel: '4. Pflegerollen', text: 'Wer pflegt Inhalte? Entwickler → statisch via Git. Nicht-Techniker → dynamisch via CMS-Backend.' },
+    { titel: '5. Budget und Skalierung', text: 'Geringes Budget, wenig Traffic → statisch. Hoher Traffic, viele Daten → dynamisch mit guter Architektur.' },
+    { titel: '6. Hybridform prüfen', text: 'Moderne Lösung: Static Site Generators (z.B. Hugo, Astro, Next.js) — statische Auslieferung, dynamische Generation beim Build. Beste aus beiden Welten.' },
+  ]}
+/>
+
+---
+
+## 07 · Beispiel
+
+<Beispiel titel="Drei reale Szenarien">
+
+**Szenario A — IT-Dienstleister-Visitenkarte:**
+Eine Firma will eine Webseite mit 5 Unterseiten: Startseite, Leistungen, Team, Referenzen, Kontakt. Inhalt ändert sich vielleicht 4× pro Jahr.
+→ **Statisch.** HTML/CSS + ein bisschen JavaScript für das Burger-Menü. Hosting für 5 EUR/Monat. Bei Updates Datei ändern, hochladen.
+
+**Szenario B — Ticketsystem für Hotline:**
+Mitarbeiter und Kunden loggen sich ein, Tickets werden angelegt, kommentiert, eskaliert. Mehrere Hundert Tickets pro Tag.
+→ **Dynamisch.** Backend in PHP oder Python, Datenbank in PostgreSQL, Frontend mit modernem JavaScript-Framework. Eigener Server oder Cloud-Infrastruktur, regelmäßige Wartung.
+
+**Szenario C — Blog einer Beraterin:**
+Sie schreibt 1× pro Woche einen Artikel, will keine Code-Kenntnisse zum Veröffentlichen brauchen, aber auch nicht viel Server-Aufwand.
+→ **Statisch mit Headless CMS** oder **Static Site Generator** (Hugo, Astro). Artikel werden im CMS getippt, beim Speichern automatisch zu statischem HTML gebaut, anschließend ausgeliefert. Sicherheit hoch, Kosten niedrig, Schreibkomfort hoch.
+</Beispiel>
+
+---
+
+## 08 · Fehlerfallen
+
+<Warnung titel="Die fünf häufigsten Klausurfehler">
+1. **HTML / CSS als Programmiersprachen bezeichnen.** HTML = Auszeichnungssprache, CSS = Stylesheet-Sprache. Beides ist KEINE Programmiersprache. Programmiersprachen haben Variablen, Bedingungen, Schleifen.
+2. **JavaScript dem Server zuordnen.** JavaScript läuft klassischerweise **im Browser** (Frontend). Mit **Node.js** kann es auch serverseitig laufen — beides ist möglich, aber die Klausur fragt oft nach der **klassischen** Zuordnung.
+3. **Dynamisch = JavaScript.** Falsche Gleichsetzung. „Dynamisch" bedeutet Server-Generierung des HTML zur Laufzeit. JavaScript im Browser allein macht eine Seite nicht dynamisch im klassischen Sinn.
+4. **Datenbank zwingend für statische Seiten.** Statische Seiten brauchen KEINE Datenbank. Dynamische fast immer.
+5. **Cookie- / Login-Funktion bei statisch erwarten.** Eine rein statische Seite kennt keinen Login-Status und keine personalisierten Inhalte. Wenn das gefordert ist, geht's nicht ohne dynamische Komponente.
+</Warnung>
+
+---
+
+## 09 · Typische Klausuraufgabe
+
+> **Aufgabe (Klausur-Stil):** (a) Erkläre den Unterschied zwischen einer statischen und einer dynamischen Webseite in jeweils einem Satz. (b) Nenne drei serverseitige Programmiersprachen. (c) Welcher Vorteil ergibt sich aus einer rein statischen Lösung gegenüber einer dynamischen?
+
+**Musterantwort:**
+
+**(a)**
+- **Statisch:** Inhalte werden vor der Auslieferung fertig erstellt und für jeden Besucher unverändert ausgeliefert.
+- **Dynamisch:** Inhalte werden zur Laufzeit auf dem Server abhängig von Nutzereingaben oder Datenbankinhalten generiert.
+
+**(b)** Drei serverseitige Programmiersprachen: **PHP, Python, Java** (alternativ auch Node.js, Ruby, C#). HTML und CSS sind keine Programmiersprachen.
+
+**(c)** Vorteile statisch: **schnellere Auslieferung** (kein Server-Code ausgeführt), **geringere Angriffsfläche** (keine SQL-Injection, kein Server-Code), **deutlich niedrigere Hosting-Kosten** (einfacher Webspace genügt).
+
+---
+
+<Quellen
+  quellen={[
+    {
+      label: 'MDN Web Docs — HTML, CSS, JavaScript',
+      href: 'https://developer.mozilla.org/de/docs/Web',
+      detail: 'Mozilla-Referenzdokumentation für Web-Technologien. Erklärt Trennung von Auszeichnungs-, Stylesheet- und Programmiersprache.'
+    },
+    {
+      label: 'W3C — HTML Living Standard',
+      href: 'https://html.spec.whatwg.org/',
+      detail: 'Aktuelle Spezifikation von HTML.'
+    },
+    {
+      label: 'IETF / W3C — HTTP/1.1',
+      href: 'https://www.rfc-editor.org/rfc/rfc9110',
+      detail: 'Aktuelle HTTP-Spezifikation. Grundlage für Server-Client-Kommunikation, statisch wie dynamisch.'
+    },
+    {
+      label: 'KMK — Rahmenlehrplan Fachinformatiker',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Verortet Webentwicklung in Lernfeld 5 und 8.'
+    },
+  ]}
+/>
