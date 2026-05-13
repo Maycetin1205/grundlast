@@ -6,11 +6,23 @@ const strict = process.argv.includes('--strict')
 const verbose = process.argv.includes('--verbose')
 
 const paths = {
-  toc: path.join(root, 'src/lib/toc.ts'),
+  tocDataDir: path.join(root, 'src/lib/toc/data'),
   sources: path.join(root, 'src/lib/sources.ts'),
   glossar: path.join(root, 'src/stores/glossarStore.ts'),
   reviewLog: path.join(root, 'REVIEW_LOG.md'),
   lessonsDir: path.join(root, 'src/content/lessons'),
+}
+
+function readTocCombined(dir) {
+  if (!existsSync(dir)) {
+    errors.push(`Pflichtordner fehlt: ${path.relative(root, dir)}`)
+    return ''
+  }
+
+  return readdirSync(dir)
+    .filter((file) => file.endsWith('.ts') && file !== 'index.ts')
+    .map((file) => readFileSync(path.join(dir, file), 'utf8'))
+    .join('\n')
 }
 
 const errors = []
@@ -152,7 +164,7 @@ function report(title, items, { limit = Infinity } = {}) {
   }
 }
 
-const tocText = readRequired(paths.toc)
+const tocText = readTocCombined(paths.tocDataDir)
 const sourcesText = readRequired(paths.sources)
 const glossarText = readRequired(paths.glossar)
 const reviewLogText = readRequired(paths.reviewLog)
