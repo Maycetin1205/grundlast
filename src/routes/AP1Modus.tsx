@@ -80,11 +80,11 @@ export default function AP1Modus() {
           Filtere alles auf <em>prüfungsrelevant</em>.
         </h1>
         <p className="hero-sub" style={{ maxWidth: '52ch' }}>
-          Der AP1-Modus zeigt nur ausgearbeitete Kapitel mit Pruefungsbezug. Geplante
+          Der AP1-Modus zeigt nur ausgearbeitete Kapitel mit Prüfungsbezug. Geplante
           Stubs bleiben ausgeblendet, damit beim Lernen nichts unfertig wirkt.
         </p>
         <div className="hero-cta" style={{ marginTop: 24 }}>
-          <Link to="/pruefen" className="btn btn-accent no-underline">
+          <Link to="/prüfen" className="btn btn-accent no-underline">
             Klausur-Simulation
           </Link>
         </div>

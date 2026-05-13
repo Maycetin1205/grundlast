@@ -17,7 +17,7 @@ export function getLessonReview(lessonSlug: string): LessonReview {
       lessonSlug,
       status: 'unchecked',
       notes: [
-        'Inhalt ausgearbeitet, aber noch nicht formal fuer Lehrer-/IHK-Weitergabe freigegeben.',
+        'Inhalt ausgearbeitet, aber noch nicht formal für Lehrer-/IHK-Weitergabe freigegeben.',
       ],
     }
   )

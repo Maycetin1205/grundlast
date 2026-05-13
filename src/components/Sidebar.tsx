@@ -399,8 +399,8 @@ export default function Sidebar({ className, onNavigate, onSearchOpen }: Sidebar
           <NavItem to="/ap1" icon={Target} onNavigate={onNavigate}>
             AP1-Modus
           </NavItem>
-          <NavItem to="/pruefen" icon={ClipboardCheck} onNavigate={onNavigate}>
-            Pruefen (geplant)
+          <NavItem to="/prüfen" icon={ClipboardCheck} onNavigate={onNavigate}>
+            Prüfen (geplant)
           </NavItem>
           <NavItem to="/werkzeuge" icon={Wrench} onNavigate={onNavigate}>
             Werkzeuge (geplant)

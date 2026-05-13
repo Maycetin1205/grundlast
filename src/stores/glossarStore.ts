@@ -570,7 +570,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'kaufvertrag',
     begriff: 'Kaufvertrag',
-    kurzdefinition: 'Vertrag über Uebergabe, Eigentumsverschaffung und Zahlung des Kaufpreises.',
+    kurzdefinition: 'Vertrag über Übergabe, Eigentumsverschaffung und Zahlung des Kaufpreises.',
     definition: [
       'Beim Kaufvertrag verpflichtet sich der Verkaeufer, die Sache zu übergeben und dem Kaeufer Eigentum zu verschaffen. Der Kaeufer zahlt den vereinbarten Kaufpreis und nimmt die Sache ab.',
       'In AP1-Aufgaben erkennst du ihn an Lieferung, Kaufpreis, Eigentumsübergang und einer konkreten Sache. Das unterscheidet ihn von Dienstvertrag und Werkvertrag.',
@@ -726,7 +726,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'fremdkapital',
     begriff: 'Fremdkapital',
-    kurzdefinition: 'Kapital von Glaeubigern, das vertraglich zurueckzuzahlen ist und haeufig Zinsen kostet.',
+    kurzdefinition: 'Kapital von Glaeubigern, das vertraglich zurueckzuzahlen ist und häufig Zinsen kostet.',
     definition: [
       'Fremdkapital umfasst Schulden und Verpflichtungen gegenüber Glaeubigern, zum Beispiel Bankdarlehen, Lieferantenkredite, Anleihen oder sonstige Verbindlichkeiten.',
       'Es kann Investitionen ermöglichen, erhoeht aber feste Zahlungsverpflichtungen und verschlechtert bei zu hohem Anteil die finanzielle Beweglichkeit.',
@@ -739,7 +739,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'darlehen',
     begriff: 'Darlehen',
-    kurzdefinition: 'Geldbetrag, der vertraglich bereitgestellt und spaeter zurueckgezahlt wird.',
+    kurzdefinition: 'Geldbetrag, der vertraglich bereitgestellt und später zurueckgezahlt wird.',
     definition: [
       'Bei einem Darlehen stellt der Darlehensgeber einen Geldbetrag zur Verfuegung. Der Darlehensnehmer schuldet Rueckzahlung und bei Vereinbarung Zinsen.',
       'In AP1-Aufgaben ist ein Darlehen ein typisches Beispiel für Fremdfinanzierung. Wichtig sind Darlehensbetrag, Zinssatz, Laufzeit und Tilgung.',
@@ -752,7 +752,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'zins',
     begriff: 'Zins',
-    kurzdefinition: 'Preis für die zeitweise Ueberlassung von Kapital.',
+    kurzdefinition: 'Preis für die zeitweise Überlassung von Kapital.',
     definition: [
       'Zins ist das Entgelt dafür, dass Kapital für eine bestimmte Zeit genutzt werden darf. Bei Darlehen wird er meist als Prozentsatz pro Jahr angegeben.',
       'In einfachen AP1-Rechnungen gilt oft: Jahreszins = Darlehensbetrag x Zinssatz. Bei Monats- oder Laufzeitangaben müssen die Einheiten angepasst werden.',
@@ -1129,7 +1129,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'aufbewahrungsfrist',
     begriff: 'Aufbewahrungsfrist',
-    kurzdefinition: 'Zeitraum, in dem Geschaeftsunterlagen geordnet und lesbar aufzubewahren sind.',
+    kurzdefinition: 'Zeitraum, in dem Geschäftsunterlagen geordnet und lesbar aufzubewahren sind.',
     definition: [
       'Die Aufbewahrungsfrist legt fest, wie lange ein Unternehmen Unterlagen wie Rechnungen, Buchungsbelege, Handelsbriefe oder Jahresabschluesse geordnet aufbewahren muss.',
       'Die Frist beginnt in der Regel mit dem Schluss des Kalenderjahres. Rechnungen und Buchungsbelege sind aktuell regelmaessig 8 Jahre aufzubewahren, Handels- und Geschaeftsbriefe 6 Jahre, Jahresabschluesse und Buecher 10 Jahre.',
@@ -1142,7 +1142,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'buchungsbeleg',
     begriff: 'Buchungsbeleg',
-    kurzdefinition: 'Nachweis für einen Geschaeftsvorfall, der Grundlage einer Buchung ist.',
+    kurzdefinition: 'Nachweis für einen Geschäftsvorfall, der Grundlage einer Buchung ist.',
     definition: [
       'Ein Buchungsbeleg dokumentiert einen Geschaeftsvorfall so, dass er in der Buchhaltung nachvollziehbar gebucht werden kann.',
       'Typische Buchungsbelege sind Eingangsrechnungen, Ausgangsrechnungen, Quittungen, Zahlungsbelege oder Gutschriften. Für sie gilt aktuell regelmaessig eine Aufbewahrungsfrist von 8 Jahren.',
@@ -1441,7 +1441,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'cpu',
     begriff: 'CPU',
-    kurzdefinition: 'Hauptprozessor eines Computers; fuehrt Programmbefehle und Berechnungen aus.',
+    kurzdefinition: 'Hauptprozessor eines Computers; führt Programmbefehle und Berechnungen aus.',
     definition: [
       'CPU steht für Central Processing Unit. Der Prozessor liest Befehle aus dem Arbeitsspeicher, entschluesselt sie und fuehrt sie aus. Die wichtigsten Kennwerte sind Taktfrequenz (GHz), Anzahl der Kerne und Threads sowie die Cache-Groessen (L1, L2, L3).',
       'Mehr Kerne helfen nur bei parallelisierbaren Aufgaben. Ein einzelner Rechenstrang wird ausschliesslich durch hoeheren Takt oder bessere Architektur schneller, nicht durch zusaetzliche Kerne.',
@@ -1674,7 +1674,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   },
   {
     id: 'verfuegbarkeit',
-    begriff: 'Verfuegbarkeit',
+    begriff: 'Verfügbarkeit',
     kurzdefinition: 'Schutzziel: Systeme und Daten sind erreichbar, wenn sie gebraucht werden.',
     definition: [
       'Verfuegbarkeit beschreibt, dass autorisierte Nutzer einen Dienst zu einem festgelegten Zeitpunkt mit einer festgelegten Qualitaet nutzen können. Stromausfall, Hardwaredefekt, DDoS oder Ransomware können die Verfuegbarkeit kappen.',
@@ -1727,7 +1727,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'schutzbedarfsfeststellung',
     begriff: 'Schutzbedarfsfeststellung',
-    kurzdefinition: 'Vorgang, bei dem für jeden Geschaeftsprozess oder jedes System der Schutzbedarf je Schutzziel ermittelt wird.',
+    kurzdefinition: 'Vorgang, bei dem für jeden Geschäftsprozess oder jedes System der Schutzbedarf je Schutzziel ermittelt wird.',
     definition: [
       'Die Schutzbedarfsfeststellung beschreibt zunaechst Geschaeftsprozesse und die zugehoerigen Informationen, ordnet ihnen Anwendungen und IT-Systeme zu und bewertet anschliessend Schadensszenarien je Schutzziel auf normal, hoch oder sehr hoch.',
       'Die Bewertung folgt im IT-Grundschutz dem Maximumprinzip: ein abhaengiges System übernimmt den hoechsten Schutzbedarf der Prozesse oder Daten, die es verarbeitet.',
@@ -1779,7 +1779,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'isms',
     begriff: 'ISMS',
-    kurzdefinition: 'Information Security Management System; Regelwerk für Planung, Umsetzung, Pruefung und Verbesserung der Informationssicherheit.',
+    kurzdefinition: 'Information Security Management System; Regelwerk für Planung, Umsetzung, Prüfung und Verbesserung der Informationssicherheit.',
     definition: [
       'Ein ISMS ist kein Produkt, sondern ein dokumentiertes System aus Leitlinien, Rollen, Prozessen und Massnahmen. Es legt fest, wer für Informationssicherheit verantwortlich ist, wie Risiken bewertet werden und wie auf Vorfaelle reagiert wird.',
       'Internationaler Massstab für Anforderungen ist ISO/IEC 27001, in Deutschland zusaetzlich der BSI-Standard 200-1 mit der IT-Grundschutz-Methodik 200-2 und der Risikoanalyse 200-3.',
@@ -1837,20 +1837,20 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'In AP1-Aufgaben rechnest du mit drei verwandten Formeln: Zeit = Datenmenge / Datenrate, Datenrate = Datenmenge / Zeit und Datenmenge = Datenrate * Zeit. Wer die Einheiten vorher in eine gemeinsame Basis bringt (beides in Bit oder beides in Byte), liegt sicher.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
   {
     id: 'bandbreite',
     begriff: 'Bandbreite',
-    kurzdefinition: 'Die Bandbreite ist die theoretisch maximale Datenrate eines Uebertragungswegs.',
+    kurzdefinition: 'Die Bandbreite ist die theoretisch maximale Datenrate eines Übertragungswegs.',
     definition: [
       'Bandbreite stammt urspruenglich aus der Nachrichtentechnik und beschreibt die Breite des Frequenzbereichs einer Leitung in Hertz. In der IT wird der Begriff lose mit der theoretischen Maximaldatenrate gleichgesetzt - zum Beispiel 100 Mbit/s bei einer Fast-Ethernet-Leitung.',
       'Die tatsaechlich nutzbare Datenrate (Durchsatz) liegt fast immer unter der Bandbreite, weil Header, Protokolle, Wiederholungen und Geräte-Latenzen Anteile abziehen. In Pruefungsaufgaben kommen typische Brutto-Netto-Annahmen wie 80 Prozent vor.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -1863,20 +1863,20 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'Bandbreite und Latenz sind unabhaengig voneinander. Eine Satellitenleitung kann Hunderte Mbit/s liefern und trotzdem 600 ms Verzoegerung haben - was für Videokonferenzen oder Online-Spiele schmerzhaft ist, für einen Datei-Download aber kaum stoert.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
   {
     id: 'durchsatz',
     begriff: 'Durchsatz',
-    kurzdefinition: 'Durchsatz ist die effektiv erreichte Datenrate auf einem Uebertragungsweg.',
+    kurzdefinition: 'Durchsatz ist die effektiv erreichte Datenrate auf einem Übertragungsweg.',
     definition: [
       'Der Durchsatz (Throughput) ist das, was nach Abzug von Overhead, Latenz, Wiederholungen und Endgeraete-Bremsen tatsaechlich beim Empfaenger ankommt. Er liegt immer unter der Bandbreite und wird oft brutto/netto unterschieden.',
       'Bei Ethernet rechnet man typisch mit ca. 95 Prozent Effizienz, bei TCP über WAN deutlich darunter, bei WLAN je nach Standard, Stoerumgebung und Geräteanzahl mit 30 bis 70 Prozent. Pruefungsaufgaben geben den Faktor meist explizit an.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -1889,7 +1889,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'In Aufgabentexten steht oft 1:1 - also gleiche DPI in horizontaler und vertikaler Richtung. Streng genommen gibt es zwei Werte (z. B. 600 x 300 dpi). PPI (Pixel per Inch) wird im Bildschirmkontext genutzt und ist für Pruefungsaufgaben zu DPI fast deckungsgleich.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -1902,7 +1902,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'Wichtig für die Rechnung: Farbtiefe wird in Bit pro Pixel angegeben. Wer 24 Bit faelschlich als 24 Byte verarbeitet, multipliziert mit dem Faktor 8 zu viel. Erst Pixelanzahl mal Farbtiefe ergibt Bits, dann durch 8 für Bytes.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -1915,7 +1915,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'In AP1-Aufgaben heißt Komprimierung auf 50 Prozent meist: Originalgroesse mal 0,5. Das ist kein absoluter Abzug von 50 Bytes, sondern ein Faktor. Welche Verfahren in der Praxis welche Faktoren erreichen, regeln Normen wie ISO/IEC 10918 (JPEG) oder ITU-T H.264.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -1928,7 +1928,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'Bitraten gibt es in zwei Varianten: Konstant (CBR) liefert eine gleichbleibende Datenrate und ist gut planbar. Variabel (VBR) passt die Datenrate dem Inhalt an - ruhige Szenen brauchen weniger, actionreiche mehr Bits.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -1941,7 +1941,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'In Pruefungsaufgaben werden Binaerpraefixe oft explizit genannt - etwa wenn ein Bild in MiB statt MB ausgedrueckt werden soll. Wer dann mit 1000 statt 1024 teilt, erhaelt ein systematisch zu großes Ergebnis.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -1954,7 +1954,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
       'In Pruefungsaufgaben gilt: Wenn nichts anderes angegeben ist, KB/MB/GB als dezimal lesen. Bei IHK-Aufgaben mit Festplattenkapazitaet, Datenraten oder Mobilfunk-Tarifen sind Dezimalpraefixe der Standard.',
     ],
     kapitel: {
-      titel: 'Datenmengen, Scan & Uebertragung - komplett rechnen',
+      titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
       href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
     },
   },
@@ -2130,7 +2130,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'schleife',
     begriff: 'Schleife',
-    kurzdefinition: 'Eine Schleife ist eine Kontrollstruktur, die denselben Block mehrfach ausfuehrt.',
+    kurzdefinition: 'Eine Schleife ist eine Kontrollstruktur, die denselben Block mehrfach ausführt.',
     definition: [
       'Schleifen arbeiten mit einer Bedingung oder einem Zaehler. FOR eignet sich für bekannte Durchlaufzahlen, WHILE für Wiederholung solange eine Bedingung gilt, REPEAT-UNTIL für mindestens einen Durchlauf.',
       'Typische Fehler sind Off-by-One-Grenzen, fehlende Aktualisierung des Zaehlerwerts und Schleifenbedingungen, die nie falsch werden.',
@@ -2182,7 +2182,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'schreibtischtest',
     begriff: 'Schreibtischtest',
-    kurzdefinition: 'Ein Schreibtischtest fuehrt Pseudocode von Hand Zeile für Zeile aus.',
+    kurzdefinition: 'Ein Schreibtischtest führt Pseudocode von Hand Zeile für Zeile aus.',
     definition: [
       'Beim Schreibtischtest spielst du Computer: Du liest jede Anweisung, pruefst Bedingungen, fuehrst den passenden Zweig aus und schreibst neue Variablenwerte in eine Trace-Tabelle.',
       'Diese Methode findet Grenzfehler, falsche Initialisierung und verwechselt Zuweisung mit Vergleich. In der AP1 ist sie eine Standardform für Pseudocode-Aufgaben.',
@@ -2572,7 +2572,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'adjourning',
     begriff: 'Adjourning',
-    kurzdefinition: 'Abschlussphase eines Teams oder Projekts mit Uebergabe, Rueckblick und Aufloesung.',
+    kurzdefinition: 'Abschlussphase eines Teams oder Projekts mit Übergabe, Rueckblick und Aufloesung.',
     definition: [
       'Adjourning beschreibt den Abschluss: Ergebnisse übergeben, Wissen sichern, Lessons Learned dokumentieren und Leistung anerkennen.',
       'In IT-Projekten ist diese Phase wichtig, damit Betrieb, Support und Dokumentation nicht nach Projektende abbrechen.',
@@ -2624,7 +2624,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'key-user',
     begriff: 'Key User',
-    kurzdefinition: 'Praxisnahe Schluesselanwender, die frueh testen, Feedback geben und andere bei der Einfuehrung unterstuetzen.',
+    kurzdefinition: 'Praxisnahe Schlüsselanwender, die frueh testen, Feedback geben und andere bei der Einfuehrung unterstützen.',
     definition: [
       'Key User verbinden Fachbereich und Projektteam. Sie kennen den Arbeitsalltag, testen neue Loesungen frueh und können typische Fragen aus der Praxis beantworten.',
       'Bei IT-Einfuehrungen sind Key User wichtige Multiplikatoren, ersetzen aber keine strukturierte Schulung und keinen Supportprozess.',
@@ -2767,7 +2767,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'unternehmenssoftware',
     begriff: 'Unternehmenssoftware',
-    kurzdefinition: 'Unternehmenssoftware unterstuetzt betriebliche Aufgaben und Geschaeftsprozesse.',
+    kurzdefinition: 'Unternehmenssoftware unterstützt betriebliche Aufgaben und Geschäftsprozesse.',
     definition: [
       'Unternehmenssoftware umfasst Anwendungen, die betriebliche Prozesse unterstuetzen, etwa Kundenbetreuung, Warenwirtschaft, Dokumentenablage, Rechnungswesen, Personal oder Content-Pflege.',
       'In AP1-Aufgaben geht es meist darum, Systemklassen anhand von Zweck, Daten und Prozess zu unterscheiden, nicht darum, einen bestimmten Hersteller auswendig zu kennen.',
@@ -2780,7 +2780,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'schnittstelle',
     begriff: 'Schnittstelle',
-    kurzdefinition: 'Eine Schnittstelle ist ein definierter Uebergang für den Datenaustausch zwischen Systemen.',
+    kurzdefinition: 'Eine Schnittstelle ist ein definierter Übergang für den Datenaustausch zwischen Systemen.',
     definition: [
       'Eine Schnittstelle legt fest, welche Daten Systeme austauschen, in welchem Format sie übertragen werden und wie Fehler behandelt werden. Beispiele sind Kundennummern, Auftraege, Rechnungen, Dokument-IDs oder Statusinformationen.',
       'Pruefungsrelevant: Schnittstellen reduzieren doppelte Datenerfassung, brauchen aber saubere Datenfelder, Verantwortlichkeiten, Berechtigungen und Testfaelle.',
@@ -2793,7 +2793,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'medienbruch',
     begriff: 'Medienbruch',
-    kurzdefinition: 'Ein Medienbruch unterbricht einen digitalen Prozess, oft durch manuelle Uebertragung zwischen Systemen oder Medien.',
+    kurzdefinition: 'Ein Medienbruch unterbricht einen digitalen Prozess, oft durch manuelle Übertragung zwischen Systemen oder Medien.',
     definition: [
       'Ein Medienbruch entsteht, wenn Informationen nicht durchgaengig digital weiterverarbeitet werden, sondern zum Beispiel aus E-Mail, Papier oder Excel manuell in ein anderes System übertragen werden.',
       'Typische Folgen sind Fehler, Zeitverlust, Doppelarbeit und widerspruechliche Datenstaende. In Aufgaben ist eine Schnittstelle oft eine passende Gegenmassnahme.',
@@ -2819,7 +2819,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'verschluesselung',
     begriff: 'Verschluesselung',
-    kurzdefinition: 'Verschluesselung macht Klartext mit einem Schluessel zu Chiffretext und ist mit passendem Schluessel umkehrbar.',
+    kurzdefinition: 'Verschluesselung macht Klartext mit einem Schlüssel zu Chiffretext und ist mit passendem Schlüssel umkehrbar.',
     definition: [
       'Verschluesselung schuetzt Vertraulichkeit: Unbefugte sollen den Inhalt nicht lesen können, auch wenn sie die Daten abfangen oder einen Datentraeger entwenden.',
       'Sie ist etwas anderes als Hashing und Signieren. Verschluesselung ist umkehrbar, Hashing ist eine Einwegfunktion, und Signaturen beweisen Echtheit und Unveraendertheit.',
@@ -2832,7 +2832,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'symmetrische-verschluesselung',
     begriff: 'Symmetrische Verschluesselung',
-    kurzdefinition: 'Ein gemeinsamer geheimer Schluessel wird für Verschluesselung und Entschluesselung genutzt.',
+    kurzdefinition: 'Ein gemeinsamer geheimer Schlüssel wird für Verschluesselung und Entschluesselung genutzt.',
     definition: [
       'Symmetrische Verfahren wie AES sind schnell und deshalb für große Datenmengen geeignet, etwa Festplatten, Backups oder die Nutzdaten einer TLS-Verbindung.',
       'Das zentrale Problem ist die sichere Schluesselverteilung: Beide Parteien brauchen dasselbe Geheimnis, ohne dass es unterwegs abgefangen wird.',
@@ -2845,7 +2845,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'asymmetrische-verschluesselung',
     begriff: 'Asymmetrische Verschluesselung',
-    kurzdefinition: 'Public Key und Private Key bilden ein Schluesselpaar mit getrennten Rollen.',
+    kurzdefinition: 'Public Key und Private Key bilden ein Schlüsselpaar mit getrennten Rollen.',
     definition: [
       'Der Public Key darf verteilt werden, der Private Key bleibt geheim. Was für einen Empfaenger mit dessen Public Key verschluesselt wird, kann nur mit dem passenden Private Key entschluesselt werden.',
       'Asymmetrische Verfahren sind rechenintensiver als symmetrische Verfahren. In der Praxis werden sie daher oft für Schluesselaustausch, Zertifikate und Signaturen eingesetzt.',
@@ -2962,7 +2962,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'pki',
     begriff: 'Public Key Infrastructure',
-    kurzdefinition: 'Gesamtsystem aus CAs, Zertifikaten, Schluesseln, Widerruf und Regeln zur Vertrauenspruefung.',
+    kurzdefinition: 'Gesamtsystem aus CAs, Zertifikaten, Schlüsseln, Widerruf und Regeln zur Vertrauenspruefung.',
     definition: [
       'Eine PKI sorgt dafür, dass Public Keys nicht nur mathematisch existieren, sondern vertrauenswuerdig Identitaeten zugeordnet werden können.',
       'Dazu gehören Root- und Intermediate-CAs, Zertifikatsketten, CRL oder OCSP für Widerruf sowie Regeln für Ausstellung und Schluesselverwendung.',
@@ -3040,7 +3040,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'journaling',
     begriff: 'Journaling',
-    kurzdefinition: 'Verfahren, bei dem ein Dateisystem geplante Aenderungen vor der Ausfuehrung in einem Logbuch festhaelt.',
+    kurzdefinition: 'Verfahren, bei dem ein Dateisystem geplante Aenderungen vor der Ausführung in einem Logbuch festhaelt.',
     definition: [
       'Beim Journaling protokolliert das Dateisystem vor jeder Schreibaktion, was es vorhat. Stuerzt das System mitten in der Operation ab, kann das Dateisystem aus dem Journal entweder die Aenderung sauber abschliessen oder den vorherigen Zustand wiederherstellen.',
       'Journaling schuetzt vor Inkonsistenzen nach Stromausfall oder Crash. NTFS und ext4 sind klassische Journaling-Dateisysteme; APFS nutzt stattdessen Copy-on-Write, das einen aehnlichen Schutz erreicht. FAT32 kennt kein Journaling.',
@@ -3079,7 +3079,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'cow-copy-on-write',
     begriff: 'Copy-on-Write',
-    kurzdefinition: 'Schreibverfahren, bei dem geaenderte Datenbloecke neu geschrieben werden, statt vorhandene zu ueberschreiben.',
+    kurzdefinition: 'Schreibverfahren, bei dem geaenderte Datenbloecke neu geschrieben werden, statt vorhandene zu überschreiben.',
     definition: [
       'Beim Copy-on-Write (CoW) schreibt das Dateisystem geaenderte Daten in neue Bloecke und aktualisiert erst danach die Verweise. Der alte Zustand bleibt erhalten, bis er nicht mehr benoetigt wird.',
       'CoW ermoeglicht effiziente Snapshots und schuetzt aehnlich wie Journaling vor inkonsistenten Zustaenden nach Abstuerzen. APFS und ZFS arbeiten nach diesem Prinzip; NTFS und ext4 nicht.',

@@ -213,7 +213,7 @@ DNS `10.0.20.5`. Stimmt die Konfiguration?
 <StepByStep titel="ipconfig-Ausgabe gegen Sollwerte prüfen">
   <Schritt nr={1} titel="IPv4-Adresse abgleichen">
     Soll: `10.0.20.42`. Ist: `10.0.20.42 (Bevorzugt)`. Stimmt überein. Der Zusatz „Bevorzugt"
-    heisst: Windows hat die Adresse bekommen, sie kollidiert nicht mit anderen Hosts und
+    heißt: Windows hat die Adresse bekommen, sie kollidiert nicht mit anderen Hosts und
     ist die aktive Adresse des Adapters.
   </Schritt>
   <Schritt nr={2} titel="Subnetzmaske und Präfix">
@@ -259,7 +259,7 @@ müsste das Standardgateway haben, damit es im selben Subnetz liegt?
 
 <StepByStep titel="Netzadresse, Broadcast und Hostbereich für /27 berechnen">
   <Schritt nr={1} titel="Hostbits und Adressanzahl bestimmen">
-    `/27` heisst 27 Bit Netzanteil, also `32 − 27 = 5` Hostbits. `2⁵ = 32` Adressen je
+    `/27` heißt 27 Bit Netzanteil, also `32 − 27 = 5` Hostbits. `2⁵ = 32` Adressen je
     Subnetz. Davon sind 2 nicht vergebbar (Netz und Broadcast), bleiben **30 nutzbare Hosts**.
   </Schritt>
   <Schritt nr={2} titel="Magic Number ermitteln">
@@ -310,8 +310,8 @@ Layer?
   </Schritt>
   <Schritt nr={2} titel="Layer 3 — was zeigt ipconfig?">
     „Öffne bitte die Eingabeaufforderung und tippe `ipconfig /all`. Was steht bei IPv4-Adresse?"
-    Eine `169.254.x.x` ist APIPA — also DHCP nicht erreicht. Eine `0.0.0.0` heisst:
-    gar keine IP. Eine plausible IP wie `10.0.20.42` heisst: Layer 3 ist okay, weiter
+    Eine `169.254.x.x` ist APIPA — also DHCP nicht erreicht. Eine `0.0.0.0` heißt:
+    gar keine IP. Eine plausible IP wie `10.0.20.42` heißt: Layer 3 ist okay, weiter
     unten suchen.
   </Schritt>
   <Schritt nr={3} titel="Lokales Netz — Ping ans Gateway">
@@ -345,7 +345,7 @@ Layer?
   </Schritt>
   <Ergebnis>
     Eine saubere Diagnose dauert mit Erfahrung unter fünf Minuten. Wichtig: nicht
-    parallel an mehreren Layern schrauben — sonst weisst du am Ende nicht, was
+    parallel an mehreren Layern schrauben — sonst weißt du am Ende nicht, was
     wirklich geholfen hat. Erst der Befund, dann der Eingriff.
   </Ergebnis>
 </StepByStep>
@@ -476,7 +476,7 @@ Schalter wird selten gefragt.
   spezifische). Längere Präfixe (genauere Routen) gewinnen. Eine `0.0.0.0/0`-Default-
   Route greift nur, wenn keine spezifischere Route passt — Standard-Verhalten, in
   Multihoming-Szenarien aber gerne übersehen.
-- **Ping ohne Antwort heisst nicht zwingend offline.** Viele Hosts und Firewalls
+- **Ping ohne Antwort heißt nicht zwingend offline.** Viele Hosts und Firewalls
   blockieren ICMP-Echo-Antworten. Eine TCP-Verbindung über Port 80 oder 443 ist oft
   ein besserer Erreichbarkeits-Test. In der Aufgabe den Hinweis geben: „Antwortet ICMP
   nicht, mit `tracert` oder einem TCP-Werkzeug nachprüfen."
@@ -515,7 +515,7 @@ seien. Auf dem Bildschirm steht die IPv4-Adresse `169.254.78.140`, der Browser m
 „DNS-Fehler". Beschreibe in der korrekten Reihenfolge mindestens fünf Diagnose-Schritte
 zur Eingrenzung des Fehlers. Nenne je Schritt das verwendete Werkzeug, das erwartete
 Ergebnis bei intakter Verbindung und die Schlussfolgerung im Fehlerfall. Was bedeutet
-die Adresse `169.254.78.140` und wie heisst der Mechanismus, der sie vergibt?
+die Adresse `169.254.78.140` und wie heißt der Mechanismus, der sie vergibt?
 
 **Aufgabe 4 — DHCP-Optionen und Lease-Verwaltung (5 Punkte).**
 Ergänze die Tabelle: Welche DHCP-Option überträgt die Subnetzmaske, das
@@ -596,7 +596,7 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
 <svg
   viewBox="0 0 760 320"
   role="img"
-  aria-label="Skizze: Diagnose-Kette als Schichten-Stapel. Von unten nach oben: Layer 1 Link-LED, Layer 2 ARP/MAC, Layer 3 IP-Konfiguration, Ping Gateway, Ping Internet, DNS-Aufloesung, Anwendung. Akzent rot markiert die Pruef-Reihenfolge."
+  aria-label="Skizze: Diagnose-Kette als Schichten-Stapel. Von unten nach oben: Layer 1 Link-LED, Layer 2 ARP/MAC, Layer 3 IP-Konfiguration, Ping Gateway, Ping Internet, DNS-Aufloesung, Anwendung. Akzent rot markiert die Prüf-Reihenfolge."
   className="my-8 w-full max-w-3xl border border-rule bg-paper"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -683,7 +683,7 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
     },
     {
       term: 'Nameserver',
-      definition: 'DNS-Server. Rekursiv aufloesend (durchlaeuft die Hierarchie fuer den Client) oder autoritativ (zustaendig fuer eine Zone).'
+      definition: 'DNS-Server. Rekursiv aufloesend (durchlaeuft die Hierarchie für den Client) oder autoritativ (zustaendig für eine Zone).'
     },
     {
       term: 'TTL (DNS)',
@@ -711,7 +711,7 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
     },
     {
       term: 'tracert / traceroute',
-      definition: 'Hop-fuer-Hop-Spur eines Pakets. Zeigt, an welchem Router die Route abbricht — wichtigste Frueh-Diagnose bei Routing-Problemen.'
+      definition: 'Hop-für-Hop-Spur eines Pakets. Zeigt, an welchem Router die Route abbricht — wichtigste Frueh-Diagnose bei Routing-Problemen.'
     },
   ]}
 />
@@ -721,7 +721,7 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
     {
       label: 'RFC 2131 — Dynamic Host Configuration Protocol',
       href: 'https://www.rfc-editor.org/rfc/rfc2131',
-      detail: 'Normativer Standard fuer DHCP. Definiert den DORA-Handshake, die Lease-Verwaltung und die Zustaendigkeit von Server und Client.'
+      detail: 'Normativer Standard für DHCP. Definiert den DORA-Handshake, die Lease-Verwaltung und die Zustaendigkeit von Server und Client.'
     },
     {
       label: 'RFC 1034 / RFC 1035 — Domain Names: Concepts and Implementation',
@@ -731,7 +731,7 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
     {
       label: 'RFC 826 — Ethernet Address Resolution Protocol (ARP)',
       href: 'https://www.rfc-editor.org/rfc/rfc826',
-      detail: 'Definitionsdokument fuer ARP. Loest IP-Adressen in MAC-Adressen im lokalen Segment auf.'
+      detail: 'Definitionsdokument für ARP. Loest IP-Adressen in MAC-Adressen im lokalen Segment auf.'
     },
     {
       label: 'RFC 3927 — Dynamic Configuration of IPv4 Link-Local Addresses',
@@ -741,17 +741,17 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
     {
       label: 'BSI IT-Grundschutz — Bausteinkatalog NET (Netze und Kommunikation)',
       href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/it-grundschutz-kompendium_node.html',
-      detail: 'Bausteine NET.1.1 (Netzarchitektur), NET.1.2 (Netzbetrieb), NET.2 (WLAN). Empfehlungen fuer DHCP-Reservierungen, DNS-Sicherheit und Diagnose-Prozesse.'
+      detail: 'Bausteine NET.1.1 (Netzarchitektur), NET.1.2 (Netzbetrieb), NET.2 (WLAN). Empfehlungen für DHCP-Reservierungen, DNS-Sicherheit und Diagnose-Prozesse.'
     },
     {
       label: 'BIBB — Berufsprofil Fachinformatiker und Rahmenlehrplan',
       href: 'https://www.bibb.de/de/berufeinfo.php',
-      detail: 'Bundesinstitut fuer Berufsbildung mit Rahmenlehrplan und Umsetzungshilfen zu Lernfeld 3 (Netze und Dienste) und Lernfeld 9 (Netzwerke administrieren).'
+      detail: 'Bundesinstitut für Berufsbildung mit Rahmenlehrplan und Umsetzungshilfen zu Lernfeld 3 (Netze und Dienste) und Lernfeld 9 (Netzwerke administrieren).'
     },
     {
       label: 'Tanenbaum / Wetherall — Computer Networks (6th Edition)',
       href: 'https://www.pearson.com/en-us/subject-catalog/p/computer-networks/P200000003234',
-      detail: 'Lehrbuch-Standardwerk. Kapitel zu DHCP, DNS, ARP und Diagnose-Werkzeugen mit ausfuehrlichen Ablaufdiagrammen.'
+      detail: 'Lehrbuch-Standardwerk. Kapitel zu DHCP, DNS, ARP und Diagnose-Werkzeugen mit ausführlichen Ablaufdiagrammen.'
     },
     {
       label: 'Elektronik-Kompendium — Netzwerk-Diagnose und Konfiguration',

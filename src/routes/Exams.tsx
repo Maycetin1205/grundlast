@@ -70,13 +70,13 @@ export default function Exams() {
       <section className="ap1-stage">
         <div className="ap1-eyebrow">
           <span className="pulse" />
-          Phase 3 · Pruefungsmodul geplant
+          Phase 3 · Prüfungsmodul geplant
         </div>
         <h1 className="ap1-h1">
-          Pruefungsmodul <em>in Planung</em>.
+          Prüfungsmodul <em>in Planung</em>.
         </h1>
         <p className="hero-sub" style={{ maxWidth: '52ch' }}>
-          Diese Seite dokumentiert den geplanten Pruefungsbereich. Sie ist noch
+          Diese Seite dokumentiert den geplanten Prüfungsbereich. Sie ist noch
           keine freigegebene Klausur-Simulation und erzeugt aktuell keine
           bewertbaren Aufgaben.
         </p>

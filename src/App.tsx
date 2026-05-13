@@ -35,7 +35,7 @@ export default function App() {
           <Route index element={withPageFallback(<Dashboard />)} />
           <Route path="ap1" element={withPageFallback(<AP1Modus />)} />
           <Route path="lernen/:lernfeld/:modul/:lektion" element={withPageFallback(<Lesson />)} />
-          <Route path="pruefen" element={withPageFallback(<Exams />)} />
+          <Route path="prüfen" element={withPageFallback(<Exams />)} />
           <Route path="werkzeuge" element={withPageFallback(<Tools />)} />
           <Route path="glossar" element={withPageFallback(<Glossary />)} />
           <Route path="quellen" element={withPageFallback(<Sources />)} />

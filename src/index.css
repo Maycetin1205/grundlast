@@ -50,7 +50,7 @@
   --color-analogy-bg: oklch(95% 0.06 85);
   --color-term: oklch(50% 0.08 240);
 
-  /* Skalen-Aliase fuer Bestandskomponenten (Quiz, Rechenweg, alte Routes) */
+  /* Skalen-Aliase für Bestandskomponenten (Quiz, Rechenweg, alte Routes) */
   --color-ink-50: oklch(96% 0.005 60);
   --color-ink-100: oklch(92% 0.008 60);
   --color-ink-200: oklch(85% 0.010 60);
@@ -102,7 +102,7 @@
 
 /* =============================================================
    Dark-Mode-Tokens
-   Aktiv ueber <html class="dark">. Akademie-Gruen wird heller,
+   Aktiv über <html class="dark">. Akademie-Gruen wird heller,
    Coral kraeftiger, Papier wechselt auf gedaempfte Anthrazit-
    Toene. Body-Kontrast ist auf min. 7:1 (AAA) ausgelegt.
    ============================================================= */

@@ -187,7 +187,7 @@ export default function Musterseite() {
           {
             label: 'IEEE 754-2019',
             href: 'https://standards.ieee.org/standard/754-2019.html',
-            detail: 'Standard fuer Gleitkommazahlen',
+            detail: 'Standard für Gleitkommazahlen',
           },
           {
             label: 'Elektronik-Kompendium: Zahlensysteme',

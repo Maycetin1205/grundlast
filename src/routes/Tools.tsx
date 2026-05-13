@@ -94,7 +94,7 @@ export default function Tools() {
             Werkzeuge <em>in Planung</em>.
           </h1>
           <p className="hero-sub">
-            Diese Seite ist eine Roadmap fuer spaetere Rechner und Visualisierer.
+            Diese Seite ist eine Roadmap für spätere Rechner und Visualisierer.
             Aktuell sind die Module bewusst als geplant markiert und noch keine
             freigegebenen Lernwerkzeuge.
           </p>

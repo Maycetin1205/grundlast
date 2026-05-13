@@ -10,7 +10,7 @@ export default function LessonSources({ sources }: LessonSourcesProps) {
 
   return (
     <Quellen
-      titel="Quellen fuer diese Lektion"
+      titel="Quellen für diese Lektion"
       quellen={sources.map((source) => ({
         label: source.label,
         href: source.href,

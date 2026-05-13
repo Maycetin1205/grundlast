@@ -13,13 +13,13 @@ Nach diesem Kapitel kannst du eine Stoerung strukturiert aufnehmen, die richtige
 Rueckfragen stellen, zwischen Symptom und Ursache unterscheiden und entscheiden,
 wann du selbst loest, wann du eskalierst und wann aus vielen Incidents ein Problemfall wird.
 
-Das ist pruefungswichtig, weil Aufgaben hier selten nach einer reinen Definition fragen.
+Das ist prüfungswichtig, weil Aufgaben hier selten nach einer reinen Definition fragen.
 Du bekommst meistens einen Fall und sollst zeigen, dass du ruhig, nachvollziehbar und
 prozesssicher arbeitest.
 
 <Analogie>
 Fehlermanagement ist wie Detektivarbeit mit Checkliste. Ein Detektiv nimmt nicht sofort
-den erstbesten Verdaechtigen fest. Er sammelt Hinweise, prueft Alibis, grenzt Moeglichkeiten
+den erstbesten Verdaechtigen fest. Er sammelt Hinweise, prüft Alibis, grenzt Möglichkeiten
 aus und dokumentiert, warum er zu einer Schlussfolgerung kommt. Genau so arbeitet guter
 IT-Support: nicht raten, sondern systematisch eingrenzen.
 </Analogie>
@@ -35,7 +35,7 @@ Eine Stoerung besteht aus drei Ebenen:
 | Loesung | Was stellt den Sollzustand wieder her? | Dienst neu starten, Ursache dauerhaft beheben. |
 
 Die Prüfung liebt diese Trennung. Wer nur das Symptom nennt, hat noch keine Ursache gefunden.
-Wer nur eine Ursache vermutet, ohne zu pruefen, arbeitet unsauber.
+Wer nur eine Ursache vermutet, ohne zu prüfen, arbeitet unsauber.
 
 <Warnung titel="Nicht sofort springen">
 Der Satz "Das ist bestimmt das Netzwerk" ist kein Fehlermanagement. Es ist eine Hypothese.
@@ -64,7 +64,7 @@ Merksatz: **Incident Management stellt den Betrieb schnell wieder her. Problem M
     },
     {
       titel: 'Erfassen',
-      text: 'Ticket mit Nutzer, System, Fehlerbild, Zeitpunkt, Auswirkung und bisherigen Massnahmen anlegen.',
+      text: 'Ticket mit Nutzer, System, Fehlerbild, Zeitpunkt, Auswirkung und bisherigen Maßnahmen anlegen.',
     },
     {
       titel: 'Kategorisieren',
@@ -76,15 +76,15 @@ Merksatz: **Incident Management stellt den Betrieb schnell wieder her. Problem M
     },
     {
       titel: 'Erstdiagnose',
-      text: 'Standardfragen stellen, Fehlermeldungen sichern, Reproduzierbarkeit pruefen und einfache Standardloesungen testen.',
+      text: 'Standardfragen stellen, Fehlermeldungen sichern, Reproduzierbarkeit prüfen und einfache Standardloesungen testen.',
     },
     {
       titel: 'Loesen oder eskalieren',
-      text: 'Wenn Standardwissen, Rechte, Zeitfenster oder Werkzeuge nicht reichen, sauber an den naechsten Support-Level uebergeben.',
+      text: 'Wenn Standardwissen, Rechte, Zeitfenster oder Werkzeuge nicht reichen, sauber an den naechsten Support-Level übergeben.',
     },
     {
       titel: 'Abschliessen',
-      text: 'Loesung dokumentieren, Nutzerbestaetigung einholen, Wissensdatenbank ergaenzen und Muster fuer Problem Management markieren.',
+      text: 'Loesung dokumentieren, Nutzerbestaetigung einholen, Wissensdatenbank ergaenzen und Muster für Problem Management markieren.',
     },
   ]}
 />
@@ -101,7 +101,7 @@ Ein guter Supporter fragt so, dass die Antwort die Fehlersuche eingrenzt.
 | Ist der Fehler reproduzierbar? | stabiler Testfall | "Kommt manchmal, oder?" |
 | Was wurde kurz vorher geaendert? | Updates, Rechte, Umzug, neue Hardware | "Haben Sie was kaputt gemacht?" |
 | Was wurde bereits versucht? | Doppelarbeit vermeiden | "Ich mache einfach alles nochmal." |
-| Funktioniert es an einem anderen Geraet oder Konto? | Client, Konto oder Service eingrenzen | "Dann nehmen Sie halt einen anderen PC." |
+| Funktioniert es an einem anderen Gerät oder Konto? | Client, Konto oder Service eingrenzen | "Dann nehmen Sie halt einen anderen PC." |
 
 <Beispiel titel="prüfungsnaher Fall: Drucker stoert">
 Ein Nutzer meldet: "Der Drucker geht nicht." Eine schwache Antwort waere: "Ich starte den Drucker neu."
@@ -110,7 +110,7 @@ Eine gute Stoerungsannahme fragt:
 
 1. Welcher Drucker ist betroffen?
 2. Sind andere Nutzer auch betroffen?
-3. Gibt es eine Fehlermeldung am Geraet oder im Druckdialog?
+3. Gibt es eine Fehlermeldung am Gerät oder im Druckdialog?
 4. Betrifft es alle Dokumente oder nur eine Datei?
 5. Ist der Drucker im Netzwerk erreichbar?
 6. Gab es Aenderungen am Client, Treiber oder Standort?
@@ -120,12 +120,12 @@ Erst danach entscheidest du, ob es Papierstau, Treiber, Netzwerk, Rechte oder Dr
 
 ## Diagnose: Vom Groben zum Feinen
 
-Gute Diagnose ist ein Trichter. Du startest breit und wirst Schritt fuer Schritt genauer.
+Gute Diagnose ist ein Trichter. Du startest breit und wirst Schritt für Schritt genauer.
 
 | Diagnoseebene | Leitfrage | Beispieltest |
 |---|---|---|
 | Nutzer | Ist nur ein Benutzer betroffen? | Login mit Testkonto |
-| Client | Ist nur ein Geraet betroffen? | anderer Rechner, anderer Browser |
+| Client | Ist nur ein Gerät betroffen? | anderer Rechner, anderer Browser |
 | Netzwerk | Ist der Zielservice erreichbar? | ping, nslookup, traceroute, VPN-Status |
 | Anwendung | Gibt es Fehler in App oder Konfiguration? | Logdatei, Version, Rechte |
 | Server/Service | Ist der Dienst aktiv und ausgelastet? | Service-Status, Monitoring, Ereignisprotokoll |
@@ -133,22 +133,22 @@ Gute Diagnose ist ein Trichter. Du startest breit und wirst Schritt fuer Schritt
 
 <Tipp>
 Bei Prüfungsfällen hilft oft die Frage: "Was kann ich mit einer einfachen Aufgabe ausschliessen?"
-Jeder Ausschluss bringt dich naeher an die Ursache.
+Jeder Ausschluss bringt dich näher an die Ursache.
 </Tipp>
 
 ## Eskalation sauber begruenden
 
-Eskalation ist kein "Ich weiss nicht weiter", sondern ein definierter Prozess.
+Eskalation ist kein "Ich weiß nicht weiter", sondern ein definierter Prozess.
 
 | Eskalationsgrund | Beispiel | Wohin? |
 |---|---|---|
 | Berechtigung fehlt | First Level darf keine Firewall-Regel aendern | Second Level / Netzwerkteam |
 | Fachwissen fehlt | Datenbankfehler im Produktivsystem | Datenbankadministrator |
-| SLA droht zu reissen | Loesungszeit bald ueberschritten | Incident Manager / naechster Level |
+| SLA droht zu reissen | Loesungszeit bald überschritten | Incident Manager / naechster Level |
 | Herstellerfehler vermutet | reproduzierbarer Bug in Standardsoftware | Third Level / Hersteller |
 | Sicherheitsrelevanz | Verdacht auf kompromittiertes Konto | Security-Team |
 
-Eine gute Uebergabe enthaelt immer:
+Eine gute Übergabe enthaelt immer:
 
 - Ticketnummer
 - Fehlerbild
@@ -167,10 +167,10 @@ Ein einzelner Incident soll schnell geloest werden. Mehrere aehnliche Incidents 
 | Ein Nutzer kann sein Passwort nicht eingeben | einzelner Incident oder Service Request |
 | Jeden Montag scheitern viele Logins nach Passwortwechsel | Problemverdacht |
 | Nach jedem Update fallen bestimmte Drucker aus | wiederkehrendes Problem |
-| Ursache ist bekannt, Fix noch nicht verfuegbar | Known Error mit Workaround |
+| Ursache ist bekannt, Fix noch nicht verfügbar | Known Error mit Workaround |
 
 Problem Management fragt nicht zuerst: "Wie kriegen wir diesen einen Nutzer wieder arbeitsfaehig?",
-sondern: "Warum passiert das ueberhaupt, und wie verhindern wir Wiederholung?"
+sondern: "Warum passiert das überhaupt, und wie verhindern wir Wiederholung?"
 
 ## Musteraufgabe
 
@@ -178,7 +178,7 @@ Ein Unternehmen meldet drei Stoerungen:
 
 | Ticket | Meldung |
 |---|---|
-| 1 | Ein Nutzer kann sich nicht am CRM anmelden. Andere Nutzer koennen arbeiten. |
+| 1 | Ein Nutzer kann sich nicht am CRM anmelden. Andere Nutzer können arbeiten. |
 | 2 | Seit dem Morgen melden viele Nutzer, dass das CRM langsam ist. |
 | 3 | Nach jedem Monatsupdate muessen zehn Clients manuell repariert werden. |
 
@@ -186,15 +186,15 @@ Aufgabe: Ordne ein und nenne den naechsten sinnvollen Schritt.
 
 | Ticket | Einordnung | Naechster Schritt |
 |---|---|---|
-| 1 | Incident mit geringer bis mittlerer Auswirkung | Konto, Passwort, Rechte und Client pruefen |
-| 2 | Incident mit hoher Auswirkung, moeglicher Problemverdacht | Priorisieren, Monitoring/Serverlast pruefen, ggf. Second Level |
+| 1 | Incident mit geringer bis mittlerer Auswirkung | Konto, Passwort, Rechte und Client prüfen |
+| 2 | Incident mit hoher Auswirkung, möglicher Problemverdacht | Priorisieren, Monitoring/Serverlast prüfen, ggf. Second Level |
 | 3 | Problem / Known-Error-Kandidat | Ursache analysieren, Workaround dokumentieren, dauerhaften Fix planen |
 
 ## Fehlerfallen
 
 1. **Symptom als Ursache verkaufen:** "CRM langsam" ist ein Symptom, keine Ursache.
 2. **Ohne Ticket arbeiten:** Was nicht dokumentiert ist, ist im Support praktisch nicht passiert.
-3. **Keine Reproduzierbarkeit pruefen:** Ein nicht reproduzierbarer Fehler braucht andere Diagnose als ein stabiler Fehler.
+3. **Keine Reproduzierbarkeit prüfen:** Ein nicht reproduzierbarer Fehler braucht andere Diagnose als ein stabiler Fehler.
 4. **Workaround mit Loesung verwechseln:** Workaround hilft kurzfristig, behebt aber nicht zwingend die Ursache.
 5. **Eskalieren ohne Vorarbeit:** Second Level braucht Diagnoseinformationen, keine leere Weiterleitung.
 6. **Problem Management ignorieren:** Wiederkehrende Incidents sind ein Muster, kein Zufall.
