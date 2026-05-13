@@ -1,4 +1,4 @@
-﻿import { create } from 'zustand'
+import { create } from 'zustand'
 
 export interface GlossarKapitel {
   titel: string
@@ -16,10 +16,10 @@ export interface GlossarEintrag {
 type GlossarRegister = Record<string, GlossarEintrag>
 
 export interface GlossarStore {
-  eintraege: GlossarRegister
+  einträge: GlossarRegister
   findeEintrag: (id: string) => GlossarEintrag | undefined
   registriereEintrag: (eintrag: GlossarEintrag) => void
-  registriereEintraege: (eintraege: GlossarEintrag[]) => void
+  registriereEinträge: (einträge: GlossarEintrag[]) => void
 }
 
 export function normalisiereGlossarId(id: string) {
@@ -869,9 +869,9 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'afa',
     begriff: 'AfA',
-    kurzdefinition: 'Absetzung für Abnutzung â€” die planmaessige Verteilung von Anschaffungskosten über die Nutzungsdauer.',
+    kurzdefinition: 'Absetzung für Abnutzung — die planmaessige Verteilung von Anschaffungskosten über die Nutzungsdauer.',
     definition: [
-      'AfA steht für Absetzung für Abnutzung (Â§ 7 EStG). Sie verteilt die Anschaffungs- oder Herstellungskosten eines Wirtschaftsguts gleichmaessig über die betriebsgewoehnliche Nutzungsdauer.',
+      'AfA steht für Absetzung für Abnutzung (§ 7 EStG). Sie verteilt die Anschaffungs- oder Herstellungskosten eines Wirtschaftsguts gleichmaessig über die betriebsgewoehnliche Nutzungsdauer.',
       'Linear: Anschaffungskosten geteilt durch Nutzungsdauer ergibt die jaehrliche Abschreibung. AfA senkt den Gewinn und die Steuerlast.',
     ],
     kapitel: {
@@ -882,7 +882,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
   {
     id: 'sla',
     begriff: 'SLA',
-    kurzdefinition: 'Service Level Agreement â€” Vertrag über messbare Leistungsmerkmale einer IT-Dienstleistung.',
+    kurzdefinition: 'Service Level Agreement — Vertrag über messbare Leistungsmerkmale einer IT-Dienstleistung.',
     definition: [
       'Ein SLA legt fest, welche Qualitaets- und Verfuegbarkeitszusagen ein IT-Dienstleister macht (z. B. 99,9 % Verfuegbarkeit, maximale Reaktionszeit).',
       'Es regelt auch Konsequenzen bei Nichteinhaltung (Pauschalen, Gutschriften) und dient als Grundlage für Preisbildung und Ticket-Eskalation.',
@@ -1118,7 +1118,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
     begriff: 'Zahlungsverzug',
     kurzdefinition: 'Verspaetete Zahlung einer faelligen Forderung mit möglichen Verzugsfolgen.',
     definition: [
-      'Zahlungsverzug tritt ein, wenn eine faellige Entgeltforderung nicht rechtzeitig bezahlt wird und die gesetzlichen Voraussetzungen erfuellt sind, zum Beispiel Mahnung nach Faelligkeit oder ein kalendermÃ¤ssig bestimmter Zahlungstermin.',
+      'Zahlungsverzug tritt ein, wenn eine faellige Entgeltforderung nicht rechtzeitig bezahlt wird und die gesetzlichen Voraussetzungen erfuellt sind, zum Beispiel Mahnung nach Faelligkeit oder ein kalendermässig bestimmter Zahlungstermin.',
       'Bei Entgeltforderungen gibt es ausserdem die 30-Tage-Regel nach Faelligkeit und Zugang der Rechnung. Gegenüber Verbrauchern greift sie nur bei besonderem Hinweis in der Rechnung.',
     ],
     kapitel: {
@@ -1339,7 +1339,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
     begriff: 'Fixkosten',
     kurzdefinition: 'Kosten, die unabhaengig von der Ausbringungsmenge anfallen.',
     definition: [
-      'Fixkosten fallen auch ohne Produktion an: Miete, Gehaelter, Abschreibungen, Versicherungen, Leasingraten. Sie sind nur innerhalb einer Kapazitaetsstufe konstant â€” überschreitet die Auslastung diese Stufe, springen die Fixkosten auf ein neues Niveau (sprungfixe Kosten).',
+      'Fixkosten fallen auch ohne Produktion an: Miete, Gehaelter, Abschreibungen, Versicherungen, Leasingraten. Sie sind nur innerhalb einer Kapazitaetsstufe konstant — überschreitet die Auslastung diese Stufe, springen die Fixkosten auf ein neues Niveau (sprungfixe Kosten).',
       'Im Vergleich zwischen zwei Investitionen sind Fixkosten der Block, der das Risiko bei niedriger Auslastung bestimmt.',
     ],
     kapitel: {
@@ -1404,7 +1404,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
     begriff: 'Cashflow',
     kurzdefinition: 'Tatsaechliche Zahlungsbewegung eines Zeitraums; Differenz aus Einzahlungen und Auszahlungen.',
     definition: [
-      'Der Cashflow zeigt die Liquiditaet, also was wirklich an Geld zu- oder abgeflossen ist. Im Gegensatz zur Gewinnrechnung zaehlen nur kassenwirksame Vorgaenge â€” Abschreibungen oder Rueckstellungen sind nicht enthalten.',
+      'Der Cashflow zeigt die Liquiditaet, also was wirklich an Geld zu- oder abgeflossen ist. Im Gegensatz zur Gewinnrechnung zaehlen nur kassenwirksame Vorgaenge — Abschreibungen oder Rueckstellungen sind nicht enthalten.',
       'In Investitionsrechnungen wird haeufig der freie Cashflow betrachtet: was nach Steuern und Ersatzinvestitionen für Tilgung, Dividenden oder neue Projekte übrig bleibt.',
     ],
     kapitel: {
@@ -1521,7 +1521,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
     begriff: 'PCIe',
     kurzdefinition: 'Schneller serieller Erweiterungsbus auf dem Mainboard für Grafikkarten, NVMe-SSDs und Karten.',
     definition: [
-      'PCIe steht für Peripheral Component Interconnect Express. Es ist der zentrale Erweiterungsbus moderner Mainboards und übertrÃ¤gt Daten über sogenannte Lanes (x1, x4, x8, x16). Jede Lane ist eine bidirektionale serielle Punkt-zu-Punkt-Verbindung.',
+      'PCIe steht für Peripheral Component Interconnect Express. Es ist der zentrale Erweiterungsbus moderner Mainboards und überträgt Daten über sogenannte Lanes (x1, x4, x8, x16). Jede Lane ist eine bidirektionale serielle Punkt-zu-Punkt-Verbindung.',
       'Pro Generation verdoppelt sich die Bandbreite je Lane (PCIe 3.0 ~1 GB/s, PCIe 4.0 ~2 GB/s, PCIe 5.0 ~4 GB/s). Eine NVMe-SSD belegt meist x4 Lanes, eine Grafikkarte x16.',
     ],
     kapitel: {
@@ -1574,7 +1574,7 @@ const initialGlossarEintraege: GlossarEintrag[] = [
     kurzdefinition: 'Digitale Audio-/Videoschnittstelle; Standard im Consumer-Bereich, Fernseher, Beamer und Monitore.',
     definition: [
       'HDMI steht für High-Definition Multimedia Interface. Verschiedene Versionen unterscheiden sich in maximaler Aufloesung und Bildrate: HDMI 1.4 4K@30Hz, HDMI 2.0 4K@60Hz, HDMI 2.1 bis zu 8K@60Hz oder 4K@120Hz.',
-      'HDMI übertrÃ¤gt Bild und Ton sowie Steuerinformationen (CEC) und ist im Consumer-Markt dominant. Im professionellen IT-Umfeld wird oft DisplayPort bevorzugt, weil es Daisy-Chaining und hoehere Bildraten in fruehen Versionen bot.',
+      'HDMI überträgt Bild und Ton sowie Steuerinformationen (CEC) und ist im Consumer-Markt dominant. Im professionellen IT-Umfeld wird oft DisplayPort bevorzugt, weil es Daisy-Chaining und hoehere Bildraten in fruehen Versionen bot.',
     ],
     kapitel: {
       titel: 'Hardware, Schnittstellen & Peripherie auswaehlen',
@@ -3100,28 +3100,28 @@ const initialGlossarRegister: GlossarRegister = Object.fromEntries(
 )
 
 export const useGlossarStore = create<GlossarStore>((set, get) => ({
-  eintraege: initialGlossarRegister,
-  findeEintrag: (id) => get().eintraege[normalisiereGlossarId(id)],
+  einträge: initialGlossarRegister,
+  findeEintrag: (id) => get().einträge[normalisiereGlossarId(id)],
   registriereEintrag: (eintrag) => {
     const normalisierterEintrag = mitNormalisierterId(eintrag)
 
     set((state) => ({
-      eintraege: {
-        ...state.eintraege,
+      einträge: {
+        ...state.einträge,
         [normalisierterEintrag.id]: normalisierterEintrag,
       },
     }))
   },
-  registriereEintraege: (eintraege) => {
+  registriereEinträge: (einträge) => {
     set((state) => {
-      const naechsteEintraege = { ...state.eintraege }
+      const naechsteEintraege = { ...state.einträge }
 
-      for (const eintrag of eintraege) {
+      for (const eintrag of einträge) {
         const normalisierterEintrag = mitNormalisierterId(eintrag)
         naechsteEintraege[normalisierterEintrag.id] = normalisierterEintrag
       }
 
-      return { eintraege: naechsteEintraege }
+      return { einträge: naechsteEintraege }
     })
   },
 }))

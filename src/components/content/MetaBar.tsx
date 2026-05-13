@@ -4,7 +4,7 @@ interface MetaBarProps {
   lesezeit: string
   schwierigkeit: string
   lernfeld: string
-  pruefungsrelevanz: string
+  prüfungsrelevanz: string
   className?: string
 }
 
@@ -12,14 +12,14 @@ export default function MetaBar({
   lesezeit,
   schwierigkeit,
   lernfeld,
-  pruefungsrelevanz,
+  prüfungsrelevanz,
   className,
 }: MetaBarProps) {
   const items = [
     { label: 'Lesezeit', value: lesezeit },
     { label: 'Schwierigkeit', value: schwierigkeit },
     { label: 'Lernfeld', value: lernfeld },
-    { label: 'Prüfung', value: pruefungsrelevanz },
+    { label: 'Prüfung', value: prüfungsrelevanz },
   ]
 
   return (

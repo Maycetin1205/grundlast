@@ -14,7 +14,7 @@ interface TermProps {
 
 export default function Term({ id, children, className }: TermProps) {
   const [dialogOffen, setDialogOffen] = useState(false)
-  const eintrag = useGlossarStore((state) => state.eintraege[normalisiereGlossarId(id)])
+  const eintrag = useGlossarStore((state) => state.einträge[normalisiereGlossarId(id)])
 
   const termClassName = cn(
     'inline cursor-help appearance-none border-0 bg-transparent p-0 align-baseline font-[inherit] leading-[inherit]',

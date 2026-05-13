@@ -79,7 +79,7 @@ export default function Lesson() {
   if (loading) {
     return (
       <div className="mx-auto max-w-3xl py-12 text-center font-ui text-sm text-muted">
-        Lektion wird geladen â€¦
+        Lektion wird geladen …
       </div>
     )
   }
@@ -97,7 +97,7 @@ export default function Lesson() {
           </div>
           <Link to="/" className="btn btn-ghost no-underline">
             <ArrowLeft size={14} aria-hidden="true" />
-            Ãœbersicht
+            Übersicht
           </Link>
         </div>
         <div
@@ -145,7 +145,7 @@ export default function Lesson() {
           </div>
           <Link to="/" className="btn btn-ghost no-underline">
             <ArrowLeft size={14} aria-hidden="true" />
-            Ãœbersicht
+            Übersicht
           </Link>
         </div>
       )}
@@ -233,7 +233,7 @@ export default function Lesson() {
                 <LessonSources sources={lessonSources} />
               ) : (
                 <div className="my-10 border-l-4 border-rule bg-paper-deep px-8 py-7 font-ui text-sm text-muted">
-                  FÃ¼r diese Lektion sind noch keine separaten Quellen hinterlegt.
+                  Für diese Lektion sind noch keine separaten Quellen hinterlegt.
                 </div>
               )}
             </section>

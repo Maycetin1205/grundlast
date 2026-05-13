@@ -20,7 +20,12 @@ SUFFIXES = {".ts", ".tsx", ".mdx"}
 
 
 def target_files() -> list[Path]:
-    return sorted(path for path in (ROOT / "src").rglob("*") if path.suffix in SUFFIXES)
+    backup = ROOT / "src/content/lessons.backup-mojibake"
+    return sorted(
+        path
+        for path in (ROOT / "src").rglob("*")
+        if path.suffix in SUFFIXES and backup not in path.parents
+    )
 
 
 def rename_identifier(text: str, source: str, target: str) -> tuple[str, int]:

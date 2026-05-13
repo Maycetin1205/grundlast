@@ -65,7 +65,7 @@ export default function Dashboard() {
         <div className="crumbs">
           <span>Lernhaus</span>
           <span className="sep">/</span>
-          <span className="now">Ãœbersicht</span>
+          <span className="now">Übersicht</span>
         </div>
         <div className="flex items-center gap-2.5">
           <div className="streak">
@@ -77,12 +77,12 @@ export default function Dashboard() {
 
       <section className="hero">
         <div className="hero-card">
-          <div className="hero-greet">Kompendium Â· FIAE/FISI</div>
+          <div className="hero-greet">Kompendium · FIAE/FISI</div>
           <h1 className="hero-title">
-            Dein Lernhaus fÃ¼r die <em>Ausbildung</em>.
+            Dein Lernhaus für die <em>Ausbildung</em>.
           </h1>
           <p className="hero-sub">
-            {stats.total} Kapitel Ã¼ber {lernfelder.length} Lernfelder. {stats.ready} sind
+            {stats.total} Kapitel über {lernfelder.length} Lernfelder. {stats.ready} sind
             ausgearbeitet, {stats.total - stats.ready} stehen noch als Stub. Fang mit einem
             fertigen Kapitel an und folge dann den Themen in Ruhe weiter.
           </p>
@@ -109,7 +109,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="kpi-meta">
-              {stats.ready} von {stats.total} Kapiteln Â· {stats.total - stats.ready} offen
+              {stats.ready} von {stats.total} Kapiteln · {stats.total - stats.ready} offen
             </div>
             <div className="ring" style={{ ['--p' as string]: progress }}>
               <span>{progress}%</span>
@@ -140,7 +140,7 @@ export default function Dashboard() {
             <h2 className="sec-title">
               Empfohlen <em>jetzt</em>
             </h2>
-            <div className="sec-meta">Kurzer Einstieg Â· Inhalt bereit</div>
+            <div className="sec-meta">Kurzer Einstieg · Inhalt bereit</div>
           </div>
           <div className="cont">
             {recommendations.map((item) => (
@@ -160,7 +160,7 @@ export default function Dashboard() {
           <h2 className="sec-title">
             Alle <em>Lernfelder</em>
           </h2>
-          <div className="sec-meta">{lernfelder.length} Felder Â· thematisch sortiert</div>
+          <div className="sec-meta">{lernfelder.length} Felder · thematisch sortiert</div>
         </div>
         <div className="lf-grid">
           {lernfelder.map((lf, idx) => {
@@ -187,7 +187,7 @@ export default function Dashboard() {
               >
                 <div className="lf-top">
                   <span className="lf-code">
-                    {lf.slug.toUpperCase()} Â· {total} Kapitel
+                    {lf.slug.toUpperCase()} · {total} Kapitel
                   </span>
                 </div>
                 <h3 className="lf-title">{lf.title}</h3>

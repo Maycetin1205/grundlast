@@ -7,18 +7,18 @@ export interface GlossarEintrag {
 }
 
 interface GlossarProps {
-  eintraege: GlossarEintrag[]
+  einträge: GlossarEintrag[]
   titel?: string
   className?: string
 }
 
 export default function Glossar({
-  eintraege,
+  einträge,
   titel = 'Glossar - Begriffe aus diesem Kapitel',
   className,
 }: GlossarProps) {
   const headingId = useId()
-  const sortedEntries = [...eintraege].sort((a, b) =>
+  const sortedEntries = [...einträge].sort((a, b) =>
     a.term.localeCompare(b.term, 'de', { sensitivity: 'base' }),
   )
 

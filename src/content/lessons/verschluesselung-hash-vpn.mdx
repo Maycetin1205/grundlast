@@ -1,10 +1,10 @@
-﻿# Verschluesselung, Hashing, Zertifikate, Signatur & VPN
+# Verschluesselung, Hashing, Zertifikate, Signatur & VPN
 
 <MetaBar
   lesezeit="30 Minuten"
   schwierigkeit="Mittel"
   lernfeld="LF 4 / LF 9 - Informationssicherheit, Kryptographie und sichere Netze"
-  pruefungsrelevanz="PFLICHT · 5/5"
+  prüfungsrelevanz="PFLICHT · 5/5"
 />
 
 In Aufgaben werden *<Term id="verschluesselung">Verschlüsselung</Term>*, *<Term id="hashfunktion">Hashing</Term>*, *<Term id="zertifikat">Zertifikate</Term>*, *<Term id="digitale-signatur">digitale Signaturen</Term>* und *<Term id="vpn">VPN</Term>* selten isoliert abgefragt. Meist sollst du unterscheiden, welches Werkzeug welches Schutzziel bedient und wie die Verfahren in HTTPS, Passwortspeicherung, Software-Updates oder Standortkopplung zusammenspielen.
@@ -432,7 +432,7 @@ In einer Datenbank stehen pro Nutzer ein Salt und ein Passwort-Hash. Ein Prüfer
 **Loesungsansatz:** Salt muss nicht geheim sein. Er sorgt dafuer, dass gleiche Passwoerter unterschiedliche Hashes ergeben und vorgefertigte Rainbow Tables unbrauchbar werden. Pepper ist ein zusaetzliches Geheimnis ausserhalb der Datenbank und schuetzt nur, wenn es getrennt bleibt.
 
 <Glossar
-  eintraege={[
+  einträge={[
     {
       term: 'Verschluesselung',
       definition: 'Umkehrbare Umwandlung von Klartext in Chiffretext. Mit dem passenden Schlüssel kann der Empfaenger wieder entschluesseln; Hauptziel ist Vertraulichkeit.'

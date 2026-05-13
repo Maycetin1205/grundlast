@@ -4,8 +4,8 @@ import { useGlossarStore } from '../stores/glossarStore'
 import type { GlossarEintrag } from '../stores/glossarStore'
 
 export default function Glossary() {
-  const eintraege = useGlossarStore((state) => state.eintraege)
-  const entries = Object.values(eintraege).sort((a, b) =>
+  const einträge = useGlossarStore((state) => state.einträge)
+  const entries = Object.values(einträge).sort((a, b) =>
     a.begriff.localeCompare(b.begriff, 'de'),
   )
 

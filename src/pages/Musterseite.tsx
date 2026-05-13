@@ -31,7 +31,7 @@ export default function Musterseite() {
         lesezeit="12 min"
         schwierigkeit="mittel"
         lernfeld="LF 2"
-        pruefungsrelevanz="hoch relevant"
+        prüfungsrelevanz="hoch relevant"
       />
 
       <Section nr="01" titel="Warum existiert das überhaupt?">
@@ -147,7 +147,7 @@ export default function Musterseite() {
       </Section>
 
       <Glossar
-        eintraege={[
+        einträge={[
           {
             term: 'Basis',
             definition: 'Anzahl der Ziffern eines Stellenwertsystems. Im Binärsystem ist die Basis 2.',

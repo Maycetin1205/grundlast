@@ -394,7 +394,7 @@ export default function Sidebar({ className, onNavigate, onSearchOpen }: Sidebar
       <nav className="flex-1 overflow-y-auto px-4 py-4">
         <div className="space-y-1">
           <NavItem to="/" icon={LayoutDashboard} end onNavigate={onNavigate}>
-            Ãœbersicht
+            Übersicht
           </NavItem>
           <NavItem to="/ap1" icon={Target} onNavigate={onNavigate}>
             AP1-Modus
@@ -514,7 +514,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
             </kbd>
             <Dialog.Close
               className="shrink-0 rounded-md p-1 text-muted transition-colors hover:bg-paper-deep hover:text-ink"
-              aria-label="Suche schlieÃŸen"
+              aria-label="Suche schließen"
             >
               <X size={18} aria-hidden="true" />
             </Dialog.Close>
