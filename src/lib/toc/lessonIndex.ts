@@ -1,12 +1,12 @@
 /**
- * Sidebar · Lesson-Such-Index
+ * Grundlast · Inhaltsverzeichnis — Lesson-Index
  *
- * Baut aus dem TOC einen flachen Such-Index mit allen Lektionen.
- * Wird von Sidebar (Nav-Anzeige) und CommandPalette (Volltextsuche) geteilt.
+ * Flache, aus dem TOC abgeleitete Struktur fuer Navigation und Suche.
  */
 
-import { isLessonAvailable, lernfelder } from "../../lib/toc"
-import type { Lesson } from "../../lib/toc"
+import { lernfelder } from "./data"
+import { isLessonAvailable } from "./utils"
+import type { Lesson } from "./types"
 
 export interface LessonSearchItem {
   id: string

@@ -22,3 +22,11 @@ export {
   lessonStatusLabel,
   getLessonNeighbors,
 } from "./utils"
+
+export type { LessonSearchItem } from "./lessonIndex"
+
+export {
+  lessonIndex,
+  readyLessons,
+  totalLessons,
+} from "./lessonIndex"

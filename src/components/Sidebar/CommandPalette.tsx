@@ -9,9 +9,8 @@ import { useNavigate } from "react-router-dom"
 import * as Dialog from "@radix-ui/react-dialog"
 import Fuse from "fuse.js"
 import { Search, X } from "lucide-react"
-import { isLessonAvailable } from "../../lib/toc"
-import { lessonIndex } from "./lessonIndex"
-import type { LessonSearchItem } from "./lessonIndex"
+import { isLessonAvailable, lessonIndex } from "../../lib/toc"
+import type { LessonSearchItem } from "../../lib/toc"
 import { shortcutLabel } from "./nav-config"
 
 interface CommandPaletteProps {

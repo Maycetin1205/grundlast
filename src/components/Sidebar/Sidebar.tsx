@@ -7,22 +7,15 @@
 
 import { useMemo } from "react"
 import {
-  BookMarked,
   CheckCircle2,
-  ClipboardCheck,
-  LayoutDashboard,
-  Library,
   Search,
-  Target,
-  Wrench,
 } from "lucide-react"
 import { cn } from "../../lib/cn"
-import { isLessonAvailable, lernfelder } from "../../lib/toc"
+import { isLessonAvailable, lernfelder, readyLessons, totalLessons } from "../../lib/toc"
 import ThemeToggle from "../ThemeToggle"
 import NavItem from "./NavItem"
 import LernfeldGroup from "./LernfeldGroup"
-import { readyLessons, totalLessons } from "./lessonIndex"
-import { shortcutLabel } from "./nav-config"
+import { shortcutLabel, TOP_LEVEL_NAV_ITEMS } from "./nav-config"
 
 interface SidebarProps {
   className?: string
@@ -108,24 +101,17 @@ export default function Sidebar({ className, onNavigate, onSearchOpen }: Sidebar
 
       <nav className="flex-1 overflow-y-auto px-4 py-4">
         <div className="space-y-1">
-          <NavItem to="/" icon={LayoutDashboard} end onNavigate={onNavigate}>
-            Übersicht
-          </NavItem>
-          <NavItem to="/ap1" icon={Target} onNavigate={onNavigate}>
-            AP1-Modus
-          </NavItem>
-          <NavItem to="/prüfen" icon={ClipboardCheck} onNavigate={onNavigate}>
-            Prüfen (geplant)
-          </NavItem>
-          <NavItem to="/werkzeuge" icon={Wrench} onNavigate={onNavigate}>
-            Werkzeuge (geplant)
-          </NavItem>
-          <NavItem to="/glossar" icon={BookMarked} onNavigate={onNavigate}>
-            Glossar
-          </NavItem>
-          <NavItem to="/quellen" icon={Library} onNavigate={onNavigate}>
-            Quellen
-          </NavItem>
+          {TOP_LEVEL_NAV_ITEMS.map((item) => (
+            <NavItem
+              key={item.to}
+              to={item.to}
+              icon={item.icon}
+              end={item.end}
+              onNavigate={onNavigate}
+            >
+              {item.label}
+            </NavItem>
+          ))}
         </div>
 
         <div className="mb-2 mt-6 flex items-center justify-between px-1 font-ui">

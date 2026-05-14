@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom"
 import * as Popover from "@radix-ui/react-popover"
 import { cn } from "../../lib/cn"
 import { lessonStatusLabel } from "../../lib/toc"
-import type { LessonSearchItem } from "./lessonIndex"
+import type { LessonSearchItem } from "../../lib/toc"
 
 interface ChapterLinkProps {
   item: LessonSearchItem
