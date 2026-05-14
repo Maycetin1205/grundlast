@@ -1,8 +1,9 @@
 /**
  * Grundlast · Quellen — Daten-Aggregator
  *
- * Re-exportiert die flache Quellenliste. Sourcen sind cross-cutting via Tags,
- * deshalb bleiben sie in einer Datei (keine Per-Lernfeld-Aufteilung sinnvoll).
+ * Re-exportiert Quellenliste und Tag-Mappings. Quellen sind cross-cutting via
+ * Tags, deshalb bleibt die Quellenbank flach.
  */
 
 export { sourceBank } from "./sourceBank"
+export { lernfeldTags, slugTags } from "./tagMappings"

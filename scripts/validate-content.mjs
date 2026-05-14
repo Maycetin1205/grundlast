@@ -8,7 +8,7 @@ const verbose = process.argv.includes('--verbose')
 const paths = {
   tocDataDir: path.join(root, 'src/lib/toc/data'),
   sourceBank: path.join(root, 'src/content/quellen/sourceBank.ts'),
-  sourceLookup: path.join(root, 'src/lib/quellen/lookup.ts'),
+  sourceTagMappings: path.join(root, 'src/content/quellen/tagMappings.ts'),
   glossarDir: path.join(root, 'src/content/glossar'),
   reviewLog: path.join(root, 'REVIEW_LOG.md'),
   lessonsDir: path.join(root, 'src/content/lessons'),
@@ -178,7 +178,7 @@ function report(title, items, { limit = Infinity } = {}) {
 }
 
 const tocText = readTocCombined(paths.tocDataDir)
-const sourcesText = readRequired(paths.sourceBank) + '\n' + readRequired(paths.sourceLookup)
+const sourcesText = readRequired(paths.sourceBank) + '\n' + readRequired(paths.sourceTagMappings)
 const glossarText = readGlossarCombined(paths.glossarDir)
 const reviewLogText = readRequired(paths.reviewLog)
 
@@ -190,7 +190,7 @@ for (const lesson of lessons) {
     lessonBySlug,
     lesson.slug,
     lesson,
-    (slug) => `Doppelter Lesson-Slug in toc.ts: ${slug}`,
+    (slug) => `Doppelter Lesson-Slug in src/lib/toc/data/*.ts: ${slug}`,
   )
 
   if (!['stub', 'draft', 'ready', 'final'].includes(lesson.status)) {
@@ -200,13 +200,13 @@ for (const lesson of lessons) {
 
 const sourceIds = new Set()
 for (const id of extractIds(sourcesText)) {
-  if (sourceIds.has(id)) warnings.push(`Doppelte Source-ID in sources.ts: ${id}`)
+  if (sourceIds.has(id)) warnings.push(`Doppelte Source-ID in src/content/quellen/sourceBank.ts: ${id}`)
   sourceIds.add(id)
 }
 
 const glossarIds = new Set()
 for (const id of extractIds(glossarText)) {
-  if (glossarIds.has(id)) warnings.push(`Doppelte Glossar-ID in glossarStore.ts: ${id}`)
+  if (glossarIds.has(id)) warnings.push(`Doppelte Glossar-ID in src/content/glossar/*.ts: ${id}`)
   glossarIds.add(id)
 }
 
@@ -230,12 +230,12 @@ for (const lesson of lessons) {
 
   for (const termId of extractTermIds(mdxText)) {
     if (!glossarIds.has(termId)) {
-      errors.push(`${lesson.slug}: Glossar-Term fehlt in glossarStore.ts: ${termId}`)
+      errors.push(`${lesson.slug}: Glossar-Term fehlt in src/content/glossar/*.ts: ${termId}`)
     }
   }
 
   if ((lesson.status === 'ready' || lesson.status === 'final') && !hasSourceSlugEntry(sourcesText, lesson.slug)) {
-    warnings.push(`${lesson.slug}: keine spezifische slugTags-Zuordnung in sources.ts gefunden`)
+    warnings.push(`${lesson.slug}: keine spezifische slugTags-Zuordnung in src/content/quellen/tagMappings.ts gefunden`)
   }
 
   if (lesson.status === 'ready' || lesson.status === 'final') {
@@ -249,7 +249,7 @@ for (const lesson of lessons) {
 
 for (const slug of mdxSlugs) {
   if (!lessonBySlug.has(slug)) {
-    errors.push(`${slug}: MDX-Datei existiert, aber kein Eintrag in toc.ts`)
+    errors.push(`${slug}: MDX-Datei existiert, aber kein Eintrag in src/lib/toc/data/*.ts`)
   }
 }
 
