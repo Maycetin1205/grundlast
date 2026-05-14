@@ -257,13 +257,11 @@ def process_tsx(text: str) -> tuple[str, int]:
 
 def target_files() -> list[Path]:
     files = sorted((ROOT / "src/content/lessons").glob("*.mdx"))
-    files += [
-        ROOT / "src/stores/glossarStore.ts",
-        ROOT / "src/lib/sources.ts",
-        ROOT / "src/lib/toc.ts",
-        ROOT / "src/lib/review.ts",
-        ROOT / "src/index.css",
-    ]
+    files += sorted((ROOT / "src/content/glossar").glob("*.ts"))
+    files += sorted((ROOT / "src/content/quellen").glob("*.ts"))
+    files += sorted((ROOT / "src/lib/toc/data").glob("*.ts"))
+    files.append(ROOT / "src/lib/review.ts")
+    files += sorted((ROOT / "src/styles").rglob("*.css"))
     files += sorted((ROOT / "src").rglob("*.tsx"))
     return [path for path in files if path.exists()]
 
@@ -273,15 +271,15 @@ def process_file(path: Path) -> tuple[str, int]:
     rel = path.relative_to(ROOT).as_posix()
     if rel.startswith("src/content/lessons/") and path.suffix == ".mdx":
         return process_mdx(text)
-    if rel == "src/stores/glossarStore.ts":
+    if rel.startswith("src/content/glossar/") and path.suffix == ".ts":
         return process_named_string_fields(text, {"begriff", "definition", "kurzdefinition", "titel"})
-    if rel == "src/lib/sources.ts":
+    if rel == "src/content/quellen/sourceBank.ts":
         return process_named_string_fields(text, {"detail", "label"})
-    if rel == "src/lib/toc.ts":
+    if rel.startswith("src/lib/toc/data/") and path.suffix == ".ts":
         return process_named_string_fields(text, {"description", "title"})
     if rel == "src/lib/review.ts":
         return process_review_notes(text)
-    if rel == "src/index.css":
+    if path.suffix == ".css":
         return process_css_comments(text)
     if path.suffix == ".tsx":
         return process_tsx(text)
