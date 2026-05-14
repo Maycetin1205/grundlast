@@ -1,0 +1,105 @@
+/* =============================================================
+   Lernhaus Design-Tokens
+   Modern-akademische Lernoberflaeche mit warmem Off-White,
+   gedecktem Akademie-Gruen und akademischer Display-Serif.
+   ============================================================= */
+
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Fraunces", ui-serif, Georgia, serif;
+  --font-ui: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --color-ink: oklch(22% 0.012 60);
+  --color-ink-2: oklch(36% 0.012 60);
+  --color-ink-3: oklch(52% 0.010 60);
+  --color-ink-4: oklch(68% 0.008 60);
+
+  --color-paper: oklch(99.2% 0.004 80);
+  --color-paper-deep: oklch(96.4% 0.008 80);
+  --color-bg: oklch(98.2% 0.006 80);
+  --color-bg-2: oklch(96.4% 0.008 80);
+  --color-bg-3: oklch(93.5% 0.010 80);
+
+  --color-rule: oklch(89% 0.010 80);
+  --color-rule-2: oklch(82% 0.012 80);
+  --color-muted: oklch(52% 0.010 60);
+
+  --color-accent: oklch(48% 0.09 145);
+  --color-accent-soft: oklch(94% 0.04 145);
+  --color-accent-2: oklch(60% 0.13 35);
+  --color-accent-2-soft: oklch(95% 0.03 35);
+
+  --color-c-sand: oklch(72% 0.07 75);
+  --color-c-olive: oklch(58% 0.07 110);
+  --color-c-teal: oklch(58% 0.07 195);
+  --color-c-rose: oklch(64% 0.09 20);
+  --color-c-plum: oklch(50% 0.08 330);
+  --color-c-amber: oklch(72% 0.10 65);
+  --color-c-sky: oklch(62% 0.08 240);
+  --color-c-forest: oklch(45% 0.07 155);
+  --color-c-indigo: oklch(50% 0.08 275);
+
+  --color-tipp-bg: oklch(95% 0.04 145);
+  --color-tipp-border: oklch(48% 0.09 145);
+  --color-warn-bg: oklch(95% 0.04 30);
+  --color-analogy-bg: oklch(95% 0.06 85);
+  --color-term: oklch(50% 0.08 240);
+
+  /* Skalen-Aliase für Bestandskomponenten (Quiz, Rechenweg, alte Routes) */
+  --color-ink-50: oklch(96% 0.005 60);
+  --color-ink-100: oklch(92% 0.008 60);
+  --color-ink-200: oklch(85% 0.010 60);
+  --color-ink-300: oklch(72% 0.010 60);
+  --color-ink-400: oklch(60% 0.010 60);
+  --color-ink-500: oklch(50% 0.010 60);
+  --color-ink-600: oklch(40% 0.012 60);
+  --color-ink-700: oklch(32% 0.012 60);
+  --color-ink-800: oklch(26% 0.012 60);
+  --color-ink-900: oklch(22% 0.012 60);
+  --color-ink-950: oklch(15% 0.012 60);
+
+  --color-brand-50: oklch(96% 0.02 145);
+  --color-brand-100: oklch(92% 0.04 145);
+  --color-brand-200: oklch(86% 0.06 145);
+  --color-brand-300: oklch(76% 0.08 145);
+  --color-brand-400: oklch(60% 0.10 145);
+  --color-brand-500: oklch(48% 0.09 145);
+  --color-brand-600: oklch(42% 0.10 145);
+  --color-brand-700: oklch(35% 0.10 145);
+  --color-brand-800: oklch(28% 0.09 145);
+  --color-brand-900: oklch(22% 0.08 145);
+  --color-brand-950: oklch(15% 0.06 145);
+
+  --color-accent-100: oklch(94% 0.04 145);
+  --color-accent-200: oklch(86% 0.06 145);
+  --color-accent-300: oklch(76% 0.08 145);
+  --color-accent-400: oklch(60% 0.10 145);
+  --color-accent-500: oklch(48% 0.09 145);
+  --color-accent-600: oklch(42% 0.10 145);
+  --color-accent-700: oklch(35% 0.10 145);
+  --color-accent-800: oklch(28% 0.09 145);
+  --color-accent-900: oklch(22% 0.08 145);
+}
+
+:root {
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+
+  --shadow-1: 0 1px 0 oklch(100% 0 0 / 0.6) inset, 0 1px 2px oklch(0% 0 0 / 0.04);
+  --shadow-2: 0 1px 0 oklch(100% 0 0 / 0.7) inset, 0 8px 24px -8px oklch(0% 0 0 / 0.12);
+
+  --paper-grain-strong: oklch(0% 0 0 / 0.015);
+  --paper-grain-soft: oklch(0% 0 0 / 0.010);
+  --paper-grain-blend: multiply;
+}
+
+/* =============================================================
+   Dark-Mode-Tokens
+   Aktiv über <html class="dark">. Akademie-Gruen wird heller,
+   Coral kraeftiger, Papier wechselt auf gedaempfte Anthrazit-
+   Toene. Body-Kontrast ist auf min. 7:1 (AAA) ausgelegt.
+   ============================================================= */

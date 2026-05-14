@@ -1,0 +1,35 @@
+@layer components {
+/* ── Mode-Switch (Lernen vs AP1) ────────────────────────────── */
+  .mode-switch {
+    display: inline-flex;
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    padding: 3px;
+  }
+
+  .mode-switch button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    cursor: default;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-ink-3);
+    padding: 5px 14px;
+    border-radius: 999px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .mode-switch button.on {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    box-shadow: 0 1px 2px oklch(0% 0 0 / 0.18);
+  }
+
+  .mode-switch button.on.ap1 {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+}

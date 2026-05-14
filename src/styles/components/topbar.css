@@ -1,0 +1,24 @@
+@layer components {
+/* ── Topbar / Breadcrumbs ───────────────────────────────────── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  .crumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .crumbs span.sep { opacity: 0.4; }
+  .crumbs span.now { color: var(--color-ink); }
+}

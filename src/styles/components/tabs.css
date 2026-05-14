@@ -1,0 +1,31 @@
+@layer components {
+/* ── Tabs ───────────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    gap: 24px;
+    border-bottom: 2px solid var(--color-rule);
+    margin-bottom: 2rem;
+  }
+
+  .tab {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    cursor: default;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 650;
+    color: var(--color-ink-2);
+    padding: 0 0 13px;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab:hover { color: var(--color-ink); }
+
+  .tab.active {
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+}
