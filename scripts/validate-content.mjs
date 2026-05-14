@@ -7,7 +7,8 @@ const verbose = process.argv.includes('--verbose')
 
 const paths = {
   tocDataDir: path.join(root, 'src/lib/toc/data'),
-  sources: path.join(root, 'src/lib/sources.ts'),
+  sourceBank: path.join(root, 'src/content/quellen/sourceBank.ts'),
+  sourceLookup: path.join(root, 'src/lib/quellen/lookup.ts'),
   glossarDir: path.join(root, 'src/content/glossar'),
   reviewLog: path.join(root, 'REVIEW_LOG.md'),
   lessonsDir: path.join(root, 'src/content/lessons'),
@@ -177,7 +178,7 @@ function report(title, items, { limit = Infinity } = {}) {
 }
 
 const tocText = readTocCombined(paths.tocDataDir)
-const sourcesText = readRequired(paths.sources)
+const sourcesText = readRequired(paths.sourceBank) + '\n' + readRequired(paths.sourceLookup)
 const glossarText = readGlossarCombined(paths.glossarDir)
 const reviewLogText = readRequired(paths.reviewLog)
 

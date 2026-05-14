@@ -1,0 +1,102 @@
+/**
+ * Grundlast · Quellen — Lookup-Logik
+ *
+ * Tag-basierter Filter: jede Lesson und jedes Lernfeld haben Tag-Listen.
+ * getSourcesForLesson kombiniert sie und filtert sourceBank.
+ */
+
+import { sourceBank } from "../../content/quellen"
+
+const slugTags: Record<string, string[]> = {
+  'von-neumann': ['ordnung'],
+  'bit-byte': ['ordnung'],
+  'zahlensysteme': ['ordnung'],
+  'prefixe': ['ordnung'],
+  'cpu-ram-speicher': ['ordnung'],
+  'raid-systeme': ['sicherheit', 'backup'],
+  'usv-systeme': ['sicherheit', 'verfuegbarkeit'],
+  'scan-bilddaten': ['ordnung'],
+  'linux-chmod': ['sicherheit'],
+  'prozess-thread': ['betriebssystem', 'prozess', 'thread', 'task', 'scheduler', 'multitasking'],
+  'zentral-dezentral': ['betriebssystem', 'zentral', 'dezentral', 'hybrid', 'cloud', 'verzeichnisdienst', 'client-server', 'it-infrastruktur'],
+  virtualisierung: ['sicherheit'],
+  'wlan-standards': ['wlan', 'wifi', 'wi-fi', '802.11', 'wpa2', 'wpa3', 'access-point', 'sicherheit', 'netzwerk'],
+  'port-forwarding': ['nat', 'napt', 'pat', 'port-forwarding', 'ipv4', 'private-adressen', 'firewall', 'dmz', 'vpn', 'netzwerk', 'sicherheit'],
+  'osi-modell': ['netzwerk', 'osi'],
+  'tcp-udp': ['tcp', 'udp', 'netzwerk', 'port', 'dienst', 'http', 'tls'],
+  'ipv4-subnetting': ['ipv4', 'subnetting', 'netzwerk'],
+  'datenrate-berechnung': ['netzwerk', 'datenrate', 'bandbreite', 'durchsatz', 'bit', 'byte', 'backup', 'wlan'],
+  'firewall-dmz': ['firewall', 'dmz', 'sicherheit', 'netzsegmentierung', 'allowlist', 'paketfilter', 'application-layer-gateway'],
+  'er-grundlagen': ['datenbank', 'er'],
+  'sql-grundlagen': ['datenbank', 'sql'],
+  normalisierung: ['datenbank', 'normalisierung'],
+  'serviceanfragen-support-level': ['service', 'support', 'incident', 'service-request', 'sla'],
+  'fehlermanagement-stoerungsannahme': ['service', 'support', 'incident', 'service-request', 'sla', 'prozess'],
+  'bedarfsanalyse-feedback': ['service', 'support', 'feedback', 'prozess'],
+  'mitarbeitermotivation-teamphasen-change': ['motivation', 'team', 'teamphasen', 'change', 'kommunikation', 'prozess'],
+  'schulung-einweisung-key-user': ['schulung', 'kompetenz', 'service', 'support', 'change', 'kommunikation', 'prozess'],
+  'crm-erp-dms': ['unternehmenssoftware', 'crm', 'erp', 'dms', 'cms', 'software', 'service'],
+  'pseudocode-einstieg': ['software'],
+  'uml-aktivitaet': ['uml', 'software'],
+  netzplan: ['projekt'],
+  vorgehensmodelle: ['projekt', 'agil'],
+  bpmn: ['bpmn', 'prozess'],
+  scrum: ['scrum', 'agil'],
+  'lastenheft-pflichtenheft': ['projekt'],
+  'dsgvo-basics': ['dsgvo', 'datenschutz', 'recht'],
+  'verschluesselung-hash-vpn': ['krypto', 'verschluesselung', 'hashing', 'zertifikat', 'pki', 'signatur', 'vpn', 'ipsec', 'tls'],
+  'verschluesselung-sicherheit': ['krypto', 'sicherheit'],
+  'passwoerter-hashing': ['passwort', 'hashing', 'krypto'],
+  schutzziele: ['sicherheit'],
+  'backup-strategien': ['backup', 'sicherheit'],
+  'mtbf-mttf': ['verfuegbarkeit', 'sicherheit'],
+  'kaufmaennische-rechenaufgaben': ['wirtschaft', 'kosten'],
+  'break-even': ['wirtschaft', 'kosten'],
+  handelskalkulation: ['wirtschaft'],
+  'afa-abschreibung': ['wirtschaft', 'afa', 'abschreibung'],
+  'variable-fixe-kosten': ['wirtschaft', 'kosten'],
+  gewinnermittlung: ['wirtschaft', 'kosten'],
+  energiekosten: ['wirtschaft', 'kosten'],
+  nutzwertanalyse: ['wirtschaft', 'projekt'],
+  'make-or-buy': ['wirtschaft', 'entscheidung', 'make-or-buy', 'eigenfertigung', 'fremdbezug', 'transaktionskosten', 'nutzwertanalyse'],
+  angebotsvergleich: ['wirtschaft', 'angebot', 'angebotsvergleich', 'bezugspreis', 'nutzwertanalyse', 'entscheidung'],
+  'kauf-leasing-miete': ['kauf-leasing-miete', 'wirtschaft', 'kosten', 'recht', 'leasing', 'afa'],
+  vertragsarten: ['vertragsarten', 'vertragsrecht', 'kaufvertrag', 'dienstvertrag', 'werkvertrag', 'abnahme', 'erfolgspflicht'],
+  'rechnung-zahlungsziel-aufbewahrungsfristen': ['rechnung', 'e-rechnung', 'zahlungsziel', 'zahlungsverzug', 'aufbewahrung', 'aufbewahrungsfrist', 'buchungsbeleg'],
+  marktformen: ['wirtschaft', 'markt'],
+  eigenfremdfinanzierung: ['finanzierung', 'eigenfinanzierung', 'fremdfinanzierung', 'eigenkapital', 'fremdkapital', 'darlehen', 'zins', 'tilgung'],
+  'aida-formel': ['wirtschaft', 'marketing', 'kommunikation', 'werbung', 'aida', 'werbewirkung'],
+  'organisationsformen-leitbild-nachhaltigkeit-esg': ['wirtschaft', 'organisation', 'rechtsform', 'unternehmensform', 'einzelunternehmen', 'gmbh', 'aktiengesellschaft', 'ohg', 'kg', 'leitbild', 'nachhaltigkeit', 'esg', 'governance'],
+}
+
+const lernfeldTags: Record<string, string[]> = {
+  grundlagen: ['ordnung'],
+  hardware: ['ordnung', 'sicherheit'],
+  betriebssysteme: ['sicherheit'],
+  netzwerke: ['netzwerk'],
+  daten: ['datenbank'],
+  software: ['software'],
+  projekt: ['projekt'],
+  sicherheit: ['sicherheit'],
+  wirtschaft: ['wirtschaft'],
+  vertragsrecht: ['recht', 'vertragsrecht'],
+  qualitaet: ['projekt'],
+  webmedia: ['web'],
+  aktuell: ['ordnung'],
+  arbeitsrecht: ['recht', 'ausbildung'],
+}
+
+export function getSourcesForLesson(lessonSlug: string, lernfeldSlug?: string) {
+  const tags = new Set<string>([
+    'ordnung',
+    ...(lernfeldSlug ? lernfeldTags[lernfeldSlug] ?? [] : []),
+    ...(slugTags[lessonSlug] ?? []),
+  ])
+
+  const exact = sourceBank.filter((source) => source.tags.some((tag) => tags.has(tag)))
+  const fallback = sourceBank.filter((source) =>
+    ['bibb-fachinformatiker', 'fiausbv', 'kmk-rahmenlehrplan'].includes(source.id),
+  )
+
+  return Array.from(new Map([...exact, ...fallback].map((source) => [source.id, source])).values()).slice(0, 6)
+}

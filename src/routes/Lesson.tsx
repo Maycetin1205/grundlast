@@ -8,7 +8,7 @@ import {
   isLessonAvailable,
   lessonStatusLabel,
 } from '../lib/toc'
-import { getSourcesForLesson } from '../lib/sources'
+import { getSourcesForLesson } from '../lib/quellen'
 import { getLessonReview, reviewStatusLabel } from '../lib/review'
 import GrundlastMDXProvider from '../components/mdx/MDXProvider'
 import LessonSources from '../components/content/LessonSources'

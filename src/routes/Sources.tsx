@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ExternalLink, Library } from 'lucide-react'
-import { sourceBank } from '../lib/sources'
-import type { SourceEntry } from '../lib/sources'
+import { sourceBank } from '../lib/quellen'
+import type { SourceEntry } from '../lib/quellen'
 
 interface Group {
   code: string

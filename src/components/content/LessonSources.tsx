@@ -1,5 +1,5 @@
 import Quellen from './Quellen'
-import type { SourceEntry } from '../../lib/sources'
+import type { SourceEntry } from '../../lib/quellen'
 
 interface LessonSourcesProps {
   sources: SourceEntry[]
