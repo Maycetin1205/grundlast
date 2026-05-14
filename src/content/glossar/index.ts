@@ -1,23 +1,17 @@
 import type { GlossarEintrag } from "../../lib/glossar/types"
 
-import { grundlagen } from "./grundlagen"
-import { hardware } from "./hardware"
-import { betriebssysteme } from "./betriebssysteme"
-import { netzwerke } from "./netzwerke"
-import { software } from "./software"
-import { projekt } from "./projekt"
-import { sicherheit } from "./sicherheit"
-import { wirtschaft } from "./wirtschaft"
-import { vertragsrecht } from "./vertragsrecht"
+import { aBisD } from "./a-d"
+import { eBisH } from "./e-h"
+import { iBisL } from "./i-l"
+import { mBisP } from "./m-p"
+import { qBisS } from "./q-s"
+import { tBisZ } from "./t-z"
 
 export const glossarEintraege: GlossarEintrag[] = [
-  ...grundlagen,
-  ...hardware,
-  ...betriebssysteme,
-  ...netzwerke,
-  ...software,
-  ...projekt,
-  ...sicherheit,
-  ...wirtschaft,
-  ...vertragsrecht,
+  ...aBisD,
+  ...eBisH,
+  ...iBisL,
+  ...mBisP,
+  ...qBisS,
+  ...tBisZ,
 ]
