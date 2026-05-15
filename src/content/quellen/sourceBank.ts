@@ -715,4 +715,25 @@ export const sourceBank: SourceEntry[] = [
     detail: 'Serioese Datenquelle für wirtschaftliche Rahmenwerte und Preisentwicklung.',
     tags: ['wirtschaft', 'kosten', 'markt'],
   },
+  {
+    id: 'nist-binary-prefixes',
+    label: 'NIST - Prefixes for Binary Multiples',
+    href: 'https://physics.nist.gov/cuu/Units/binary.html',
+    detail: 'Offizielle Definition der binaeren Praefixe (KiB, MiB, GiB) und Abgrenzung zu SI-Praefixen.',
+    tags: ['ordnung', 'bit', 'byte', 'binaer', 'iec', 'praefix', 'datenmenge'],
+  },
+  {
+    id: 'iec-80000-13',
+    label: 'IEC 80000-13 - Information science and technology',
+    href: 'https://webstore.iec.ch/publication/80483',
+    detail: 'Internationaler Standard fuer Einheiten und Praefixe der Informationstechnik, definiert kibi, mebi, gibi und Folgepraefixe.',
+    tags: ['ordnung', 'bit', 'byte', 'binaer', 'iec', 'praefix', 'datenmenge'],
+  },
+  {
+    id: 'ansi-x3-4-ascii',
+    label: 'ANSI INCITS 4-1986 (R2017) - 7-Bit ASCII',
+    href: 'https://webstore.ansi.org/standards/incits/ansiincits41986r2017',
+    detail: 'US-amerikanischer Standard fuer den 7-Bit-ASCII-Zeichensatz mit 128 Codepunkten.',
+    tags: ['ordnung', 'ascii', 'zeichenkodierung', 'bit', 'byte'],
+  },
 ]

@@ -1,73 +1,183 @@
-﻿# Bit & Byte – die kleinsten Einheiten
+# Bit & Byte – die kleinsten Einheiten
 
 ## Worum geht's
 
-Du lernst, was die kleinsten Informationseinheiten im Computer sind und wie sie zusammenhängen.
-Danach kannst du Dateigrößen und Übertragungsraten sicher einordnen — und im Kopf ausrechnen,
-wie viele Buchstaben in eine bestimmte Datei passen.
+Du lernst, was die kleinsten Informationseinheiten im Computer sind, wie sie
+zusammenhängen und wie du Datenmengen sicher umrechnest. Danach kannst du
+Dateigrößen einordnen, Übertragungsraten richtig deuten und die typischen
+Fallen zwischen Bit und Byte oder zwischen Dezimal und Binär vermeiden.
 
 ---
 
 ## Erklärung
 
-Ein Computer versteht nur zwei Zustände: **Strom an** und **Strom aus**.
-Diese Zustände werden als **1** und **0** dargestellt.
-Die kleinste Einheit, die genau einen solchen Zustand speichert, heißt
-<Term id="bit">**Bit**</Term> (kurz für *Binary Digit* — deutsch: Binärstelle).
+### Vom Schalter zum Bit
 
-8 Bit zusammen ergeben 1 <Term id="byte">**Byte**</Term>.
-Ein Byte kann 2⁸ = **256 verschiedene Werte** annehmen (von 0 bis 255).
-Das reicht genau, um einen einzigen <Term id="ascii">ASCII</Term>-Buchstaben zu speichern.
+Ein Computer kann pro Stelle nur **zwei** Zustände sicher unterscheiden:
+**Strom an** oder **Strom aus**. Wir schreiben sie als **1** und **0**. Zwei
+Zustände sind technisch viel einfacher stabil zu halten als drei oder mehr —
+deshalb arbeitet praktisch jede digitale Schaltung binär.
+
+<Analogie>
+Stell dir einen einzelnen Lichtschalter vor. Er ist entweder an (1) oder aus
+(0). Mit einem Schalter kannst du also zwei Dinge unterscheiden — zum
+Beispiel ja/nein, wahr/falsch, hell/dunkel. Genau diese kleinste
+Informationseinheit heißt <Term id="bit">**Bit**</Term> (kurz für *binary
+digit*, also Binärziffer).
+</Analogie>
+
+Wenn du **zwei** Schalter nebeneinander stellst, hast du vier Kombinationen:
+`00`, `01`, `10`, `11`. Bei **drei** Schaltern sind es schon acht. Mit jedem
+zusätzlichen Schalter **verdoppelt** sich die Anzahl möglicher
+Kombinationen. Bei n Bit kannst du also 2ⁿ verschiedene Werte unterscheiden.
+
+### Vom Bit zum Byte
+
+Acht Bit gruppiert man zu einer Einheit: dem <Term id="byte">**Byte**</Term>.
+Ein Byte kann 2⁸ = **256 verschiedene Werte** annehmen — und zwar die Werte
+**0 bis 255**, nicht 1 bis 256. Die Null zählt als gültiger Wert mit.
+
+Historisch gab es auch Bytes mit 6 oder 9 Bit. Heute ist 1 Byte praktisch
+immer 8 Bit; im Lernkontext kannst du davon ausgehen, dass diese Gleichung
+gilt.
+
+Ein einzelnes Zeichen aus dem <Term id="ascii">ASCII</Term>-Zeichensatz wird
+in einem Byte gespeichert. Genau genommen nutzt Standard-ASCII nur 7 Bit
+(128 Codepunkte, 0 bis 127); das achte Bit ist dann auf 0 gesetzt. Praktisch
+rechnest du trotzdem mit „ein ASCII-Zeichen = 1 Byte".
 
 ### Die Stufenleiter der Datenmengen
 
-| Einheit | Abkürzung | Größe |
-|---|---|---|
-| Bit | b | 1 Bit |
-| <Term id="nibble">Nibble</Term> | — | 4 Bit |
-| Byte | B | 8 Bit |
-| Kilobyte | KB | 1.000 Byte *(dezimal)* |
-| Kibibyte | KiB | 1.024 Byte *(binär)* |
-| Megabyte | MB | 1.000.000 Byte |
-| Gigabyte | GB | 1.000.000.000 Byte |
+Es gibt **zwei** offizielle Reihen von Präfixen — eine **dezimale** (Faktor
+1.000, SI-Präfixe) und eine **binäre** (Faktor 1.024, IEC-Präfixe nach
+IEC 80000-13). Die Verwechslung dieser beiden Reihen ist der häufigste
+Fehler bei Datenmengen.
 
-> **Achtung:** Festplattenhersteller rechnen in Dezimal (KB = 1.000 B).
-> Betriebssysteme rechnen meist in Binär (KiB = 1.024 B).
-> Deshalb zeigt Windows eine neue 1-TB-Festplatte als ~931 GB an — kein Fehler!
+| Einheit | Symbol | Faktor | Wert in Byte |
+|---|---|---|---|
+| Bit | b | – | 1/8 Byte |
+| <Term id="nibble">Nibble</Term> | – | – | 4 Bit = 1/2 Byte |
+| Byte | B | – | 8 Bit |
+| Kilobyte | KB | 10³ | 1.000 |
+| Kibibyte | KiB | 2¹⁰ | 1.024 |
+| Megabyte | MB | 10⁶ | 1.000.000 |
+| Mebibyte | MiB | 2²⁰ | 1.048.576 |
+| Gigabyte | GB | 10⁹ | 1.000.000.000 |
+| Gibibyte | GiB | 2³⁰ | 1.073.741.824 |
+| Terabyte | TB | 10¹² | 1.000.000.000.000 |
+| Tebibyte | TiB | 2⁴⁰ | 1.099.511.627.776 |
+
+Das Schema setzt sich fort mit pebi (Pi), exbi (Ei), zebi (Zi), yobi (Yi)
+sowie seit 2025 robi (Ri) und quebi (Qi). Für die meisten Aufgaben reicht
+es bis TB beziehungsweise TiB.
 
 ---
 
-## Beispiel
+## Beispiele
 
-Eine einfache E-Mail mit dem Text „Hallo" hat 5 Zeichen.
-Jedes Zeichen belegt 1 Byte (im ASCII-Standard).
+### Beispiel 1: Text in Byte
+
+Die Begrüßung „Hallo" enthält 5 Zeichen. Im ASCII-Standard belegt jedes
+Zeichen 1 Byte:
 
 ```
 "Hallo" = 5 Zeichen × 1 Byte = 5 Byte = 40 Bit
 ```
 
+### Beispiel 2: Film in Bit
+
 Ein HD-Film mit 4 GB belegt:
 
 ```
-4 GB = 4 × 1.000.000.000 Byte = 4.000.000.000 Byte
-     = 32.000.000.000 Bit
+4 GB    = 4 × 1.000.000.000 Byte = 4.000.000.000 Byte
+        = 4.000.000.000 × 8 Bit  = 32.000.000.000 Bit
 ```
 
 Das sind 32 Milliarden Einsen und Nullen — für einen einzigen Film.
+
+### Beispiel 3: Festplatte dezimal vs. Anzeige binär
+
+<StepByStep titel="Warum eine '1-TB-Festplatte' im OS als 931 GB erscheint">
+  <Schritt nr={1} titel="Hersteller-Definition">
+    Festplattenhersteller rechnen dezimal:
+    **1 TB = 1.000.000.000.000 Byte** (Faktor 10¹²).
+  </Schritt>
+  <Schritt nr={2} titel="Betriebssystem-Anzeige">
+    Windows und viele Tools zeigen die Größe binär an, also in GiB:
+    **1 GiB = 1.073.741.824 Byte** (Faktor 2³⁰).
+  </Schritt>
+  <Schritt nr={3} titel="Umrechnung">
+    1.000.000.000.000 ÷ 1.073.741.824 ≈ **931,32 GiB**.
+  </Schritt>
+  <Ergebnis>
+    Die Festplatte erscheint im System mit **etwa 931 GB** — kein Defekt,
+    sondern unterschiedliche Maßstäbe (dezimal vs. binär).
+  </Ergebnis>
+</StepByStep>
 
 ---
 
 ## Typische Fehler
 
-- **Groß- vs. Kleinschreibung:** `b` (kleines b) = Bit, `B` (großes B) = Byte.
-  Übertragungsraten (z. B. DSL 16 **M**bit/s) sind in Bit angegeben — nicht Byte!
-  Zum Umrechnen: Mbit/s ÷ 8 = MByte/s.
+- **„256 statt 0 bis 255".** Mit 8 Bit unterscheidest du 256 verschiedene
+  Werte — aber die Zählung beginnt bei 0 und endet bei 255. Die Null zählt
+  als gültiger Wert mit. Eine klassische Off-by-One-Falle.
 
-- **Dezimal vs. Binär:** Die IHK fragt manchmal explizit nach KiB/MiB (binär).
-  Wenn „1 KiB" gefragt ist, antworte 1.024 Byte — nicht 1.000 Byte.
+- **Groß- vs. Kleinschreibung beim Symbol.** Kleines `b` steht für Bit,
+  großes `B` für Byte. Übertragungsraten wie „DSL 16 Mbit/s" sind in **Bit**
+  angegeben — nicht Byte! Zum Umrechnen: Mbit/s ÷ 8 = MByte/s.
 
-- **Bit vs. Byte verwechseln:** 1 Byte = 8 Bit. Wenn du Byte in Bit umrechnen
-  willst, **multiplizierst** du mit 8. Andersherum **dividierst** du durch 8.
+- **Dezimal mit Binär verwechseln.** „1 KB" sind 1.000 Byte, „1 KiB" sind
+  1.024 Byte. Fragt eine Aufgabe explizit nach KiB, MiB oder GiB, ist die
+  binäre Variante gemeint. Schreibst du dann 1.000 statt 1.024, ist die
+  Antwort falsch.
+
+- **Mit 8 multiplizieren oder dividieren?** Von Byte zu Bit: **mal 8**. Von
+  Bit zu Byte: **geteilt durch 8**. Merksatz: das Byte ist die größere
+  Einheit, also brauchst du davon weniger als von Bit.
+
+- **„Extended ASCII"-Falle.** Wenn jemand „Extended ASCII" sagt, ist meistens
+  eine 8-Bit-Erweiterung gemeint (zum Beispiel ISO-8859-1 oder
+  Windows-1252). Das ist **kein offizieller Standard** — die genaue Codepage
+  muss dazu benannt sein, sonst ist die Aussage mehrdeutig. In modernen
+  Systemen wird ohnehin UTF-8 verwendet, das mit Standard-ASCII abwärts­
+  kompatibel ist.
+
+- **Die „1,44 MB"-Floppy-Disk** (historische Kuriosität): Diskettenhersteller
+  haben weder dezimal noch binär gerechnet, sondern eine Mischrechnung
+  benutzt: 1.440 × 1.024 Byte = 1.474.560 Byte. Weder 1,44 × 10⁶ noch
+  1,44 × 2²⁰. Du wirst das in der Klausur nicht brauchen — aber wenn dir die
+  Zahl seltsam vorkommt: sie *ist* seltsam.
 
 ---
 
+## Was du danach kannst
+
+- Erklären, warum Computer mit zwei Zuständen arbeiten und was ein Bit ist.
+- Den Zusammenhang zwischen Bit, Byte und größeren Einheiten benennen und
+  in beide Richtungen umrechnen.
+- Dezimale Präfixe (KB, MB, GB, TB) und binäre Präfixe (KiB, MiB, GiB, TiB)
+  auseinanderhalten und die richtige Variante für eine Aufgabe wählen.
+- Übertragungsraten (in Bit/s) von Datenraten (in Byte/s) sauber trennen.
+- Erklären, warum eine „1-TB-Festplatte" im Betriebssystem als etwa 931 GB
+  erscheint.
+
+<Quellen
+  quellen={[
+    {
+      label: 'IEC 80000-13 - Information science and technology',
+      href: 'https://webstore.iec.ch/publication/80483',
+      detail: 'Internationaler Standard fuer Einheiten und Praefixe der Informationstechnik. Definiert kibi (Ki), mebi (Mi), gibi (Gi), tebi (Ti) und Folgepraefixe als reine Zweierpotenzen.'
+    },
+    {
+      label: 'NIST - Prefixes for Binary Multiples',
+      href: 'https://physics.nist.gov/cuu/Units/binary.html',
+      detail: 'US-Standardisierungsbehoerde, dokumentiert die 1998 von der IEC eingefuehrten Binaerpraefixe und betont: sie sind NICHT Teil des SI.'
+    },
+    {
+      label: 'ANSI INCITS 4-1986 (R2017) - 7-Bit ASCII',
+      href: 'https://webstore.ansi.org/standards/incits/ansiincits41986r2017',
+      detail: 'US-Standard fuer den 7-Bit-ASCII-Zeichensatz mit 128 Codepunkten (95 druckbar, 33 Steuerzeichen). Speicherung erfolgt in 8-Bit-Bytes.'
+    },
+  ]}
+/>

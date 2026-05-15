@@ -18,7 +18,7 @@ export const grundlagen: Lernfeld = {
       slug: "zahlen",
       title: "Zahlen & Einheiten",
       lessons: [
-        { slug: "bit-byte", title: "Bit & Byte – die kleinsten Einheiten", minutes: 8, importance: 5, exam: true, status: "draft" },
+        { slug: "bit-byte", title: "Bit & Byte – die kleinsten Einheiten", minutes: 8, importance: 5, exam: true, status: "ready" },
         { slug: "zahlensysteme", title: "Zahlensysteme (Dual, Hex, Dezimal)", minutes: 12, importance: 5, exam: true, status: "draft" },
         { slug: "prefixe", title: "SI- und Binärpräfixe (KB vs. KiB)", minutes: 8, importance: 5, exam: true, status: "draft" },
       ],
