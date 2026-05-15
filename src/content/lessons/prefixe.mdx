@@ -1,84 +1,241 @@
-﻿# SI- und Binärpräfixe (KB vs. KiB)
+# SI- und Binärpräfixe (KB vs. KiB)
 
 ## Worum geht's
 
-Du lernst den Unterschied zwischen dezimalen Einheiten (KB, MB, GB) und binären Einheiten (KiB, MiB, GiB)
-und kannst IHK-Rechenaufgaben mit Dateigrößen sicher lösen.
+Du lernst, warum es **zwei** offizielle Präfix-Reihen für Datenmengen gibt —
+eine dezimale (KB, MB, GB, TB) und eine binäre (KiB, MiB, GiB, TiB) —, wann
+welche gilt und wie du in einer Klausuraufgabe sicher umrechnest. Danach
+verstehst du auch, warum eine „1-TB-Festplatte" im Betriebssystem als
+etwa 931 GB erscheint, und warum derselbe Vergleich bei einer kleinen
+USB-Karte fast niemand bemerkt.
+
+Dieses Kapitel vertieft die Tabelle aus <Term id="bit">Bit</Term> & <Term id="byte">Byte</Term>.
+Falls Bit/Byte noch wackelt: erst dort durchgehen, dann hier weiter.
 
 ---
 
-## Das Problem
+## Erklärung
 
-Du kaufst eine Festplatte mit „500 GB". Windows zeigt 465 GB an. Kaputt? Betrug?
+### Zwei Reihen, eine Ursache
 
-**Nein — zwei verschiedene Definitionen:**
+Es gibt zwei unabhängig standardisierte Reihen, weil zwei verschiedene
+Welten unterschiedlich rechnen:
 
-- **Hersteller (dezimal):** 500 GB = 500 × 1.000.000.000 Byte = 500.000.000.000 Byte
-- **Windows (binär):** zeigt GiB an — 1 GiB = 1.073.741.824 Byte
+- **SI-Präfixe** kommen aus der Physik. `k`, `M`, `G`, `T` stehen offiziell
+  für `10³`, `10⁶`, `10⁹`, `10¹²`. Das gilt seit 1960 und ist vom BIPM
+  (Bureau International des Poids et Mesures) so festgelegt.
+- **<Term id="binaerpraefix">Binärpräfixe</Term>** kommen aus der
+  Informatik. `Ki`, `Mi`, `Gi`, `Ti` stehen für `2¹⁰`, `2²⁰`, `2³⁰`, `2⁴⁰`.
+  Das hat die IEC erst 1998 standardisiert (IEC 80000-13), um eine Verwirrung
+  zu beenden, die da schon Jahrzehnte alt war.
 
-500.000.000.000 ÷ 1.073.741.824 ≈ **465,7 GiB** → das ist die 465, die Windows zeigt.
+Die Verwirrung kam so: In der Halbleiterindustrie wurde `1 KB` historisch
+binär gerechnet (1024 Byte), weil Speicher technisch in Zweierpotenzen
+adressiert wird. Festplattenhersteller dagegen rechneten von Anfang an
+dezimal (1.000 Byte) — das verkauft sich besser. Erst die IEC-Präfixe
+geben dem binären Fall ein eigenes Symbol; vorher musste man aus dem
+Kontext raten.
 
----
+<Analogie>
+Stell dir vor, in einem Land gibt es **zwei Währungen**, die fast gleich
+heißen: „Dollar" (offiziell 100 Cent) und „Coin" (offiziell 1024 Cent).
+Bei einer Tasse Kaffee für 3 macht das nichts aus — 2,4 Prozent Unterschied
+merkt niemand. Beim Hauskauf für 500.000 sind das schon zehntausende Cent
+Differenz. Genauso ist es bei KB versus KiB: gleiche Größenordnung, aber
+nicht identisch — und der Unterschied wächst mit jeder Stufe.
+</Analogie>
 
-## Dezimal vs. Binär
+### Die Tabelle, scharf gestellt
 
-| Dezimal (SI) | Basis | Byte | Binär (IEC) | Basis | Byte |
-|---|---|---|---|---|---|
-| KB (Kilobyte) | 10³ | 1.000 | KiB (Kibibyte) | 2¹⁰ | 1.024 |
-| MB (Megabyte) | 10⁶ | 1.000.000 | MiB (Mebibyte) | 2²⁰ | 1.048.576 |
-| GB (Gigabyte) | 10⁹ | 1.000.000.000 | GiB (Gibibyte) | 2³⁰ | 1.073.741.824 |
-| TB (Terabyte) | 10¹² | 1.000.000.000.000 | TiB (Tebibyte) | 2⁴⁰ | 1.099.511.627.776 |
+| Symbol | Name | Faktor | Wert in Byte | Reihe |
+|---|---|---|---|---|
+| `kB` | Kilobyte | `10³` | `1.000` | SI (dezimal) |
+| `KiB` | Kibibyte | `2¹⁰` | `1.024` | IEC (binär) |
+| `MB` | Megabyte | `10⁶` | `1.000.000` | SI |
+| `MiB` | Mebibyte | `2²⁰` | `1.048.576` | IEC |
+| `GB` | Gigabyte | `10⁹` | `1.000.000.000` | SI |
+| `GiB` | Gibibyte | `2³⁰` | `1.073.741.824` | IEC |
+| `TB` | Terabyte | `10¹²` | `1.000.000.000.000` | SI |
+| `TiB` | Tebibyte | `2⁴⁰` | `1.099.511.627.776` | IEC |
 
-**Faustregel:** Binärpräfixe (KiB, MiB, GiB) enden immer auf **-ibyte**. Dezimalpräfixe (KB, MB, GB) nicht.
+**Faustregel zum Erkennen:** binäre Präfixe haben ein kleines `i` und enden
+auf `-byte`: Ki**bi**byte, Me**bi**byte, Gi**bi**byte. Dezimal haben kein `i`.
+
+**Symbol-Detail:** Korrekt geschrieben ist `kB` mit **kleinem k** (so will
+es das SI). Im Alltag siehst du oft `KB` mit großem `K` — das ist nicht
+streng SI, aber unmissverständlich, solange das `i` fehlt.
+
+### Warum die Drift wächst
+
+Auf jeder Stufe schiebt sich der binäre Wert ein Stück über den dezimalen
+hinaus, weil `1024 / 1000 = 1,024`. Multipliziert sich der Faktor:
+
+| Stufe | binär / dezimal | Drift |
+|---|---|---|
+| `KiB / kB` | `1024 / 1000` | `+2,4 %` |
+| `MiB / MB` | `1.048.576 / 1.000.000` | `+4,9 %` |
+| `GiB / GB` | `1.073.741.824 / 1.000.000.000` | `+7,4 %` |
+| `TiB / TB` | `1.099.511.627.776 / 1.000.000.000.000` | `+10,0 %` |
+
+Deshalb fällt der Hersteller-vs-Anzeige-Unterschied bei einer 1-TB-Platte
+sofort auf (~93 GiB „verloren"), bei einer 64-MiB-SD-Karte aber kaum.
 
 ---
 
 ## Rechenweg: immer über Byte
 
-Das wichtigste Prinzip für Umrechnungsaufgaben:
+Eine einzige Heuristik löst praktisch jede Umrechnungsaufgabe:
 
 ```
 1. Alles in Byte umrechnen (gemeinsame Basis)
 2. Dann in die Zieleinheit
 ```
 
-**Beispiel 1:** 500 GB → GiB
+Diese zwei Schritte erscheinen umständlich — aber sie verhindern, dass du
+versehentlich mit dem falschen Faktor rechnest. Schritt für Schritt ist
+in der Prüfung schneller als „im Kopf direkt".
+
+### Beispiel 1: 500 GB → GiB (Festplatten-Klassiker)
+
+<StepByStep titel="500-GB-Festplatte zu GiB umrechnen">
+  <Schritt nr={1} titel="In Byte umrechnen">
+    Hersteller rechnen dezimal:
+    `500 GB = 500 × 10⁹ Byte = 500.000.000.000 Byte`.
+  </Schritt>
+  <Schritt nr={2} titel="Zielfaktor bestimmen">
+    `1 GiB = 2³⁰ Byte = 1.073.741.824 Byte`.
+  </Schritt>
+  <Schritt nr={3} titel="Dividieren">
+    `500.000.000.000 ÷ 1.073.741.824 ≈ 465,66`.
+  </Schritt>
+  <Ergebnis>
+    Die 500-GB-Platte erscheint im OS mit etwa **465,7 GiB** — kein Defekt,
+    sondern unterschiedliche Maßstäbe.
+  </Ergebnis>
+</StepByStep>
+
+### Beispiel 2: 2.048.000 Bit → KiB (typische Klausuraufgabe)
 
 ```
-Schritt 1: 500 GB = 500 × 10⁹ Byte = 500.000.000.000 Byte
-Schritt 2: 1 GiB = 2³⁰ = 1.073.741.824 Byte
-Schritt 3: 500.000.000.000 ÷ 1.073.741.824 ≈ 465,7 GiB
+Schritt 1:  Bit → Byte:  2.048.000 ÷ 8 = 256.000 Byte
+Schritt 2:  Byte → KiB:  256.000 ÷ 1.024 = 250 KiB
 ```
 
-**Beispiel 2:** 2.048.000 Bit → KiB
+Antwort: **250 KiB**. (Hinweis: Wäre nach `kB` gefragt, wären es `256 kB`.
+Der Unterschied entsteht im zweiten Schritt durch den Faktor `1024` statt
+`1000`.)
+
+### Beispiel 3: 16 Mbit/s DSL — wie lange dauert 1 GiB?
+
+Eine Aufgabe, die Übertragung und Speicher mischt. Häufiges AP1-Muster.
 
 ```
-Schritt 1: 2.048.000 Bit ÷ 8 = 256.000 Byte
-Schritt 2: 256.000 Byte ÷ 1024 = 250 KiB
+Schritt 1:  Rate in Byte/s:
+            16 Mbit/s = 16 × 10⁶ Bit/s = 16.000.000 Bit/s
+            16.000.000 ÷ 8 = 2.000.000 Byte/s
+
+Schritt 2:  Zielmenge in Byte:
+            1 GiB = 2³⁰ Byte = 1.073.741.824 Byte
+
+Schritt 3:  Zeit = Menge / Rate:
+            1.073.741.824 ÷ 2.000.000 ≈ 536,87 Sekunden
+            ≈ 8 Minuten 57 Sekunden
 ```
 
-**Beispiel 3:** 4 MiB → Byte
+Antwort: rund **8:57 Minuten**. Wer auf den Byte-Zwischenschritt verzichtet
+und „16 Mbit/s ≈ 16 MB/s" annimmt, kommt auf etwa 1 Minute — Faktor 8 zu
+optimistisch.
+
+### Beispiel 4: 4 MiB → Byte (Umkehr)
 
 ```
 4 MiB = 4 × 2²⁰ = 4 × 1.048.576 = 4.194.304 Byte
 ```
 
+Reine Multiplikation. Hier sieht man, wozu der Zwischenschritt da ist:
+„4 MiB" und „4 MB" unterscheiden sich nur um knapp 5 % — bei großen
+Zahlen wird daraus aber ein echter Fehler.
+
 ---
 
 ## Typische Fehler
 
-**1. KB mit KiB verwechseln**
-Wenn die Aufgabe „KB" sagt → 1.000 Byte. Wenn „KiB" → 1.024 Byte.
-Wenn unklar: dezimal annehmen und im Rechenweg begründen.
+- **`kB` mit `KiB` verwechseln.** Wenn eine Aufgabe ausdrücklich `KiB`,
+  `MiB`, `GiB` oder `TiB` schreibt, ist die binäre Reihe gemeint —
+  Faktor `1024`, nicht `1000`. Schreibt sie `kB`, `MB`, `GB`, `TB`, ist
+  formal die dezimale Reihe gemeint. Bei unklarer Quelle (z.B. Anzeige
+  eines Programms) hilft der Rechenweg, im Lösungsweg zu begründen,
+  welche Variante du genommen hast.
 
-**2. Bit und Byte vertauschen**
-1 Byte = 8 Bit. Immer zuerst: Bit ÷ 8 = Byte, dann weiterrechnen.
+- **Symbol klein/groß durcheinander.** Offiziell ist `kilo` = `k` (klein),
+  `kibi` = `Ki` (groß plus klein `i`). `M`, `G`, `T` sind in beiden Reihen
+  groß. Die häufige Schreibweise „1 KB" mit großem `K` ist nicht strenges
+  SI, aber im Alltag verbreitet. Entscheidend bleibt: gibt's ein `i`?
+  Dann binär.
 
-**3. Zwischenschritt überspringen**
-Nie direkt von Gbit in MiB rechnen — immer über Byte als Zwischenschritt.
+- **Bit und Byte vertauschen.** `1 Byte = 8 Bit`. Übertragungsraten wie
+  „DSL 16 Mbit/s" sind in **Bit** angegeben, nicht Byte. Erst `÷ 8`, dann
+  weiterrechnen. Wer das vergisst, ist konsistent Faktor 8 daneben.
 
-**4. Einheit vergessen**
-In der IHK gibt es Punktabzug ohne Einheit. Immer hinschreiben: KiB, MB, Byte usw.
+- **Direkt von Gbit/s in MiB rechnen.** Ohne Byte-Zwischenschritt mischt
+  man dezimal (Gbit-Seite) und binär (MiB-Seite) in einer einzigen
+  Multiplikation. Ergebnis: stiller Vorzeichen-loser Fehler. Faustregel
+  von oben anwenden: erst alles in Byte.
+
+- **Einheit weglassen.** In IHK-Aufgaben gibt es Punktabzug für fehlende
+  Einheit, selbst wenn die Zahl stimmt. Immer mitschreiben — und die
+  *richtige* Einheit: `KiB` ≠ `kB`.
+
+- **„Windows zeigt GB" — meint aber GiB.** Microsoft beschriftet die
+  binäre Größe einer Datei oder Festplatte historisch mit dem dezimalen
+  Symbol `GB`. Inhaltlich gerechnet wird in `GiB` (`2³⁰`). Wer das nicht
+  weiß, glaubt entweder, die Festplatte sei defekt, oder rechnet im
+  Lösungsweg mit dem falschen Faktor. macOS hat 2009 auf die SI-Reihe
+  umgestellt; Linux-Tools wie `df` und `ls` unterscheiden je nach Flag.
+
+- **Folgepräfixe vergessen.** Nach `Ti` kommt `Pi` (Pebibyte, `2⁵⁰`),
+  dann `Ei` (Exbibyte, `2⁶⁰`). In Klausuren selten — aber wenn doch,
+  gilt dieselbe Reihe und derselbe Rechenweg.
 
 ---
 
+## Was du danach kannst
+
+- SI-Präfixe (`k`, `M`, `G`, `T` als Zehnerpotenzen) und IEC-Binärpräfixe
+  (`Ki`, `Mi`, `Gi`, `Ti` als Zweierpotenzen) sicher unterscheiden — am
+  `i` und am `-bi-` im Wortstamm.
+- Datenmengen über den Byte-Zwischenschritt zwischen beliebigen Einheiten
+  umrechnen, in beide Richtungen, ohne im Faktor zu verrutschen.
+- Erklären, warum eine 1-TB-Festplatte im OS rund 931 GiB anzeigt — und
+  warum derselbe Effekt bei einer kleinen SD-Karte praktisch unsichtbar
+  bleibt.
+- Mischaufgaben aus Übertragungsrate und Datenmenge (z.B. „wie lange
+  dauert der Download von 1 GiB bei 16 Mbit/s?") in drei Schritten ohne
+  Schätzfehler lösen.
+- Eine OS-Anzeige wie „1,46 GB" als möglicherweise binär (also `GiB`)
+  einordnen und im Lösungsweg sauber begründen.
+
+<Quellen
+  quellen={[
+    {
+      label: 'IEC 80000-13 - Information science and technology',
+      href: 'https://webstore.iec.ch/publication/80483',
+      detail: 'Internationaler Standard fuer Einheiten und Praefixe der Informationstechnik. Definiert kibi (Ki), mebi (Mi), gibi (Gi), tebi (Ti) als reine Zweierpotenzen und grenzt sie ausdruecklich von den SI-Praefixen ab.'
+    },
+    {
+      label: 'BIPM - SI prefixes',
+      href: 'https://www.bipm.org/en/measurement-units/si-prefixes',
+      detail: 'Internationales Bureau fuer Mass und Gewicht: die SI-Praefixe k=10^3, M=10^6, G=10^9, T=10^12 sind seit 1960 festgelegt. Die Verwendung von kilo (k) fuer 2^10 ist laut SI ausdruecklich unzulaessig.'
+    },
+    {
+      label: 'NIST - Prefixes for Binary Multiples',
+      href: 'https://physics.nist.gov/cuu/Units/binary.html',
+      detail: 'US-Standardisierungsbehoerde, dokumentiert die 1998 von der IEC eingefuehrten Binaerpraefixe und betont, dass sie NICHT Teil des SI sind. Cross-Check zur IEC-Definition.'
+    },
+    {
+      label: 'JEDEC 100B.01 - Unit Prefixes for Semiconductor Storage Capacity',
+      href: 'https://www.nomad.jedec.org/standards-documents/dictionary/terms/mega-m-prefix-units-semiconductor-storage-capacity',
+      detail: 'JEDEC-Industriestandard: dokumentiert die in der Halbleiterindustrie verbreitete binaere Auslegung von K=1024, M=2^20, G=2^30 ausdruecklich nur "to reflect common usage" - erklaert die historische Wurzel der KB/KiB-Verwirrung.'
+    },
+  ]}
+/>

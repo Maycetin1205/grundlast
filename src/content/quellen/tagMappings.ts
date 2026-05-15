@@ -8,7 +8,7 @@ export const slugTags: Record<string, string[]> = {
   'von-neumann': ['ordnung'],
   'bit-byte': ['ordnung', 'bit', 'byte', 'binaer', 'ascii', 'praefix', 'datenmenge', 'zeichenkodierung'],
   'zahlensysteme': ['ordnung'],
-  'prefixe': ['ordnung'],
+  'prefixe': ['ordnung', 'bit', 'byte', 'binaer', 'iec', 'praefix', 'datenmenge', 'si', 'dezimal'],
   'cpu-ram-speicher': ['ordnung'],
   'raid-systeme': ['sicherheit', 'backup'],
   'usv-systeme': ['sicherheit', 'verfuegbarkeit'],

@@ -736,4 +736,18 @@ export const sourceBank: SourceEntry[] = [
     detail: 'US-amerikanischer Standard fuer den 7-Bit-ASCII-Zeichensatz mit 128 Codepunkten.',
     tags: ['ordnung', 'ascii', 'zeichenkodierung', 'bit', 'byte'],
   },
+  {
+    id: 'bipm-si-prefixes',
+    label: 'BIPM - SI prefixes',
+    href: 'https://www.bipm.org/en/measurement-units/si-prefixes',
+    detail: 'Internationales Bureau fuer Mass und Gewicht (BIPM): Offizielle SI-Praefixe k=10^3, M=10^6, G=10^9, T=10^12 etc. Die Verwendung von kilo (k) fuer 2^10 ist laut SI unzulaessig.',
+    tags: ['ordnung', 'praefix', 'si', 'dezimal', 'datenmenge', 'bit', 'byte'],
+  },
+  {
+    id: 'jedec-100b-01',
+    label: 'JEDEC 100B.01 - Unit Prefixes for Semiconductor Storage Capacity',
+    href: 'https://www.nomad.jedec.org/standards-documents/dictionary/terms/mega-m-prefix-units-semiconductor-storage-capacity',
+    detail: 'JEDEC-Industriestandard: dokumentiert die in der Halbleiterindustrie verbreitete binaere Auslegung von K=1024, M=2^20, G=2^30 ausdruecklich nur "to reflect common usage" - erklaert die historische Wurzel der KB/KiB-Verwirrung.',
+    tags: ['ordnung', 'praefix', 'binaer', 'datenmenge', 'bit', 'byte', 'industrie'],
+  },
 ]
