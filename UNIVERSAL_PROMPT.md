@@ -87,6 +87,8 @@ probieren.
 
 ---
 
-## Deine Aufgabe
+## Aufgabe
 
-{{HIER_KONKRETE_AUFGABE_EINTRAGEN}}
+(Vom Benutzer in der naechsten Nachricht oder unten ergaenzt. Lies die
+Aufgabe vollstaendig, frage **eine** Klaerung wenn etwas wirklich offen
+ist, sonst beginne mit Pflicht-Lektuere und dann Schritt 1.)
