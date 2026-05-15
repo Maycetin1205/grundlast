@@ -750,4 +750,25 @@ export const sourceBank: SourceEntry[] = [
     detail: 'JEDEC-Industriestandard: dokumentiert die in der Halbleiterindustrie verbreitete binaere Auslegung von K=1024, M=2^20, G=2^30 ausdruecklich nur "to reflect common usage" - erklaert die historische Wurzel der KB/KiB-Verwirrung.',
     tags: ['ordnung', 'praefix', 'binaer', 'datenmenge', 'bit', 'byte', 'industrie'],
   },
+  {
+    id: 'posix-chmod',
+    label: 'IEEE Std 1003.1 (POSIX) - chmod',
+    href: 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/chmod.html',
+    detail: 'Open-Group-Spezifikation: definiert die zwoelf File-Mode-Bits als vier Oktalziffern. Wertigkeiten r=4, w=2, x=1 fuer die Rollen User, Group und Other - Grundlage fuer das Lesen von chmod 755, 644, 700.',
+    tags: ['ordnung', 'betriebssystem', 'linux', 'chmod', 'oktal', 'dateirechte', 'posix', 'sicherheit'],
+  },
+  {
+    id: 'rfc-9542',
+    label: 'RFC 9542 - IANA Considerations and IETF Usage for IEEE 802 Parameters',
+    href: 'https://www.rfc-editor.org/rfc/rfc9542.html',
+    detail: 'Aktuelle IETF-Quelle (loest RFC 7042 ab) zur kanonischen Darstellung von 48-Bit-MAC-Adressen (EUI-48) als sechs Paare hexadezimaler Ziffern, getrennt durch Doppelpunkte oder Bindestriche.',
+    tags: ['ordnung', 'netzwerk', 'mac-adresse', 'eui-48', 'hex', 'hexadezimal', 'ieee-802'],
+  },
+  {
+    id: 'w3c-css-color-4',
+    label: 'W3C - CSS Color Module Level 4',
+    href: 'https://www.w3.org/TR/css-color-4/',
+    detail: 'W3C-Spezifikation der Hex-Notation #RRGGBB[AA] fuer sRGB-Farben: drei (oder vier) Bytes Rot/Gruen/Blau (Alpha) als jeweils zwei Hex-Ziffern, 0x00 bis 0xFF pro Kanal.',
+    tags: ['ordnung', 'web', 'css', 'farbe', 'hex', 'hexadezimal', 'rgb'],
+  },
 ]

@@ -1,56 +1,122 @@
-﻿# Zahlensysteme
+# Zahlensysteme (Dual, Hex, Dezimal)
 
 ## Worum geht's
 
-Du lernst, wie Computer mit Zahlen umgehen — und wie du zwischen
-Binär (Dual), Dezimal, Hexadezimal und Oktal sicher hin- und her rechnest.
-In der Prüfung kommen solche Umrechnungen regelmäßig vor.
+Du lernst, wie Computer Zahlen darstellen und wie du zwischen **Binär**
+(Dual), **Dezimal**, **Hexadezimal** und **Oktal** sicher hin- und her
+rechnest. Danach kannst du eine MAC-Adresse wie `C0:FF:EE:01:02:03` lesen,
+eine CSS-Farbe `#FF8000` einordnen, `chmod 755` zerlegen und ein Subnetz
+wie `192.168.10.0/24` als Bitmuster verstehen. Alle vier Systeme sind nur
+verschiedene Schreibweisen fuer dieselbe Zahl — der Trick ist die <Term id="basis">Basis</Term>.
 
 ---
 
-## Die Analogie: Wie viele Finger hast du?
+## Die Idee: Stellenwertsystem
 
-**Dezimal = 10 Finger**
-Du zählst 0–9, dann "Überlauf" zur nächsten Stelle. 9 + 1 = 10.
+Jedes der vier Systeme funktioniert nach demselben Prinzip. Jede Stelle
+einer Zahl hat einen **Stellenwert**, der sich aus zwei Dingen ergibt:
 
-**Binär = 2 "Finger" (an/aus)**
-Stell dir vor, du hast nur zwei Zustände: Daumen hoch (1) oder runter (0).
-Der Überlauf kommt schon nach 1: 1 + 1 = 10 (binär!).
+```
+Stellenwert = Basis ^ Position
+```
 
-**Hexadezimal = 16 "Finger"**
-Du brauchst mehr Symbole als 0–9 — deshalb kommen Buchstaben dazu: A=10, B=11, … F=15.
-F + 1 = 10 (hex!). Überlauf erst nach 15.
+Position 0 ist ganz rechts, nach links steigt der Exponent jeweils um eins.
+Der Gesamtwert ist die Summe aus `Ziffer × Stellenwert` ueber alle Stellen.
+
+**Beispiel im vertrauten Dezimalsystem** (Basis 10):
+
+```
+  3 0 5
+  ↑ ↑ ↑
+  100  1
+     10
+= 3 × 10² + 0 × 10¹ + 5 × 10⁰
+= 300 + 0 + 5
+= 305
+```
+
+Wenn du dieses Prinzip einmal verstanden hast, funktionieren alle anderen
+Systeme genauso — nur die <Term id="basis">Basis</Term> wechselt. Daraus
+folgen die <Term id="stellenwert">Stellenwerte</Term> automatisch.
+
+<Analogie>
+Stell dir einen Tageskilometerzaehler im Auto vor. Jedes Raedchen zeigt
+0 bis 9. Wenn ein Raedchen von 9 auf 0 springt, ueberlaeuft es und schiebt
+das linke Raedchen um eins weiter. Das ist Dezimal: **Basis 10, ueberlaufen bei 9**.
+
+Tausche die Raedchen gegen welche mit nur **zwei** Positionen (an/aus) —
+schon hast du Binaer. Ueberlauf passiert dann schon nach 1: `1 + 1 = 10`
+(binaer gelesen: "eins-null", also Dezimal 2).
+
+Tausche sie gegen **sechzehn**-stellige Raedchen, brauchst du mehr Symbole
+als 0–9 — also kommen Buchstaben dazu: A=10 bis F=15. Ueberlauf erst nach
+F: `F + 1 = 10` (hex gelesen: "eins-null", also Dezimal 16).
+</Analogie>
 
 ---
 
-## Die 4 Zahlensysteme
+## Die vier Systeme im Ueberblick
 
-| System | Basis | Ziffern | Wo verwendet |
+| System | <Term id="basis">Basis</Term> | Ziffern | Wo es auftaucht |
 |---|---|---|---|
-| **Binär (Dual)** | 2 | 0, 1 | Computer intern, IP-Subnetting |
+| **Binaer (Dual)** | 2 | 0, 1 | <Term id="bit">Bit</Term>-Ebene im Computer, IP-Subnetzmasken |
+| **Oktal** | 8 | 0–7 | Linux-Dateirechte (`chmod 755`) |
 | **Dezimal** | 10 | 0–9 | Alltag, Menschen |
-| **Hexadezimal** | 16 | 0–9, A–F | Farben (CSS #FF0000), MAC-Adressen, Speicheradressen |
-| **Oktal** | 8 | 0–7 | Linux-Dateiberechtigungen (chmod 755) |
+| **<Term id="hexadezimal">Hexadezimal</Term>** | 16 | 0–9, A–F | MAC-Adressen, CSS-Farben (`#FF0000`), Speicheradressen |
 
-Alle vier sind nur verschiedene **Schreibweisen für dieselbe Zahl**:
+Alle vier sind nur verschiedene **Schreibweisen fuer dieselbe Zahl**.
+Die folgende Tabelle zeigt das an ein paar Werten:
 
-| Dezimal | Binär | Hex | Oktal |
+| Dezimal | Binaer | Hex | Oktal |
 |---|---|---|---|
 | 0 | 0000 | 0 | 0 |
 | 9 | 1001 | 9 | 11 |
 | 10 | 1010 | A | 12 |
 | 15 | 1111 | F | 17 |
 | 16 | 10000 | 10 | 20 |
+| 64 | 1000000 | 40 | 100 |
 | 192 | 11000000 | C0 | 300 |
 | 255 | 11111111 | FF | 377 |
 
+**Schreib-Konventionen** (damit du in einer Aufgabe siehst, was gemeint ist):
+
+- `0b10101` oder `10101₂` — binaer (auch `0b` als Praefix)
+- `0o17` oder `17₈` — oktal (in C/Python). Vorsicht: in vielen Skripten ist
+  ein **fuehrendes `0`** allein schon oktal — `012` ist nicht 12, sondern
+  Oktal 12 = Dezimal 10.
+- `0x1F` oder `1F₁₆` oder `#1F` — hexadezimal
+- Ohne Praefix gilt im Alltag Dezimal — in einer Aufgabe aber immer den
+  Kontext lesen. `10` allein ist mehrdeutig.
+
 ---
 
-## Dezimal → Binär: Die Teilungsmethode
+## Wozu vier Systeme? Wo welches auftaucht
 
-Immer durch 2 teilen, Reste von **unten nach oben** lesen.
+Dezimal nutzen Menschen. Die anderen drei haben jeweils einen Grund, warum
+genau dieses System praktisch ist:
 
-**Beispiel: 45 in Binär**
+- **Binaer** ist die Sprache der Hardware. Ein <Term id="bit">Bit</Term> hat
+  nur zwei Zustaende (an/aus), und genau das laesst sich elektronisch
+  zuverlaessig speichern. Sichtbar wird Binaer typisch bei <Term id="subnetting">Subnetting</Term>:
+  `192.168.10.0/24` heisst „die ersten 24 Bit sind Netzanteil". Wer rechnen
+  will, muss in Binaer denken.
+- **Oktal** ist die kompakte Form von „drei Bit pro Ziffer". Linux nutzt das
+  fuer Dateirechte: drei Bit (lesen/schreiben/ausfuehren) pro Rolle
+  (Eigentuemer/Gruppe/andere) ergeben drei Oktalziffern — `chmod 755`.
+- **Hexadezimal** ist die kompakte Form von „vier Bit pro Ziffer". Eine
+  Hex-Ziffer = ein <Term id="nibble">Nibble</Term> = exakt 4 Bit. Damit
+  laesst sich ein <Term id="byte">Byte</Term> (8 Bit) in **zwei** Hex-Ziffern
+  schreiben. Deshalb sind MAC-Adressen, Farben und Speicheradressen hex
+  notiert: viel kuerzer als Binaer, aber jederzeit zurueck uebersetzbar.
+
+---
+
+## Dezimal → Binaer: Teilungsmethode
+
+Immer durch 2 teilen, die **Reste** notieren, am Ende **von unten nach oben**
+lesen.
+
+**Beispiel: 45 in Binaer**
 
 ```
 45 ÷ 2 = 22  Rest 1
@@ -62,13 +128,22 @@ Immer durch 2 teilen, Reste von **unten nach oben** lesen.
               ↑ Von hier lesen
 ```
 
-Von unten nach oben: **101101** → 45₁₀ = **101101₂**
+Von unten nach oben: **101101**. Also `45₁₀ = 101101₂`.
+
+**Probe (Stellenwert-Methode rueckwaerts):**
+
+```
+1·32 + 0·16 + 1·8 + 1·4 + 0·2 + 1·1
+= 32 + 8 + 4 + 1
+= 45 ✓
+```
 
 ---
 
-## Binär → Dezimal: Die Stellenwert-Methode
+## Binaer → Dezimal: Stellenwert-Methode
 
-Jede Stelle hat einen Wert (2⁰, 2¹, 2², …). Nur die 1er zählen zusammen.
+Jede Stelle hat einen Wert (2⁰, 2¹, 2²…). Nur die Stellen mit `1` zaehlen
+zusammen.
 
 **Beispiel: 11000000 in Dezimal**
 
@@ -76,20 +151,23 @@ Jede Stelle hat einen Wert (2⁰, 2¹, 2², …). Nur die 1er zählen zusammen.
 |---|---|---|---|---|---|---|---|---|
 | Wertigkeit | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
 | Bit | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Wert | 128 | 64 | — | — | — | — | — | — |
+| Beitrag | 128 | 64 | — | — | — | — | — | — |
 
-128 + 64 = **192** → 11000000₂ = **192₁₀**
+`128 + 64 = 192`. Also `11000000₂ = 192₁₀`.
 
-**Merkhilfe für 8 Bit:** 128 – 64 – 32 – 16 – 8 – 4 – 2 – 1
+**Merkhilfe fuer 8 Bit:** `128 – 64 – 32 – 16 – 8 – 4 – 2 – 1`. Diese acht
+Werte auswendig zu koennen lohnt sich — sie tauchen bei IPv4-Subnetting
+in praktisch jeder Aufgabe auf.
 
 ---
 
-## Dezimal → Hexadezimal
+## Dezimal → Hex: Teilungsmethode
 
-Hex-Ziffern: `0 1 2 3 4 5 6 7 8 9 A B C D E F`
-Merke: A=10, B=11, C=12, D=13, E=14, F=15
+Hex-Ziffern: `0 1 2 3 4 5 6 7 8 9 A B C D E F`. Merke: A=10, B=11, C=12, D=13,
+E=14, F=15.
 
-Methode: Immer durch 16 teilen, Reste von unten nach oben lesen.
+Methode: Immer durch 16 teilen, Reste von unten nach oben lesen — analog
+zur Binaer-Teilung, nur mit 16 statt 2.
 
 **Beispiel: 192 in Hex**
 
@@ -98,33 +176,258 @@ Methode: Immer durch 16 teilen, Reste von unten nach oben lesen.
  12 ÷ 16 =  0  Rest 12  → C
 ```
 
-Von unten: **C0** → 192₁₀ = **C0₁₆**
+Von unten: **C0**. Also `192₁₀ = C0₁₆`.
 
 ---
 
-## Hexadezimal → Dezimal
+## Hex → Dezimal: zwei Wege
 
-Jede Stelle mit ihrer Potenz von 16 multiplizieren und addieren.
+### Weg 1: direkt rechnen
 
-**Beispiel: 0xFF in Dezimal**
+Jede Stelle mit ihrer Potenz von 16 multiplizieren, dann summieren.
+
+**Beispiel: `0xFF` in Dezimal**
 
 ```
-F = 15, F = 15
-15 × 16¹ + 15 × 16⁰
-= 15 × 16  + 15 × 1
-= 240      + 15
+F · 16¹ + F · 16⁰
+= 15 · 16 + 15 · 1
+= 240 + 15
 = 255
 ```
 
-0xFF₁₆ = **255₁₀**
+Also `FF₁₆ = 255₁₀`.
 
-**Kurzweg über Binär:** 1 Hex-Ziffer = genau 4 Bit
+### Weg 2: ueber Binaer (Nibble-Trick)
+
+Eine Hex-Ziffer entspricht **genau** 4 Bit — also einem <Term id="nibble">Nibble</Term>.
+Damit kannst du jede Hex-Zahl in vier Bit pro Ziffer zerlegen und das
+Binaerergebnis dann ueber die Stellenwert-Methode in Dezimal umrechnen.
+
+**Beispiel: `0xC0` ueber Binaer**
 
 ```
 C    0
 1100 0000
-= 11000000₂ = 192₁₀
 ```
+
+Das ist `11000000₂ = 128 + 64 = 192`. Also `C0₁₆ = 192₁₀` — passt zum
+Ergebnis von oben.
+
+Der Nibble-Trick ist in der Pruefung oft **schneller** als das direkte
+Hex-Rechnen, weil du nur die Wertigkeiten `8-4-2-1` pro Nibble brauchst und
+nichts mit 16 multiplizierst. Diese kleine **Hex→Nibble-Tabelle** lohnt
+sich auswendig:
+
+| Hex | Binaer | Hex | Binaer |
+|---|---|---|---|
+| 0 | 0000 | 8 | 1000 |
+| 1 | 0001 | 9 | 1001 |
+| 2 | 0010 | A | 1010 |
+| 3 | 0011 | B | 1011 |
+| 4 | 0100 | C | 1100 |
+| 5 | 0101 | D | 1101 |
+| 6 | 0110 | E | 1110 |
+| 7 | 0111 | F | 1111 |
 
 ---
 
+## Dezimal → Oktal
+
+Methode wie bei Binaer und Hex, nur durch 8 teilen.
+
+**Beispiel: 511 in Oktal**
+
+```
+511 ÷ 8 = 63  Rest 7
+ 63 ÷ 8 =  7  Rest 7
+  7 ÷ 8 =  0  Rest 7
+              ↑
+```
+
+Von unten: **777**. Also `511₁₀ = 777₈`.
+
+**Probe:** `7·64 + 7·8 + 7·1 = 448 + 56 + 7 = 511 ✓`.
+
+Oktal funktioniert in der Praxis am haeufigsten andersrum: du **liest** eine
+Oktalzahl wie `755` und willst wissen, was sie bedeutet. Genau das ist der
+naechste Abschnitt.
+
+---
+
+## Anwendung: `chmod 755` zerlegen
+
+`chmod` ist der Linux-Befehl fuer Dateirechte. `755` ist eine Oktalzahl mit
+drei Stellen — eine pro Rolle. Hinter den Stellen stecken jeweils drei Bit:
+`r` (lesen, Wert 4), `w` (schreiben, Wert 2), `x` (ausfuehren, Wert 1).
+
+<StepByStep titel="Was bedeutet chmod 755?">
+  <Schritt nr={1} titel="Drei Stellen, drei Rollen">
+    Die drei Oktalziffern stehen — von links nach rechts — fuer
+    **U**ser (Eigentuemer), **G**roup (Gruppe), **O**ther (alle anderen).
+    Also: U=7, G=5, O=5.
+  </Schritt>
+  <Schritt nr={2} titel="Jede Ziffer in 3 Bits zerlegen">
+    Jede Stelle steht fuer drei Bit. Wertigkeiten: `r=4, w=2, x=1`.
+    Aufaddieren ergibt die Oktalziffer.
+  </Schritt>
+  <Schritt nr={3} titel="Ziffern aufschluesseln">
+    `7 = 4 + 2 + 1 = rwx` (alles erlaubt).
+    `5 = 4 + 0 + 1 = r-x` (lesen und ausfuehren, kein schreiben).
+  </Schritt>
+  <Ergebnis>
+    `chmod 755` setzt die Rechte `rwxr-xr-x`: Eigentuemer darf alles
+    (lesen, schreiben, ausfuehren), Gruppe und alle anderen duerfen lesen
+    und ausfuehren, aber nicht schreiben. Genau dieses Muster nutzen die
+    meisten ausfuehrbaren Skripte.
+  </Ergebnis>
+</StepByStep>
+
+**Schnellcheck** (nuetzlich zum Auswendiglernen):
+
+| Oktal | Bits | Rechte |
+|---|---|---|
+| 0 | 000 | --- |
+| 1 | 001 | --x |
+| 4 | 100 | r-- |
+| 5 | 101 | r-x |
+| 6 | 110 | rw- |
+| 7 | 111 | rwx |
+
+---
+
+## Anwendung: MAC-Adresse und Farb-Hex
+
+Eine **MAC-Adresse** identifiziert eine Netzwerkkarte und besteht aus
+48 Bit. Geschrieben wird sie als sechs Paare Hex-Ziffern, getrennt durch
+Doppelpunkte oder Bindestriche — so will es IEEE 802. Beispiel:
+
+```
+C0 : FF : EE : 01 : 02 : 03
+↕    ↕    ↕    ↕    ↕    ↕
+11000000 11111111 11101110 00000001 00000010 00000011   (48 Bit)
+```
+
+Jedes Hex-Paar (zwei Ziffern) = ein <Term id="byte">Byte</Term> = 8 Bit.
+Statt 48 Einsen und Nullen zu schreiben, reichen 12 Hex-Ziffern. Genau die
+Kompression, fuer die Hex gemacht ist.
+
+Eine **CSS-Farbe** wie `#FF8000` (Orange) funktioniert identisch — nur dass
+die drei Bytes Rot/Gruen/Blau bedeuten:
+
+```
+# FF      80      00
+  ↕       ↕       ↕
+  Rot=255 Gruen=128 Blau=0
+```
+
+Das `FF` (binaer `11111111`) ist das Maximum pro Farbkanal, das `00` ist
+Null. `#000000` ist Schwarz, `#FFFFFF` Weiss, `#FF0000` reines Rot.
+
+---
+
+## Brueckenkapitel: IPv4 und Binaer
+
+Ein IPv4-Subnetz wie `192.168.10.0/24` ist im Kern eine 32-Bit-Zahl,
+aufgeschrieben als vier Dezimal-Oktette zu je 8 Bit:
+
+```
+192      .168      .10       .0
+11000000  10101000  00001010  00000000   (32 Bit)
+```
+
+Das `/24` heisst: die ersten 24 Bit gehoeren zum Netz, die letzten 8 zum
+Host. Ohne Binaer-Verstaendnis ist das eine Black Box; **mit** wird daraus
+eine Rechen-Aufgabe, die du Stelle fuer Stelle loest. Mehr dazu im Kapitel
+zu **IPv4 und Subnetting**.
+
+---
+
+## Typische Fehler
+
+- **„10" ohne Basis ist mehrdeutig.** `10₂ = 2`, `10₈ = 8`, `10₁₀ = 10`,
+  `10₁₆ = 16`. In Pruefungsaufgaben immer den Kontext lesen oder die
+  Basis in der Antwort kennzeichnen — sonst kann ein technisch richtiges
+  Ergebnis Punkte kosten.
+
+- **Reste in falscher Reihenfolge gelesen.** Bei der Teilungsmethode wird
+  **von unten nach oben** gelesen (zuletzt berechneter Rest ist das
+  hoechstwertige Bit). Wer von oben liest, dreht die Zahl um — aus `45 =
+  101101₂` wird `101101` rueckwaerts, also `101101`… in diesem Fall
+  zufaellig identisch, in fast allen anderen nicht. Beispiel: `13 = 1101₂`
+  von oben gelesen waere `1011₂ = 11`. Falsch.
+
+- **0 als gueltige Stelle vergessen.** 8 Bit unterscheiden 256 Werte —
+  von **0 bis 255**, nicht 1 bis 256. Eine klassische Off-by-One-Falle,
+  besonders bei Subnetting (Netzadresse zaehlt mit) und bei Hex-Rechnen
+  (`0xFF + 1 = 0x100`, nicht `0xFF + 1 = 0xFF`).
+
+- **Hex direkt rechnen statt 4-Bit-Trick.** `0xC0` direkt ausrechnen
+  bedeutet `12 · 16 + 0 = 192`. Ueber Binaer geht es genauso schnell und
+  ist weniger fehleranfaellig: `C = 1100`, `0 = 0000`, also
+  `11000000 = 128 + 64 = 192`. Die Wertigkeiten `8-4-2-1` pro Nibble
+  reichen — kein „mal 16" im Kopf.
+
+- **Oktal-Praefix-Verwirrung.** In Python und C ist `017` Oktal
+  (Wert 15), in modernen Skript-Sprachen oft auch — aber **nicht
+  ueberall**. Python 3 erzwingt deshalb `0o17`, JavaScript schreibt
+  ebenfalls `0o17`. Beim Lesen von Beispielen darauf achten, ob ein
+  fuehrendes `0` Oktal meint oder einfach eine Null.
+
+- **chmod-Bits falsch zerlegt.** `chmod 644` ist nicht „lesen und
+  schreiben fuer alle". Die `4` ist nur `r--` (lesen), kein `w`. Also
+  `rw-r--r--`: Eigentuemer darf lesen+schreiben, Gruppe und Andere nur
+  lesen. Immer jede Stelle einzeln in `r/w/x` aufloesen.
+
+- **Hex-Buchstaben mit Ziffern verwechseln.** Besonders `0` (Null) gegen
+  `O` (existiert in Hex nicht!) und `1`/`l`/`I`. In Hex gibt es keine
+  Buchstaben jenseits von `F`. Steht ein `G` oder hoeher in einer
+  vermeintlichen Hex-Zahl, ist es eine Tippfehler-Falle oder gar kein Hex.
+
+- **Hex-Schreibweise inkonsistent.** `0xff`, `0xFF`, `#FF`, `FFh`, `FF₁₆`
+  meinen alle dasselbe — Gross-/Kleinschreibung ist in Hex egal. In einer
+  Loesung trotzdem konsistent bleiben (typisch: Grossbuchstaben), damit
+  Korrektoren nicht stutzen.
+
+---
+
+## Was du danach kannst
+
+- Das **Stellenwert-Prinzip** erklaeren und auf jede Basis anwenden:
+  Wert = Summe aus `Ziffer × Basis^Position`.
+- Sicher in beide Richtungen umrechnen: Dezimal ↔ Binaer, Dezimal ↔ Hex,
+  Dezimal ↔ Oktal, Binaer ↔ Hex (ueber den Nibble-Trick).
+- Die 8-Bit-Wertigkeiten `128–64–32–16–8–4–2–1` aus dem Kopf abrufen.
+- Erkennen, **warum** Hex die natuerliche Schreibweise fuer Bitmuster ist:
+  eine Hex-Ziffer = 4 Bit = ein Nibble.
+- `chmod 755` und Verwandte (`644`, `700`, `777`) lesen und in `rwx`-Form
+  aufschluesseln.
+- Eine MAC-Adresse, einen CSS-Hex-Farbcode und ein IPv4-Subnetz als
+  Bitmuster bzw. Byte-Folge einordnen — die Grundlage fuer Subnetting,
+  Speicheradressen und Farbverwaltung.
+- Schreib-Konventionen (`0b`, `0o`, `0x`, tiefgestellte Basis) sicher
+  zuordnen.
+
+<Quellen
+  quellen={[
+    {
+      label: 'IEEE Std 1003.1 (POSIX) - chmod',
+      href: 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/chmod.html',
+      detail: 'Spezifiziert die zwoelf File-Mode-Bits als vier Oktalziffern. Wert je Bit: r=4, w=2, x=1; die Stellen U/G/O fuer Eigentuemer, Gruppe und andere.'
+    },
+    {
+      label: 'RFC 9542 - IANA Considerations and IETF Usage for IEEE 802 Parameters',
+      href: 'https://www.rfc-editor.org/rfc/rfc9542.html',
+      detail: 'Aktuelle IETF-Quelle zur Darstellung von 48-Bit-MAC-Adressen (EUI-48) als sechs Paare hexadezimaler Ziffern, getrennt durch Doppelpunkte oder Bindestriche.'
+    },
+    {
+      label: 'W3C - CSS Color Module Level 4',
+      href: 'https://www.w3.org/TR/css-color-4/',
+      detail: 'Definiert die Hex-Notation `#RRGGBB[AA]` fuer sRGB-Farben: drei (oder vier) Bytes Rot/Gruen/Blau (Alpha) als jeweils zwei Hex-Ziffern, 0x00 bis 0xFF pro Kanal.'
+    },
+    {
+      label: 'RFC 4632 - Classless Inter-domain Routing (CIDR)',
+      href: 'https://www.rfc-editor.org/rfc/rfc4632',
+      detail: 'IETF-Best-Current-Practice zur CIDR-Praefixnotation fuer IPv4. Grundlage fuer das Verstaendnis von Subnetzmasken als Bitmuster, wie sie sich aus diesem Kapitel anschliessen.'
+    },
+  ]}
+/>
