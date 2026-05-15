@@ -17,8 +17,9 @@ Bewusst ohne Zeit- oder Lese-Schaetzungen. Nur Reifegrad gegen Plan-Pflichten:
   den alten Pfad `src/lib/toc.ts` statt `src/lib/toc/data/*.ts`.
 - **0.3 (Zentrale Stubs geschlossen)** offen. Mehrere Lernfelder mit Muss-Stubs:
   qualitaet 4/4, arbeitsrecht 2/2, software 6/9, webmedia 4/5.
-- **0.4 (Ready ist wirklich ready)** offen. 88 Validator-Warnungen, viele davon
-  auf Ready-Kapitel.
+- **0.4 (Ready ist wirklich ready)** offen. 88 Validator-Warnungen auf
+  Ready-Kapiteln. `bit-byte` ist das erste Kapitel, das den vollen
+  Ready-Standard ohne eigene Warnung erfuellt (Referenzimplementierung).
 - **0.5 (Reviewzyklus laeuft)** offen. REVIEW_LOG seit 29.04. unangefasst,
   0 von 102 Kapiteln formal final.
 - **1.0 (Weitergabefaehige Referenz)** offen.
@@ -221,6 +222,8 @@ Pflicht:
 
 ## Naechster konkreter Schritt
 
-`Bit & Byte - die kleinsten Einheiten` auf den neuen Ready-Standard heben. Das Kapitel
-ist die Basis fuer Datenmengen, Datenrate, Speicher, Codierung und viele AP1-nahe
-Umrechnungsaufgaben; aktuell steht es noch auf Draft.
+`SI- und Binaerpraefixe (KB vs. KiB)` auf den Ready-Standard heben. Das
+Kapitel vertieft die Praefix-Tabelle aus Bit & Byte um systematische
+Verwendung, Verwechslungsgefahren und Umrechnungsbeispiele. Quellen-Basis
+(IEC 80000-13, NIST) ist durch Bit & Byte bereits angelegt und kann
+wiederverwendet werden.
