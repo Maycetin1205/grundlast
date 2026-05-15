@@ -2,7 +2,6 @@
  * Grundlast · Inhaltsverzeichnis — Public API
  *
  * Re-exportiert Typen, Daten und Utilities.
- * Bestehende Imports `from '../lib/toc'` funktionieren ohne Anpassung weiter.
  */
 
 export type {
