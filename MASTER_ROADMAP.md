@@ -1,9 +1,27 @@
 # Master-Roadmap zur Referenz-Lerndatei
 
-Stand: 13.05.2026
+Stand: 15.05.2026
 
 Diese Roadmap ist die fuehrende Arbeitsplanung fuer das Ziel, Grundlast zu einem
 deutschlandweit referenzfaehigen Fachinformatiker-Kompendium auszubauen.
+
+## Aktueller Stand
+
+Bewusst ohne Zeit- oder Lese-Schaetzungen. Nur Reifegrad gegen Plan-Pflichten:
+
+- **0.1 (Kompass sauber)** erreicht. AUSBILDUNGS_KOMPASS, MASTER_ROADMAP,
+  CURRICULUM_MAPPING liegen vor. AP1 als Pruefungsschicht eingeordnet.
+  Content-Validator laeuft mit 0 Fehlern.
+- **0.2 (Jahr-1/2-Abdeckung sichtbar)** offen. 102 Kapitel im TOC erfasst, in
+  CURRICULUM_MAPPING.md aber erst 22 abgebildet. Datei verweist zudem noch auf
+  den alten Pfad `src/lib/toc.ts` statt `src/lib/toc/data/*.ts`.
+- **0.3 (Zentrale Stubs geschlossen)** offen. Mehrere Lernfelder mit Muss-Stubs:
+  qualitaet 4/4, arbeitsrecht 2/2, software 6/9, webmedia 4/5.
+- **0.4 (Ready ist wirklich ready)** offen. 88 Validator-Warnungen, viele davon
+  auf Ready-Kapitel.
+- **0.5 (Reviewzyklus laeuft)** offen. REVIEW_LOG seit 29.04. unangefasst,
+  0 von 102 Kapiteln formal final.
+- **1.0 (Weitergabefaehige Referenz)** offen.
 
 ## Ziel
 
@@ -40,34 +58,37 @@ sein:
 
 ## Architektur des Lernsystems
 
-Grundlast besteht langfristig aus sechs Schichten:
+Grundlast besteht langfristig aus sechs Schichten. Aktiv weiterentwickelt werden
+1, 2, 5 und 6. Schichten 3 und 4 (Pruefungs- und Uebungsmodus) sind Vision; sie
+werden bewusst nicht angefasst, bis das Kompendium tragfaehig steht. Werbeflaechen
+fuer noch nicht existente Modi sind zu vermeiden.
 
-1. **Kompendium**
+1. **Kompendium** (aktiv)
    - normale Kapitel
    - erklaert Begriffe, Zusammenhaenge, Vorgehen und Praxis
 
-2. **Curriculum-Mapping**
+2. **Curriculum-Mapping** (aktiv)
    - Zuordnung zu KMK-Lernfeld, Ausbildungsrahmenplan, Jahr, AP1/AP2 und Fachrichtung
    - verhindert blinde Flecken
 
-3. **Pruefungsmodus**
+3. **Pruefungsmodus** (Vision, nicht im aktuellen Plan-Horizont)
    - AP1-Aufgabenmuster
    - typische Operatoren
    - Rechenwege
    - Punktverluste und Fehlerfallen
 
-4. **Uebungsmodus**
+4. **Uebungsmodus** (Vision, nicht im aktuellen Plan-Horizont)
    - Karteikarten
    - Mini-Checks
    - Rechenaufgaben
    - Fallaufgaben mit Musterloesung
 
-5. **Quellen- und Reviewschicht**
+5. **Quellen- und Reviewschicht** (aktiv)
    - Quellenbank
    - REVIEW_LOG
    - Faktencheck je Kapitel
 
-6. **Release-Build**
+6. **Release-Build** (aktiv)
    - normale Web-App
    - Single-HTML-Build
    - mobiler Lesetest
@@ -89,6 +110,14 @@ diese Gates:
 Wichtig: Das Review-Gate ist bewusst kein eigener `toc.ts`-Status. Es wird ueber
 `REVIEW_LOG.md` dokumentiert, damit die App nicht durch Zwischenzustaende
 verkompliziert wird.
+
+**Trigger fuer das Review-Gate**: ein fester woechentlicher Slot, ein Kapitel pro
+Slot. Reviews ohne Anlass passieren nicht. Versionssprungpflichten (siehe unten)
+koppeln den Trigger an konkrete Stufenziele, damit der Slot nicht ins Leere laeuft.
+
+Falls sich nach mehreren Wochen mit eingehaltenem Slot keine Kapitel auf `final`
+heben lassen, ist die Huerde zu hoch und nicht die Disziplin das Problem. Erst
+dann wird ein Zwischenstatus erwogen.
 
 ## Curriculum-Mapping
 
@@ -153,16 +182,19 @@ Pflicht:
 - jedes `ready`-Kapitel hat Quellen, Glossar, Fehlerfallen und Handlungssituation
 - keine reinen Pruefungstrick-Kapitel
 
-### Version 0.5 - AP1-Modus stark
+### Version 0.5 - Reviewzyklus laeuft
 
-Ziel: AP1-Vorbereitung wird eigenstaendig nutzbar.
+Ziel: Reife wird systematisch produziert, nicht zufaellig. AP1 bleibt ein
+Anwendungsfall unter mehreren, kein Sondermodus.
 
 Pflicht:
 
-- Aufgabenmuster nach Themen
-- Rechenwege mit Einheiten
-- typische Fehler und Operatoren
-- keine kopierten echten IHK-Aufgaben
+- woechentlicher Review-Slot etabliert, REVIEW_LOG wird laufend gepflegt
+- mindestens 10 Kapitel haben das Review-Gate durchlaufen
+- AP1-Filter ist als kleines Begleit-Feature aktiv: Kapitel mit `exam: true`
+  lassen sich im normalen Lese-Modus filtern, ein eigener AP1-Modus als Top-Level-
+  Bereich wird zurueckgebaut
+- keine neuen Uebungs- oder Pruefungs-Features
 
 ### Version 1.0 - Weitergabefaehige Referenz
 
@@ -185,7 +217,7 @@ Pflicht:
 3. Ready-Kapitel mit Validator-Warnungen reparieren.
 4. Quellenbank und Glossar systematisch nachziehen.
 5. Review-Gate fuer die ersten final-Kandidaten durchlaufen.
-6. AP1-Modus aus den fertigen Kapiteln ableiten.
+6. AP1-Filter im Lese-Modus aktivieren, sobald genug Kapitel ready sind.
 
 ## Naechster konkreter Schritt
 
