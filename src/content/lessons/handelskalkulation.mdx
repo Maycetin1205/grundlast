@@ -29,7 +29,7 @@ Listeneinkaufspreis (LEP)
 = Barverkaufspreis
   + Kundenskonto
   + Kundenrabatt
-= Nettoverkauffspreis (Netto-VK)
+= Nettoverkaufspreis (Netto-VK)
   + Umsatzsteuer (19 %)
 = Bruttoverkaufspreis (Brutto-VK)
 ```
@@ -112,8 +112,8 @@ Barverkaufspreis   × (1 − Skonto%) = ...                 [÷ (1 − Skonto%)]
     },
     {
       title: "Kundenskonto und Kundenrabatt aufschlagen",
-      formula: "Barverkaufspreis  = 1.015,13 €\n+ Kundenskonto (2%) =   20,72 €  [1.015,13 ÷ 0,98 − 1.015,13]\n+ Kundenrabatt (5%) =   54,54 €  [(1.015,13 + 20,72) ÷ 0,95 × 0,05]\n= Netto-VK          = 1.090,39 €",
-      explanation: "Hier ist Vorsicht geboten: Skonto und Rabatt werden beim Kunden als Abzug gewährt. Um das einzukalkulieren, muss der Barverkaufspreis entsprechend hochgesetzt werden. Formel: Barpreis ÷ (1 − Skontosatz) für den Schritt Kundenskonto."
+      formula: "Barverkaufspreis  = 1.015,13 €\n÷ (1 − 0,02)      = 1.035,85 €  (Skonto-Aufschlag = 20,72 €)\n÷ (1 − 0,05)      = 1.090,39 €  (Rabatt-Aufschlag = 54,54 €)\n= Netto-VK          = 1.090,39 €",
+      explanation: "Skonto und Rabatt werden dem Kunden als Abzug gewährt — sie müssen also im Verkaufspreis schon einkalkuliert sein. Saubere Methode: den Barverkaufspreis zweimal hintereinander durch (1 − Satz) teilen. Kurz: 1.015,13 ÷ 0,98 ÷ 0,95 = 1.090,39 €. Die Zwischendifferenzen ergeben Skonto- bzw. Rabatt-Aufschlag."
     },
     {
       title: "Mehrwertsteuer (19 %) aufschlagen",

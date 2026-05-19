@@ -1,9 +1,9 @@
-# Verschluesselung, Hashing, Zertifikate, Signatur & VPN
+# Verschlüsselung, Hashing, Zertifikate, Signatur & VPN
 
 <MetaBar
   slug="verschluesselung-hash-vpn"
   schwierigkeit="Mittel"
-  lernfeld="LF 4 / LF 9 - Informationssicherheit, Kryptographie und sichere Netze"
+  lernfeld="LF 4 / LF 9 — Informationssicherheit, Kryptographie und sichere Netze"
   prüfungsrelevanz="PFLICHT · 5/5"
 />
 
@@ -13,46 +13,46 @@ In Aufgaben werden *<Term id="verschluesselung">Verschlüsselung</Term>*, *<Term
 
 ## 01 · Warum existiert das überhaupt?
 
-IT-Sicherheit ist nicht nur "Daten geheim halten". Manchmal sollen Daten geheim bleiben, manchmal soll eine Veraenderung erkannt werden, manchmal soll der Absender beweisbar echt sein, und manchmal soll ein ganzes Netz über ein unsicheres Transportnetz verbunden werden. Für diese Faelle gibt es unterschiedliche kryptografische Werkzeuge.
+IT-Sicherheit ist nicht nur „Daten geheim halten". Manchmal sollen Daten geheim bleiben, manchmal soll eine Veränderung erkannt werden, manchmal soll der Absender beweisbar echt sein, und manchmal soll ein ganzes Netz über ein unsicheres Transportnetz verbunden werden. Für diese Fälle gibt es unterschiedliche kryptografische Werkzeuge.
 
-Die Prüfung fragt genau diese Trennung ab: Eine Datei verschluesseln ist etwas anderes als ihren Hashwert berechnen. Eine digitale Signatur ist keine Verschluesselung. Ein Zertifikat ist kein Schlüsselzauber, sondern ein Vertrauensnachweis für einen oeffentlichen Schlüssel. Und ein VPN macht kein Internet "magisch sicher", sondern baut einen geschuetzten Tunnel zwischen definierten Endpunkten.
+Die Prüfung fragt genau diese Trennung ab: Eine Datei verschlüsseln ist etwas anderes als ihren Hashwert berechnen. Eine digitale Signatur ist keine Verschlüsselung. Ein Zertifikat ist kein Schlüsselzauber, sondern ein Vertrauensnachweis für einen öffentlichen Schlüssel. Und ein VPN macht kein Internet „magisch sicher", sondern baut einen geschützten Tunnel zwischen definierten Endpunkten.
 
 <Analogie>
-Stell dir Kryptographie wie ein Buero mit mehreren Werkzeugen vor. Ein verschlossener Aktenschrank schuetzt Vertraulichkeit: Nur wer den Schlüssel hat, liest den Inhalt. Ein nummeriertes Siegel zeigt Integritaet: Wenn jemand den Umschlag oeffnet, ist die Veraenderung sichtbar. Eine handschriftliche Unterschrift schafft Authentizitaet und Verbindlichkeit. Ein Dienstausweis bestaetigt, dass die Unterschrift zu einer echten Person gehoert. Ein gesicherter Kurierweg entspricht dem VPN-Tunnel. Kein Werkzeug ersetzt alle anderen; du musst das passende zum Ziel wählen.
+Stell dir Kryptographie wie ein Büro mit mehreren Werkzeugen vor. Ein verschlossener Aktenschrank schützt Vertraulichkeit: Nur wer den Schlüssel hat, liest den Inhalt. Ein nummeriertes Siegel zeigt Integrität: Wenn jemand den Umschlag öffnet, ist die Veränderung sichtbar. Eine handschriftliche Unterschrift schafft Authentizität und Verbindlichkeit. Ein Dienstausweis bestätigt, dass die Unterschrift zu einer echten Person gehört. Ein gesicherter Kurierweg entspricht dem VPN-Tunnel. Kein Werkzeug ersetzt alle anderen; du musst das passende zum Ziel wählen.
 </Analogie>
 
 <Tipp titel="Prüfungsperspektive">
-Lies jede Sicherheitsaufgabe zuerst über das Schutzziel: Vertraulichkeit, Integritaet, Authentizitaet, Nicht-Abstreitbarkeit oder sichere Standortverbindung. Danach wähle das Werkzeug: Verschluesselung, Hash, Signatur, Zertifikat oder VPN.
+Lies jede Sicherheitsaufgabe zuerst über das Schutzziel: Vertraulichkeit, Integrität, Authentizität, Nicht-Abstreitbarkeit oder sichere Standortverbindung. Danach wähle das Werkzeug: Verschlüsselung, Hash, Signatur, Zertifikat oder VPN.
 </Tipp>
 
 ---
 
 ## 02 · Das Grundprinzip
 
-Kryptografische Verfahren lassen sich für die Prüfung in fuenf Kernideen ordnen:
+Kryptografische Verfahren lassen sich für die Prüfung in fünf Kernideen ordnen:
 
 | Werkzeug | Kernidee | Hauptnutzen | Typische Verfahren |
 |---|---|---|---|
-| *<Term id="symmetrische-verschluesselung">Symmetrische Verschluesselung</Term>* | beide Seiten nutzen denselben geheimen Schlüssel | Vertraulichkeit, schnell für große Datenmengen | AES |
-| *<Term id="asymmetrische-verschluesselung">Asymmetrische Verschluesselung</Term>* | Public Key und Private Key bilden ein Paar | Schlüsselaustausch, Verschluesselung an Empfaenger, Signaturen | RSA, ECC |
-| *<Term id="hybrides-verfahren">Hybrides Verfahren</Term>* | asymmetrisch startet sicher, symmetrisch übertraegt schnell | Praxisbetrieb bei *<Term id="tls">TLS</Term>*, E-Mail und VPN | TLS, PGP-Logik |
-| Hashfunktion | Einweg-Fingerabdruck fester Laenge | Integritaet, Passwortpruefung, Signaturvorbereitung | SHA-256, SHA-3 |
-| Digitale Signatur | Hash wird mit Private Key signiert und mit Public Key geprueft | Integritaet, Authentizitaet, Nicht-Abstreitbarkeit | RSA-PSS, ECDSA, EdDSA |
+| *<Term id="symmetrische-verschluesselung">Symmetrische Verschlüsselung</Term>* | beide Seiten nutzen denselben geheimen Schlüssel | Vertraulichkeit, schnell für große Datenmengen | AES |
+| *<Term id="asymmetrische-verschluesselung">Asymmetrische Verschlüsselung</Term>* | Public Key und Private Key bilden ein Paar | Schlüsselaustausch, Verschlüsselung an Empfänger, Signaturen | RSA, ECC |
+| *<Term id="hybrides-verfahren">Hybrides Verfahren</Term>* | asymmetrisch startet sicher, symmetrisch überträgt schnell | Praxisbetrieb bei *<Term id="tls">TLS</Term>*, E-Mail und VPN | TLS, PGP-Logik |
+| Hashfunktion | Einweg-Fingerabdruck fester Länge | Integrität, Passwortprüfung, Signaturvorbereitung | SHA-256, SHA-3 |
+| Digitale Signatur | Hash wird mit Private Key signiert und mit Public Key geprüft | Integrität, Authentizität, Nicht-Abstreitbarkeit | RSA-PSS, ECDSA, EdDSA |
 
 ### Drei Leitfragen
 
 | Frage | Wenn ja, brauchst du eher |
 |---|---|
-| Soll ein Unbefugter den Inhalt nicht lesen können? | Verschluesselung |
-| Soll eine Veraenderung erkannt werden? | Hashwert oder digitale Signatur |
+| Soll ein Unbefugter den Inhalt nicht lesen können? | Verschlüsselung |
+| Soll eine Veränderung erkannt werden? | Hashwert oder digitale Signatur |
 | Soll der Absender oder die Website beweisbar echt sein? | Zertifikat, digitale Signatur, PKI |
 
-Ein Zertifikat ist dabei kein Verschluesselungsverfahren. Es verbindet eine Identitaet, zum Beispiel `example.org`, mit einem Public Key und wird von einer vertrauenswuerdigen *<Term id="certificate-authority">Certificate Authority</Term>* bestaetigt. Die Gesamtheit aus Regeln, CAs, Zertifikaten, Widerruf und Pfadpruefung heißt *<Term id="pki">Public Key Infrastructure</Term>*.
+Ein Zertifikat ist dabei kein Verschlüsselungsverfahren. Es verbindet eine Identität, zum Beispiel `example.org`, mit einem Public Key und wird von einer vertrauenswürdigen *<Term id="certificate-authority">Certificate Authority</Term>* bestätigt. Die Gesamtheit aus Regeln, CAs, Zertifikaten, Widerruf und Pfadprüfung heißt *<Term id="pki">Public Key Infrastructure</Term>*.
 
 <svg
   viewBox="0 0 920 420"
   role="img"
-  aria-label="Krypto-Werkzeugkarte: Symmetrische Verschluesselung, asymmetrische Verschluesselung, hybrides Verfahren, Hashfunktion und digitale Signatur mit Datenfluss und Schlüsseln."
+  aria-label="Krypto-Werkzeugkarte: Symmetrische Verschlüsselung, asymmetrische Verschlüsselung, hybrides Verfahren, Hashfunktion und digitale Signatur mit Datenfluss und Schlüsseln."
   className="my-8 w-full max-w-4xl border border-rule bg-paper"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -76,7 +76,7 @@ Ein Zertifikat ist dabei kein Verschluesselungsverfahren. Es verbindet eine Iden
     </marker>
   </defs>
 
-  <text className="k-h" x="28" y="34">Fuenf Krypto-Werkzeuge sauber trennen</text>
+  <text className="k-h" x="28" y="34">Fünf Krypto-Werkzeuge sauber trennen</text>
 
   <rect className="k-soft" x="28" y="58" width="250" height="135" />
   <text className="k-h" x="44" y="82">Symmetrisch</text>
@@ -97,8 +97,8 @@ Ein Zertifikat ist dabei kein Verschluesselungsverfahren. Es verbindet eine Iden
   <path className="k-arrow-red" d="M426 124 H484" markerEnd="url(#crypto-arrow-red)" />
   <rect className="k-box" x="488" y="108" width="72" height="32" />
   <text className="k-t" x="503" y="128">Chiffre</text>
-  <text className="k-s" x="352" y="164">Public Key verschluesselt</text>
-  <text className="k-s" x="352" y="180">Private Key entschluesselt</text>
+  <text className="k-s" x="352" y="164">Public Key verschlüsselt</text>
+  <text className="k-s" x="352" y="180">Private Key entschlüsselt</text>
   <text className="k-s" x="446" y="112">Pub</text>
   <text className="k-s" x="520" y="158">Priv</text>
 
@@ -123,7 +123,7 @@ Ein Zertifikat ist dabei kein Verschluesselungsverfahren. Es verbindet eine Iden
   <rect className="k-box" x="334" y="286" width="72" height="32" />
   <text className="k-t" x="348" y="306">Digest</text>
   <text className="k-s" x="198" y="342">Einweg, fester Fingerabdruck</text>
-  <text className="k-s" x="198" y="358">keine Entschluesselung möglich</text>
+  <text className="k-s" x="198" y="358">keine Entschlüsselung möglich</text>
 
   <rect className="k-soft" x="490" y="236" width="250" height="135" />
   <text className="k-h" x="506" y="260">Digitale Signatur</text>
@@ -142,54 +142,54 @@ Ein Zertifikat ist dabei kein Verschluesselungsverfahren. Es verbindet eine Iden
 
 ## 03 · Die Mechanik / Regeln
 
-### 03.1 · Verschluesselung wählen
+### 03.1 · Verschlüsselung wählen
 
 <Schritte
   items={[
-    { titel: 'Schutzziel klaeren', text: 'Geht es um Vertraulichkeit? Dann brauchst du Verschluesselung. Geht es nur um Integritaet, reicht ein Hash oder eine Signatur besser.' },
-    { titel: 'Datenmenge betrachten', text: 'Große Datenmengen werden symmetrisch verschluesselt, weil AES und aehnliche Verfahren schnell sind.' },
-    { titel: 'Schlüsselaustausch loesen', text: 'Wenn zwei Parteien noch keinen gemeinsamen geheimen Schlüssel haben, brauchst du asymmetrische Verfahren oder ein Protokoll wie TLS beziehungsweise IKEv2.' },
-    { titel: 'Authentizitaet prüfen', text: 'Ein Public Key muss zu einer echten Gegenstelle gehoeren. Dafuer nutzt du Zertifikate und eine PKI.' },
-    { titel: 'Betrieb absichern', text: 'Schlüssel muessen erzeugt, gespeichert, rotiert und widerrufen werden. Kryptographie scheitert oft nicht am Algorithmus, sondern am Umgang mit Schlüsseln.' },
+    { titel: 'Schutzziel klären', text: 'Geht es um Vertraulichkeit? Dann brauchst du Verschlüsselung. Geht es nur um Integrität, reicht ein Hash oder eine Signatur besser.' },
+    { titel: 'Datenmenge betrachten', text: 'Große Datenmengen werden symmetrisch verschlüsselt, weil AES und ähnliche Verfahren schnell sind.' },
+    { titel: 'Schlüsselaustausch lösen', text: 'Wenn zwei Parteien noch keinen gemeinsamen geheimen Schlüssel haben, brauchst du asymmetrische Verfahren oder ein Protokoll wie TLS beziehungsweise IKEv2.' },
+    { titel: 'Authentizität prüfen', text: 'Ein Public Key muss zu einer echten Gegenstelle gehören. Dafür nutzt du Zertifikate und eine PKI.' },
+    { titel: 'Betrieb absichern', text: 'Schlüssel müssen erzeugt, gespeichert, rotiert und widerrufen werden. Kryptographie scheitert oft nicht am Algorithmus, sondern am Umgang mit Schlüsseln.' },
   ]}
 />
 
 ### 03.2 · Hashing richtig einsetzen
 
-Ein Hashwert ist ein Fingerabdruck. Gleiche Eingabe führt zum gleichen Hash, kleine Aenderungen führen zu einem deutlich anderen Hash, und aus dem Hash soll die Eingabe praktisch nicht zurueckgerechnet werden können. Für Dateien und Integritaetspruefung sind schnelle Hashes wie SHA-256 geeignet. Für Passwoerter ist ein schneller Hash allein falsch, weil Angreifer sehr viele Kandidaten pro Sekunde testen können.
+Ein Hashwert ist ein Fingerabdruck. Gleiche Eingabe führt zum gleichen Hash, kleine Änderungen führen zu einem deutlich anderen Hash, und aus dem Hash soll die Eingabe praktisch nicht zurückgerechnet werden können. Für Dateien und Integritätsprüfung sind schnelle Hashes wie SHA-256 geeignet. Für Passwörter ist ein schneller Hash allein falsch, weil Angreifer sehr viele Kandidaten pro Sekunde testen können.
 
-Bei Passwortspeicherung nutzt du deshalb einen *<Term id="passwort-hash">Passwort-Hash</Term>* mit *<Term id="salt">Salt</Term>* und idealerweise einem speicher- und zeitintensiven Verfahren wie Argon2id, bcrypt oder scrypt. Ein *<Term id="pepper">Pepper</Term>* kann als zusaetzliches Geheimnis ausserhalb der Datenbank ergaenzen.
+Bei Passwortspeicherung nutzt du deshalb einen *<Term id="passwort-hash">Passwort-Hash</Term>* mit *<Term id="salt">Salt</Term>* und idealerweise einem speicher- und zeitintensiven Verfahren wie Argon2id, bcrypt oder scrypt. Ein *<Term id="pepper">Pepper</Term>* kann als zusätzliches Geheimnis außerhalb der Datenbank ergänzen.
 
 ### 03.3 · Zertifikate und Signaturen prüfen
 
-Ein Zertifikat beantwortet die Frage: "Gehoert dieser Public Key wirklich zu dieser Identitaet?" Der Browser prüft dabei typischerweise:
+Ein Zertifikat beantwortet die Frage: „Gehört dieser Public Key wirklich zu dieser Identität?" Der Browser prüft dabei typischerweise:
 
 | Prüfpunkt | Warum er wichtig ist |
 |---|---|
 | Name | Zertifikat muss zur Domain passen, zum Beispiel `shop.example` |
-| Gueltigkeit | `not before` und `not after` muessen zum aktuellen Datum passen |
+| Gültigkeit | `not before` und `not after` müssen zum aktuellen Datum passen |
 | Zertifikatskette | Endzertifikat führt über Intermediate-CA zu einer vertrauten Root-CA |
-| Signatur der CA | Jede Stufe bestaetigt die darunterliegende Stufe |
+| Signatur der CA | Jede Stufe bestätigt die darunterliegende Stufe |
 | Widerruf | Zertifikat darf nicht widerrufen sein, etwa über CRL oder OCSP |
 | Schlüsselverwendung | Zertifikat muss für den passenden Zweck erlaubt sein, etwa Serverauthentifizierung |
 
-Digitale Signaturen funktionieren aehnlich, aber mit Datei, Nachricht oder Transaktion als Gegenstand. Der Sender bildet einen Hash, signiert diesen Hash mit dem Private Key, und der Empfaenger prüft mit dem Public Key. Dadurch wird die Datei nicht geheim. Sie wird nur prüfbar echt und unveraendert.
+Digitale Signaturen funktionieren ähnlich, aber mit Datei, Nachricht oder Transaktion als Gegenstand. Der Sender bildet einen Hash, signiert diesen Hash mit dem Private Key, und der Empfänger prüft mit dem Public Key. Dadurch wird die Datei nicht geheim. Sie wird nur prüfbar echt und unverändert.
 
 ### 03.4 · VPN einordnen
 
-Ein VPN verbindet entfernte Netze oder Clients über ein unsicheres Transportnetz, typischerweise das Internet. Dafuer baut es einen geschuetzten Tunnel auf. Zwei Prüfungsformen sind besonders wichtig:
+Ein VPN verbindet entfernte Netze oder Clients über ein unsicheres Transportnetz, typischerweise das Internet. Dafür baut es einen geschützten Tunnel auf. Zwei Prüfungsformen sind besonders wichtig:
 
 | Form | Typischer Einsatz | Merksatz |
 |---|---|---|
 | Site-to-Site-VPN | Standort A ↔ Standort B, Router oder Firewall zu Router oder Firewall | zwei Netze werden gekoppelt |
-| Remote-Access-VPN | Notebook im Aussendienst ↔ Firmennetz | einzelner Client wird angebunden |
+| Remote-Access-VPN | Notebook im Außendienst ↔ Firmennetz | einzelner Client wird angebunden |
 
-Häufige Protokollfamilien sind *<Term id="ipsec">IPsec</Term>* mit IKEv2 und ESP sowie TLS-basierte VPNs. IPsec arbeitet auf der IP-Schicht und schuetzt IP-Pakete, waehrend TLS-VPNs meist näher an Anwendungen oder virtuellen Netzadaptern arbeiten. In der Prüfung reicht meistens: VPN = verschluesselter, authentifizierter Tunnel, aber kein Ersatz für Rechtekonzept, Patchmanagement oder MFA.
+Häufige Protokollfamilien sind *<Term id="ipsec">IPsec</Term>* mit IKEv2 und ESP sowie TLS-basierte VPNs. IPsec arbeitet auf der IP-Schicht und schützt IP-Pakete, während TLS-VPNs meist näher an Anwendungen oder virtuellen Netzadaptern arbeiten. In der Prüfung reicht meistens: VPN = verschlüsselter, authentifizierter Tunnel, aber kein Ersatz für Rechtekonzept, Patchmanagement oder MFA.
 
 <svg
   viewBox="0 0 820 260"
   role="img"
-  aria-label="VPN- und Zertifikatskette: Ein Client prüft ein Serverzertifikat über CA-Kette und baut danach einen verschluesselten Tunnel zum Firmennetz auf."
+  aria-label="VPN- und Zertifikatskette: Ein Client prüft ein Serverzertifikat über CA-Kette und baut danach einen verschlüsselten Tunnel zum Firmennetz auf."
   className="my-8 w-full max-w-4xl border border-rule bg-paper"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -232,9 +232,9 @@ Häufige Protokollfamilien sind *<Term id="ipsec">IPsec</Term>* mit IKEv2 und ES
   <text className="vpn-s" x="204" y="210">Session Key aushandeln</text>
 
   <line className="vpn-arrow-red" x1="474" y1="112" x2="646" y2="112" markerEnd="url(#vpn-arrow-red)" />
-  <text className="vpn-s" x="514" y="98">geschuetzter Tunnel</text>
+  <text className="vpn-s" x="514" y="98">geschützter Tunnel</text>
   <path className="vpn-red" d="M166 174 H646" />
-  <text className="vpn-s" x="286" y="192">Nutzdaten laufen verschluesselt und authentifiziert</text>
+  <text className="vpn-s" x="286" y="192">Nutzdaten laufen verschlüsselt und authentifiziert</text>
 
   <rect className="vpn-box" x="286" y="20" width="92" height="34" />
   <text className="vpn-s" x="310" y="41">Root-CA</text>
@@ -251,26 +251,26 @@ Häufige Protokollfamilien sind *<Term id="ipsec">IPsec</Term>* mit IKEv2 und ES
 ## 04 · Konkretes Beispiel / Rechenweg
 
 <Beispiel titel="Vier typische Prüfungsanwendungen">
-Du bekommst vier Situationen: eine HTTPS-Verbindung zum Kundenportal, eine Passwortdatenbank, ein signiertes Software-Update und einen Aussendienstzugang ins Firmennetz. Ordne jeweils Werkzeug, Schutzziel und Prüfweg zu.
+Du bekommst vier Situationen: eine HTTPS-Verbindung zum Kundenportal, eine Passwortdatenbank, ein signiertes Software-Update und einen Außendienstzugang ins Firmennetz. Ordne jeweils Werkzeug, Schutzziel und Prüfweg zu.
 </Beispiel>
 
 ### 04.1 · HTTPS / TLS als hybrides Verfahren lesen
 
 <StepByStep titel="HTTPS-Verbindung mit TLS einordnen">
   <Schritt nr={1} titel="Server legt Zertifikat vor">
-    Der Browser erhaelt das Serverzertifikat. Es enthaelt unter anderem Domainname, Public Key, Gueltigkeitszeitraum, Aussteller und erlaubte Verwendungen.
+    Der Browser erhält das Serverzertifikat. Es enthält unter anderem Domainname, Public Key, Gültigkeitszeitraum, Aussteller und erlaubte Verwendungen.
   </Schritt>
   <Schritt nr={2} titel="Browser prüft Vertrauen">
     Der Browser prüft Domainname, Datum, Zertifikatskette, CA-Signaturen und Widerrufsinformationen. Scheitert diese Aufgabe, darf der Nutzer der Verbindung nicht blind vertrauen.
   </Schritt>
   <Schritt nr={3} titel="Session Key aushandeln">
-    Client und Server einigen sich über asymmetrische Kryptographie oder Schlüsselaustauschverfahren auf gemeinsame Geheimnisse. Daraus entstehen Sitzungsschluessel.
+    Client und Server einigen sich über asymmetrische Kryptographie oder Schlüsselaustauschverfahren auf gemeinsame Geheimnisse. Daraus entstehen Sitzungsschlüssel.
   </Schritt>
-  <Schritt nr={4} titel="Nutzdaten symmetrisch schuetzen">
-    Die eigentlichen HTTP-Daten laufen danach schnell symmetrisch verschluesselt und authentifiziert. Genau deshalb ist HTTPS ein hybrides Verfahren.
+  <Schritt nr={4} titel="Nutzdaten symmetrisch schützen">
+    Die eigentlichen HTTP-Daten laufen danach schnell symmetrisch verschlüsselt und authentifiziert. Genau deshalb ist HTTPS ein hybrides Verfahren.
   </Schritt>
   <Ergebnis>
-    HTTPS nutzt Zertifikate für Authentizitaet, asymmetrische Verfahren für den Start und symmetrische Verschluesselung für die Daten. Es schuetzt vor Mitlesen, Manipulation und vielen Formen von Identitaetstaeuschung.
+    HTTPS nutzt Zertifikate für Authentizität, asymmetrische Verfahren für den Start und symmetrische Verschlüsselung für die Daten. Es schützt vor Mitlesen, Manipulation und vielen Formen von Identitätstäuschung.
   </Ergebnis>
 </StepByStep>
 
@@ -278,7 +278,7 @@ Du bekommst vier Situationen: eine HTTPS-Verbindung zum Kundenportal, eine Passw
 
 <StepByStep titel="Passwortregistrierung und Login mit Salt">
   <Schritt nr={1} titel="Registrierung: Salt erzeugen">
-    Das System erzeugt für genau diesen Nutzer einen zufaelligen Salt. Der Salt ist nicht geheim und wird später mit dem Hash gespeichert.
+    Das System erzeugt für genau diesen Nutzer einen zufälligen Salt. Der Salt ist nicht geheim und wird später mit dem Hash gespeichert.
   </Schritt>
   <Schritt nr={2} titel="Registrierung: Passwort-Hash berechnen">
     Aus Passwort, Salt und optionalem Pepper wird mit Argon2id, bcrypt oder scrypt ein Passwort-Hash berechnet. Das Klartextpasswort wird nicht gespeichert.
@@ -287,10 +287,10 @@ Du bekommst vier Situationen: eine HTTPS-Verbindung zum Kundenportal, eine Passw
     Beim Login holt das System den gespeicherten Salt und berechnet aus der Eingabe erneut den Passwort-Hash.
   </Schritt>
   <Schritt nr={4} titel="Vergleich: Hash gegen Hash">
-    Stimmen berechneter und gespeicherter Hash überein, ist das eingegebene Passwort korrekt. Das System muss dafuer das echte Passwort nie kennen.
+    Stimmen berechneter und gespeicherter Hash überein, ist das eingegebene Passwort korrekt. Das System muss dafür das echte Passwort nie kennen.
   </Schritt>
   <Ergebnis>
-    Passwoerter werden gehasht, nicht verschluesselt. Ein Salt macht gleiche Passwoerter unterscheidbar, ein langsames Verfahren erschwert Brute-Force, und ein Pepper hilft zusaetzlich, falls nur die Datenbank entwendet wird.
+    Passwörter werden gehasht, nicht verschlüsselt. Ein Salt macht gleiche Passwörter unterscheidbar, ein langsames Verfahren erschwert Brute-Force, und ein Pepper hilft zusätzlich, falls nur die Datenbank entwendet wird.
   </Ergebnis>
 </StepByStep>
 
@@ -307,26 +307,26 @@ Du bekommst vier Situationen: eine HTTPS-Verbindung zum Kundenportal, eine Passw
     Der Client berechnet nach dem Download erneut den Hash der erhaltenen Datei.
   </Schritt>
   <Schritt nr={4} titel="Client prüft Signatur und Zertifikat">
-    Mit dem Public Key des Herstellers wird geprueft, ob die Signatur zum Hash passt. Das Zertifikat bestaetigt, dass dieser Public Key wirklich zum Hersteller gehoert.
+    Mit dem Public Key des Herstellers wird geprüft, ob die Signatur zum Hash passt. Das Zertifikat bestätigt, dass dieser Public Key wirklich zum Hersteller gehört.
   </Schritt>
   <Ergebnis>
-    Die Signatur zeigt: Das Update wurde seit der Signatur nicht veraendert und stammt vom Inhaber des passenden Private Keys. Sie macht den Inhalt aber nicht geheim.
+    Die Signatur zeigt: Das Update wurde seit der Signatur nicht verändert und stammt vom Inhaber des passenden Private Keys. Sie macht den Inhalt aber nicht geheim.
   </Ergebnis>
 </StepByStep>
 
-### 04.4 · VPN für Aussendienst oder Standortkopplung wählen
+### 04.4 · VPN für Außendienst oder Standortkopplung wählen
 
-<StepByStep titel="VPN-Fall in der Prüfung loesen">
+<StepByStep titel="VPN-Fall in der Prüfung lösen">
   <Schritt nr={1} titel="Anwendungsfall erkennen">
-    Ein einzelner Mitarbeiter im Homeoffice oder Aussendienst braucht Remote-Access-VPN. Zwei Niederlassungen brauchen Site-to-Site-VPN.
+    Ein einzelner Mitarbeiter im Homeoffice oder Außendienst braucht Remote-Access-VPN. Zwei Niederlassungen brauchen Site-to-Site-VPN.
   </Schritt>
   <Schritt nr={2} titel="Authentifizierung festlegen">
-    Nutzer oder Gateways muessen sich authentisieren, zum Beispiel mit Zertifikat, Benutzerkonto, MFA oder Pre-Shared Key. Pre-Shared Keys sind nur sauber, wenn sie stark und gut verwaltet sind.
+    Nutzer oder Gateways müssen sich authentisieren, zum Beispiel mit Zertifikat, Benutzerkonto, MFA oder Pre-Shared Key. Pre-Shared Keys sind nur sauber, wenn sie stark und gut verwaltet sind.
   </Schritt>
   <Schritt nr={3} titel="Tunnel und Routen planen">
     Definiere, welche Netze durch den Tunnel gehen. Split-Tunneling leitet nur Firmenverkehr durch das VPN, Full-Tunnel leitet allen Clientverkehr durch das Firmennetz.
   </Schritt>
-  <Schritt nr={4} titel="Rechte und Schutzmassnahmen ergaenzen">
+  <Schritt nr={4} titel="Rechte und Schutzmaßnahmen ergänzen">
     VPN ersetzt keine Zugriffskontrolle. Nach dem Tunnel braucht es Rollen, Firewall-Regeln, Patchstand, Logging und bei hohem Schutzbedarf MFA.
   </Schritt>
   <Ergebnis>
@@ -336,66 +336,66 @@ Du bekommst vier Situationen: eine HTTPS-Verbindung zum Kundenportal, eine Passw
 
 ---
 
-## 05 · Vertiefung / Sonderfaelle
+## 05 · Vertiefung / Sonderfälle
 
-### 05.1 · Verschluesselung in Ruhe und auf der Leitung
+### 05.1 · Verschlüsselung in Ruhe und auf der Leitung
 
 | Bereich | Bedeutung | Beispiel |
 |---|---|---|
-| Data at rest | Daten liegen gespeichert vor | BitLocker, verschluesselte Datenbank, verschluesseltes Backup |
+| Data at rest | Daten liegen gespeichert vor | BitLocker, verschlüsselte Datenbank, verschlüsseltes Backup |
 | Data in transit | Daten werden übertragen | HTTPS, VPN, SSH, SFTP |
-| End-to-End | nur Kommunikationspartner können lesen | Messenger oder E-Mail mit Ende-zu-Ende-Verschluesselung |
+| End-to-End | nur Kommunikationspartner können lesen | Messenger oder E-Mail mit Ende-zu-Ende-Verschlüsselung |
 
-Eine Festplattenverschluesselung schuetzt besonders bei Verlust eines Geräts. Sie schuetzt nicht automatisch gegen Malware, wenn das System entsperrt läuft. Transportverschluesselung schuetzt unterwegs, aber nicht zwingend vor einem kompromittierten Endgeraet.
+Eine Festplattenverschlüsselung schützt besonders bei Verlust eines Geräts. Sie schützt nicht automatisch gegen Malware, wenn das System entsperrt läuft. Transportverschlüsselung schützt unterwegs, aber nicht zwingend vor einem kompromittierten Endgerät.
 
 ### 05.2 · AES, RSA, ECC und veraltete Verfahren
 
-AES ist ein symmetrischer Blockchiffre-Standard mit 128, 192 oder 256 Bit Schlüssellaenge. RSA und ECC gehoeren zur asymmetrischen Kryptographie; moderne Protokolle nutzen häufig elliptische Kurven für Schlüsselaustausch oder Signaturen. DES und 3DES gelten für neue Systeme als veraltet und sollen in Prüfungsantworten nicht als aktuelle Empfehlung erscheinen.
+AES ist ein symmetrischer Blockchiffre-Standard mit 128, 192 oder 256 Bit Schlüssellänge. RSA und ECC gehören zur asymmetrischen Kryptographie; moderne Protokolle nutzen häufig elliptische Kurven für Schlüsselaustausch oder Signaturen. DES und 3DES gelten für neue Systeme als veraltet und sollen in Prüfungsantworten nicht als aktuelle Empfehlung erscheinen.
 
 <Warnung titel="Algorithmusname reicht nicht">
-"Wir nutzen Verschluesselung" ist keine vollstaendige Maßnahme. Für eine belastbare Loesung brauchst du: geeignetes Verfahren, ausreichende Schlüssellaenge, sicheren Modus, Schlüsselverwaltung, Zertifikatspruefung und eine Regel für Widerruf oder Rotation.
+„Wir nutzen Verschlüsselung" ist keine vollständige Maßnahme. Für eine belastbare Lösung brauchst du: geeignetes Verfahren, ausreichende Schlüssellänge, sicheren Modus, Schlüsselverwaltung, Zertifikatsprüfung und eine Regel für Widerruf oder Rotation.
 </Warnung>
 
 ### 05.3 · Hash, HMAC und Signatur
 
-Ein normaler Hash erkennt Veraenderungen nur, wenn du dem Referenzhash vertrauen kannst. Ein Angreifer, der Datei und Hash austauschen kann, faelscht beides. Ein HMAC kombiniert Hashfunktion und geheimen Schlüssel, um Integritaet plus Authentizitaet zwischen Parteien mit gemeinsamem Geheimnis zu schuetzen. Eine digitale Signatur nutzt dagegen asymmetrische Schlüssel und ist besser geeignet, wenn viele Empfaenger die Echtheit prüfen sollen.
+Ein normaler Hash erkennt Veränderungen nur, wenn du dem Referenzhash vertrauen kannst. Ein Angreifer, der Datei und Hash austauschen kann, fälscht beides. Ein HMAC kombiniert Hashfunktion und geheimen Schlüssel, um Integrität plus Authentizität zwischen Parteien mit gemeinsamem Geheimnis zu schützen. Eine digitale Signatur nutzt dagegen asymmetrische Schlüssel und ist besser geeignet, wenn viele Empfänger die Echtheit prüfen sollen.
 
 ### 05.4 · Zertifikatskette und Widerruf
 
-Die Root-CA ist im Betriebssystem oder Browser als Vertrauensanker hinterlegt. Sie signiert in der Praxis selten direkt Endzertifikate, sondern meist Intermediate-CAs. Wenn ein Private Key kompromittiert wird oder ein Zertifikat falsch ausgestellt wurde, muss es widerrufen werden. Dafuer gibt es CRL und OCSP. In einer Prüfungsantwort reicht meist: Gueltigkeit, Name, Kette und Widerruf prüfen.
+Die Root-CA ist im Betriebssystem oder Browser als Vertrauensanker hinterlegt. Sie signiert in der Praxis selten direkt Endzertifikate, sondern meist Intermediate-CAs. Wenn ein Private Key kompromittiert wird oder ein Zertifikat falsch ausgestellt wurde, muss es widerrufen werden. Dafür gibt es CRL und OCSP. In einer Prüfungsantwort reicht meist: Gültigkeit, Name, Kette und Widerruf prüfen.
 
 ### 05.5 · VPN ist kein Ersatz für Zero Trust
 
-Ein VPN erzeugt einen geschuetzten Weg, aber oft auch eine gefaehrliche Annahme: "Wer im Tunnel ist, ist intern vertrauenswuerdig." Moderne Sicherheitskonzepte reduzieren dieses Risiko mit MFA, Gerätezustandspruefung, minimalen Rechten, Segmentierung und Logging. Für die Prüfung ist wichtig: VPN ist eine technische Maßnahme für sichere Übertragung und Standort-/Client-Anbindung, nicht das komplette Sicherheitskonzept.
+Ein VPN erzeugt einen geschützten Weg, aber oft auch eine gefährliche Annahme: „Wer im Tunnel ist, ist intern vertrauenswürdig." Moderne Sicherheitskonzepte reduzieren dieses Risiko mit MFA, Gerätezustandsprüfung, minimalen Rechten, Segmentierung und Logging. Für die Prüfung ist wichtig: VPN ist eine technische Maßnahme für sichere Übertragung und Standort-/Client-Anbindung, nicht das komplette Sicherheitskonzept.
 
 ---
 
-## 06 · Typische Fehler & Typischer Fehlern
+## 06 · Typische Fehler
 
-### Verschluesseln vs. Hashen vs. Signieren
+### Verschlüsseln vs. Hashen vs. Signieren
 
 | Typischer Fehler | Falsch gedacht | Korrekt |
 |---|---|---|
-| Passwort "verschluesseln" | Ein Server könnte es später entschluesseln | Passwort wird mit Salt und langsamem Verfahren gehasht |
-| Hash als Geheimhaltung | Hash macht Inhalte unlesbar | Hash prüft Integritaet, schuetzt aber nicht den Klartext |
-| Signatur als Geheimhaltung | Signierte Datei ist geheim | Signatur beweist Echtheit und Unveraendertheit, nicht Vertraulichkeit |
-| Public Key geheim halten | der oeffentliche Schlüssel muss versteckt werden | Public Key darf verteilt werden, Private Key bleibt geheim |
-| Zertifikat als Datenverschluesselung | die CA verschluesselt die Nutzdaten | Zertifikat bestaetigt Identitaet und Public Key |
-| HTTPS nur asymmetrisch | RSA/ECC verschluesselt alle Webdaten | TLS arbeitet hybrid; Nutzdaten laufen symmetrisch |
-| VPN als Rechteersatz | im VPN darf der Client alles | VPN schuetzt Transport, Rechte regeln Zugriff |
+| Passwort „verschlüsseln" | Ein Server könnte es später entschlüsseln | Passwort wird mit Salt und langsamem Verfahren gehasht |
+| Hash als Geheimhaltung | Hash macht Inhalte unlesbar | Hash prüft Integrität, schützt aber nicht den Klartext |
+| Signatur als Geheimhaltung | Signierte Datei ist geheim | Signatur beweist Echtheit und Unveränderheit, nicht Vertraulichkeit |
+| Public Key geheim halten | der öffentliche Schlüssel muss versteckt werden | Public Key darf verteilt werden, Private Key bleibt geheim |
+| Zertifikat als Datenverschlüsselung | die CA verschlüsselt die Nutzdaten | Zertifikat bestätigt Identität und Public Key |
+| HTTPS nur asymmetrisch | RSA/ECC verschlüsselt alle Webdaten | TLS arbeitet hybrid; Nutzdaten laufen symmetrisch |
+| VPN als Rechteersatz | im VPN darf der Client alles | VPN schützt Transport, Rechte regeln Zugriff |
 | Salt als Geheimnis | Salt muss wie ein Passwort versteckt werden | Salt darf gespeichert werden; Pepper ist das optionale Geheimnis |
-| Hash ohne vertrauenswuerdigen Ursprung | Datei und Hash von derselben unsicheren Quelle genuegen | Hash muss aus vertrauenswuerdiger Quelle kommen oder signiert sein |
-| abgelaufenes Zertifikat ignorieren | Verschluesselung funktioniert technisch noch | Abgelaufenes Zertifikat darf nicht vertraut werden |
+| Hash ohne vertrauenswürdigen Ursprung | Datei und Hash von derselben unsicheren Quelle genügen | Hash muss aus vertrauenswürdiger Quelle kommen oder signiert sein |
+| abgelaufenes Zertifikat ignorieren | Verschlüsselung funktioniert technisch noch | Abgelaufenes Zertifikat darf nicht vertraut werden |
 
 ### Schnelle Zuordnung nach Schutzziel
 
-| Maßnahme | Schutzziel primaer |
+| Maßnahme | Schutzziel primär |
 |---|---|
-| AES-Verschluesselung einer SSD | Vertraulichkeit |
-| SHA-256-Prüfsumme einer Datei | Integritaet |
-| Digitale Signatur eines Dokuments | Integritaet, Authentizitaet, Nicht-Abstreitbarkeit |
-| TLS-Zertifikat einer Website | Authentizitaet der Gegenstelle, Grundlage für vertrauliche Verbindung |
-| VPN-Tunnel zum Firmennetz | Vertraulichkeit und Integritaet der Übertragung, authentifizierter Zugang |
+| AES-Verschlüsselung einer SSD | Vertraulichkeit |
+| SHA-256-Prüfsumme einer Datei | Integrität |
+| Digitale Signatur eines Dokuments | Integrität, Authentizität, Nicht-Abstreitbarkeit |
+| TLS-Zertifikat einer Website | Authentizität der Gegenstelle, Grundlage für vertrauliche Verbindung |
+| VPN-Tunnel zum Firmennetz | Vertraulichkeit und Integrität der Übertragung, authentifizierter Zugang |
 
 ---
 
@@ -403,91 +403,91 @@ Ein VPN erzeugt einen geschuetzten Weg, aber oft auch eine gefaehrliche Annahme:
 
 ### Aufgabe 1 · Verfahren zuordnen
 
-Ein Unternehmen moechte Kundendaten auf Notebooks schuetzen, Software-Downloads auf Veraenderung prüfen und Anmeldedaten sicher speichern. Ordne jeweils ein geeignetes Verfahren zu und begruende das passende Schutzziel.
+Ein Unternehmen möchte Kundendaten auf Notebooks schützen, Software-Downloads auf Veränderung prüfen und Anmeldedaten sicher speichern. Ordne jeweils ein geeignetes Verfahren zu und begründe das passende Schutzziel.
 
-**Loesungsansatz:** Notebookdaten: symmetrische Datentraegerverschluesselung, Vertraulichkeit. Software-Download: digitale Signatur oder signierter Hash, Integritaet und Authentizitaet. Anmeldedaten: Passwort-Hash mit Salt und langsamem Verfahren, Schutz bei Datenbankabfluss.
+**Lösungsansatz:** Notebookdaten: symmetrische Datenträgerverschlüsselung, Vertraulichkeit. Software-Download: digitale Signatur oder signierter Hash, Integrität und Authentizität. Anmeldedaten: Passwort-Hash mit Salt und langsamem Verfahren, Schutz bei Datenbankabfluss.
 
-### Aufgabe 2 · TLS erklaeren
+### Aufgabe 2 · TLS erklären
 
-Erklaere, warum HTTPS nicht "nur asymmetrische Verschluesselung" ist. Nenne die Rolle des Zertifikats und den Grund für symmetrische Nutzdatenverschluesselung.
+Erkläre, warum HTTPS nicht „nur asymmetrische Verschlüsselung" ist. Nenne die Rolle des Zertifikats und den Grund für symmetrische Nutzdatenverschlüsselung.
 
-**Loesungsansatz:** Zertifikat bestaetigt Identitaet und Public Key des Servers. Der Handshake handelt Sitzungsschluessel aus. Nutzdaten werden symmetrisch verschluesselt, weil das für große Datenmengen schneller und praktisch ist.
+**Lösungsansatz:** Zertifikat bestätigt Identität und Public Key des Servers. Der Handshake handelt Sitzungsschlüssel aus. Nutzdaten werden symmetrisch verschlüsselt, weil das für große Datenmengen schneller und praktisch ist.
 
 ### Aufgabe 3 · Signatur prüfen
 
 Ein Hersteller liefert ein Update, eine Signaturdatei und ein Zertifikat. Beschreibe vier Prüfschritte, bevor das Update installiert wird.
 
-**Loesungsansatz:** Zertifikatskette und Gueltigkeit prüfen, Name/Herstellerbezug prüfen, Hash des Downloads berechnen, Signatur mit Public Key verifizieren, Widerruf und Zweck des Zertifikats beachten.
+**Lösungsansatz:** Zertifikatskette und Gültigkeit prüfen, Name/Herstellerbezug prüfen, Hash des Downloads berechnen, Signatur mit Public Key verifizieren, Widerruf und Zweck des Zertifikats beachten.
 
 ### Aufgabe 4 · VPN-Fall entscheiden
 
-Eine Firma hat eine Zentrale und eine Zweigstelle. Zusaetzlich arbeiten drei Servicetechniker mobil. Welche zwei VPN-Arten passen und welche Zusatzmassnahmen bleiben trotz VPN notwendig?
+Eine Firma hat eine Zentrale und eine Zweigstelle. Zusätzlich arbeiten drei Servicetechniker mobil. Welche zwei VPN-Arten passen und welche Zusatzmaßnahmen bleiben trotz VPN notwendig?
 
-**Loesungsansatz:** Zentrale-Zweigstelle: Site-to-Site-VPN. Servicetechniker: Remote-Access-VPN. Zusatzmassnahmen: MFA, Rollen/Rechte, Firewall-Regeln, Patchstand, Logging, Geräteverschluesselung.
+**Lösungsansatz:** Zentrale-Zweigstelle: Site-to-Site-VPN. Servicetechniker: Remote-Access-VPN. Zusatzmaßnahmen: MFA, Rollen/Rechte, Firewall-Regeln, Patchstand, Logging, Geräteverschlüsselung.
 
 ### Aufgabe 5 · Salt, Pepper und Rainbow Table
 
-In einer Datenbank stehen pro Nutzer ein Salt und ein Passwort-Hash. Ein Prüfer behauptet: "Der Salt ist sichtbar, also bringt er nichts." Widerlege die Aussage und grenze Pepper ab.
+In einer Datenbank stehen pro Nutzer ein Salt und ein Passwort-Hash. Ein Prüfer behauptet: „Der Salt ist sichtbar, also bringt er nichts." Widerlege die Aussage und grenze Pepper ab.
 
-**Loesungsansatz:** Salt muss nicht geheim sein. Er sorgt dafuer, dass gleiche Passwoerter unterschiedliche Hashes ergeben und vorgefertigte Rainbow Tables unbrauchbar werden. Pepper ist ein zusaetzliches Geheimnis ausserhalb der Datenbank und schuetzt nur, wenn es getrennt bleibt.
+**Lösungsansatz:** Salt muss nicht geheim sein. Er sorgt dafür, dass gleiche Passwörter unterschiedliche Hashes ergeben und vorgefertigte Rainbow Tables unbrauchbar werden. Pepper ist ein zusätzliches Geheimnis außerhalb der Datenbank und schützt nur, wenn es getrennt bleibt.
 
 <Glossar
   einträge={[
     {
-      term: 'Verschluesselung',
-      definition: 'Umkehrbare Umwandlung von Klartext in Chiffretext. Mit dem passenden Schlüssel kann der Empfaenger wieder entschluesseln; Hauptziel ist Vertraulichkeit.'
+      term: 'Verschlüsselung',
+      definition: 'Umkehrbare Umwandlung von Klartext in Chiffretext. Mit dem passenden Schlüssel kann der Empfänger wieder entschlüsseln; Hauptziel ist Vertraulichkeit.'
     },
     {
-      term: 'Symmetrische Verschluesselung',
-      definition: 'Ein gemeinsamer geheimer Schlüssel verschluesselt und entschluesselt. Schnell und für große Datenmengen geeignet, aber mit Schlüsselverteilungsproblem.'
+      term: 'Symmetrische Verschlüsselung',
+      definition: 'Ein gemeinsamer geheimer Schlüssel verschlüsselt und entschlüsselt. Schnell und für große Datenmengen geeignet, aber mit Schlüsselverteilungsproblem.'
     },
     {
-      term: 'Asymmetrische Verschluesselung',
-      definition: 'Public Key und Private Key bilden ein Paar. Was mit dem Public Key für einen Empfaenger verschluesselt wird, kann nur der passende Private Key entschluesseln.'
+      term: 'Asymmetrische Verschlüsselung',
+      definition: 'Public Key und Private Key bilden ein Paar. Was mit dem Public Key für einen Empfänger verschlüsselt wird, kann nur der passende Private Key entschlüsseln.'
     },
     {
       term: 'Hybrides Verfahren',
-      definition: 'Kombination aus asymmetrischem Start und symmetrischer Nutzdatenuebertragung. Typisch für TLS: sicher aushandeln, danach schnell senden.'
+      definition: 'Kombination aus asymmetrischem Start und symmetrischer Nutzdatenübertragung. Typisch für TLS: sicher aushandeln, danach schnell senden.'
     },
     {
       term: 'Hashfunktion',
-      definition: 'Einwegfunktion, die aus Daten einen Fingerabdruck fester Laenge bildet. Dient Integritaetspruefung, nicht Geheimhaltung.'
+      definition: 'Einwegfunktion, die aus Daten einen Fingerabdruck fester Länge bildet. Dient Integritätsprüfung, nicht Geheimhaltung.'
     },
     {
       term: 'Passwort-Hash',
-      definition: 'Speicherform für Passwoerter: Salt plus langsames Hashverfahren wie Argon2id, bcrypt oder scrypt. Das Klartextpasswort wird nicht gespeichert.'
+      definition: 'Speicherform für Passwörter: Salt plus langsames Hashverfahren wie Argon2id, bcrypt oder scrypt. Das Klartextpasswort wird nicht gespeichert.'
     },
     {
       term: 'Salt',
-      definition: 'Zufaelliger Wert pro Nutzer oder Datensatz, der mit gehasht wird. Er ist nicht geheim und verhindert gleiche Hashes bei gleichen Passwoertern.'
+      definition: 'Zufälliger Wert pro Nutzer oder Datensatz, der mit gehasht wird. Er ist nicht geheim und verhindert gleiche Hashes bei gleichen Passwörtern.'
     },
     {
       term: 'Pepper',
-      definition: 'Zusaetzliches Geheimnis ausserhalb der Datenbank, das in die Passwort-Hash-Berechnung einfliesst. Ergaenzt Salt, ersetzt ihn aber nicht.'
+      definition: 'Zusätzliches Geheimnis außerhalb der Datenbank, das in die Passwort-Hash-Berechnung einfließt. Ergänzt Salt, ersetzt ihn aber nicht.'
     },
     {
       term: 'Digitale Signatur',
-      definition: 'Kryptografischer Nachweis, dass Daten seit der Signatur nicht veraendert wurden und vom Inhaber des passenden Private Keys stammen.'
+      definition: 'Kryptografischer Nachweis, dass Daten seit der Signatur nicht verändert wurden und vom Inhaber des passenden Private Keys stammen.'
     },
     {
       term: 'Zertifikat',
-      definition: 'Digitaler Ausweis nach X.509-Logik: verbindet Identitaet, Public Key, Gueltigkeit, Aussteller und erlaubte Verwendung.'
+      definition: 'Digitaler Ausweis nach X.509-Logik: verbindet Identität, Public Key, Gültigkeit, Aussteller und erlaubte Verwendung.'
     },
     {
       term: 'Certificate Authority',
-      definition: 'Zertifizierungsstelle, die Zertifikate ausstellt und deren Inhalt mit eigener Signatur bestaetigt. Schafft Vertrauen in Public Keys.'
+      definition: 'Zertifizierungsstelle, die Zertifikate ausstellt und deren Inhalt mit eigener Signatur bestätigt. Schafft Vertrauen in Public Keys.'
     },
     {
       term: 'Public Key Infrastructure',
-      definition: 'Gesamtsystem aus Zertifizierungsstellen, Zertifikaten, Vertrauensankern, Widerrufsinformationen und Regeln zur Zertifikatspruefung.'
+      definition: 'Gesamtsystem aus Zertifizierungsstellen, Zertifikaten, Vertrauensankern, Widerrufsinformationen und Regeln zur Zertifikatsprüfung.'
     },
     {
       term: 'VPN',
-      definition: 'Virtuelles privates Netzwerk; baut einen geschuetzten Tunnel über ein unsicheres Netz auf, etwa für Remote Access oder Standortkopplung.'
+      definition: 'Virtuelles privates Netzwerk; baut einen geschützten Tunnel über ein unsicheres Netz auf, etwa für Remote Access oder Standortkopplung.'
     },
     {
       term: 'TLS',
-      definition: 'Transport Layer Security; Protokollfamilie hinter HTTPS. Bietet authentifizierte, vertrauliche und integritaetsgeschuetzte Transportverbindungen.'
+      definition: 'Transport Layer Security; Protokollfamilie hinter HTTPS. Bietet authentifizierte, vertrauliche und integritätsgeschützte Transportverbindungen.'
     },
     {
       term: 'IPsec',
@@ -499,44 +499,44 @@ In einer Datenbank stehen pro Nutzer ein Salt und ein Passwort-Hash. Ein Prüfer
 <Quellen
   quellen={[
     {
-      label: 'BSI TR-02102-1 - Cryptographic Mechanisms: Recommendations and Key Lengths',
+      label: 'BSI TR-02102-1 — Cryptographic Mechanisms: Recommendations and Key Lengths',
       href: 'https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.html',
-      detail: 'Offizielle technische Richtlinie des BSI zu kryptografischen Mechanismen, Schlüssellaengen und Einordnung aktueller Verfahren.'
+      detail: 'Offizielle technische Richtlinie des BSI zu kryptografischen Mechanismen, Schlüssellängen und Einordnung aktueller Verfahren.'
     },
     {
-      label: 'BSI IT-Grundschutz - CON.1 Kryptokonzept',
+      label: 'BSI IT-Grundschutz — CON.1 Kryptokonzept',
       href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/IT-Grundschutz-Bausteine/Bausteine_Download_Edition_node.html',
       detail: 'BSI-Baustein zum organisatorischen und technischen Einsatz kryptografischer Verfahren in Institutionen.'
     },
     {
-      label: 'RFC 8446 - The Transport Layer Security (TLS) Protocol Version 1.3',
+      label: 'RFC 8446 — The Transport Layer Security (TLS) Protocol Version 1.3',
       href: 'https://www.rfc-editor.org/rfc/rfc8446',
-      detail: 'IETF-Standards-Track-RFC für TLS 1.3; Grundlage für HTTPS, Zertifikatspruefung und geschuetzte Transportverbindungen.'
+      detail: 'IETF-Standards-Track-RFC für TLS 1.3; Grundlage für HTTPS, Zertifikatsprüfung und geschützte Transportverbindungen.'
     },
     {
-      label: 'RFC 5280 - Internet X.509 Public Key Infrastructure Certificate and CRL Profile',
+      label: 'RFC 5280 — Internet X.509 Public Key Infrastructure Certificate and CRL Profile',
       href: 'https://www.rfc-editor.org/rfc/rfc5280',
-      detail: 'IETF-Profil für X.509-Zertifikate, Zertifikatsketten, CRLs und Zertifikatspfadpruefung.'
+      detail: 'IETF-Profil für X.509-Zertifikate, Zertifikatsketten, CRLs und Zertifikatspfadprüfung.'
     },
     {
-      label: 'RFC 4301 - Security Architecture for the Internet Protocol',
+      label: 'RFC 4301 — Security Architecture for the Internet Protocol',
       href: 'https://www.rfc-editor.org/rfc/rfc4301',
       detail: 'Standards-Track-Grundlage für IPsec, Security Associations, AH/ESP und Absicherung auf IP-Schicht.'
     },
     {
-      label: 'RFC 9106 - Argon2 Memory-Hard Function for Password Hashing',
+      label: 'RFC 9106 — Argon2 Memory-Hard Function for Password Hashing',
       href: 'https://www.rfc-editor.org/rfc/rfc9106',
       detail: 'IRTF-RFC zu Argon2 als speicherhartes Verfahren für Passwort-Hashing und Proof-of-Work-Anwendungen.'
     },
     {
-      label: 'NIST FIPS 197 - Advanced Encryption Standard (AES)',
+      label: 'NIST FIPS 197 — Advanced Encryption Standard (AES)',
       href: 'https://doi.org/10.6028/NIST.FIPS.197-upd1',
       detail: 'Offizieller NIST-Standard für AES-128, AES-192 und AES-256 als symmetrische Blockchiffre.'
     },
     {
-      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe für die Ausbildungspraxis',
+      label: 'BIBB — Fachinformatiker/Fachinformatikerin, Umsetzungshilfe für die Ausbildungspraxis',
       href: 'https://www.bibb.de/dienst/publikationen/de/16661',
-      detail: 'Offizielle Umsetzungshilfe zur modernisierten Fachinformatiker-Ausbildung mit staerkerer Gewichtung von Datenschutz und IT-Sicherheit.'
+      detail: 'Offizielle Umsetzungshilfe zur modernisierten Fachinformatiker-Ausbildung mit stärkerer Gewichtung von Datenschutz und IT-Sicherheit.'
     },
   ]}
 />

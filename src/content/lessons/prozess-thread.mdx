@@ -3,38 +3,38 @@
 <MetaBar
   slug="prozess-thread"
   schwierigkeit="Mittel"
-  lernfeld="LF 2 - Arbeitsplaetze nach Kundenwunsch ausstatten"
-  prüfungsrelevanz="PFLICHT - 4/5"
+  lernfeld="LF 2 — Arbeitsplätze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT · 4/5"
 />
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du erklaeren, was ein <Term id="prozess">Prozess</Term>, ein <Term id="thread">Thread</Term> und ein <Term id="task">Task</Term> ist. Du kannst im Task-Manager oder in Linux-Werkzeugen einschaetzen, warum ein Programm viel CPU, RAM oder I/O verbraucht, warum eine Anwendung "haengt" und warum ein Prozess mehrere Threads haben kann. Ausserdem erkennst du typische Pruefungsfallen: Ein Prozess ist nicht einfach "ein Fenster", ein Thread ist nicht dasselbe wie ein CPU-Kern, und Multitasking bedeutet nicht automatisch echte Parallelitaet.
+Nach diesem Kapitel kannst du erklären, was ein <Term id="prozess">Prozess</Term>, ein <Term id="thread">Thread</Term> und ein <Term id="task">Task</Term> ist. Du kannst im Task-Manager oder in Linux-Werkzeugen einschätzen, warum ein Programm viel CPU, RAM oder I/O verbraucht, warum eine Anwendung „hängt" und warum ein Prozess mehrere Threads haben kann. Außerdem erkennst du typische Prüfungsfallen: Ein Prozess ist nicht einfach „ein Fenster", ein Thread ist nicht dasselbe wie ein CPU-Kern, und Multitasking bedeutet nicht automatisch echte Parallelität.
 
 ## Warum das wichtig ist
 
-Ein Betriebssystem muss viele Dinge scheinbar gleichzeitig erledigen: Browser, Virenschutz, Datei-Download, Musik, Druckauftrag, Hintergrundupdates und Eingaben von Maus und Tastatur. Die CPU kann aber pro Kern immer nur eine Ausfuehrungseinheit gleichzeitig bearbeiten. Damit sich das System trotzdem fluessig anfuehlt, verteilt das Betriebssystem Rechenzeit.
+Ein Betriebssystem muss viele Dinge scheinbar gleichzeitig erledigen: Browser, Virenschutz, Datei-Download, Musik, Druckauftrag, Hintergrundupdates und Eingaben von Maus und Tastatur. Die CPU kann aber pro Kern immer nur eine Ausführungseinheit gleichzeitig bearbeiten. Damit sich das System trotzdem flüssig anfühlt, verteilt das Betriebssystem Rechenzeit.
 
-Im Betrieb brauchst du dieses Wissen, wenn ein Client langsam ist, ein Serverdienst nicht mehr reagiert oder eine Anwendung dauerhaft 100 Prozent CPU-Last erzeugt. Dann reicht "Programm neu starten" nicht als Erklaerung. Du musst verstehen, welche Einheit Ressourcen besitzt, welche Einheit ausgefuehrt wird und welche Einheit der Benutzer im Werkzeug sieht.
+Im Betrieb brauchst du dieses Wissen, wenn ein Client langsam ist, ein Serverdienst nicht mehr reagiert oder eine Anwendung dauerhaft 100 Prozent CPU-Last erzeugt. Dann reicht „Programm neu starten" nicht als Erklärung. Du musst verstehen, welche Einheit Ressourcen besitzt, welche Einheit ausgeführt wird und welche Einheit der Benutzer im Werkzeug sieht.
 
 <Analogie>
-Stell dir ein Restaurant vor. Das **Programm** ist das Rezept. Der **Prozess** ist eine geoeffnete Kueche mit Zutaten, Geraeten, Budget und eigener Arbeitsflaeche. Die **Threads** sind die Koeche in dieser Kueche: einer schneidet, einer kocht, einer richtet an. Der **Scheduler** ist die Schichtleitung, die entscheidet, welcher Koch wann an den Herd darf. Mehr Koeche helfen nur, wenn genug Herde, Platz und sinnvolle Aufgaben vorhanden sind.
+Stell dir ein Restaurant vor. Das **Programm** ist das Rezept. Der **Prozess** ist eine geöffnete Küche mit Zutaten, Geräten, Budget und eigener Arbeitsfläche. Die **Threads** sind die Köche in dieser Küche: einer schneidet, einer kocht, einer richtet an. Der **Scheduler** ist die Schichtleitung, die entscheidet, welcher Koch wann an den Herd darf. Mehr Köche helfen nur, wenn genug Herde, Platz und sinnvolle Aufgaben vorhanden sind.
 </Analogie>
 
 ---
 
 ## Grundbegriffe
 
-| Begriff | Kurz erklaert | Merksatz |
+| Begriff | Kurz erklärt | Merksatz |
 |---|---|---|
-| **Programm** | Datei oder Code auf dem Datentraeger, der ausgefuehrt werden kann. | Programm = Bauplan. |
-| <Term id="prozess">Prozess</Term> | Laufende Instanz eines Programms mit eigenem Speicherbereich und Ressourcen. | Prozess = Programm in Ausfuehrung plus Ressourcen. |
-| <Term id="thread">Thread</Term> | Ausfuehrungsstrang innerhalb eines Prozesses; bekommt CPU-Zeit vom Betriebssystem. | Thread = das, was wirklich laeuft. |
-| <Term id="task">Task</Term> | Allgemeiner Aufgabenbegriff; je nach System Werkzeugbezeichnung fuer Prozess, Thread oder geplante Arbeit. | Task = Aufgabe, Kontext beachten. |
+| **Programm** | Datei oder Code auf dem Datenträger, der ausgeführt werden kann. | Programm = Bauplan. |
+| <Term id="prozess">Prozess</Term> | Laufende Instanz eines Programms mit eigenem Speicherbereich und Ressourcen. | Prozess = Programm in Ausführung plus Ressourcen. |
+| <Term id="thread">Thread</Term> | Ausführungsstrang innerhalb eines Prozesses; bekommt CPU-Zeit vom Betriebssystem. | Thread = das, was wirklich läuft. |
+| <Term id="task">Task</Term> | Allgemeiner Aufgabenbegriff; je nach System Werkzeugbezeichnung für Prozess, Thread oder geplante Arbeit. | Task = Aufgabe, Kontext beachten. |
 | <Term id="scheduler">Scheduler</Term> | Betriebssystem-Komponente, die CPU-Zeit auf Threads/Tasks verteilt. | Scheduler = Zeitverteiler. |
 | <Term id="kontextwechsel">Kontextwechsel</Term> | Wechsel der CPU von einem Thread/Task zu einem anderen. | Kontextwechsel kostet Zeit. |
 
-<Tipp titel="Pruefungsmerksatz">
+<Tipp titel="Prüfungsmerksatz">
 Ein Prozess besitzt Ressourcen. Ein Thread nutzt CPU-Zeit. Der Scheduler verteilt die CPU-Zeit.
 </Tipp>
 
@@ -42,105 +42,105 @@ Ein Prozess besitzt Ressourcen. Ein Thread nutzt CPU-Zeit. Der Scheduler verteil
 
 ## Prozess vs. Thread
 
-Ein Prozess ist die Schutz- und Ressourcengrenze. Er hat typischerweise eine Prozess-ID, eigenen virtuellen Speicher, geoeffnete Dateien, Netzwerkverbindungen, Rechte und mindestens einen Thread. Wenn du ein Programm startest, erzeugt das Betriebssystem einen Prozess und darin den ersten Thread.
+Ein Prozess ist die Schutz- und Ressourcengrenze. Er hat typischerweise eine Prozess-ID, eigenen virtuellen Speicher, geöffnete Dateien, Netzwerkverbindungen, Rechte und mindestens einen Thread. Wenn du ein Programm startest, erzeugt das Betriebssystem einen Prozess und darin den ersten Thread.
 
-Ein Thread ist leichter als ein Prozess, weil Threads desselben Prozesses viele Ressourcen teilen. Mehrere Threads koennen im gleichen Speicherbereich arbeiten. Das macht Kommunikation schneller, aber auch gefaehrlicher: Wenn zwei Threads gleichzeitig dieselben Daten veraendern, entstehen leicht Fehler.
+Ein Thread ist leichter als ein Prozess, weil Threads desselben Prozesses viele Ressourcen teilen. Mehrere Threads können im gleichen Speicherbereich arbeiten. Das macht Kommunikation schneller, aber auch gefährlicher: Wenn zwei Threads gleichzeitig dieselben Daten verändern, entstehen leicht Fehler.
 
 | Merkmal | Prozess | Thread |
 |---|---|---|
 | Ressourcen | eigener Adressraum, Handles, Rechte, Umgebung | teilt Prozessressourcen |
-| Ausfuehrung | enthaelt mindestens einen Thread | wird vom Scheduler ausgefuehrt |
-| Isolation | staerker voneinander getrennt | schwacher getrennt, weil gemeinsamer Speicher |
+| Ausführung | enthält mindestens einen Thread | wird vom Scheduler ausgeführt |
+| Isolation | stärker voneinander getrennt | schwächer getrennt, weil gemeinsamer Speicher |
 | Fehlerwirkung | Prozessabsturz betrifft meist diesen Prozess | Threadfehler kann den ganzen Prozess destabilisieren |
 | Erstellung | vergleichsweise aufwendig | vergleichsweise leichtgewichtig |
 | Beispiel | Browser-Prozess, Datenbankdienst, Druckdienst | UI-Thread, Netzwerk-Thread, Worker-Thread |
 
 ---
 
-## Multitasking, Parallelitaet und CPU-Kerne
+## Multitasking, Parallelität und CPU-Kerne
 
-<Term id="multitasking">Multitasking</Term> bedeutet, dass ein Betriebssystem mehrere Aufgaben so verwaltet, dass sie fuer den Benutzer gleichzeitig wirken. Auf einem einzigen CPU-Kern passiert das durch schnelles Umschalten. Auf mehreren Kernen koennen wirklich mehrere Threads gleichzeitig laufen.
+<Term id="multitasking">Multitasking</Term> bedeutet, dass ein Betriebssystem mehrere Aufgaben so verwaltet, dass sie für den Benutzer gleichzeitig wirken. Auf einem einzigen CPU-Kern passiert das durch schnelles Umschalten. Auf mehreren Kernen können wirklich mehrere Threads gleichzeitig laufen.
 
 Wichtig ist die Unterscheidung:
 
 | Situation | Was passiert wirklich? |
 |---|---|
-| 1 Kern, 10 lauffaehige Threads | Der Scheduler wechselt schnell zwischen Threads. Es wirkt parallel, ist aber zeitlich aufgeteilt. |
-| 4 Kerne, 4 lauffaehige Threads | Bis zu vier Threads koennen wirklich gleichzeitig laufen. |
-| 4 Kerne, 40 lauffaehige Threads | Einige laufen, der Rest wartet auf CPU-Zeit; viele Kontextwechsel sind moeglich. |
+| 1 Kern, 10 lauffähige Threads | Der Scheduler wechselt schnell zwischen Threads. Es wirkt parallel, ist aber zeitlich aufgeteilt. |
+| 4 Kerne, 4 lauffähige Threads | Bis zu vier Threads können wirklich gleichzeitig laufen. |
+| 4 Kerne, 40 lauffähige Threads | Einige laufen, der Rest wartet auf CPU-Zeit; viele Kontextwechsel sind möglich. |
 | Thread wartet auf Datei/Netzwerk | Er verbraucht oft keine CPU, sondern wartet auf I/O. |
 
-Ein System mit vielen Threads ist deshalb nicht automatisch schneller. Threads bringen etwas, wenn Arbeit sinnvoll aufgeteilt werden kann, etwa in Benutzeroberflaeche, Netzwerk, Berechnung und Hintergrundaufgaben. Sie bringen wenig, wenn alle Threads auf dieselbe Ressource warten oder sich gegenseitig blockieren.
+Ein System mit vielen Threads ist deshalb nicht automatisch schneller. Threads bringen etwas, wenn Arbeit sinnvoll aufgeteilt werden kann, etwa in Benutzeroberfläche, Netzwerk, Berechnung und Hintergrundaufgaben. Sie bringen wenig, wenn alle Threads auf dieselbe Ressource warten oder sich gegenseitig blockieren.
 
 ---
 
-## Schritt fuer Schritt: haengende Anwendung einordnen
+## Schritt für Schritt: hängende Anwendung einordnen
 
 <Schritte
   items={[
-    { titel: '1. Prozess identifizieren', text: 'Im Task-Manager, in top/htop oder ps pruefen, welcher Prozess betroffen ist. Name, Prozess-ID und Benutzer beachten.' },
-    { titel: '2. Ressource ansehen', text: 'CPU, RAM, Datentraeger, Netzwerk und ggf. GPU betrachten. Hohe CPU bedeutet etwas anderes als hoher RAM-Verbrauch oder blockierte I/O.' },
-    { titel: '3. Warten oder rechnen unterscheiden', text: 'Hohe CPU-Last deutet auf aktive Berechnung oder Schleife hin. Niedrige CPU bei haengendem Fenster deutet oft auf Warten, Deadlock, I/O oder blockierten UI-Thread hin.' },
-    { titel: '4. Threads/Unterprozesse pruefen', text: 'Bei komplexen Anwendungen ansehen, ob mehrere Threads oder Kindprozesse beteiligt sind, zum Beispiel Browser-Tabs, Datenbank-Worker oder Serverdienste.' },
-    { titel: '5. Massnahme waehlen', text: 'Erst sauber beenden oder Dienst neu starten, dann Logs/Ereignisanzeige pruefen. Prozess hart beenden nur, wenn Datenverlust und Nebenwirkungen vertretbar sind.' },
+    { titel: '1. Prozess identifizieren', text: 'Im Task-Manager, in top/htop oder ps prüfen, welcher Prozess betroffen ist. Name, Prozess-ID und Benutzer beachten.' },
+    { titel: '2. Ressource ansehen', text: 'CPU, RAM, Datenträger, Netzwerk und ggf. GPU betrachten. Hohe CPU bedeutet etwas anderes als hoher RAM-Verbrauch oder blockierte I/O.' },
+    { titel: '3. Warten oder rechnen unterscheiden', text: 'Hohe CPU-Last deutet auf aktive Berechnung oder Schleife hin. Niedrige CPU bei hängendem Fenster deutet oft auf Warten, Deadlock, I/O oder blockierten UI-Thread hin.' },
+    { titel: '4. Threads/Unterprozesse prüfen', text: 'Bei komplexen Anwendungen ansehen, ob mehrere Threads oder Kindprozesse beteiligt sind, zum Beispiel Browser-Tabs, Datenbank-Worker oder Serverdienste.' },
+    { titel: '5. Maßnahme wählen', text: 'Erst sauber beenden oder Dienst neu starten, dann Logs/Ereignisanzeige prüfen. Prozess hart beenden nur, wenn Datenverlust und Nebenwirkungen vertretbar sind.' },
   ]} 
 />
 
 <Beispiel titel="Betriebliche Situation">
-Ein Mitarbeiter meldet: "Mein Warenwirtschaftsprogramm ist abgestuerzt." Im Task-Manager steht der Prozess noch in der Liste, die CPU-Last ist fast 0 Prozent, aber das Fenster reagiert nicht. Das spricht nicht fuer "CPU zu schwach", sondern eher fuer einen blockierten UI-Thread, eine wartende Datenbankabfrage, Netzwerkproblem oder Deadlock. Sinnvolle naechste Schritte sind Log/Ereignisanzeige, Netzwerk- und Datenbankverbindung pruefen, kontrolliertes Beenden und Meldung an den Anwendungssupport mit Uhrzeit, Benutzer, Prozessname und Fehlermeldung.
+Ein Mitarbeiter meldet: „Mein Warenwirtschaftsprogramm ist abgestürzt." Im Task-Manager steht der Prozess noch in der Liste, die CPU-Last ist fast 0 Prozent, aber das Fenster reagiert nicht. Das spricht nicht für „CPU zu schwach", sondern eher für einen blockierten UI-Thread, eine wartende Datenbankabfrage, Netzwerkproblem oder Deadlock. Sinnvolle nächste Schritte sind Log/Ereignisanzeige, Netzwerk- und Datenbankverbindung prüfen, kontrolliertes Beenden und Meldung an den Anwendungssupport mit Uhrzeit, Benutzer, Prozessname und Fehlermeldung.
 </Beispiel>
 
 ---
 
 ## Typische Fehler
 
-<Warnung titel="Pruefungs- und Praxisfallen">
+<Warnung titel="Prüfungs- und Praxisfallen">
 1. **Prozess mit Programm verwechseln.** Das Programm liegt als Datei vor; der Prozess ist die laufende Instanz.
-2. **Thread mit CPU-Kern verwechseln.** Ein Thread ist eine Ausfuehrungseinheit der Software; ein Kern ist Hardware.
+2. **Thread mit CPU-Kern verwechseln.** Ein Thread ist eine Ausführungseinheit der Software; ein Kern ist Hardware.
 3. **Task immer gleich Prozess setzen.** Task ist ein allgemeiner Begriff. Im Task-Manager wirkt er oft wie Prozess oder App, in Scheduling-Kontexten kann er allgemeiner gemeint sein.
 4. **Viele Threads automatisch als schneller bewerten.** Mehr Threads helfen nur, wenn die Arbeit parallelisierbar ist und keine gemeinsame Ressource bremst.
-5. **Hohe RAM-Nutzung als CPU-Problem deuten.** RAM, CPU und I/O sind verschiedene Engpaesse.
+5. **Hohe RAM-Nutzung als CPU-Problem deuten.** RAM, CPU und I/O sind verschiedene Engpässe.
 6. **Prozess sofort hart beenden.** Das kann ungespeicherte Daten verlieren oder Dienste in unsauberen Zustand bringen.
 </Warnung>
 
 ---
 
-## Typische Pruefungsaufgabe
+## Typische Prüfungsaufgabe
 
-> **Aufgabe (Klausur-Stil):** Ein Betriebssystem zeigt fuer eine Anwendung einen Prozess mit acht Threads an. Erklaere den Unterschied zwischen Prozess und Thread. Warum kann die Anwendung trotz acht Threads auf einem Ein-Kern-System nicht acht Dinge wirklich gleichzeitig berechnen?
+> **Aufgabe (Klausur-Stil):** Ein Betriebssystem zeigt für eine Anwendung einen Prozess mit acht Threads an. Erkläre den Unterschied zwischen Prozess und Thread. Warum kann die Anwendung trotz acht Threads auf einem Ein-Kern-System nicht acht Dinge wirklich gleichzeitig berechnen?
 
-**Musterantwort:** Der Prozess ist die laufende Instanz eines Programms und besitzt Ressourcen wie Speicherbereich, geoeffnete Dateien, Rechte und Prozess-ID. Ein Thread ist ein Ausfuehrungsstrang innerhalb dieses Prozesses und bekommt CPU-Zeit vom Scheduler. Mehrere Threads eines Prozesses teilen viele Ressourcen des Prozesses.
+**Musterantwort:** Der Prozess ist die laufende Instanz eines Programms und besitzt Ressourcen wie Speicherbereich, geöffnete Dateien, Rechte und Prozess-ID. Ein Thread ist ein Ausführungsstrang innerhalb dieses Prozesses und bekommt CPU-Zeit vom Scheduler. Mehrere Threads eines Prozesses teilen viele Ressourcen des Prozesses.
 
-Auf einem Ein-Kern-System kann zu einem Zeitpunkt nur ein Thread wirklich auf der CPU laufen. Der Scheduler wechselt sehr schnell zwischen lauffaehigen Threads. Dadurch wirkt die Ausfuehrung gleichzeitig, ist aber zeitlich aufgeteilt. Echte parallele Berechnung braucht mehrere CPU-Kerne oder Prozessoren.
+Auf einem Ein-Kern-System kann zu einem Zeitpunkt nur ein Thread wirklich auf der CPU laufen. Der Scheduler wechselt sehr schnell zwischen lauffähigen Threads. Dadurch wirkt die Ausführung gleichzeitig, ist aber zeitlich aufgeteilt. Echte parallele Berechnung braucht mehrere CPU-Kerne oder Prozessoren.
 
 ---
 
 <Quellen
   quellen={[
     {
-      label: 'Microsoft Learn - About Processes and Threads',
+      label: 'Microsoft Learn — About Processes and Threads',
       href: 'https://learn.microsoft.com/en-us/windows/win32/procthread/about-processes-and-threads',
       detail: 'Offizielle Microsoft-Dokumentation zu Prozessressourcen, Threads, Thread-Kontext und preemptivem Multitasking.'
     },
     {
-      label: 'Microsoft Learn - Processes and Threads',
+      label: 'Microsoft Learn — Processes and Threads',
       href: 'https://learn.microsoft.com/en-us/windows/win32/procthread/processes-and-threads',
-      detail: 'Grunddefinitionen: Prozess als ausgefuehrtes Programm, Thread als Einheit fuer Prozessorzeit.'
+      detail: 'Grunddefinitionen: Prozess als ausgeführtes Programm, Thread als Einheit für Prozessorzeit.'
     },
     {
-      label: 'Microsoft Learn - Scheduling Priorities',
+      label: 'Microsoft Learn — Scheduling Priorities',
       href: 'https://learn.microsoft.com/en-us/windows/win32/procthread/scheduling-priorities',
-      detail: 'Offizielle Beschreibung von Thread-Prioritaeten, Zeitscheiben und Unterbrechung durch hoehere Prioritaet.'
+      detail: 'Offizielle Beschreibung von Thread-Prioritäten, Zeitscheiben und Unterbrechung durch höhere Priorität.'
     },
     {
-      label: 'Linux Kernel Documentation - CFS Scheduler',
+      label: 'Linux Kernel Documentation — CFS Scheduler',
       href: 'https://docs.kernel.org/scheduler/sched-design-CFS.html',
       detail: 'Linux-Kernel-Dokumentation zum Scheduler und zur fairen Verteilung von CPU-Zeit auf Tasks.'
     },
     {
-      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      label: 'KMK — Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
       href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
-      detail: 'Berufsschulische Grundlage fuer Betriebssystem- und Arbeitsplatzthemen in LF2.'
+      detail: 'Berufsschulische Grundlage für Betriebssystem- und Arbeitsplatzthemen in LF2.'
     },
   ]}
 />
