@@ -1,188 +1,252 @@
-﻿# Vorgehensmodelle (Wasserfall & Agil)
+# Vorgehensmodelle (Wasserfall, V-Modell, Agil)
 
-## Worum geht's
+<MetaBar
+  lernfeld="LF 6 — Vorgehensmodelle und agile Projektarbeit"
+  prüfungsrelevanz="PFLICHT · 5/5"
+  quelle="Scrum Guide 2020 + V-Modell XT + Royce 1970"
+  quelleHref="https://scrumguides.org/scrum-guide.html"
+/>
 
-Du lernst die wichtigsten Vorgehensmodelle in der Softwareentwicklung kennen:
-Wasserfall und Agil (mit Scrum). Du kannst erklären, wann welches Modell sinnvoll ist
-und was die Unterschiede sind — das kommt in der Prüfung regelmäßig vor.
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du das **<Term id="wasserfallmodell">Wasserfallmodell</Term>**, das **<Term id="v-modell">V-Modell</Term>** und agile Vorgehen (insbesondere **<Term id="scrum">Scrum</Term>** und **<Term id="kanban">Kanban</Term>**) voneinander abgrenzen und begründen, **welches Modell zu welcher Projektsituation passt**. Du erkennst, dass die Wahl nicht „altmodisch vs. modern" ist, sondern eine Frage der **Anforderungsstabilität**. Du verstehst, was **<Term id="iteration">iterativ</Term>** von **<Term id="inkrementell">inkrementell</Term>** unterscheidet, kennst die vier Werte des **<Term id="agiles-manifest">Agilen Manifests</Term>** und kannst typische Prüfungsfallen vermeiden — vor allem den Mythos, das Wasserfallmodell sei jemals als Empfehlung entworfen worden.
+
+## Warum das wichtig ist
+
+In der AP1 musst du häufig entscheiden, welches Vorgehensmodell zu einer geschilderten Projektsituation passt: stabile Anforderungen, sicherheitskritische Hardware, lebendige Webanwendung, behördliches IT-Projekt mit Vergabe. Wer nur „Wasserfall = alt, Agil = neu" gelernt hat, fällt regelmäßig auf einfache Aufgaben rein. Im Betrieb ist die Wahl noch wichtiger: ein falsches Modell kostet Geld, Zeit und Vertrauen. Das gilt auch für die Mischformen, die im echten Alltag häufiger sind als die Reinformen aus dem Lehrbuch.
+
+<Analogie>
+Stell dir drei Bauprojekte vor. **Brückenbau** läuft im **Wasserfall**: Statik, Fundament, Pfeiler, Fahrbahn — wer das Fundament nach drei Monaten ändert, sprengt das ganze Projekt. **Behördliches Großprojekt** läuft als **V-Modell**: jede Konstruktionsentscheidung bekommt eine passende Prüfung — der Statiker rechnet, der Pruefingenieur prüft; der Brueckenbauer schweisst, die Materialprüfung kontrolliert die Naht. **App-Entwicklung** läuft **agil**: das Team baut eine erste Version, zeigt sie, lernt aus dem Feedback, baut weiter — jede Woche entsteht etwas Nutzbares. Manche Projekte, etwa ein modernes Auto, sind **hybrid**: Mechanik nach V-Modell (Crashtest pflichtig), Infotainment-Software in Sprints.
+</Analogie>
 
 ---
 
 ## Was ist ein Vorgehensmodell?
 
-Ein **Vorgehensmodell** = ein strukturierter Plan, wie ein Projekt ablaufen soll —
-vom ersten Tag bis zur Abnahme.
+Ein **Vorgehensmodell** ist ein strukturierter Plan, **wie** ein Projekt abläuft — vom ersten Tag bis zur Abnahme. Es beantwortet:
 
-Es beantwortet Fragen wie:
 - In welcher Reihenfolge passiert was?
 - Wer entscheidet was?
-- Wann bekommt der Kunde etwas zu sehen?
-- Was passiert, wenn sich die Anforderungen ändern?
+- Wann sieht der Kunde Ergebnisse?
+- Was passiert, wenn sich Anforderungen ändern?
 
-Es gibt zwei grundlegende Typen:
+Grob unterscheidet man zwei Familien:
 
-| Typ | Ablauf | Beispiel |
+| Familie | Ablauf | Beispielmodelle |
 |---|---|---|
-| **Sequenziell** | Schritt für Schritt, kein Zurück | Wasserfall-Modell |
-| **Iterativ** | In Zyklen (Wiederholungen) | Agil, Scrum |
+| **Sequenziell / Phasenmodelle** | Phase für Phase, klare Übergänge | Wasserfall, V-Modell |
+| **Iterativ-inkrementell** | In kurzen Zyklen mit nutzbaren Zwischenständen | Scrum, Kanban, XP |
+
+Zwischen den Familien gibt es **Hybride**: Teilbereiche eines Projekts sequenziell, andere agil.
 
 ---
 
-## Die Analogie: Hausbau vs. App-Entwicklung
+## Das Wasserfallmodell
 
-**Wasserfall = Hausbau**
+### Aufbau
 
-Du baust ein Haus:
-1. Fundament → 2. Mauern → 3. Dach → 4. Innenausbau → 5. Fertig!
-
-Du kannst **nicht zurück**. Wenn das Dach schon drauf ist, kannst du das Fundament nicht mehr ändern.
-→ Alles muss vorher **genau geplant** sein.
-→ Änderungen sind teuer und kaum möglich.
-
-**Agil = App-Entwicklung**
-
-Du entwickelst eine App:
-- Sprint 1: Login fertig → zeigst dem Kunden → Feedback: „Super!"
-- Sprint 2: Profil-Seite fertig → Feedback: „Das Blau gefällt mir nicht"
-- Sprint 3: Farbe geändert, neues Feature gebaut
-
-→ Du kannst **jederzeit anpassen**. Der Kunde sieht regelmäßig Fortschritt.
-→ Änderungen sind eingeplant, kein Problem.
-
----
-
-## Das Wasserfall-Modell
-
-### Die 5 Phasen
-
-Jede Phase muss **komplett fertig** sein, bevor die nächste startet:
+Im Wasserfallmodell laufen die Phasen streng nacheinander. Jede Phase muss komplett fertig sein, bevor die nächste beginnt. Rücksprünge sind nicht vorgesehen.
 
 ```
-1. Anforderungsanalyse
-   → Was soll das System können?
-   → Ergebnis: Lastenheft (Kunde sagt, was er will)
-
-2. Design / Entwurf
-   → Wie setzen wir es technisch um?
-   → Ergebnis: Pflichtenheft, Architektur
-
-3. Implementierung
-   → Programmieren
-
-4. Test & Integration
-   → Alles testen, Fehler beheben
-
-5. Wartung / Betrieb
-   → System läuft, Updates, Support
+1. Anforderungsanalyse   → Lastenheft (Kunde sagt was)
+2. Entwurf               → Pflichtenheft, Architektur (Auftragnehmer sagt wie)
+3. Implementierung       → Code, Build
+4. Test & Integration    → Pruefen, Fehler beheben, abnehmefaehig machen
+5. Wartung / Betrieb     → Betrieb, Patches, Erweiterungen
 ```
-
-### Stärken und Schwächen
 
 | | Wasserfall |
 |---|---|
-| **Vorteile** | Klare Struktur, gute Planbarkeit, Dokumentation |
-| **Nachteile** | Keine Rückschritte, unflexibel bei Änderungen, Fehler fallen oft erst spät auf |
-| **Passt zu** | Stabilen Anforderungen: Bau, Infrastruktur, Embedded-Systeme |
-| **Passt nicht zu** | Software mit sich ändernden Anforderungen |
+| **Vorteile** | klare Struktur, gut planbar, vollstaendige Dokumentation, einfache Vertragsfaehigkeit |
+| **Nachteile** | starr bei Aenderungen, spätes Kundenfeedback, Fehler werden erst beim Test sichtbar |
+| **Passt zu** | stabilen Anforderungen, regulierten / sicherheitskritischen Projekten, Bau, Hardware, Embedded |
+| **Passt nicht zu** | Software mit unklarem oder beweglichem Anforderungsbild, Innovationsprojekten |
+
+<Tipp titel="Der Royce-Mythos">
+Das Wasserfallmodell wird oft Winston **Royce (1970)** zugeschrieben. Royce hat das Modell zwar so beschrieben — aber ausdrücklich als **„risky and invites failure"** bezeichnet und stattdessen ein iteratives Vorgehen mit mindestens zwei Durchläufen vorgeschlagen. In vielen Schulbüchern fehlt diese Pointe. Die Phasen kann man aus Royce zitieren; **die Empfehlung pro Wasserfall steht dort nicht.**
+</Tipp>
 
 ---
 
-## Agile Entwicklung
+## Das V-Modell
 
-### Das Kernprinzip
+### Aufbau
 
-Agil bedeutet: statt einmal alles zu planen, entwickelst du in kurzen **Zyklen (Sprints)**.
-
-Jeder Sprint = 2–4 Wochen und liefert ein funktionierendes Teilprodukt.
-
-**Zwei wichtige Begriffe:**
-- **Iterativ** = in Wiederholungen (jeder Sprint ist ein Mini-Zyklus)
-- **Inkrementell** = jeder Sprint liefert ein konkretes, nutzbares Ergebnis
-
-### Ein typischer Sprint-Ablauf
+Das V-Modell ist eine deutsche Spezialität und für AP1 prüfungsrelevant. Es entstand aus der Kritik am reinen Wasserfall: Tests sollen nicht erst am Ende kommen, sondern jede Konstruktionsentscheidung soll von vornherein eine **passende Prüfung** bekommen. Dargestellt wird das als „V":
 
 ```
-1. Sprint Planning (Planung)
-   → Was wird in diesem Sprint gemacht?
-   → Team wählt Aufgaben aus dem Backlog
-
-2. Entwicklung (2–4 Wochen)
-   → Team arbeitet selbstständig
-
-3. Sprint Review (Demo)
-   → Fertiges wird dem Kunden gezeigt
-   → Feedback einsammeln
-
-4. Sprint Retrospektive
-   → Was lief gut? Was können wir besser machen?
-
-→ Dann startet der nächste Sprint
+                                                  Abnahmetest
+   Anforderungen  ───────────────────────────────────┐
+        │                                            │
+        ▼                                            ▲
+     Grobentwurf ───────────────────  Systemtest ────┘
+        │                                  ▲
+        ▼                                  │
+     Feinentwurf ─────  Integrationstest ──┘
+        │                       ▲
+        ▼                       │
+     Modulentwurf ─── Modultest─┘
+              │                 ▲
+              └─►  Implementierung
 ```
 
----
+| Konstruktionsphase | korrespondierender Test |
+|---|---|
+| Anforderungsanalyse | Abnahmetest |
+| Systementwurf | Systemtest |
+| Komponentenentwurf | Integrationstest |
+| Feinentwurf / Modulspezifikation | Modultest |
+| Implementierung | (Verbindung der beiden Schenkel) |
 
-## Scrum — Das bekannteste Agile Framework
+### V-Modell XT (Bund)
 
-**Scrum** ist die bekannteste Umsetzung von Agil. Es definiert feste **Rollen** und **Events**.
+Die aktuelle, offizielle Variante in Deutschland heißt **V-Modell XT** (aktuell Version 2.4). Eine spezialisierte Fassung **V-Modell XT Bund** ist das verbindliche Vorgehensmodell für IT-Projekte der **Bundesverwaltung**. Es integriert weitere Standards (WiBe für Wirtschaftlichkeit, UfAB für Vergabe, IT-Grundschutz).
 
-### Die 3 Rollen
-
-| Rolle | Verantwortung | Aufgaben |
-|---|---|---|
-| **Product Owner** | „Was?" | Backlog pflegen und priorisieren, fachliche Entscheidungen |
-| **Scrum Master** | „Wie?" | Prozess schützen, Hindernisse beseitigen, Team unterstützen |
-| **Development Team** | „Machen!" | Umsetzung, selbstorganisiert |
-
-**Wichtig:** Es gibt **keinen Projektleiter** in Scrum! Das Team organisiert sich selbst.
-
-Das **Product Backlog** = Liste aller gewünschten Features, priorisiert vom Product Owner.
-
-### Die 5 Scrum Events
-
-Nach dem Scrum-Guide 2020 ist der **Sprint** selbst das umschließende Event, in dem alle weiteren stattfinden:
-
-| Event | Zweck | Dauer |
-|---|---|---|
-| **Sprint** | Iterationsrahmen — enthält alle anderen Events | max. 1 Monat (typisch 2–4 Wochen) |
-| **Sprint Planning** | Was wird im Sprint gemacht? | ~2–4 Std. |
-| **Daily Scrum** | Kurzer Status: Was habe ich gemacht? Was plane ich heute? Hindernisse? | 15 Min. |
-| **Sprint Review** | Demo der Ergebnisse für den Kunden | ~1–2 Std. |
-| **Sprint Retrospektive** | Was lief gut? Was verbessern wir? | ~1 Std. |
+| | V-Modell |
+|---|---|
+| **Vorteile** | strenge Qualitätssicherung, klare Vertragslage, jede Konstruktion bekommt eine Prüfung |
+| **Nachteile** | aufwendig, viel Dokumentation, schwerfaellig bei Aenderungen |
+| **Passt zu** | regulierten oder sicherheitskritischen Projekten, oeffentlicher Verwaltung, Medizintechnik, Verkehr |
+| **Passt nicht zu** | kleinen Web-/App-Projekten mit wechselnden Anforderungen |
 
 ---
 
-## Vergleich: Wann welches Modell?
+## Agile Vorgehen
 
-| Frage | Wasserfall | Agil / Scrum |
+### Das Agile Manifest (2001)
+
+Agile Softwareentwicklung wurde 2001 von 17 Autoren — darunter Kent Beck, Martin Fowler, Ken Schwaber und Jeff Sutherland — im **<Term id="agiles-manifest">Agilen Manifest</Term>** formuliert. Es nennt vier Wertepaare:
+
+| Wir schätzen | mehr als |
+|---|---|
+| Individuen und Interaktionen | Prozesse und Werkzeuge |
+| Funktionierende Software | umfassende Dokumentation |
+| Zusammenarbeit mit dem Kunden | Vertragsverhandlung |
+| Reagieren auf Veränderung | Befolgen eines Plans |
+
+Die rechte Seite ist **nicht unwichtig**, sie wird nur **niedriger bewertet** als die linke. Das Manifest ist keine Methode, sondern eine Wertegrundlage; konkrete Frameworks wie Scrum, Kanban oder XP setzen darauf auf.
+
+### Iterativ und inkrementell
+
+Agil verbindet zwei Eigenschaften, die oft verwechselt werden:
+
+| Begriff | Bedeutung | Beispiel |
 |---|---|---|
-| Anforderungen klar und stabil? | Ja — gut geeignet | Nein — schlecht |
-| Änderungen während des Projekts erwartet? | Schlecht — teuer | Gut — eingeplant |
-| Kundenfeedback wann? | Am Ende | Nach jedem Sprint |
-| Rückkehr zu vorherigen Phasen möglich? | Nein | Ja — nächster Sprint |
-| Typisch für | Bau, Hardware, Infrastruktur | Software, Apps, Websites |
+| **<Term id="iteration">Iterativ</Term>** | in Wiederholungen — derselbe Prozess läuft mehrfach. | Jeder Sprint folgt demselben Ablauf. |
+| **<Term id="inkrementell">Inkrementell</Term>** | in nutzbaren Zuwächsen — jeder Schritt fügt etwas Funktionierendes hinzu. | Jeder Sprint liefert ein **<Term id="increment">Increment</Term>**. |
 
-### Prüfungs-Eselsbrücke
+Agile Vorgehen sind **beides**: in jeder Iteration entsteht ein Inkrement.
 
-> **Wasserfall = Hausbau** → alles klar, kein Zurück.
-> **Agil = App** → Änderungen willkommen, flexibel.
+### Scrum (Kurzbezug)
+
+**<Term id="scrum">Scrum</Term>** ist das verbreitetste agile Framework. Im Scrum Guide 2020 sind festgelegt:
+
+- **drei Accountabilities**: <Term id="product-owner">Product Owner</Term>, <Term id="scrum-master">Scrum Master</Term>, <Term id="developers">Developers</Term> (typisch zehn oder weniger).
+- **fünf Events**: <Term id="sprint">Sprint</Term> (Container, max. 1 Monat), Sprint Planning, <Term id="daily-scrum">Daily Scrum</Term>, Sprint Review, Sprint Retrospective.
+- **drei Artefakte mit Commitments**: <Term id="product-backlog">Product Backlog</Term>/<Term id="product-goal">Product Goal</Term>, <Term id="sprint-backlog">Sprint Backlog</Term>/<Term id="sprint-goal">Sprint Goal</Term>, Increment/<Term id="definition-of-done">Definition of Done</Term>.
+
+Die vollständige Erklärung steht im Kapitel **[Scrum – Accountabilities, Events, Artefakte](#/lernen/projekt/projektplanung/scrum)**.
+
+### Kanban (Kurzbezug)
+
+**<Term id="kanban">Kanban</Term>** stammt aus der Toyota-Produktion und wurde für Wissensarbeit adaptiert. Statt fester Sprints arbeitet Kanban mit einem **Board** (To Do / Doing / Done) und **Work-in-Progress-Limits**: pro Spalte gilt eine Obergrenze, damit nicht mehr begonnen als beendet wird. Kanban ist evolutionär — Verbesserung passiert am laufenden System, ohne Rollen-Pflicht.
+
+| | Scrum | Kanban |
+|---|---|---|
+| Iterationen | feste Sprints (max. 1 Monat) | keine festen Iterationen |
+| Rollen | drei Accountabilities | keine Pflicht-Rollen |
+| Steuerung | Sprint Goal + Sprint Backlog | WIP-Limits, kontinuierlicher Fluss |
+| Aenderung im Lauf | nichts, was Sprint Goal gefaehrdet | jederzeit, sofern Limits halten |
+
+Beide werden oft kombiniert (**Scrumban**).
+
+---
+
+## Hybride Vorgehen
+
+Reine Modelle sind in der Praxis selten. Hybride mischen sequenzielle und agile Anteile.
+
+| Beispiel | Sequenziell | Agil |
+|---|---|---|
+| Auto-Hersteller | Mechanik nach V-Modell (Crashtest pflichtig) | Infotainment-Software in Sprints |
+| Behörden-Portal | V-Modell XT für Vergabe und Abnahme | Frontend-Iterationen mit Nutzertests |
+| ERP-Einführung | Wasserfall für Datenmigration | Scrum für Erweiterungs-Module |
+
+Hybrid ist kein „halb-agil", sondern bewusste Zuweisung passender Modelle je Teilbereich.
+
+---
+
+## Welches Modell wann?
+
+<StepByStep titel="Modellauswahl in vier Fragen">
+  <Schritt nr={1} titel="Wie stabil sind die Anforderungen?">
+    Wenn sich Anforderungen mit hoher Wahrscheinlichkeit waehrend des Projekts aendern: agil. Wenn sie zu Projektbeginn klar sind und sich nicht aendern duerfen: Wasserfall oder V-Modell.
+  </Schritt>
+  <Schritt nr={2} titel="Wie hoch ist die Sicherheits- und Regulierungslast?">
+    Bei sicherheitskritischen, regulierten oder oeffentlich vergebenen Projekten ist V-Modell (oft V-Modell XT Bund) Pflicht oder de-facto Standard.
+  </Schritt>
+  <Schritt nr={3} titel="Wann braucht der Kunde Ergebnisse?">
+    Bei einmaliger Abnahme am Projektende: Wasserfall / V-Modell. Bei kontinuierlichem Feedback und lieferbaren Zwischenstaenden: agil.
+  </Schritt>
+  <Schritt nr={4} titel="Gibt es klar abgegrenzte Teilbereiche?">
+    Wenn Teilbereiche unterschiedliche Anforderungen haben (z.B. Hardware stabil, Software lebt), waehlt man pro Teilbereich das passende Modell — also hybrid.
+  </Schritt>
+  <Ergebnis>
+    Die Antworten ergeben fast immer eines der drei Bilder: ein stabiles Projekt im Wasserfall / V-Modell, ein bewegliches Projekt agil mit Scrum oder Kanban, oder ein hybrid aufgeteiltes Projekt mit beidem.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel>
+**AP1-typische Frage:** „Eine Behörde beauftragt eine neue Fachanwendung. Der Funktionsumfang ist gesetzlich festgelegt, die Abnahme erfolgt einmalig durch eine Pruefstelle, und der Vertrag wurde nach UfAB ausgeschrieben. Welches Vorgehensmodell ist geeignet?" — **Antwort:** **V-Modell XT (Bund)**. Begründung: stabile, gesetzlich fixierte Anforderungen, einmalige Pruefung, oeffentlich vergebener Auftrag mit verbindlichem Vorgehensmodell.
+</Beispiel>
+
+<Beispiel>
+**Hybrid-Beispiel:** Ein Hersteller bringt ein neues Elektroauto auf den Markt. Die mechanischen Komponenten (Karosserie, Bremsen, Crash-Strukturen) folgen dem **V-Modell** mit normierten Tests. Die **Infotainment-Software** wird in **2-Wochen-Sprints** entwickelt, mit OTA-Updates an die ausgelieferte Flotte. Die Datenhaltung in der Cloud läuft als kontinuierlicher Betrieb mit **Kanban**. Drei Vorgehensmodelle in einem Produkt — passend zum jeweiligen Risiko und Tempo.
+</Beispiel>
 
 ---
 
 ## Typische Fehler
 
-**Frage: „Welches Modell für eine Brücke?"**
-- Falsch: „Agil" — eine Brücke kann man nicht iterativ bauen!
-- Richtig: **„Wasserfall"** — Anforderungen sind klar und stabil, keine Änderungen möglich.
+- **„Royce hat den Wasserfall empfohlen."** Falsch. Royce (1970) hat das Modell beschrieben **und gleichzeitig als riskant bezeichnet**. Seine Empfehlung war ein iteratives Vorgehen mit mindestens zwei Durchlaeufen. Schulbuchwissen, das ihn als Wasserfall-Erfinder lobt, geht zu weit.
 
-**Frage: „Kunde ändert ständig seine Anforderungen — welches Modell?"**
-- Falsch: „Wasserfall" — der ist unflexibel.
-- Richtig: **„Agil (z. B. Scrum)"** — Änderungen sind jederzeit möglich.
+- **„Wasserfall ist veraltet."** Falsch. Fuer regulierte, sicherheitskritische und stabile Projekte bleibt Wasserfall sinnvoll. Embedded-Systeme, Medizintechnik, Brueckenbau — agil waere dort gefaehrlich.
 
-**Frage: „Nachteil von Wasserfall?"**
-- Richtig: „Keine Rückschritte möglich, Fehler fallen oft erst spät auf, unflexibel bei Änderungen."
+- **„V-Modell ist nur Wasserfall mit Tests."** Falsch. Das V-Modell **koppelt jede Konstruktionsphase an eine korrespondierende Pruefphase**. Tests werden nicht „am Ende drangehaengt", sondern bereits in der Konstruktion vorbereitet.
 
-**Frage: „Wer priorisiert das Backlog in Scrum?"**
-- Richtig: **Product Owner** — nicht der Scrum Master, nicht das Team.
+- **„Iterativ und inkrementell sind dasselbe."** Falsch. Iterativ heisst „wiederholend", inkrementell heisst „in Zuwaechsen". Agil ist beides, aber die Begriffe sind nicht synonym.
 
----
+- **„Agil = ohne Plan."** Falsch. Agile Vorgehen planen kurzzyklisch (Sprint Goal, Sprint Backlog, Definition of Done). Was sie nicht tun: einen Detailplan ueber Monate festschreiben.
 
+- **„Scrum ist Agil."** Stimmt, aber **Agil ist nicht nur Scrum**. Kanban, XP und SAFe sind ebenfalls agil. Wenn die Aufgabe „agile Methode" sagt, ist Scrum ein gueltiges Beispiel — nicht das einzige.
+
+- **„Hybrid = halb-agil."** Falsch. Hybrid ist bewusste Trennung: Teilbereiche mit stabilen Anforderungen sequenziell, Teilbereiche mit beweglichen Anforderungen agil. Es ist kein Kompromiss aus Bequemlichkeit.
+
+- **„Wer Kanban macht, hat keine Regeln."** Falsch. Kanban hat klare Praktiken (Board, WIP-Limits, Flussmessung, explizite Richtlinien). Es schreibt nur weniger vor als Scrum.
+
+- **„Das Agile Manifest sagt, Dokumentation sei egal."** Falsch. Das Manifest sagt: „Funktionierende Software **mehr als** umfassende Dokumentation." Die rechte Seite ist nicht unwichtig — sie wird nur niedriger gewichtet als die linke.
+
+<Quellen
+  quellen={[
+    {
+      label: 'Manifesto for Agile Software Development (2001)',
+      href: 'https://agilemanifesto.org/',
+      detail: 'Originaltext des Agilen Manifests von 2001 mit den vier Wertepaaren und 12 Prinzipien; unterzeichnet von 17 Autoren.'
+    },
+    {
+      label: 'The Scrum Guide (2020)',
+      href: 'https://scrumguides.org/scrum-guide.html',
+      detail: 'Primaerquelle fuer den Scrum-Abschnitt: Accountabilities, fuenf Events, drei Artefakte mit Commitments.'
+    },
+    {
+      label: 'V-Modell XT - CIO Bund',
+      href: 'https://www.cio.bund.de/Webs/CIO/DE/digitaler-wandel/Achitekturen_und_Standards/V_modell_xt/v_modell_xt-artikel.html',
+      detail: 'Offizielle Bundes-Referenz zum V-Modell XT (Version 2.4) und zur Bund-Variante V-Modell XT Bund.'
+    },
+    {
+      label: 'Royce 1970 - Managing the Development of Large Software Systems',
+      href: 'https://www.cs.huji.ac.il/w~feit/sem/se09/Waterfall.pdf',
+      detail: 'IEEE WESCON 1970. Erstbeschreibung des Wasserfallmodells — von Royce ausdruecklich als „risky and invites failure" bezeichnet, mit Empfehlung fuer iteratives Vorgehen.'
+    },
+  ]}
+/>

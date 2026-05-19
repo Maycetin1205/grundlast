@@ -639,6 +639,27 @@ export const sourceBank: SourceEntry[] = [
     tags: ['projekt', 'scrum', 'agil', 'accountabilities'],
   },
   {
+    id: 'royce-1970-waterfall',
+    label: 'Royce 1970 - Managing the Development of Large Software Systems',
+    href: 'https://www.cs.huji.ac.il/w~feit/sem/se09/Waterfall.pdf',
+    detail: 'Winston W. Royce, Proceedings of IEEE WESCON 1970, S. 328-388. Quelle, in der das spaeter „Wasserfall" genannte Phasenmodell erstmals beschrieben wird — von Royce ausdruecklich als „risky and invites failure" bezeichnet, mit Vorschlag fuer iteratives Vorgehen.',
+    tags: ['projekt', 'wasserfall', 'lebenszyklus', 'historisch'],
+  },
+  {
+    id: 'v-modell-xt-bund',
+    label: 'V-Modell XT - CIO Bund',
+    href: 'https://www.cio.bund.de/Webs/CIO/DE/digitaler-wandel/Achitekturen_und_Standards/V_modell_xt/v_modell_xt-artikel.html',
+    detail: 'Offizielle Bundes-Referenz zum V-Modell XT (aktuelle Version 2.4) sowie zur Bund-Variante V-Modell XT Bund: Vorgehensmodell fuer IT-Projekte der oeffentlichen Verwaltung, mit V-foermiger Verzahnung von Konstruktions- und Pruefphasen.',
+    tags: ['projekt', 'v-modell', 'v-modell-xt', 'oeffentliche-verwaltung', 'lebenszyklus'],
+  },
+  {
+    id: 'agile-manifesto',
+    label: 'Manifesto for Agile Software Development (2001)',
+    href: 'https://agilemanifesto.org/',
+    detail: 'Originaltext des Agilen Manifests von 2001 mit den vier Wertepaaren („Individuen und Interaktionen mehr als Prozesse und Werkzeuge" usw.) sowie 12 Prinzipien. Unterzeichnet von 17 Autoren, darunter Kent Beck, Martin Fowler, Ken Schwaber und Jeff Sutherland.',
+    tags: ['projekt', 'agil', 'manifest', 'werte'],
+  },
+  {
     id: 'axelos-itil-reader',
     label: 'AXELOS - ITIL 4 Practice Guide Reader Manual',
     href: 'https://www.axelos.com/resource-hub/practice/readers-manual-itil-4-practice-guide',

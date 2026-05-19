@@ -25,7 +25,7 @@ export const projekt: Lernfeld = {
       lessons: [
         { slug: "netzplan", title: "Netzplantechnik (FAZ/FEZ/SAZ/SEZ)", minutes: 18, importance: 5, exam: true, status: "draft" },
         { slug: "gantt-diagramm", title: "Gantt-Diagramm — Balkenplan", minutes: 12, importance: 5, exam: true, status: "ready" },
-        { slug: "vorgehensmodelle", title: "Vorgehensmodelle (Wasserfall & Agil)", minutes: 14, importance: 5, exam: true, status: "draft" },
+        { slug: "vorgehensmodelle", title: "Vorgehensmodelle (Wasserfall, V-Modell, Agil)", minutes: 18, importance: 5, exam: true, status: "ready" },
         { slug: "bpmn", title: "BPMN – Prozesse modellieren", minutes: 14, importance: 5, exam: true, status: "draft" },
         { slug: "scrum", title: "Scrum – Accountabilities, Events, Artefakte", minutes: 14, importance: 4, exam: true, status: "ready" },
       ],

@@ -353,6 +353,19 @@ export const tBisZ: GlossarEintrag[] = [
       },
     },
   {
+      id: 'v-modell',
+      begriff: 'V-Modell',
+      kurzdefinition: 'Deutsches Vorgehensmodell mit V-foermiger Verzahnung von Konstruktions- und Testphasen.',
+      definition: [
+        'Das V-Modell ordnet jeder Konstruktionsphase (Anforderungen, Grobentwurf, Feinentwurf, Implementierung) eine korrespondierende Testphase (Abnahmetest, Systemtest, Integrationstest, Modultest) zu. Dargestellt wird das als „V": links abwaerts die Konstruktion, rechts aufwaerts die Tests, in der Mitte die Implementierung.',
+        'Das V-Modell XT in Version 2.4 ist offizielles Vorgehensmodell des Bundes (V-Modell XT Bund) und wird vor allem in regulierten oder sicherheitskritischen Projekten der oeffentlichen Verwaltung eingesetzt. Es ist sequenziell wie der Wasserfall, koppelt aber jede Konstruktionsentscheidung an einen passenden Testschritt.',
+      ],
+      kapitel: {
+        titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
+        href: '/lernen/projekt/projektplanung/vorgehensmodelle',
+      },
+    },
+  {
       id: 'vpn',
       begriff: 'VPN',
       kurzdefinition: 'Virtuelles privates Netzwerk, das einen geschuetzten Tunnel über ein unsicheres Netz aufbaut.',
@@ -363,6 +376,19 @@ export const tBisZ: GlossarEintrag[] = [
       kapitel: {
         titel: 'Verschluesselung, Hashing, Zertifikate, Signatur & VPN',
         href: '/lernen/sicherheit/dsgvo-krypto/verschluesselung-hash-vpn',
+      },
+    },
+  {
+      id: 'wasserfallmodell',
+      begriff: 'Wasserfallmodell',
+      kurzdefinition: 'Sequenzielles Vorgehensmodell, bei dem jede Phase abgeschlossen sein muss, bevor die naechste beginnt.',
+      definition: [
+        'Im Wasserfallmodell laeuft ein Projekt streng sequenziell: Anforderungsanalyse, Entwurf, Implementierung, Test, Wartung. Erst wenn eine Phase abgeschlossen ist, beginnt die naechste; Rueckspruenge sind nicht vorgesehen.',
+        'Geschichtlich geht die Darstellung auf Winston Royce (1970) zurueck — der das Modell allerdings als „risky and invites failure" bezeichnete und stattdessen iteratives Vorgehen vorschlug. Heute eignet sich Wasserfall vor allem dort, wo Anforderungen stabil und Aenderungen teuer sind: Bau, Embedded-Systeme, Hardware.',
+      ],
+      kapitel: {
+        titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
+        href: '/lernen/projekt/projektplanung/vorgehensmodelle',
       },
     },
   {

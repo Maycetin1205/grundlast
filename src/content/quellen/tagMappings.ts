@@ -36,7 +36,7 @@ export const slugTags: Record<string, string[]> = {
   'pseudocode-einstieg': ['software'],
   'uml-aktivitaet': ['uml', 'software'],
   netzplan: ['projekt'],
-  vorgehensmodelle: ['projekt', 'agil'],
+  vorgehensmodelle: ['projekt', 'agil', 'wasserfall', 'v-modell', 'v-modell-xt', 'scrum', 'kanban', 'manifest', 'iterativ', 'inkrementell', 'lebenszyklus', 'historisch'],
   bpmn: ['bpmn', 'prozess'],
   scrum: ['projekt', 'scrum', 'agil', 'sprint', 'backlog', 'increment', 'product-goal', 'sprint-goal', 'definition-of-done', 'accountabilities'],
   'lastenheft-pflichtenheft': ['projekt'],

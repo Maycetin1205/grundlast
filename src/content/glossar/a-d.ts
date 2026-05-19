@@ -67,6 +67,19 @@ export const aBisD: GlossarEintrag[] = [
       },
     },
   {
+      id: 'agiles-manifest',
+      begriff: 'Agiles Manifest',
+      kurzdefinition: 'Erklaerung von 2001, in der 17 Autoren vier Wertepaare und zwoelf Prinzipien fuer agile Softwareentwicklung formulieren.',
+      definition: [
+        'Das Manifesto for Agile Software Development wurde 2001 von Kent Beck, Martin Fowler, Ken Schwaber, Jeff Sutherland und 13 weiteren Autoren veroeffentlicht. Es betont vier Wertepaare: Individuen und Interaktionen mehr als Prozesse und Werkzeuge, funktionierende Software mehr als umfassende Dokumentation, Zusammenarbeit mit dem Kunden mehr als Vertragsverhandlung, Reagieren auf Veraenderung mehr als Befolgen eines Plans.',
+        'Wichtig: Die rechte Seite jedes Wertepaars ist nicht unwichtig — sie wird nur niedriger bewertet als die linke. Das Manifest ist keine Methode, sondern Wertegrundlage; konkrete Frameworks wie Scrum oder Kanban setzen darauf auf.',
+      ],
+      kapitel: {
+        titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
+        href: '/lernen/projekt/projektplanung/vorgehensmodelle',
+      },
+    },
+  {
       id: 'aida',
       begriff: 'AIDA-Modell',
       kurzdefinition: 'Vier-Stufen-Modell der Werbe- und Praesentationswirkung: Attention, Interest, Desire, Action.',

@@ -15,6 +15,19 @@ export const iBisL: GlossarEintrag[] = [
       },
     },
   {
+      id: 'inkrementell',
+      begriff: 'Inkrementell',
+      kurzdefinition: 'Vorgehen, das ein Produkt schrittweise um nutzbare Stuecke (Inkremente) erweitert.',
+      definition: [
+        'Inkrementelles Vorgehen liefert in jedem Schritt ein konkretes, nutzbares Stueck Produkt. Jedes Inkrement ergaenzt das Bisherige; es wird nicht alles auf einmal fertig.',
+        'Inkrementell ist nicht dasselbe wie iterativ. Inkrementell heisst „hinzufuegen", iterativ heisst „wiederholen". Agile Vorgehen wie Scrum sind beides: in jedem Sprint (Iteration) entsteht ein Inkrement.',
+      ],
+      kapitel: {
+        titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
+        href: '/lernen/projekt/projektplanung/vorgehensmodelle',
+      },
+    },
+  {
       id: 'inode',
       begriff: 'Inode',
       kurzdefinition: 'Metadaten-Eintrag in Unix-aehnlichen Dateisystemen, der eine einzelne Datei beschreibt.',
@@ -207,6 +220,19 @@ export const iBisL: GlossarEintrag[] = [
       kapitel: {
         titel: 'Dateisysteme (FAT32, NTFS, ext4, APFS)',
         href: '/lernen/betriebssysteme/os-grundlagen/dateisysteme',
+      },
+    },
+  {
+      id: 'kanban',
+      begriff: 'Kanban',
+      kurzdefinition: 'Visuelles Pull-System mit Work-in-Progress-Limits; agiler Ansatz ohne feste Iterationen.',
+      definition: [
+        'Kanban stammt urspruenglich aus der Toyota-Produktion und wurde fuer Wissensarbeit adaptiert. Arbeit wird auf einem Board mit Spalten (z.B. To Do, Doing, Done) sichtbar gemacht; pro Spalte gilt ein Work-in-Progress-Limit (WIP-Limit), das gleichzeitig laufende Aufgaben begrenzt.',
+        'Im Unterschied zu Scrum gibt es keine festen Sprints, keine Accountabilities-Pflicht und keine Sprint-Events. Engpaesse werden im Fluss sichtbar; Verbesserung erfolgt evolutionaer am laufenden System. Kanban wird oft mit Scrum kombiniert (Scrumban).',
+      ],
+      kapitel: {
+        titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
+        href: '/lernen/projekt/projektplanung/vorgehensmodelle',
       },
     },
   {
