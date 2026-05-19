@@ -38,7 +38,7 @@ export const slugTags: Record<string, string[]> = {
   netzplan: ['projekt'],
   vorgehensmodelle: ['projekt', 'agil'],
   bpmn: ['bpmn', 'prozess'],
-  scrum: ['scrum', 'agil'],
+  scrum: ['projekt', 'scrum', 'agil', 'sprint', 'backlog', 'increment', 'product-goal', 'sprint-goal', 'definition-of-done', 'accountabilities'],
   'lastenheft-pflichtenheft': ['projekt'],
   'dsgvo-basics': ['dsgvo', 'datenschutz', 'recht'],
   'verschluesselung-hash-vpn': ['krypto', 'verschluesselung', 'hashing', 'zertifikat', 'pki', 'signatur', 'vpn', 'ipsec', 'tls'],

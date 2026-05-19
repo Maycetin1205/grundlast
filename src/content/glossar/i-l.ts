@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const iBisL: GlossarEintrag[] = [
   {
+      id: 'increment',
+      begriff: 'Increment (Scrum)',
+      kurzdefinition: 'Nutzbares, fertiges Stueck Produkt am Ende eines Sprints — alles, was die Definition of Done erfuellt.',
+      definition: [
+        'Im Scrum Guide 2020 ist das Increment eines der drei Artefakte. Es ist der konkrete Schritt zum Product Goal und wird durch die Definition of Done auf Qualitaet verpflichtet.',
+        'Ein Increment ist additiv: jedes neue Increment ergaenzt die vorherigen. Folien, Mockups oder unfertige Features sind kein Increment — erst wenn die DoD erfuellt ist, gilt das Artefakt als Increment.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
       id: 'inode',
       begriff: 'Inode',
       kurzdefinition: 'Metadaten-Eintrag in Unix-aehnlichen Dateisystemen, der eine einzelne Datei beschreibt.',

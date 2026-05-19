@@ -678,6 +678,19 @@ export const aBisD: GlossarEintrag[] = [
       },
     },
   {
+      id: 'daily-scrum',
+      begriff: 'Daily Scrum',
+      kurzdefinition: '15-minuetiges Event im Sprint, in dem die Developers ihre naechsten Schritte gegen das Sprint Goal synchronisieren.',
+      definition: [
+        'Das Daily Scrum ist ein Event aus dem Scrum Guide 2020. Es dauert maximal 15 Minuten, findet zur gleichen Zeit am gleichen Ort statt und ist ausschliesslich fuer die Developers. Product Owner und Scrum Master koennen teilnehmen, weisen aber keine Arbeit zu.',
+        'Inhalt ist keine Statusrunde fuer Vorgesetzte, sondern die Anpassung des Sprint-Backlog-Plans im Hinblick auf das Sprint Goal: Was bringt uns naeher dran, was haelt uns auf, was ist als naechstes dran?',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
       id: 'darlehen',
       begriff: 'Darlehen',
       kurzdefinition: 'Geldbetrag, der vertraglich bereitgestellt und später zurueckgezahlt wird.',
@@ -769,6 +782,19 @@ export const aBisD: GlossarEintrag[] = [
       },
     },
   {
+      id: 'definition-of-done',
+      begriff: 'Definition of Done',
+      kurzdefinition: 'Verbindlicher Qualitaetsmassstab dafuer, wann ein Inkrement als fertig gilt.',
+      definition: [
+        'Die Definition of Done (DoD) ist im Scrum Guide 2020 das Commitment zum Inkrement: sie beschreibt formal, wann ein Stueck Arbeit als fertig im Sinne des Produkts gilt — typischerweise Punkte wie Code-Review, Tests, Dokumentation, deploybar.',
+        'Was die DoD nicht erfuellt, gehoert nicht ins Inkrement. Die DoD steht fest, bevor mit der Arbeit begonnen wird, damit Transparenz und Inspektion am Sprint-Ende moeglich sind.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
       id: 'desire',
       begriff: 'Desire',
       kurzdefinition: 'Dritte AIDA-Stufe: Wunsch nach der angebotenen Loesung ausloesen.',
@@ -779,6 +805,19 @@ export const aBisD: GlossarEintrag[] = [
       kapitel: {
         titel: 'AIDA-Formel & Werbewirkung',
         href: '/lernen/wirtschaft/markt/aida-formel',
+      },
+    },
+  {
+      id: 'developers',
+      begriff: 'Developers (Scrum)',
+      kurzdefinition: 'Mitglieder des Scrum Teams, die das Inkrement bauen — frueher als „Entwicklungsteam" bezeichnet.',
+      definition: [
+        'Developers ist im Scrum Guide 2020 der Begriff fuer alle Personen im Scrum Team, die jeden Sprint ein nutzbares Inkrement liefern. Sie sind selbstorganisiert und cross-funktional; niemand teilt ihnen Arbeit zu.',
+        'Die Teamgroesse wird im Scrum Guide 2020 als „typisch zehn oder weniger" beschrieben — frueher (2017) hiess es 3 bis 9 Entwickler. Schulbuecher und Pruefungsaufgaben verwenden oft noch die alte Formulierung; der aktuelle Standard ist die 2020er-Fassung.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
       },
     },
   {

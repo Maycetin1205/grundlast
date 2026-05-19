@@ -1,92 +1,169 @@
-﻿# Scrum – Rollen, Events, Artefakte
+# Scrum – Accountabilities, Events, Artefakte
 
-## Worum geht's
+<MetaBar
+  lernfeld="LF 6 — Vorgehensmodelle und agile Projektarbeit"
+  prüfungsrelevanz="PFLICHT · 4/5"
+  quelle="Scrum Guide 2020"
+  quelleHref="https://scrumguides.org/scrum-guide.html"
+/>
 
-Scrum ist das bekannteste agile Framework in der Softwareentwicklung.
-Du lernst die 3 Rollen, 5 Events und 3 Artefakte — genau das, was die Aufgabe abfragt.
-Wichtig: Scrum ist kein Chaos, sondern ein klar definiertes Framework mit festen Regeln.
+## Was du danach kannst
 
----
+Nach diesem Kapitel kannst du **<Term id="scrum">Scrum</Term>** als agiles Framework einordnen und die **drei Accountabilities, fünf Events und drei Artefakte** mit ihren **Commitments** korrekt benennen. Du erklärst, was ein Sprint ist, warum der **<Term id="product-owner">Product Owner</Term>** kein Projektleiter ist und warum der **<Term id="scrum-master">Scrum Master</Term>** Hindernisse beseitigt, aber keine Arbeit zuweist. Du verwechselst Sprint Review und Sprint Retrospective nicht mehr, kennst den Unterschied zwischen **<Term id="product-goal">Product Goal</Term>**, **<Term id="sprint-goal">Sprint Goal</Term>** und **<Term id="definition-of-done">Definition of Done</Term>** und kannst Prüfungsaufgaben einordnen, die noch die alte 2017er-Sprache („Rollen", „Entwicklungsteam 3–9") verwenden.
 
-## Erklärung
+## Warum das wichtig ist
 
-### Was ist Scrum überhaupt?
+Scrum ist seit über zwei Jahrzehnten das verbreitetste agile Framework in der Softwareentwicklung. In der AP1 wird Scrum praktisch immer abgefragt — meist mit dem Anspruch, dass du Begriffe sauber zuordnen kannst: Wer macht was, wann passiert was, was ist wann fertig. Falsche Antworten kommen fast immer aus zwei Quellen: alte Lernkarten, die noch den Stand vor 2020 wiedergeben, und das Gefühl, „Agil heißt ohne Plan". Beides fängt dieses Kapitel ab.
 
-Scrum ist ein **Framework** (kein Prozessmodell!), das Entwicklungsarbeit in kurze, wiederholbare
-Zyklen — sogenannte **Sprints** — aufteilt. Nach jedem Sprint gibt es etwas Funktionsfähiges.
+<Analogie>
+Stell dir ein Restaurant in einer langen Schicht vor. Der **<Term id="product-owner">Product Owner</Term>** ist die Wirtin: sie pflegt die Speisekarte (das **<Term id="product-backlog">Product Backlog</Term>**) und entscheidet, was heute Abend Priorität hat. Die **<Term id="developers">Developers</Term>** sind die Küche: sie planen die Schicht (das **<Term id="sprint-backlog">Sprint Backlog</Term>**) und kochen selbstorganisiert. Der **<Term id="scrum-master">Scrum Master</Term>** ist die Schichtleitung: er räumt blockierte Spülen weg, sorgt dafür, dass die kurzen Lagebesprechungen (**<Term id="daily-scrum">Daily Scrums</Term>**) wirklich nur 15 Minuten dauern und niemand der Küche reinredet. Der **<Term id="sprint">Sprint</Term>** ist die Schicht selbst — ein Block mit klarem Anfang, klarem Ende und einem Ziel: alle Gäste satt und zufrieden. Die servierten Teller sind das **<Term id="increment">Increment</Term>**; was die **<Term id="definition-of-done">Definition of Done</Term>** nicht erfüllt (kalt, halb angerichtet), geht nicht raus.
+</Analogie>
 
-> **Analogie:** Stell dir ein Projekt wie eine Küche vor. Beim Wasserfall-Modell baust du erst die
-> komplette Küche und merkst am Ende, dass die Schränke zu niedrig sind. Bei Scrum baust du
-> erst nur den Herd-Bereich — der funktioniert nach 2 Wochen — und verbesserst dann weiter.
+## Was ist Scrum?
 
-**Der Unterschied zu klassischen Modellen:**
-- Kein fixer Gesamtplan am Anfang
-- Anforderungen dürfen sich ändern
-- Das Team liefert nach jedem Sprint nutzbare Ergebnisse
+Der Scrum Guide 2020 definiert Scrum als „leichtgewichtiges Framework, das Menschen, Teams und Organisationen hilft, Wert durch adaptive Lösungen für komplexe Probleme zu erzeugen". Es ist **kein Prozessmodell**, das fertige Schritte vorgibt — es ist ein **Rahmen**, der wenig vorschreibt, aber dafür konsequent.
 
-### Die 3 Rollen
+Das **empirische Fundament** sind drei Säulen:
 
-| Rolle | Kurzform | Hauptaufgabe |
-|-------|----------|--------------|
-| **Product Owner** | „Was?" | Definiert die Anforderungen, priorisiert den Product Backlog |
-| **Scrum Master** | „Wie läuft's?" | Schützt das Team, beseitigt Hindernisse, sorgt für Scrum-Regeln |
-| **Entwicklungsteam** | „Machen!" | Umsetzt die Aufgaben, selbstorganisiert, 3–9 Personen |
+| Säule | Was sie heißt | Was sie verlangt |
+|---|---|---|
+| **Transparency** | Alles, was über Arbeit und Fortschritt entscheidet, ist sichtbar. | Artefakte und Commitments sind allen Beteiligten zugänglich. |
+| **Inspection** | Häufige, ehrliche Prüfung gegen das Ziel. | Events, in denen Artefakte und Fortschritt inspiziert werden. |
+| **Adaptation** | Anpassung, sobald Inspektion einen Abweichungsbedarf zeigt. | Plan, Ziel oder Vorgehen werden nachjustiert. |
 
-**Kein Projektleiter!** Das ist der größte Unterschied zu klassischen Projekten.
-Das Entwicklungsteam organisiert sich selbst. Niemand weist einzelnen Personen Aufgaben zu.
+Dazu kommen fünf **Werte**, die das Team teilen sollte: **Commitment, Focus, Openness, Respect, Courage**.
 
-### Die 5 Events (Zeremonien)
+## Die drei Accountabilities
 
-| Event | Wann? | Ziel |
-|-------|-------|------|
-| **Sprint** | 1–4 Wochen, wiederholt | Der Rahmen — alles passiert im Sprint |
-| **Sprint Planning** | Anfang jedes Sprints | Was wird in diesem Sprint gebaut? (aus Backlog auswählen) |
-| **Daily Scrum** | Täglich, max. 15 Min | Synchronisation: Was getan? Was als nächstes? Hindernisse? |
-| **Sprint Review** | Ende des Sprints | Demo: Was wurde fertig? Feedback vom Stakeholder |
-| **Sprint Retrospektive** | Nach dem Review | Wie haben wir gearbeitet? Was verbessern? |
+Scrum kennt **ein Scrum Team mit drei Accountabilities** — dem englischen Begriff für „Verantwortungsbereich". Der Scrum Guide hat 2020 das Wort „Rollen" bewusst gestrichen, damit klar ist: hier geht es nicht um Stellenbeschreibungen, sondern um die minimal notwendige Rechenschaft.
 
-**Merkhilfe für die Reihenfolge:**
-> Sprint startet → Planning → täglich Daily → Sprint endet → Review (Ergebnis zeigen) → Retro (Prozess verbessern)
+| Accountability | Wofür rechenschaftspflichtig | Typische Missverständnisse |
+|---|---|---|
+| **<Term id="product-owner">Product Owner</Term>** | Produktwert maximieren; Product Backlog ordnen; Product Goal kommunizieren. | Kein Projektleiter. Weist Developers keine Arbeit zu. |
+| **<Term id="scrum-master">Scrum Master</Term>** | Wirksamkeit des Teams; Scrum etablieren; Hindernisse entfernen; Timeboxes der Events. | Kein Sekretariat, kein Vorgesetzter, kein „Projektmanager light". |
+| **<Term id="developers">Developers</Term>** | Jeden Sprint ein nutzbares Increment liefern; Sprint Backlog planen; Qualität durch Definition of Done sichern. | Sind selbstorganisiert; niemand teilt ihnen Arbeit zu. Frühere Bezeichnung: „Entwicklungsteam". |
 
-### Die 3 Artefakte (Dokumente/Listen)
+<Tipp titel="Pädagogischer Hinweis zur Prüfung">
+Viele Schulbücher und AP1-Aufgaben sprechen noch von „**Rollen**" und einem „**Entwicklungsteam mit 3 bis 9 Mitgliedern**". Das war der Wortlaut des Scrum Guide **2017**. Seit der **November-2020**-Fassung gilt: drei **Accountabilities** in **einem** Scrum Team mit **Developers**, **typischerweise zehn oder weniger**. Inhaltlich meinen beide Fassungen dieselben Personen — antworte in der Prüfung mit den Begriffen, die in der Aufgabe stehen, kenne aber beide Formulierungen.
+</Tipp>
 
-| Artefakt | Erstellt von | Inhalt |
-|----------|-------------|--------|
-| **Product Backlog** | Product Owner | Alle Anforderungen und Wünsche, priorisiert |
-| **Sprint Backlog** | Entwicklungsteam | Aufgaben für den aktuellen Sprint (aus Product Backlog) |
-| **Increment** | Entwicklungsteam | Das fertige, nutzbare Ergebnis nach dem Sprint |
+## Die fünf Events
 
-### Sprint in der Praxis — ein Ablauf
+Im Scrum Guide 2020 ist der **Sprint** selbst eines der Events — der **Container**, in dem alle anderen stattfinden. Auch der Begriff „Zeremonie" aus älteren Lehrwerken ist veraltet; offiziell heißt es „Event".
+
+| Event | Zweck | Timebox (für 1-Monats-Sprint) |
+|---|---|---|
+| **<Term id="sprint">Sprint</Term>** | Iterationsrahmen — enthält alle anderen Events. | max. 1 Monat |
+| **Sprint Planning** | Drei Fragen klären: *Warum* (Sprint Goal), *Was* (Backlog-Auswahl), *Wie* (Plan). | max. 8 h |
+| **<Term id="daily-scrum">Daily Scrum</Term>** | Developers synchronisieren ihren Plan in Richtung Sprint Goal. | 15 min |
+| **Sprint Review** | Increment mit Stakeholdern inspizieren; Backlog anpassen. | max. 4 h |
+| **Sprint Retrospective** | Prozess, Werkzeuge, Definition of Done verbessern. | max. 3 h |
+
+Bei kürzeren Sprints (z.B. 2 Wochen) werden die Timeboxes anteilig kürzer. Faustregel: pro Woche Sprint etwa **2 h Planning, 1 h Review, 45 min Retro**. Daily Scrum bleibt immer 15 Minuten.
+
+<Tipp titel="Re·view vs. Retro·spective">
+**Review** = **Re**sultat zeigen → was wurde gebaut, passt es zum Sprint Goal? Publikum: Stakeholder.
+**Retro** = **Re**flexion → wie haben wir gearbeitet, was wollen wir ändern? Publikum: Scrum Team.
+Sprint Planning fragt **Warum, Was, Wie** — das **Warum** ist seit 2020 ausdrücklich Pflicht und wird durch das Sprint Goal beantwortet.
+</Tipp>
+
+## Die drei Artefakte und ihre Commitments
+
+Der eigentliche **Aha-Moment** des Scrum Guide 2020: Jedes Artefakt hat ein **Commitment**, das den Sinn dahinter sichtbar macht.
 
 ```
-1. Product Owner pflegt Product Backlog (priorisierte Anforderungsliste)
-2. Sprint Planning: Team wählt Aufgaben für den Sprint aus → Sprint Backlog
-3. Sprint läuft (z.B. 2 Wochen):
-   - Täglich: Daily Scrum (15 Min Stand-up)
-   - Team arbeitet selbstorganisiert
-4. Sprint endet:
-   - Sprint Review: Ergebnisse werden gezeigt
-   - Sprint Retrospektive: Prozessverbesserung
-5. Nächster Sprint beginnt → zurück zu Schritt 2
+Product Backlog ──── Product Goal         (Wofür existiert das Produkt?)
+Sprint Backlog ───── Sprint Goal          (Wofür ist gerade dieser Sprint?)
+Increment ────────── Definition of Done   (Wann ist etwas wirklich fertig?)
 ```
 
----
+| Artefakt | Verantwortet | Commitment | Was es bedeutet |
+|---|---|---|---|
+| **<Term id="product-backlog">Product Backlog</Term>** | Product Owner | **<Term id="product-goal">Product Goal</Term>** | Geordnete, lebendige Liste der Produktarbeit. Das Product Goal beschreibt einen zukünftigen Produktzustand und gilt, bis er erreicht oder verworfen ist. |
+| **<Term id="sprint-backlog">Sprint Backlog</Term>** | Developers | **<Term id="sprint-goal">Sprint Goal</Term>** | Auswahl von Backlog-Items + Plan für den Sprint. Das Sprint Goal ist das *eine* Ziel dieses Sprints. |
+| **<Term id="increment">Increment</Term>** | Developers | **<Term id="definition-of-done">Definition of Done</Term>** | Konkretes, nutzbares Stück Produkt. Was die DoD nicht erfüllt, ist kein Increment. |
+
+Ohne Commitment ist ein Artefakt nur eine Liste. Mit Commitment trägt es Transparenz und macht Inspektion möglich.
+
+## Ein Sprint von Anfang bis Ende
+
+<StepByStep titel="Wie läuft ein Sprint konkret ab?">
+  <Schritt nr={1} titel="Sprint Planning — Warum, Was, Wie">
+    Das Scrum Team trifft sich. Der Product Owner schlägt vor, welche Backlog-Items zum Product Goal passen. Gemeinsam wird ein **Sprint Goal** formuliert (das **Warum**). Die Developers wählen die Items aus, die sie für umsetzbar halten (das **Was**), und erstellen einen ersten Plan (das **Wie**). Ergebnis: Sprint Goal und initialer Sprint Backlog stehen.
+  </Schritt>
+  <Schritt nr={2} titel="Sprint läuft — Developers arbeiten selbstorganisiert">
+    Der Sprint hat einen festen Endtermin (z.B. 2 Wochen später). Die Developers bauen das Increment. Die Definition of Done gilt während der gesamten Arbeit, nicht erst am Ende. Backlog Refinement läuft parallel: der Product Owner schärft die Items für kommende Sprints.
+  </Schritt>
+  <Schritt nr={3} titel="Daily Scrum — 15 Minuten täglich">
+    Die Developers prüfen den Fortschritt gegen das Sprint Goal und passen ihren Plan an. Kein Statusbericht an Vorgesetzte, keine Arbeitszuweisung — Synchronisation der Developers untereinander.
+  </Schritt>
+  <Schritt nr={4} titel="Sprint Review — Increment mit Stakeholdern inspizieren">
+    Am Sprint-Ende zeigt das Scrum Team das Increment den Stakeholdern. Es geht um Inhalt, nicht um Folien: was funktioniert, was nicht, was kommt als Nächstes? Das Product Backlog wird auf Basis des Feedbacks angepasst.
+  </Schritt>
+  <Schritt nr={5} titel="Sprint Retrospective — Prozess verbessern">
+    Direkt nach dem Review reflektiert das Scrum Team die Zusammenarbeit, Werkzeuge und die Definition of Done. Mindestens eine konkrete Verbesserung wird in den nächsten Sprint übernommen.
+  </Schritt>
+  <Ergebnis>
+    Direkt im Anschluss beginnt der nächste Sprint mit Sprint Planning. Das Increment vom Ende des letzten Sprints fließt in das Produkt ein, das Product Backlog ist aktualisiert, und das nächste Sprint Goal kann auf das Product Goal hinarbeiten.
+  </Ergebnis>
+</StepByStep>
+
+<Beispiel>
+**Sprint-Goal-Beispiel aus dem AP1-Umfeld.** Ein Kundenportal soll sicherer werden. Das **Product Goal** lautet: *„Sichere Anmeldung am Kundenportal für alle Nutzergruppen bis Q3."* Im aktuellen 2-Wochen-Sprint einigt sich das Team auf das **Sprint Goal**: *„Admin-Konten sind nur noch mit zweitem Faktor anmeldbar."* Das **Sprint Backlog** enthält Items wie *TOTP-Server einrichten*, *Login-Flow um 2FA-Schritt erweitern*, *Recovery-Code-Druck*, *Doku*. Am Sprint-Ende steht das **Increment**: Admin-Login funktioniert mit TOTP, Recovery-Pfad ist dokumentiert. Die **Definition of Done** wurde erfüllt: Code-Review, Tests, Doku, Deployment auf Staging — sonst wäre das Feature kein Increment.
+</Beispiel>
+
+## Scrum, Agil und der Rest
+
+Scrum ist **agil**, aber **agil ist nicht nur Scrum**. In der Prüfung wird das oft mit anderen agilen Ansätzen verwechselt oder vermischt.
+
+| Agiler Ansatz | Kern | Wo es Scrum berührt |
+|---|---|---|
+| **Scrum** | Iterativ-inkrementelles Framework mit Sprints. | siehe oben |
+| **Kanban** | Pull-System mit Work-in-Progress-Limits, ohne feste Iterationen. | Wird oft *im* Sprint Backlog genutzt; ist aber selbst kein Scrum. |
+| **XP (Extreme Programming)** | Engineering-Praktiken: TDD, Pair Programming, Continuous Integration. | Praktiken passen gut zu Scrum, sind aber nicht Teil des Frameworks. |
+| **SAFe, LeSS** | Skalierungs-Modelle für mehrere Teams an einem Produkt. | Bauen auf Scrum auf, schreiben aber zusätzlich Strukturen vor. |
 
 ## Typische Fehler
 
-- **„Es gibt einen Projektleiter im Scrum"** — falsch! Es gibt keinen Projektleiter.
-  Der Product Owner ist kein Projektleiter, der Scrum Master auch nicht. Das Team leitet sich selbst.
+- **„Es gibt einen Projektleiter im Scrum."** Falsch. Weder Product Owner noch Scrum Master sind Projektleiter. Das Scrum Team organisiert sich selbst; Verantwortung ist auf drei Accountabilities verteilt.
 
-- **Product Owner = Entwickler** — falsch! Der Product Owner ist die Verbindung zum Kunden/Auftraggeber.
-  Er entwickelt nicht, er entscheidet über Prioritäten.
+- **„Rolle statt Accountability."** Im Scrum Guide 2020 stehen ausdrücklich keine *Rollen*, sondern *Accountabilities*. Eine Person kann mehrere Accountabilities haben oder eine Accountability auf mehrere Personen verteilt sein — was sich nicht teilen lässt, ist die Rechenschaft.
 
-- **Sprint Review und Retrospektive verwechseln:** Review = Ergebnis zeigen (Was haben wir gebaut?).
-  Retro = Prozess reflektieren (Wie haben wir gearbeitet?). Merke: **Re**view = **Re**sultat,
-  **Retro**spektive = Reflexion des **Teamverhaltens**.
+- **„Sprint ist nur ein Zeitraum."** Der Sprint ist auch ein **Event** — der Container, in dem alle anderen Events stattfinden. Wer im Sprint arbeitet, ist immer *im* Event.
 
-- **Scrum = Agil, aber Agil ≠ Scrum:** Scrum ist agil, aber es gibt auch andere agile Methoden
-  (Kanban, XP, SAFe). Wenn die Aufgabe fragt „Was ist agil?", reicht nicht „Scrum". Wenn sie
-  fragt „Scrum-Rollen", darf man nicht Kanban antworten.
+- **Sprint Review und Sprint Retrospective verwechseln.** **Re**view = Resultat zeigen (Increment, Stakeholder). **Retro**spective = Reflexion (Prozess, Scrum Team intern). Wer das verwechselt, antwortet typischerweise mit der falschen Zielgruppe.
 
----
+- **„Daily Scrum ist ein Statusbericht an den Chef."** Falsch. Es ist Synchronisation der Developers untereinander. Product Owner und Scrum Master dürfen teilnehmen, weisen aber keine Arbeit zu.
 
+- **„Agil = ohne Plan."** Scrum hat viel Plan, aber in kurzen Zyklen. Product Backlog ist priorisiert, Sprint Goal liegt fest, Definition of Done auch. Was *nicht* vorab in Stein gemeißelt ist, ist der Detailplan über Monate hinweg.
+
+- **„Increment = Demo-Folie."** Ein Increment ist ein **nutzbares Stück Produkt**, das die Definition of Done erfüllt. Eine PowerPoint reicht nicht.
+
+- **„Zeremonie statt Event."** Das Wort „Zeremonie" gehört zum Sprachgebrauch vor 2020. Der Scrum Guide spricht heute durchgehend von **Events**.
+
+- **Entwicklungsteam-Größe 3–9.** War der Wortlaut **2017**. Der Scrum Guide **2020** sagt **„typisch zehn oder weniger"** und gibt keine Untergrenze mehr vor. Beide Formulierungen in der Prüfung erkennen und nicht miteinander verwechseln.
+
+<Quellen
+  quellen={[
+    {
+      label: 'The Scrum Guide (2020)',
+      href: 'https://scrumguides.org/scrum-guide.html',
+      detail: 'Primärquelle: Ken Schwaber und Jeff Sutherland, November 2020. Definiert Accountabilities, fünf Events und drei Artefakte mit Commitments.'
+    },
+    {
+      label: 'Scrum Guide - Revisionen 2017 → 2020',
+      href: 'https://scrumguides.org/revisions.html',
+      detail: 'Offizielle Änderungsliste: Wechsel von Rollen zu Accountabilities, ein Scrum Team statt Team-im-Team, Einführung von Product Goal, Commitments pro Artefakt, Warum-Frage im Sprint Planning.'
+    },
+    {
+      label: 'Mountain Goat Software - Top 5 Changes in the 2020 Scrum Guide',
+      href: 'https://www.mountaingoatsoftware.com/blog/top-5-changes-in-the-2020-version-of-the-scrum-guide',
+      detail: 'Mike Cohn und Brian Milner kommentieren die Änderungen kritisch — hilfreich zur didaktischen Einordnung.'
+    },
+    {
+      label: 'Scrum.org Blog - Update: Introducing the Product Goal',
+      href: 'https://www.scrum.org/resources/blog/scrum-guide-2020-update-introducing-product-goal',
+      detail: 'Erklärt das neu eingeführte Product Goal als Commitment zum Product Backlog.'
+    },
+  ]}
+/>

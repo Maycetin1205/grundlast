@@ -619,10 +619,24 @@ export const sourceBank: SourceEntry[] = [
   },
   {
     id: 'scrum-guide',
-    label: 'The Scrum Guide',
+    label: 'The Scrum Guide (2020)',
     href: 'https://scrumguides.org/scrum-guide.html',
-    detail: 'Primaerquelle für Scrum-Rollen, Events, Artefakte und Commitments.',
-    tags: ['projekt', 'scrum', 'agil'],
+    detail: 'Primaerquelle für Scrum: Accountabilities, fuenf Events, drei Artefakte mit Commitments (Product Goal, Sprint Goal, Definition of Done). Ken Schwaber und Jeff Sutherland, November 2020.',
+    tags: ['projekt', 'scrum', 'agil', 'sprint', 'backlog', 'increment', 'product-goal', 'sprint-goal', 'definition-of-done'],
+  },
+  {
+    id: 'scrum-guide-revisions',
+    label: 'Scrum Guide - Revisionen 2017 → 2020',
+    href: 'https://scrumguides.org/revisions.html',
+    detail: 'Offizielle Aenderungsliste: Rollen heissen jetzt Accountabilities, eine Scrum-Team-Struktur ohne separates Development Team, Product Goal eingefuehrt, Commitments pro Artefakt, Warum als drittes Sprint-Planning-Thema.',
+    tags: ['projekt', 'scrum', 'agil', 'accountabilities'],
+  },
+  {
+    id: 'mountain-goat-scrum-2020',
+    label: 'Mountain Goat Software - Top 5 Changes in the 2020 Scrum Guide',
+    href: 'https://www.mountaingoatsoftware.com/blog/top-5-changes-in-the-2020-version-of-the-scrum-guide',
+    detail: 'Kommentierter Vergleich der 2017er- und 2020er-Fassung mit didaktischer Einordnung von Mike Cohn und Brian Milner.',
+    tags: ['projekt', 'scrum', 'agil', 'accountabilities'],
   },
   {
     id: 'axelos-itil-reader',

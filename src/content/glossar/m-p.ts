@@ -613,6 +613,45 @@ export const mBisP: GlossarEintrag[] = [
       },
     },
   {
+      id: 'product-backlog',
+      begriff: 'Product Backlog',
+      kurzdefinition: 'Geordnete, sich entwickelnde Liste aller Arbeit, die fuer das Produkt noetig ist — verantwortet vom Product Owner.',
+      definition: [
+        'Das Product Backlog ist im Scrum Guide 2020 eines der drei Artefakte. Es ist nie „fertig", sondern wird laufend verfeinert (Backlog Refinement) und nach Produktwert priorisiert.',
+        'Sein Commitment ist das Product Goal. Items, die fuer den naechsten Sprint geeignet sind, sind „ready" — also klein und klar genug, um in einem Sprint umgesetzt zu werden.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
+      id: 'product-goal',
+      begriff: 'Product Goal',
+      kurzdefinition: 'Langfristiges Ziel, auf das das Scrum Team mit dem Produkt hinarbeitet — Commitment des Product Backlog.',
+      definition: [
+        'Das Product Goal wurde im Scrum Guide 2020 neu eingefuehrt. Es beschreibt einen zukuenftigen Zustand des Produkts und gibt dem Scrum Team einen gemeinsamen Bezugspunkt ueber einzelne Sprints hinweg.',
+        'Jeder Sprint bringt das Produkt naeher an dieses Ziel. Ein neues Product Goal wird erst formuliert, wenn das aktuelle erreicht oder als nicht mehr sinnvoll verworfen wurde.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
+      id: 'product-owner',
+      begriff: 'Product Owner',
+      kurzdefinition: 'Accountability im Scrum Team, die den Produktwert maximiert und das Product Backlog verantwortet.',
+      definition: [
+        'Der Product Owner ist eine Person, kein Komitee. Er oder sie ordnet das Product Backlog, kommuniziert das Product Goal und sorgt dafuer, dass die Items transparent und verstaendlich sind.',
+        'Der Product Owner ist kein Projektleiter und weist auch nicht den Developers Arbeit zu. Er entscheidet, was als Naechstes wichtig ist, und ist gegenueber den Stakeholdern fuer den Produktwert rechenschaftspflichtig.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
       id: 'prozess',
       begriff: 'Prozess',
       kurzdefinition: 'Laufende Instanz eines Programms mit eigenem Speicherbereich und Betriebssystemressourcen.',

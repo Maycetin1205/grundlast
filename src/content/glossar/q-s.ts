@@ -301,6 +301,32 @@ export const qBisS: GlossarEintrag[] = [
       },
     },
   {
+      id: 'scrum',
+      begriff: 'Scrum',
+      kurzdefinition: 'Leichtgewichtiges Framework fuer komplexe Produktarbeit, beschrieben im Scrum Guide.',
+      definition: [
+        'Scrum ist im Scrum Guide 2020 definiert als „leichtgewichtiges Framework, das Menschen, Teams und Organisationen hilft, Wert durch adaptive Loesungen fuer komplexe Probleme zu erzeugen". Es beruht auf den drei Saeulen Transparency, Inspection, Adaptation.',
+        'Scrum besteht aus einem Scrum Team mit drei Accountabilities (Product Owner, Scrum Master, Developers), fuenf Events (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective) und drei Artefakten mit Commitments (Product Backlog/Product Goal, Sprint Backlog/Sprint Goal, Increment/Definition of Done).',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
+      id: 'scrum-master',
+      begriff: 'Scrum Master',
+      kurzdefinition: 'Accountability im Scrum Team, die Scrum etabliert und die Wirksamkeit des Teams foerdert.',
+      definition: [
+        'Der Scrum Master ist nach Scrum Guide 2020 verantwortlich dafuer, dass Scrum verstanden und angewendet wird. Er coacht zu Selbstmanagement und Cross-Funktionalitaet, raeumt Hindernisse weg und sorgt dafuer, dass die Events ihre Timebox einhalten.',
+        'Er ist kein Projektleiter und gibt den Developers keine Arbeit. Er dient Product Owner, Developers und Organisation als „true leader" (so der Wortlaut 2020), indem er Wirksamkeit ermoeglicht statt Anweisungen zu geben.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
       id: 'segment',
       begriff: 'Segment',
       kurzdefinition: 'Ein Segment ist die typische Dateneinheit von TCP auf der Transportschicht.',
@@ -402,6 +428,45 @@ export const qBisS: GlossarEintrag[] = [
       kapitel: {
         titel: 'TCP vs. UDP',
         href: '/lernen/netzwerke/grundlagen-netz/tcp-udp',
+      },
+    },
+  {
+      id: 'sprint',
+      begriff: 'Sprint',
+      kurzdefinition: 'Festes Zeitfenster im Scrum (max. ein Monat), in dem ein nutzbares Inkrement entsteht — Container fuer alle anderen Events.',
+      definition: [
+        'Ein Sprint dauert nach Scrum Guide 2020 maximal einen Monat und beginnt direkt nach Abschluss des vorherigen. Er ist der „Herzschlag" von Scrum und enthaelt Sprint Planning, Daily Scrum, das eigentliche Arbeiten, Sprint Review und Sprint Retrospective.',
+        'Im laufenden Sprint duerfen keine Aenderungen vorgenommen werden, die das Sprint Goal gefaehrden. Wird das Sprint Goal hinfaellig, kann der Product Owner den Sprint abbrechen.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
+      id: 'sprint-backlog',
+      begriff: 'Sprint Backlog',
+      kurzdefinition: 'Plan der Developers fuer den aktuellen Sprint: ausgewaehlte Backlog-Items, geplante Arbeit und das Sprint Goal.',
+      definition: [
+        'Der Sprint Backlog ist nach Scrum Guide 2020 eines der drei Artefakte. Er besteht aus dem Sprint Goal (Warum), den fuer den Sprint ausgewaehlten Items (Was) und einem umsetzbaren Plan, wie das Inkrement entsteht (Wie).',
+        'Die Developers besitzen den Sprint Backlog und aktualisieren ihn waehrend des Sprints. Sein Commitment ist das Sprint Goal.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
+      },
+    },
+  {
+      id: 'sprint-goal',
+      begriff: 'Sprint Goal',
+      kurzdefinition: 'Einziges, fokussierendes Ziel des aktuellen Sprints — Commitment des Sprint Backlog.',
+      definition: [
+        'Das Sprint Goal wird im Sprint Planning gemeinsam definiert und beantwortet die Warum-Frage des Sprints. Es macht das Inkrement fuer alle Beteiligten sichtbar wertvoll und gibt den Developers Flexibilitaet bei der Umsetzung.',
+        'Faellt das Sprint Goal weg oder ist nicht mehr sinnvoll, darf der Product Owner den Sprint abbrechen. Anpassungen am Was im laufenden Sprint sind moeglich, solange das Sprint Goal nicht gefaehrdet wird.',
+      ],
+      kapitel: {
+        titel: 'Scrum – Accountabilities, Events, Artefakte',
+        href: '/lernen/projekt/agile-vorgehen/scrum',
       },
     },
   {

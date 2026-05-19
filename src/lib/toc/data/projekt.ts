@@ -27,7 +27,7 @@ export const projekt: Lernfeld = {
         { slug: "gantt-diagramm", title: "Gantt-Diagramm — Balkenplan", minutes: 12, importance: 5, exam: true, status: "ready" },
         { slug: "vorgehensmodelle", title: "Vorgehensmodelle (Wasserfall & Agil)", minutes: 14, importance: 5, exam: true, status: "draft" },
         { slug: "bpmn", title: "BPMN – Prozesse modellieren", minutes: 14, importance: 5, exam: true, status: "draft" },
-        { slug: "scrum", title: "Scrum – Rollen, Events, Artefakte", minutes: 14, importance: 4, exam: true, status: "draft" },
+        { slug: "scrum", title: "Scrum – Accountabilities, Events, Artefakte", minutes: 14, importance: 4, exam: true, status: "ready" },
       ],
     },
     {
