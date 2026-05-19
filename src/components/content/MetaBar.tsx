@@ -1,44 +1,61 @@
 import { cn } from '../../lib/cn'
-import { findLesson } from '../../lib/toc'
 
 interface MetaBarProps {
-  slug?: string
-  lesezeit?: string
-  schwierigkeit: string
   lernfeld: string
-  prüfungsrelevanz: string
+  prüfungsrelevanz?: string
+  quelle?: string
+  quelleHref?: string
   className?: string
 }
 
 export default function MetaBar({
-  slug,
-  lesezeit,
-  schwierigkeit,
   lernfeld,
   prüfungsrelevanz,
+  quelle,
+  quelleHref,
   className,
 }: MetaBarProps) {
-  const lessonMinutes = slug ? findLesson(slug)?.lesson.minutes : undefined
-  const resolvedLesezeit = lesezeit ?? (lessonMinutes ? `${lessonMinutes} Minuten` : undefined)
-  const items = [
-    resolvedLesezeit ? { label: 'Lesezeit', value: resolvedLesezeit } : null,
-    { label: 'Schwierigkeit', value: schwierigkeit },
+  const items: Array<{ label: string; value: React.ReactNode }> = [
     { label: 'Lernfeld', value: lernfeld },
-    { label: 'Prüfung', value: prüfungsrelevanz },
-  ].filter((item): item is { label: string; value: string } => item !== null)
+  ]
+
+  if (prüfungsrelevanz) {
+    items.push({ label: 'Prüfung', value: prüfungsrelevanz })
+  }
+
+  if (quelle) {
+    items.push({
+      label: 'Quelle',
+      value: quelleHref ? (
+        <a
+          href={quelleHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-rule-2 underline-offset-2 hover:text-ink"
+        >
+          {quelle}
+        </a>
+      ) : (
+        quelle
+      ),
+    })
+  }
 
   return (
-    <dl className={cn('my-8 grid gap-3 border border-rule-2 bg-paper-deep p-4 font-ui sm:grid-cols-2 lg:grid-cols-4', className)}>
-      {items.map((item) => (
-        <div key={item.label} className="border-l-4 border-accent bg-paper px-4 py-3">
-          <dt className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-muted">
-            {item.label}
-          </dt>
-          <dd className="m-0 text-[15px] font-semibold leading-snug text-ink">
-            {item.value}
-          </dd>
-        </div>
+    <div
+      className={cn(
+        'mb-6 mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 font-ui text-[12px] leading-snug text-muted',
+        className,
+      )}
+    >
+      {items.map((item, index) => (
+        <span key={item.label} className="flex items-center gap-x-3">
+          {index > 0 && <span aria-hidden className="text-rule-2">·</span>}
+          <span>
+            <span className="font-semibold text-ink">{item.label}:</span> {item.value}
+          </span>
+        </span>
       ))}
-    </dl>
+    </div>
   )
 }
