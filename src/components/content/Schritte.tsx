@@ -17,9 +17,9 @@ export default function Schritte({ items, className }: SchritteProps) {
       {items.map((item, index) => (
         <li
           key={`${item.titel}-${index}`}
-          className="grid grid-cols-[3rem_minmax(0,1fr)] gap-5 border-b border-rule px-5 py-5 last:border-b-0 sm:grid-cols-[4rem_minmax(0,1fr)] sm:px-6"
+          className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 border-b border-rule px-4 py-5 last:border-b-0 sm:grid-cols-[3.25rem_minmax(0,1fr)] sm:gap-5 sm:px-6"
         >
-          <span className="font-display text-4xl font-bold leading-none text-accent tabular-nums">
+          <span className="font-display text-2xl font-bold leading-none text-accent tabular-nums sm:text-3xl">
             {String(index + 1).padStart(2, '0')}
           </span>
           <div className="min-w-0">

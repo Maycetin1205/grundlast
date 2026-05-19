@@ -18,10 +18,30 @@ import Breadcrumb from '../content/Breadcrumb'
 import Section from '../content/Section'
 import Divider from '../content/Divider'
 import SubnettingRechner from '../tools/SubnettingRechner'
+import { cn } from '../../lib/cn'
+import type { SVGProps, TableHTMLAttributes } from 'react'
+
+function LessonTable({ className, ...props }: TableHTMLAttributes<HTMLTableElement>) {
+  return (
+    <div className="lesson-table-wrap">
+      <table className={cn(className)} {...props} />
+    </div>
+  )
+}
+
+function LessonSvg({ className, ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <div className="lesson-diagram-wrap">
+      <svg className={cn('lesson-diagram', className)} {...props} />
+    </div>
+  )
+}
 
 // Alle benutzerdefinierten MDX-Komponenten zentral registriert.
 // Kapitel-MDX kann die Inhaltskomponenten ohne lokale Imports nutzen.
 const components = {
+  table: LessonTable,
+  svg: LessonSvg,
   Term,
   Rechenweg,
   Analogie,

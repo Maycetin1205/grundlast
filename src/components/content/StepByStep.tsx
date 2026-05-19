@@ -55,7 +55,7 @@ export function Ergebnis({ children, titel = 'Ergebnis', className }: ErgebnisPr
 export default function StepByStep({ titel, children, className }: StepByStepProps) {
   const titleId = useId()
   const [aktiverIndex, setAktiverIndex] = useState(0)
-  const [alleSichtbar, setAlleSichtbar] = useState(false)
+  const [alleSichtbar, setAlleSichtbar] = useState(true)
 
   const { schritte, ergebnis } = useMemo(() => {
     const schrittElemente: SchrittElement[] = []
@@ -101,7 +101,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
 
   return (
     <section
-      className={cn('my-10 border border-rule-2 bg-paper-deep p-6 text-ink', className)}
+      className={cn('my-10 border border-rule-2 bg-paper-deep px-4 py-5 text-ink sm:px-6', className)}
       aria-labelledby={titleId}
     >
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -111,7 +111,7 @@ export default function StepByStep({ titel, children, className }: StepByStepPro
           </p>
           <h3
             id={titleId}
-            className="m-0 font-display text-3xl font-bold leading-snug text-ink"
+            className="m-0 font-display text-2xl font-bold leading-snug text-ink sm:text-[1.65rem]"
           >
             {titel}
           </h3>

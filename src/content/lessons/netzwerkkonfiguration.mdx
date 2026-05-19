@@ -11,6 +11,18 @@ Betriebssystem prüfen, DHCP- und DNS-Mechanik verstehen, ARP als Layer-2-Bindeg
 einordnen, APIPA als Notfall-Default lesen und im Fehlerfall die richtige
 Diagnose-Reihenfolge — Link, IP, Gateway, DNS, Anwendung — sauber durchgehen.
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Lerne zuerst die vier Pflichtwerte einer IPv4-Konfiguration und danach die Diagnosekette.
+DHCP, DNS und ARP erklären dann nur noch, **warum** die einzelnen Prüfungen funktionieren.
+</Tipp>
+
+| Wenn du siehst ... | Denk zuerst an ... | Nächster Test |
+|---|---|---|
+| `169.254.x.x` | DHCP nicht erreicht, APIPA aktiv | DHCP, VLAN, Kabel, Pool |
+| Gateway fehlt oder liegt falsch | lokales Netz kann gehen, Internet nicht | Ping auf Gateway |
+| IP-Ping geht, Domainname nicht | DNS-Problem | `nslookup`, DNS-Server prüfen |
+| Nur manche Ziele gehen nicht | Routing, Firewall oder Anwendung | `tracert`, Port-/App-Test |
+
 ## 01 · Warum existiert das überhaupt?
 
 In jeder Aufgabe der letzten Jahre kam die gleiche Aufgabe in einer Variante vor:
@@ -446,7 +458,7 @@ Schalter wird selten gefragt.
 
 ---
 
-## 06 · Typische Fehler und typische Fehler
+## 06 · Typische Fehler
 
 - **Subnetzmaske mit Standardgateway verwechselt.** Beide stehen in der gleichen
   Konfigurationsmaske direkt untereinander. Wer die Felder vertauscht, erhält keine

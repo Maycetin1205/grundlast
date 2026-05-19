@@ -11,6 +11,18 @@ und Präfixe als Fundament, Scan- und Bilddaten als Speicherbedarf-Aufgabe sowie
 und Übertragungsdauer als Netzwerk-Aufgabe. Detail-Lessons zu Scan-Bilddaten und
 Datenrate-Downloadzeit bleiben als kürzere Übungswege bestehen.
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Lies zuerst **Grundprinzip** und **Mechanik**. Danach reichen oft die drei Beispiele:
+Scan-Speicher, Backup-Übertragung und Video-Bitrate. Die Vertiefung ist Nachschlagewerk,
+nicht Pflichtlektüre beim ersten Durchlauf.
+</Tipp>
+
+| Wenn die Aufgabe fragt nach ... | Denk zuerst an ... | Typische Falle |
+|---|---|---|
+| Speicher für Bilder, Scans, Video | Pixel × Farbtiefe oder Bitrate × Dauer | Bit mit Byte verwechseln |
+| Download-, Backup- oder Sync-Zeit | Datenmenge ÷ Datenrate | Mbit/s nicht in MB/s umrechnen |
+| KB/MB/GB gegen KiB/MiB/GiB | 1000er- gegen 1024er-Potenzen | Dezimal und binär mischen |
+
 ## 01 · Warum existiert das überhaupt?
 
 In der Aufgabe musst du in unter einer Stunde sagen können, wie viel Speicher ein
@@ -70,13 +82,13 @@ Zwei Welten teilen sich dieselben Buchstaben — und genau das ist die häufigst
 
 ```
 1 KB  = 1.000 Byte
-1 KiB = 1.024 Byte           (~ 2,4 Prozent grösser)
+1 KiB = 1.024 Byte           (~ 2,4 Prozent größer)
 1 MB  = 1.000.000 Byte
-1 MiB = 1.048.576 Byte       (~ 4,9 Prozent grösser)
+1 MiB = 1.048.576 Byte       (~ 4,9 Prozent größer)
 1 GB  = 1.000.000.000 Byte
-1 GiB = 1.073.741.824 Byte   (~ 7,4 Prozent grösser)
+1 GiB = 1.073.741.824 Byte   (~ 7,4 Prozent größer)
 1 TB  = 10¹² Byte
-1 TiB = 2⁴⁰ Byte             (~ 10,0 Prozent grösser)
+1 TiB = 2⁴⁰ Byte             (~ 10,0 Prozent größer)
 ```
 
 Festplattenhersteller geben dezimal an (1 TB = 10¹² Byte). Windows zeigt binär an
@@ -203,6 +215,10 @@ dann teilen.
 ---
 
 ## 04 · Konkrete Anwendungsfälle
+
+Die drei Beispiele decken die häufigsten Prüfungsformen ab. Du musst sie nicht
+auswendig lernen, sondern den Ablauf erkennen: **Einheiten klären, Grundformel wählen,
+Netto-Faktor beachten, erst am Ende runden**.
 
 <Beispiel titel="A4-Scan bei 600 dpi — Dateigröße und Speicher für 200 Scans">
 
@@ -422,7 +438,7 @@ und Jitter (Schwankung der Latenz) explizit zu nennen.
 
 ---
 
-## 06 · Typische Fehler und typische Fehler
+## 06 · Typische Fehler
 
 - **Bit gegen Byte vertauscht.** Ein kleines `b` ist Bit, ein großes `B` ist Byte. 100 Mbit/s
   sind 12,5 MB/s, nicht 100 MB/s. Wer das einmal vermischt, rechnet jede Folgeaufgabe um
@@ -455,43 +471,55 @@ und Jitter (Schwankung der Latenz) explizit zu nennen.
 
 ---
 
-## 07 · So fragt die IHK das
+## 07 · Übungsblock
 
-**Aufgabe 1 — Speicherbedarf einer Scan-Strecke (8 Punkte).**
+Die Aufgaben sind bewusst kurz gehalten. Rechne sie erst selbst und nutze den
+Lösungsansatz nur als Kontrolle.
+
+### Aufgabe 1 · Speicherbedarf einer Scan-Strecke
+
 Eine Notarkanzlei scannt täglich 80 doppelseitige Verträge im Format DIN A4
 (21,0 cm × 29,7 cm). Auflösung: **300 dpi**, Farbtiefe: **24 Bit**, Komprimierung: **auf
 40 Prozent** (Faktor 0,4). Die Kanzlei arbeitet **220 Tage** im Jahr und archiviert die
 Dateien **zehn Jahre** lang. Berechne die Dateigröße einer Seite in **MiB**, den
-Jahresspeicher in **GiB** und den Gesamt-Archivbedarf in **TiB**. Runde Endergebnisse auf
+Jahresspeicher in **GiB** und den Gesamt-Archivbedarf in **TiB**. **8 Punkte.** Runde Endergebnisse auf
 zwei Nachkommastellen.
 
-**Aufgabe 2 — Datenraten umrechnen (5 Punkte).**
-Berechne die fehlenden Werte und beschrifte jedes Ergebnis mit der korrekten Einheit:
-(a) 1 Gbit/s in MB/s,
-(b) 250 MB/s in Gbit/s,
-(c) 12,5 MB/s in Mbit/s,
-(d) 800 Mbit/s, geteilt auf 32 Nutzer, je Nutzer in Mbit/s,
-(e) 200 Mbit/s mit Wirkungsgrad 85 Prozent in MB/s.
+### Aufgabe 2 · Datenraten umrechnen
 
-**Aufgabe 3 — Übertragungsdauer mit Brutto und Netto (7 Punkte).**
+Berechne die fehlenden Werte und beschrifte jedes Ergebnis mit der korrekten Einheit:
+
+- 1 Gbit/s in MB/s
+- 250 MB/s in Gbit/s
+- 12,5 MB/s in Mbit/s
+- 800 Mbit/s, geteilt auf 32 Nutzer, je Nutzer in Mbit/s
+- 200 Mbit/s mit Wirkungsgrad 85 Prozent in MB/s
+
+**5 Punkte.**
+
+### Aufgabe 3 · Übertragungsdauer mit Brutto und Netto
+
 Ein Cloud-Backup von **120 GB** (dezimal) soll nachts erstellt werden. Zur Verfügung steht
 ein Anschluss mit **Bandbreite 250 Mbit/s im Upload** und einem **angenommenen
 Wirkungsgrad von 75 Prozent**. Berechne die Übertragungsdauer in Sekunden und in
 Minuten. Beurteile begründet, ob das Backup in einem nächtlichen Wartungsfenster von
-**5 Stunden** durchläuft. Welche organisatorische Maßnahme würdest du empfehlen, falls
+**5 Stunden** durchläuft. **7 Punkte.** Welche organisatorische Maßnahme würdest du empfehlen, falls
 das Fenster knapp wird?
 
-**Aufgabe 4 — Bit, Byte, KiB-Falle (5 Punkte).**
+### Aufgabe 4 · Bit, Byte, KiB-Falle
+
 Eine Datei hat **2 048 000 Bit**. Berechne die Dateigröße in **KiB** und in **KB**. Erkläre
 in maximal drei Sätzen den Unterschied zwischen Kilobyte (KB) und Kibibyte (KiB) und
-nenne die zuständige Norm.
+nenne die zuständige Norm. **5 Punkte.**
 
-**Aufgabe 5 — Video-Bitrate gegen Speicherbedarf (8 Punkte).**
+### Aufgabe 5 · Video-Bitrate gegen Speicherbedarf
+
 Eine Webcam-Übertragung soll als unkomprimierter Roh-Stream geprüft werden. Auflösung
 **1280 × 720**, **30 fps**, Farbtiefe **24 Bit**. Berechne (a) die Roh-Bitrate in **Mbit/s**,
 (b) den Speicherbedarf einer Stunde in **GiB**, (c) den Speicherbedarf einer Stunde, wenn
 mit H.264 bei einer Ziel-Bitrate von **3 Mbit/s** komprimiert wird. Bewerte in einem
 Satz, welche Variante für eine 1-TB-Festplatte über 30 Tage Daueraufnahme realistisch ist.
+**8 Punkte.**
 
 <Tipp titel="Lösungsansatz zu Aufgabe 4 (Kurzform)">
 2 048 000 Bit ÷ 8 = 256 000 Byte. KiB: 256 000 ÷ 1024 = **250 KiB**. KB: 256 000 ÷ 1000 = **256 KB**.
@@ -500,6 +528,12 @@ in IEC 80000-13 normiert. Die Werte unterscheiden sich um rund 2,4 Prozent.
 </Tipp>
 
 ---
+
+## 08 · Merkbilder
+
+Diese Skizzen sind nicht als zusätzlicher Lernstoff gedacht. Sie fassen nur die
+beiden Denkmodelle zusammen, die du beim Rechnen immer wieder brauchst:
+Einheitenleiter und Brutto-Netto-Verbindung.
 
 <svg
   viewBox="0 0 760 360"

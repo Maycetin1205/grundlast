@@ -12,12 +12,12 @@ export default function Schritt({ nr, titel, children, className }: SchrittProps
   return (
     <section
       className={cn(
-        'grid grid-cols-[3rem_minmax(0,1fr)] gap-5 border border-rule-2 bg-paper px-5 py-5 text-ink sm:grid-cols-[4rem_minmax(0,1fr)] sm:px-6',
+        'grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 border border-rule-2 bg-paper px-4 py-5 text-ink sm:grid-cols-[3.25rem_minmax(0,1fr)] sm:gap-5 sm:px-6',
         className,
       )}
     >
       <span
-        className="font-display text-3xl font-bold leading-none text-accent tabular-nums sm:text-4xl"
+        className="font-display text-2xl font-bold leading-none text-accent tabular-nums sm:text-3xl"
         aria-hidden="true"
       >
         {String(nr).padStart(2, '0')}
