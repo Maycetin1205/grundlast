@@ -4,6 +4,8 @@ import path from 'node:path'
 const root = process.cwd()
 const strict = process.argv.includes('--strict')
 const verbose = process.argv.includes('--verbose')
+const lessonArg = process.argv.find((arg) => arg.startsWith('--lesson='))
+const lessonFilter = lessonArg?.split('=')[1]
 
 const paths = {
   tocDataDir: path.join(root, 'src/lib/toc/data'),
@@ -121,7 +123,18 @@ function hasSourceSlugEntry(sourcesText, slug) {
   return quoted.test(sourcesText) || bare.test(sourcesText)
 }
 
-function checkReadyStructure(slug, mdxText) {
+function pushQualityIssue(lesson, message) {
+  const issue = `${lesson.slug}: ${message}`
+
+  if (lesson.status === 'final') {
+    errors.push(issue)
+    return
+  }
+
+  warnings.push(issue)
+}
+
+function checkReadyStructure(lesson, mdxText) {
   const checks = [
     {
       ok: /##\s+Was du danach kannst/i.test(mdxText),
@@ -159,7 +172,7 @@ function checkReadyStructure(slug, mdxText) {
 
   for (const check of checks) {
     if (!check.ok) {
-      warnings.push(`${slug}: Ready-Qualitaetscheck fehlt: ${check.label}`)
+      pushQualityIssue(lesson, `Ready-Qualitaetscheck fehlt: ${check.label}`)
     }
   }
 }
@@ -216,6 +229,7 @@ const mdxFiles = existsSync(paths.lessonsDir)
 const mdxSlugs = new Set(mdxFiles.map((file) => file.replace(/\.mdx$/, '')))
 
 for (const lesson of lessons) {
+  const isTargetLesson = !lessonFilter || lesson.slug === lessonFilter
   const needsContent = lesson.status === 'draft' || lesson.status === 'ready' || lesson.status === 'final'
   const mdxPath = path.join(paths.lessonsDir, `${lesson.slug}.mdx`)
 
@@ -224,7 +238,7 @@ for (const lesson of lessons) {
     continue
   }
 
-  if (!needsContent) continue
+  if (!needsContent || !isTargetLesson) continue
 
   const mdxText = readFileSync(mdxPath, 'utf8')
 
@@ -235,11 +249,14 @@ for (const lesson of lessons) {
   }
 
   if ((lesson.status === 'ready' || lesson.status === 'final') && !hasSourceSlugEntry(sourcesText, lesson.slug)) {
-    warnings.push(`${lesson.slug}: keine spezifische slugTags-Zuordnung in src/content/quellen/tagMappings.ts gefunden`)
+    pushQualityIssue(
+      lesson,
+      'keine spezifische slugTags-Zuordnung in src/content/quellen/tagMappings.ts gefunden',
+    )
   }
 
   if (lesson.status === 'ready' || lesson.status === 'final') {
-    checkReadyStructure(lesson.slug, mdxText)
+    checkReadyStructure(lesson, mdxText)
   }
 
   if (lesson.status === 'final' && !hasReviewFinalEntry(reviewLogText, lesson.slug)) {
@@ -257,7 +274,12 @@ const readyCount = lessons.filter((lesson) => lesson.status === 'ready' || lesso
 const stubCount = lessons.filter((lesson) => lesson.status === 'stub').length
 const draftCount = lessons.filter((lesson) => lesson.status === 'draft').length
 
+if (lessonFilter && !lessonBySlug.has(lessonFilter)) {
+  errors.push(`--lesson=${lessonFilter}: kein Kapitel mit diesem Slug im TOC gefunden`)
+}
+
 console.log('Content-Validator v1')
+if (lessonFilter) console.log(`Kapitel-Filter: ${lessonFilter}`)
 console.log(`Kapitel im TOC: ${lessons.length}`)
 console.log(`Ready/final: ${readyCount}`)
 console.log(`Draft: ${draftCount}`)

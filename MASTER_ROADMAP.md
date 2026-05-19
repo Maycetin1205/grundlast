@@ -1,6 +1,6 @@
 # Master-Roadmap zur Referenz-Lerndatei
 
-Stand: 15.05.2026
+Stand: 18.05.2026
 
 Diese Roadmap ist die fuehrende Arbeitsplanung fuer das Ziel, Grundlast zu einem
 deutschlandweit referenzfaehigen Fachinformatiker-Kompendium auszubauen.
@@ -18,7 +18,7 @@ Bewusst ohne Zeit- oder Lese-Schaetzungen. Nur Reifegrad gegen Plan-Pflichten:
 - **0.3 (Zentrale Stubs geschlossen)** offen. Mehrere Lernfelder mit Muss-Stubs:
   qualitaet 4/4, arbeitsrecht 2/2, software 6/9, webmedia 4/5.
 - **0.4 (Ready ist wirklich ready)** offen. 88 Validator-Warnungen auf
-  Ready-Kapiteln. `bit-byte` und `prefixe` erfuellen den vollen
+  Ready-Kapiteln. `bit-byte`, `prefixe` und `zahlensysteme` erfuellen den vollen
   Ready-Standard ohne eigene Warnung (Referenzimplementierungen,
   Lernfeld `grundlagen` / Zahlen & Einheiten).
 - **0.5 (Reviewzyklus laeuft)** offen. REVIEW_LOG seit 29.04. unangefasst,
@@ -223,10 +223,17 @@ Pflicht:
 
 ## Naechster konkreter Schritt
 
-`Zahlensysteme (Dual, Hex, Dezimal)` auf den Ready-Standard heben. Das
-Kapitel schliesst direkt an Bit & Byte und Praefixe an: Stellenwert,
-Umrechnung zwischen Dual, Hex, Oktal, Dezimal und die typischen
-AP1-Aufgabenmuster (Subnetting-Vorbereitung, Hex-MAC, chmod-Oktal).
-Aktueller Stand: Draft mit 130 Zeilen, Tabelle und Finger-Analogie schon
-vorhanden - Quellen, Glossar-Terms, `## Was du danach kannst`, Step-by-Step
-und Quellen-Komponente fehlen noch fuer Ready.
+`Zahlensysteme (Dual, Hex, Dezimal)` als erstes echtes `final`-Kapitel
+durch das Review-Gate fuehren. Das Kapitel erfuellt den automatischen
+Ready-Standard bereits ohne eigene Validator-Warnung und eignet sich als
+Referenz fuer Rechenwege, Quellen, Glossar-Terme, typische Fehler und
+Anschluss an `bit-byte`, `prefixe`, `linux-chmod` und `ipv4-subnetting`.
+
+Pflicht fuer diesen Schritt:
+
+- fachliche Kernaussagen gegen Quellen pruefen
+- Rechenwege und Beispiele manuell nachrechnen
+- Browser-Stichprobe Desktop und mobil
+- `npm.cmd run lint`, `npm.cmd run validate:content`, `npm.cmd run build`
+- Freigabe in `REVIEW_LOG.md`
+- erst danach Status im TOC auf `final` setzen

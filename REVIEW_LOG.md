@@ -28,6 +28,42 @@ kontrolliert, Build/Lint bestanden und fuer Weitergabe geeignet.
 
 Noch keine Kapitel formal auf `final` gesetzt.
 
+## Final-Kandidaten
+
+### zahlensysteme
+- Titel: Zahlensysteme (Dual, Hex, Dezimal)
+- Status: final-kandidat
+- Geprueft am: 18.05.2026
+- Pruefer: Codex
+- Quellen:
+  - IEEE Std 1003.1 (POSIX) - chmod
+  - RFC 9542 - IANA Considerations and IETF Usage for IEEE 802 Parameters
+  - W3C - CSS Color Module Level 4
+  - RFC 4632 - Classless Inter-domain Routing (CIDR)
+  - Python Language Reference - Integer literals
+  - ECMAScript Language Specification - Numeric literals
+- Kritische Aussagen:
+  - Stellenwertprinzip: Wert = Summe aus Ziffer mal Basis^Position.
+  - 46 dezimal wird binaer zu 101110.
+  - 192 dezimal wird hexadezimal zu C0 und binaer zu 11000000.
+  - 255 dezimal wird hexadezimal zu FF.
+  - 511 dezimal wird oktal zu 777.
+  - chmod 755 zerlegt sich in rwxr-xr-x.
+  - CSS-Hexfarben nutzen hexadezimale sRGB-Komponenten.
+  - MAC-/EUI-48-Schreibweisen nutzen hexadezimale Oktette.
+  - CIDR-Praefixe beschreiben Netzanteile als Bitlaenge.
+  - Python 3 nutzt 0o fuer Oktal-Literale; fuehrende Nullen in Nicht-Null-Dezimalzahlen sind nicht erlaubt.
+- Build/Lint:
+  - `node scripts/validate-content.mjs --lesson=zahlensysteme --strict --verbose`: 0 Fehler, 0 Warnungen.
+  - `npm.cmd run validate:content`: erfolgreich, globale Warnungen bleiben bei anderen Ready-Kapiteln.
+  - `npm.cmd run lint`: erfolgreich.
+  - `npm.cmd run build`: erfolgreich.
+  - `npm.cmd run build:single`: erfolgreich.
+- Notizen:
+  - Rechenbeispiele maschinell gegen JavaScript-Zahlenkonvertierung kontrolliert.
+  - Single-HTML-Build enthaelt Kapitel- und Quellenstrings.
+  - Noch offen vor `final`: echte Browser-Stichprobe Desktop und mobil.
+
 Format fuer spaetere Eintraege:
 
 ```text

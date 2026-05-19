@@ -20,6 +20,10 @@ einer Zahl hat einen **Stellenwert**, der sich aus zwei Dingen ergibt:
 Stellenwert = Basis ^ Position
 ```
 
+Die **Basis** sagt, wie viele verschiedene Ziffern ein System hat:
+Dezimal hat 10 Ziffern (`0` bis `9`), Binaer hat 2 Ziffern (`0` und `1`),
+Hexadezimal hat 16 Ziffern (`0` bis `9`, dann `A` bis `F`).
+
 Position 0 ist ganz rechts, nach links steigt der Exponent jeweils um eins.
 Der Gesamtwert ist die Summe aus `Ziffer × Stellenwert` ueber alle Stellen.
 
@@ -116,11 +120,11 @@ genau dieses System praktisch ist:
 Immer durch 2 teilen, die **Reste** notieren, am Ende **von unten nach oben**
 lesen.
 
-**Beispiel: 45 in Binaer**
+**Beispiel: 46 in Binaer**
 
 ```
-45 ÷ 2 = 22  Rest 1
-22 ÷ 2 = 11  Rest 0
+46 ÷ 2 = 23  Rest 0
+23 ÷ 2 = 11  Rest 1
 11 ÷ 2 =  5  Rest 1
  5 ÷ 2 =  2  Rest 1
  2 ÷ 2 =  1  Rest 0
@@ -128,14 +132,14 @@ lesen.
               ↑ Von hier lesen
 ```
 
-Von unten nach oben: **101101**. Also `45₁₀ = 101101₂`.
+Von unten nach oben: **101110**. Also `46₁₀ = 101110₂`.
 
 **Probe (Stellenwert-Methode rueckwaerts):**
 
 ```
-1·32 + 0·16 + 1·8 + 1·4 + 0·2 + 1·1
-= 32 + 8 + 4 + 1
-= 45 ✓
+1·32 + 0·16 + 1·8 + 1·4 + 1·2 + 0·1
+= 32 + 8 + 4 + 2
+= 46 ✓
 ```
 
 ---
@@ -351,10 +355,9 @@ zu **IPv4 und Subnetting**.
 
 - **Reste in falscher Reihenfolge gelesen.** Bei der Teilungsmethode wird
   **von unten nach oben** gelesen (zuletzt berechneter Rest ist das
-  hoechstwertige Bit). Wer von oben liest, dreht die Zahl um — aus `45 =
-  101101₂` wird `101101` rueckwaerts, also `101101`… in diesem Fall
-  zufaellig identisch, in fast allen anderen nicht. Beispiel: `13 = 1101₂`
-  von oben gelesen waere `1011₂ = 11`. Falsch.
+  hoechstwertige Bit). Wer von oben liest, dreht die Zahl um. Beispiel:
+  `46 = 101110₂`; von oben gelesen kaeme `011101₂` heraus, also 29 statt
+  46. Das ist kein kleiner Schreibfehler, sondern eine andere Zahl.
 
 - **0 als gueltige Stelle vergessen.** 8 Bit unterscheiden 256 Werte —
   von **0 bis 255**, nicht 1 bis 256. Eine klassische Off-by-One-Falle,
@@ -367,11 +370,13 @@ zu **IPv4 und Subnetting**.
   `11000000 = 128 + 64 = 192`. Die Wertigkeiten `8-4-2-1` pro Nibble
   reichen — kein „mal 16" im Kopf.
 
-- **Oktal-Praefix-Verwirrung.** In Python und C ist `017` Oktal
-  (Wert 15), in modernen Skript-Sprachen oft auch — aber **nicht
-  ueberall**. Python 3 erzwingt deshalb `0o17`, JavaScript schreibt
-  ebenfalls `0o17`. Beim Lesen von Beispielen darauf achten, ob ein
-  fuehrendes `0` Oktal meint oder einfach eine Null.
+- **Oktal-Praefix-Verwirrung.** In C und in aelteren Python-2-Beispielen
+  kann `017` oktal gemeint sein (Wert 15). In Python 3 ist ein fuehrender
+  Null-Praefix fuer eine Nicht-Null-Dezimalzahl dagegen nicht erlaubt;
+  dort schreibt man Oktalzahlen mit `0o17`. JavaScript nutzt ebenfalls
+  `0o17` fuer die klare Oktal-Schreibweise. Beim Lesen alter Beispiele
+  also immer pruefen, ob ein fuehrendes `0` Oktal meint oder nur eine
+  optische Fuehrungsnull ist.
 
 - **chmod-Bits falsch zerlegt.** `chmod 644` ist nicht „lesen und
   schreiben fuer alle". Die `4` ist nur `r--` (lesen), kein `w`. Also
@@ -428,6 +433,16 @@ zu **IPv4 und Subnetting**.
       label: 'RFC 4632 - Classless Inter-domain Routing (CIDR)',
       href: 'https://www.rfc-editor.org/rfc/rfc4632',
       detail: 'IETF-Best-Current-Practice zur CIDR-Praefixnotation fuer IPv4. Grundlage fuer das Verstaendnis von Subnetzmasken als Bitmuster, wie sie sich aus diesem Kapitel anschliessen.'
+    },
+    {
+      label: 'Python Language Reference - Integer literals',
+      href: 'https://docs.python.org/3/reference/lexical_analysis.html#integer-literals',
+      detail: 'Offizielle Python-Referenz zu 0b-, 0o- und 0x-Schreibweisen sowie zur Regel, dass fuehrende Nullen in Nicht-Null-Dezimalzahlen nicht erlaubt sind.'
+    },
+    {
+      label: 'ECMAScript Language Specification - Numeric literals',
+      href: 'https://262.ecma-international.org/15.0/',
+      detail: 'Offizielle JavaScript-Sprachspezifikation fuer numerische Literale, darunter binaere, oktale und hexadezimale Schreibweisen.'
     },
   ]}
 />

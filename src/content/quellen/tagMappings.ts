@@ -7,7 +7,7 @@
 export const slugTags: Record<string, string[]> = {
   'von-neumann': ['ordnung'],
   'bit-byte': ['ordnung', 'bit', 'byte', 'binaer', 'ascii', 'praefix', 'datenmenge', 'zeichenkodierung'],
-  'zahlensysteme': ['ordnung', 'bit', 'byte', 'binaer', 'hex', 'hexadezimal', 'oktal', 'dezimal', 'stellenwert', 'nibble', 'chmod', 'dateirechte', 'mac-adresse', 'eui-48', 'cidr', 'subnetting', 'farbe', 'css', 'rgb'],
+  'zahlensysteme': ['ordnung', 'bit', 'byte', 'binaer', 'hex', 'hexadezimal', 'oktal', 'dezimal', 'stellenwert', 'nibble', 'chmod', 'dateirechte', 'mac-adresse', 'eui-48', 'cidr', 'subnetting', 'farbe', 'css', 'rgb', 'python', 'javascript', 'ecmascript', 'literal'],
   'prefixe': ['ordnung', 'bit', 'byte', 'binaer', 'iec', 'praefix', 'datenmenge', 'si', 'dezimal'],
   'cpu-ram-speicher': ['ordnung'],
   'raid-systeme': ['sicherheit', 'backup'],

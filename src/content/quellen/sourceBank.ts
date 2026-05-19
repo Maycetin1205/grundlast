@@ -771,4 +771,18 @@ export const sourceBank: SourceEntry[] = [
     detail: 'W3C-Spezifikation der Hex-Notation #RRGGBB[AA] fuer sRGB-Farben: drei (oder vier) Bytes Rot/Gruen/Blau (Alpha) als jeweils zwei Hex-Ziffern, 0x00 bis 0xFF pro Kanal.',
     tags: ['ordnung', 'web', 'css', 'farbe', 'hex', 'hexadezimal', 'rgb'],
   },
+  {
+    id: 'python-lexical-integer-literals',
+    label: 'Python Language Reference - Integer literals',
+    href: 'https://docs.python.org/3/reference/lexical_analysis.html#integer-literals',
+    detail: 'Offizielle Python-Referenz zu Ganzzahl-Literalen: 0b fuer binaer, 0o fuer oktal, 0x fuer hexadezimal; fuehrende Nullen in Nicht-Null-Dezimalzahlen sind nicht erlaubt.',
+    tags: ['ordnung', 'python', 'literal', 'binaer', 'oktal', 'hex', 'praefix'],
+  },
+  {
+    id: 'ecma-262-numeric-literals',
+    label: 'ECMAScript Language Specification - Numeric literals',
+    href: 'https://262.ecma-international.org/15.0/',
+    detail: 'Offizielle ECMAScript-Spezifikation fuer numerische Literale, unter anderem binaere, oktale und hexadezimale Schreibweisen.',
+    tags: ['ordnung', 'javascript', 'ecmascript', 'literal', 'binaer', 'oktal', 'hex', 'praefix'],
+  },
 ]
