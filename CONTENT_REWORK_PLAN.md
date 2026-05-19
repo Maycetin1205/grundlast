@@ -91,26 +91,34 @@ Ein überarbeitetes Kapitel soll diese Struktur möglichst erfüllen:
   - spezifische Quellenzuordnung ergänzt.
   - gezielter Strict-Check: 0 Fehler, 0 Warnungen.
 
+- `kaufmaennische-rechenaufgaben`
+  - Orientierung am Anfang ergänzt.
+  - Entscheidungstabelle für Aufgabentypen ergänzt.
+  - `Was du danach kannst` ergänzt.
+  - `Typische Fehler` validator-konform benannt.
+  - Übungsblock strukturiert benannt.
+  - gezielter Strict-Check: 0 Fehler, 0 Warnungen.
+
+- `bedarfsanalyse-feedback`
+  - Orientierung am Anfang ergänzt.
+  - Entscheidungstabelle für Modellwahl ergänzt.
+  - `Was du danach kannst` ergänzt.
+  - `Typische Fehler` validator-konform benannt.
+  - Übungsblock strukturiert benannt.
+  - Merkbilder-Abschnitt vor den Diagrammen ergänzt.
+  - sichtbare Schreibglättungen umgesetzt.
+  - gezielter Strict-Check: 0 Fehler, 0 Warnungen.
+
 ## Nächste Kapitel
 
 Priorität nach Leserisiko, Größe und AP1-Relevanz:
 
-1. `kaufmaennische-rechenaufgaben`
-   - viele Rechenwege
-   - hoher Prüfungsnutzen
-   - Gefahr von Zahlen-/Tabellenwänden
-
-2. `bedarfsanalyse-feedback`
-   - sehr lang
-   - viele Modelle und Kommunikationsbegriffe
-   - mehrere Schrittfolgen und Diagramme
-
-3. `schutzziele`
+1. `schutzziele`
    - starkes Sicherheitsthema
    - viele Begriffe und Abgrenzungen
    - Diagramme und Risikologik brauchen klare Führung
 
-4. `verschluesselung-hash-vpn`
+2. `verschluesselung-hash-vpn`
    - komplexes Thema
    - viele Abgrenzungen
    - Diagramme und Verfahren müssen didaktisch sauber getrennt sein
