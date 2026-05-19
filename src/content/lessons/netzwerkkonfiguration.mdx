@@ -64,14 +64,14 @@ sauber zueinanderpassen, funktioniert das Netz wie erwartet:
 |---|---|---|
 | IPv4-Adresse | `10.0.20.42` | Eindeutige Adresse des Hosts |
 | Subnetzmaske | `255.255.255.0` (`/24`) | Trennt Netz- und Hostanteil |
-| Standardgateway | `10.0.20.1` | Router für Pakete ausserhalb des Subnetzes |
+| Standardgateway | `10.0.20.1` | Router für Pakete außerhalb des Subnetzes |
 | Nameserver (DNS) | `10.0.20.5` | Übersetzt Domainnamen in IP-Adressen |
 
 Fehlt einer der vier, gibt es typische Symptome, die in Aufgaben oft genau so abgefragt
 werden:
 
 - IP fehlt oder im falschen Subnetz: gar keine Verbindung, auch nicht lokal.
-- Subnetzmaske falsch: Geräte im selben Netz scheinen plötzlich „aussen" zu sein.
+- Subnetzmaske falsch: Geräte im selben Netz scheinen plötzlich „außen" zu sein.
 - Gateway fehlt: lokales Netz funktioniert, Internet nicht.
 - DNS fehlt: Ping auf `8.8.8.8` läuft, aber `heise.de` nicht — Browser meldet „nicht
   erreichbar".
@@ -105,7 +105,7 @@ Wer hat 10.0.20.7? Bitte sag mir deine MAC.
 ```
 
 Der angesprochene Host antwortet per ARP-Reply, der Sender merkt sich die Zuordnung im
-ARP-Cache, und das eigentliche Paket kann gesendet werden. Ist das Ziel ausserhalb des
+ARP-Cache, und das eigentliche Paket kann gesendet werden. Ist das Ziel außerhalb des
 Subnetzes, fragt der Host nicht nach der MAC des Endziels, sondern nach der MAC des
 Standardgateways — alles weitere übernimmt der Router.
 
@@ -180,7 +180,7 @@ verliert Zeit. Dies ist die feste Reihenfolge, die du in Aufgaben zitieren kanns
     { titel: 'Lokales Netz testen', text: 'Ping auf das eigene Standardgateway: kommt eine Antwort, ist das lokale Netz technisch in Ordnung. Kommt keine Antwort, liegt der Fehler vor dem Gateway: Layer 1, Layer 2 oder die Konfiguration.' },
     { titel: 'Externes Netz testen', text: 'Ping auf eine bekannte öffentliche IP wie 8.8.8.8 (Google) oder 1.1.1.1 (Cloudflare). Kommt eine Antwort, sind Routing und Internet-Verbindung in Ordnung — kommt keine, ist das Gateway, der Provider oder die Firewall verdächtig.' },
     { titel: 'Layer 7 — Namensauflösung', text: 'nslookup heise.de oder ping heise.de prüft DNS. Erhält 8.8.8.8 eine Antwort, der Domainname aber nicht, ist der Nameserver das Problem. „ipconfig /flushdns" leert den Cache, falls falsche Werte hängen geblieben sind.' },
-    { titel: 'Routing nachverfolgen', text: 'tracert (Windows) bzw. traceroute (Linux) zeigt, an welchem Hop die Pakete steckenbleiben. Springt der erste Hop bereits ins Leere, ist das eigene Gateway aus — bricht die Spur erst weiter draussen ab, liegt das Problem beim ISP.' },
+    { titel: 'Routing nachverfolgen', text: 'tracert (Windows) bzw. traceroute (Linux) zeigt, an welchem Hop die Pakete steckenbleiben. Springt der erste Hop bereits ins Leere, ist das eigene Gateway aus — bricht die Spur erst weiter draußen ab, liegt das Problem beim ISP.' },
   ]}
 />
 
@@ -193,6 +193,9 @@ begründen. Wer die Reihenfolge bricht, repariert oft Symptome statt Ursachen.
 ---
 
 ## 04 · Konkrete Anwendungsfälle
+
+Die Beispiele bilden die drei Kernprüfungen ab: Konfiguration lesen, Subnetz im
+Betrieb bewerten und eine Störung in sauberer Reihenfolge eingrenzen.
 
 <Beispiel titel="IPv4-Konfiguration prüfen — was ipconfig /all wirklich zeigt">
 
@@ -299,7 +302,7 @@ müsste das Standardgateway haben, damit es im selben Subnetz liegt?
     Subnetz `192.168.45.128/27` mit Broadcast `.159` und nutzbarem Hostbereich `.129`
     bis `.158` — 30 Hosts. Ein Gateway muss in diesem Bereich liegen, sonst wirkt
     die Konfiguration „statisch korrekt eingetragen", aber der Verkehr scheitert beim
-    ersten Sprung nach aussen.
+    ersten Sprung nach außen.
   </Ergebnis>
 </StepByStep>
 
@@ -326,7 +329,7 @@ Layer?
   </Schritt>
   <Schritt nr={3} titel="Lokales Netz — Ping ans Gateway">
     „Tippe bitte `ping 10.0.20.1`." Antworten kommen zurück → Subnetz und Gateway sind
-    erreichbar, das Problem liegt aussen. Keine Antwort → entweder ist das Gateway aus,
+    erreichbar, das Problem liegt außen. Keine Antwort → entweder ist das Gateway aus,
     oder die Konfiguration ist falsch (Subnetzmaske, falsches VLAN), oder die Firewall
     auf dem Host blockt ICMP. Letzteres ist seltener, aber möglich.
   </Schritt>
@@ -386,7 +389,7 @@ für PXE-Boot relevant (Workstations, die ihr Image über das Netz laden).
 ### DHCP-Relay — über Subnetz-Grenzen hinweg
 
 DHCP funktioniert per Broadcast, und Broadcasts gehen normalerweise nicht über Router.
-In grösseren Netzen mit mehreren VLANs müsste also pro VLAN ein eigener DHCP-Server
+In größeren Netzen mit mehreren VLANs müsste also pro VLAN ein eigener DHCP-Server
 stehen — oder es kommt ein DHCP-Relay-Agent zum Einsatz. Der Agent (meist im Router
 selbst) fängt den Broadcast im lokalen VLAN ab und schickt ihn als Unicast an den
 zentralen DHCP-Server. Die Antwort läuft den umgekehrten Weg.
@@ -458,7 +461,23 @@ Schalter wird selten gefragt.
 
 ---
 
-## 06 · Typische Fehler
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- IPv4-Adresse, Subnetzmaske, Gateway und DNS aus einer Konfiguration prüfen.
+- statische und dynamische Adressvergabe sauber unterscheiden.
+- den DHCP-DORA-Ablauf erklären und typische DHCP-Fehler erkennen.
+- DNS-Auflösung, Cache, TTL und hosts-Datei in der Diagnose einordnen.
+- APIPA-Adressen als Hinweis auf ein DHCP-Problem lesen.
+- eine Netzwerkstörung in der Reihenfolge Link, IP, Gateway, Internet, DNS und
+  Anwendung eingrenzen.
+- passende Werkzeuge wie `ipconfig /all`, `ping`, `nslookup`, `tracert` und
+  `arp -a` begründet einsetzen.
+
+---
+
+## Typische Fehler
 
 - **Subnetzmaske mit Standardgateway verwechselt.** Beide stehen in der gleichen
   Konfigurationsmaske direkt untereinander. Wer die Felder vertauscht, erhält keine
@@ -473,14 +492,14 @@ Schalter wird selten gefragt.
 - **Statische IP innerhalb des DHCP-Pools.** Trägt ein Admin manuell eine `10.0.20.42`
   in einen Server ein, während der DHCP-Pool von `.20` bis `.200` reicht, vergibt der
   DHCP-Server irgendwann genau diese Adresse an einen Client — IP-Konflikt. Lösung:
-  statische Adressen ausserhalb des Pools, oder per Reservierung im DHCP eintragen.
-- **Falsches Default-Gateway ausserhalb des eigenen Subnetzes.** Ein Gateway
+  statische Adressen außerhalb des Pools, oder per Reservierung im DHCP eintragen.
+- **Falsches Default-Gateway außerhalb des eigenen Subnetzes.** Ein Gateway
   `192.168.20.1` für eine Host-IP `192.168.10.42/24` ist syntaktisch erlaubt, aber
   unbenutzbar — der Host versucht ARP für `.20.1` und scheitert, weil das Ziel nicht
   im Subnetz liegt.
 - **„Lokales Netz funktioniert nur ohne Gateway" als Schein-Erfolg.** Innerhalb eines
   Subnetzes braucht es überhaupt kein Gateway. Wer das als Diagnose-Erfolg interpretiert,
-  übersieht, dass alle Verbindungen nach aussen scheitern werden — der Test war einfach
+  übersieht, dass alle Verbindungen nach außen scheitern werden — der Test war einfach
   zu klein gewählt.
 - **Routing-Reihenfolge ignoriert.** Ein Host kann mehrere Routen kennen (Default plus
   spezifische). Längere Präfixe (genauere Routen) gewinnen. Eine `0.0.0.0/0`-Default-
@@ -502,58 +521,72 @@ Schalter wird selten gefragt.
 
 ---
 
-## 07 · So fragt die IHK das
+## 07 · Übungsblock
 
-**Aufgabe 1 — Subnetz, Hostbereich und Gateway-Plausibilität (8 Punkte).**
+Bearbeite die Aufgaben in der Reihenfolge. Sie zwingen dich bewusst dazu, erst
+Konfiguration zu lesen, dann Protokollabläufe zu erklären und am Ende Diagnose
+zu formulieren.
+
+### Aufgabe 1 · Subnetz, Hostbereich und Gateway-Plausibilität
+
 Ein Mitarbeiter hat die Konfiguration `192.168.45.137 / 27` zugewiesen. Berechne
 Netzadresse, Broadcast-Adresse und den nutzbaren Hostbereich. Welche der folgenden
 Gateway-Adressen sind im selben Subnetz nutzbar? Begründe je Adresse: `192.168.45.1`,
 `192.168.45.129`, `192.168.45.158`, `192.168.45.160`. Nenne zusätzlich die Anzahl der
-nutzbaren Hosts und die zugehörige Subnetzmaske in dezimaler Schreibweise.
+nutzbaren Hosts und die zugehörige Subnetzmaske in dezimaler Schreibweise. **8 Punkte.**
 
-**Aufgabe 2 — DORA-Reihenfolge mit Begründung (6 Punkte).**
+### Aufgabe 2 · DORA-Reihenfolge mit Begründung
+
 Beim Einschalten eines Notebooks erhält dieses per DHCP eine IPv4-Adresse. Bringe die
 folgenden Schritte in die korrekte Reihenfolge und beschreibe je Schritt in einem Satz,
 was passiert: Acknowledge — Offer — Discover — Request. Welche Ports nutzen DHCP-Server
 und DHCP-Client? Erläutere zusätzlich, warum die Discover- und die Request-Nachricht
 als Broadcast verschickt werden, die Offer-Antwort hingegen direkt an den anfragenden
-Client adressiert ist.
+Client adressiert ist. **6 Punkte.**
 
-**Aufgabe 3 — Diagnose-Reihenfolge bei „Internet geht nicht" (10 Punkte).**
+### Aufgabe 3 · Diagnose-Reihenfolge bei „Internet geht nicht"
+
 Eine Mitarbeiterin meldet, dass auf ihrem Arbeitsplatz keine Webseiten mehr aufrufbar
 seien. Auf dem Bildschirm steht die IPv4-Adresse `169.254.78.140`, der Browser meldet
 „DNS-Fehler". Beschreibe in der korrekten Reihenfolge mindestens fünf Diagnose-Schritte
 zur Eingrenzung des Fehlers. Nenne je Schritt das verwendete Werkzeug, das erwartete
 Ergebnis bei intakter Verbindung und die Schlussfolgerung im Fehlerfall. Was bedeutet
-die Adresse `169.254.78.140` und wie heißt der Mechanismus, der sie vergibt?
+die Adresse `169.254.78.140` und wie heißt der Mechanismus, der sie vergibt? **10 Punkte.**
 
-**Aufgabe 4 — DHCP-Optionen und Lease-Verwaltung (5 Punkte).**
+### Aufgabe 4 · DHCP-Optionen und Lease-Verwaltung
+
 Ergänze die Tabelle: Welche DHCP-Option überträgt die Subnetzmaske, das
 Standardgateway, den DNS-Server und die Lease-Dauer? Was passiert, wenn der Client
 nach Ablauf der Hälfte der Lease-Zeit den DHCP-Server nicht mehr erreicht? Begründe
 in einem Satz, weshalb in einem Hotel-WLAN typischerweise eine kurze Lease-Dauer von
-zwei Stunden konfiguriert wird.
+zwei Stunden konfiguriert wird. **5 Punkte.**
 
-**Aufgabe 5 — DNS-Auflösung und TTL-Bedeutung (6 Punkte).**
+### Aufgabe 5 · DNS-Auflösung und TTL-Bedeutung
+
 Beschreibe in vier Schritten, wie der Browser-Aufruf von `www.heise.de` auf einem
 Client ohne lokalen DNS-Cache zur tatsächlichen IP-Adresse wird. Erläutere, was die
 *<Term id="ttl-dns">TTL</Term>* eines A-Records bedeutet und welchen Effekt eine
 TTL-Senkung von 3600 Sekunden auf 300 Sekunden bei einem geplanten Server-Wechsel
-hat. Welcher Befehl leert auf einem Windows-Client den lokalen DNS-Cache?
+hat. Welcher Befehl leert auf einem Windows-Client den lokalen DNS-Cache? **6 Punkte.**
 
 <Tipp titel="Lösungsansatz zu Aufgabe 1 (Kurzform)">
 `/27` → `255.255.255.224`, Magic Number `32`. Block für `.137`: `128–159`. Netzadresse
 `192.168.45.128`, Broadcast `192.168.45.159`, Hosts `.129–.158` (30 Stück). Gateway
-muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer Block),
+muss in `.129` bis `.158` liegen — `.1` und `.160` liegen außerhalb (anderer Block),
 `.129` und `.158` sind beide gültig.
 </Tipp>
 
 ---
 
+## 08 · Merkbilder
+
+Die beiden Skizzen sind Zusammenfassungen: einmal der DHCP-Ablauf, einmal die
+Diagnose-Reihenfolge. Wenn du im Text den Überblick verlierst, spring hierher zurück.
+
 <svg
   viewBox="0 0 760 360"
   role="img"
-  aria-label="Skizze: DHCP DORA-Handshake als Zeitachse zwischen Client links und Server rechts. Vier Pfeile von oben nach unten: Discover Broadcast, Offer mit Adress-Vorschlag, Request Broadcast als Bestaetigung, Acknowledge mit allen DHCP-Optionen. Zeitfluss von oben nach unten."
+  aria-label="Skizze: DHCP DORA-Handshake als Zeitachse zwischen Client links und Server rechts. Vier Pfeile von oben nach unten: Discover Broadcast, Offer mit Adress-Vorschlag, Request Broadcast als Bestätigung, Acknowledge mit allen DHCP-Optionen. Zeitfluss von oben nach unten."
   className="my-8 w-full max-w-3xl border border-rule bg-paper"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -606,7 +639,7 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
 <svg
   viewBox="0 0 760 320"
   role="img"
-  aria-label="Skizze: Diagnose-Kette als Schichten-Stapel. Von unten nach oben: Layer 1 Link-LED, Layer 2 ARP/MAC, Layer 3 IP-Konfiguration, Ping Gateway, Ping Internet, DNS-Aufloesung, Anwendung. Akzent rot markiert die Prüf-Reihenfolge."
+  aria-label="Skizze: Diagnose-Kette als Schichten-Stapel. Von unten nach oben: Layer 1 Link-LED, Layer 2 ARP/MAC, Layer 3 IP-Konfiguration, Ping Gateway, Ping Internet, DNS-Auflösung, Anwendung. Akzent rot markiert die Prüf-Reihenfolge."
   className="my-8 w-full max-w-3xl border border-rule bg-paper"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -673,7 +706,7 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
     },
     {
       term: 'Standardgateway',
-      definition: 'Router-Adresse, an die der Host alle Pakete schickt, deren Ziel ausserhalb des eigenen Subnetzes liegt. Muss zwingend im selben Subnetz wie der Host sein.'
+      definition: 'Router-Adresse, an die der Host alle Pakete schickt, deren Ziel außerhalb des eigenen Subnetzes liegt. Muss zwingend im selben Subnetz wie der Host sein.'
     },
     {
       term: 'DHCP',
@@ -693,11 +726,11 @@ muss in `.129` bis `.158` liegen — `.1` und `.160` liegen ausserhalb (anderer 
     },
     {
       term: 'Nameserver',
-      definition: 'DNS-Server. Rekursiv aufloesend (durchlaeuft die Hierarchie für den Client) oder autoritativ (zustaendig für eine Zone).'
+      definition: 'DNS-Server. Rekursiv auflösend (durchläuft die Hierarchie für den Client) oder autoritativ (zuständig für eine Zone).'
     },
     {
       term: 'TTL (DNS)',
-      definition: 'Time to Live. Cache-Dauer eines DNS-Eintrags in Sekunden. Nicht zu verwechseln mit der TTL im IP-Header (Hop-Zaehler).'
+      definition: 'Time to Live. Cache-Dauer eines DNS-Eintrags in Sekunden. Nicht zu verwechseln mit der TTL im IP-Header (Hop-Zähler).'
     },
     {
       term: 'ARP',

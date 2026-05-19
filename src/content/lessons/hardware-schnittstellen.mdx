@@ -5,6 +5,19 @@
   prüfungsrelevanz="PFLICHT · 5/5"
 />
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Lies zuerst die vier Auswahlfragen. Danach kannst du je nach Aufgabe springen:
+Arbeitsplatz konfigurieren, Dock/Schnittstellen prüfen oder Geräte wirtschaftlich
+vergleichen.
+</Tipp>
+
+| Wenn die Aufgabe fragt nach ... | Denk zuerst an ... | Typische Falle |
+|---|---|---|
+| Arbeitsplatz ausstatten | CPU, RAM, Speicher, Grafik, Peripherie | teuerste Komponente statt passender Komponente wählen |
+| Dock, Monitor, externe SSD | konkreter Standard, nicht nur Steckerform | USB-C mit Thunderbolt verwechseln |
+| Server oder Workstation | ECC, Redundanz, Erweiterbarkeit | RAID mit Backup gleichsetzen |
+| Drucker/MFG beschaffen | Seitenkosten, Netzwerk, Duplex, Energie | nur Anschaffungspreis vergleichen |
+
 ## 01 · Warum existiert das überhaupt?
 
 Jeder Arbeitsplatz, der in einem Betrieb aufgebaut wird, ist ein kleines Hardware-Projekt:
@@ -155,6 +168,10 @@ Die wichtigsten Peripheriegeräte und ihre typischen Auswahlkriterien:
 ---
 
 ## 04 · Konkrete Auswahlwege
+
+Die Beispiele decken die drei häufigsten AP1-Situationen ab: passende Hardware
+für Rollen auswählen, Schnittstellen sauber verbinden und Beschaffung nicht nur
+nach Anschaffungspreis bewerten.
 
 <Beispiel titel="Drei Arbeitsplätze konfigurieren — CAD, Office, Datenbank-Server">
 
@@ -380,7 +397,21 @@ Frage immer nach dem konkreten Protokoll und der Version.
 
 ---
 
-## 06 · Typische Fehler
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- Hardware-Anforderungen aus einem Szenario ableiten und begründet priorisieren.
+- CPU, RAM, Massenspeicher und Mainboard auf Kompatibilität prüfen.
+- USB-C, USB4, Thunderbolt, HDMI, DisplayPort, SATA, NVMe und PCIe sauber abgrenzen.
+- Docking-Setups mit Monitoren, Stromversorgung, Netzwerk und externer SSD planen.
+- Drucker- und MFG-Angebote über Anschaffung, Verbrauch und Energie vergleichen.
+- typische Beschaffungsfehler erkennen: falscher Sockel, falsche RAM-Generation,
+  zu schwaches Netzteil, ungeeignete Kabel oder fehlende Erweiterungsreserve.
+
+---
+
+## Typische Fehler
 
 - **USB-Versionen verwechseln.** USB 3.0, USB 3.1 Gen 1 und USB 3.2 Gen 1 sind
   *dieselbe Geschwindigkeit* (5 Gbit/s) — die Namensgebung ist mehrfach umbenannt
@@ -412,36 +443,41 @@ Frage immer nach dem konkreten Protokoll und der Version.
 
 ---
 
-## 07 · So fragt die IHK das
+## Übungsblock
 
-**Aufgabe 1 — Arbeitsplatz konfigurieren (8 Punkte).**
+Die Aufgaben trainieren Auswahl, Schnittstellen-Mapping, Wirtschaftlichkeit und
+Kompatibilität. Schreibe zu jeder Empfehlung mindestens eine konkrete technische
+Kennzahl dazu.
+
+### Aufgabe 1 · Arbeitsplatz konfigurieren
 Ein Konstruktionsbüro stattet einen neuen CAD-Arbeitsplatz aus. Der Anwender öffnet
 große Baugruppen in Inventor, nutzt einen 4K-Monitor und arbeitet zusätzlich mit einem
 Full-HD-Zweitmonitor. Begründe Auswahl und Mindestkennwerte für: CPU, RAM,
 Massenspeicher, Grafikkarte und Anschlussart der Monitore. Nenne mindestens eine
-sinnvolle Erweiterungsreserve.
+sinnvolle Erweiterungsreserve. **8 Punkte.**
 
-**Aufgabe 2 — Schnittstellen-Mapping (6 Punkte).**
+### Aufgabe 2 · Schnittstellen-Mapping
 Ein Notebook besitzt einen Thunderbolt-4-Port und einen USB-C-Port (USB 3.2 Gen 2).
 Anzuschließen sind: zwei 4K-Monitore, eine externe SSD mit 10 Gbit/s, eine USB-Webcam,
 ein Headset, ein LAN-Kabel und ein 90-W-Netzteil. Skizziere eine technisch saubere
-Topologie und benenne den limitierenden Faktor.
+Topologie und benenne den limitierenden Faktor. **6 Punkte.**
 
-**Aufgabe 3 — Multifunktionsgerät kalkulieren (7 Punkte).**
+### Aufgabe 3 · Multifunktionsgerät kalkulieren
 Eine Kanzlei druckt 60.000 Seiten pro Jahr (80 % Schwarzweiß, 20 % Farbe). Geboten
 werden zwei Modelle mit unterschiedlicher Anschaffung und unterschiedlichen
 Toner-Reichweiten. Berechne die Gesamtkosten über drei Jahre und gib eine Empfehlung.
 Beziehe Standby-Energie mit ein und nenne zwei nicht-monetäre Auswahlkriterien.
+**7 Punkte.**
 
-**Aufgabe 4 — Kompatibilität prüfen (4 Punkte).**
+### Aufgabe 4 · Kompatibilität prüfen
 Ein Kollege möchte eine vorhandene DDR4-Mainboard-Konfiguration auf eine aktuelle
 Intel-Core-CPU der 14. Generation umrüsten. Begründe in zwei Sätzen, ob das ohne
-Mainboard-Tausch möglich ist, und nenne die zwei zentralen Hindernisse.
+Mainboard-Tausch möglich ist, und nenne die zwei zentralen Hindernisse. **4 Punkte.**
 
-**Aufgabe 5 — Ergonomie und Arbeitsschutz (4 Punkte).**
+### Aufgabe 5 · Ergonomie und Arbeitsschutz
 Beschreibe vier Anforderungen an einen Bildschirmarbeitsplatz, die über die reine
 Hardware-Leistung hinausgehen. Ordne jede Anforderung einer konkreten Komponente
-oder Eigenschaft zu (z. B. Monitor, Tastatur, Beleuchtung).
+oder Eigenschaft zu (z. B. Monitor, Tastatur, Beleuchtung). **4 Punkte.**
 
 <Tipp titel="Lösungsansatz zu Aufgabe 4 (Kurzform)">
 Eine Intel-Core-CPU der 14. Generation nutzt den Sockel LGA 1700. Ist das vorhandene
@@ -451,6 +487,12 @@ aktuelles BIOS-Update — andernfalls bootet das System nicht.
 </Tipp>
 
 ---
+
+## Merkbilder
+
+Die Skizze zeigt ein typisches Docking-Szenario. Wichtig ist nicht die konkrete
+Position jedes Geräts, sondern die Denkweise: Display, Strom, Netzwerk und schnelle
+Massenspeicher dürfen nicht alle durch denselben schwachen Standard gedrückt werden.
 
 <svg
   viewBox="0 0 760 360"

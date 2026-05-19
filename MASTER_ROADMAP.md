@@ -12,6 +12,9 @@ Bewusst ohne Zeit- oder Lese-Schaetzungen. Nur Reifegrad gegen Plan-Pflichten:
 - **0.1 (Kompass sauber)** erreicht. AUSBILDUNGS_KOMPASS, MASTER_ROADMAP,
   CURRICULUM_MAPPING liegen vor. AP1 als Pruefungsschicht eingeordnet.
   Content-Validator laeuft mit 0 Fehlern.
+- **Darstellungs- und Struktur-Rework** laeuft separat in `CONTENT_REWORK_PLAN.md`.
+  Fokus: grosse Ready-Kapitel lesbarer machen, Tabellen/Diagramme stabilisieren,
+  Uebungsbloecke vereinheitlichen und Strukturwarnungen systematisch abbauen.
 - **0.2 (Jahr-1/2-Abdeckung sichtbar)** offen. 102 Kapitel im TOC erfasst, in
   CURRICULUM_MAPPING.md aber erst 22 abgebildet. Datei verweist zudem noch auf
   den alten Pfad `src/lib/toc.ts` statt `src/lib/toc/data/*.ts`.

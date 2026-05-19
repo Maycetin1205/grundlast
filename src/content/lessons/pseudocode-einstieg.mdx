@@ -7,6 +7,18 @@
 
 Ein *<Term id="pseudocode">Pseudocode</Term>* ist die Brücke zwischen Problem und Programm. Du formulierst die Logik so präzise, dass ein Mensch sie prüfen und ein Entwickler sie später in Python, Java, C# oder eine andere Sprache übersetzen kann. In der Prüfung taucht das oft als Leseaufgabe, Schreibtischtest, Fehlersuche oder kleine Schreibaufgabe auf.
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Lies zuerst EVA, Kontrollstrukturen und Standardformen. Danach sind die drei Beispiele
+der wichtigste Teil: Trace-Tabelle, Algorithmus schreiben, Fehler korrigieren.
+</Tipp>
+
+| Aufgabentyp | Was du tun musst | Typische Falle |
+|---|---|---|
+| Pseudocode lesen | Werte Zeile für Zeile nachführen | alten Variablenwert weiterverwenden |
+| Schreibtischtest | Trace-Tabelle mit jedem Durchlauf bauen | Startwerte und ersten Durchlauf vergessen |
+| Fehler finden | Initialisierung, Grenzen, Zuweisung prüfen | `=` und `←` verwechseln |
+| Algorithmus schreiben | Eingabe, Grenzfall, Schleife, Ausgabe notieren | leere Liste oder 0-Fall vergessen |
+
 ---
 
 ## 01 · Warum existiert das überhaupt?
@@ -108,7 +120,7 @@ Eine *<Term id="schleife">Schleife</Term>* ist also keine zusätzliche Magie, so
 
 ---
 
-## 03 · Die Mechanik / Regeln
+## 03 · Mechanik und Regeln
 
 ### 03.1 · Variablen, Datentypen und Zuweisung
 
@@ -189,7 +201,7 @@ FOR:
 WHILE:
   SOLANGE bedingung
     anweisung
-    bedingung veraendern
+    bedingung verändern
   ENDE_SOLANGE
 
 REPEAT-UNTIL:
@@ -204,11 +216,14 @@ Wenn du Pseudocode selbst schreibst, markiere Blockenden konsequent: `ENDE_WENN`
 
 ---
 
-## 04 · Konkretes Beispiel / Rechenweg
+## 04 · Konkrete Anwendungsfälle
 
 <Beispiel titel="Drei typische Prüfungswege">
 In der Aufgabe begegnet dir Pseudocode meistens auf drei Arten: Du führst vorgegebenen Code von Hand aus, du formulierst einen kleinen Algorithmus selbst, oder du findest Fehler in einem fast richtigen Ablauf. Die folgenden drei Wege decken genau diese Aufgabenformen ab.
 </Beispiel>
+
+Bearbeite die Beispiele in dieser Reihenfolge. Sie bauen absichtlich aufeinander auf:
+erst lesen, dann selbst formulieren, dann fremde Logik kritisch prüfen.
 
 ### 04.1 · Pseudocode lesen und Schreibtischtest durchführen
 
@@ -362,7 +377,7 @@ Aufgabe: Schreibe Pseudocode, der den Mittelwert einer Liste berechnet. Wenn die
     EINGABE werte
 
     WENN laenge(werte) = 0 DANN
-      AUSGABE "Kein Mittelwert fuer leere Liste"
+      AUSGABE "Kein Mittelwert für leere Liste"
     SONST
       summe ← 0
       FÜR i VON 0 BIS laenge(werte) - 1
@@ -428,7 +443,7 @@ AUSGABE gesamt
 
 ---
 
-## 05 · Vertiefung / Sonderfälle
+## 05 · Vertiefung und Sonderfälle
 
 ### Rekursion vs. Iteration
 
@@ -484,7 +499,7 @@ Pseudocode ist freier Text mit Konventionen. Ein Struktogramm nach Nassi-Shneide
 ### Best Practices
 
 - Nutze aussagekräftige Bezeichner: `summe`, `maxPreis`, `anzahlFehler` statt `x`, `a`, `tmp`.
-- Rücken Blöcke konsequent ein.
+- Rücke Blöcke konsequent ein.
 - Initialisiere Akkumulatoren bewusst: Summe bei 0, Produkt bei 1, Maximum oft mit erstem Listenelement.
 - Kommentiere nur, wenn die Absicht nicht direkt sichtbar ist.
 - Schreibe zuerst den Grenzfall auf: leere Liste, 0 Elemente, ungültige Eingabe.
@@ -513,7 +528,10 @@ Eine WHILE-Schleife muss etwas verändern, das die Bedingung irgendwann falsch m
 
 ---
 
-## 07 · So fragt die IHK das
+## 07 · Übungsblock
+
+Die Aufgaben trainieren genau die drei Prüfungswege aus Abschnitt 04. Rechne zuerst
+selbst; die Lösungsansätze sind nur zum Abgleichen gedacht.
 
 ### Aufgabe 1 · Schreibtischtest mit Trace-Tabelle
 
