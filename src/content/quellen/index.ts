@@ -6,4 +6,4 @@
  */
 
 export { sourceBank } from "./sourceBank"
-export { lernfeldTags, slugTags } from "./tagMappings"
+export { lernfeldTags, lessonSourceIds, slugTags } from "./tagMappings"

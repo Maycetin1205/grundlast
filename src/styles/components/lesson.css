@@ -2,10 +2,13 @@
 /* ── Lesson reading surface ───────────────────────────────────────────── */
   .lesson-shell {
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .lesson-body {
     width: 100%;
+    min-width: 0;
     color: var(--color-ink);
     font-family: var(--font-ui);
     font-size: 1.125rem;
@@ -59,6 +62,7 @@
   .lesson-body li,
   .lesson-body dd {
     font-size: 1.0625rem;
+    overflow-wrap: normal;
   }
 
   .lesson-body p {
@@ -87,6 +91,8 @@
     color: var(--color-ink);
     font-size: 0.9em;
     font-weight: 600;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .lesson-body pre {
@@ -181,6 +187,11 @@
   }
 
   @media (max-width: 720px) {
+    .lesson-shell {
+      width: calc(100vw - 4rem);
+      max-width: calc(100vw - 4rem);
+    }
+
     .lesson-body {
       font-size: 1rem;
       line-height: 1.7;

@@ -4,13 +4,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin-bottom: 2rem;
   }
 
   .crumbs {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
+    min-width: 0;
     font-family: var(--font-ui);
     font-size: 12px;
     font-weight: 500;
@@ -19,6 +23,17 @@
     text-transform: uppercase;
   }
 
+  .crumbs span {
+    overflow-wrap: anywhere;
+  }
+
   .crumbs span.sep { opacity: 0.4; }
   .crumbs span.now { color: var(--color-ink); }
+
+  @media (max-width: 720px) {
+    .topbar {
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+  }
 }

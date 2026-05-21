@@ -68,6 +68,17 @@ export const slugTags: Record<string, string[]> = {
   'organisationsformen-leitbild-nachhaltigkeit-esg': ['wirtschaft', 'organisation', 'rechtsform', 'unternehmensform', 'einzelunternehmen', 'gmbh', 'aktiengesellschaft', 'ohg', 'kg', 'leitbild', 'nachhaltigkeit', 'esg', 'governance'],
 }
 
+export const lessonSourceIds: Record<string, string[]> = {
+  zahlensysteme: [
+    'posix-chmod',
+    'rfc-9542',
+    'w3c-css-color-4',
+    'rfc-4632',
+    'python-lexical-integer-literals',
+    'ecma-262-numeric-literals',
+  ],
+}
+
 export const lernfeldTags: Record<string, string[]> = {
   grundlagen: ['ordnung'],
   hardware: ['ordnung', 'sicherheit'],

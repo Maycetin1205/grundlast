@@ -15,6 +15,7 @@ dist-ssr
 src/content/lessons.backup-mojibake/
 tmp-screens/
 tmp-vite.log
+.tmp-review/
 *.local
 
 # Editor directories and files

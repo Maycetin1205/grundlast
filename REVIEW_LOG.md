@@ -26,14 +26,10 @@ kontrolliert, Build/Lint bestanden und fuer Weitergabe geeignet.
 
 ## Freigegebene Kapitel
 
-Noch keine Kapitel formal auf `final` gesetzt.
-
-## Final-Kandidaten
-
-### zahlensysteme
+## zahlensysteme
 - Titel: Zahlensysteme (Dual, Hex, Dezimal)
-- Status: final-kandidat
-- Geprueft am: 18.05.2026
+- Status: final
+- Geprueft am: 21.05.2026
 - Pruefer: Codex
 - Quellen:
   - IEEE Std 1003.1 (POSIX) - chmod
@@ -61,8 +57,13 @@ Noch keine Kapitel formal auf `final` gesetzt.
   - `npm.cmd run build:single`: erfolgreich.
 - Notizen:
   - Rechenbeispiele maschinell gegen JavaScript-Zahlenkonvertierung kontrolliert.
-  - Single-HTML-Build enthaelt Kapitel- und Quellenstrings.
-  - Noch offen vor `final`: echte Browser-Stichprobe Desktop und mobil.
+  - Quellen gegen Primaer- und offizielle Spezifikationen plausibilisiert.
+  - Quellen-Tab priorisiert jetzt kapitelspezifische Quellen vor allgemeinen Ordnungsmitteln.
+  - Browser-Stichprobe mit Headless Chrome/CDP: Desktop 1440x1200 und Mobile 390x1200 gerendert; Mobile ohne horizontale Seitenbreite (`docScroll == docClient`, `mainScroll == mainClient`).
+
+## Final-Kandidaten
+
+Aktuell keine dokumentierten Final-Kandidaten offen.
 
 Format fuer spaetere Eintraege:
 
