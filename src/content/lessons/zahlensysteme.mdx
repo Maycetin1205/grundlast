@@ -7,7 +7,7 @@ Du lernst, wie Computer Zahlen darstellen und wie du zwischen **Binär**
 rechnest. Danach kannst du eine MAC-Adresse wie `C0:FF:EE:01:02:03` lesen,
 eine CSS-Farbe `#FF8000` einordnen, `chmod 755` zerlegen und ein Subnetz
 wie `192.168.10.0/24` als Bitmuster verstehen. Alle vier Systeme sind nur
-verschiedene Schreibweisen fuer dieselbe Zahl — der Trick ist die <Term id="basis">Basis</Term>.
+verschiedene Schreibweisen für dieselbe Zahl — der Trick ist die <Term id="basis">Basis</Term>.
 
 ---
 
@@ -21,11 +21,11 @@ Stellenwert = Basis ^ Position
 ```
 
 Die **Basis** sagt, wie viele verschiedene Ziffern ein System hat:
-Dezimal hat 10 Ziffern (`0` bis `9`), Binaer hat 2 Ziffern (`0` und `1`),
+Dezimal hat 10 Ziffern (`0` bis `9`), Binär hat 2 Ziffern (`0` und `1`),
 Hexadezimal hat 16 Ziffern (`0` bis `9`, dann `A` bis `F`).
 
 Position 0 ist ganz rechts, nach links steigt der Exponent jeweils um eins.
-Der Gesamtwert ist die Summe aus `Ziffer × Stellenwert` ueber alle Stellen.
+Der Gesamtwert ist die Summe aus `Ziffer × Stellenwert` über alle Stellen.
 
 **Beispiel im vertrauten Dezimalsystem** (Basis 10):
 
@@ -44,34 +44,34 @@ Systeme genauso — nur die <Term id="basis">Basis</Term> wechselt. Daraus
 folgen die <Term id="stellenwert">Stellenwerte</Term> automatisch.
 
 <Analogie>
-Stell dir einen Tageskilometerzaehler im Auto vor. Jedes Raedchen zeigt
-0 bis 9. Wenn ein Raedchen von 9 auf 0 springt, ueberlaeuft es und schiebt
-das linke Raedchen um eins weiter. Das ist Dezimal: **Basis 10, ueberlaufen bei 9**.
+Stell dir einen Tageskilometerzähler im Auto vor. Jedes Rädchen zeigt
+0 bis 9. Wenn ein Rädchen von 9 auf 0 springt, überläuft es und schiebt
+das linke Rädchen um eins weiter. Das ist Dezimal: **Basis 10, überlaufen bei 9**.
 
-Tausche die Raedchen gegen welche mit nur **zwei** Positionen (an/aus) —
-schon hast du Binaer. Ueberlauf passiert dann schon nach 1: `1 + 1 = 10`
-(binaer gelesen: "eins-null", also Dezimal 2).
+Tausche die Rädchen gegen welche mit nur **zwei** Positionen (an/aus) —
+schon hast du Binär. Überlauf passiert dann schon nach 1: `1 + 1 = 10`
+(binär gelesen: "eins-null", also Dezimal 2).
 
-Tausche sie gegen **sechzehn**-stellige Raedchen, brauchst du mehr Symbole
-als 0–9 — also kommen Buchstaben dazu: A=10 bis F=15. Ueberlauf erst nach
+Tausche sie gegen **sechzehn**-stellige Rädchen, brauchst du mehr Symbole
+als 0–9 — also kommen Buchstaben dazu: A=10 bis F=15. Überlauf erst nach
 F: `F + 1 = 10` (hex gelesen: "eins-null", also Dezimal 16).
 </Analogie>
 
 ---
 
-## Die vier Systeme im Ueberblick
+## Die vier Systeme im Überblick
 
 | System | <Term id="basis">Basis</Term> | Ziffern | Wo es auftaucht |
 |---|---|---|---|
-| **Binaer (Dual)** | 2 | 0, 1 | <Term id="bit">Bit</Term>-Ebene im Computer, IP-Subnetzmasken |
+| **Binär (Dual)** | 2 | 0, 1 | <Term id="bit">Bit</Term>-Ebene im Computer, IP-Subnetzmasken |
 | **Oktal** | 8 | 0–7 | Linux-Dateirechte (`chmod 755`) |
 | **Dezimal** | 10 | 0–9 | Alltag, Menschen |
 | **<Term id="hexadezimal">Hexadezimal</Term>** | 16 | 0–9, A–F | MAC-Adressen, CSS-Farben (`#FF0000`), Speicheradressen |
 
-Alle vier sind nur verschiedene **Schreibweisen fuer dieselbe Zahl**.
+Alle vier sind nur verschiedene **Schreibweisen für dieselbe Zahl**.
 Die folgende Tabelle zeigt das an ein paar Werten:
 
-| Dezimal | Binaer | Hex | Oktal |
+| Dezimal | Binär | Hex | Oktal |
 |---|---|---|---|
 | 0 | 0000 | 0 | 0 |
 | 9 | 1001 | 9 | 11 |
@@ -84,12 +84,12 @@ Die folgende Tabelle zeigt das an ein paar Werten:
 
 **Schreib-Konventionen** (damit du in einer Aufgabe siehst, was gemeint ist):
 
-- `0b10101` oder `10101₂` — binaer (auch `0b` als Praefix)
+- `0b10101` oder `10101₂` — binär (auch `0b` als Präfix)
 - `0o17` oder `17₈` — oktal (in C/Python). Vorsicht: in vielen Skripten ist
-  ein **fuehrendes `0`** allein schon oktal — `012` ist nicht 12, sondern
+  ein **führendes `0`** allein schon oktal — `012` ist nicht 12, sondern
   Oktal 12 = Dezimal 10.
 - `0x1F` oder `1F₁₆` oder `#1F` — hexadezimal
-- Ohne Praefix gilt im Alltag Dezimal — in einer Aufgabe aber immer den
+- Ohne Präfix gilt im Alltag Dezimal — in einer Aufgabe aber immer den
   Kontext lesen. `10` allein ist mehrdeutig.
 
 ---
@@ -99,28 +99,31 @@ Die folgende Tabelle zeigt das an ein paar Werten:
 Dezimal nutzen Menschen. Die anderen drei haben jeweils einen Grund, warum
 genau dieses System praktisch ist:
 
-- **Binaer** ist die Sprache der Hardware. Ein <Term id="bit">Bit</Term> hat
-  nur zwei Zustaende (an/aus), und genau das laesst sich elektronisch
-  zuverlaessig speichern. Sichtbar wird Binaer typisch bei <Term id="subnetting">Subnetting</Term>:
-  `192.168.10.0/24` heisst „die ersten 24 Bit sind Netzanteil". Wer rechnen
-  will, muss in Binaer denken.
+- **Binär** ist die Sprache der Hardware. Ein <Term id="bit">Bit</Term> hat
+  nur zwei Zustände (an/aus), und genau das lässt sich elektronisch
+  zuverlässig speichern: ein Transistor leitet oder leitet nicht, eine
+  Spannung liegt an oder nicht. Zehn klar unterscheidbare Pegel wären
+  fehleranfälliger — zwei reichen und sind robust. Sichtbar wird Binär
+  typisch bei der Aufteilung einer IP-Adresse in Netz- und Host-Anteil:
+  `192.168.10.0/24` heißt „die ersten 24 Bit sind Netzanteil". Wer rechnen
+  will, muss in Binär denken.
 - **Oktal** ist die kompakte Form von „drei Bit pro Ziffer". Linux nutzt das
-  fuer Dateirechte: drei Bit (lesen/schreiben/ausfuehren) pro Rolle
-  (Eigentuemer/Gruppe/andere) ergeben drei Oktalziffern — `chmod 755`.
+  für Dateirechte: drei Bit (lesen/schreiben/ausführen) pro Rolle
+  (Eigentümer/Gruppe/andere) ergeben drei Oktalziffern — `chmod 755`.
 - **Hexadezimal** ist die kompakte Form von „vier Bit pro Ziffer". Eine
   Hex-Ziffer = ein <Term id="nibble">Nibble</Term> = exakt 4 Bit. Damit
-  laesst sich ein <Term id="byte">Byte</Term> (8 Bit) in **zwei** Hex-Ziffern
+  lässt sich ein <Term id="byte">Byte</Term> (8 Bit) in **zwei** Hex-Ziffern
   schreiben. Deshalb sind MAC-Adressen, Farben und Speicheradressen hex
-  notiert: viel kuerzer als Binaer, aber jederzeit zurueck uebersetzbar.
+  notiert: viel kürzer als Binär, aber jederzeit zurück übersetzbar.
 
 ---
 
-## Dezimal → Binaer: Teilungsmethode
+## Dezimal → Binär: Teilungsmethode
 
 Immer durch 2 teilen, die **Reste** notieren, am Ende **von unten nach oben**
 lesen.
 
-**Beispiel: 46 in Binaer**
+**Beispiel: 46 in Binär**
 
 ```
 46 ÷ 2 = 23  Rest 0
@@ -134,7 +137,7 @@ lesen.
 
 Von unten nach oben: **101110**. Also `46₁₀ = 101110₂`.
 
-**Probe (Stellenwert-Methode rueckwaerts):**
+**Probe (Stellenwert-Methode rückwärts):**
 
 ```
 1·32 + 0·16 + 1·8 + 1·4 + 1·2 + 0·1
@@ -144,9 +147,9 @@ Von unten nach oben: **101110**. Also `46₁₀ = 101110₂`.
 
 ---
 
-## Binaer → Dezimal: Stellenwert-Methode
+## Binär → Dezimal: Stellenwert-Methode
 
-Jede Stelle hat einen Wert (2⁰, 2¹, 2²…). Nur die Stellen mit `1` zaehlen
+Jede Stelle hat einen Wert (2⁰, 2¹, 2²…). Nur die Stellen mit `1` zählen
 zusammen.
 
 **Beispiel: 11000000 in Dezimal**
@@ -159,8 +162,8 @@ zusammen.
 
 `128 + 64 = 192`. Also `11000000₂ = 192₁₀`.
 
-**Merkhilfe fuer 8 Bit:** `128 – 64 – 32 – 16 – 8 – 4 – 2 – 1`. Diese acht
-Werte auswendig zu koennen lohnt sich — sie tauchen bei IPv4-Subnetting
+**Merkhilfe für 8 Bit:** `128 – 64 – 32 – 16 – 8 – 4 – 2 – 1`. Diese acht
+Werte auswendig zu können lohnt sich — sie tauchen bei IPv4-Subnetting
 in praktisch jeder Aufgabe auf.
 
 ---
@@ -171,7 +174,7 @@ Hex-Ziffern: `0 1 2 3 4 5 6 7 8 9 A B C D E F`. Merke: A=10, B=11, C=12, D=13,
 E=14, F=15.
 
 Methode: Immer durch 16 teilen, Reste von unten nach oben lesen — analog
-zur Binaer-Teilung, nur mit 16 statt 2.
+zur Binär-Teilung, nur mit 16 statt 2.
 
 **Beispiel: 192 in Hex**
 
@@ -201,13 +204,13 @@ F · 16¹ + F · 16⁰
 
 Also `FF₁₆ = 255₁₀`.
 
-### Weg 2: ueber Binaer (Nibble-Trick)
+### Weg 2: über Binär (Nibble-Trick)
 
 Eine Hex-Ziffer entspricht **genau** 4 Bit — also einem <Term id="nibble">Nibble</Term>.
 Damit kannst du jede Hex-Zahl in vier Bit pro Ziffer zerlegen und das
-Binaerergebnis dann ueber die Stellenwert-Methode in Dezimal umrechnen.
+Binärergebnis dann über die Stellenwert-Methode in Dezimal umrechnen.
 
-**Beispiel: `0xC0` ueber Binaer**
+**Beispiel: `0xC0` über Binär**
 
 ```
 C    0
@@ -217,12 +220,12 @@ C    0
 Das ist `11000000₂ = 128 + 64 = 192`. Also `C0₁₆ = 192₁₀` — passt zum
 Ergebnis von oben.
 
-Der Nibble-Trick ist in der Pruefung oft **schneller** als das direkte
+Der Nibble-Trick ist in der Prüfung oft **schneller** als das direkte
 Hex-Rechnen, weil du nur die Wertigkeiten `8-4-2-1` pro Nibble brauchst und
 nichts mit 16 multiplizierst. Diese kleine **Hex→Nibble-Tabelle** lohnt
 sich auswendig:
 
-| Hex | Binaer | Hex | Binaer |
+| Hex | Binär | Hex | Binär |
 |---|---|---|---|
 | 0 | 0000 | 8 | 1000 |
 | 1 | 0001 | 9 | 1001 |
@@ -235,9 +238,29 @@ sich auswendig:
 
 ---
 
+## Binär → Hex: Nibble-Trick andersrum
+
+Lange Binärzahlen sind mühsam zu lesen. Trick: von **rechts** in
+Vierergruppen schneiden, jede Gruppe über die Nibble-Tabelle in eine
+Hex-Ziffer übersetzen.
+
+**Beispiel: `11000000₂` in Hex**
+
+```
+1100  0000
+   ↓     ↓
+   C     0
+```
+
+Also `11000000₂ = C0₁₆`. Reicht die Bitzahl nicht für ein volles Nibble,
+wird vorne mit Nullen aufgefüllt: `10101₂` wird zu `0001 0101` und damit
+zu `15₁₆`.
+
+---
+
 ## Dezimal → Oktal
 
-Methode wie bei Binaer und Hex, nur durch 8 teilen.
+Methode wie bei Binär und Hex, nur durch 8 teilen.
 
 **Beispiel: 511 in Oktal**
 
@@ -252,46 +275,184 @@ Von unten: **777**. Also `511₁₀ = 777₈`.
 
 **Probe:** `7·64 + 7·8 + 7·1 = 448 + 56 + 7 = 511 ✓`.
 
-Oktal funktioniert in der Praxis am haeufigsten andersrum: du **liest** eine
-Oktalzahl wie `755` und willst wissen, was sie bedeutet. Genau das ist der
-naechste Abschnitt.
+Oktal funktioniert in der Praxis am häufigsten andersrum: du **liest** eine
+Oktalzahl wie `755` und willst wissen, was sie bedeutet. Dazu später unter
+`chmod`.
+
+---
+
+## Binärarithmetik: addieren
+
+Im Binärsystem gibt es nur vier Additionsregeln. Drei sind trivial, die
+vierte erzeugt einen **Übertrag** ins nächste Bit:
+
+| a | + | b | = | Summe | Übertrag |
+|---|---|---|---|---|---|
+| 0 | + | 0 | = | 0 | 0 |
+| 0 | + | 1 | = | 1 | 0 |
+| 1 | + | 0 | = | 1 | 0 |
+| 1 | + | 1 | = | 0 | **1** |
+
+Kommen drei Einsen zusammen (`1 + 1 + Übertrag`), ist das Ergebnis `1` mit
+Übertrag `1`.
+
+**Beispiel: `1011 + 0110`**
+
+```
+   1 1                 ← Überträge
+   1 0 1 1
+ + 0 1 1 0
+ ---------
+ 1 0 0 0 1
+```
+
+**Probe in Dezimal:** `11 + 6 = 17`. Binär `10001 = 16 + 1 = 17 ✓`.
+
+Subtraktion läuft im Computer in der Regel nicht direkt, sondern als
+**Addition mit dem Zweierkomplement** des Subtrahenden. Damit ist die
+Hardware für Addition und Subtraktion dieselbe — und genau das ist der
+nächste Abschnitt.
+
+---
+
+## Negative Zahlen: Zweierkomplement
+
+Ein Bit allein hat keinen Vorzeichen-Knopf. Trotzdem muss eine CPU `-5` von
+`+5` unterscheiden können. Die Lösung ist das **Zweierkomplement**: das
+höchstwertige Bit trägt einen **negativen Stellenwert**.
+
+Bei 8 Bit sieht die Wertigkeitsreihe so aus:
+
+```
+-128  64  32  16  8  4  2  1
+```
+
+Damit decken 8 Bit den Bereich **−128 bis +127** ab (insgesamt 256 Werte).
+
+**Wie man `-5` als 8-Bit-Zweierkomplement bildet** (zwei Schritte):
+
+```
+1. +5 in Binär:           0000 0101
+2. alle Bits kippen:       1111 1010    (Einerkomplement)
+3. +1 addieren:            1111 1011    ← das ist -5
+```
+
+**Probe** über die Wertigkeit mit `-128`-Bit:
+
+```
+-128 + 64 + 32 + 16 + 8 + 2 + 1
+= -128 + 123
+= -5 ✓
+```
+
+**Warum dieser Trick?** Mit Zweierkomplement funktioniert `+5 + (-5) = 0`
+genau wie eine normale Binäraddition:
+
+```
+   0000 0101   (+5)
+ + 1111 1011   (-5)
+ -----------
+ 1 0000 0000   ← der führende Übertrag fällt aus 8 Bit raus
+```
+
+Das Ergebnis in 8 Bit ist `0000 0000 = 0`. Genau richtig.
+
+**Wertebereiche pro Bitbreite** (Zweierkomplement):
+
+| Bits | Bereich |
+|---|---|
+| 8 (Byte) | −128 bis +127 |
+| 16 | −32 768 bis +32 767 |
+| 32 | −2 147 483 648 bis +2 147 483 647 |
+| 64 | ca. ±9,2 · 10¹⁸ |
+
+Ein gesetztes höchstwertiges Bit (**MSB = 1**) heißt im Zweierkomplement
+also „die Zahl ist negativ". Bei einer **vorzeichenlosen** Interpretation
+ist dasselbe Bitmuster aber positiv — z. B. `1111 1011` ist als signed
+**−5**, als unsigned **251**. Welcher Wert gemeint ist, entscheidet **nur
+der Datentyp**.
+
+---
+
+## Kommazahlen: IEEE 754 (Gleitkomma)
+
+Bislang ging es um ganze Zahlen. Reale Zahlen wie `3,14` oder `1,5 · 10⁻⁹`
+brauchen ein anderes Format — die Hardware nutzt dafür **IEEE 754**.
+Grundidee: jede Zahl wird als
+
+```
+Wert = (-1)^Vorzeichen · 1,Mantisse · 2^(Exponent − Bias)
+```
+
+dargestellt. Drei Felder teilen sich ein Bitmuster:
+
+| Format | Bits gesamt | Vorzeichen | Exponent | Mantisse | Bias |
+|---|---|---|---|---|---|
+| `binary32` (single, „float") | 32 | 1 | 8 | 23 | 127 |
+| `binary64` (double) | 64 | 1 | 11 | 52 | 1023 |
+
+**Beispiel: wie `0,15625` als `binary32` codiert wird**
+
+```
+0,15625 = 1,25 · 2⁻³
+Vorzeichen: 0   (positiv)
+Mantissen-Bits: 010000…0   (die ,25 in binär)
+Exponent: -3 + 127 = 124  →  0111 1100
+```
+
+Das vollständige 32-Bit-Muster: `0 0111 1100 010 0000 0000 0000 0000 0000`.
+
+**Warum dieser Aufwand?** Mit nur 32 Bit lassen sich Zahlen von etwa
+**±10⁻³⁸** bis **±10³⁸** mit rund 7 Dezimalstellen Genauigkeit speichern —
+ein riesiger Bereich, der mit Festkomma unmöglich wäre. Der Preis ist
+**Rundung**: nicht jede Dezimalzahl ist exakt darstellbar. `0,1` z. B. ist
+in Binär eine periodische Zahl, daher gilt klassisch:
+
+```
+0.1 + 0.2 = 0.30000000000000004   (JavaScript, Python, …)
+```
+
+Das ist kein Bug, sondern die direkte Folge von IEEE 754. Wer mit Geld
+rechnet, nutzt deshalb `decimal`-Typen oder rechnet in Cent als Integer.
 
 ---
 
 ## Anwendung: `chmod 755` zerlegen
 
-`chmod` ist der Linux-Befehl fuer Dateirechte. `755` ist eine Oktalzahl mit
+`chmod` ist der Linux-Befehl für Dateirechte. `755` ist eine Oktalzahl mit
 drei Stellen — eine pro Rolle. Hinter den Stellen stecken jeweils drei Bit:
-`r` (lesen, Wert 4), `w` (schreiben, Wert 2), `x` (ausfuehren, Wert 1).
+`r` (lesen, Wert 4), `w` (schreiben, Wert 2), `x` (ausführen, Wert 1).
 
 <StepByStep titel="Was bedeutet chmod 755?">
   <Schritt nr={1} titel="Drei Stellen, drei Rollen">
-    Die drei Oktalziffern stehen — von links nach rechts — fuer
-    **U**ser (Eigentuemer), **G**roup (Gruppe), **O**ther (alle anderen).
+    Die drei Oktalziffern stehen — von links nach rechts — für
+    **U**ser (Eigentümer), **G**roup (Gruppe), **O**ther (alle anderen).
     Also: U=7, G=5, O=5.
   </Schritt>
   <Schritt nr={2} titel="Jede Ziffer in 3 Bits zerlegen">
-    Jede Stelle steht fuer drei Bit. Wertigkeiten: `r=4, w=2, x=1`.
+    Jede Stelle steht für drei Bit. Wertigkeiten: `r=4, w=2, x=1`.
     Aufaddieren ergibt die Oktalziffer.
   </Schritt>
-  <Schritt nr={3} titel="Ziffern aufschluesseln">
+  <Schritt nr={3} titel="Ziffern aufschlüsseln">
     `7 = 4 + 2 + 1 = rwx` (alles erlaubt).
-    `5 = 4 + 0 + 1 = r-x` (lesen und ausfuehren, kein schreiben).
+    `5 = 4 + 0 + 1 = r-x` (lesen und ausführen, kein schreiben).
   </Schritt>
   <Ergebnis>
-    `chmod 755` setzt die Rechte `rwxr-xr-x`: Eigentuemer darf alles
-    (lesen, schreiben, ausfuehren), Gruppe und alle anderen duerfen lesen
-    und ausfuehren, aber nicht schreiben. Genau dieses Muster nutzen die
-    meisten ausfuehrbaren Skripte.
+    `chmod 755` setzt die Rechte `rwxr-xr-x`: Eigentümer darf alles
+    (lesen, schreiben, ausführen), Gruppe und alle anderen dürfen lesen
+    und ausführen, aber nicht schreiben. Genau dieses Muster nutzen die
+    meisten ausführbaren Skripte.
   </Ergebnis>
 </StepByStep>
 
-**Schnellcheck** (nuetzlich zum Auswendiglernen):
+**Schnellcheck** (nützlich zum Auswendiglernen):
 
 | Oktal | Bits | Rechte |
 |---|---|---|
 | 0 | 000 | --- |
 | 1 | 001 | --x |
+| 2 | 010 | -w- |
+| 3 | 011 | -wx |
 | 4 | 100 | r-- |
 | 5 | 101 | r-x |
 | 6 | 110 | rw- |
@@ -313,23 +474,23 @@ C0 : FF : EE : 01 : 02 : 03
 
 Jedes Hex-Paar (zwei Ziffern) = ein <Term id="byte">Byte</Term> = 8 Bit.
 Statt 48 Einsen und Nullen zu schreiben, reichen 12 Hex-Ziffern. Genau die
-Kompression, fuer die Hex gemacht ist.
+Kompression, für die Hex gemacht ist.
 
 Eine **CSS-Farbe** wie `#FF8000` (Orange) funktioniert identisch — nur dass
-die drei Bytes Rot/Gruen/Blau bedeuten:
+die drei Bytes Rot/Grün/Blau bedeuten:
 
 ```
 # FF      80      00
   ↕       ↕       ↕
-  Rot=255 Gruen=128 Blau=0
+  Rot=255 Grün=128 Blau=0
 ```
 
-Das `FF` (binaer `11111111`) ist das Maximum pro Farbkanal, das `00` ist
-Null. `#000000` ist Schwarz, `#FFFFFF` Weiss, `#FF0000` reines Rot.
+Das `FF` (binär `11111111`) ist das Maximum pro Farbkanal, das `00` ist
+Null. `#000000` ist Schwarz, `#FFFFFF` Weiß, `#FF0000` reines Rot.
 
 ---
 
-## Brueckenkapitel: IPv4 und Binaer
+## Brückenkapitel: IPv4 und Binär
 
 Ein IPv4-Subnetz wie `192.168.10.0/24` ist im Kern eine 32-Bit-Zahl,
 aufgeschrieben als vier Dezimal-Oktette zu je 8 Bit:
@@ -339,85 +500,108 @@ aufgeschrieben als vier Dezimal-Oktette zu je 8 Bit:
 11000000  10101000  00001010  00000000   (32 Bit)
 ```
 
-Das `/24` heisst: die ersten 24 Bit gehoeren zum Netz, die letzten 8 zum
-Host. Ohne Binaer-Verstaendnis ist das eine Black Box; **mit** wird daraus
-eine Rechen-Aufgabe, die du Stelle fuer Stelle loest. Mehr dazu im Kapitel
-zu **IPv4 und Subnetting**.
+Das `/24` heißt: die ersten 24 Bit gehören zum Netz, die letzten 8 zum
+Host. Ohne Binär-Verständnis ist das eine Black Box; **mit** wird daraus
+eine Rechen-Aufgabe, die du Stelle für Stelle löst.
 
 ---
 
 ## Typische Fehler
 
 - **„10" ohne Basis ist mehrdeutig.** `10₂ = 2`, `10₈ = 8`, `10₁₀ = 10`,
-  `10₁₆ = 16`. In Pruefungsaufgaben immer den Kontext lesen oder die
+  `10₁₆ = 16`. In Prüfungsaufgaben immer den Kontext lesen oder die
   Basis in der Antwort kennzeichnen — sonst kann ein technisch richtiges
   Ergebnis Punkte kosten.
 
 - **Reste in falscher Reihenfolge gelesen.** Bei der Teilungsmethode wird
   **von unten nach oben** gelesen (zuletzt berechneter Rest ist das
-  hoechstwertige Bit). Wer von oben liest, dreht die Zahl um. Beispiel:
-  `46 = 101110₂`; von oben gelesen kaeme `011101₂` heraus, also 29 statt
+  höchstwertige Bit). Wer von oben liest, dreht die Zahl um. Beispiel:
+  `46 = 101110₂`; von oben gelesen käme `011101₂` heraus, also 29 statt
   46. Das ist kein kleiner Schreibfehler, sondern eine andere Zahl.
 
-- **0 als gueltige Stelle vergessen.** 8 Bit unterscheiden 256 Werte —
+- **0 als gültige Stelle vergessen.** 8 Bit unterscheiden 256 Werte —
   von **0 bis 255**, nicht 1 bis 256. Eine klassische Off-by-One-Falle,
-  besonders bei Subnetting (Netzadresse zaehlt mit) und bei Hex-Rechnen
+  besonders bei Subnetting (Netzadresse zählt mit) und bei Hex-Rechnen
   (`0xFF + 1 = 0x100`, nicht `0xFF + 1 = 0xFF`).
 
 - **Hex direkt rechnen statt 4-Bit-Trick.** `0xC0` direkt ausrechnen
-  bedeutet `12 · 16 + 0 = 192`. Ueber Binaer geht es genauso schnell und
-  ist weniger fehleranfaellig: `C = 1100`, `0 = 0000`, also
+  bedeutet `12 · 16 + 0 = 192`. Über Binär geht es genauso schnell und
+  ist weniger fehleranfällig: `C = 1100`, `0 = 0000`, also
   `11000000 = 128 + 64 = 192`. Die Wertigkeiten `8-4-2-1` pro Nibble
   reichen — kein „mal 16" im Kopf.
 
-- **Oktal-Praefix-Verwirrung.** In C und in aelteren Python-2-Beispielen
-  kann `017` oktal gemeint sein (Wert 15). In Python 3 ist ein fuehrender
-  Null-Praefix fuer eine Nicht-Null-Dezimalzahl dagegen nicht erlaubt;
+- **Oktal-Präfix-Verwirrung.** In C und in älteren Python-2-Beispielen
+  kann `017` oktal gemeint sein (Wert 15). In Python 3 ist ein führender
+  Null-Präfix für eine Nicht-Null-Dezimalzahl dagegen nicht erlaubt;
   dort schreibt man Oktalzahlen mit `0o17`. JavaScript nutzt ebenfalls
-  `0o17` fuer die klare Oktal-Schreibweise. Beim Lesen alter Beispiele
-  also immer pruefen, ob ein fuehrendes `0` Oktal meint oder nur eine
-  optische Fuehrungsnull ist.
+  `0o17` für die klare Oktal-Schreibweise. Beim Lesen alter Beispiele
+  also immer prüfen, ob ein führendes `0` Oktal meint oder nur eine
+  optische Führungsnull ist.
 
 - **chmod-Bits falsch zerlegt.** `chmod 644` ist nicht „lesen und
-  schreiben fuer alle". Die `4` ist nur `r--` (lesen), kein `w`. Also
-  `rw-r--r--`: Eigentuemer darf lesen+schreiben, Gruppe und Andere nur
-  lesen. Immer jede Stelle einzeln in `r/w/x` aufloesen.
+  schreiben für alle". Die `4` ist nur `r--` (lesen), kein `w`. Also
+  `rw-r--r--`: Eigentümer darf lesen+schreiben, Gruppe und Andere nur
+  lesen. Immer jede Stelle einzeln in `r/w/x` auflösen.
 
 - **Hex-Buchstaben mit Ziffern verwechseln.** Besonders `0` (Null) gegen
   `O` (existiert in Hex nicht!) und `1`/`l`/`I`. In Hex gibt es keine
-  Buchstaben jenseits von `F`. Steht ein `G` oder hoeher in einer
+  Buchstaben jenseits von `F`. Steht ein `G` oder höher in einer
   vermeintlichen Hex-Zahl, ist es eine Tippfehler-Falle oder gar kein Hex.
 
 - **Hex-Schreibweise inkonsistent.** `0xff`, `0xFF`, `#FF`, `FFh`, `FF₁₆`
-  meinen alle dasselbe — Gross-/Kleinschreibung ist in Hex egal. In einer
-  Loesung trotzdem konsistent bleiben (typisch: Grossbuchstaben), damit
+  meinen alle dasselbe — Groß-/Kleinschreibung ist in Hex egal. In einer
+  Lösung trotzdem konsistent bleiben (typisch: Großbuchstaben), damit
   Korrektoren nicht stutzen.
+
+- **Übertrag in Binäraddition vergessen.** `1 + 1 = 10`, nicht `0`. Wer
+  die Übertragszeile weglässt, bekommt im nächsten Bit ein Bit zu wenig.
+  Immer die Übertragszeile **über** dem Summanden anschreiben.
+
+- **MSB als reines Vorzeichen interpretieren.** Im Zweierkomplement trägt
+  das höchstwertige Bit den Wert `−128` (bei 8 Bit), nicht `+128` mit
+  Minuszeichen davor. `1000 0000` ist deshalb **−128**, nicht „minus null".
+  Wertigkeitsreihe ist `−128, 64, 32, 16, 8, 4, 2, 1`.
+
+- **Signed vs. unsigned verwechselt.** Dasselbe Bitmuster `1111 1011` ist
+  als signed Byte **−5**, als unsigned Byte **251**. Welcher Wert gemeint
+  ist, entscheidet nur der Datentyp. In einer Aufgabe immer prüfen, ob
+  „mit Vorzeichen" gefragt ist.
+
+- **Gleitkomma als exakt annehmen.** `0.1 + 0.2 == 0.3` ist in IEEE 754
+  **false**. Wer mit Geld oder mit Vergleichen auf Gleichheit arbeitet,
+  rechnet in Cent als Integer oder nutzt `decimal`-Typen. Bei Float-
+  Vergleichen mit Toleranz arbeiten (`abs(a - b) < epsilon`).
 
 ---
 
 ## Was du danach kannst
 
-- Das **Stellenwert-Prinzip** erklaeren und auf jede Basis anwenden:
+- Das **Stellenwert-Prinzip** erklären und auf jede Basis anwenden:
   Wert = Summe aus `Ziffer × Basis^Position`.
-- Sicher in beide Richtungen umrechnen: Dezimal ↔ Binaer, Dezimal ↔ Hex,
-  Dezimal ↔ Oktal, Binaer ↔ Hex (ueber den Nibble-Trick).
+- Sicher in beide Richtungen umrechnen: Dezimal ↔ Binär, Dezimal ↔ Hex,
+  Dezimal ↔ Oktal, Binär ↔ Hex (über den Nibble-Trick).
 - Die 8-Bit-Wertigkeiten `128–64–32–16–8–4–2–1` aus dem Kopf abrufen.
-- Erkennen, **warum** Hex die natuerliche Schreibweise fuer Bitmuster ist:
+- Erkennen, **warum** Hex die natürliche Schreibweise für Bitmuster ist:
   eine Hex-Ziffer = 4 Bit = ein Nibble.
 - `chmod 755` und Verwandte (`644`, `700`, `777`) lesen und in `rwx`-Form
-  aufschluesseln.
+  aufschlüsseln.
 - Eine MAC-Adresse, einen CSS-Hex-Farbcode und ein IPv4-Subnetz als
-  Bitmuster bzw. Byte-Folge einordnen — die Grundlage fuer Subnetting,
+  Bitmuster bzw. Byte-Folge einordnen — die Grundlage für Subnetting,
   Speicheradressen und Farbverwaltung.
 - Schreib-Konventionen (`0b`, `0o`, `0x`, tiefgestellte Basis) sicher
   zuordnen.
+- Binärzahlen **addieren** inklusive Übertrag.
+- Negative ganze Zahlen im **Zweierkomplement** darstellen, den
+  Wertebereich pro Bitbreite ableiten und signed/unsigned auseinanderhalten.
+- Erklären, wie **IEEE 754** Kommazahlen als Vorzeichen, Exponent und
+  Mantisse codiert — und warum `0.1 + 0.2 ≠ 0.3` daraus folgt.
 
 <Quellen
   quellen={[
     {
       label: 'IEEE Std 1003.1 (POSIX) - chmod',
       href: 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/chmod.html',
-      detail: 'Spezifiziert die zwoelf File-Mode-Bits als vier Oktalziffern. Wert je Bit: r=4, w=2, x=1; die Stellen U/G/O fuer Eigentuemer, Gruppe und andere.'
+      detail: 'Spezifiziert die zwölf File-Mode-Bits als vier Oktalziffern. Wert je Bit: r=4, w=2, x=1; die Stellen U/G/O für Eigentümer, Gruppe und andere.'
     },
     {
       label: 'RFC 9542 - IANA Considerations and IETF Usage for IEEE 802 Parameters',
@@ -427,22 +611,27 @@ zu **IPv4 und Subnetting**.
     {
       label: 'W3C - CSS Color Module Level 4',
       href: 'https://www.w3.org/TR/css-color-4/',
-      detail: 'Definiert die Hex-Notation `#RRGGBB[AA]` fuer sRGB-Farben: drei (oder vier) Bytes Rot/Gruen/Blau (Alpha) als jeweils zwei Hex-Ziffern, 0x00 bis 0xFF pro Kanal.'
+      detail: 'Definiert die Hex-Notation `#RRGGBB[AA]` für sRGB-Farben: drei (oder vier) Bytes Rot/Grün/Blau (Alpha) als jeweils zwei Hex-Ziffern, 0x00 bis 0xFF pro Kanal.'
     },
     {
       label: 'RFC 4632 - Classless Inter-domain Routing (CIDR)',
       href: 'https://www.rfc-editor.org/rfc/rfc4632',
-      detail: 'IETF-Best-Current-Practice zur CIDR-Praefixnotation fuer IPv4. Grundlage fuer das Verstaendnis von Subnetzmasken als Bitmuster, wie sie sich aus diesem Kapitel anschliessen.'
+      detail: 'IETF-Best-Current-Practice zur CIDR-Präfixnotation für IPv4. Grundlage für das Verständnis von Subnetzmasken als Bitmuster, wie sie sich aus diesem Kapitel anschließen.'
     },
     {
       label: 'Python Language Reference - Integer literals',
       href: 'https://docs.python.org/3/reference/lexical_analysis.html#integer-literals',
-      detail: 'Offizielle Python-Referenz zu 0b-, 0o- und 0x-Schreibweisen sowie zur Regel, dass fuehrende Nullen in Nicht-Null-Dezimalzahlen nicht erlaubt sind.'
+      detail: 'Offizielle Python-Referenz zu 0b-, 0o- und 0x-Schreibweisen sowie zur Regel, dass führende Nullen in Nicht-Null-Dezimalzahlen nicht erlaubt sind.'
     },
     {
       label: 'ECMAScript Language Specification - Numeric literals',
       href: 'https://262.ecma-international.org/15.0/',
-      detail: 'Offizielle JavaScript-Sprachspezifikation fuer numerische Literale, darunter binaere, oktale und hexadezimale Schreibweisen.'
+      detail: 'Offizielle JavaScript-Sprachspezifikation für numerische Literale, darunter binäre, oktale und hexadezimale Schreibweisen.'
+    },
+    {
+      label: 'IEEE Std 754-2019 - Floating-Point Arithmetic',
+      href: 'https://standards.ieee.org/ieee/754/6210/',
+      detail: 'Aktuelle IEEE-Norm für binäre und dezimale Gleitkomma-Arithmetik. Definiert binary32 und binary64 mit Vorzeichen-, Exponent- und Mantisse-Feldern sowie das Bias-Schema.'
     },
   ]}
 />
