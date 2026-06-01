@@ -16,8 +16,7 @@ Bewusst ohne Zeit- oder Lese-Schaetzungen. Nur Reifegrad gegen Plan-Pflichten:
   Fokus: grosse Ready-Kapitel lesbarer machen, Tabellen/Diagramme stabilisieren,
   Uebungsbloecke vereinheitlichen und Strukturwarnungen systematisch abbauen.
 - **0.2 (Jahr-1/2-Abdeckung sichtbar)** offen. 102 Kapitel im TOC erfasst, in
-  CURRICULUM_MAPPING.md aber erst 22 abgebildet. Datei verweist zudem noch auf
-  den alten Pfad `src/lib/toc.ts` statt `src/lib/toc/data/*.ts`.
+  CURRICULUM_MAPPING.md aber erst 22 abgebildet.
 - **0.3 (Zentrale Stubs geschlossen)** offen. Mehrere Lernfelder mit Muss-Stubs:
   qualitaet 4/4, arbeitsrecht 2/2, software 6/9, webmedia 4/5.
 - **0.4 (Ready ist wirklich ready)** offen. 88 Validator-Warnungen auf
@@ -173,7 +172,7 @@ Ziel: Die groessten Luecken in Jahr 1/2 sind lernbar.
 
 Pflicht:
 
-- alle Prioritaet-Muss-Stubs aus LF1 bis LF9 mindestens `draft`
+- alle Muss-Stubs (Prioritaet Muss) aus LF1 bis LF9 mindestens `draft`
 - zentrale AP1-Themen mindestens `ready`
 - Quellenbank fuer neue Kapitel ergaenzt
 
@@ -207,7 +206,7 @@ Ziel: belastbare Version fuer andere Lernende.
 
 Pflicht:
 
-- alle Muss-Kapitel Jahr 1/2 mindestens `ready`
+- alle Pflichtkapitel (Prioritaet Muss) Jahr 1/2 mindestens `ready`
 - wichtigste Kapitel formal `final`
 - `npm.cmd run lint` erfolgreich
 - `npm.cmd run build` erfolgreich

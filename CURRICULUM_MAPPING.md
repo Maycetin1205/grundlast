@@ -44,7 +44,7 @@ eine App-Datenstruktur entstehen.
 
 ## Naechste Mapping-Arbeit
 
-1. Netzwerk-Kapitel aus `src/lib/toc.ts` vollstaendig eintragen.
+1. Netzwerk-Kapitel aus `src/lib/toc/data/*.ts` vollstaendig eintragen.
 2. Datenbank- und Software-Kapitel eintragen.
 3. Projekt, Sicherheit, Wirtschaft und Recht eintragen.
 4. Danach alle Stubs nach Prioritaet sortieren.

@@ -11,7 +11,7 @@ export const betriebssysteme: Lernfeld = {
       slug: "os-grundlagen",
       title: "Betriebssystem-Grundlagen",
       lessons: [
-        { slug: "linux-chmod", title: "Linux-Dateiberechtigungen (chmod, rwx)", minutes: 14, importance: 5, exam: true, status: "draft" },
+        { slug: "linux-chmod", title: "Linux-Dateiberechtigungen (chmod, rwx)", minutes: 18, importance: 5, exam: true, status: "ready" },
         { slug: "dateisysteme", title: "Dateisysteme (FAT32, NTFS, ext4, APFS)", minutes: 22, importance: 4, exam: true, status: "ready" },
         { slug: "prozess-thread", title: "Prozesse, Threads & Tasks", minutes: 18, importance: 4, exam: true, status: "ready" },
       ],

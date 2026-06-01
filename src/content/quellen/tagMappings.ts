@@ -5,7 +5,7 @@
  */
 
 export const slugTags: Record<string, string[]> = {
-  'von-neumann': ['ordnung'],
+  'von-neumann': ['ordnung', 'rechnerarchitektur', 'von-neumann', 'stored-program', 'edvac', 'cpu', 'alu', 'steuerwerk', 'ram', 'speicher', 'bus', 'instruction-cycle', 'fetch', 'decode', 'execute', 'cache', 'flaschenhals', 'harvard'],
   'bit-byte': ['ordnung', 'bit', 'byte', 'binaer', 'ascii', 'praefix', 'datenmenge', 'zeichenkodierung'],
   'zahlensysteme': ['ordnung', 'bit', 'byte', 'binaer', 'hex', 'hexadezimal', 'oktal', 'dezimal', 'stellenwert', 'nibble', 'chmod', 'dateirechte', 'mac-adresse', 'eui-48', 'cidr', 'subnetting', 'farbe', 'css', 'rgb', 'python', 'javascript', 'ecmascript', 'literal'],
   'prefixe': ['ordnung', 'bit', 'byte', 'binaer', 'iec', 'praefix', 'datenmenge', 'si', 'dezimal'],
@@ -14,7 +14,7 @@ export const slugTags: Record<string, string[]> = {
   'raid-systeme': ['sicherheit', 'backup'],
   'usv-systeme': ['sicherheit', 'verfuegbarkeit'],
   'scan-bilddaten': ['ordnung'],
-  'linux-chmod': ['sicherheit'],
+  'linux-chmod': ['sicherheit', 'betriebssystem', 'linux', 'chmod', 'oktal', 'dateirechte', 'posix', 'rwx', 'owner', 'group', 'other', 'suid', 'sgid', 'sticky'],
   'prozess-thread': ['betriebssystem', 'prozess', 'thread', 'task', 'scheduler', 'multitasking'],
   'zentral-dezentral': ['betriebssystem', 'zentral', 'dezentral', 'hybrid', 'cloud', 'verzeichnisdienst', 'client-server', 'it-infrastruktur'],
   virtualisierung: ['sicherheit'],
@@ -69,6 +69,17 @@ export const slugTags: Record<string, string[]> = {
 }
 
 export const lessonSourceIds: Record<string, string[]> = {
+  'von-neumann': [
+    'smithsonian-edvac-first-draft',
+    'computer-history-museum-edvac',
+    'ibm-cpu-instruction-cycle',
+    'cornell-cpu-stages',
+  ],
+  'linux-chmod': [
+    'posix-chmod',
+    'gnu-coreutils-chmod',
+    'linux-man-pages-chmod2',
+  ],
   zahlensysteme: [
     'posix-chmod',
     'rfc-9542',
@@ -76,6 +87,13 @@ export const lessonSourceIds: Record<string, string[]> = {
     'rfc-4632',
     'python-lexical-integer-literals',
     'ecma-262-numeric-literals',
+  ],
+  'ipv4-subnetting': [
+    'rfc-791',
+    'rfc-4632',
+    'rfc-1918',
+    'rfc-3021',
+    'iana-ipv4-special-registry',
   ],
 }
 

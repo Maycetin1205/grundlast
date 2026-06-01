@@ -20,7 +20,7 @@ export const netzwerke: Lernfeld = {
       slug: "adressierung",
       title: "IPv4 & Subnetting",
       lessons: [
-        { slug: "ipv4-subnetting", title: "IPv4 & Subnetting", minutes: 20, importance: 5, exam: true, status: "draft" },
+        { slug: "ipv4-subnetting", title: "IPv4 & Subnetting", minutes: 20, importance: 5, exam: true, status: "ready" },
         { slug: "netzwerkkonfiguration", title: "Netzwerkkonfiguration, DHCP, DNS & Diagnose", minutes: 32, importance: 5, exam: true, status: "ready" },
       ],
     },

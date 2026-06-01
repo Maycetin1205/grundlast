@@ -22,4 +22,12 @@ export default defineConfig(({ mode }) => ({
     // Single-File-Build nur für `npm run build:single` – normaler Build bleibt mehrteilig.
     ...(mode === 'single' ? [viteSingleFile()] : []),
   ],
+  server: {
+    host: '127.0.0.1',
+    port: 3000,
+  },
+  preview: {
+    host: '127.0.0.1',
+    port: 4174,
+  },
 }))

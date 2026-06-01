@@ -1,152 +1,247 @@
-﻿# Linux-Dateiberechtigungen (chmod, rwx)
+# Linux-Dateiberechtigungen (chmod, rwx)
+
+<MetaBar
+  lernfeld="LF 2 - Arbeitsplaetze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT - 5/5"
+/>
 
 ## Worum geht's
 
-Du lernst, wie Linux regelt, wer auf Dateien und Ordner zugreifen darf — und wie du
-Berechtigungen mit dem `chmod`-Befehl setzt. In der Prüfung wirst du Oktalzahlen wie `755`
-oder `644` interpretieren und berechnen müssen.
+Linux speichert an Dateien und Verzeichnissen, wer lesen, schreiben oder ausfuehren darf. Das ist ein Grundthema fuer Betriebssysteme, Sicherheit und den Umgang mit Servern. In der Pruefung taucht es oft als kurze Rechen- oder Zuordnungsaufgabe auf: `chmod 755`, `-rw-r--r--`, `rwxr-x---` oder die Frage, warum ein Benutzer zwar eine Datei sehen, aber nicht betreten oder starten kann.
+
+Die Idee ist klein, aber sehr wichtig: Pro Rolle gibt es drei Rechte. Jedes Recht ist ein <Term id="bit">Bit</Term>. Drei Bits ergeben eine Oktalziffer. Genau deshalb passen Linux-Rechte so gut zu Oktalzahlen aus dem Kapitel Zahlensysteme.
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du Linux-Rechte in symbolischer Form (`rwxr-xr-x`) und als Oktalzahl (`755`) lesen, berechnen und begruenden. Du kannst erklaeren, warum `r=4`, `w=2`, `x=1` gilt, warum die Reihenfolge immer User-Group-Other ist und warum Rechte bei Dateien und Verzeichnissen nicht exakt dasselbe bedeuten. Ausserdem erkennst du riskante Einstellungen wie `777` und kannst symbolische `chmod`-Befehle wie `u+x`, `g-w` oder `o=` einordnen.
+
+<Analogie>
+Stell dir ein Firmengebaeude mit drei Personengruppen vor: Eigentuemer, Team und Besucher. Jede Gruppe kann drei Schluessel bekommen: einen Leseschluessel zum Anschauen, einen Schreibschluessel zum Veraendern und einen Ausfuehrungsschluessel zum Betreten oder Starten. `chmod` ist dann die kurze Notiz am Tuerplan: Wer bekommt welche Schluessel?
+</Analogie>
 
 ---
 
-## Erklärung
+## Faktenkern
 
-### Wer darf was? Die drei Gruppen
-
-Linux verwaltet Berechtigungen für drei Gruppen:
-
-| Gruppe | Symbol | Bedeutung |
+| Baustein | Symbol | Bedeutung |
 |---|---|---|
-| **Besitzer** (Owner/User) | `u` | Die Person, der die Datei gehört |
-| **Gruppe** (Group) | `g` | Alle Benutzer, die derselben Gruppe angehören |
-| **Alle anderen** (Others) | `o` | Alle übrigen Benutzer auf dem System |
+| User/Eigentuemer | `u` | Benutzer, dem Datei oder Verzeichnis gehoert |
+| Group/Gruppe | `g` | Benutzer der zugeordneten Gruppe |
+| Other/Andere | `o` | alle uebrigen Benutzer |
+| Read/Lesen | `r` | Wert 4 |
+| Write/Schreiben | `w` | Wert 2 |
+| Execute/Ausfuehren | `x` | Wert 1 |
 
-### Die drei Rechte
+Ein Rechtestring aus `ls -l` besteht aus Dateityp plus drei Dreiergruppen:
 
-| Recht | Symbol | Oktalwert | Bedeutung |
-|---|---|---|---|
-| **Lesen** | `r` (read) | **4** | Datei öffnen / Verzeichnis auflisten |
-| **Schreiben** | `w` (write) | **2** | Datei bearbeiten / Dateien in Verzeichnis anlegen |
-| **Ausführen** | `x` (execute) | **1** | Datei als Programm starten / Verzeichnis betreten |
-
-### Oktalschreibweise: So funktioniert die Berechnung
-
-Für jede der drei Gruppen werden die Rechte als Summe angegeben:
-
-```
-rwx = 4 + 2 + 1 = 7   (alle Rechte)
-rw- = 4 + 2 + 0 = 6   (lesen + schreiben)
-r-x = 4 + 0 + 1 = 5   (lesen + ausführen)
-r-- = 4 + 0 + 0 = 4   (nur lesen)
---- = 0 + 0 + 0 = 0   (keine Rechte)
+```text
+- rwx r-x r--
+|  |   |   |
+|  |   |   +-- Other: lesen
+|  |   +------ Group: lesen + ausfuehren
+|  +---------- User: lesen + schreiben + ausfuehren
++------------- Dateityp: - = Datei, d = Verzeichnis
 ```
 
-Das Ergebnis: Eine dreistellige Oktalzahl wie `755` — eine Ziffer pro Gruppe.
-
-### Übersichtstabelle
-
-| Oktal | Binär | Rechte | Bedeutung |
-|---|---|---|---|
-| 7 | 111 | rwx | Lesen + Schreiben + Ausführen |
-| 6 | 110 | rw- | Lesen + Schreiben |
-| 5 | 101 | r-x | Lesen + Ausführen |
-| 4 | 100 | r-- | Nur Lesen |
-| 2 | 010 | -w- | Nur Schreiben (selten) |
-| 1 | 001 | --x | Nur Ausführen (selten) |
-| 0 | 000 | --- | Keine Rechte |
-
-### Typische Kombinationen in der Praxis
-
-| Kombination | Bedeutung | Typischer Einsatz |
-|---|---|---|
-| `755` | Besitzer: rwx / Gruppe: r-x / Alle: r-x | Skripte, Programmdateien, Verzeichnisse |
-| `644` | Besitzer: rw- / Gruppe: r-- / Alle: r-- | Normale Textdateien, Konfigurationsdateien |
-| `700` | Besitzer: rwx / Gruppe: --- / Alle: --- | Private Dateien, SSH-Schlüssel |
-| `600` | Besitzer: rw- / Gruppe: --- / Alle: --- | Private Konfigurationsdateien (z. B. `~/.ssh/id_rsa`) |
-| `777` | Alle: rwx | Temporäre Verzeichnisse (sicherheitskritisch!) |
+Bei einem normalen <Term id="dateisystem">Dateisystem</Term> landen diese Informationen als Metadaten zur Datei, bei ext-Dateisystemen zum Beispiel im <Term id="inode">Inode</Term>. Der Name einer Datei und ihre Rechte sind also nicht "Text im Inhalt", sondern Verwaltungsdaten des Betriebssystems.
 
 ---
 
-## Beispiele – Schritt für Schritt
+## Rechte Lesen: rwx
 
-<Rechenweg
-  title="chmod 755 lesen: Was bedeutet das?"
-  steps={[
-    {
-      title: "Stelle für Stelle auflösen",
-      formula: "chmod 755\n        ↑↑↑\n        │││\n        ││└── Alle anderen: 5\n        │└─── Gruppe: 5\n        └──── Besitzer: 7",
-      explanation: "Jede der drei Ziffern steht für eine Gruppe: Besitzer, Gruppe, Alle anderen. Die Reihenfolge ist immer Besitzer → Gruppe → Andere."
-    },
-    {
-      title: "Jede Ziffer in Rechte umrechnen",
-      formula: "Besitzer (7): 4+2+1 = rwx (Lesen, Schreiben, Ausführen)\nGruppe   (5): 4+0+1 = r-x (Lesen, Ausführen)\nAndere   (5): 4+0+1 = r-x (Lesen, Ausführen)",
-      explanation: "7 = volle Kontrolle. 5 = lesen und ausführen, aber NICHT schreiben. Der Besitzer darf alles, alle anderen dürfen lesen und ausführen."
-    },
-    {
-      title: "Ergebnis als Rechtestring",
-      formula: "chmod 755 → -rwxr-xr-x\n\nPosition: [Typ][Besitzer][Gruppe][Andere]\n-         = Datei (d = Verzeichnis)\nrwx       = Besitzer: alle Rechte\nr-x       = Gruppe: lesen + ausführen\nr-x       = Andere: lesen + ausführen",
-      explanation: "Der ls -l Befehl zeigt Berechtigungen in dieser symbolischen Schreibweise. Das erste Zeichen ist der Dateityp (- für Datei, d für Verzeichnis)."
-    }
-  ]}
-/>
+Die drei Rechte haben je nach Objekt eine leicht andere Bedeutung:
 
-<Rechenweg
-  title="chmod 644 setzen: Für normale Textdateien"
-  steps={[
-    {
-      title: "Gewünschte Rechte definieren",
-      formula: "Besitzer soll: lesen + schreiben (kein Ausführen)\nGruppe soll:   nur lesen\nAndere sollen: nur lesen",
-      explanation: "Für Konfigurationsdateien oder HTML-Dateien ist dieses Muster typisch: Der Besitzer pflegt die Datei, alle anderen dürfen sie nur lesen."
-    },
-    {
-      title: "Rechte in Zahlen umwandeln",
-      formula: "Besitzer: r+w = 4+2 = 6\nGruppe:   r   = 4   = 4\nAndere:   r   = 4   = 4",
-      explanation: "Einfach die Werte der gewünschten Rechte addieren: r=4, w=2, x=1. Nicht gewünschte Rechte tragen 0 bei."
-    },
-    {
-      title: "chmod-Befehl zusammensetzen",
-      formula: "chmod 644 dateiname.txt\n\nErgebnis: -rw-r--r--",
-      explanation: "Die drei Ziffern in der Reihenfolge Besitzer-Gruppe-Andere ergeben den chmod-Befehl. Im ls -l erscheint es als -rw-r--r--."
-    }
-  ]}
-/>
+| Recht | Bei Dateien | Bei Verzeichnissen |
+|---|---|---|
+| `r` | Inhalt lesen | Namen im Verzeichnis auflisten |
+| `w` | Inhalt veraendern | Eintraege anlegen, loeschen oder umbenennen |
+| `x` | Datei als Programm/Skript starten | Verzeichnis betreten und Pfade darin aufloesen |
 
-<Rechenweg
-  title="Aufgabe: Rechte aus ls -l lesen"
-  steps={[
-    {
-      title: "ls -l Ausgabe interpretieren",
-      formula: "ls -l beispiel.sh\n-rwxr-x--- 1 max staff 1024 Apr 16 script.sh",
-      explanation: "Die ersten 10 Zeichen sind die Berechtigungen. Position 1: Dateityp. Positionen 2-4: Besitzer. Positionen 5-7: Gruppe. Positionen 8-10: Andere."
-    },
-    {
-      title: "Abschnitte trennen",
-      formula: "-  rwx  r-x  ---\n↑   ↑    ↑    ↑\n│   │    │    └── Andere: ---  = 0\n│   │    └─────── Gruppe: r-x  = 5\n│   └──────────── Besitzer: rwx = 7\n└──────────────── Dateityp: - (Datei)",
-      explanation: "Immer in Dreierblöcke aufteilen. Jeder Block wird zur Oktalzahl: rwx=7, r-x=5, ---=0."
-    },
-    {
-      title: "Oktalzahl ablesen",
-      formula: "-rwxr-x---\n= Besitzer: rwx = 7\n= Gruppe:   r-x = 5\n= Andere:   --- = 0\n→ chmod 750",
-      explanation: "Das entspricht chmod 750. Besitzer hat volle Kontrolle, Gruppe darf lesen und ausführen, Andere haben keinen Zugriff."
-    }
-  ]}
-/>
+<Tipp titel="Pruefungsmerksatz">
+Bei Dateien bedeutet `x`: ausfuehren. Bei Verzeichnissen bedeutet `x`: betreten beziehungsweise durchsuchen. Ohne `x` ist ein Verzeichnis praktisch verschlossen, selbst wenn man einzelne Namen kennt.
+</Tipp>
+
+Wichtig: `w` auf einem Verzeichnis ist maechtiger, als es zuerst wirkt. Wer in einem Verzeichnis schreiben darf, kann dort Dateinamen erzeugen, entfernen oder umbenennen. Das betrifft Verzeichniseintraege, nicht nur den Inhalt vorhandener Dateien.
+
+---
+
+## Oktalschreibweise
+
+`chmod 755` ist keine Dezimalzahl im Alltagsinn, sondern eine kompakte Oktalschreibweise fuer drei Rollen. Jede Stelle steht fuer eine Rolle:
+
+```text
+chmod 755
+      |||
+      ||+-- Other
+      |+--- Group
+      +---- User
+```
+
+Die Rechte werden pro Rolle addiert:
+
+| Oktal | Bits | Rechte | Rechnung |
+|---|---|---|---|
+| 0 | `000` | `---` | 0 |
+| 1 | `001` | `--x` | 1 |
+| 2 | `010` | `-w-` | 2 |
+| 3 | `011` | `-wx` | 2 + 1 |
+| 4 | `100` | `r--` | 4 |
+| 5 | `101` | `r-x` | 4 + 1 |
+| 6 | `110` | `rw-` | 4 + 2 |
+| 7 | `111` | `rwx` | 4 + 2 + 1 |
+
+Typische Muster:
+
+| Modus | Rechtestring | Typischer Einsatz |
+|---|---|---|
+| `755` | `rwxr-xr-x` | Programme, Skripte, viele Verzeichnisse |
+| `750` | `rwxr-x---` | Zugriff fuer Eigentuemer und Gruppe, nicht fuer andere |
+| `700` | `rwx------` | private Verzeichnisse oder Skripte |
+| `644` | `rw-r--r--` | normale Text- und Konfigurationsdateien |
+| `600` | `rw-------` | private Schluessel oder sensible Konfigurationsdateien |
+| `777` | `rwxrwxrwx` | technisch offen, meistens sicherheitskritisch |
+
+---
+
+## Schritt Fuer Schritt: chmod 755 Lesen
+
+<StepByStep titel="Was bedeutet chmod 755?">
+  <Schritt nr={1} titel="Stellen trennen">
+    `755` wird von links nach rechts gelesen: User = `7`, Group = `5`, Other = `5`.
+  </Schritt>
+  <Schritt nr={2} titel="Jede Ziffer zerlegen">
+    `7 = 4 + 2 + 1 = rwx`. `5 = 4 + 1 = r-x`. Die `2` fehlt bei `5`, also fehlt Schreibrecht.
+  </Schritt>
+  <Schritt nr={3} titel="Rechtestring bilden">
+    User bekommt `rwx`, Group bekommt `r-x`, Other bekommt `r-x`. Zusammengesetzt: `rwxr-xr-x`.
+  </Schritt>
+  <Ergebnis>
+    `chmod 755 datei` bedeutet: Der Eigentuemer darf lesen, schreiben und ausfuehren. Gruppe und andere duerfen lesen und ausfuehren, aber nicht schreiben.
+  </Ergebnis>
+</StepByStep>
+
+<StepByStep titel="-rwxr-x--- in eine chmod-Zahl umwandeln">
+  <Schritt nr={1} titel="Dateityp wegnehmen">
+    Das erste Zeichen `-` beschreibt nur den Dateityp. Fuer die Rechte bleiben `rwxr-x---`.
+  </Schritt>
+  <Schritt nr={2} titel="In Dreiergruppen schneiden">
+    `rwx r-x ---` ergibt User = `rwx`, Group = `r-x`, Other = `---`.
+  </Schritt>
+  <Schritt nr={3} titel="Werte addieren">
+    User: `rwx = 4 + 2 + 1 = 7`. Group: `r-x = 4 + 1 = 5`. Other: `--- = 0`.
+  </Schritt>
+  <Ergebnis>
+    `-rwxr-x---` entspricht `chmod 750`.
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## Symbolische Schreibweise
+
+Neben Oktalzahlen gibt es die symbolische Schreibweise. Sie ist praktisch, wenn du nur einzelne Rechte aendern willst:
+
+| Befehl | Bedeutung |
+|---|---|
+| `chmod u+x script.sh` | Eigentuemer bekommt Ausfuehrungsrecht dazu |
+| `chmod g-w daten.csv` | Gruppe verliert Schreibrecht |
+| `chmod o= geheim.txt` | Andere bekommen gar keine Rechte |
+| `chmod a+r readme.txt` | Alle Rollen bekommen Leserecht dazu |
+| `chmod ug+rw projekt` | User und Group bekommen Lesen und Schreiben dazu |
+
+Die Zeichen bedeuten:
+
+| Teil | Bedeutung |
+|---|---|
+| `u`, `g`, `o`, `a` | User, Group, Other, All |
+| `+` | Recht hinzufuegen |
+| `-` | Recht entfernen |
+| `=` | Rechte exakt setzen |
+| `r`, `w`, `x` | Lesen, Schreiben, Ausfuehren |
+
+<Beispiel titel="Praxisfall: Skript laesst sich nicht starten">
+Du hast `backup.sh` erstellt und bekommst beim Start `Permission denied`. Mit `ls -l backup.sh` siehst du `-rw-r--r--`. Der Eigentuemer darf lesen und schreiben, aber nicht ausfuehren. Loesung: `chmod u+x backup.sh`. Danach steht dort typischerweise `-rwxr--r--` oder, wenn andere ebenfalls ausfuehren duerfen sollen, ein Modus wie `755`.
+</Beispiel>
+
+---
+
+## Sonderbits Kurz Einordnen
+
+POSIX-Rechte haben neben `rwx` noch besondere Bits. Fuer AP1 reicht meist, sie wiederzuerkennen und nicht mit den normalen drei Ziffern zu verwechseln:
+
+| Sonderbit | Oktalstelle | Typisches Beispiel | Kurzidee |
+|---|---|---|---|
+| Setuid | `4xxx` | `chmod 4755 programm` | Programm laeuft mit Rechten des Dateieigentuemers |
+| Setgid | `2xxx` | `chmod 2755 verzeichnis` | Ausfuehrung/Verzeichnisvererbung mit Gruppenbezug |
+| Sticky Bit | `1xxx` | `chmod 1777 /tmp` | In gemeinsam beschreibbaren Verzeichnissen duerfen Benutzer meist nur eigene Eintraege loeschen |
+
+Die normale AP1-Rechnung bleibt trotzdem dieselbe: Die letzten drei Ziffern sind User, Group und Other. Bei `1777` ist also `777` der offene `rwxrwxrwx`-Teil; die fuehrende `1` ist das Sticky Bit.
 
 ---
 
 ## Typische Fehler
 
-- **r, w, x Werte vergessen**: Die Werte sind fest: r=4, w=2, x=1. Diese drei Zahlen
-  müssen auswendig bekannt sein — aus ihnen folgt alles andere.
-
-- **Reihenfolge der Gruppen**: Immer Besitzer → Gruppe → Andere. Nie umdrehen.
-  `755` bedeutet Besitzer=7, Gruppe=5, Andere=5 — nicht umgekehrt.
-
-- **Oktalziffer ≠ Summe merken**: 7 = rwx (4+2+1), 6 = rw- (4+2), 5 = r-x (4+1),
-  4 = r-- (4). Die 3 kommt nie vor (wäre wx = 2+1, ohne Lesen — extrem selten).
-
-- **Ausführen bei Verzeichnissen**: Für ein Verzeichnis bedeutet `x` nicht „ausführen"
-  sondern „betreten" (cd). Ohne x darf man nicht in das Verzeichnis wechseln,
-  auch wenn man r hat. In Aufgaben relevant bei Aufgaben zu Verzeichnisrechten.
+<Warnung titel="Pruefungs- und Praxisfallen">
+1. **Reihenfolge vertauschen.** Immer User, Group, Other. `750` heisst nicht "Other = 7".
+2. **`4` als Schreiben deuten.** `r=4`, `w=2`, `x=1`. Eine einzelne `4` ist nur Lesen.
+3. **`chmod 777` als einfache Loesung nehmen.** Es funktioniert oft, ist aber sicherheitskritisch, weil alle schreiben und ausfuehren duerfen.
+4. **Dateien und Verzeichnisse gleich behandeln.** `x` auf Dateien startet Programme; `x` auf Verzeichnissen erlaubt Betreten und Pfadauflösung.
+5. **Schreibrecht im Verzeichnis unterschaetzen.** Wer in einem Verzeichnis schreiben darf, kann dort Eintraege anlegen oder loeschen, auch wenn die Datei selbst andere Rechte hat.
+6. **Dateityp mit Rechten verwechseln.** Das erste Zeichen bei `ls -l` (`-`, `d`, `l`) gehoert nicht zur chmod-Zahl.
+7. **Sonderbits uebersehen.** Vierstellige Modi wie `4755` oder `1777` enthalten vorne ein Sonderbit; die letzten drei Stellen bleiben die normalen Rechte.
+</Warnung>
 
 ---
 
+## Typische Pruefungsaufgabe
+
+> **Aufgabe:** Ein Skript zeigt in `ls -l` die Rechte `-rw-r-----`. Welche Oktalzahl entspricht diesen Rechten? Welche Benutzer duerfen das Skript ausfuehren?
+
+**Musterloesung:** Das erste Zeichen `-` ist der Dateityp und wird fuer chmod nicht gerechnet. Die Rechte sind `rw- r-- ---`. User: `rw- = 4 + 2 = 6`. Group: `r-- = 4`. Other: `--- = 0`. Die Oktalzahl ist also `640`. Ausfuehren darf niemand, weil in keiner Dreiergruppe ein `x` gesetzt ist.
+
+---
+
+## Was Haengen Bleibt
+
+Linux-Rechte sind drei Bits pro Rolle: `r=4`, `w=2`, `x=1`. Die Rollen stehen immer in der Reihenfolge User, Group, Other. Deshalb wird aus `rwxr-xr-x` die Zahl `755` und aus `rw-r--r--` die Zahl `644`. Bei Verzeichnissen ist besonders `x` wichtig, weil es Betreten und Pfadauflösung erlaubt. `chmod` ist damit kein Auswendiglern-Zauber, sondern einfache Bitrechnung plus Sicherheitsverstand.
+
+<Glossar
+  einträge={[
+    {
+      term: 'chmod',
+      definition: 'Unix/Linux-Befehl zum Aendern von Dateimodi, also Rechten wie Lesen, Schreiben und Ausfuehren fuer User, Group und Other.'
+    },
+    {
+      term: 'rwx',
+      definition: 'Symbolische Darstellung der drei Grundrechte read, write und execute. Die Werte sind r=4, w=2 und x=1.'
+    },
+    {
+      term: 'Oktalmodus',
+      definition: 'Zahlenform fuer Dateirechte, bei der jede Ziffer drei Bits zusammenfasst. Beispiel: 755 steht fuer rwxr-xr-x.'
+    },
+    {
+      term: 'Sticky Bit',
+      definition: 'Sonderbit fuer gemeinsam beschreibbare Verzeichnisse. Es begrenzt typischerweise, wer fremde Eintraege loeschen oder umbenennen darf.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'IEEE Std 1003.1 (POSIX) - chmod',
+      href: 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/chmod.html',
+      detail: 'POSIX-Spezifikation fuer chmod, symbolische Modi und die numerische Darstellung von File-Mode-Bits.'
+    },
+    {
+      label: 'GNU Coreutils Manual - chmod invocation',
+      href: 'https://www.gnu.org/software/coreutils/manual/html_node/chmod-invocation.html',
+      detail: 'Dokumentiert die praktische Verwendung von chmod in GNU/Linux-Umgebungen, inklusive symbolischer und numerischer Modi.'
+    },
+    {
+      label: 'Linux man-pages - chmod(2)',
+      href: 'https://man7.org/linux/man-pages/man2/chmod.2.html',
+      detail: 'Linux-Systemaufruf fuer das Aendern von Dateimodi und Beschreibung der Sonderbits wie set-user-ID, set-group-ID und sticky bit.'
+    },
+  ]}
+/>

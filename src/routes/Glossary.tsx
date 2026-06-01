@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { BookMarked } from 'lucide-react'
 import { useGlossarStore } from '../lib/glossar'
 import type { GlossarEintrag } from '../lib/glossar'
 
 export default function Glossary() {
+  const location = useLocation()
   const einträge = useGlossarStore((state) => state.einträge)
   const entries = Object.values(einträge).sort((a, b) =>
     a.begriff.localeCompare(b.begriff, 'de'),
@@ -17,6 +19,14 @@ export default function Glossary() {
   }, {})
 
   const letters = Object.keys(grouped).sort((a, b) => a.localeCompare(b, 'de'))
+
+  useEffect(() => {
+    if (!location.hash) return
+    const targetId = decodeURIComponent(location.hash.slice(1))
+    window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({ block: 'start' })
+    })
+  }, [entries.length, location.hash])
 
   return (
     <article>
@@ -129,7 +139,14 @@ export default function Glossary() {
                   }}
                 >
                   {grouped[letter].map((eintrag) => (
-                    <li key={eintrag.id} style={{ background: 'var(--color-paper)' }}>
+                    <li
+                      key={eintrag.id}
+                      id={eintrag.id}
+                      style={{
+                        background: 'var(--color-paper)',
+                        scrollMarginTop: 24,
+                      }}
+                    >
                       <Link
                         to={eintrag.kapitel.href}
                         className="no-underline"

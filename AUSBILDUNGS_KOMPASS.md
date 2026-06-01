@@ -55,7 +55,7 @@ Wichtige Einordnung:
 - `CURRICULUM_MAPPING.md` verfolgt die Zuordnung zu Lernfeldern, Ausbildungsjahren und Pruefungsrelevanz.
 - `AP1_LERNPFAD.md` beschreibt nur die Pruefungs- und Priorisierungsschicht, nicht das Gesamtziel.
 - `KAPITEL_QUALITAET.md` gilt fuer alle Kapitel, unabhaengig davon, ob sie AP1-relevant sind.
-- `src/lib/toc.ts` bleibt die technische Quelle fuer Navigation und Status.
+- `src/lib/toc/data/*.ts` bleibt die technische Quelle fuer Navigation und Status.
 - `REVIEW_LOG.md` bleibt die Freigabeakte fuer `final`.
 
 ## Statuslogik

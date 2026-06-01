@@ -64,7 +64,7 @@ Ein Kapitel ist erst final, wenn alle 12 Punkte erfuellt sind.
 
 13. **Glossar-Pflege**
     - Alle wichtigen Fachbegriffe werden beim ersten sinnvollen Auftreten mit `<Term id="...">...</Term>` markiert.
-    - Jeder verwendete Term hat einen Eintrag in `src/stores/glossarStore.ts`.
+    - Jeder verwendete Term hat einen Eintrag in `src/content/glossar/*.ts`.
     - Kurzdefinitionen sind knapp genug fuer Hover-Tooltips; Langdefinitionen erklaeren den Begriff anfaengerfreundlich.
     - Begriffe werden nicht inflationaer markiert: pro Abschnitt nur die fachlich wichtigen Erstvorkommen.
 
@@ -77,7 +77,7 @@ Jedes Kapitel bekommt intern eine Einstufung:
 - **B Roh gut**: erklaert das Thema, aber ohne volle Pruefungsdidaktik.
 - **C Stub/Fragment**: geplant oder nur teilweise brauchbar.
 
-## Status-Gate in `src/lib/toc.ts`
+## Status-Gate in `src/lib/toc/data/*.ts`
 
 Der Navigationsstatus ist bewusst strenger als frueher:
 
@@ -152,4 +152,4 @@ Bitte bearbeite genau diesen Schritt:
 [naechster konkreter Schritt]
 ```
 
-Der naechste Schritt wird nicht geraten, sondern aus `AP1_LERNPFAD.md`, `src/lib/toc.ts` und dem gerade erreichten Stand abgeleitet.
+Der naechste Schritt wird nicht geraten, sondern aus `AP1_LERNPFAD.md`, `src/lib/toc/data/*.ts` und dem gerade erreichten Stand abgeleitet.

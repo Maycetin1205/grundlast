@@ -522,6 +522,19 @@ export const qBisS: GlossarEintrag[] = [
       },
     },
   {
+      id: 'stelle',
+      begriff: 'Stelle',
+      kurzdefinition: 'Eine Stelle ist eine Position innerhalb einer Zahl.',
+      definition: [
+        'In einem Stellenwertsystem hat jede Stelle eine eigene Wertigkeit. Ganz rechts steht Position 0, nach links steigt der Stellenwert.',
+        'Beispiel: In 1011₂ steht die linke 1 an der 8er-Stelle, die rechte 1 an der 1er-Stelle.',
+      ],
+      kapitel: {
+        titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
+        href: '/lernen/grundlagen/zahlen/zahlensysteme',
+      },
+    },
+  {
       id: 'stellenwert',
       begriff: 'Stellenwert',
       kurzdefinition: 'Der Stellenwert beschreibt, welchen Wert eine Position innerhalb einer Zahl hat.',

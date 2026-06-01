@@ -121,9 +121,9 @@ Jeder Chat bearbeitet genau einen klaren Schritt. Die Regeln werden nicht jedes 
 - `AP1_LERNPFAD.md`
 - `KAPITEL_QUALITAET.md`
 - `REVIEW_LOG.md`
-- `src/lib/toc.ts`
-- `src/lib/sources.ts`
-- `src/stores/glossarStore.ts`
+- `src/lib/toc/data/*.ts`
+- `src/content/quellen/sourceBank.ts`
+- `src/content/glossar/*.ts`
 
 Am Ende jedes Schritts muss der Chat den naechsten sinnvollen Schritt bestimmen und einen kopierbaren Prompt fuer den naechsten Chat ausgeben. Dadurch kann die Arbeit in kleinen, sauberen Schritten fortgesetzt werden.
 

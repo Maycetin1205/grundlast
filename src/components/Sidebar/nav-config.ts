@@ -19,6 +19,7 @@ import {
   Globe,
   LayoutDashboard,
   Library,
+  Map as MapIcon,
   Monitor,
   Network,
   Scale,
@@ -38,6 +39,7 @@ interface TopLevelNavItem {
 
 export const TOP_LEVEL_NAV_ITEMS: TopLevelNavItem[] = [
   { to: "/", label: "Übersicht", icon: LayoutDashboard, end: true },
+  { to: "/lernpfad", label: "Lernpfad", icon: MapIcon },
   { to: "/ap1", label: "AP1-Modus", icon: Target },
   { to: "/prüfen", label: "Prüfen (geplant)", icon: ClipboardCheck },
   { to: "/werkzeuge", label: "Werkzeuge (geplant)", icon: Wrench },

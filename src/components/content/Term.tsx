@@ -53,7 +53,10 @@ export default function Term({ id, children, className }: TermProps) {
               )}
               sideOffset={7}
             >
-              {eintrag.kurzdefinition}
+              <span className="block font-ui text-xs font-bold uppercase text-paper/75">
+                {eintrag.begriff}
+              </span>
+              <span className="mt-1 block">{eintrag.kurzdefinition}</span>
               <Tooltip.Arrow className="fill-ink" />
             </Tooltip.Content>
           </Tooltip.Portal>
@@ -104,13 +107,21 @@ export default function Term({ id, children, className }: TermProps) {
 
               <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-rule pt-4 font-ui text-sm text-muted">
                 <BookOpen className="h-4 w-4 text-accent" aria-hidden="true" />
-                <span>Herkunft:</span>
+                <span>Links:</span>
                 <Link
                   to={eintrag.kapitel.href}
                   onClick={() => setDialogOffen(false)}
                   className="font-medium text-accent no-underline hover:underline"
                 >
                   {eintrag.kapitel.titel}
+                </Link>
+                <span aria-hidden="true">·</span>
+                <Link
+                  to={`/glossar#${eintrag.id}`}
+                  onClick={() => setDialogOffen(false)}
+                  className="font-medium text-accent no-underline hover:underline"
+                >
+                  Zum Glossar
                 </Link>
               </div>
             </div>

@@ -327,6 +327,19 @@ export const eBisH: GlossarEintrag[] = [
       },
     },
   {
+      id: 'fuehrende-null',
+      begriff: 'Führende Null',
+      kurzdefinition: 'Eine führende Null steht links vor einer Zahl und ändert ihren Wert nicht.',
+      definition: [
+        'Führende Nullen machen eine Zahl auf eine feste Länge, ohne den Wert zu verändern. Das ist bei Bitmustern nützlich, weil ein Byte immer acht Stellen hat.',
+        'Beispiel: 101101₂ und 00101101₂ haben denselben Wert. Die zweite Schreibweise zeigt nur ausdrücklich alle 8 Bit.',
+      ],
+      kapitel: {
+        titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
+        href: '/lernen/grundlagen/zahlen/zahlensysteme',
+      },
+    },
+  {
       id: 'gateway',
       begriff: 'Standardgateway',
       kurzdefinition: 'Das Standardgateway ist die Router-Adresse, an die ein Host alle Pakete schickt, deren Ziel außerhalb des eigenen Subnetzes liegt.',

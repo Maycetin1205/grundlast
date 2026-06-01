@@ -1,5 +1,11 @@
 # Zahlensysteme (Dual, Hex, Dezimal)
 
+<MetaBar
+  lernfeld="LF 5: Informationen mittels Daten abbilden; Brücke zu LF 9 Netzwerke"
+  prüfungsrelevanz="Grundlage: Daten, Speicher, Netzwerkadressen"
+  quelle="KMK-Rahmenlehrplan, FIAusbV, BIBB-Umsetzungshilfe"
+/>
+
 ## Worum geht's
 
 Du lernst, wie Computer Zahlen darstellen und wie du zwischen **Binär**
@@ -9,6 +15,53 @@ eine CSS-Farbe `#FF8000` einordnen, `chmod 755` zerlegen und ein Subnetz
 wie `192.168.10.0/24` als Bitmuster verstehen. Alle vier Systeme sind nur
 verschiedene Schreibweisen für dieselbe Zahl — der Trick ist die <Term id="basis">Basis</Term>.
 
+<Tipp titel="Warum das offiziell in die Ausbildung passt">
+  Der Rahmenlehrplan verlangt nicht einfach „rechne Binärzahlen", sondern
+  größere Kompetenzen: Informationen als Daten abbilden, Datenformate und
+  Speicherlösungen verstehen, IT-Systeme konfigurieren und Netzwerkadressen
+  einordnen. Zahlensysteme sind dafür Werkzeugwissen. Du brauchst sie, damit
+  Bytes, IP-Adressen, Dateirechte und Hex-Schreibweisen nicht wie Zaubersprache
+  wirken.
+</Tipp>
+
+---
+
+## Was du danach kannst
+
+Nach diesem Kapitel sollst du nicht nur Begriffe wiedererkennen, sondern
+Zahlen wirklich lesen und umformen können:
+
+| Stufe | Kernfähigkeit | Du kannst es, wenn ... |
+|---|---|---|
+| Pflicht | Stellenwerte lesen | du bei jeder Zahl von rechts nach links die Wertigkeiten zuordnen kannst. |
+| Pflicht | In Dezimal umrechnen | du die Beiträge der Stellen addierst, die wirklich gesetzt sind. |
+| Pflicht | Aus Dezimal umrechnen | du wiederholt durch die Zielbasis teilst und die Reste rückwärts liest. |
+| Pflicht | Hex verstehen | du jede Hex-Ziffer als genau vier Bit lesen kannst. |
+| Pflicht | Praxisfälle einordnen | du `chmod`, MAC-Adressen und IPv4-Bitmuster nicht mehr als Fremdzeichen siehst. |
+| Vertiefung | signed/unsigned und Gleitkomma grob einordnen | du erkennst, warum dasselbe Bitmuster je nach Datentyp anders gelesen werden kann. |
+
+Zweierkomplement und IEEE 754 gehören als Vertiefung dazu. Der Kern ist
+aber zuerst: **Stellenwert, Leserichtung, Reste, Vierergruppen**.
+
+---
+
+## Lernleiter: so baust du es auf
+
+Zahlensysteme werden leichter, wenn du sie nicht als einzelne Tricks lernst,
+sondern als eine Kette:
+
+| Stufe | Was du wirklich können musst | Merksatz |
+|---|---|---|
+| 1 | Eine Zahl ist aus Stellen aufgebaut. | Rechts ist die kleinste Stelle. |
+| 2 | Jede Stelle hat eine Wertigkeit. | Nach links wird immer mit der Basis multipliziert. |
+| 3 | Von Binär/Hex/Oktal nach Dezimal heißt: Beiträge zusammenzählen. | Nur Stellen mit Wert zählen. |
+| 4 | Von Dezimal nach Binär/Hex/Oktal heißt: teilen und Reste lesen. | Reste von unten nach oben. |
+| 5 | Hex ist nur Binär in Vierergruppen. | 1 Hex-Ziffer = 4 Bit. |
+
+Wenn du hängen bleibst, geh eine Stufe zurück. Fast jeder Fehler entsteht
+daraus, dass man zu früh mit Hex, `chmod` oder IPv4 anfängt, obwohl
+Stellenwert oder Leserichtung noch nicht sitzen.
+
 ---
 
 ## Die Idee: Stellenwertsystem
@@ -16,9 +69,11 @@ verschiedene Schreibweisen für dieselbe Zahl — der Trick ist die <Term id="ba
 Jedes der vier Systeme funktioniert nach demselben Prinzip. Jede Stelle
 einer Zahl hat einen **Stellenwert**, der sich aus zwei Dingen ergibt:
 
-```
-Stellenwert = Basis ^ Position
-```
+| Begriff | Bedeutung |
+|---|---|
+| Basis | Wie viele verschiedene Ziffern das System hat. |
+| Position | Wie weit die Stelle von rechts entfernt ist. Ganz rechts ist Position 0. |
+| Stellenwert | `Basis^Position`, also die Wertigkeit dieser Stelle. |
 
 Die **Basis** sagt, wie viele verschiedene Ziffern ein System hat:
 Dezimal hat 10 Ziffern (`0` bis `9`), Binär hat 2 Ziffern (`0` und `1`),
@@ -29,19 +84,28 @@ Der Gesamtwert ist die Summe aus `Ziffer × Stellenwert` über alle Stellen.
 
 **Beispiel im vertrauten Dezimalsystem** (Basis 10):
 
-```
-  3 0 5
-  ↑ ↑ ↑
-  100  1
-     10
-= 3 × 10² + 0 × 10¹ + 5 × 10⁰
-= 300 + 0 + 5
-= 305
-```
+| Stelle in der Zahl `305` | 3 | 0 | 5 |
+|---|---:|---:|---:|
+| Position von rechts | 2 | 1 | 0 |
+| Stellenwert bei Basis 10 | 10² = 100 | 10¹ = 10 | 10⁰ = 1 |
+| Beitrag zum Gesamtwert | 3 × 100 = 300 | 0 × 10 = 0 | 5 × 1 = 5 |
+
+Rechnung: `300 + 0 + 5 = 305`.
+
+Der wichtigste Punkt ist nicht die Formel, sondern die Richtung:
+**Ganz rechts steht Position 0.** Jede Stelle nach links ist eine Potenz
+höher.
 
 Wenn du dieses Prinzip einmal verstanden hast, funktionieren alle anderen
 Systeme genauso — nur die <Term id="basis">Basis</Term> wechselt. Daraus
 folgen die <Term id="stellenwert">Stellenwerte</Term> automatisch.
+
+| System | Erste Stellenwerte von rechts nach links |
+|---|---|
+| Binär, Basis 2 | 1, 2, 4, 8, 16, 32, 64, 128 |
+| Oktal, Basis 8 | 1, 8, 64, 512 |
+| Dezimal, Basis 10 | 1, 10, 100, 1000 |
+| Hexadezimal, Basis 16 | 1, 16, 256, 4096 |
 
 <Analogie>
 Stell dir einen Tageskilometerzähler im Auto vor. Jedes Rädchen zeigt
@@ -85,19 +149,66 @@ Die folgende Tabelle zeigt das an ein paar Werten:
 **Schreib-Konventionen** (damit du in einer Aufgabe siehst, was gemeint ist):
 
 - `0b10101` oder `10101₂` — binär (auch `0b` als Präfix)
-- `0o17` oder `17₈` — oktal (in C/Python). Vorsicht: in vielen Skripten ist
-  ein **führendes `0`** allein schon oktal — `012` ist nicht 12, sondern
-  Oktal 12 = Dezimal 10.
+- `0o17` oder `17₈` — oktal
 - `0x1F` oder `1F₁₆` oder `#1F` — hexadezimal
 - Ohne Präfix gilt im Alltag Dezimal — in einer Aufgabe aber immer den
   Kontext lesen. `10` allein ist mehrdeutig.
 
+<Vertiefung
+  titel="Programmiersprachen-Schreibweisen"
+  einordnung="Randwissen: hilfreich beim Lesen von Code, aber nicht der Kern von Zahlensystemen."
+>
+  In Python, JavaScript und vielen anderen Sprachen markieren Präfixe das
+  Zahlensystem: `0b` für binär, `0o` für oktal und `0x` für hexadezimal.
+  Vorsicht bei alten Beispielen: In manchen Sprachen oder alten Versionen
+  konnte eine führende Null schon oktal bedeuten. `012` wäre dann nicht
+  Dezimal 12, sondern Oktal 12 = Dezimal 10. Moderne Schreibweise ist
+  eindeutiger: `0o12`.
+</Vertiefung>
+
 ---
 
-## Wozu vier Systeme? Wo welches auftaucht
+## Merksätze, die dich retten
 
-Dezimal nutzen Menschen. Die anderen drei haben jeweils einen Grund, warum
-genau dieses System praktisch ist:
+| Situation | Merksatz | Warum |
+|---|---|---|
+| Stellenwert lesen | Rechts ist Position 0. | Dort steht immer die kleinste Wertigkeit. |
+| Dezimal in anderes System | Teilen, Reste notieren, rückwärts lesen. | Der erste Rest ist die kleinste Stelle. |
+| Binär in Dezimal | Nur Einsen zählen. | Nullen tragen nichts zum Wert bei. |
+| Hex in Binär | Eine Hex-Ziffer ist ein Viererpack. | `F = 1111`, `C = 1100`, `0 = 0000`. |
+| Byte in Hex | Ein Byte sind zwei Hex-Ziffern. | 8 Bit = 4 Bit + 4 Bit. |
+| Oktal bei `chmod` | Eine Oktalziffer sind drei Rechte-Bits. | `r=4`, `w=2`, `x=1`. |
+
+Wenn du nur eine Sache auswendig lernst, dann die 8-Bit-Reihe:
+`128, 64, 32, 16, 8, 4, 2, 1`. Der Rest wird deutlich leichter, sobald
+diese Reihe automatisch kommt.
+
+---
+
+## Die zwei Grundwege
+
+Fast jede Umrechnung in diesem Kapitel ist nur eine Variante von zwei
+Grundwegen:
+
+| Du hast ... | Du willst ... | Methode |
+|---|---|---|
+| Binär, Oktal oder Hex | Dezimal | Stellenwerte aufschreiben und Beiträge addieren. |
+| Dezimal | Binär, Oktal oder Hex | Durch die Zielbasis teilen, Reste notieren, rückwärts lesen. |
+| Binär | Hex | Von rechts in Vierergruppen schneiden. |
+| Hex | Binär | Jede Hex-Ziffer in vier Bit übersetzen. |
+
+Das ist der wichtigste Entlastungspunkt: Du brauchst nicht zehn Methoden,
+sondern zwei Grundrichtungen plus den Hex-Viererpack.
+
+---
+
+## Wozu diese vier Systeme?
+
+Die vier Systeme in diesem Kapitel sind **Dezimal, Binär, Oktal und Hexadezimal**.
+Dezimal kennst du aus dem Alltag. Die anderen drei sind technische
+Kurzschreibweisen für Bitmuster:
+
+- **Dezimal** ist für Menschen bequem: Wir zählen im Alltag mit `0` bis `9`.
 
 - **Binär** ist die Sprache der Hardware. Ein <Term id="bit">Bit</Term> hat
   nur zwei Zustände (an/aus), und genau das lässt sich elektronisch
@@ -125,46 +236,68 @@ lesen.
 
 **Beispiel: 46 in Binär**
 
-```
-46 ÷ 2 = 23  Rest 0
-23 ÷ 2 = 11  Rest 1
-11 ÷ 2 =  5  Rest 1
- 5 ÷ 2 =  2  Rest 1
- 2 ÷ 2 =  1  Rest 0
- 1 ÷ 2 =  0  Rest 1
-              ↑ Von hier lesen
-```
+| Schritt | Rechnung | Ergebnis | Rest |
+|---|---|---:|---:|
+| 1 | 46 ÷ 2 | 23 | 0 |
+| 2 | 23 ÷ 2 | 11 | 1 |
+| 3 | 11 ÷ 2 | 5 | 1 |
+| 4 | 5 ÷ 2 | 2 | 1 |
+| 5 | 2 ÷ 2 | 1 | 0 |
+| 6 | 1 ÷ 2 | 0 | 1 |
+
+Die Binärzahl entsteht aus der Rest-Spalte, aber **rückwärts**:
+
+| Leserichtung | Restfolge |
+|---|---|
+| Von oben nach unten gerechnet | `0 1 1 1 0 1` |
+| Von unten nach oben gelesen | `1 0 1 1 1 0` |
 
 Von unten nach oben: **101110**. Also `46₁₀ = 101110₂`.
 
+Merksatz: **Beim Teilen fallen die kleinen Stellen zuerst heraus.** Darum
+steht der erste Rest später ganz rechts.
+
 **Probe (Stellenwert-Methode rückwärts):**
 
-```
-1·32 + 0·16 + 1·8 + 1·4 + 1·2 + 0·1
-= 32 + 8 + 4 + 2
-= 46 ✓
-```
+| Bit | 1 | 0 | 1 | 1 | 1 | 0 |
+|---|---:|---:|---:|---:|---:|---:|
+| Wertigkeit | 32 | 16 | 8 | 4 | 2 | 1 |
+| Beitrag | 32 | — | 8 | 4 | 2 | — |
+
+Probe: `32 + 8 + 4 + 2 = 46`.
+
+<TeilungsVisualizer initialDecimal={46} initialBase={2} />
 
 ---
 
-## Binär → Dezimal: Stellenwert-Methode
+## Binär → Dezimal: Stellenwert-Prototyp
 
-Jede Stelle hat einen Wert (2⁰, 2¹, 2²…). Nur die Stellen mit `1` zählen
-zusammen.
+**Ziel:** Du kannst eine <Term id="binaerzahl">Binärzahl</Term> lesen und ihren
+<Term id="dezimalwert">Dezimalwert</Term> berechnen.
 
-**Beispiel: 11000000 in Dezimal**
+**Warum wichtig?** Ein <Term id="oktett">IPv4-Oktett</Term> besteht aus 8
+<Term id="bit">Bit</Term>. Deshalb musst du Werte wie `11000000₂` lesen
+können: Das ist `192₁₀`, also ein gültiger Teil einer IPv4-Adresse.
 
-| Stelle | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-|---|---|---|---|---|---|---|---|---|
-| Wertigkeit | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
-| Bit | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Beitrag | 128 | 64 | — | — | — | — | — | — |
+Bei einer Binärzahl zählt nur, an welchen <Term id="stelle">Stellen</Term> eine
+`1` steht. Jede Stelle hat einen <Term id="stellenwert">Stellenwert</Term>:
 
-`128 + 64 = 192`. Also `11000000₂ = 192₁₀`.
+```text
+128 64 32 16 8 4 2 1
+```
 
-**Merkhilfe für 8 Bit:** `128 – 64 – 32 – 16 – 8 – 4 – 2 – 1`. Diese acht
-Werte auswendig zu können lohnt sich — sie tauchen bei IPv4-Subnetting
-in praktisch jeder Aufgabe auf.
+Kürzere Binärzahlen werden für die 8-Bit-Ansicht links mit
+<Term id="fuehrende-null">führenden Nullen</Term> aufgefüllt. `101101₂` wird
+also als `00101101₂` gelesen. Der Wert bleibt gleich; die Nullen zeigen nur die
+vollen 8 Stellen. Ein solcher 8-Bit-Wert passt genau in ein
+<Term id="byte">Byte</Term>.
+
+<Tipp titel="Merksatz">
+  Bei Binär → Dezimal addierst du nur die Stellenwerte, bei denen eine `1`
+  steht. Stellen mit `0` tragen nichts zum Wert bei.
+</Tipp>
+
+<BinaerDezimalPrototyp />
 
 ---
 
@@ -178,10 +311,12 @@ zur Binär-Teilung, nur mit 16 statt 2.
 
 **Beispiel: 192 in Hex**
 
-```
-192 ÷ 16 = 12  Rest 0   → 0
- 12 ÷ 16 =  0  Rest 12  → C
-```
+| Schritt | Rechnung | Ergebnis | Rest | Hex-Ziffer |
+|---|---|---:|---:|---|
+| 1 | 192 ÷ 16 | 12 | 0 | `0` |
+| 2 | 12 ÷ 16 | 0 | 12 | `C` |
+
+Auch hier liest du die Reste **von unten nach oben**: erst `C`, dann `0`.
 
 Von unten: **C0**. Also `192₁₀ = C0₁₆`.
 
@@ -195,12 +330,13 @@ Jede Stelle mit ihrer Potenz von 16 multiplizieren, dann summieren.
 
 **Beispiel: `0xFF` in Dezimal**
 
-```
-F · 16¹ + F · 16⁰
-= 15 · 16 + 15 · 1
-= 240 + 15
-= 255
-```
+| Hex-Stelle | F | F |
+|---|---:|---:|
+| Dezimalwert der Ziffer | 15 | 15 |
+| Stellenwert | 16 | 1 |
+| Beitrag | 15 × 16 = 240 | 15 × 1 = 15 |
+
+Rechnung: `240 + 15 = 255`.
 
 Also `FF₁₆ = 255₁₀`.
 
@@ -212,15 +348,17 @@ Binärergebnis dann über die Stellenwert-Methode in Dezimal umrechnen.
 
 **Beispiel: `0xC0` über Binär**
 
-```
-C    0
-1100 0000
-```
+| Hex-Ziffer | C | 0 |
+|---|---|---|
+| Dezimalwert | 12 | 0 |
+| 4-Bit-Gruppe | 1100 | 0000 |
+
+Zusammengeschoben ergibt das `1100 0000`.
 
 Das ist `11000000₂ = 128 + 64 = 192`. Also `C0₁₆ = 192₁₀` — passt zum
 Ergebnis von oben.
 
-Der Nibble-Trick ist in der Prüfung oft **schneller** als das direkte
+Der Nibble-Trick ist in der Praxis oft **schneller** als das direkte
 Hex-Rechnen, weil du nur die Wertigkeiten `8-4-2-1` pro Nibble brauchst und
 nichts mit 16 multiplizierst. Diese kleine **Hex→Nibble-Tabelle** lohnt
 sich auswendig:
@@ -246,30 +384,34 @@ Hex-Ziffer übersetzen.
 
 **Beispiel: `11000000₂` in Hex**
 
-```
-1100  0000
-   ↓     ↓
-   C     0
-```
+| Vierergruppe von links nach rechts | 1100 | 0000 |
+|---|---|---|
+| Hex-Ziffer | C | 0 |
 
 Also `11000000₂ = C0₁₆`. Reicht die Bitzahl nicht für ein volles Nibble,
 wird vorne mit Nullen aufgefüllt: `10101₂` wird zu `0001 0101` und damit
 zu `15₁₆`.
 
+<NibbleUebersetzer initialHex="C0" />
+
 ---
 
-## Dezimal → Oktal
+<Vertiefung
+  titel="Oktal allgemein umrechnen"
+  einordnung="Optional: Für die Ausbildung ist vor allem chmod wichtig. Allgemeines Oktalrechnen ist nützlich, aber zweitrangig."
+>
 
 Methode wie bei Binär und Hex, nur durch 8 teilen.
 
 **Beispiel: 511 in Oktal**
 
-```
-511 ÷ 8 = 63  Rest 7
- 63 ÷ 8 =  7  Rest 7
-  7 ÷ 8 =  0  Rest 7
-              ↑
-```
+| Schritt | Rechnung | Ergebnis | Rest |
+|---|---|---:|---:|
+| 1 | 511 ÷ 8 | 63 | 7 |
+| 2 | 63 ÷ 8 | 7 | 7 |
+| 3 | 7 ÷ 8 | 0 | 7 |
+
+Reste von unten nach oben: `7 7 7`.
 
 Von unten: **777**. Also `511₁₀ = 777₈`.
 
@@ -279,7 +421,7 @@ Oktal funktioniert in der Praxis am häufigsten andersrum: du **liest** eine
 Oktalzahl wie `755` und willst wissen, was sie bedeutet. Dazu später unter
 `chmod`.
 
----
+</Vertiefung>
 
 ## Binärarithmetik: addieren
 
@@ -298,13 +440,15 @@ Kommen drei Einsen zusammen (`1 + 1 + Übertrag`), ist das Ergebnis `1` mit
 
 **Beispiel: `1011 + 0110`**
 
-```
-   1 1                 ← Überträge
-   1 0 1 1
- + 0 1 1 0
- ---------
- 1 0 0 0 1
-```
+| Spalte | Rechnung | Ergebnis-Bit | Übertrag nach links |
+|---|---|---:|---:|
+| 1er | 1 + 0 | 1 | 0 |
+| 2er | 1 + 1 | 0 | 1 |
+| 4er | 0 + 1 + Übertrag 1 | 0 | 1 |
+| 8er | 1 + 0 + Übertrag 1 | 0 | 1 |
+| 16er | nur Übertrag 1 | 1 | 0 |
+
+Von links gelesen ergibt die Ergebniszeile `10001`.
 
 **Probe in Dezimal:** `11 + 6 = 17`. Binär `10001 = 16 + 1 = 17 ✓`.
 
@@ -315,7 +459,10 @@ nächste Abschnitt.
 
 ---
 
-## Negative Zahlen: Zweierkomplement
+<Vertiefung
+  titel="Negative Zahlen mit Zweierkomplement"
+  einordnung="Vertiefung: wichtig zum Einordnen von signed/unsigned, aber nicht die erste Pflichtspur."
+>
 
 Ein Bit allein hat keinen Vorzeichen-Knopf. Trotzdem muss eine CPU `-5` von
 `+5` unterscheiden können. Die Lösung ist das **Zweierkomplement**: das
@@ -323,37 +470,40 @@ höchstwertige Bit trägt einen **negativen Stellenwert**.
 
 Bei 8 Bit sieht die Wertigkeitsreihe so aus:
 
-```
--128  64  32  16  8  4  2  1
-```
+| Bitposition | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Wertigkeit | -128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
 
 Damit decken 8 Bit den Bereich **−128 bis +127** ab (insgesamt 256 Werte).
 
 **Wie man `-5` als 8-Bit-Zweierkomplement bildet** (zwei Schritte):
 
-```
-1. +5 in Binär:           0000 0101
-2. alle Bits kippen:       1111 1010    (Einerkomplement)
-3. +1 addieren:            1111 1011    ← das ist -5
-```
+| Schritt | Bedeutung | Bitmuster |
+|---|---|---|
+| 1 | `+5` als 8-Bit-Binärzahl schreiben | `0000 0101` |
+| 2 | alle Bits kippen | `1111 1010` |
+| 3 | `+1` addieren | `1111 1011` |
+
+Das Ergebnis `1111 1011` ist die 8-Bit-Darstellung von `-5`.
 
 **Probe** über die Wertigkeit mit `-128`-Bit:
 
-```
--128 + 64 + 32 + 16 + 8 + 2 + 1
-= -128 + 123
-= -5 ✓
-```
+| Bitmuster `1111 1011` | 1 | 1 | 1 | 1 | 1 | 0 | 1 | 1 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Wertigkeit | -128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+| Beitrag | -128 | 64 | 32 | 16 | 8 | — | 2 | 1 |
+
+Probe: `-128 + 64 + 32 + 16 + 8 + 2 + 1 = -5`.
 
 **Warum dieser Trick?** Mit Zweierkomplement funktioniert `+5 + (-5) = 0`
 genau wie eine normale Binäraddition:
 
-```
-   0000 0101   (+5)
- + 1111 1011   (-5)
- -----------
- 1 0000 0000   ← der führende Übertrag fällt aus 8 Bit raus
-```
+| Teil | Bitmuster |
+|---|---|
+| `+5` | `0000 0101` |
+| `-5` im Zweierkomplement | `1111 1011` |
+| Summe mit 9. Übertragsbit | `1 0000 0000` |
+| Ergebnis in 8 Bit | `0000 0000` |
 
 Das Ergebnis in 8 Bit ist `0000 0000 = 0`. Genau richtig.
 
@@ -372,19 +522,24 @@ ist dasselbe Bitmuster aber positiv — z. B. `1111 1011` ist als signed
 **−5**, als unsigned **251**. Welcher Wert gemeint ist, entscheidet **nur
 der Datentyp**.
 
----
+</Vertiefung>
 
-## Kommazahlen: IEEE 754 (Gleitkomma)
+<Vertiefung
+  titel="Kommazahlen mit IEEE 754 (Gleitkomma)"
+  einordnung="Vertiefung: gut für Verständnis von Rundungsfehlern, aber die binary32-Codierung ist Nachschlagewissen."
+>
 
 Bislang ging es um ganze Zahlen. Reale Zahlen wie `3,14` oder `1,5 · 10⁻⁹`
 brauchen ein anderes Format — die Hardware nutzt dafür **IEEE 754**.
-Grundidee: jede Zahl wird als
+Grundidee: Eine Kommazahl wird in drei Teile zerlegt:
 
-```
-Wert = (-1)^Vorzeichen · 1,Mantisse · 2^(Exponent − Bias)
-```
+| Teil | Aufgabe |
+|---|---|
+| Vorzeichen | sagt, ob die Zahl positiv oder negativ ist. |
+| Exponent | verschiebt den Wert nach links oder rechts, ähnlich wissenschaftlicher Schreibweise. |
+| Mantisse | speichert die eigentlichen Ziffern der Zahl. |
 
-dargestellt. Drei Felder teilen sich ein Bitmuster:
+Kurzformel: `Wert = (-1)^Vorzeichen · 1,Mantisse · 2^(Exponent - Bias)`.
 
 | Format | Bits gesamt | Vorzeichen | Exponent | Mantisse | Bias |
 |---|---|---|---|---|---|
@@ -393,12 +548,12 @@ dargestellt. Drei Felder teilen sich ein Bitmuster:
 
 **Beispiel: wie `0,15625` als `binary32` codiert wird**
 
-```
-0,15625 = 1,25 · 2⁻³
-Vorzeichen: 0   (positiv)
-Mantissen-Bits: 010000…0   (die ,25 in binär)
-Exponent: -3 + 127 = 124  →  0111 1100
-```
+| Teil | Bedeutung |
+|---|---|
+| normalisierte Form | `0,15625 = 1,25 · 2⁻³` |
+| Vorzeichen | `0`, weil die Zahl positiv ist |
+| Exponent mit Bias | `-3 + 127 = 124`, also `0111 1100` |
+| Mantissen-Bits | `010000…0`, weil der Nachkommateil `0,25` binär codiert wird |
 
 Das vollständige 32-Bit-Muster: `0 0111 1100 010 0000 0000 0000 0000 0000`.
 
@@ -408,14 +563,14 @@ ein riesiger Bereich, der mit Festkomma unmöglich wäre. Der Preis ist
 **Rundung**: nicht jede Dezimalzahl ist exakt darstellbar. `0,1` z. B. ist
 in Binär eine periodische Zahl, daher gilt klassisch:
 
-```
-0.1 + 0.2 = 0.30000000000000004   (JavaScript, Python, …)
-```
+| Ausdruck | Typisches Ergebnis |
+|---|---|
+| `0.1 + 0.2` | `0.30000000000000004` |
 
 Das ist kein Bug, sondern die direkte Folge von IEEE 754. Wer mit Geld
 rechnet, nutzt deshalb `decimal`-Typen oder rechnet in Cent als Integer.
 
----
+</Vertiefung>
 
 ## Anwendung: `chmod 755` zerlegen
 
@@ -458,35 +613,43 @@ drei Stellen — eine pro Rolle. Hinter den Stellen stecken jeweils drei Bit:
 | 6 | 110 | rw- |
 | 7 | 111 | rwx |
 
+<ChmodWerkbank initialOctal="755" />
+
 ---
 
-## Anwendung: MAC-Adresse und Farb-Hex
+## Anwendung: MAC-Adresse
 
 Eine **MAC-Adresse** identifiziert eine Netzwerkkarte und besteht aus
 48 Bit. Geschrieben wird sie als sechs Paare Hex-Ziffern, getrennt durch
 Doppelpunkte oder Bindestriche — so will es IEEE 802. Beispiel:
 
-```
-C0 : FF : EE : 01 : 02 : 03
-↕    ↕    ↕    ↕    ↕    ↕
-11000000 11111111 11101110 00000001 00000010 00000011   (48 Bit)
-```
+| Hex-Paar | C0 | FF | EE | 01 | 02 | 03 |
+|---|---|---|---|---|---|---|
+| Binär als Byte | 11000000 | 11111111 | 11101110 | 00000001 | 00000010 | 00000011 |
+
+Zusammen sind das 6 Bytes, also 48 Bit.
 
 Jedes Hex-Paar (zwei Ziffern) = ein <Term id="byte">Byte</Term> = 8 Bit.
 Statt 48 Einsen und Nullen zu schreiben, reichen 12 Hex-Ziffern. Genau die
 Kompression, für die Hex gemacht ist.
 
+<Vertiefung
+  titel="CSS-Farben als weiteres Hex-Beispiel"
+  einordnung="Optional: sehr anschaulich, aber eher Web-/Medienbezug als allgemeiner Fachinformatiker-Kern."
+>
+
 Eine **CSS-Farbe** wie `#FF8000` (Orange) funktioniert identisch — nur dass
 die drei Bytes Rot/Grün/Blau bedeuten:
 
-```
-# FF      80      00
-  ↕       ↕       ↕
-  Rot=255 Grün=128 Blau=0
-```
+| Teil von `#FF8000` | FF | 80 | 00 |
+|---|---:|---:|---:|
+| Farbkanal | Rot | Grün | Blau |
+| Dezimalwert | 255 | 128 | 0 |
 
 Das `FF` (binär `11111111`) ist das Maximum pro Farbkanal, das `00` ist
 Null. `#000000` ist Schwarz, `#FFFFFF` Weiß, `#FF0000` reines Rot.
+
+</Vertiefung>
 
 ---
 
@@ -495,10 +658,11 @@ Null. `#000000` ist Schwarz, `#FFFFFF` Weiß, `#FF0000` reines Rot.
 Ein IPv4-Subnetz wie `192.168.10.0/24` ist im Kern eine 32-Bit-Zahl,
 aufgeschrieben als vier Dezimal-Oktette zu je 8 Bit:
 
-```
-192      .168      .10       .0
-11000000  10101000  00001010  00000000   (32 Bit)
-```
+| Dezimal-Oktett | 192 | 168 | 10 | 0 |
+|---|---:|---:|---:|---:|
+| Binär als 8 Bit | 11000000 | 10101000 | 00001010 | 00000000 |
+
+Zusammen sind das 4 Bytes, also 32 Bit.
 
 Das `/24` heißt: die ersten 24 Bit gehören zum Netz, die letzten 8 zum
 Host. Ohne Binär-Verständnis ist das eine Black Box; **mit** wird daraus
@@ -506,10 +670,58 @@ eine Rechen-Aufgabe, die du Stelle für Stelle löst.
 
 ---
 
+## Kann ich es wirklich?
+
+Du kannst Zahlensysteme nicht daran erkennen, dass die Erklärung beim Lesen
+nett klingt. Du kannst sie, wenn du kleine Umformungen selbst sauber
+hinbekommst:
+
+| Aufgabe | Lösung | Woran du erkennst, dass es sitzt |
+|---|---|---|
+| Wandle `46₁₀` in Binär um. | `101110₂` | Du teilst durch 2 und liest die Reste rückwärts. |
+| Wandle `11000000₂` in Dezimal um. | `192₁₀` | Du addierst `128 + 64`. |
+| Wandle `C0₁₆` in Binär um. | `1100 0000₂` | Du machst aus jeder Hex-Ziffer ein Viererpack. |
+| Wandle `FF₁₆` in Dezimal um. | `255₁₀` | Du weißt: `F = 15`, also `15 × 16 + 15`. |
+| Zerlege `chmod 644`. | `rw-r--r--` | Du liest jede Oktalziffer einzeln: `6=rw-`, `4=r--`, `4=r--`. |
+
+Wenn diese fünf Zeilen ohne Raten funktionieren, ist der Kern verstanden.
+Zweierkomplement und IEEE 754 sind danach Vertiefung, nicht der erste Berg.
+
+---
+
+## Von verstanden zu beherrscht
+
+Nach einmal Lesen ist das Thema meistens **verstanden**, aber noch nicht
+beherrscht. Beherrschen heißt: Du kannst auch neue Zahlen sicher umformen,
+ohne die Methode jedes Mal neu zu suchen.
+
+| Stufe | Woran du es erkennst | Übe mit |
+|---|---|---|
+| Verstanden | Du kannst die Beispiele im Kapitel nachvollziehen. | `46₁₀`, `11000000₂`, `C0₁₆`, `chmod 644` |
+| Sicher | Du schaffst ähnliche Zahlen ohne Vorlage. | `13₁₀`, `31₁₀`, `64₁₀`, `101010₂`, `7F₁₆` |
+| Beherrscht | Du findest Fehler in fremden Lösungen und erklärst warum. | falsch herum gelesene Reste, fehlende führende Nullen, falsche Basis |
+
+Ein guter Übungsdurchlauf ist kurz:
+
+| Runde | Aufgabe |
+|---|---|
+| 1 | Drei Dezimalzahlen in Binär umwandeln. |
+| 2 | Drei Binärzahlen in Dezimal umwandeln. |
+| 3 | Drei Hexzahlen über Vierergruppen in Binär umwandeln. |
+| 4 | Zwei `chmod`-Werte in `rwx` zerlegen. |
+| 5 | Eine falsche Lösung erklären und korrigieren. |
+
+Wenn Runde 1 bis 4 klappt, kannst du rechnen. Wenn Runde 5 klappt, hast du
+es wirklich im Griff.
+
+<MasteryTrainer />
+
+---
+
 ## Typische Fehler
 
 - **„10" ohne Basis ist mehrdeutig.** `10₂ = 2`, `10₈ = 8`, `10₁₀ = 10`,
-  `10₁₆ = 16`. In Prüfungsaufgaben immer den Kontext lesen oder die
+  `10₁₆ = 16`. In Aufgaben immer den Kontext lesen oder die
   Basis in der Antwort kennzeichnen — sonst kann ein technisch richtiges
   Ergebnis Punkte kosten.
 
@@ -529,14 +741,6 @@ eine Rechen-Aufgabe, die du Stelle für Stelle löst.
   ist weniger fehleranfällig: `C = 1100`, `0 = 0000`, also
   `11000000 = 128 + 64 = 192`. Die Wertigkeiten `8-4-2-1` pro Nibble
   reichen — kein „mal 16" im Kopf.
-
-- **Oktal-Präfix-Verwirrung.** In C und in älteren Python-2-Beispielen
-  kann `017` oktal gemeint sein (Wert 15). In Python 3 ist ein führender
-  Null-Präfix für eine Nicht-Null-Dezimalzahl dagegen nicht erlaubt;
-  dort schreibt man Oktalzahlen mit `0o17`. JavaScript nutzt ebenfalls
-  `0o17` für die klare Oktal-Schreibweise. Beim Lesen alter Beispiele
-  also immer prüfen, ob ein führendes `0` Oktal meint oder nur eine
-  optische Führungsnull ist.
 
 - **chmod-Bits falsch zerlegt.** `chmod 644` ist nicht „lesen und
   schreiben für alle". Die `4` ist nur `r--` (lesen), kein `w`. Also
@@ -574,30 +778,42 @@ eine Rechen-Aufgabe, die du Stelle für Stelle löst.
 
 ---
 
-## Was du danach kannst
+## Gesamtbild
 
-- Das **Stellenwert-Prinzip** erklären und auf jede Basis anwenden:
-  Wert = Summe aus `Ziffer × Basis^Position`.
-- Sicher in beide Richtungen umrechnen: Dezimal ↔ Binär, Dezimal ↔ Hex,
-  Dezimal ↔ Oktal, Binär ↔ Hex (über den Nibble-Trick).
-- Die 8-Bit-Wertigkeiten `128–64–32–16–8–4–2–1` aus dem Kopf abrufen.
-- Erkennen, **warum** Hex die natürliche Schreibweise für Bitmuster ist:
-  eine Hex-Ziffer = 4 Bit = ein Nibble.
-- `chmod 755` und Verwandte (`644`, `700`, `777`) lesen und in `rwx`-Form
-  aufschlüsseln.
-- Eine MAC-Adresse, einen CSS-Hex-Farbcode und ein IPv4-Subnetz als
-  Bitmuster bzw. Byte-Folge einordnen — die Grundlage für Subnetting,
-  Speicheradressen und Farbverwaltung.
-- Schreib-Konventionen (`0b`, `0o`, `0x`, tiefgestellte Basis) sicher
-  zuordnen.
-- Binärzahlen **addieren** inklusive Übertrag.
-- Negative ganze Zahlen im **Zweierkomplement** darstellen, den
-  Wertebereich pro Bitbreite ableiten und signed/unsigned auseinanderhalten.
-- Erklären, wie **IEEE 754** Kommazahlen als Vorzeichen, Exponent und
-  Mantisse codiert — und warum `0.1 + 0.2 ≠ 0.3` daraus folgt.
+| Bereich | Muss sitzen | Darf danach wachsen |
+|---|---|---|
+| Kern | Stellenwerte, Basis, Umrechnung, 8-Bit-Reihe | größere Zahlen und mehr Übung |
+| Hex | Vierergruppen, Byte = zwei Hex-Ziffern | Speicheradressen, Farben, MAC-Adressen |
+| Oktal | drei Bits pro Ziffer, `chmod` lesen | Linux-Rechte sicher anwenden |
+| Binärarithmetik | Übertrag bei `1 + 1` | Subtraktion über Zweierkomplement |
+| Vertiefung | signed/unsigned, IEEE 754 grob verstehen | echte Codierung und Rundungsdetails |
+
+## Was hier bewusst nur angerissen wird
+
+| Thema | Warum nicht vollständig hier? | Wo es hingehört |
+|---|---|---|
+| Zeichencodierung wie ASCII, Unicode, UTF-8 | Das ist nicht Zahlensysteme, sondern „Zeichen als Zahlen speichern". | eigenes Daten-/Codierungs-Kapitel |
+| Subnetting | Zahlensysteme liefern nur die Bit-Grundlage. Netzadresse, Maske, Broadcast und Hostbereich brauchen ein eigenes Verfahren. | IPv4-/Subnetting-Kapitel |
+| Programmiersprachen-Literale | `0b`, `0o`, `0x` helfen beim Lesen von Code, sind aber kein Ausbildungskern für dieses Kapitel. | optionale Vertiefung oder Programmierkapitel |
+| IEEE-754-Detailcodierung | Rundungsfehler verstehen ist nützlich; binary32 von Hand codieren ist Spezialwissen. | optionale Vertiefung |
 
 <Quellen
   quellen={[
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Ordnet das Thema als Grundlagenwissen für Datenabbildung, Speicherlösungen und Netzwerkadressierung ein, besonders als Brücke zu Lernfeld 5 und Lernfeld 9.'
+    },
+    {
+      label: 'FIAusbV - Verordnung über die Berufsausbildung in den IT-Berufen',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/',
+      detail: 'Amtliche Ausbildungsordnung. Relevanter Rahmen für IT-Systeme, Daten, Sicherheit, Service und vernetzte Systeme; Zahlensysteme sind dabei Werkzeugwissen.'
+    },
+    {
+      label: 'BIBB - Umsetzungshilfe Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Praxishilfe zur Umsetzung der Ausbildungsordnung. Stützt die Einordnung als betrieblich nutzbares Grundlagenwissen für Daten, Systeme und Netzwerke.'
+    },
     {
       label: 'IEEE Std 1003.1 (POSIX) - chmod',
       href: 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/chmod.html',

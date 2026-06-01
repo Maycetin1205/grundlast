@@ -17,7 +17,13 @@ import Schritt from '../content/Schritt'
 import Breadcrumb from '../content/Breadcrumb'
 import Section from '../content/Section'
 import Divider from '../content/Divider'
+import Vertiefung from '../content/Vertiefung'
 import SubnettingRechner from '../tools/SubnettingRechner'
+import BinaerDezimalPrototyp from '../tools/BinaerDezimalPrototyp'
+import TeilungsVisualizer from '../tools/TeilungsVisualizer'
+import NibbleUebersetzer from '../tools/NibbleUebersetzer'
+import ChmodWerkbank from '../tools/ChmodWerkbank'
+import MasteryTrainer from '../tools/MasteryTrainer'
 import { cn } from '../../lib/cn'
 import type { SVGProps, TableHTMLAttributes } from 'react'
 
@@ -61,7 +67,13 @@ const components = {
   Breadcrumb,
   Section,
   Divider,
+  Vertiefung,
   SubnettingRechner,
+  BinaerDezimalPrototyp,
+  TeilungsVisualizer,
+  NibbleUebersetzer,
+  ChmodWerkbank,
+  MasteryTrainer,
 }
 
 interface Props {

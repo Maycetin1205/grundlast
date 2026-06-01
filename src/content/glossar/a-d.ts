@@ -405,6 +405,19 @@ export const aBisD: GlossarEintrag[] = [
       },
     },
   {
+      id: 'binaerzahl',
+      begriff: 'Binärzahl',
+      kurzdefinition: 'Eine Binärzahl ist eine Zahl, die nur aus den Ziffern 0 und 1 besteht.',
+      definition: [
+        'Eine Binärzahl wird im Binärsystem gelesen. Jede Stelle steht für eine Zweierpotenz: 1, 2, 4, 8, 16 und so weiter.',
+        'Beispiel: 1011₂ ist nicht eintausendelf, sondern 8 + 2 + 1 = 11₁₀.',
+      ],
+      kapitel: {
+        titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
+        href: '/lernen/grundlagen/zahlen/zahlensysteme',
+      },
+    },
+  {
       id: 'binaerpraefix',
       begriff: 'Binaerpraefix',
       kurzdefinition: 'Binaerpraefixe stehen für Vielfache von 1024 und folgen der IEC-80000-13.',
@@ -857,6 +870,19 @@ export const aBisD: GlossarEintrag[] = [
       kapitel: {
         titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
         href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
+      },
+    },
+  {
+      id: 'dezimalwert',
+      begriff: 'Dezimalwert',
+      kurzdefinition: 'Der Dezimalwert ist der Wert einer Zahl im gewohnten Zehnersystem.',
+      definition: [
+        'Der Dezimalwert sagt, welchen Wert eine Zahl im Dezimalsystem mit der Basis 10 hat.',
+        'Beispiel: 11000000₂ hat den Dezimalwert 192, weil 128 + 64 = 192 ist.',
+      ],
+      kapitel: {
+        titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
+        href: '/lernen/grundlagen/zahlen/zahlensysteme',
       },
     },
   {

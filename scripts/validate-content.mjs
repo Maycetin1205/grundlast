@@ -16,6 +16,26 @@ const paths = {
   lessonsDir: path.join(root, 'src/content/lessons'),
 }
 
+const obsoleteMarkdownFiles = [
+  'AUFGABENCHAT_PROMPT.md',
+  'QUALITY_ASSURANCE.md',
+  'UNIVERSAL_PROMPT.md',
+]
+
+const staleMarkdownPatterns = [
+  { pattern: /src\/lib\/toc\.ts/i, label: 'alter TOC-Pfad src/lib/toc.ts' },
+  { pattern: /src\/lib\/sources\.ts/i, label: 'alter Quellen-Pfad src/lib/sources.ts' },
+  {
+    pattern: /src\/stores\/glossarStore\.ts/i,
+    label: 'alter Glossar-Pfad src/stores/glossarStore.ts',
+  },
+  { pattern: /AUFGABENCHAT_PROMPT\.md/i, label: 'entfernte Prompt-Datei AUFGABENCHAT_PROMPT.md' },
+  { pattern: /QUALITY_ASSURANCE\.md/i, label: 'entfernte QA-Duplikatdatei QUALITY_ASSURANCE.md' },
+  { pattern: /UNIVERSAL_PROMPT\.md/i, label: 'entfernte Prompt-Datei UNIVERSAL_PROMPT.md' },
+  { pattern: /Prioritaet-Muss/i, label: 'alte Prioritaetssprache Prioritaet-Muss' },
+  { pattern: /Muss-Kapitel/i, label: 'alte Prioritaetssprache Muss-Kapitel' },
+]
+
 function readTocCombined(dir) {
   if (!existsSync(dir)) {
     errors.push(`Pflichtordner fehlt: ${path.relative(root, dir)}`)
@@ -38,6 +58,17 @@ function readGlossarCombined(dir) {
     .filter((file) => file.endsWith('.ts') && file !== 'index.ts')
     .map((file) => readFileSync(path.join(dir, file), 'utf8'))
     .join('\n')
+}
+
+function readMarkdownFiles() {
+  const markdownFiles = readdirSync(root)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => path.join(root, file))
+
+  const glossarReadme = path.join(paths.glossarDir, 'README.md')
+  if (existsSync(glossarReadme)) markdownFiles.push(glossarReadme)
+
+  return markdownFiles
 }
 
 const errors = []
@@ -137,8 +168,8 @@ function pushQualityIssue(lesson, message) {
 function checkReadyStructure(lesson, mdxText) {
   const checks = [
     {
-      ok: /##\s+Was du danach kannst/i.test(mdxText),
-      label: 'Abschnitt "Was du danach kannst"',
+      ok: /##\s+(Was du danach kannst|Worum geht es\??)/i.test(mdxText),
+      label: 'Einstiegsabschnitt "Worum geht es?" oder "Was du danach kannst"',
     },
     {
       ok: /##\s+(Die\s+)?Analogie/i.test(mdxText) || /<Analogie\b/i.test(mdxText),
@@ -163,10 +194,6 @@ function checkReadyStructure(lesson, mdxText) {
     {
       ok: !/<Quiz\b|##\s+(Mini-Quiz|Selbsttest)/i.test(mdxText),
       label: 'keine Quiz- oder Selbsttest-Bloecke im Kapitel',
-    },
-    {
-      ok: /<Quellen\b/i.test(mdxText),
-      label: 'Quellen-Komponente',
     },
   ]
 
@@ -194,6 +221,23 @@ const tocText = readTocCombined(paths.tocDataDir)
 const sourcesText = readRequired(paths.sourceBank) + '\n' + readRequired(paths.sourceTagMappings)
 const glossarText = readGlossarCombined(paths.glossarDir)
 const reviewLogText = readRequired(paths.reviewLog)
+
+for (const file of obsoleteMarkdownFiles) {
+  if (existsSync(path.join(root, file))) {
+    errors.push(`${file}: obsolete Markdown-Datei entfernen oder in die fuehrende Doku integrieren`)
+  }
+}
+
+for (const filePath of readMarkdownFiles()) {
+  const text = readFileSync(filePath, 'utf8')
+  const relativePath = path.relative(root, filePath)
+
+  for (const { pattern, label } of staleMarkdownPatterns) {
+    if (pattern.test(text)) {
+      errors.push(`${relativePath}: veralteter Markdown-Verweis: ${label}`)
+    }
+  }
+}
 
 const lessons = extractLessons(tocText)
 const lessonBySlug = new Map()

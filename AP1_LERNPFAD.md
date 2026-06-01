@@ -39,9 +39,9 @@ Nutze diese Dateien als verbindliche Arbeitsregeln:
 - AP1_LERNPFAD.md
 - KAPITEL_QUALITAET.md
 - REVIEW_LOG.md
-- src/lib/toc.ts
-- src/lib/sources.ts
-- src/stores/glossarStore.ts
+- src/lib/toc/data/*.ts
+- src/content/quellen/sourceBank.ts
+- src/content/glossar/*.ts
 
 Bitte bearbeite genau diesen Schritt:
 [HIER DEN SCHRITT AUS DEM VORHERIGEN CHAT EINFUEGEN]

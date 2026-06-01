@@ -11,7 +11,7 @@ export const grundlagen: Lernfeld = {
       slug: "rechnerarchitektur",
       title: "Rechnerarchitektur",
       lessons: [
-        { slug: "von-neumann", title: "Von-Neumann-Architektur", minutes: 10, importance: 5, exam: true, status: "draft" },
+        { slug: "von-neumann", title: "Von-Neumann-Architektur", minutes: 18, importance: 5, exam: true, status: "ready" },
       ],
     },
     {
@@ -19,7 +19,7 @@ export const grundlagen: Lernfeld = {
       title: "Zahlen & Einheiten",
       lessons: [
         { slug: "bit-byte", title: "Bit & Byte – die kleinsten Einheiten", minutes: 8, importance: 5, exam: true, status: "ready" },
-        { slug: "zahlensysteme", title: "Zahlensysteme (Dual, Hex, Dezimal)", minutes: 12, importance: 5, exam: true, status: "final" },
+        { slug: "zahlensysteme", title: "Zahlensysteme (Dual, Hex, Dezimal)", minutes: 24, importance: 5, exam: true, status: "final" },
         { slug: "prefixe", title: "SI- und Binärpräfixe (KB vs. KiB)", minutes: 8, importance: 5, exam: true, status: "ready" },
       ],
     },

@@ -9,6 +9,7 @@ const Exams = lazy(() => import('./routes/Exams'))
 const Tools = lazy(() => import('./routes/Tools'))
 const Sources = lazy(() => import('./routes/Sources'))
 const AP1Modus = lazy(() => import('./routes/AP1Modus'))
+const Lernpfad = lazy(() => import('./routes/Lernpfad'))
 
 function withPageFallback(element: ReactNode) {
   return (
@@ -32,6 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={withPageFallback(<Dashboard />)} />
+          <Route path="lernpfad" element={withPageFallback(<Lernpfad />)} />
           <Route path="ap1" element={withPageFallback(<AP1Modus />)} />
           <Route path="lernen/:lernfeld/:modul/:lektion" element={withPageFallback(<Lesson />)} />
           <Route path="prüfen" element={withPageFallback(<Exams />)} />
