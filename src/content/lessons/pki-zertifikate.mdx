@@ -1,0 +1,264 @@
+# PKI, CA und Zertifikate
+
+## Worum geht's
+
+Eine <Term id="pki">Public Key Infrastructure</Term> löst ein ganz praktisches
+Problem: Woher weiß dein Browser, dass der <Term id="public-key">Public Key</Term>
+einer Website wirklich zu dieser Website gehört? Ohne diese Vertrauensprüfung
+könnte ein Angreifer einen eigenen Public Key unterschieben und sich als
+`bank.example` ausgeben.
+
+Nach diesem Kapitel kannst du erklären, wie <Term id="zertifikat">Zertifikate</Term>,
+<Term id="certificate-authority">Certificate Authorities</Term>,
+<Term id="zertifikatskette">Zertifikatsketten</Term> und Widerruf zusammenarbeiten.
+Du musst keine Zertifikate von Hand ausstellen können. Wichtig ist, dass du den
+Vertrauensweg verstehst: **Public/Private Key -> Zertifikat -> CA -> Kette ->
+Validierung -> Widerruf -> Einsatz in HTTPS, VPN und WLAN**.
+
+---
+
+## Was du danach kannst
+
+| Stufe | Kernfähigkeit | Du kannst es, wenn ... |
+|---|---|---|
+| Pflicht | Public und Private Key trennen | du erklärst, warum der Public Key verteilt werden darf und der Private Key geheim bleiben muss. |
+| Pflicht | Zertifikat lesen | du Subjekt, Public Key, Aussteller, Gültigkeit und Verwendungszweck einordnest. |
+| Pflicht | CA und Trust Chain erklären | du Root-CA, Intermediate-CA und Endzertifikat sauber unterscheidest. |
+| Pflicht | Validierung nennen | du Name, Zeit, Kette, Signatur, Zweck und Widerruf prüfst. |
+| Anschluss | typische Einsatzorte erkennen | du HTTPS, VPN, WLAN-Enterprise, E-Mail-Signatur und Software-Signatur zuordnen kannst. |
+| Vertiefung | Betriebsrisiken einschätzen | du erkennst, warum Private-Key-Schutz, Rotation und Widerruf zum Betrieb gehören. |
+
+---
+
+## Die Grundidee
+
+Ein <Term id="schlüsselpaar">Schlüsselpaar</Term> besteht aus zwei mathematisch
+zusammengehörenden Teilen:
+
+| Teil | Darf wer kennen? | Aufgabe |
+|---|---|---|
+| Public Key | alle | verschlüsseln, Signaturen prüfen, Identität im Zertifikat nachweisen |
+| <Term id="private-key">Private Key</Term> | nur der Besitzer | entschlüsseln oder signieren |
+
+Der Public Key allein sagt aber noch nicht, **wem** er gehört. Genau hier kommt
+das Zertifikat ins Spiel. Es verbindet eine Identität, zum Beispiel eine
+Domain, Organisation oder Person, mit einem Public Key. Eine CA bestätigt diese
+Verbindung mit ihrer digitalen Signatur.
+
+<Analogie>
+Stell dir ein Zertifikat wie einen Dienstausweis vor. Auf dem Ausweis steht:
+Name, Organisation, Gültigkeit und wofür er verwendet werden darf. Der Ausweis
+ist aber nur glaubwürdig, weil eine vertrauenswürdige Stelle ihn ausgestellt
+und gesiegelt hat. Bei PKI ist dieses Siegel die Signatur der CA.
+</Analogie>
+
+---
+
+## Was steckt in einem Zertifikat?
+
+Ein X.509-Zertifikat ist ein strukturierter Datensatz. Für das Grundverständnis
+reichen diese Felder:
+
+| Feld | Bedeutung | Warum wichtig |
+|---|---|---|
+| Subject | für wen das Zertifikat ausgestellt ist | Identität, z. B. Domain oder Organisation |
+| Subject Alternative Name | konkrete Namen, etwa `www.example.org` | Browser prüfen heute besonders diesen Namen |
+| Public Key | öffentlicher Schlüssel der Identität | Grundlage für TLS-Handshake oder Signaturprüfung |
+| Issür | ausstellende CA | Startpunkt für die Kette nach oben |
+| Gültigkeit | `not before` und `not after` | abgelaufenen Zertifikaten wird nicht vertraut |
+| Key Usage / Extended Key Usage | erlaubter Zweck | Serverauthentifizierung ist nicht dasselbe wie Code Signing |
+| Signatur | Signatur des Ausstellers | zeigt, dass der Inhalt von der CA bestätigt wurde |
+
+<Tipp titel="Merksatz">
+  Ein Zertifikat verschlüsselt nicht die Nutzdaten. Es bestätigt zürst eine
+  Identität und einen Public Key. Die eigentliche Verschlüsselung läuft
+  danach über Protokolle wie TLS.
+</Tipp>
+
+---
+
+## CA, Root und Zertifikatskette
+
+Eine <Term id="root-ca">Root-CA</Term> ist der Vertrauensanker. Ihr Zertifikat
+ist in Betriebssystemen, Browsern oder verwalteten Unternehmensgeräten bereits
+als vertrauenswürdig hinterlegt. Root-CAs signieren aus Sicherheitsgründen
+meist nicht direkt jedes Serverzertifikat. Dazwischen steht oft eine
+<Term id="intermediate-ca">Intermediate-CA</Term>.
+
+Die Kette sieht dann so aus:
+
+```text
+Root-CA (vertraut im System)
+  signiert Intermediate-CA
+    signiert Endzertifikat fuer www.example.org
+```
+
+| Rolle | Aufgabe | Sicherheitsgedanke |
+|---|---|---|
+| Root-CA | oberster Vertrauensanker | besonders stark geschützt, selten direkt genutzt |
+| Intermediate-CA | stellt Zertifikate im Alltag aus | kann getrennt widerrufen oder ersetzt werden |
+| <Term id="endzertifikat">Endzertifikat</Term> | gehört zur Website, Person oder Anwendung | wird beim Verbindungsaufbau vorgelegt |
+
+Wenn dein Browser ein Serverzertifikat erhält, sucht er einen gültigen Pfad
+von diesem Zertifikat bis zu einer vertrauten Root-CA. Dieser Pfad heißt
+<Term id="trust-chain">Trust Chain</Term> oder Zertifikatskette.
+
+---
+
+## Validierung: Was wird geprüft?
+
+Zertifikatsprüfung ist kein einzelner Haken, sondern eine kleine Kette von
+Prüfschritten.
+
+<StepByStep titel="Serverzertifikat bei HTTPS prüfen">
+  <Schritt nr={1} titel="Name prüfen">
+    Der aufgerufene Hostname muss zum Zertifikat passen, zum Beispiel über den
+    Subject Alternative Name `www.example.org`.
+  </Schritt>
+  <Schritt nr={2} titel="Gültigkeit prüfen">
+    Das aktuelle Datum muss zwischen `not before` und `not after` liegen.
+    Ein abgelaufenes Zertifikat wird nicht einfach dadurch sicher, dass die
+    Verschlüsselung technisch noch funktioniert.
+  </Schritt>
+  <Schritt nr={3} titel="Kette prüfen">
+    Jede Stufe der Zertifikatskette muss die nächste Stufe korrekt signieren,
+    bis ein vertrauter Root-Anker erreicht ist.
+  </Schritt>
+  <Schritt nr={4} titel="Zweck prüfen">
+    Das Zertifikat muss für den geplanten Zweck geeignet sein, etwa
+    Serverauthentifizierung bei TLS.
+  </Schritt>
+  <Schritt nr={5} titel="Widerruf prüfen">
+    Das Zertifikat darf nicht widerrufen sein. Dafür gibt es
+    <Term id="crl">CRL</Term> und <Term id="ocsp">OCSP</Term>.
+  </Schritt>
+  <Ergebnis>
+    Erst wenn Name, Zeit, Kette, Signaturen, Zweck und Widerruf passen, ist der
+    Public Key als vertrauenswürdig zur angegebenen Identität einzuordnen.
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## Widerruf: Wenn Vertrauen zurückgenommen wird
+
+Ein Zertifikat kann vor Ablauf unbrauchbar werden. Typische Gründe:
+
+| Grund | Warum Widerruf nötig ist |
+|---|---|
+| Private Key kompromittiert | ein Angreifer könnte sich als Besitzer ausgeben |
+| falscher Name oder falsche Organisation | die Identität im Zertifikat stimmt nicht |
+| CA-Fehler | ein Zertifikat wurde fehlerhaft oder unberechtigt ausgestellt |
+| Betrieb geändert | Dienst, Domain oder Schlüssel werden abgelöst |
+
+Zwei Begriffe musst du unterscheiden:
+
+| Mechanismus | Idee | Typische Einordnung |
+|---|---|---|
+| CRL | Certificate Revocation List, also Widerrufsliste | Liste widerrufener Zertifikate, kann groß werden |
+| OCSP | Online Certificate Status Protocol | Statusabfrage für ein einzelnes Zertifikat |
+
+<Warnung titel="Widerruf ist Betrieb, nicht Theorie">
+  Wer Zertifikate nutzt, braucht auch Prozesse: Private Keys schützen,
+  Zertifikate rechtzeitig erneuern, kompromittierte Keys melden und Widerruf
+  prüfbar machen. Eine PKI ohne Betriebskonzept wird schnell zum Risiko.
+</Warnung>
+
+---
+
+## Typische IT-Beispiele
+
+| Einsatz | Was die PKI leistet | Was sie nicht allein löst |
+|---|---|---|
+| HTTPS | Server weist Domain und Public Key nach | keine Garantie für ehrlichen Shop oder fehlerfreie Webanwendung |
+| VPN | Gateway oder Client authentisiert sich per Zertifikat | ersetzt keine Rechte, MFA oder Firewall-Regeln |
+| WLAN-Enterprise | Benutzer oder Geräte können über Zertifikate authentisiert werden | braucht weiterhin RADIUS, Rollen und Netztrennung |
+| E-Mail-Signatur | Absender und Unverändertheit können geprüft werden | macht den Inhalt nicht automatisch geheim |
+| Software-Signatur | Update stammt vom Inhaber des Private Keys und wurde nicht verändert | schützt nicht vor absichtlich schlechter Software |
+| interne Dienste | Unternehmen kann eigene CA und Gerätezertifikate verwalten | Root-Vertrauen muss sauber auf Geräte verteilt werden |
+
+<Tipp titel="Mini-Selbstcheck">
+  Warum reicht ein Public Key allein nicht für HTTPS? Weil du sonst nicht
+  weißt, ob dieser Public Key wirklich zur aufgerufenen Domain gehört. Genau
+  diese Zuordnung bestätigt das Zertifikat über die CA-Kette.
+</Tipp>
+
+---
+
+## Typische Fehler
+
+| Fehler | Korrektur |
+|---|---|
+| Zertifikat mit Verschlüsselung verwechseln | Das Zertifikat bestätigt Identität und Public Key; TLS nutzt diesen Nachweis für den sicheren Kanal. |
+| Public Key geheim halten wollen | Public Keys dürfen verteilt werden. Geheim ist nur der Private Key. |
+| Root-CA und Intermediate-CA gleichsetzen | Root ist Vertrauensanker; Intermediate stellt im Alltag häufig Endzertifikate aus. |
+| abgelaufenes Zertifikat ignorieren | Gültigkeit ist Teil der Vertrauensprüfung. |
+| nur das Schloss-Symbol betrachten | Entscheidend sind Name, Kette, Zweck, Gültigkeit und Widerruf. |
+| interne CA unkontrolliert verteilen | Wer einer Root-CA vertraut, vertraut allen gültigen Zertifikaten, die daraus abgeleitet werden. |
+
+---
+
+## Gesamtbild Pflichtteil
+
+| Baustein | Muss sitzen | Anschlusswissen |
+|---|---|---|
+| Schlüsselpaar | Public Key offen, Private Key geheim | Schlüsselrotation, Hardware Security Module |
+| Zertifikat | Identität plus Public Key plus CA-Signatur | X.509-Felder im Detail |
+| CA-Kette | Endzertifikat führt über Intermediate zur Root-CA | Cross-Signing, eigene Unternehmens-PKI |
+| Validierung | Name, Zeit, Kette, Signatur, Zweck, Widerruf | OCSP-Stapling, Certificate Transparency |
+| Einsatz | HTTPS, VPN, WLAN, Signaturen | Automatisierung mit ACME oder MDM |
+
+## Was hier bewusst nur angerissen wird
+
+| Thema | Warum nicht vollständig hier? | Wo es hingehört |
+|---|---|---|
+| TLS-Handshake im Detail | Dieses Kapitel erklärt Vertrauen in Public Keys, nicht alle TLS-Nachrichten. | Verschlüsselung, Hashing, Zertifikate, Signatur & VPN |
+| Passwort-Hashing | Hat mit Hashfunktionen zu tun, aber nicht mit Zertifikatsketten. | Passwörter & Hashing bzw. Krypto-Kapitel |
+| qualifizierte elektronische Signatur | Rechtlich und organisatorisch spezieller als die technische Grundidee. | Rechts-/Signatur-Vertiefung |
+| CA-Betrieb im Unternehmen | Wichtig für Admins, aber für den Einstieg zu tief. | spätere Sicherheits- oder Infrastruktur-Vertiefung |
+
+<Vertiefung
+  titel="Eigene Unternehmens-PKI"
+  einordnung="Ausblick: wichtig für größere Netze, aber nicht der erste Pflichtkern."
+>
+  Unternehmen nutzen manchmal eine eigene Root- oder Intermediate-CA für interne
+  Server, Gerätezertifikate, WLAN-Enterprise, VPN oder Mobile-Device-Management.
+  Dann muss das Root-Zertifikat kontrolliert auf die verwalteten Geräte
+  verteilt werden. Das ist mächtig: Ein falsch verteilter Vertrauensanker kann
+  sehr viele interne Verbindungen beeinflussen.
+</Vertiefung>
+
+<Quellen
+  quellen={[
+    {
+      label: 'RFC 5280 - Internet X.509 Public Key Infrastructure Certificate and CRL Profile',
+      href: 'https://www.rfc-editor.org/rfc/rfc5280',
+      detail: 'IETF-Profil für X.509-Zertifikate, Zertifikatsketten, CRLs und Zertifikatspfadprüfung.'
+    },
+    {
+      label: 'RFC 6960 - X.509 Internet Public Key Infrastructure Online Certificate Status Protocol',
+      href: 'https://www.rfc-editor.org/rfc/rfc6960',
+      detail: 'IETF-Standard zu OCSP als Online-Abfrage für den Widerrufsstatus einzelner Zertifikate.'
+    },
+    {
+      label: 'RFC 8446 - The Transport Layer Security (TLS) Protocol Version 1.3',
+      href: 'https://www.rfc-editor.org/rfc/rfc8446',
+      detail: 'IETF-Standard für TLS 1.3; zeigt die Rolle von Zertifikaten für authentifizierte Transportverbindungen.'
+    },
+    {
+      label: 'BSI - Kryptografie',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Kryptografie/kryptografie_node.html',
+      detail: 'BSI-Einstieg zu kryptografischen Verfahren, Schutzzielen und sicheren Mechanismen.'
+    },
+    {
+      label: 'BSI TR-02102-1 - Kryptografische Verfahren',
+      href: 'https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.html',
+      detail: 'Technische Richtlinie des BSI zu kryptografischen Mechanismen, Empfehlungen und Schlüssellängen.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ordnet Datenschutz und IT-Sicherheit als wichtige Ausbildungsinhalte der modernisierten IT-Berufe ein.'
+    },
+  ]}
+/>

@@ -90,7 +90,7 @@ export default function Term({ id, children, className }: TermProps) {
                   'hover:text-accent focus-visible:outline focus-visible:outline-2',
                   'focus-visible:outline-offset-2 focus-visible:outline-accent',
                 )}
-                aria-label="Dialog schliessen"
+                aria-label="Dialog schließen"
               >
                 <X className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -108,14 +108,18 @@ export default function Term({ id, children, className }: TermProps) {
               <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-rule pt-4 font-ui text-sm text-muted">
                 <BookOpen className="h-4 w-4 text-accent" aria-hidden="true" />
                 <span>Links:</span>
-                <Link
-                  to={eintrag.kapitel.href}
-                  onClick={() => setDialogOffen(false)}
-                  className="font-medium text-accent no-underline hover:underline"
-                >
-                  {eintrag.kapitel.titel}
-                </Link>
-                <span aria-hidden="true">·</span>
+                {eintrag.kapitel && (
+                  <>
+                    <Link
+                      to={eintrag.kapitel.href}
+                      onClick={() => setDialogOffen(false)}
+                      className="font-medium text-accent no-underline hover:underline"
+                    >
+                      {eintrag.kapitel.titel}
+                    </Link>
+                    <span aria-hidden="true">·</span>
+                  </>
+                )}
                 <Link
                   to={`/glossar#${eintrag.id}`}
                   onClick={() => setDialogOffen(false)}

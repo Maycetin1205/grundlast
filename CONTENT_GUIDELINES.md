@@ -1,105 +1,117 @@
 # Content-Guidelines
 
-Stand: 15.05.2026
+Stand: 04.06.2026
 
-Für jedes Lern-Kapitel in Grundlast (MDX in `src/content/lessons/`) und für
-jeden Chat oder Subagent, der ein Kapitel schreibt oder ueberarbeitet, gelten
-diese Regeln. Sie ergaenzen `MASTER_ROADMAP.md` und sind verbindlich, bevor
-ein Kapitel von `draft` auf `ready` gehoben wird.
+Diese Regeln gelten fuer jedes Lern-Kapitel in `src/content/lessons/` und fuer
+jeden Chat, der ein Kapitel schreibt oder ueberarbeitet. Sie ergaenzen
+`KAPITEL_ARBEITSABLAUF.md`, `KAPITEL_QUALITAET.md` und
+`INHALTSVERZEICHNIS_JAHR_1_2.md`.
+
+`KAPITEL_ARBEITSABLAUF.md` ist verbindlich. Wenn der dort beschriebene
+Quellen-/Benchmark-Vorlauf fehlt, darf kein Kapiteltext geaendert werden.
 
 ## Zielgruppe
 
 - Auszubildende Fachinformatiker im 1. und 2. Lehrjahr
 - Berufsschueler, die ein klares Nachschlagewerk brauchen
-- Lernende vor Klausuren oder Pruefungen (AP1 ist *einer* von vielen Anlaessen, nicht der Anker)
+- Lernende vor Klausuren oder Pruefungen
 - Ausbilder, die Inhalte strukturiert wiederfinden wollen
 
-Der Texthorizont liegt bei Lernenden **ohne Vorwissen**. Praezision verlieren
-wir trotzdem nicht. Wir erklaeren auch das, was Fortgeschrittene "eh schon
-wissen".
+Der Texthorizont liegt bei Lernenden ohne Vorwissen. Praezision verlieren wir
+trotzdem nicht. Wir erklaeren auch das, was Fortgeschrittene "eh schon wissen".
 
 ## Anspruch
 
-Zwei Saeulen, beide nicht verhandelbar:
-
-1. **Inhaltliche Korrektheit** — keine vereinfachte Halbwahrheit, kein nachgeplappertes Blog-Wissen.
-2. **Didaktische Mastery** — Komplexes wird einfach erklaert, nicht weggelassen. Feynman-Regel: wer es nicht einem 14-Jaehrigen ohne IT-Vorwissen in 5 Minuten klarmachen kann, hat es selbst noch nicht verstanden.
+1. **Fachliche Korrektheit**: keine vereinfachte Halbwahrheit, keine unbelegte Behauptung.
+2. **Didaktische Klarheit**: Komplexes wird einfach erklaert, nicht weggelassen.
+3. **Quellenbasis**: zentrale Fakten werden mit serioesen Quellen abgesichert.
 
 ## Pflicht-Workflow pro Kapitel
 
-Vier Schritte. Jeder muss durchlaufen werden, in dieser Reihenfolge. Kein
-Schritt darf uebersprungen werden, auch wenn das Thema "eh klar" wirkt.
+Der detaillierte Ablauf steht in `KAPITEL_ARBEITSABLAUF.md`. Diese Kurzfassung
+ist nur die Erinnerung, nicht der Ersatz fuer die Ablaufdatei.
 
 ### 1. Recherche
 
-- **Mindestens 3 unabhaengige Quellen lesen**, davon mindestens 1 Primaerquelle:
-  - Primaerquelle: FIAusbV, BSI, RFC, IEEE/ISO-Norm, KMK-Lehrplan, offizielle Herstellerdoku, Gesetzestext, IHK-Pruefungsordnung
-  - Sekundaerquelle: gute Erklaerseite, Schulbuch-Web, Hochschulskript
-  - Quer-Validierung: zweite Quelle fuer denselben Sachverhalt
-- **Web-Suche ist Pflicht**, auch bei vertrauten Themen. SEO-Spam erkennen
-  (weiche Formulierungen, fehlende Quellen, veraltete Daten) und eine andere
-  Suchanfrage probieren. Die *beste* Erklaerung liegt oft nicht auf Treffer 1.
-- Fakten + URLs in einer Notiz festhalten. Sie ist Grundlage fuer den
-  Quellen-Eintrag in `src/content/quellen/sourceBank.ts`.
+- Vor jeder inhaltlichen Aenderung wird zuerst eine Quellen- und
+  Benchmark-Matrix erstellt oder aktualisiert.
+- Mindestens 3 serioese Quellen lesen, davon mindestens 1 Primaerquelle.
+- Primaerquellen sind zum Beispiel FIAusbV, KMK-Rahmenlehrplan, BIBB,
+  BSI-Grundschutz, RFCs, Gesetze, Normen oder offizielle Spezifikationen.
+- Bei Recht, Sicherheit, Normen, Protokollen und Zahlenwerten keine ungeprueften
+  Blog-Aussagen uebernehmen.
+- Fakten, URLs und Abgrenzungen notieren und spaeter in Quellenbank oder
+  Tag-Mapping pflegen.
+- Vergleichbare Lernangebote pruefen: Was erklaeren sie gut, was lassen sie
+  aus, wo sind sie zu knapp, zu pruefungslastig oder fachlich unsauber?
+- Die Matrix trennt strikt:
+  - offizielle Ausbildungsquellen
+  - fachliche Primaerquellen
+  - serioese didaktische Vergleichsquellen
+  - Pruefungs-/Kataloghinweise
+  - eigene Schlussfolgerungen
 
 ### 2. Skizze
 
-Bevor die erste MDX-Zeile geschrieben wird, klaere:
+Vor dem Schreiben klaeren:
 
-- **Lernziel**: Was kann der Leser *nach* dem Kapitel, was er vorher nicht konnte?
-- **Stolpersteine**: Welche Missverstaendnisse passieren typisch? Diese landen spaeter im Block `## Typische Fehler`.
-- **2-3 konkrete Beispiele**: Mindestens eines anfasslich (Lichtschalter, Hausnummer, Buchseite) — nicht nur Code oder Diagramme.
-- **Aha-Moment**: Welche Stelle des Kapitels verbindet Abstraktes mit Konkretem so, dass es "klick" macht?
+- Was kann der Leser nach dem Kapitel?
+- Welche Begriffe braucht jemand ohne Vorwissen?
+- Welche Missverstaendnisse passieren typisch?
+- Welche Beispiele machen das Thema greifbar?
+- Welche Teile gehoeren als Kapitel, Abschnitt, Box oder Glossarbegriff in die App?
+- Was muss unser Kapitel besser machen als die gefundenen Lernangebote?
 
 ### 3. Schreiben
 
-MDX-Skelett gegen Validator-Pflichten:
+Das Kapitel folgt dem Kapitelstandard:
 
-- Einleitung: Was ist das? Warum brauche ich es?
-- Schritt-fuer-Schritt-Erklaerung
-- Beispiele, mindestens eines numerisch durchgerechnet
-- `## Typische Fehler` (Validator-Pflicht fuer `ready`)
-- `## Was du danach kannst` (Validator-Pflicht fuer `ready`)
+- kurzer Einstieg: Was ist das und was kann ich danach?
+- einfache Analogie oder mentales Modell, wenn sie wirklich hilft
+- Fachbegriffe knapp und korrekt definieren
+- Kernwissen in Tabellen, Regeln, Formeln oder klaren Listen verdichten
+- Verfahren und Rechenwege Schritt fuer Schritt zeigen
+- Beispiele erklaeren den Stoff; sie pruefen den Leser nicht ab
+- Fehlerfallen knapp und direkt beim passenden Inhalt nennen
+- keine kuenstlichen Berufssituationen, wenn sie den Lernfluss stoeren
 
 Weitere Regeln:
 
-- **Term-Links**: Jeden im Glossar definierten Begriff einmal verlinken mit `<Term id="...">Anzeigetext</Term>`. Nicht jedes Vorkommen, nur das erste pro Kapitel.
-- **Quellen**: In `src/content/quellen/tagMappings.ts` die `slugTags` fuer das Kapitel ergaenzen, damit der Quellen-Lookup greift.
-- **Sprache**: kurze Saetze, aktive Verben, eine Idee pro Absatz.
-- **Tonfall**: respektvoll, nicht herablassend. Klarheit ist Respekt.
+- Wichtige Glossar-Begriffe beim ersten sinnvollen Auftreten mit `<Term id="...">...</Term>` markieren.
+- Jeder verwendete Term hat einen Eintrag in `src/content/glossar/*.ts`.
+- Quellen-Tags fuer das Kapitel in `src/content/quellen/tagMappings.ts` pflegen.
+- Lernfeld, Jahr, AP1/AP2, `Bezug` und `Form` werden in `CURRICULUM_MAPPING.md` oder Metadaten gepflegt.
+- Der sichtbare Lerntext bleibt ein erklaerendes Kompendium.
 
 ### 4. Selbsttest
 
-Bevor `status: "draft"` auf `status: "ready"` gehoben wird:
+Vor `ready` oder `final`:
 
-- **Persona-Test**:
-  - *Anna, 17, frisch in Ausbildung, kein Vorwissen* → versteht sie es?
-  - *Ben, 19, im 2. Lehrjahr, hat schon gelernt aber unsicher* → bringt es ihn weiter?
-  - *Carl, IT-erfahren aus Hobby, nutzt die App zur Wiederholung* → findet er es trotzdem praezise?
-- **Validator**: `npm run check` muss exit 0 zeigen **und** keine neuen Warnungen fuer das Kapitel.
-- **Numerische Stichprobe**: jede Zahl, jede Formel im Kapitel mindestens einmal selbst nachgerechnet.
-
-Erst danach Status-Update in `src/lib/toc/data/<lernfeld>.ts`.
-
-## Inhaltliche Korrektheit — Detail
-
-- **Primaerquellen vor Sekundaerquellen.** Wenn die Spec etwas anderes sagt als ein populaerer Blog, gewinnt die Spec.
-- **Cross-Check.** Jeder zentrale Fakt mindestens zwei unabhaengige Quellen.
-- **Numerische Disziplin.** Edge-Cases explizit durchspielen (z.B. 8 Bit ergibt 256 Werte, *0 bis 255*, nicht 1 bis 256).
-- **Abgrenzung.** Vereinfachungen, die im Lernkontext gelten, aber technisch nicht ganz exakt sind, kurz benennen. Beispiel: "Heute ist 1 Byte praktisch immer 8 Bit. Historisch gab es auch 6- oder 9-Bit-Bytes; im modernen Lernkontext kann man das ignorieren."
-
-## Didaktische Mastery — Detail
-
-- **Keine Vorannahmen.** Auch das "Selbstverstaendliche" wird kurz benannt.
-- **Konkret vor abstrakt.** Erst anfassliches Beispiel, dann die Regel.
-- **Eine Idee pro Absatz.** Stapeln verwirrt.
-- **Stolpersteine aktiv ansprechen.** Wer Missverstaendnisse nicht antizipiert, laesst sie wachsen.
-- **Mehrere Erklaer-Wege.** Visuell, numerisch, sprachlich — was am besten passt.
+- Quellen-/Benchmark-Matrix liegt vor und wurde beim Schreiben genutzt.
+- Persona-Test: versteht jemand ohne Vorwissen den roten Faden?
+- Fachcheck: zentrale Aussagen gegen Quellen kontrollieren.
+- Zahlencheck: jede Rechnung, Formel und Einheit selbst nachrechnen.
+- Glossarcheck: Term-IDs existieren und sind nicht inflationaer gesetzt.
+- Technikcheck: `npm.cmd run lint` und `npm.cmd run build`.
 
 ## Was wir nicht schreiben
 
-- keine Fuellsaetze ("In der heutigen Zeit wird IT immer wichtiger...")
-- keine Marketing-Sprache ("Mit diesem Kapitel meisterst du...")
-- keine inhaltsleeren Kapitel-Uebersichten ("Im Folgenden lernst du...")
-- keine kopierten Pruefungsaufgaben (urheberrechtlich kritisch)
-- keine vagen Versprechen ohne Belege ("oft wird angenommen, dass...")
+- keine Fuellsaetze
+- keine Marketing-Sprache
+- keine langen offiziellen Vorspanne im Kapiteltext
+- keine kopierten Pruefungsaufgaben
+- keine eigenen Pruefungsaufgaben, Quizbloecke, Karteikarten oder Pruefungssimulationen im normalen Kompendium
+- keine vagen Versprechen ohne Belege
+- keine internen Bearbeitungsnotizen im Lerntext
+
+## Sprache und Umlaute
+
+Alle deutschen Fließtexte werden in UTF-8 mit echten Umlauten geschrieben:
+`ä`, `ö`, `ü`, `Ä`, `Ö`, `Ü` und `ß`.
+
+Nicht verwenden: `ae`, `oe`, `ue` oder `ss` als Ersatz für deutsche Umlaute
+und `ß`.
+
+Ausnahmen sind nur technische Bezeichner: Slugs, Dateinamen, IDs, URLs,
+Importpfade, Paketnamen, Code-Identifier, ASCII-only Protokollwerte und
+historische Strings, die technisch exakt so heißen.

@@ -1,13 +1,13 @@
 # Datenrate & Downloadzeit berechnen
 
 <MetaBar
-  lernfeld="LF 2 / LF 3 - Datenmengen, Netzwerke und Uebertragung"
+  lernfeld="LF 2 / LF 3 - Datenmengen, Netzwerke und Übertragung"
   prüfungsrelevanz="PFLICHT - 5/5"
 />
 
 Dieses Kapitel macht dich sicher in allen Aufgaben, in denen Datenmenge, Zeit und
-*<Term id="datenrate">Datenrate</Term>* zusammenhaengen. Das klingt klein, ist aber
-Pruefungsgold: Internetanschluss, Backupfenster, Cloud-Sync, NAS-Uebertragung,
+*<Term id="datenrate">Datenrate</Term>* zusammenhängen. Das klingt klein, ist aber
+Prüfungsgold: Internetanschluss, Backupfenster, Cloud-Sync, NAS-Übertragung,
 WLAN-Bruttorate, Video-Bitrate und "Wie lange dauert der Download?" sind immer dieselbe
 Rechenmechanik mit anderen Kleidern.
 
@@ -16,8 +16,8 @@ Rechenmechanik mit anderen Kleidern.
 - Mbit/s, Gbit/s, MB/s, GB, GiB und MiB sauber unterscheiden.
 - Downloadzeit, Uploadzeit, Datenrate und Datenmenge mit einer Formel berechnen.
 - Brutto- und Nettodatenrate mit Wirkungsgrad rechnen.
-- Aufgaben in Sekunden, Minuten, Stunden und Tagen vernuenftig ausgeben.
-- typische Pruefungsfallen erkennen: kleines `b`, grosses `B`, 1000 gegen 1024, Overhead.
+- Aufgaben in Sekunden, Minuten, Stunden und Tagen vernünftig ausgeben.
+- typische Prüfungsfallen erkennen: kleines `b`, grosses `B`, 1000 gegen 1024, Overhead.
 
 <Tipp titel="Der Kern">
 Erst Einheiten sauber machen, dann Formel einsetzen. Fast alle Fehler entstehen vor der
@@ -29,17 +29,17 @@ eigentlichen Rechnung.
 ## 02 - Warum ist das im Beruf wichtig?
 
 Wenn ein Kunde fragt, ob ein 600-GB-Backup jede Nacht in ein Rechenzentrum passt, reicht
-"schnelle Leitung" nicht. Du musst pruefen, ob das Backupfenster reicht. Wenn eine
+"schnelle Leitung" nicht. Du musst prüfen, ob das Backupfenster reicht. Wenn eine
 Abteilung klagt, dass der Cloud-Sync ewig dauert, musst du zwischen Provider-Bandbreite,
-WLAN-Bruttorate, tatsaechlichem *<Term id="durchsatz">Durchsatz</Term>* und
+WLAN-Bruttorate, tatsächlichem *<Term id="durchsatz">Durchsatz</Term>* und
 *<Term id="latenz">Latenz</Term>* unterscheiden.
 
 <Analogie>
-Stell dir eine Datenuebertragung wie eine Lieferstrasse vor. Die Datenmenge ist die
+Stell dir eine Datenübertragung wie eine Lieferstrasse vor. Die Datenmenge ist die
 Anzahl Pakete. Die Bandbreite ist, wie viele Pakete theoretisch pro Minute auf die Strasse
 passen. Der Durchsatz ist, wie viele wirklich ankommen, nachdem Ampeln, Umwege und
-Verpackung Platz kosten. Die Latenz ist, wie lange das erste Paket ueberhaupt bis zum Ziel
-braucht. Fuer grosse Downloads zaehlt vor allem Durchsatz, fuer Videocalls zaehlen
+Verpackung Platz kosten. Die Latenz ist, wie lange das erste Paket überhaupt bis zum Ziel
+braucht. Für große Downloads zählt vor allem Durchsatz, für Videocalls zählen
 Durchsatz und Latenz gemeinsam.
 </Analogie>
 
@@ -57,14 +57,14 @@ Ein *<Term id="bit">Bit</Term>* ist die kleinste Informationseinheit. Ein
 1 bit  = 1/8 Byte
 ```
 
-Internetanschluesse und Netzwerktechnik werden meist in bit/s angegeben:
+Internetanschlüsse und Netzwerktechnik werden meist in bit/s angegeben:
 
 ```text
 100 Mbit/s
 1 Gbit/s
 ```
 
-Dateigroessen, Datentraeger und viele Betriebssystemanzeigen werden meist in Byte angegeben:
+Dateigrössen, Datenträger und viele Betriebssystemanzeigen werden meist in Byte angegeben:
 
 ```text
 500 MB
@@ -72,7 +72,7 @@ Dateigroessen, Datentraeger und viele Betriebssystemanzeigen werden meist in Byt
 931 GiB
 ```
 
-Die wichtigste Eselsbruecke:
+Die wichtigste Eselsbrücke:
 
 | Zeichen | Bedeutung | Beispiel |
 |---|---|---|
@@ -84,10 +84,10 @@ Mbit/s -> MB/s: durch 8 teilen
 MB/s   -> Mbit/s: mal 8 rechnen
 ```
 
-### Dezimal und binaer
+### Dezimal und binär
 
 Bei Datenraten wird fast immer dezimal gerechnet: kilo, mega, giga sind 1000er-Schritte.
-Bei Betriebssystemanzeigen tauchen oft Binaerpraefixe auf: KiB, MiB, GiB sind 1024er-Schritte.
+Bei Betriebssystemanzeigen tauchen oft Binärpräfixe auf: KiB, MiB, GiB sind 1024er-Schritte.
 
 | Einheit | Wert | Typischer Kontext |
 |---|---:|---|
@@ -95,15 +95,15 @@ Bei Betriebssystemanzeigen tauchen oft Binaerpraefixe auf: KiB, MiB, GiB sind 10
 | 1 Mbit | 1.000.000 bit | Internetanschluss |
 | 1 Gbit | 1.000.000.000 bit | Ethernet, Glasfaser |
 | 1 KB | 1.000 Byte | Herstellerangaben |
-| 1 MB | 1.000.000 Byte | Dateigroesse in Aufgaben |
-| 1 GB | 1.000.000.000 Byte | Datentraeger, Downloads |
+| 1 MB | 1.000.000 Byte | Dateigrösse in Aufgaben |
+| 1 GB | 1.000.000.000 Byte | Datenträger, Downloads |
 | 1 KiB | 1.024 Byte | Betriebssysteme |
 | 1 MiB | 1.048.576 Byte | Speicheranzeigen |
 | 1 GiB | 1.073.741.824 Byte | Volumes, RAM-nahe Angaben |
 
-<Tipp titel="Pruefungsregel">
+<Tipp titel="Prüfungsregel">
 Wenn die Aufgabe MB, GB, Mbit/s oder Gbit/s schreibt und nichts anderes sagt, rechne
-dezimal mit 1000. Wenn KiB, MiB oder GiB steht, rechne binaer mit 1024.
+dezimal mit 1000. Wenn KiB, MiB oder GiB steht, rechne binär mit 1024.
 </Tipp>
 
 ---
@@ -118,7 +118,7 @@ Zeit       = Datenmenge / Datenrate
 Datenmenge = Datenrate * Zeit
 ```
 
-Wichtig: Datenmenge und Datenrate muessen in derselben Welt stehen.
+Wichtig: Datenmenge und Datenrate müssen in derselben Welt stehen.
 
 ```text
 Falsch:  Zeit = 2 GB / 100 Mbit/s
@@ -131,14 +131,14 @@ vermischst.
 
 ---
 
-## 05 - Standardweg fuer jede Aufgabe
+## 05 - Standardweg für jede Aufgabe
 
 <Schritte
   items={[
-    { titel: 'Gesuchte Groesse markieren', text: 'Zeit, Datenrate oder Datenmenge? Bevor du rechnest, muss klar sein, welche der drei Grundformeln gebraucht wird.' },
+    { titel: 'Gesuchte Größe markieren', text: 'Zeit, Datenrate oder Datenmenge? Bevor du rechnest, muss klar sein, welche der drei Grundformeln gebraucht wird.' },
     { titel: 'Einheiten lesen', text: 'Steht dort Mbit/s, MB/s, GB, GiB, Minuten oder Stunden? Schreibe die Einheit an jede Zahl. Nackte Zahlen sind eine Einladung zum Fehler.' },
     { titel: 'Alles in eine gemeinsame Basis bringen', text: 'Entweder alles in bit/Mbit oder alles in Byte/MB. Bei Mbit/s zu MB/s immer durch 8 teilen.' },
-    { titel: 'Brutto/Netto pruefen', text: 'Wenn ein Wirkungsgrad genannt wird, erst die effektive Datenrate berechnen: netto = brutto * Wirkungsgrad.' },
+    { titel: 'Brutto/Netto prüfen', text: 'Wenn ein Wirkungsgrad genannt wird, erst die effektive Datenrate berechnen: netto = brutto * Wirkungsgrad.' },
     { titel: 'Formel einsetzen', text: 'Zeit = Datenmenge / Datenrate, Datenrate = Datenmenge / Zeit oder Datenmenge = Datenrate * Zeit.' },
     { titel: 'Zeit lesbar umwandeln', text: 'Sekunden in Minuten, Stunden oder Tage umrechnen. Erst am Ende sinnvoll runden.' },
   ]}
@@ -149,9 +149,9 @@ vermischst.
 ## 06 - Brutto, Netto, Bandbreite und Durchsatz
 
 Die angegebene *<Term id="bandbreite">Bandbreite</Term>* ist oft ein Bruttowert. Eine
-1-Gbit/s-Verbindung uebertraegt nicht 1 Gbit/s reine Nutzdaten, weil Protokoll-Header,
-Pruefsummen, Quittungen, Verschluesselung, WLAN-Kollisionen, Wiederholungen und
-Geraetegrenzen mitlaufen.
+1-Gbit/s-Verbindung überträgt nicht 1 Gbit/s reine Nutzdaten, weil Protokoll-Header,
+Prüfsummen, Quittungen, Verschlüsselung, WLAN-Kollisionen, Wiederholungen und
+Gerätegrenzen mitlaufen.
 
 ```text
 Nettodatenrate = Bruttodatenrate * Wirkungsgrad
@@ -168,12 +168,12 @@ Netto:        100 Mbit/s * 0,80 = 80 Mbit/s
 
 Typische Orientierung, wenn eine Aufgabe diskutiert statt exakt rechnet:
 
-| Uebertragungsweg | Grobe Netto-Orientierung |
+| Übertragungsweg | Grobe Netto-Orientierung |
 |---|---:|
 | Fast/Gigabit Ethernet im LAN | etwa 90 bis 95 % |
-| TCP ueber Internet/VDSL | etwa 75 bis 90 % |
+| TCP über Internet/VDSL | etwa 75 bis 90 % |
 | WLAN in guter Umgebung | etwa 40 bis 75 % |
-| WLAN in gestoerter Umgebung | deutlich darunter |
+| WLAN in gestörter Umgebung | deutlich darunter |
 
 In Rechenaufgaben gilt aber immer: Wenn ein Wirkungsgrad im Text steht, diesen Wert nehmen.
 
@@ -183,8 +183,8 @@ In Rechenaufgaben gilt aber immer: Wenn ein Wirkungsgrad im Text steht, diesen W
 
 ### Szenario A: Downloadzeit einer Datei
 
-<Beispiel titel="2-GB-Datei ueber 100 Mbit/s">
-Eine 2-GB-Datei soll ueber eine Leitung mit 100 Mbit/s geladen werden. Wie lange dauert
+<Beispiel titel="2-GB-Datei über 100 Mbit/s">
+Eine 2-GB-Datei soll über eine Leitung mit 100 Mbit/s geladen werden. Wie lange dauert
 der Download ohne weiteren Overhead?
 </Beispiel>
 
@@ -203,10 +203,10 @@ der Download ohne weiteren Overhead?
   </Ergebnis>
 </StepByStep>
 
-### Szenario B: Backupfenster pruefen
+### Szenario B: Backupfenster prüfen
 
-<Beispiel titel="600-GB-Backup ueber 200 Mbit/s mit 80 Prozent Netto">
-Ein Unternehmen moechte jede Nacht 600 GB in ein externes Rechenzentrum sichern. Die
+<Beispiel titel="600-GB-Backup über 200 Mbit/s mit 80 Prozent Netto">
+Ein Unternehmen möchte jede Nacht 600 GB in ein externes Rechenzentrum sichern. Die
 Leitung liefert 200 Mbit/s brutto, nutzbar sind laut Messung 80 Prozent. Das Backupfenster
 ist 8 Stunden lang. Reicht das?
 </Beispiel>
@@ -229,17 +229,17 @@ ist 8 Stunden lang. Reicht das?
   </Schritt>
   <Ergebnis>
     Das Backupfenster reicht **nicht sicher**. Es fehlen etwa **20 Minuten**, und reale
-    Schwankungen sind noch nicht eingerechnet. Saubere Massnahmen waeren inkrementelle
-    Backups, Deduplizierung, ein groesseres Zeitfenster oder mehr Netto-Durchsatz.
+    Schwankungen sind noch nicht eingerechnet. Saubere Maßnahmen wären inkrementelle
+    Backups, Deduplizierung, ein größeres Zeitfenster oder mehr Netto-Durchsatz.
   </Ergebnis>
 </StepByStep>
 
-### Szenario C: benoetigte Datenrate berechnen
+### Szenario C: benötigte Datenrate berechnen
 
 <Beispiel titel="Cloud-Sync muss in 30 Minuten fertig sein">
-Ein Standort erzeugt taeglich 45 GB Projektdaten. Diese Daten sollen innerhalb von
+Ein Standort erzeugt täglich 45 GB Projektdaten. Diese Daten sollen innerhalb von
 30 Minuten synchronisiert werden. Welche durchschnittliche Datenrate in Mbit/s wird
-mindestens benoetigt?
+mindestens benötigt?
 </Beispiel>
 
 ```text
@@ -251,7 +251,7 @@ Datenrate = 45.000 MB / 1800 s = 25 MB/s
 ```
 
 Antwort: Es werden mindestens **200 Mbit/s netto** gebraucht. Wenn die Leitung nur
-80 Prozent netto schafft, muss die Bruttobandbreite hoeher sein:
+80 Prozent netto schafft, muss die Bruttobandbreite höher sein:
 
 ```text
 Brutto = Netto / Wirkungsgrad = 200 Mbit/s / 0,80 = 250 Mbit/s
@@ -260,8 +260,8 @@ Brutto = Netto / Wirkungsgrad = 200 Mbit/s / 0,80 = 250 Mbit/s
 ### Szenario D: maximale Datenmenge berechnen
 
 <Beispiel titel="Wie viel passt in ein Wartungsfenster?">
-Ein NAS uebertraegt netto 95 MB/s. Das Wartungsfenster dauert 2 Stunden. Wie viele GB
-koennen maximal uebertragen werden?
+Ein NAS überträgt netto 95 MB/s. Das Wartungsfenster dauert 2 Stunden. Wie viele GB
+können maximal übertragen werden?
 </Beispiel>
 
 ```text
@@ -270,12 +270,12 @@ Datenmenge = 95 MB/s * 7200 s = 684.000 MB = 684 GB
 ```
 
 Antwort: In zwei Stunden passen theoretisch **684 GB** durch. Praktisch sollte man eine
-Reserve einplanen, weil Dateisystem, viele kleine Dateien und Pruefsummen bremsen koennen.
+Reserve einplanen, weil Dateisystem, viele kleine Dateien und Prüfsummen bremsen können.
 
 ### Szenario E: WLAN-Bruttorate ist nicht Downloadrate
 
 Ein Notebook verbindet sich mit einem Access Point mit 866 Mbit/s Bruttorate. Im Raum sind
-Stoerungen und mehrere Clients aktiv; realistisch sind 55 Prozent netto.
+Störungen und mehrere Clients aktiv; realistisch sind 55 Prozent netto.
 
 ```text
 866 Mbit/s * 0,55 = 476,3 Mbit/s netto
@@ -289,7 +289,7 @@ Eine 12-GB-Datei dauert:
 Zeit = 12.000 MB / 59,54 MB/s = 201,5 s = ca. 3 min 22 s
 ```
 
-Antwort: Trotz 866 Mbit/s Anzeige ist die reale Dateiuebertragung hier eher bei
+Antwort: Trotz 866 Mbit/s Anzeige ist die reale Dateiübertragung hier eher bei
 **rund 60 MB/s** und dauert **gut 3 Minuten**.
 
 ---
@@ -311,7 +311,7 @@ Beispiel:
 125 min = 2 h 5 min
 ```
 
-Bei Pruefungsaufgaben ist eine lesbare Antwort oft besser als nur eine nackte Zahl:
+Bei Prüfungsaufgaben ist eine lesbare Antwort oft besser als nur eine nackte Zahl:
 
 ```text
 Antwort: 7500 s = 125 min = 2 h 5 min
@@ -324,12 +324,12 @@ Antwort: 7500 s = 125 min = 2 h 5 min
 | Fehler | Warum falsch | Korrektur |
 |---|---|---|
 | 100 Mbit/s = 100 MB/s | Bit und Byte verwechselt | 100 Mbit/s = 12,5 MB/s |
-| 1 GB immer als 1024 MB rechnen | GB ist dezimal, GiB binaer | GB = 1000 MB, GiB = 1024 MiB |
+| 1 GB immer als 1024 MB rechnen | GB ist dezimal, GiB binär | GB = 1000 MB, GiB = 1024 MiB |
 | Brutto direkt als Netto nutzen | Overhead fehlt | erst Wirkungsgrad anwenden |
 | Minuten und Sekunden mischen | Zeitbasis nicht einheitlich | alles in Sekunden oder Minuten bringen |
-| zu frueh runden | Folgefehler | Zwischenergebnisse behalten, am Ende runden |
-| Download und Upload gleichsetzen | Anschluesse sind oft asymmetrisch | richtige Richtung aus dem Aufgabentext lesen |
-| Latenz als Datenrate behandeln | andere Groesse | Latenz betrifft Reaktionszeit, nicht Gesamtmenge pro Sekunde |
+| zu früh runden | Folgefehler | Zwischenergebnisse behalten, am Ende runden |
+| Download und Upload gleichsetzen | Anschlüsse sind oft asymmetrisch | richtige Richtung aus dem Aufgabentext lesen |
+| Latenz als Datenrate behandeln | andere Größe | Latenz betrifft Reaktionszeit, nicht Gesamtmenge pro Sekunde |
 
 ---
 
@@ -347,13 +347,13 @@ Wenn du eine Aufgabe mit Datenrate siehst, arbeite immer in dieser Reihenfolge:
 7. Welche Zeiteinheit soll die Antwort haben?
 ```
 
-Pruefer lieben Aufgaben, in denen alle Zahlen harmlos aussehen:
+Prüfer lieben Aufgaben, in denen alle Zahlen harmlos aussehen:
 
 ```text
 Eine Datei ist 4 GB gross. Die Leitung hat 50 Mbit/s. Wie lange dauert der Download?
 ```
 
-Der Fehler waere:
+Der Fehler wäre:
 
 ```text
 4 / 50 = 0,08
@@ -374,18 +374,18 @@ Die richtige Denkkette ist:
 1. Eine Leitung liefert 80 Mbit/s netto. Wie viel sind das in MB/s?
    Antwort: **10 MB/s**, weil 80 / 8 = 10.
 
-2. Eine 5-GB-Datei wird mit 25 MB/s uebertragen. Wie lange dauert das?
+2. Eine 5-GB-Datei wird mit 25 MB/s übertragen. Wie lange dauert das?
    Antwort: **200 s**, weil 5 GB = 5000 MB und 5000 / 25 = 200.
 
 3. Was ist die wichtigste Aussage zu 1 Gbit/s Ethernet?
    Antwort: **1 Gbit/s ist ein Bruttowert; die Nutzdatenrate liegt darunter.**
 
 4. Wann rechnest du mit 1024 statt 1000?
-   Antwort: **Bei KiB, MiB und GiB**, weil das IEC-Binaerpraefixe sind.
+   Antwort: **Bei KiB, MiB und GiB**, weil das IEC-Binärpräfixe sind.
 
 ---
 
-## 12 - Eine komplette Pruefungsaufgabe
+## 12 - Eine komplette Prüfungsaufgabe
 
 <Beispiel titel="Standortbackup planen">
 Ein Betrieb hat zwei Standorte. Standort A soll jede Nacht ein inkrementelles Backup von
@@ -397,11 +397,11 @@ Berechne:
 
 1. die Nettodatenrate in Mbit/s,
 2. die Nettodatenrate in MB/s,
-3. die Uebertragungszeit,
+3. die Übertragungszeit,
 4. ob das Backupfenster reicht.
 </Beispiel>
 
-<StepByStep titel="Musterloesung">
+<StepByStep titel="Musterlösung">
   <Schritt nr={1} titel="Nettodatenrate">
     100 Mbit/s * 0,70 = **70 Mbit/s**.
   </Schritt>
@@ -419,9 +419,9 @@ Berechne:
   </Schritt>
   <Ergebnis>
     Das Backupfenster von 6 Stunden reicht rechnerisch knapp. In einer professionellen
-    Antwort wuerdest du eine Reserve empfehlen, weil reale Schwankungen, viele kleine
-    Dateien, Verschluesselung und paralleler Standortverkehr die Uebertragung verlaengern
-    koennen.
+    Antwort würdest du eine Reserve empfehlen, weil reale Schwankungen, viele kleine
+    Dateien, Verschlüsselung und paralleler Standortverkehr die Übertragung verlängern
+    können.
   </Ergebnis>
 </StepByStep>
 
@@ -453,11 +453,11 @@ GiB/MiB = binaer, 1024er-Schritte
     },
     {
       term: 'Bandbreite',
-      definition: 'Theoretisch moegliche Maximalrate eines Uebertragungswegs. In Aufgaben oft der Bruttowert.'
+      definition: 'Theoretisch mögliche Maximalrate eines Übertragungswegs. In Aufgaben oft der Bruttowert.'
     },
     {
       term: 'Durchsatz',
-      definition: 'Tatsaechlich erreichte Nutzdatenrate nach Overhead, Stoerungen und Geraetegrenzen.'
+      definition: 'Tatsächlich erreichte Nutzdatenrate nach Overhead, Störungen und Gerätegrenzen.'
     },
     {
       term: 'Bruttodatenrate',
@@ -465,14 +465,14 @@ GiB/MiB = binaer, 1024er-Schritte
     },
     {
       term: 'Nettodatenrate',
-      definition: 'Effektiv nutzbare Datenrate fuer Nutzdaten. In Rechenaufgaben oft Brutto mal Wirkungsgrad.'
+      definition: 'Effektiv nutzbare Datenrate für Nutzdaten. In Rechenaufgaben oft Brutto mal Wirkungsgrad.'
     },
     {
-      term: 'Binaerpraefix',
+      term: 'Binärpräfix',
       definition: 'KiB, MiB, GiB und TiB. Diese Einheiten nutzen 1024er-Schritte nach IEC 80000-13.'
     },
     {
-      term: 'Dezimalpraefix',
+      term: 'Dezimalpräfix',
       definition: 'KB, MB, GB und TB. Diese Einheiten nutzen 1000er-Schritte nach SI.'
     },
   ]}
@@ -483,22 +483,22 @@ GiB/MiB = binaer, 1024er-Schritte
     {
       label: 'IEC 80000-13:2008 - Quantities and units, Part 13: Information science and technology',
       href: 'https://webstore.iec.ch/publication/31898',
-      detail: 'Internationale Norm fuer Informationsgroessen und Binaerpraefixe wie KiB, MiB, GiB und TiB.'
+      detail: 'Internationale Norm für Informationsgrössen und Binärpräfixe wie KiB, MiB, GiB und TiB.'
     },
     {
       label: 'BIPM - SI Brochure',
       href: 'https://www.bipm.org/en/publications/si-brochure',
-      detail: 'Offizielle Grundlage fuer SI-Praefixe wie kilo, mega, giga und tera als 1000er-Schritte.'
+      detail: 'Offizielle Grundlage für SI-Präfixe wie kilo, mega, giga und tera als 1000er-Schritte.'
     },
     {
       label: 'BIBB - Fachinformatiker/-in Ausbildungsordnung und Rahmenplan',
       href: 'https://www.bibb.de/de/berufeinfo.php',
-      detail: 'Offizielle Berufsprofil- und Ordnungsmaterialien fuer die IT-Berufe und die Lernfelder der Ausbildung.'
+      detail: 'Offizielle Berufsprofil- und Ordnungsmaterialien für die IT-Berufe und die Lernfelder der Ausbildung.'
     },
     {
       label: 'IETF RFC 9110 - HTTP Semantics',
       href: 'https://www.rfc-editor.org/rfc/rfc9110',
-      detail: 'Technischer Kontext fuer Uebertragungen ueber HTTP; relevant, weil Nutzdatenuebertragung immer Protokoll-Overhead einschliesst.'
+      detail: 'Technischer Kontext für Übertragungen über HTTP; relevant, weil Nutzdatenübertragung immer Protokoll-Overhead einschliesst.'
     },
   ]}
 />

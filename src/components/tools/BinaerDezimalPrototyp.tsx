@@ -132,7 +132,7 @@ export default function BinaerDezimalPrototyp({
             Eingabe mit Fehlerdiagnose
           </h4>
           <p className="m-0 mt-1 font-body text-sm leading-relaxed text-muted">
-            Der Rechner prüft zuerst die Schreibweise und erklärt dann die
+            Der Rechner prüft zürst die Schreibweise und erklärt dann die
             Stellenwert-Rechnung.
           </p>
 

@@ -5,7 +5,7 @@
   prüfungsrelevanz="PFLICHT · 5/5"
 />
 
-In Aufgaben werden *<Term id="verschluesselung">Verschlüsselung</Term>*, *<Term id="hashfunktion">Hashing</Term>*, *<Term id="zertifikat">Zertifikate</Term>*, *<Term id="digitale-signatur">digitale Signaturen</Term>* und *<Term id="vpn">VPN</Term>* selten isoliert abgefragt. Meist sollst du unterscheiden, welches Werkzeug welches Schutzziel bedient und wie die Verfahren in HTTPS, Passwortspeicherung, Software-Updates oder Standortkopplung zusammenspielen.
+In Aufgaben werden *<Term id="verschlüsselung">Verschlüsselung</Term>*, *<Term id="hashfunktion">Hashing</Term>*, *<Term id="zertifikat">Zertifikate</Term>*, *<Term id="digitale-signatur">digitale Signaturen</Term>* und *<Term id="vpn">VPN</Term>* selten isoliert abgefragt. Meist sollst du unterscheiden, welches Werkzeug welches Schutzziel bedient und wie die Verfahren in HTTPS, Passwortspeicherung, Software-Updates oder Standortkopplung zusammenspielen.
 
 ---
 
@@ -20,7 +20,7 @@ Stell dir Kryptographie wie ein Büro mit mehreren Werkzeugen vor. Ein verschlos
 </Analogie>
 
 <Tipp titel="Prüfungsperspektive">
-Lies jede Sicherheitsaufgabe zuerst über das Schutzziel: Vertraulichkeit, Integrität, Authentizität, Nicht-Abstreitbarkeit oder sichere Standortverbindung. Danach wähle das Werkzeug: Verschlüsselung, Hash, Signatur, Zertifikat oder VPN.
+Lies jede Sicherheitsaufgabe zürst über das Schutzziel: Vertraulichkeit, Integrität, Authentizität, Nicht-Abstreitbarkeit oder sichere Standortverbindung. Danach wähle das Werkzeug: Verschlüsselung, Hash, Signatur, Zertifikat oder VPN.
 </Tipp>
 
 ---
@@ -31,8 +31,8 @@ Kryptografische Verfahren lassen sich für die Prüfung in fünf Kernideen ordne
 
 | Werkzeug | Kernidee | Hauptnutzen | Typische Verfahren |
 |---|---|---|---|
-| *<Term id="symmetrische-verschluesselung">Symmetrische Verschlüsselung</Term>* | beide Seiten nutzen denselben geheimen Schlüssel | Vertraulichkeit, schnell für große Datenmengen | AES |
-| *<Term id="asymmetrische-verschluesselung">Asymmetrische Verschlüsselung</Term>* | Public Key und Private Key bilden ein Paar | Schlüsselaustausch, Verschlüsselung an Empfänger, Signaturen | RSA, ECC |
+| *<Term id="symmetrische-verschlüsselung">Symmetrische Verschlüsselung</Term>* | beide Seiten nutzen denselben geheimen Schlüssel | Vertraulichkeit, schnell für große Datenmengen | AES |
+| *<Term id="asymmetrische-verschlüsselung">Asymmetrische Verschlüsselung</Term>* | Public Key und Private Key bilden ein Paar | Schlüsselaustausch, Verschlüsselung an Empfänger, Signaturen | RSA, ECC |
 | *<Term id="hybrides-verfahren">Hybrides Verfahren</Term>* | asymmetrisch startet sicher, symmetrisch überträgt schnell | Praxisbetrieb bei *<Term id="tls">TLS</Term>*, E-Mail und VPN | TLS, PGP-Logik |
 | Hashfunktion | Einweg-Fingerabdruck fester Länge | Integrität, Passwortprüfung, Signaturvorbereitung | SHA-256, SHA-3 |
 | Digitale Signatur | Hash wird mit Private Key signiert und mit Public Key geprüft | Integrität, Authentizität, Nicht-Abstreitbarkeit | RSA-PSS, ECDSA, EdDSA |

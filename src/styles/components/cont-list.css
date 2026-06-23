@@ -1,5 +1,5 @@
 @layer components {
-/* ── Recent / Continue List ─────────────────────────────────── */
+/* ── Recent / Continü List ─────────────────────────────────── */
   .cont {
     display: grid;
     gap: 1px;
@@ -11,7 +11,7 @@
 
   .cont-row {
     display: grid;
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr) auto auto;
     align-items: center;
     gap: 16px;
     padding: 12px 18px;
@@ -23,17 +23,25 @@
   .cont-row:hover { background: var(--color-bg-2); }
 
   .cont-lf {
+    min-width: 0;
+    overflow: hidden;
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 500;
     color: var(--color-ink-3);
     letter-spacing: 0.04em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .cont-title {
+    min-width: 0;
+    overflow: hidden;
     font-size: 15px;
     font-weight: 550;
     color: var(--color-ink);
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .cont-when {
@@ -54,5 +62,45 @@
     display: block;
     height: 100%;
     background: var(--color-accent);
+  }
+
+  .cont-audit {
+    justify-self: end;
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+    background: var(--color-paper-deep);
+    padding: 3px 7px;
+    color: var(--color-ink-3);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .cont-audit--teilgeprueft,
+  .cont-audit--geprueft {
+    border-color: color-mix(in oklch, var(--color-accent) 32%, var(--color-rule));
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  .cont-audit--ungeprueft,
+  .cont-audit--gesperrt {
+    border-color: color-mix(in oklch, var(--color-accent-2) 30%, var(--color-rule));
+    color: var(--color-accent-2);
+  }
+
+  @media (max-width: 720px) {
+    .cont-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px 12px;
+    }
+
+    .cont-lf {
+      grid-column: 1 / -1;
+    }
   }
 }

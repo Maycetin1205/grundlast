@@ -86,9 +86,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     margin-top: 16px;
     font-size: 12px;
     color: var(--color-ink-3);
+  }
+
+  .lf-foot span:first-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .lf-bar {

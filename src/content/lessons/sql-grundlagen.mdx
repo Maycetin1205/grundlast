@@ -134,9 +134,9 @@ SELECT name, alter
 FROM kunden
 ORDER BY alter ASC;
 ```
-→ Sortiert nach Alter aufsteigend (kleinste Zahl zuerst). `ASC` = ascending = aufsteigend.
+→ Sortiert nach Alter aufsteigend (kleinste Zahl zürst). `ASC` = ascending = aufsteigend.
 
-`DESC` = descending = absteigend (größte Zahl zuerst):
+`DESC` = descending = absteigend (größte Zahl zürst):
 ```sql
 SELECT name, alter
 FROM kunden
@@ -229,7 +229,7 @@ ORDER BY b.preis DESC;
 1. `FROM kunden k` + `INNER JOIN bestellungen b ON ...` → Tabellen verknüpfen
 2. `WHERE k.stadt = 'München'` → nur Münchener Kunden: Murat und Tom
 3. `SELECT k.name, b.produkt, b.preis` → diese Spalten
-4. `ORDER BY b.preis DESC` → teuerste zuerst
+4. `ORDER BY b.preis DESC` → teuerste zürst
 
 Ergebnis:
 

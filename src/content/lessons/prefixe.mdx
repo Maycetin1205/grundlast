@@ -4,10 +4,11 @@
 
 Du lernst, warum es **zwei** offizielle Präfix-Reihen für Datenmengen gibt —
 eine dezimale (KB, MB, GB, TB) und eine binäre (KiB, MiB, GiB, TiB) —, wann
-welche gilt und wie du in einer Klausuraufgabe sicher umrechnest. Danach
-verstehst du auch, warum eine „1-TB-Festplatte" im Betriebssystem als
-etwa 931 GB erscheint, und warum derselbe Vergleich bei einer kleinen
-USB-Karte fast niemand bemerkt.
+welche gilt und wie du in Rechenaufgaben sicher umrechnest. Danach
+verstehst du auch, warum eine „1-TB-Festplatte" rechnerisch nur etwa
+931 GiB ergibt und warum manche Oberflächen das trotzdem historisch als
+„GB" beschriften. Bei kleinen Speicherkarten fällt derselbe Unterschied
+fast niemandem auf.
 
 Dieses Kapitel vertieft die Tabelle aus <Term id="bit">Bit</Term> & <Term id="byte">Byte</Term>.
 Falls Bit/Byte noch wackelt: erst dort durchgehen, dann hier weiter.
@@ -21,20 +22,20 @@ Falls Bit/Byte noch wackelt: erst dort durchgehen, dann hier weiter.
 Es gibt zwei unabhängig standardisierte Reihen, weil zwei verschiedene
 Welten unterschiedlich rechnen:
 
-- **SI-Präfixe** kommen aus der Physik. `k`, `M`, `G`, `T` stehen offiziell
+- **<Term id="dezimalpräfix">SI-Präfixe</Term>** kommen aus der Physik. `k`, `M`, `G`, `T` stehen offiziell
   für `10³`, `10⁶`, `10⁹`, `10¹²`. Das gilt seit 1960 und ist vom BIPM
   (Bureau International des Poids et Mesures) so festgelegt.
-- **<Term id="binaerpraefix">Binärpräfixe</Term>** kommen aus der
+- **<Term id="binärpräfix">Binärpräfixe</Term>** kommen aus der
   Informatik. `Ki`, `Mi`, `Gi`, `Ti` stehen für `2¹⁰`, `2²⁰`, `2³⁰`, `2⁴⁰`.
-  Das hat die IEC erst 1998 standardisiert (IEC 80000-13), um eine Verwirrung
-  zu beenden, die da schon Jahrzehnte alt war.
+  Die IEC hat die Namen und Symbole 1998 als internationalen Standard
+  beschlossen; heute stehen sie in IEC 80000-13. Damit wurde eine
+  Verwirrung aufgelöst, die da schon Jahrzehnte alt war.
 
 Die Verwirrung kam so: In der Halbleiterindustrie wurde `1 KB` historisch
 binär gerechnet (1024 Byte), weil Speicher technisch in Zweierpotenzen
-adressiert wird. Festplattenhersteller dagegen rechneten von Anfang an
-dezimal (1.000 Byte) — das verkauft sich besser. Erst die IEC-Präfixe
-geben dem binären Fall ein eigenes Symbol; vorher musste man aus dem
-Kontext raten.
+adressiert wird. Massenspeicher werden dagegen meist dezimal angegeben
+(1.000 Byte pro kB). Erst die IEC-Präfixe geben dem binären Fall ein eigenes
+Symbol; vorher musste man aus dem Kontext raten.
 
 <Analogie>
 Stell dir vor, in einem Land gibt es **zwei Währungen**, die fast gleich
@@ -78,7 +79,7 @@ hinaus, weil `1024 / 1000 = 1,024`. Multipliziert sich der Faktor:
 | `TiB / TB` | `1.099.511.627.776 / 1.000.000.000.000` | `+10,0 %` |
 
 Deshalb fällt der Hersteller-vs-Anzeige-Unterschied bei einer 1-TB-Platte
-sofort auf (~93 GiB „verloren"), bei einer 64-MiB-SD-Karte aber kaum.
+sofort auf (~93 GiB „verloren"), bei einer kleinen 64-MB-Karte aber kaum.
 
 ---
 
@@ -93,7 +94,7 @@ Eine einzige Heuristik löst praktisch jede Umrechnungsaufgabe:
 
 Diese zwei Schritte erscheinen umständlich — aber sie verhindern, dass du
 versehentlich mit dem falschen Faktor rechnest. Schritt für Schritt ist
-in der Prüfung schneller als „im Kopf direkt".
+beim Rechnen sicherer als „im Kopf direkt".
 
 ### Beispiel 1: 500 GB → GiB (Festplatten-Klassiker)
 
@@ -114,7 +115,7 @@ in der Prüfung schneller als „im Kopf direkt".
   </Ergebnis>
 </StepByStep>
 
-### Beispiel 2: 2.048.000 Bit → KiB (typische Klausuraufgabe)
+### Beispiel 2: 2.048.000 Bit → KiB
 
 ```
 Schritt 1:  Bit → Byte:  2.048.000 ÷ 8 = 256.000 Byte
@@ -127,7 +128,7 @@ Der Unterschied entsteht im zweiten Schritt durch den Faktor `1024` statt
 
 ### Beispiel 3: 16 Mbit/s DSL — wie lange dauert 1 GiB?
 
-Eine Aufgabe, die Übertragung und Speicher mischt. Häufiges AP1-Muster.
+Dieses Beispiel mischt Übertragung und Speicher.
 
 ```
 Schritt 1:  Rate in Byte/s:
@@ -160,7 +161,7 @@ Zahlen wird daraus aber ein echter Fehler.
 
 ## Typische Fehler
 
-- **`kB` mit `KiB` verwechseln.** Wenn eine Aufgabe ausdrücklich `KiB`,
+- **`kB` mit `KiB` verwechseln.** Wenn ausdrücklich `KiB`,
   `MiB`, `GiB` oder `TiB` schreibt, ist die binäre Reihe gemeint —
   Faktor `1024`, nicht `1000`. Schreibt sie `kB`, `MB`, `GB`, `TB`, ist
   formal die dezimale Reihe gemeint. Bei unklarer Quelle (z.B. Anzeige
@@ -182,20 +183,20 @@ Zahlen wird daraus aber ein echter Fehler.
   Multiplikation. Ergebnis: stiller Vorzeichen-loser Fehler. Faustregel
   von oben anwenden: erst alles in Byte.
 
-- **Einheit weglassen.** In IHK-Aufgaben gibt es Punktabzug für fehlende
-  Einheit, selbst wenn die Zahl stimmt. Immer mitschreiben — und die
-  *richtige* Einheit: `KiB` ≠ `kB`.
+- **Einheit weglassen.** Ohne Einheit ist eine Zahl nicht sauber
+  interpretierbar, selbst wenn der Rechenweg stimmt. Immer mitschreiben —
+  und die *richtige* Einheit: `KiB` ≠ `kB`.
 
-- **„Windows zeigt GB" — meint aber GiB.** Microsoft beschriftet die
-  binäre Größe einer Datei oder Festplatte historisch mit dem dezimalen
-  Symbol `GB`. Inhaltlich gerechnet wird in `GiB` (`2³⁰`). Wer das nicht
-  weiß, glaubt entweder, die Festplatte sei defekt, oder rechnet im
-  Lösungsweg mit dem falschen Faktor. macOS hat 2009 auf die SI-Reihe
-  umgestellt; Linux-Tools wie `df` und `ls` unterscheiden je nach Flag.
+- **OS-Anzeige sagt `GB`, rechnet aber eventuell binär.** Manche Programme
+  und Betriebssystemanzeigen beschriften binär gerechnete Größen historisch
+  mit dezimalen Symbolen wie `GB`. Wer das nicht prüft, glaubt entweder,
+  die Festplatte sei defekt, oder rechnet mit dem falschen Faktor.
+  Linux-Tools wie `df` unterscheiden je nach Flag zwischen 1024er- und
+  1000er-Schritten.
 
 - **Folgepräfixe vergessen.** Nach `Ti` kommt `Pi` (Pebibyte, `2⁵⁰`),
-  dann `Ei` (Exbibyte, `2⁶⁰`). In Klausuren selten — aber wenn doch,
-  gilt dieselbe Reihe und derselbe Rechenweg.
+  dann `Ei` (Exbibyte, `2⁶⁰`). Sie sind seltener, aber es gilt dieselbe
+  Reihe und derselbe Rechenweg.
 
 ---
 
@@ -220,22 +221,22 @@ Zahlen wird daraus aber ein echter Fehler.
     {
       label: 'IEC 80000-13 - Information science and technology',
       href: 'https://webstore.iec.ch/publication/80483',
-      detail: 'Internationaler Standard fuer Einheiten und Praefixe der Informationstechnik. Definiert kibi (Ki), mebi (Mi), gibi (Gi), tebi (Ti) als reine Zweierpotenzen und grenzt sie ausdruecklich von den SI-Praefixen ab.'
+      detail: 'Internationaler Standard für Einheiten und Präfixe der Informationstechnik. Definiert kibi (Ki), mebi (Mi), gibi (Gi), tebi (Ti) als reine Zweierpotenzen und grenzt sie ausdrücklich von den SI-Präfixen ab.'
     },
     {
       label: 'BIPM - SI prefixes',
       href: 'https://www.bipm.org/en/measurement-units/si-prefixes',
-      detail: 'Internationales Bureau fuer Mass und Gewicht: die SI-Praefixe k=10^3, M=10^6, G=10^9, T=10^12 sind seit 1960 festgelegt. Die Verwendung von kilo (k) fuer 2^10 ist laut SI ausdruecklich unzulaessig.'
+      detail: 'Internationales Bureau für Mass und Gewicht: die SI-Präfixe k=10^3, M=10^6, G=10^9, T=10^12 sind seit 1960 festgelegt. Die Verwendung von kilo (k) für 2^10 ist laut SI ausdrücklich unzulässig.'
     },
     {
       label: 'NIST - Prefixes for Binary Multiples',
       href: 'https://physics.nist.gov/cuu/Units/binary.html',
-      detail: 'US-Standardisierungsbehoerde, dokumentiert die 1998 von der IEC eingefuehrten Binaerpraefixe und betont, dass sie NICHT Teil des SI sind. Cross-Check zur IEC-Definition.'
+      detail: 'US-Standardisierungsbehörde, dokumentiert die 1998 von der IEC eingeführten Binärpräfixe und betont, dass sie NICHT Teil des SI sind. Cross-Check zur IEC-Definition.'
     },
     {
       label: 'JEDEC 100B.01 - Unit Prefixes for Semiconductor Storage Capacity',
       href: 'https://www.nomad.jedec.org/standards-documents/dictionary/terms/mega-m-prefix-units-semiconductor-storage-capacity',
-      detail: 'JEDEC-Industriestandard: dokumentiert die in der Halbleiterindustrie verbreitete binaere Auslegung von K=1024, M=2^20, G=2^30 ausdruecklich nur "to reflect common usage" - erklaert die historische Wurzel der KB/KiB-Verwirrung.'
+      detail: 'JEDEC-Industriestandard: dokumentiert die in der Halbleiterindustrie verbreitete binäre Auslegung von K=1024, M=2^20, G=2^30 ausdrücklich nur "to reflect common usage" - erklärt die historische Wurzel der KB/KiB-Verwirrung.'
     },
   ]}
 />

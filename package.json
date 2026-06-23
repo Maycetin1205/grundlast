@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "check:consistency": "py scripts/check_consistency.py",
+    "emit:status": "py scripts/emit_status.py",
+    "prebuild": "npm run check:consistency",
+    "prebuild:single": "npm run check:consistency",
     "build": "tsc -b && vite build",
     "build:single": "tsc -b && vite build --mode single",
-    "validate:content": "node scripts/validate-content.mjs",
-    "validate:content:strict": "node scripts/validate-content.mjs --strict",
-    "check": "npm run lint && npm run validate:content && npm run build",
-    "check:strict": "npm run lint && npm run validate:content:strict && npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
@@ -31,6 +33,7 @@
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.14.1",
     "tailwind-merge": "^3.5.0",
+    "zod": "^4.3.6",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
@@ -53,6 +56,7 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.0",
     "vite": "^8.0.4",
-    "vite-plugin-singlefile": "^2.3.2"
+    "vite-plugin-singlefile": "^2.3.2",
+    "vitest": "^4.1.9"
   }
 }

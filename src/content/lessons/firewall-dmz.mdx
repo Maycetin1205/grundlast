@@ -2,54 +2,53 @@
 
 <MetaBar
   lernfeld="LF 3 / LF 4 / LF 9 - Netzwerke einbinden, Schutzbedarf beachten und Dienste bereitstellen"
-  prüfungsrelevanz="PFLICHT - 5/5"
 />
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du <Term id="firewall">Firewalls</Term>, <Term id="firewall-regel">Firewall-Regeln</Term>, <Term id="default-deny">Default Deny</Term>, <Term id="allowlist">Allowlisting</Term>, <Term id="dmz">DMZ</Term>, Paketfilter und Application-Layer-Gateways unterscheiden. Du kannst erklaeren, warum oeffentlich erreichbare Server nicht einfach ins interne LAN gehoeren, wie eine DMZ aufgebaut wird und welche Kommunikationsrichtungen erlaubt oder verboten sein sollten.
+Nach diesem Kapitel kannst du <Term id="firewall">Firewalls</Term>, <Term id="firewall-regel">Firewall-Regeln</Term>, <Term id="default-deny">Default Deny</Term>, <Term id="allowlist">Allowlisting</Term>, <Term id="dmz">DMZ</Term>, Paketfilter und Application-Layer-Gateways unterscheiden. Du kannst erklären, warum öffentlich erreichbare Server nicht einfach ins interne LAN gehören, wie eine DMZ aufgebaut wird und welche Kommunikationsrichtungen erlaubt oder verboten sein sollten.
 
-Du kannst ausserdem Regelwerke lesen, typische Fehlkonfigurationen erkennen und eine kleine Sicherheitsarchitektur fuer Webserver, Datenbank und Administrationszugriff begruenden. Das ist nicht nur AP1-Stoff, sondern Alltag in Systemintegration, Support, Cloud, Security und Betrieb.
+Du kannst ausserdem Regelwerke lesen, typische Fehlkonfigurationen erkennen und eine kleine Sicherheitsarchitektur für Webserver, Datenbank und Administrationszugriff begründen. Das ist nicht nur AP1-Stoff, sondern Alltag in Systemintegration, Support, Cloud, Security und Betrieb.
 
 ## Warum das wichtig ist
 
-Eine Firewall ist kein magischer Schutzschild. Sie ist eine kontrollierte Grenze zwischen Netzen. Gut konfiguriert reduziert sie Kommunikation auf das, was fachlich benoetigt wird. Schlecht konfiguriert ist sie entweder nutzlos offen oder sie blockiert wichtige Dienste und erzeugt Stoerungen.
+Eine Firewall ist kein magischer Schutzschild. Sie ist eine kontrollierte Grenze zwischen Netzen. Gut konfiguriert reduziert sie Kommunikation auf das, was fachlich benötigt wird. Schlecht konfiguriert ist sie entweder nutzlos offen oder sie blockiert wichtige Dienste und erzeugt Störungen.
 
-Die DMZ ist dabei ein Kernkonzept: Systeme, die aus dem Internet erreichbar sein muessen, werden in ein getrenntes Netzsegment gestellt. Wenn ein Webserver kompromittiert wird, soll der Angreifer nicht direkt im internen LAN mit Clients, Dateiservern, Warenwirtschaft und Datenbank stehen.
+Die DMZ ist dabei ein Kernkonzept: Systeme, die aus dem Internet erreichbar sein müssen, werden in ein getrenntes Netzsegment gestellt. Wenn ein Webserver kompromittiert wird, soll der Angreifer nicht direkt im internen LAN mit Clients, Dateiservern, Warenwirtschaft und Datenbank stehen.
 
 <Analogie>
-Stell dir ein Firmengelaende vor. Das Internet ist die Strasse, das LAN sind die internen Bueros, die DMZ ist der Empfangsbereich. Besucher duerfen zur Rezeption, aber nicht einfach in die Personalabteilung. Mitarbeitende duerfen zur Rezeption und nach draussen. Zwischen den Bereichen stehen kontrollierte Tueren mit klaren Regeln.
+Stell dir ein Firmengelände vor. Das Internet ist die Strasse, das LAN sind die internen Büros, die DMZ ist der Empfangsbereich. Besucher dürfen zur Rezeption, aber nicht einfach in die Personalabteilung. Mitarbeitende dürfen zur Rezeption und nach draussen. Zwischen den Bereichen stehen kontrollierte Türen mit klaren Regeln.
 </Analogie>
 
 ---
 
 ## Grundbegriffe
 
-| Begriff | Bedeutung | Pruefungsblick |
+| Begriff | Bedeutung | Wichtig für Entscheidungen |
 |---|---|---|
 | <Term id="firewall">Firewall</Term> | System, das Verkehr zwischen Netzen anhand von Regeln kontrolliert. | Entscheidet nach Quelle, Ziel, Port, Protokoll, Zustand oder Inhalt. |
 | <Term id="firewall-regel">Firewall-Regel</Term> | Einzelne Erlaubnis- oder Verbotsregel im Regelwerk. | Reihenfolge, Richtung und Default-Regel beachten. |
-| <Term id="default-deny">Default Deny</Term> | Standard: alles blockieren, was nicht ausdruecklich erlaubt ist. | Sicherer Grundsatz fuer professionelle Regelwerke. |
+| <Term id="default-deny">Default Deny</Term> | Standard: alles blockieren, was nicht ausdrücklich erlaubt ist. | Sicherer Grundsatz für professionelle Regelwerke. |
 | <Term id="allowlist">Allowlist</Term> | Liste erlaubter Kommunikation. | Besser als "alles erlauben und nur manches sperren". |
 | <Term id="paketfilter">Paketfilter</Term> | Filtert nach technischen Paketmerkmalen wie IP, Port und Protokoll. | Einfach, schnell, aber ohne Anwendungskontext. |
-| <Term id="stateful-firewall">Stateful Firewall</Term> | Merkt sich Verbindungszustaende. | Antworten auf erlaubte Verbindungen werden erkannt. |
-| <Term id="application-layer-gateway">Application-Layer-Gateway</Term> | Prueft Verkehr auf Anwendungsebene. | Kann Protokollinhalte verstehen, z. B. HTTP. |
-| <Term id="dmz">DMZ</Term> | Separates Netz fuer oeffentlich erreichbare Server. | Trennung zwischen Internet und internem LAN. |
-| <Term id="netzsegmentierung">Netzsegmentierung</Term> | Aufteilung eines Netzes in Sicherheitszonen. | Clients, Server, DMZ, Management und Gaeste trennen. |
+| <Term id="stateful-firewall">Stateful Firewall</Term> | Merkt sich Verbindungszustände. | Antworten auf erlaubte Verbindungen werden erkannt. |
+| <Term id="application-layer-gateway">Application-Layer-Gateway</Term> | Prüft Verkehr auf Anwendungsebene. | Kann Protokollinhalte verstehen, z. B. HTTP. |
+| <Term id="dmz">DMZ</Term> | Separates Netz für öffentlich erreichbare Server. | Trennung zwischen Internet und internem LAN. |
+| <Term id="netzsegmentierung">Netzsegmentierung</Term> | Aufteilung eines Netzes in Sicherheitszonen. | Clients, Server, DMZ, Management und Gäste trennen. |
 
 ---
 
 ## Firewall-Typen im Vergleich
 
-| Typ | Prueft vor allem | Staerke | Grenze |
+| Typ | Prüft vor allem | Stärke | Grenze |
 |---|---|---|---|
-| Paketfilter | IP-Adresse, Port, Protokoll, Richtung | schnell, gut fuer klare Netzgrenzen | sieht keinen Anwendungskontext |
-| Stateful Firewall | zusaetzlich Verbindungszustand | erkennt Antworten auf erlaubte Verbindungen | ersetzt keine Inhaltspruefung |
+| Paketfilter | IP-Adresse, Port, Protokoll, Richtung | schnell, gut für klare Netzgrenzen | sieht keinen Anwendungskontext |
+| Stateful Firewall | zusätzlich Verbindungszustand | erkennt Antworten auf erlaubte Verbindungen | ersetzt keine Inhaltsprüfung |
 | Application-Layer-Gateway / Proxy | Anwendungsebene, z. B. HTTP | kann Protokolle verstehen und Inhalte filtern | komplexer, mehr Aufwand, mehr Latenz |
-| Personal Firewall | Verkehr eines einzelnen Endgeraets | sinnvoll als Zusatzschutz am Client | ersetzt keine Netz-Firewall |
-| Next-Generation Firewall | Kombination aus mehreren Funktionen | App-Erkennung, IDS/IPS, URL-Filter moeglich | nur so gut wie Konzept, Pflege und Regeln |
+| Personal Firewall | Verkehr eines einzelnen Endgeräts | sinnvoll als Zusatzschutz am Client | ersetzt keine Netz-Firewall |
+| Next-Generation Firewall | Kombination aus mehreren Funktionen | App-Erkennung, IDS/IPS, URL-Filter möglich | nur so gut wie Konzept, Pflege und Regeln |
 
-In Pruefungsaufgaben reicht oft die saubere Unterscheidung:
+In Auswahl- und Diagnosefällen reicht oft die saubere Unterscheidung:
 
 ```text
 Paketfilter = schaut auf technische Paketdaten
@@ -58,7 +57,7 @@ Application Layer = versteht Teile der Anwendungskommunikation
 ```
 
 <Tipp titel="Stateful in einem Satz">
-Eine Stateful Firewall blockiert nicht blind alle eingehenden Pakete. Sie erlaubt Antworten, wenn sie zu einer vorher erlaubten Verbindung gehoeren.
+Eine Stateful Firewall blockiert nicht blind alle eingehenden Pakete. Sie erlaubt Antworten, wenn sie zu einer vorher erlaubten Verbindung gehören.
 </Tipp>
 
 ---
@@ -77,30 +76,30 @@ Das ist <Term id="default-deny">Default Deny</Term>. In BSI-Grundschutz-Sprache 
 | Regel | Quelle | Ziel | Protokoll/Port | Aktion | Zweck |
 |---:|---|---|---|---|---|
 | 1 | Internet | Webserver-DMZ | TCP 443 | ALLOW | HTTPS zur Website |
-| 2 | Webserver-DMZ | Datenbank-LAN | TCP 5432 | ALLOW | nur benoetigte DB-Verbindung |
-| 3 | Admin-VPN | Webserver-DMZ | TCP 22 | ALLOW | Administration ueber VPN |
+| 2 | Webserver-DMZ | Datenbank-LAN | TCP 5432 | ALLOW | nur benötigte DB-Verbindung |
+| 3 | Admin-VPN | Webserver-DMZ | TCP 22 | ALLOW | Administration über VPN |
 | 4 | DMZ | LAN | ANY | DENY | keine freie Bewegung ins LAN |
 | 5 | ANY | ANY | ANY | DENY | Default-Deny-Abschluss |
 
-Die Reihenfolge ist wichtig, weil Firewalls Regeln meist von oben nach unten pruefen. Eine zu breite Erlaubnisregel vor einer Einschraenkung kann die spaetere Sperre wirkungslos machen.
+Die Reihenfolge ist wichtig, weil Firewalls Regeln meist von oben nach unten prüfen. Eine zu breite Erlaubnisregel vor einer Einschränkung kann die spätere Sperre wirkungslos machen.
 
 <Warnung titel="ANY ANY ALLOW ist kein Konzept">
-Eine Regel wie `ANY -> ANY -> ANY -> ALLOW` macht eine Firewall als Grenze praktisch wertlos. Wenn so eine Regel fuer Tests gesetzt wird, muss sie danach wieder entfernt oder streng begrenzt werden.
+Eine Regel wie `ANY -> ANY -> ANY -> ALLOW` macht eine Firewall als Grenze praktisch wertlos. Wenn so eine Regel für Tests gesetzt wird, muss sie danach wieder entfernt oder streng begrenzt werden.
 </Warnung>
 
 ---
 
-## DMZ: Warum Server nicht ins LAN gehoeren
+## DMZ: Warum Server nicht ins LAN gehören
 
-Eine <Term id="dmz">DMZ</Term> ist ein eigenes Netzsegment fuer Systeme, die aus nicht vertrauenswuerdigen Netzen erreichbar sein muessen. Typische Systeme:
+Eine <Term id="dmz">DMZ</Term> ist ein eigenes Netzsegment für Systeme, die aus nicht vertrauenswürdigen Netzen erreichbar sein müssen. Typische Systeme:
 
 - Webserver oder Reverse Proxy
 - Mail-Gateway
 - VPN-Gateway
-- oeffentliche API
+- öffentliche API
 - Update- oder Transfer-Server
 
-Das interne LAN enthaelt dagegen Clients, interne Server, Dateifreigaben, ERP, Drucker, Managementsysteme und oft besonders schuetzenswerte Daten. Ein Webserver in der DMZ darf deshalb nicht frei ins LAN kommunizieren.
+Das interne LAN enthält dagegen Clients, interne Server, Dateifreigaben, ERP, Drucker, Managementsysteme und oft besonders schützenswerte Daten. Ein Webserver in der DMZ darf deshalb nicht frei ins LAN kommunizieren.
 
 ```text
 Internet
@@ -124,17 +123,17 @@ Wenn ein DMZ-Server angegriffen wird, soll der Schaden in dieser Zone bleiben. D
 
 ---
 
-## Kommunikationsmatrix fuer eine typische DMZ
+## Kommunikationsmatrix für eine typische DMZ
 
-| Von | Nach | Erlaubt? | Begruendung |
+| Von | Nach | Erlaubt? | Begründung |
 |---|---|---:|---|
 | Internet | Webserver-DMZ TCP 443 | ja | Die Website soll erreichbar sein. |
-| Internet | LAN | nein | Externe Nutzer duerfen nicht direkt ins interne Netz. |
+| Internet | LAN | nein | Externe Nutzer dürfen nicht direkt ins interne Netz. |
 | DMZ | LAN beliebig | nein | Kompromittierter DMZ-Server darf nicht frei weiter. |
-| Webserver-DMZ | Datenbank TCP 5432 | nur wenn noetig | Fachlich benoetigte Verbindung eng begrenzen. |
+| Webserver-DMZ | Datenbank TCP 5432 | nur wenn nötig | Fachlich benötigte Verbindung eng begrenzen. |
 | LAN | Internet | ja, kontrolliert | Mitarbeitende brauchen definierte Internetdienste. |
-| Admin-VPN | DMZ-Server SSH/RDP | ja, eng begrenzt | Administration nur ueber geschuetzten Zugang. |
-| Gast-WLAN | LAN | nein | Gaeste muessen getrennt bleiben. |
+| Admin-VPN | DMZ-Server SSH/RDP | ja, eng begrenzt | Administration nur über geschützten Zugang. |
+| Gast-WLAN | LAN | nein | Gäste müssen getrennt bleiben. |
 
 <Beispiel titel="Online-Shop">
 Ein Online-Shop hat einen Reverse Proxy in der DMZ, eine Applikation in einem Servernetz und die Datenbank in einem internen Datenbanksegment. Aus dem Internet ist nur TCP 443 zum Reverse Proxy offen. Der Reverse Proxy darf nur zur Applikation. Die Applikation darf nur zum Datenbankport. Clients und Dateiablagen sind nicht aus der DMZ erreichbar.
@@ -148,27 +147,27 @@ NAT, Port Forwarding und Firewall-Regeln werden oft verwechselt:
 
 | Thema | Frage | Beispiel |
 |---|---|---|
-| <Term id="nat">NAT</Term> | Welche Adresse wird uebersetzt? | Private LAN-Adresse wird zur oeffentlichen Router-Adresse. |
+| <Term id="nat">NAT</Term> | Welche Adresse wird übersetzt? | Private LAN-Adresse wird zur öffentlichen Router-Adresse. |
 | <Term id="port-forwarding">Port Forwarding</Term> | Wohin geht ein eingehender Port? | WAN TCP 443 -> Webserver-DMZ TCP 443. |
 | Firewall | Darf der Verkehr durch diese Grenze? | Internet -> DMZ TCP 443 erlaubt, DMZ -> LAN blockiert. |
 | Routing | Welcher Weg wird genommen? | DMZ-Netz und LAN-Netz sind getrennte Subnetze. |
-| Dienst | Lauscht die Anwendung wirklich? | Webserver hoert auf TCP 443. |
+| Dienst | Lauscht die Anwendung wirklich? | Webserver hört auf TCP 443. |
 
-Eine Portweiterleitung ohne passende Firewall-Erlaubnis funktioniert nicht. Eine Firewall-Erlaubnis ohne sicheren Dienst ist gefaehrlich. Ein Dienst im LAN statt in der DMZ kann die ganze interne Umgebung gefaehrden.
+Eine Portweiterleitung ohne passende Firewall-Erlaubnis funktioniert nicht. Eine Firewall-Erlaubnis ohne sicheren Dienst ist gefährlich. Ein Dienst im LAN statt in der DMZ kann die ganze interne Umgebung gefährden.
 
 ---
 
-## Schritt fuer Schritt: kleine DMZ planen
+## Schritt für Schritt: kleine DMZ planen
 
 <Schritte
   items={[
-    { titel: '1. Schutzbedarf klaeren', text: 'Welche Daten und Dienste sind betroffen? Oeffentliche Website, Kundendatenbank, interne Verwaltung und Adminzugriff haben unterschiedliche Risiken.' },
-    { titel: '2. Zonen definieren', text: 'Mindestens Internet/Aussenanbindung, DMZ und internes LAN unterscheiden. Bei Bedarf Servernetz, Datenbanknetz, Managementnetz und Gastnetz ergaenzen.' },
-    { titel: '3. Dienste platzieren', text: 'Oeffentlich erreichbare Dienste in die DMZ oder hinter einen Reverse Proxy. Interne Datenbanken und Dateiserver nicht direkt in die DMZ stellen.' },
-    { titel: '4. Kommunikationsbedarf notieren', text: 'Fuer jede benoetigte Verbindung Quelle, Ziel, Protokoll, Port und Zweck aufschreiben. Ohne Zweck keine Freigabe.' },
+    { titel: '1. Schutzbedarf klären', text: 'Welche Daten und Dienste sind betroffen? Öffentliche Website, Kundendatenbank, interne Verwaltung und Adminzugriff haben unterschiedliche Risiken.' },
+    { titel: '2. Zonen definieren', text: 'Mindestens Internet/Außenanbindung, DMZ und internes LAN unterscheiden. Bei Bedarf Servernetz, Datenbanknetz, Managementnetz und Gastnetz ergänzen.' },
+    { titel: '3. Dienste platzieren', text: 'Öffentlich erreichbare Dienste in die DMZ oder hinter einen Reverse Proxy. Interne Datenbanken und Dateiserver nicht direkt in die DMZ stellen.' },
+    { titel: '4. Kommunikationsbedarf notieren', text: 'Für jede benötigte Verbindung Quelle, Ziel, Protokoll, Port und Zweck aufschreiben. Ohne Zweck keine Freigabe.' },
     { titel: '5. Allowlist-Regeln bauen', text: 'Nur notwendige Verbindungen erlauben. Am Ende Default Deny setzen. Breite ANY-Regeln vermeiden.' },
-    { titel: '6. Administration sichern', text: 'Adminzugriff ueber VPN, Managementnetz oder Bastion Host. Keine Adminoberflaechen direkt ins Internet stellen.' },
-    { titel: '7. Betrieb absichern', text: 'Updates, Logging, Monitoring, Backup, Dokumentation und regelmaessige Regelpruefung einplanen.' },
+    { titel: '6. Administration sichern', text: 'Adminzugriff über VPN, Managementnetz oder Bastion Host. Keine Adminoberflächen direkt ins Internet stellen.' },
+    { titel: '7. Betrieb absichern', text: 'Updates, Logging, Monitoring, Backup, Dokumentation und regelmässige Regelprüfung einplanen.' },
   ]}
 />
 
@@ -182,13 +181,13 @@ Wenn eine Verbindung nicht funktioniert, gehst du systematisch vor:
 |---:|---|---|
 | 1 | Stimmt die IP-Adresse? | Ziel ist `10.10.20.15`, Regel zeigt aber auf `10.10.20.51`. |
 | 2 | Stimmt der Port und das Protokoll? | TCP 443 ist erlaubt, Dienst nutzt aber TCP 8443. |
-| 3 | Gibt es Routing zwischen den Zonen? | DMZ kennt Rueckweg ins LAN nicht. |
-| 4 | Laesst die Firewall an jeder Grenze durch? | Aussen-Firewall erlaubt, Innen-Firewall blockiert. |
+| 3 | Gibt es Routing zwischen den Zonen? | DMZ kennt Rückweg ins LAN nicht. |
+| 4 | Lässt die Firewall an jeder Grenze durch? | Außen-Firewall erlaubt, Innen-Firewall blockiert. |
 | 5 | Blockiert die Host-Firewall? | Linux/Windows-Firewall auf dem Server sperrt den Port. |
-| 6 | Lauscht der Dienst? | Webserver laeuft nicht oder bindet nur auf `localhost`. |
+| 6 | Lauscht der Dienst? | Webserver läuft nicht oder bindet nur auf `localhost`. |
 | 7 | Gibt es Logs? | Firewall-Log zeigt DENY wegen falscher Quelle. |
 
-<Tipp titel="Pruefungsantwort mit Struktur">
+<Tipp titel="Klare Antwort mit Struktur">
 Schreibe nicht nur "Firewall freigeben". Besser: Quelle, Ziel, Protokoll, Port, Richtung und Zweck nennen. Beispiel: `Internet -> Webserver-DMZ, TCP 443, HTTPS zur Website, erlauben`.
 </Tipp>
 
@@ -196,35 +195,50 @@ Schreibe nicht nur "Firewall freigeben". Besser: Quelle, Ziel, Protokoll, Port, 
 
 ## Typische Fehler
 
-1. **Webserver direkt ins LAN stellen.** Ein oeffentlicher Server gehoert in eine DMZ oder Serverzone, nicht neben Clients und Dateiserver.
+1. **Webserver direkt ins LAN stellen.** Ein öffentlicher Server gehört in eine DMZ oder Serverzone, nicht neben Clients und Dateiserver.
 2. **DMZ als besonders sicheres Netz verstehen.** Die DMZ ist bewusst exponiert, aber begrenzt und vom LAN getrennt.
 3. **Default Deny vergessen.** Ohne abschliessende Sperrregel bleibt oft mehr offen als gewollt.
-4. **ANY-Regeln zu breit setzen.** `DMZ -> LAN ANY ALLOW` zerstoert den Sinn der DMZ.
+4. **ANY-Regeln zu breit setzen.** `DMZ -> LAN ANY ALLOW` zerstört den Sinn der DMZ.
 5. **Richtung ignorieren.** `LAN -> Internet` ist nicht dasselbe wie `Internet -> LAN`.
-6. **Stateful falsch erklaeren.** Stateful bedeutet Verbindungsgedächtnis, nicht automatische Inhaltssicherheit.
-7. **NAT mit Firewall gleichsetzen.** NAT uebersetzt Adressen; Firewall-Regeln steuern Erlaubnis und Blockade.
-8. **Adminzugriff direkt freigeben.** RDP, SSH, Router- oder NAS-Adminoberflaechen gehoeren nicht ohne Schutz ins Internet.
+6. **Stateful falsch erklären.** Stateful bedeutet Verbindungsgedächtnis, nicht automatische Inhaltssicherheit.
+7. **NAT mit Firewall gleichsetzen.** NAT übersetzt Adressen; Firewall-Regeln steuern Erlaubnis und Blockade.
+8. **Adminzugriff direkt freigeben.** RDP, SSH, Router- oder NAS-Adminoberflächen gehören nicht ohne Schutz ins Internet.
 9. **Keine Dokumentation pflegen.** Unbekannte Regeln bleiben jahrelang offen, weil niemand mehr ihren Zweck kennt.
 
 ---
 
-## Typische Pruefungsaufgabe
+## Anwendungsbeispiel
 
-> **Aufgabe (Klausur-Stil):** Ein Unternehmen betreibt einen Webserver fuer Kunden. Der Webserver steht bisher im gleichen LAN wie Clients, Dateiserver und Datenbank. Skizziere eine bessere Netzstruktur mit DMZ und nenne vier Firewall-Regeln. Begruende, warum diese Struktur sicherer ist.
+<Beispiel titel="Webserver aus dem LAN herausziehen">
+Ein Unternehmen betreibt einen Webserver für Kunden. Der Webserver steht bisher im gleichen LAN wie Clients, Dateiserver und Datenbank. Besser ist eine Trennung in Internet/Außenanbindung, DMZ und internes LAN.
+</Beispiel>
 
-**Musterantwort:** Besser ist eine Trennung in Internet/Aussenanbindung, DMZ und internes LAN. Der Webserver oder Reverse Proxy steht in der DMZ. Clients, Dateiserver und Datenbank bleiben im internen LAN oder in eigenen Serversegmenten. Regeln: Internet -> Webserver-DMZ TCP 443 erlauben; Internet -> LAN blockieren; DMZ -> LAN grundsaetzlich blockieren; Webserver-DMZ -> Datenbank nur auf benoetigtem Datenbankport erlauben, falls fachlich notwendig; Adminzugriff nur aus Admin-VPN oder Managementnetz erlauben; am Ende Default Deny. Sicherer ist das, weil ein Angriff auf den oeffentlichen Webserver nicht automatisch freien Zugriff auf Clients und interne Server bedeutet.
+<StepByStep titel="Begründete Struktur">
+  <Schritt nr={1} titel="Zonen trennen">
+    Der Webserver oder Reverse Proxy steht in der DMZ. Clients, Dateiserver und Datenbank bleiben im internen LAN oder in eigenen Serversegmenten.
+  </Schritt>
+  <Schritt nr={2} titel="Regeln eng formulieren">
+    Erlaube `Internet -> Webserver-DMZ, TCP 443` für HTTPS. Blockiere `Internet -> LAN`. Blockiere `DMZ -> LAN` grundsätzlich. Erlaube `Webserver-DMZ -> Datenbank` nur auf dem benötigten Datenbankport, falls diese Verbindung wirklich nötig ist.
+  </Schritt>
+  <Schritt nr={3} titel="Administration absichern">
+    Adminzugriff erfolgt nur aus Admin-VPN oder Managementnetz, nicht direkt aus dem Internet. Am Ende steht eine Default-Deny-Regel.
+  </Schritt>
+  <Ergebnis>
+    Die Struktur ist sicherer, weil ein Angriff auf den öffentlichen Webserver nicht automatisch freien Zugriff auf Clients und interne Server bedeutet.
+  </Ergebnis>
+</StepByStep>
 
 ---
 
-## Mini-Lerncheck
+## Kurzcheck
 
-Beantworte diese Fragen ohne Nachsehen:
-
-1. Was ist der Unterschied zwischen Paketfilter, Stateful Firewall und Application-Layer-Gateway?
-2. Warum ist Default Deny sicherer als eine Blocklist?
-3. Warum gehoert ein oeffentlicher Webserver nicht ins normale LAN?
-4. Welche vier Angaben gehoeren mindestens in eine klare Firewall-Regel?
-5. Warum ist eine Heimrouter-"DMZ", die alle Ports an ein internes Geraet weiterleitet, keine echte Unternehmens-DMZ?
+| Frage | Kurzlösung |
+|---|---|
+| Was ist der Unterschied zwischen Paketfilter, Stateful Firewall und Application-Layer-Gateway? | Paketfilter prüft Paketmerkmale, Stateful merkt Verbindungszustände, Application-Layer-Gateway prüft Anwendungskommunikation. |
+| Warum ist Default Deny sicherer als eine Blocklist? | Nur benötigte Kommunikation wird erlaubt; unbekannte oder vergessene Verbindungen bleiben blockiert. |
+| Warum gehört ein öffentlicher Webserver nicht ins normale LAN? | Ein kompromittierter Server dürfte sonst leichter zu Clients, Dateiservern und internen Daten weiterwandern. |
+| Welche Angaben gehören mindestens in eine klare Firewall-Regel? | Richtung, Quelle, Ziel, Protokoll, Port, Aktion und Zweck. |
+| Warum ist eine Heimrouter-"DMZ", die alle Ports an ein internes Gerät weiterleitet, keine echte Unternehmens-DMZ? | Sie trennt keine Sicherheitszone sauber ab, sondern macht ein internes Gerät breit von außen erreichbar. |
 
 ---
 
@@ -232,19 +246,19 @@ Beantworte diese Fragen ohne Nachsehen:
   titel="Offizielle Quellen"
   quellen={[
     {
-      label: 'BSI - Firewall - Schutz vor dem Angriff von aussen',
+      label: 'BSI - Firewall - Schutz vor dem Angriff von außen',
       href: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Virenschutz-Firewall/Firewall/firewall.html',
       detail: 'BSI-Grundlagen zu Firewalls, Filterregeln, Ports, Protokollierung und dem Zusammenspiel mehrerer Sicherheitsmassnahmen.'
     },
     {
       label: 'BSI IT-Grundschutz - NET.1.1 Netzarchitektur und -design',
       href: 'https://it-grundschutzkompendium.de/net_netze_und_kommunikation/net.1.1_netzarchitektur_und_-design',
-      detail: 'BSI-Grundschutz-Baustein zu Netztrennung in Zonen, DMZ, Aussenanbindung und Absicherung von Zonenuebergaengen.'
+      detail: 'BSI-Grundschutz-Baustein zu Netztrennung in Zonen, DMZ, Außenanbindung und Absicherung von Zonenübergängen.'
     },
     {
       label: 'BSI IT-Grundschutz - NET.3.2 Firewall',
       href: 'https://it-grundschutzkompendium.de/net_netze_und_kommunikation/net.3.2_firewall',
-      detail: 'BSI-Grundschutz-Baustein zu Firewalls als Kopplung IP-basierter Netze und zur Einschraenkung erlaubter Kommunikation.'
+      detail: 'BSI-Grundschutz-Baustein zu Firewalls als Kopplung IP-basierter Netze und zur Einschränkung erlaubter Kommunikation.'
     },
     {
       label: 'BSI - Router und WLAN sicher einrichten',
@@ -254,7 +268,7 @@ Beantworte diese Fragen ohne Nachsehen:
     {
       label: 'RFC 1918 - Address Allocation for Private Internets',
       href: 'https://www.rfc-editor.org/rfc/rfc1918',
-      detail: 'Grundlage fuer private IPv4-Adressbereiche, die in LAN, DMZ und internen Servernetzen haeufig verwendet werden.'
+      detail: 'Grundlage für private IPv4-Adressbereiche, die in LAN, DMZ und internen Servernetzen häufig verwendet werden.'
     },
   ]}
 />

@@ -2,12 +2,77 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const qBisS: GlossarEintrag[] = [
   {
+      id: 'ruecktritt',
+      begriff: 'Rücktritt',
+      kurzdefinition: 'Rückabwicklung eines Vertrags, typischerweise nach gescheiterter Nacherfuellung.',
+      definition: [
+        'Rücktritt bedeutet, dass der Vertrag rückabgewickelt wird: Die Sache geht zurück, der Kaufpreis wird erstattet. Im Kaufrecht ist Rücktritt bei Mängeln meist erst nach erfolgloser oder entbehrlicher Nacherfuellung möglich.',
+        'Er ist von der Minderung zu unterscheiden: Bei der Minderung behält der Käufer die Sache und der Preis wird reduziert.',
+      ],
+      kapitel: {
+        titel: 'Gewährleistung und Garantie',
+        href: '/lernen/vertragsrecht/vertraege/gewaehrleistung',
+      },
+    },
+  {
+      id: 'referenzdaten',
+      begriff: 'Referenzdaten',
+      kurzdefinition: 'Kontrollierte Wertelisten, die andere Daten klassifizieren oder gültige Werte vorgeben.',
+      definition: [
+        'Referenzdaten sind feste oder selten geänderte Wertelisten, zum Beispiel Ländercodes, Steuerkennzeichen, Mengeneinheiten oder Statuswerte.',
+        'Sie verbessern Datenqualität, weil Systeme nicht mit beliebigen Schreibweisen für denselben Wert arbeiten müssen.',
+      ],
+      kapitel: {
+        titel: 'Stamm- und Bewegungsdaten',
+        href: '/lernen/daten/daten-qualitaet/stamm-bewegungsdaten',
+      },
+    },
+  {
+      id: 'stammdaten',
+      begriff: 'Stammdaten',
+      kurzdefinition: 'Relativ stabile Kerndaten über wichtige Geschäftsobjekte wie Kunden, Artikel oder Lieferanten.',
+      definition: [
+        'Stammdaten beschreiben wiederverwendete Kernobjekte eines Unternehmens, zum Beispiel Kunden, Produkte, Lieferanten, Mitarbeiter oder Standorte.',
+        'Sie bestehen unabhängig von einer einzelnen Transaktion, werden aber in vielen Vorgängen referenziert, etwa in Aufträgen, Rechnungen oder Supporttickets.',
+      ],
+      kapitel: {
+        titel: 'Stamm- und Bewegungsdaten',
+        href: '/lernen/daten/daten-qualitaet/stamm-bewegungsdaten',
+      },
+    },
+  {
+      id: 'sachmangel',
+      begriff: 'Sachmangel',
+      kurzdefinition: 'Abweichung der Kaufsache von vereinbarter, üblicher oder montagebezogener Beschaffenheit.',
+      definition: [
+        'Ein Sachmangel liegt vor, wenn die Kaufsache bei Gefahrübergang nicht die vereinbarte Beschaffenheit hat, sich nicht für die erwartete Verwendung eignet oder objektive Anforderungen nicht erfüllt.',
+        'Auch falsche Ware, zu geringe Menge oder bestimmte Montage- und Anleitungsfehler können wie ein Sachmangel behandelt werden.',
+      ],
+      kapitel: {
+        titel: 'Gewährleistung und Garantie',
+        href: '/lernen/vertragsrecht/vertraege/gewaehrleistung',
+      },
+    },
+  {
+      id: 'schadensersatz',
+      begriff: 'Schadensersatz',
+      kurzdefinition: 'Ausgleich eines Schadens, wenn die rechtlichen Voraussetzungen erfüllt sind.',
+      definition: [
+        'Schadensersatz bedeutet, dass ein entstandener Schaden ersetzt wird. Bei Mängeln kann das zum Beispiel Zusatzkosten oder Folgeschäden betreffen.',
+        'Im Kaufrecht reicht der Mangel allein nicht immer. Es müssen die Voraussetzungen der jeweiligen Anspruchsgrundlage erfüllt sein, etwa Pflichtverletzung und Vertretenmüssen.',
+      ],
+      kapitel: {
+        titel: 'Gewährleistung und Garantie',
+        href: '/lernen/vertragsrecht/vertraege/gewaehrleistung',
+      },
+    },
+  {
       id: 'qualitativer-angebotsvergleich',
       begriff: 'Qualitativer Angebotsvergleich',
       kurzdefinition: 'Bewertung nicht direkt in Euro messbarer Kriterien eines Angebots.',
       definition: [
-        'Der qualitative Angebotsvergleich betrachtet Kriterien wie Lieferzeit, Support, Garantie, technische Passung, Lieferantenzuverlaessigkeit oder Nachhaltigkeit.',
-        'Er ist wichtig, wenn ein guenstiges Angebot Risiken hat oder ein etwas teureres Angebot den betrieblichen Bedarf deutlich besser erfuellt.',
+        'Der qualitative Angebotsvergleich betrachtet Kriterien wie Lieferzeit, Support, Garantie, technische Passung, Lieferantenzuverlässigkeit oder Nachhaltigkeit.',
+        'Er ist wichtig, wenn ein günstiges Angebot Risiken hat oder ein etwas teureres Angebot den betrieblichen Bedarf deutlich besser erfüllt.',
       ],
       kapitel: {
         titel: 'Angebotsvergleich (quantitativ & qualitativ)',
@@ -19,11 +84,11 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Rabatt',
       kurzdefinition: 'Prozentualer Preisnachlass auf den Listenpreis, oft für Mengen, Treue oder Aktionen.',
       definition: [
-        'Rabatt ist ein Nachlass auf den Listenpreis. Anlaesse sind Mengenrabatt (Grossbestellung), Treuerabatt (Stammkunde), Naturalrabatt (mehr Stueck zum gleichen Preis) oder Sonderrabatte (Aktion).',
-        'In der Vorwaertskalkulation reduziert der Liefererrabatt den Listeneinkaufspreis zum Zieleinkaufspreis. Er wird vor dem Skonto verrechnet.',
+        'Rabatt ist ein Nachlass auf den Listenpreis. Anlässe sind Mengenrabatt (Grossbestellung), Treuerabatt (Stammkunde), Naturalrabatt (mehr Stück zum gleichen Preis) oder Sonderrabatte (Aktion).',
+        'In der Vorwärtskalkulation reduziert der Liefererrabatt den Listeneinkaufspreis zum Zieleinkaufspreis. Er wird vor dem Skonto verrechnet.',
       ],
       kapitel: {
-        titel: 'Kaufmaennische Rechenaufgaben',
+        titel: 'Kaufmännische Rechenaufgaben',
         href: '/lernen/wirtschaft/kalkulation/kaufmaennische-rechenaufgaben',
       },
     },
@@ -32,8 +97,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'RAID',
       kurzdefinition: 'RAID kombiniert mehrere Laufwerke für Ausfallsicherheit, Geschwindigkeit oder beides.',
       definition: [
-        'RAID steht für Redundant Array of Independent Disks. Je nach Level werden Daten gespiegelt, verteilt oder mit Paritaet abgesichert.',
-        'RAID ersetzt kein Backup, weil es nicht vor versehentlichem Loeschen, Schadsoftware oder Standortausfall schuetzt.',
+        'RAID steht für Redundant Array of Independent Disks. Je nach Level werden Daten gespiegelt, verteilt oder mit Parität abgesichert.',
+        'RAID ersetzt kein Backup, weil es nicht vor versehentlichem Löschen, Schadsoftware oder Standortausfall schützt.',
       ],
       kapitel: {
         titel: 'RAID-Systeme (0, 1, 5, 6, 10)',
@@ -43,14 +108,14 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'ram',
       begriff: 'RAM',
-      kurzdefinition: 'Fluechtiger Arbeitsspeicher; haelt aktive Programme und Daten waehrend des Betriebs vor.',
+      kurzdefinition: 'Flüchtiger Arbeitsspeicher; hält aktive Programme und Daten während des Betriebs vor.',
       definition: [
-        'RAM steht für Random Access Memory. Der Arbeitsspeicher ist fluechtig, das heißt alle Daten gehen beim Ausschalten verloren. RAM ist deutlich schneller als SSD oder HDD und wird von der CPU im Nanosekundenbereich angesprochen.',
-        'Reicht der RAM nicht aus, lagert das Betriebssystem Speicherseiten auf den Massenspeicher aus (Swapping). Das System wird dadurch spuerbar langsamer, weil SSD-Zugriffe um Groessenordnungen langsamer sind als RAM-Zugriffe.',
+        'RAM steht für Random Access Memory. Der Arbeitsspeicher ist flüchtig, das heißt alle Daten gehen beim Ausschalten verloren. RAM ist deutlich schneller als SSD oder HDD und wird von der CPU im Nanosekundenbereich angesprochen.',
+        'Reicht der RAM nicht aus, lagert das Betriebssystem Speicherseiten auf den Massenspeicher aus (Swapping). Das System wird dadurch spürbar langsamer, weil SSD-Zugriffe um Größenordnungen langsamer sind als RAM-Zugriffe.',
       ],
       kapitel: {
-        titel: 'Hardware, Schnittstellen & Peripherie auswaehlen',
-        href: '/lernen/hardware/schnittstellen/hardware-schnittstellen',
+        titel: 'CPU, RAM und Massenspeicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
       },
     },
   {
@@ -71,8 +136,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Rechtsform',
       kurzdefinition: 'Rechtlicher Rahmen eines Unternehmens mit Folgen für Haftung, Leitung und Kapital.',
       definition: [
-        'Die Rechtsform legt fest, wie ein Unternehmen rechtlich organisiert ist. Sie beeinflusst Haftung, Kapitalbeschaffung, Vertretung, Gewinnverteilung und Pflichten nach aussen.',
-        'In AP1-Aufgaben erkennst du Rechtsformen oft an Signalwoertern wie persoenliche Haftung, Gesellschaftsvermoegen, Gesellschafter, Aktien, Kommanditist oder Einzelunternehmer.',
+        'Die Rechtsform legt fest, wie ein Unternehmen rechtlich organisiert ist. Sie beeinflusst Haftung, Kapitalbeschaffung, Vertretung, Gewinnverteilung und Pflichten nach außen.',
+        'In AP1-Aufgaben erkennst du Rechtsformen oft an Signalwörtern wie persönliche Haftung, Gesellschaftsvermögen, Gesellschafter, Aktien, Kommanditist oder Einzelunternehmer.',
       ],
       kapitel: {
         titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
@@ -84,8 +149,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Restrisiko',
       kurzdefinition: 'Risiko, das nach Umsetzung der Sicherheitsmassnahmen verbleibt und vom Management formell akzeptiert wird.',
       definition: [
-        'Vollstaendige Sicherheit gibt es nicht. Nach Umsetzung der angemessenen Massnahmen verbleibt ein Restrisiko, das die Geschaeftsleitung dokumentiert akzeptieren muss.',
-        'Wenn das Restrisiko zu hoch ist, sind weitere Massnahmen, eine Risikoübertragung oder im Extremfall ein Verzicht auf den Geschaeftsprozess nötig.',
+        'Vollständige Sicherheit gibt es nicht. Nach Umsetzung der angemessenen Maßnahmen verbleibt ein Restrisiko, das die Geschäftsleitung dokumentiert akzeptieren muss.',
+        'Wenn das Restrisiko zu hoch ist, sind weitere Maßnahmen, eine Risikoübertragung oder im Extremfall ein Verzicht auf den Geschäftsprozess nötig.',
       ],
       kapitel: {
         titel: 'Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz',
@@ -97,7 +162,7 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Restwert',
       kurzdefinition: 'Wert eines Gegenstands am Ende der betrachteten Nutzungsdauer.',
       definition: [
-        'Der Restwert ist der voraussichtliche Wert eines Wirtschaftsguts am Ende der Vergleichsperiode. Er kann durch Verkaufserloes oder Weiterverwendung wirtschaftlich relevant sein.',
+        'Der Restwert ist der voraussichtliche Wert eines Wirtschaftsguts am Ende der Vergleichsperiode. Er kann durch Verkaufserlös oder Weiterverwendung wirtschaftlich relevant sein.',
         'Beim Kostenvergleich wird der Restwert der Kaufvariante abgezogen. Bei Miete und typischem Leasing gehört der Restwert nicht automatisch dem Nutzer.',
       ],
       kapitel: {
@@ -108,9 +173,9 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'risikomatrix',
       begriff: 'Risikomatrix',
-      kurzdefinition: 'Tabelle, die Eintrittswahrscheinlichkeit und Schadenshoehe gegeneinander stellt, um Risiken einzustufen.',
+      kurzdefinition: 'Tabelle, die Eintrittswahrscheinlichkeit und Schadenshöhe gegeneinander stellt, um Risiken einzustufen.',
       definition: [
-        'Eine Risikomatrix kombiniert die geschaetzte Eintrittswahrscheinlichkeit (selten, möglich, wahrscheinlich, sehr wahrscheinlich) mit der Schadenshoehe (gering, mittel, hoch, sehr hoch). Das Ergebnis ist eine Risikoklasse, oft farblich von gruen bis rot dargestellt.',
+        'Eine Risikomatrix kombiniert die geschätzte Eintrittswahrscheinlichkeit (selten, möglich, wahrscheinlich, sehr wahrscheinlich) mit der Schadenshöhe (gering, mittel, hoch, sehr hoch). Das Ergebnis ist eine Risikoklasse, oft farblich von grün bis rot dargestellt.',
         'Sie hilft, über den Umgang mit Risiken zu entscheiden: vermeiden, vermindern, übertragen (zum Beispiel über eine Versicherung) oder bewusst akzeptieren.',
       ],
       kapitel: {
@@ -123,8 +188,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Roaming',
       kurzdefinition: 'Wechsel eines WLAN-Clients zwischen Access Points derselben WLAN-Umgebung.',
       definition: [
-        'Beim Roaming wechselt ein Client von einem Access Point zu einem anderen, ohne dass der Nutzer das WLAN manuell neu auswaehlt.',
-        'Der Client entscheidet wesentlich mit, wann er wechselt. Schlechte AP-Positionierung oder zu hohe Sendeleistung kann dazu fuehren, dass Clients zu lange an einem entfernten AP kleben.',
+        'Beim Roaming wechselt ein Client von einem Access Point zu einem anderen, ohne dass der Nutzer das WLAN manuell neu auswählt.',
+        'Der Client entscheidet wesentlich mit, wann er wechselt. Schlechte AP-Positionierung oder zu hohe Sendeleistung kann dazu führen, dass Clients zu lange an einem entfernten AP kleben.',
       ],
       kapitel: {
         titel: 'WLAN-Standards und WLAN-Sicherheit',
@@ -134,14 +199,40 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'salt',
       begriff: 'Salt',
-      kurzdefinition: 'Zufaelliger Zusatz pro Nutzer oder Datensatz, der Hashwerte eindeutig macht.',
+      kurzdefinition: 'Zufälliger Zusatz pro Nutzer oder Datensatz, der Hashwerte eindeutig macht.',
       definition: [
         'Ein Salt wird zusammen mit dem Passwort gehasht und meist offen neben dem Hash gespeichert. Er muss nicht geheim sein.',
-        'Der Nutzen liegt darin, dass gleiche Passwoerter unterschiedliche Hashes erhalten und vorgefertigte Rainbow Tables unbrauchbar werden.',
+        'Der Nutzen liegt darin, dass gleiche Passwörter unterschiedliche Hashes erhalten und vorgefertigte Rainbow Tables unbrauchbar werden.',
       ],
       kapitel: {
-        titel: 'Verschluesselung, Hashing, Zertifikate, Signatur & VPN',
+        titel: 'Verschlüsselung, Hashing, Zertifikate, Signatur & VPN',
         href: '/lernen/sicherheit/dsgvo-krypto/verschluesselung-hash-vpn',
+      },
+    },
+  {
+      id: 'root-ca',
+      begriff: 'Root-CA',
+      kurzdefinition: 'Eine Root-CA ist der oberste Vertrauensanker einer Zertifikatskette.',
+      definition: [
+        'Das Zertifikat einer Root-CA ist in Betriebssystemen, Browsern oder verwalteten Geräten als vertrauenswürdig hinterlegt.',
+        'Weil daraus sehr viel Vertrauen entsteht, wird eine Root-CA besonders stark geschützt und signiert in der Praxis oft Intermediate-CAs statt direkt Endzertifikate.',
+      ],
+      kapitel: {
+        titel: 'PKI, CA und Zertifikate',
+        href: '/lernen/sicherheit/dsgvo-krypto/pki-zertifikate',
+      },
+    },
+  {
+      id: 'schluesselpaar',
+      begriff: 'Schlüsselpaar',
+      kurzdefinition: 'Ein Schlüsselpaar besteht aus Public Key und Private Key.',
+      definition: [
+        'Bei asymmetrischer Kryptografie gehören Public Key und Private Key mathematisch zusammen, haben aber getrennte Rollen.',
+        'Der Public Key darf verteilt werden. Der Private Key bleibt geheim und beweist, dass der Besitzer zum öffentlichen Schlüssel passt.',
+      ],
+      kapitel: {
+        titel: 'PKI, CA und Zertifikate',
+        href: '/lernen/sicherheit/dsgvo-krypto/pki-zertifikate',
       },
     },
   {
@@ -153,17 +244,17 @@ export const qBisS: GlossarEintrag[] = [
         'Für klassische HDDs ist SATA mehr als ausreichend. SSDs werden durch SATA gebremst, weshalb für hohe Geschwindigkeit NVMe über PCIe genutzt wird.',
       ],
       kapitel: {
-        titel: 'Hardware, Schnittstellen & Peripherie auswaehlen',
-        href: '/lernen/hardware/schnittstellen/hardware-schnittstellen',
+        titel: 'CPU, RAM und Massenspeicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
       },
     },
   {
       id: 'sbi-feedback',
       begriff: 'SBI-Feedback',
-      kurzdefinition: 'Methode der gewaltfreien Rueckmeldung: Situation - Behavior - Impact, also Situation, beobachtbares Verhalten, Auswirkung.',
+      kurzdefinition: 'Methode der gewaltfreien Rückmeldung: Situation - Behavior - Impact, also Situation, beobachtbares Verhalten, Auswirkung.',
       definition: [
-        'Das SBI-Modell (Center for Creative Leadership) strukturiert ein Feedback-Gespraech in drei Schritten: Situation - wann/wo war es konkret, Behavior - was hat die Person beobachtbar getan (kein Urteil), Impact - welche Auswirkung hatte das Verhalten auf dich, das Team oder das Ergebnis.',
-        'Pruefungsrelevant: SBI ist die saubere Form, "Du-Botschaften" und Pauschalurteile zu vermeiden. Ich-Botschaft statt Schuldzuweisung. Verwandt: STAR-Methode (Situation, Task, Action, Result) wird eher für Bewerbungsgespraeche und Leistungsbewertung verwendet.',
+        'Das SBI-Modell (Center for Creative Leadership) strukturiert ein Feedback-Gespräch in drei Schritten: Situation - wann/wo war es konkret, Behavior - was hat die Person beobachtbar getan (kein Urteil), Impact - welche Auswirkung hatte das Verhalten auf dich, das Team oder das Ergebnis.',
+        'Prüfungsrelevant: SBI ist die saubere Form, "Du-Botschaften" und Pauschalurteile zu vermeiden. Ich-Botschaft statt Schuldzuweisung. Verwandt: STAR-Methode (Situation, Task, Action, Result) wird eher für Bewerbungsgespräche und Leistungsbewertung verwendet.',
       ],
       kapitel: {
         titel: 'Bedarfsanalyse, Kommunikation & Feedback',
@@ -175,8 +266,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Scheduler',
       kurzdefinition: 'Betriebssystem-Komponente, die entscheidet, welcher Thread oder Task CPU-Zeit bekommt.',
       definition: [
-        'Der Scheduler verteilt Prozessorzeit auf lauffaehige Threads oder Tasks. Dabei spielen Zustand, Prioritaet, Fairness und verfuegbare CPU-Kerne eine Rolle.',
-        'Ohne Scheduler koennte ein Betriebssystem mehrere Programme nicht geordnet scheinbar gleichzeitig ausfuehren.',
+        'Der Scheduler verteilt Prozessorzeit auf lauffähige Threads oder Tasks. Dabei spielen Zustand, Priorität, Fairness und verfügbare CPU-Kerne eine Rolle.',
+        'Ohne Scheduler könnte ein Betriebssystem mehrere Programme nicht geordnet scheinbar gleichzeitig ausführen.',
       ],
       kapitel: {
         titel: 'Prozesse, Threads und Tasks',
@@ -188,8 +279,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Schleife',
       kurzdefinition: 'Eine Schleife ist eine Kontrollstruktur, die denselben Block mehrfach ausführt.',
       definition: [
-        'Schleifen arbeiten mit einer Bedingung oder einem Zaehler. FOR eignet sich für bekannte Durchlaufzahlen, WHILE für Wiederholung solange eine Bedingung gilt, REPEAT-UNTIL für mindestens einen Durchlauf.',
-        'Typische Fehler sind Off-by-One-Grenzen, fehlende Aktualisierung des Zaehlerwerts und Schleifenbedingungen, die nie falsch werden.',
+        'Schleifen arbeiten mit einer Bedingung oder einem Zähler. FOR eignet sich für bekannte Durchlaufzahlen, WHILE für Wiederholung solange eine Bedingung gilt, REPEAT-UNTIL für mindestens einen Durchlauf.',
+        'Typische Fehler sind Off-by-One-Grenzen, fehlende Aktualisierung des Zählerwerts und Schleifenbedingungen, die nie falsch werden.',
       ],
       kapitel: {
         titel: 'Pseudocode, Algorithmen & Kontrollstrukturen',
@@ -201,8 +292,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Schnittstelle',
       kurzdefinition: 'Eine Schnittstelle ist ein definierter Übergang für den Datenaustausch zwischen Systemen.',
       definition: [
-        'Eine Schnittstelle legt fest, welche Daten Systeme austauschen, in welchem Format sie übertragen werden und wie Fehler behandelt werden. Beispiele sind Kundennummern, Auftraege, Rechnungen, Dokument-IDs oder Statusinformationen.',
-        'Pruefungsrelevant: Schnittstellen reduzieren doppelte Datenerfassung, brauchen aber saubere Datenfelder, Verantwortlichkeiten, Berechtigungen und Testfaelle.',
+        'Eine Schnittstelle legt fest, welche Daten Systeme austauschen, in welchem Format sie übertragen werden und wie Fehler behandelt werden. Beispiele sind Kundennummern, Aufträge, Rechnungen, Dokument-IDs oder Statusinformationen.',
+        'Prüfungsrelevant: Schnittstellen reduzieren doppelte Datenerfassung, brauchen aber saubere Datenfelder, Verantwortlichkeiten, Berechtigungen und Testfälle.',
       ],
       kapitel: {
         titel: 'CRM, ERP, DMS und CMS',
@@ -214,7 +305,7 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Schreibtischtest',
       kurzdefinition: 'Ein Schreibtischtest führt Pseudocode von Hand Zeile für Zeile aus.',
       definition: [
-        'Beim Schreibtischtest spielst du Computer: Du liest jede Anweisung, pruefst Bedingungen, fuehrst den passenden Zweig aus und schreibst neue Variablenwerte in eine Trace-Tabelle.',
+        'Beim Schreibtischtest spielst du Computer: Du liest jede Anweisung, prüfst Bedingungen, führst den passenden Zweig aus und schreibst neue Variablenwerte in eine Trace-Tabelle.',
         'Diese Methode findet Grenzfehler, falsche Initialisierung und verwechselt Zuweisung mit Vergleich. In der AP1 ist sie eine Standardform für Pseudocode-Aufgaben.',
       ],
       kapitel: {
@@ -225,10 +316,10 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'schulung',
       begriff: 'Schulung',
-      kurzdefinition: 'Geplante Lernmassnahme zum Aufbau von Wissen, Faehigkeiten oder Sicherheit für eine Aufgabe.',
+      kurzdefinition: 'Geplante Lernmassnahme zum Aufbau von Wissen, Fähigkeiten oder Sicherheit für eine Aufgabe.',
       definition: [
-        'Eine Schulung vermittelt Wissen und Uebung für eine Rolle, ein System oder einen Prozess. Sie hat Zielgruppe, Lernziele, Inhalte, Methode und idealerweise eine Erfolgskontrolle.',
-        'In IT-Einfuehrungen reicht eine reine Information meist nicht aus. Anwender müssen typische Faelle ueben, Fragen stellen können und nach dem Start Unterstuetzung bekommen.',
+        'Eine Schulung vermittelt Wissen und Übung für eine Rolle, ein System oder einen Prozess. Sie hat Zielgruppe, Lernziele, Inhalte, Methode und idealerweise eine Erfolgskontrolle.',
+        'In IT-Einführungen reicht eine reine Information meist nicht aus. Anwender müssen typische Fälle üben, Fragen stellen können und nach dem Start Unterstützung bekommen.',
       ],
       kapitel: {
         titel: 'Schulung, Einweisung, Key User und Multiplikatoren',
@@ -238,10 +329,10 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'schulungsbedarf',
       begriff: 'Schulungsbedarf',
-      kurzdefinition: 'Luecke zwischen benötigten und vorhandenen Kompetenzen einer Zielgruppe.',
+      kurzdefinition: 'Lücke zwischen benötigten und vorhandenen Kompetenzen einer Zielgruppe.',
       definition: [
         'Schulungsbedarf entsteht, wenn Personen für einen Soll-Prozess, ein neues System oder eine neue Rolle noch nicht ausreichend vorbereitet sind.',
-        'Pruefungsrelevant ist die Ableitung: Zielgruppe trennen, Soll-Kompetenz bestimmen, Vorwissen pruefen und passende Lernform mit Erfolgskontrolle planen.',
+        'Prüfungsrelevant ist die Ableitung: Zielgruppe trennen, Soll-Kompetenz bestimmen, Vorwissen prüfen und passende Lernform mit Erfolgskontrolle planen.',
       ],
       kapitel: {
         titel: 'Schulung, Einweisung, Key User und Multiplikatoren',
@@ -254,7 +345,7 @@ export const qBisS: GlossarEintrag[] = [
       kurzdefinition: 'Dokumentation einer Schulung mit Datum, Teilnehmenden, Inhalten und offenen Punkten.',
       definition: [
         'Ein Schulungsnachweis macht nachvollziehbar, wer zu welchen Inhalten geschult wurde. Typisch sind Datum, Trainer, Teilnehmende, Thema, Material und offene Fragen.',
-        'Im IT-Betrieb hilft der Nachweis bei Qualitaetssicherung, Audit, Datenschutz- oder Sicherheitsunterweisungen und gezielter Nachschulung.',
+        'Im IT-Betrieb hilft der Nachweis bei Qualitätssicherung, Audit, Datenschutz- oder Sicherheitsunterweisungen und gezielter Nachschulung.',
       ],
       kapitel: {
         titel: 'Schulung, Einweisung, Key User und Multiplikatoren',
@@ -266,8 +357,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Schutzbedarf',
       kurzdefinition: 'Mass für die Folgen, die eine Verletzung eines Schutzziels für einen Prozess oder ein System hat.',
       definition: [
-        'Der Schutzbedarf wird je Schutzziel bewertet und drueckt aus, wie schlimm es ist, wenn das Ziel verletzt wird. Das BSI nutzt drei Stufen: normal, hoch, sehr hoch.',
-        'Aus dem Schutzbedarf ergibt sich, welche Massnahmen verhaeltnismaessig sind. Ein hoher Schutzbedarf fordert mehr und staerkere Massnahmen, ein normaler Schutzbedarf kommt in der Regel mit den Standard-Anforderungen aus dem IT-Grundschutz aus.',
+        'Der Schutzbedarf wird je Schutzziel bewertet und drückt aus, wie schlimm es ist, wenn das Ziel verletzt wird. Das BSI nutzt drei Stufen: normal, hoch, sehr hoch.',
+        'Aus dem Schutzbedarf ergibt sich, welche Maßnahmen verhältnismässig sind. Ein hoher Schutzbedarf fordert mehr und stärkere Maßnahmen, ein normaler Schutzbedarf kommt in der Regel mit den Standard-Anforderungen aus dem IT-Grundschutz aus.',
       ],
       kapitel: {
         titel: 'Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz',
@@ -279,8 +370,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Schutzbedarfsfeststellung',
       kurzdefinition: 'Vorgang, bei dem für jeden Geschäftsprozess oder jedes System der Schutzbedarf je Schutzziel ermittelt wird.',
       definition: [
-        'Die Schutzbedarfsfeststellung beschreibt zunaechst Geschaeftsprozesse und die zugehoerigen Informationen, ordnet ihnen Anwendungen und IT-Systeme zu und bewertet anschliessend Schadensszenarien je Schutzziel auf normal, hoch oder sehr hoch.',
-        'Die Bewertung folgt im IT-Grundschutz dem Maximumprinzip: ein abhaengiges System übernimmt den hoechsten Schutzbedarf der Prozesse oder Daten, die es verarbeitet.',
+        'Die Schutzbedarfsfeststellung beschreibt zunächst Geschäftsprozesse und die zugehörigen Informationen, ordnet ihnen Anwendungen und IT-Systeme zu und bewertet anschliessend Schadensszenarien je Schutzziel auf normal, hoch oder sehr hoch.',
+        'Die Bewertung folgt im IT-Grundschutz dem Maximumprinzip: ein abhängiges System übernimmt den höchsten Schutzbedarf der Prozesse oder Daten, die es verarbeitet.',
       ],
       kapitel: {
         titel: 'Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz',
@@ -290,10 +381,10 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'schutzziel',
       begriff: 'Schutzziel',
-      kurzdefinition: 'Eigenschaft, die ein System oder Daten in der IT-Sicherheit erfuellen sollen.',
+      kurzdefinition: 'Eigenschaft, die ein System oder Daten in der IT-Sicherheit erfüllen sollen.',
       definition: [
-        'Ein Schutzziel beschreibt, was geschuetzt werden soll, nicht wie. Klassisch sind Vertraulichkeit, Integritaet und Verfuegbarkeit (CIA). Authentizitaet, Nicht-Abstreitbarkeit und Verbindlichkeit erweitern den Katalog.',
-        'In der Pruefung musst du Massnahmen oft einem Schutzziel zuordnen, zum Beispiel Verschluesselung der Vertraulichkeit oder Hashwert der Integritaet.',
+        'Ein Schutzziel beschreibt, was geschützt werden soll, nicht wie. Klassisch sind Vertraulichkeit, Integrität und Verfügbarkeit (CIA). Authentizität, Nicht-Abstreitbarkeit und Verbindlichkeit erweitern den Katalog.',
+        'In der Prüfung musst du Maßnahmen oft einem Schutzziel zuordnen, zum Beispiel Verschlüsselung der Vertraulichkeit oder Hashwert der Integrität.',
       ],
       kapitel: {
         titel: 'Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz',
@@ -303,10 +394,10 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'scrum',
       begriff: 'Scrum',
-      kurzdefinition: 'Leichtgewichtiges Framework fuer komplexe Produktarbeit, beschrieben im Scrum Guide.',
+      kurzdefinition: 'Leichtgewichtiges Framework für komplexe Produktarbeit, beschrieben im Scrum Guide.',
       definition: [
-        'Scrum ist im Scrum Guide 2020 definiert als „leichtgewichtiges Framework, das Menschen, Teams und Organisationen hilft, Wert durch adaptive Loesungen fuer komplexe Probleme zu erzeugen". Es beruht auf den drei Saeulen Transparency, Inspection, Adaptation.',
-        'Scrum besteht aus einem Scrum Team mit drei Accountabilities (Product Owner, Scrum Master, Developers), fuenf Events (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective) und drei Artefakten mit Commitments (Product Backlog/Product Goal, Sprint Backlog/Sprint Goal, Increment/Definition of Done).',
+        'Scrum ist im Scrum Guide 2020 definiert als „leichtgewichtiges Framework, das Menschen, Teams und Organisationen hilft, Wert durch adaptive Lösungen für komplexe Probleme zu erzeugen". Es beruht auf den drei Säulen Transparency, Inspection, Adaptation.',
+        'Scrum besteht aus einem Scrum Team mit drei Accountabilities (Product Owner, Scrum Master, Developers), fünf Events (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective) und drei Artefakten mit Commitments (Product Backlog/Product Goal, Sprint Backlog/Sprint Goal, Increment/Definition of Done).',
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
@@ -316,10 +407,10 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'scrum-master',
       begriff: 'Scrum Master',
-      kurzdefinition: 'Accountability im Scrum Team, die Scrum etabliert und die Wirksamkeit des Teams foerdert.',
+      kurzdefinition: 'Accountability im Scrum Team, die Scrum etabliert und die Wirksamkeit des Teams fördert.',
       definition: [
-        'Der Scrum Master ist nach Scrum Guide 2020 verantwortlich dafuer, dass Scrum verstanden und angewendet wird. Er coacht zu Selbstmanagement und Cross-Funktionalitaet, raeumt Hindernisse weg und sorgt dafuer, dass die Events ihre Timebox einhalten.',
-        'Er ist kein Projektleiter und gibt den Developers keine Arbeit. Er dient Product Owner, Developers und Organisation als „true leader" (so der Wortlaut 2020), indem er Wirksamkeit ermoeglicht statt Anweisungen zu geben.',
+        'Der Scrum Master ist nach Scrum Guide 2020 verantwortlich dafür, dass Scrum verstanden und angewendet wird. Er coacht zu Selbstmanagement und Cross-Funktionalität, räumt Hindernisse weg und sorgt dafür, dass die Events ihre Timebox einhalten.',
+        'Er ist kein Projektleiter und gibt den Developers keine Arbeit. Er dient Product Owner, Developers und Organisation als „trü leader" (so der Wortlaut 2020), indem er Wirksamkeit ermöglicht statt Anweisungen zu geben.',
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
@@ -332,7 +423,7 @@ export const qBisS: GlossarEintrag[] = [
       kurzdefinition: 'Ein Segment ist die typische Dateneinheit von TCP auf der Transportschicht.',
       definition: [
         'In der OSI-PDU-Sprache wird die TCP-Dateneinheit auf Schicht 4 meist Segment genannt.',
-        'Ein TCP-Segment enthaelt unter anderem Quellport, Zielport, Sequenznummern, Flags und Nutzdaten.',
+        'Ein TCP-Segment enthält unter anderem Quellport, Zielport, Sequenznummern, Flags und Nutzdaten.',
       ],
       kapitel: {
         titel: 'TCP vs. UDP',
@@ -342,10 +433,10 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'selektion',
       begriff: 'Selektion',
-      kurzdefinition: 'Selektion ist eine Auswahlstruktur: Eine Bedingung entscheidet, welcher Zweig ausgefuehrt wird.',
+      kurzdefinition: 'Selektion ist eine Auswahlstruktur: Eine Bedingung entscheidet, welcher Zweig ausgeführt wird.',
       definition: [
         'Typische Formen sind WENN/DANN, WENN/DANN/SONST und SONST-WENN-Ketten. Die Bedingung wird zu wahr oder falsch ausgewertet; danach läuft nur der passende Zweig.',
-        'Pruefungsfalle: Bei einer SONST-WENN-Kette wird von oben nach unten geprueft. Sobald eine Bedingung wahr ist, werden die spaeteren Alternativen nicht mehr ausgefuehrt.',
+        'Prüfungsfalle: Bei einer SONST-WENN-Kette wird von oben nach unten geprüft. Sobald eine Bedingung wahr ist, werden die späteren Alternativen nicht mehr ausgeführt.',
       ],
       kapitel: {
         titel: 'Pseudocode, Algorithmen & Kontrollstrukturen',
@@ -354,11 +445,11 @@ export const qBisS: GlossarEintrag[] = [
     },
   {
       id: 'sender-empfaenger',
-      begriff: 'Sender-Empfaenger-Modell',
-      kurzdefinition: 'Grundmodell der Kommunikation: ein Sender kodiert eine Nachricht, der Empfaenger dekodiert sie - mit möglichen Stoerungen unterwegs.',
+      begriff: 'Sender-Empfänger-Modell',
+      kurzdefinition: 'Grundmodell der Kommunikation: ein Sender kodiert eine Nachricht, der Empfänger dekodiert sie - mit möglichen Störungen unterwegs.',
       definition: [
-        'Das Modell geht auf Shannon und Weaver (1948) zurueck und beschreibt Kommunikation als Kette: Sender, Kodierung, Kanal, Dekodierung, Empfaenger. Stoerungen können auf jeder Stufe auftreten - etwa Mehrdeutigkeit beim Kodieren, Hintergrundlaerm im Kanal oder unterschiedliche Deutung beim Empfaenger.',
-        'Pruefungsrelevant: Das Modell ist die Grundlage für alle weiteren Kommunikationsmodelle (Vier-Ohren, Watzlawick). Verstehe: Eine Nachricht ist nicht das, was der Sender meint, sondern das, was beim Empfaenger ankommt.',
+        'Das Modell geht auf Shannon und Weaver (1948) zurück und beschreibt Kommunikation als Kette: Sender, Kodierung, Kanal, Dekodierung, Empfänger. Störungen können auf jeder Stufe auftreten - etwa Mehrdeutigkeit beim Kodieren, Hintergrundlärm im Kanal oder unterschiedliche Deutung beim Empfänger.',
+        'Prüfungsrelevant: Das Modell ist die Grundlage für alle weiteren Kommunikationsmodelle (Vier-Ohren, Watzlawick). Verstehe: Eine Nachricht ist nicht das, was der Sender meint, sondern das, was beim Empfänger ankommt.',
       ],
       kapitel: {
         titel: 'Bedarfsanalyse, Kommunikation & Feedback',
@@ -368,7 +459,7 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'sequenz',
       begriff: 'Sequenz',
-      kurzdefinition: 'Sequenz bedeutet, dass Anweisungen nacheinander in der geschriebenen Reihenfolge ausgefuehrt werden.',
+      kurzdefinition: 'Sequenz bedeutet, dass Anweisungen nacheinander in der geschriebenen Reihenfolge ausgeführt werden.',
       definition: [
         'Die Sequenz ist die einfachste Kontrollstruktur: erst Schritt 1, dann Schritt 2, dann Schritt 3. Jede Zuweisung kann den bisherigen Wert einer Variable überschreiben.',
         'Beim Schreibtischtest ist Sequenz die Grundregel. Du gehst Zeile für Zeile weiter und notierst nach jeder wirksamen Anweisung den neuen Zustand.',
@@ -383,8 +474,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Single Point of Failure',
       kurzdefinition: 'Einzelne Komponente, deren Ausfall einen ganzen Dienst oder Prozess lahmlegt.',
       definition: [
-        'Ein Single Point of Failure entsteht, wenn ein Dienst von einer einzelnen Komponente abhaengt und es keine Redundanz oder Ersatzroute gibt.',
-        'Zentrale Systeme muessen deshalb mit Backup, Monitoring, Redundanz und Wiederanlaufplan betrieben werden.',
+        'Ein Single Point of Failure entsteht, wenn ein Dienst von einer einzelnen Komponente abhängt und es keine Redundanz oder Ersatzroute gibt.',
+        'Zentrale Systeme müssen deshalb mit Backup, Monitoring, Redundanz und Wiederanlaufplan betrieben werden.',
       ],
       kapitel: {
         titel: 'Zentrale vs. dezentrale IT-Systeme',
@@ -396,11 +487,11 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Skonto',
       kurzdefinition: 'Prozentualer Preisnachlass für schnelle Zahlung innerhalb einer vereinbarten Skontofrist.',
       definition: [
-        'Skonto ist ein Preisnachlass, den der Lieferant gewaehrt, wenn der Kunde innerhalb einer kurzen Frist (z. B. 10 Tagen) zahlt. Wirtschaftlich entspricht es einem hohen Effektivzins, weshalb das Ziehen meist guenstiger ist als ein Kontokorrentkredit.',
+        'Skonto ist ein Preisnachlass, den der Lieferant gewährt, wenn der Kunde innerhalb einer kurzen Frist (z. B. 10 Tagen) zahlt. Wirtschaftlich entspricht es einem hohen Effektivzins, weshalb das Ziehen meist günstiger ist als ein Kontokorrentkredit.',
         'Skonto wird in der Handelskalkulation immer auf den Preis nach Liefererrabatt berechnet, nicht auf den Listenpreis.',
       ],
       kapitel: {
-        titel: 'Kaufmaennische Rechenaufgaben',
+        titel: 'Kaufmännische Rechenaufgaben',
         href: '/lernen/wirtschaft/kalkulation/kaufmaennische-rechenaufgaben',
       },
     },
@@ -409,12 +500,12 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'SLA',
       kurzdefinition: 'Service Level Agreement — Vertrag über messbare Leistungsmerkmale einer IT-Dienstleistung.',
       definition: [
-        'Ein SLA legt fest, welche Qualitaets- und Verfuegbarkeitszusagen ein IT-Dienstleister macht (z. B. 99,9 % Verfuegbarkeit, maximale Reaktionszeit).',
+        'Ein SLA legt fest, welche Qualitäts- und Verfügbarkeitszusagen ein IT-Dienstleister macht (z. B. 99,9 % Verfügbarkeit, maximale Reaktionszeit).',
         'Es regelt auch Konsequenzen bei Nichteinhaltung (Pauschalen, Gutschriften) und dient als Grundlage für Preisbildung und Ticket-Eskalation.',
       ],
       kapitel: {
-        titel: 'Serviceprozess & Support-Level',
-        href: '/lernen/projekt/dokumente/serviceprozess-support',
+        titel: 'Serviceanfragen, Ticketsystem & Support-Level',
+        href: '/lernen/projekt/service-management/serviceanfragen-support-level',
       },
     },
   {
@@ -431,12 +522,25 @@ export const qBisS: GlossarEintrag[] = [
       },
     },
   {
+      id: 'softwareergonomie',
+      begriff: 'Softwareergonomie',
+      kurzdefinition: 'Gestaltung von Software nach Aufgabe, Nutzer und Kontext: verständlich, steuerbar, fehlertolerant und belastungsarm.',
+      definition: [
+        'Softwareergonomie prüft, ob eine Anwendung Menschen bei ihrer Aufgabe unterstützt, statt sie durch unklare Begriffe, versteckte Funktionen oder unnötige Bedienwege zu belasten.',
+        'Typische Kriterien sind klare Navigation, konsistente Begriffe, sichtbarer Systemzustand, verständliche Fehlerhinweise, Tastaturbedienung und passende Darstellung für die Zielgruppe.',
+      ],
+      kapitel: {
+        titel: 'Ergonomie, Barrierefreiheit und Telearbeit',
+        href: '/lernen/hardware/schnittstellen/homeoffice-ergonomie',
+      },
+    },
+  {
       id: 'sprint',
       begriff: 'Sprint',
-      kurzdefinition: 'Festes Zeitfenster im Scrum (max. ein Monat), in dem ein nutzbares Inkrement entsteht — Container fuer alle anderen Events.',
+      kurzdefinition: 'Festes Zeitfenster im Scrum (max. ein Monat), in dem ein nutzbares Inkrement entsteht — Container für alle anderen Events.',
       definition: [
-        'Ein Sprint dauert nach Scrum Guide 2020 maximal einen Monat und beginnt direkt nach Abschluss des vorherigen. Er ist der „Herzschlag" von Scrum und enthaelt Sprint Planning, Daily Scrum, das eigentliche Arbeiten, Sprint Review und Sprint Retrospective.',
-        'Im laufenden Sprint duerfen keine Aenderungen vorgenommen werden, die das Sprint Goal gefaehrden. Wird das Sprint Goal hinfaellig, kann der Product Owner den Sprint abbrechen.',
+        'Ein Sprint dauert nach Scrum Guide 2020 maximal einen Monat und beginnt direkt nach Abschluss des vorherigen. Er ist der „Herzschlag" von Scrum und enthält Sprint Planning, Daily Scrum, das eigentliche Arbeiten, Sprint Review und Sprint Retrospective.',
+        'Im laufenden Sprint dürfen keine Änderungen vorgenommen werden, die das Sprint Goal gefährden. Wird das Sprint Goal hinfällig, kann der Product Owner den Sprint abbrechen.',
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
@@ -446,10 +550,10 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'sprint-backlog',
       begriff: 'Sprint Backlog',
-      kurzdefinition: 'Plan der Developers fuer den aktuellen Sprint: ausgewaehlte Backlog-Items, geplante Arbeit und das Sprint Goal.',
+      kurzdefinition: 'Plan der Developers für den aktuellen Sprint: ausgewählte Backlog-Items, geplante Arbeit und das Sprint Goal.',
       definition: [
-        'Der Sprint Backlog ist nach Scrum Guide 2020 eines der drei Artefakte. Er besteht aus dem Sprint Goal (Warum), den fuer den Sprint ausgewaehlten Items (Was) und einem umsetzbaren Plan, wie das Inkrement entsteht (Wie).',
-        'Die Developers besitzen den Sprint Backlog und aktualisieren ihn waehrend des Sprints. Sein Commitment ist das Sprint Goal.',
+        'Der Sprint Backlog ist nach Scrum Guide 2020 eines der drei Artefakte. Er besteht aus dem Sprint Goal (Warum), den für den Sprint ausgewählten Items (Was) und einem umsetzbaren Plan, wie das Inkrement entsteht (Wie).',
+        'Die Developers besitzen den Sprint Backlog und aktualisieren ihn während des Sprints. Sein Commitment ist das Sprint Goal.',
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
@@ -461,8 +565,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Sprint Goal',
       kurzdefinition: 'Einziges, fokussierendes Ziel des aktuellen Sprints — Commitment des Sprint Backlog.',
       definition: [
-        'Das Sprint Goal wird im Sprint Planning gemeinsam definiert und beantwortet die Warum-Frage des Sprints. Es macht das Inkrement fuer alle Beteiligten sichtbar wertvoll und gibt den Developers Flexibilitaet bei der Umsetzung.',
-        'Faellt das Sprint Goal weg oder ist nicht mehr sinnvoll, darf der Product Owner den Sprint abbrechen. Anpassungen am Was im laufenden Sprint sind moeglich, solange das Sprint Goal nicht gefaehrdet wird.',
+        'Das Sprint Goal wird im Sprint Planning gemeinsam definiert und beantwortet die Warum-Frage des Sprints. Es macht das Inkrement für alle Beteiligten sichtbar wertvoll und gibt den Developers Flexibilität bei der Umsetzung.',
+        'Fällt das Sprint Goal weg oder ist nicht mehr sinnvoll, darf der Product Owner den Sprint abbrechen. Anpassungen am Was im laufenden Sprint sind möglich, solange das Sprint Goal nicht gefährdet wird.',
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
@@ -475,11 +579,11 @@ export const qBisS: GlossarEintrag[] = [
       kurzdefinition: 'Massenspeicher auf Flash-Basis; ohne mechanische Teile, deutlich schneller als HDD.',
       definition: [
         'SSD steht für Solid State Drive. Daten werden in Flash-Speicherzellen gehalten. Es gibt keine beweglichen Teile, dadurch sind SSDs lautlos, stossfest und reagieren in Bruchteilen einer Millisekunde.',
-        'Die Geschwindigkeit haengt stark vom Anschluss ab: SATA-SSDs erreichen rund 500 MB/s, NVMe-SSDs über PCIe deutlich mehr. Schreibzyklen sind begrenzt, im Alltag aber selten der limitierende Faktor.',
+        'Die Geschwindigkeit hängt stark vom Anschluss ab: SATA-SSDs erreichen rund 500 MB/s, NVMe-SSDs über PCIe deutlich mehr. Schreibzyklen sind begrenzt, im Alltag aber selten der limitierende Faktor.',
       ],
       kapitel: {
-        titel: 'Hardware, Schnittstellen & Peripherie auswaehlen',
-        href: '/lernen/hardware/schnittstellen/hardware-schnittstellen',
+        titel: 'CPU, RAM und Massenspeicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
       },
     },
   {
@@ -487,8 +591,8 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'SSID',
       kurzdefinition: 'Name eines WLANs, den Clients zur Auswahl des Funknetzes sehen.',
       definition: [
-        'SSID steht fuer Service Set Identifier. Sie ist der sichtbare oder konfigurierbare Name eines WLANs, zum Beispiel Firma-Mitarbeiter oder Firma-Gast.',
-        'Das Verstecken der SSID ist keine echte Sicherheitsmassnahme. Entscheidend sind sichere Authentifizierung, Verschluesselung und Netztrennung.',
+        'SSID steht für Service Set Identifier. Sie ist der sichtbare oder konfigurierbare Name eines WLANs, zum Beispiel Firma-Mitarbeiter oder Firma-Gast.',
+        'Das Verstecken der SSID ist keine echte Sicherheitsmassnahme. Entscheidend sind sichere Authentifizierung, Verschlüsselung und Netztrennung.',
       ],
       kapitel: {
         titel: 'WLAN-Standards und WLAN-Sicherheit',
@@ -498,9 +602,9 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'stakeholderanalyse',
       begriff: 'Stakeholderanalyse',
-      kurzdefinition: 'Analyse, welche Personen oder Gruppen von einer Aenderung betroffen sind oder Einfluss darauf haben.',
+      kurzdefinition: 'Analyse, welche Personen oder Gruppen von einer Änderung betroffen sind oder Einfluss darauf haben.',
       definition: [
-        'Die Stakeholderanalyse klaert Betroffenheit, Einfluss, Interessen und mögliche Risiken. Daraus werden Kommunikations- und Beteiligungsmassnahmen abgeleitet.',
+        'Die Stakeholderanalyse klärt Betroffenheit, Einfluss, Interessen und mögliche Risiken. Daraus werden Kommunikations- und Beteiligungsmassnahmen abgeleitet.',
         'Im IT-Change gehören neben Anwendern oft IT, Fachbereich, Leitung, Datenschutz, Informationssicherheit und Betriebsrat zu den Stakeholdern.',
       ],
       kapitel: {
@@ -513,7 +617,7 @@ export const qBisS: GlossarEintrag[] = [
       begriff: 'Stateful Firewall',
       kurzdefinition: 'Eine Stateful Firewall merkt sich den Zustand von Verbindungen.',
       definition: [
-        'Stateful Firewalls fuehren eine Zustandstabelle. Dadurch koennen sie Antworten auf erlaubte ausgehende oder eingehende Verbindungen erkennen.',
+        'Stateful Firewalls führen eine Zustandstabelle. Dadurch können sie Antworten auf erlaubte ausgehende oder eingehende Verbindungen erkennen.',
         'Das ist sicherer und praktischer als ein rein zustandsloser Paketfilter, ersetzt aber keine Anwendungssicherheit oder saubere Segmentierung.',
       ],
       kapitel: {
@@ -540,7 +644,20 @@ export const qBisS: GlossarEintrag[] = [
       kurzdefinition: 'Der Stellenwert beschreibt, welchen Wert eine Position innerhalb einer Zahl hat.',
       definition: [
         'Der Stellenwert ergibt sich aus Basis und Position. Rechts beginnt die Position 0, nach links steigt der Exponent jeweils um eins.',
-        'Bei der Binaerzahl 1011 haben die Stellen von rechts nach links die Werte 1, 2, 4 und 8.',
+        'Bei der Binärzahl 1011 haben die Stellen von rechts nach links die Werte 1, 2, 4 und 8.',
+      ],
+      kapitel: {
+        titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
+        href: '/lernen/grundlagen/zahlen/zahlensysteme',
+      },
+    },
+  {
+      id: 'stellenwertsystem',
+      begriff: 'Stellenwertsystem',
+      kurzdefinition: 'Ein Stellenwertsystem bewertet jede Ziffer nach ihrer Position.',
+      definition: [
+        'In einem Stellenwertsystem hat dieselbe Ziffer je nach Position einen anderen Wert. In 305 steht die 3 für 300, weil sie auf der Hunderterstelle steht.',
+        'Binär, Oktal, Dezimal und Hexadezimal funktionieren alle nach diesem Prinzip; nur die Basis ist unterschiedlich.',
       ],
       kapitel: {
         titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
@@ -587,15 +704,28 @@ export const qBisS: GlossarEintrag[] = [
       },
     },
   {
-      id: 'symmetrische-verschluesselung',
-      begriff: 'Symmetrische Verschluesselung',
-      kurzdefinition: 'Ein gemeinsamer geheimer Schlüssel wird für Verschluesselung und Entschluesselung genutzt.',
+      id: 'signed-unsigned',
+      begriff: 'Signed/unsigned',
+      kurzdefinition: 'Signed bedeutet mit Vorzeichen, unsigned bedeutet ohne Vorzeichen.',
       definition: [
-        'Symmetrische Verfahren wie AES sind schnell und deshalb für große Datenmengen geeignet, etwa Festplatten, Backups oder die Nutzdaten einer TLS-Verbindung.',
-        'Das zentrale Problem ist die sichere Schluesselverteilung: Beide Parteien brauchen dasselbe Geheimnis, ohne dass es unterwegs abgefangen wird.',
+        'Bei signed Zahlen kann ein Bitmuster negative und positive Werte bedeuten. Bei unsigned Zahlen wird dasselbe Bitmuster nur als nichtnegative Zahl gelesen.',
+        'Beispiel: 1111 1011 ist als signed Byte -5, als unsigned Byte aber 251. Entscheidend ist der Datentyp.',
       ],
       kapitel: {
-        titel: 'Verschluesselung, Hashing, Zertifikate, Signatur & VPN',
+        titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
+        href: '/lernen/grundlagen/zahlen/zahlensysteme',
+      },
+    },
+  {
+      id: 'symmetrische-verschluesselung',
+      begriff: 'Symmetrische Verschlüsselung',
+      kurzdefinition: 'Ein gemeinsamer geheimer Schlüssel wird für Verschlüsselung und Entschlüsselung genutzt.',
+      definition: [
+        'Symmetrische Verfahren wie AES sind schnell und deshalb für große Datenmengen geeignet, etwa Festplatten, Backups oder die Nutzdaten einer TLS-Verbindung.',
+        'Das zentrale Problem ist die sichere Schlüsselverteilung: Beide Parteien brauchen dasselbe Geheimnis, ohne dass es unterwegs abgefangen wird.',
+      ],
+      kapitel: {
+        titel: 'Verschlüsselung, Hashing, Zertifikate, Signatur & VPN',
         href: '/lernen/sicherheit/dsgvo-krypto/verschluesselung-hash-vpn',
       },
     },

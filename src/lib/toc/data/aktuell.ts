@@ -11,9 +11,9 @@ export const aktuell: Lernfeld = {
       slug: "neue-themen",
       title: "Neue & aktuelle Themen",
       lessons: [
-        { slug: "ki-grundlagen", title: "KI-Grundlagen (ML, neuronale Netze)", minutes: 20, importance: 5, exam: true, status: "ready" },
-        { slug: "cloud-konzepte", title: "Cloud-Konzepte (IaaS, PaaS, SaaS)", minutes: 12, importance: 4, exam: true, status: "stub" },
-        { slug: "lizenzmodelle", title: "Lizenzmodelle (Open Source, proprietär, SaaS)", minutes: 14, importance: 5, exam: true, status: "ready" },
+        { lf: 5, slug: "ki-grundlagen", title: "KI-Grundlagen (ML, neuronale Netze)", minutes: 20, importance: 5, exam: true, status: "ready" },
+        { lf: 5, slug: "cloud-konzepte", title: "Cloud-Konzepte (IaaS, PaaS, SaaS)", minutes: 12, importance: 4, exam: true, status: "stub" },
+        { lf: 5, slug: "lizenzmodelle", title: "Lizenzmodelle (Open Source, proprietär, SaaS)", minutes: 14, importance: 5, exam: true, status: "ready" },
       ],
     },
   ],

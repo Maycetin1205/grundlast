@@ -23,7 +23,6 @@ import BinaerDezimalPrototyp from '../tools/BinaerDezimalPrototyp'
 import TeilungsVisualizer from '../tools/TeilungsVisualizer'
 import NibbleUebersetzer from '../tools/NibbleUebersetzer'
 import ChmodWerkbank from '../tools/ChmodWerkbank'
-import MasteryTrainer from '../tools/MasteryTrainer'
 import { cn } from '../../lib/cn'
 import type { SVGProps, TableHTMLAttributes } from 'react'
 
@@ -73,7 +72,6 @@ const components = {
   TeilungsVisualizer,
   NibbleUebersetzer,
   ChmodWerkbank,
-  MasteryTrainer,
 }
 
 interface Props {

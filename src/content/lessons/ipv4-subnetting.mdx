@@ -192,10 +192,41 @@ echten Netzen plant man beides oft zusammen, aber es ist nicht dasselbe.
 - In normalen LAN-Subnetzen sind nutzbare Hosts `2^Host-Bits - 2`.
 - Das Standardgateway muss im selben Subnetz liegen wie der Host.
 
+<Quellen
+  titel="Offizielle Quellen"
+  quellen={[
+    {
+      label: 'RFC 791 - Internet Protocol',
+      href: 'https://www.rfc-editor.org/rfc/rfc791',
+      detail: 'Grundlage für IPv4-Adressen als vier Oktette bzw. 32 Bit und die Rolle von Adressen beim Routing.'
+    },
+    {
+      label: 'RFC 4632 - Classless Inter-domain Routing (CIDR)',
+      href: 'https://www.rfc-editor.org/rfc/rfc4632',
+      detail: 'Definiert die CIDR-Schreibweise mit Präfixlänge zwischen 0 und 32 und die Trennung von Netz- und Host-Bits.'
+    },
+    {
+      label: 'RFC 1918 - Address Allocation for Private Internets',
+      href: 'https://www.rfc-editor.org/rfc/rfc1918',
+      detail: 'Offizielle Grundlage für private IPv4-Bereiche 10.0.0.0/8, 172.16.0.0/12 und 192.168.0.0/16.'
+    },
+    {
+      label: 'RFC 3021 - Using 31-Bit Prefixes on IPv4 Point-to-Point Links',
+      href: 'https://www.rfc-editor.org/rfc/rfc3021',
+      detail: 'Belegt den Sonderfall, dass /31 auf Punkt-zu-Punkt-Verbindungen zwei Hostadressen nutzen kann.'
+    },
+    {
+      label: 'IANA - IPv4 Special-Purpose Address Registry',
+      href: 'https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml',
+      detail: 'Offizielles Register für besondere IPv4-Adressbereiche wie Private-Use, Loopback, Link Local und Dokumentationsnetze.'
+    },
+  ]}
+/>
+
 ## Üben
 
 Der Trainer prüft genau die Werte, die du im Kapitel berechnet hast. Rechne die
-Aufgabe zuerst selbst, prüfe dann deine Eingaben und lies die Hinweise an den
+Aufgabe zürst selbst, prüfe dann deine Eingaben und lies die Hinweise an den
 Feldern. Der Rechner-Modus bleibt verfügbar, wenn du eine eigene Adresse
 kontrollieren willst.
 

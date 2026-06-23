@@ -2,131 +2,134 @@
 
 <MetaBar
   lernfeld="LF 3 / LF 9 - Clients in Netzwerke einbinden und Netze bereitstellen"
-  prüfungsrelevanz="PFLICHT - 4/5"
 />
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du <Term id="wlan">WLAN</Term>, <Term id="access-point">Access Point</Term>, <Term id="ssid">SSID</Term>, Frequenzband, Kanal, Roaming und Verschluesselung sicher einordnen. Du kannst wichtige Standards wie 802.11n, 802.11ac, 802.11ax und 802.11be mit Wi-Fi 4 bis Wi-Fi 7 verbinden und begruenden, warum ein WLAN langsam, instabil oder unsicher sein kann. Ausserdem erkennst du typische Pruefungsfallen: hohe Brutto-Datenrate ist nicht echte Nutzdatenrate, 2,4 GHz hat mehr Reichweite aber weniger freie Kanaele, und WEP oder WPA sind keine zeitgemaesse Sicherheitsloesung.
+Nach diesem Kapitel kannst du <Term id="wlan">WLAN</Term>, <Term id="access-point">Access Point</Term>, <Term id="ssid">SSID</Term>, Frequenzband, Kanal, Roaming und Verschlüsselung sicher einordnen. Du kannst wichtige Standards wie 802.11n, 802.11ac, 802.11ax und 802.11be mit Wi-Fi 4 bis Wi-Fi 7 verbinden und begründen, warum ein WLAN langsam, instabil oder unsicher sein kann. Ausserdem erkennst du typische Fallen: hohe Brutto-Datenrate ist nicht echte Nutzdatenrate, 2,4 GHz hat mehr Reichweite aber weniger freie Kanäle, und WEP oder WPA sind keine zeitgemässe Sicherheitslösung.
 
 ## Warum das wichtig ist
 
-WLAN ist bequem, aber Funk ist ein geteiltes Medium. Alle Geraete in Reichweite teilen sich Sendezeit, stoeren sich gegenseitig und muessen mit Waenden, Nachbar-WLANs, Bluetooth, Mikrowellen, Entfernung und alten Clients umgehen. Deshalb ist WLAN-Planung nicht nur "Router hinstellen und Passwort setzen".
+WLAN ist bequem, aber Funk ist ein geteiltes Medium. Alle Geräte in Reichweite teilen sich Sendezeit, stören sich gegenseitig und müssen mit Wänden, Nachbar-WLANs, Blütooth, Mikrowellen, Entfernung und alten Clients umgehen. Deshalb ist WLAN-Planung nicht nur "Router hinstellen und Passwort setzen".
 
-Im Betrieb musst du typische Fragen beantworten: Warum ist das WLAN im Besprechungsraum langsam? Warum verbindet sich ein Client mit dem falschen Access Point? Warum reicht ein starkes Passwort nicht, wenn noch WPS aktiv ist? Warum ist ein Gast-WLAN vom internen Netz zu trennen? Genau diese Abwaegungen sind in Ausbildung und AP1 wertvoll.
+Im Betrieb musst du typische Fragen beantworten: Warum ist das WLAN im Besprechungsraum langsam? Warum verbindet sich ein Client mit dem falschen Access Point? Warum reicht ein starkes Passwort nicht, wenn noch WPS aktiv ist? Warum ist ein Gast-WLAN vom internen Netz zu trennen? Genau diese Abwägungen sind in Ausbildung und AP1 wertvoll.
 
 <Analogie>
-Ein WLAN ist wie eine Diskussion in einem Raum. Das Frequenzband ist der Raum, der Kanal ist der Tisch, an dem gesprochen wird. Je mehr Menschen gleichzeitig reden, desto schwieriger wird Verstehen. 2,4 GHz ist der grosse Raum mit duennen Waenden: weit hoerbar, aber oft voll. 5 GHz und 6 GHz sind mehr kleinere Raeume: weniger Stoerung, mehr Tempo, aber kuerzere Reichweite.
+Ein WLAN ist wie eine Diskussion in einem Raum. Das Frequenzband ist der Raum, der Kanal ist der Tisch, an dem gesprochen wird. Je mehr Menschen gleichzeitig reden, desto schwieriger wird Verstehen. 2,4 GHz ist der große Raum mit dünnen Wänden: weit hörbar, aber oft voll. 5 GHz und 6 GHz sind mehr kleinere Räume: weniger Störung, mehr Tempo, aber kürzere Reichweite.
 </Analogie>
 
 ---
 
 ## Grundbegriffe
 
-| Begriff | Bedeutung | Pruefungsblick |
+| Begriff | Bedeutung | Praxisblick |
 |---|---|---|
 | <Term id="wlan">WLAN</Term> | Drahtloses lokales Netzwerk nach IEEE 802.11. | Funk statt Kabel, geteiltes Medium. |
-| <Term id="access-point">Access Point</Term> | Funkbasisstation, die WLAN-Clients mit dem LAN verbindet. | Nicht jeder Router ist nur Router; oft AP, Switch und Router in einem Geraet. |
-| <Term id="ssid">SSID</Term> | Name des WLANs, den Clients sehen und auswaehlen. | SSID verstecken ist keine echte Sicherheitsmassnahme. |
-| <Term id="frequenzband">Frequenzband</Term> | Funkbereich, typischerweise 2,4 GHz, 5 GHz oder 6 GHz. | Reichweite und Stoerung haengen stark daran. |
-| <Term id="wlan-kanal">WLAN-Kanal</Term> | Teilbereich eines Frequenzbands. | Ueberlappende Kanaele stoeren sich. |
+| <Term id="access-point">Access Point</Term> | Funkbasisstation, die WLAN-Clients mit dem LAN verbindet. | Nicht jeder Router ist nur Router; oft AP, Switch und Router in einem Gerät. |
+| <Term id="ssid">SSID</Term> | Name des WLANs, den Clients sehen und auswählen. | SSID verstecken ist keine echte Sicherheitsmassnahme. |
+| <Term id="frequenzband">Frequenzband</Term> | Funkbereich, typischerweise 2,4 GHz, 5 GHz oder 6 GHz. | Reichweite und Störung hängen stark daran. |
+| <Term id="wlan-kanal">WLAN-Kanal</Term> | Teilbereich eines Frequenzbands. | Überlappende Kanäle stören sich. |
 | <Term id="roaming">Roaming</Term> | Client wechselt zwischen Access Points derselben WLAN-Umgebung. | Der Client entscheidet den Wechsel, nicht nur der AP. |
-| <Term id="wpa3">WPA3</Term> | Aktuelle Wi-Fi-Sicherheitsgeneration mit staerkerem Schutz als WPA2. | WPA3 bevorzugen, WPA2 noch verbreitet, WEP/WPA vermeiden. |
+| <Term id="wpa3">WPA3</Term> | Aktuelle Wi-Fi-Sicherheitsgeneration mit stärkerem Schutz als WPA2. | WPA3 bevorzugen, WPA2 noch verbreitet, WEP/WPA vermeiden. |
 
 ---
 
 ## Standards im Vergleich
 
-Die IEEE-Bezeichnungen sind technisch, die Wi-Fi-Namen sind die vereinfachten Generationen der Wi-Fi Alliance. In Aufgaben musst du meist nur die grobe Zuordnung und die Praxisfolgen kennen.
+Die IEEE-Bezeichnungen sind technisch, die Wi-Fi-Namen sind die vereinfachten Generationen der Wi-Fi Alliance. Für Auswahl- und Diagnosefälle reicht meist die grobe Zuordnung mit den Praxisfolgen.
 
-| Wi-Fi-Name | IEEE-Standard | Typische Baender | Praxismerkmal |
+| Wi-Fi-Name | IEEE-Standard | Typische Bänder | Praxismerkmal |
 |---|---|---|---|
-| Wi-Fi 4 | 802.11n | 2,4 und 5 GHz | MIMO, noch sehr verbreitet in Altgeraeten |
+| Wi-Fi 4 | 802.11n | 2,4 und 5 GHz | MIMO, noch sehr verbreitet in Altgeräten |
 | Wi-Fi 5 | 802.11ac | 5 GHz | hohe Datenraten im 5-GHz-Band, viele Unternehmensnetze |
 | Wi-Fi 6 | 802.11ax | 2,4 und 5 GHz | mehr Effizienz in dichten Umgebungen, OFDMA, bessere Auslastung |
-| Wi-Fi 6E | 802.11ax | 6 GHz zusaetzlich | neues 6-GHz-Band, weniger Altlasten, geringere Reichweite |
-| Wi-Fi 7 | 802.11be | 2,4, 5 und 6 GHz | sehr hohe Datenraten, geringe Latenz, Multi-Link-Operation |
+| Wi-Fi 6E | 802.11ax | 6 GHz zusätzlich | neues 6-GHz-Band, weniger Altlasten, geringere Reichweite |
+| Wi-Fi 7 | 802.11be | 2,4, 5 und 6 GHz | sehr hohe Datenraten, geringere Latenz, Multi-Link-Operation |
 
 <Tipp titel="Brutto ist nicht netto">
-WLAN-Datenraten in Werbung und Tabellen sind Brutto- oder Maximalwerte. Echte Nutzdatenrate ist niedriger, weil Protokolloverhead, Stoerungen, Entfernung, Kanalbreite, Geraeteanzahl und Signalqualitaet mitspielen.
+WLAN-Datenraten in Werbung und Tabellen sind Brutto- oder Maximalwerte. Echte Nutzdatenrate ist niedriger, weil Protokolloverhead, Störungen, Entfernung, Kanalbreite, Geräteanzahl und Signalqualität mitspielen.
 </Tipp>
 
 ---
 
-## Frequenzbaender und Kanalplanung
+## Frequenzbänder und Kanalplanung
 
 | Band | Vorteile | Nachteile | Typische Nutzung |
 |---|---|---|---|
-| 2,4 GHz | groessere Reichweite, bessere Wanddurchdringung, sehr kompatibel | wenige ueberlappungsfreie Kanaele, viele Stoerquellen | IoT, Altgeraete, groessere Flaeche |
-| 5 GHz | mehr Kanaele, meist schneller, weniger Stoerung als 2,4 GHz | kuerzere Reichweite, schlechter durch Waende | Buero, Streaming, viele moderne Clients |
-| 6 GHz | sehr viele Kanaele, wenig Altgeraete, hohe Leistung fuer Wi-Fi 6E/7 | noch kuerzere Reichweite, nur moderne Clients | dichte moderne Umgebungen, hohe Datenrate |
+| 2,4 GHz | größere Reichweite, bessere Wanddurchdringung, sehr kompatibel | wenige überlappungsfreie Kanäle, viele Störquellen | IoT, Altgeräte, größere Fläche |
+| 5 GHz | mehr Kanäle, meist schneller, weniger Störung als 2,4 GHz | kürzere Reichweite, schlechter durch Wände | Büro, Streaming, viele moderne Clients |
+| 6 GHz | sehr viele Kanäle, wenig Altgeräte, hohe Datenrate für Wi-Fi 6E/7 | noch kürzere Reichweite, nur moderne Clients | dichte moderne Umgebungen, hohe Datenrate |
 
-Bei 2,4 GHz sind in der Praxis meist nur die Kanaele 1, 6 und 11 sinnvoll, weil sie sich nicht ueberlappen. Werden benachbarte Access Points auf Kanal 3, 4 und 5 gesetzt, stoeren sie sich gegenseitig. Bei 5 GHz und 6 GHz gibt es mehr Spielraum, trotzdem braucht es Planung: Kanalbreite, Sendeleistung und Access-Point-Position muessen zusammenpassen.
+Bei 2,4 GHz ist ein häufiger, robuster Kanalplan mit 20-MHz-Kanälen 1, 6 und 11, weil diese Kanäle nicht direkt überlappen. Andere Kanalpläne können je nach Land, Kanalbreite und Umgebung möglich sein, aber benachbarte Access Points auf Kanal 3, 4 und 5 stören sich typischerweise gegenseitig. Bei 5 GHz und 6 GHz gibt es mehr Spielraum, trotzdem braucht es Planung: Kanalbreite, Sendeleistung und Access-Point-Position müssen zusammenpassen.
 
 <Warnung titel="Mehr Sendeleistung ist nicht automatisch besser">
-Wenn ein Access Point zu stark sendet, hoeren Clients ihn noch weit entfernt, koennen aber selbst nicht stark genug zurueck senden. Das WLAN wirkt dann verbunden, aber langsam oder instabil. Gute WLAN-Planung arbeitet mit passender AP-Dichte, Kanalplanung und Sendeleistung.
+Wenn ein Access Point zu stark sendet, hören Clients ihn noch weit entfernt, können aber selbst nicht stark genug zurück senden. Das WLAN wirkt dann verbunden, aber langsam oder instabil. Gute WLAN-Planung arbeitet mit passender AP-Dichte, Kanalplanung und Sendeleistung.
 </Warnung>
 
 ---
 
 ## Sicherheit: Von WEP bis WPA3
 
-| Verfahren | Einordnung | Heute verwenden? | Begruendung |
+| Verfahren | Einordnung | Heute verwenden? | Begründung |
 |---|---|---|---|
 | WEP | historisch, kryptografisch gebrochen | nein | kann praktisch nicht mehr als Schutz gelten |
-| WPA | Uebergangsloesung mit TKIP | nein | veraltet, nicht fuer neue Netze |
-| WPA2-Personal | verbreitet, Pre-Shared Key | ja, wenn starkes Passwort und aktuelle Geraete | immer noch ueblich, aber Passwortqualitaet entscheidend |
-| WPA2-Enterprise | 802.1X/RADIUS | ja | zentrale Benutzeranmeldung, besser fuer Unternehmen |
-| WPA3-Personal | SAE statt klassischem PSK-Handshake | bevorzugt | staerker gegen Woerterbuchangriffe |
-| WPA3-Enterprise | staerkerer Unternehmensmodus | bevorzugt bei passenden Clients | fuer hohe Sicherheitsanforderungen |
+| WPA | Übergangslösung mit TKIP | nein | veraltet, nicht für neue Netze |
+| WPA2-Personal | verbreitet, Pre-Shared Key | ja, wenn starkes Passwort und aktuelle Geräte | immer noch üblich, aber Passwortqualität entscheidend |
+| WPA2-Enterprise | 802.1X/RADIUS | ja | zentrale Benutzeranmeldung, besser für Unternehmen |
+| WPA3-Personal | SAE statt klassischem PSK-Handshake | bevorzugt | stärker gegen Wörterbuchangriffe |
+| WPA3-Enterprise | stärkerer Unternehmensmodus | bevorzugt bei passenden Clients | für hohe Sicherheitsanforderungen |
 
-Wichtig: Verschluesselung schuetzt den Funkverkehr. Sie ersetzt keine Netztrennung, keine Updates, keine starken Passwoerter und keine Benutzerrechte. Ein Gast-WLAN sollte nicht im gleichen Netz wie interne Server liegen, sondern per VLAN, Firewall-Regeln und getrenntem IP-Bereich isoliert werden.
+Wichtig: Verschlüsselung schützt den Funkverkehr. Sie ersetzt keine Netztrennung, keine Updates, keine starken Passwörter und keine Benutzerrechte. Ein Gast-WLAN sollte nicht im gleichen Netz wie interne Server liegen, sondern per VLAN, Firewall-Regeln und getrenntem IP-Bereich isoliert werden.
 
 ## Personal vs. Enterprise
 
-<Term id="wpa-personal">WPA-Personal</Term> nutzt ein gemeinsames WLAN-Passwort fuer alle berechtigten Nutzer. Das ist einfach, aber schlecht skalierbar: Wenn ein Mitarbeiter ausscheidet oder ein Passwort bekannt wird, muss das gemeinsame Passwort geaendert und auf allen Geraeten neu verteilt werden.
+<Term id="wpa-personal">WPA-Personal</Term> nutzt ein gemeinsames WLAN-Passwort für alle berechtigten Nutzer. Das ist einfach, aber schlecht skalierbar: Wenn ein Mitarbeiter ausscheidet oder ein Passwort bekannt wird, muss das gemeinsame Passwort geändert und auf allen Geräten neu verteilt werden.
 
-<Term id="wpa-enterprise">WPA-Enterprise</Term> nutzt 802.1X mit einem Authentifizierungsserver, meist RADIUS. Jeder Nutzer meldet sich mit eigenen Zugangsdaten oder Zertifikat an. Dadurch lassen sich einzelne Konten sperren, ohne das WLAN-Passwort fuer alle zu aendern.
+<Term id="wpa-enterprise">WPA-Enterprise</Term> nutzt 802.1X mit einem Authentifizierungsserver, meist RADIUS. Jeder Nutzer meldet sich mit eigenen Zugangsdaten oder Zertifikat an. Dadurch lassen sich einzelne Konten sperren, ohne das WLAN-Passwort für alle zu ändern.
 
 ---
 
-## Schritt fuer Schritt: WLAN fuer einen Kunden planen
+## Schritt für Schritt: WLAN für einen Kunden planen
 
 <Schritte
   items={[
-    { titel: '1. Nutzung klaeren', text: 'Wie viele Nutzer, welche Geraete, welche Anwendungen? E-Mail und Warenwirtschaft brauchen andere Planung als Video, VoIP oder Lager-Scanner.' },
-    { titel: '2. Umgebung aufnehmen', text: 'Grundriss, Waende, Stoerquellen, Nachbar-WLANs, vorhandene Verkabelung und Stromversorgung pruefen. Ohne Standortanalyse ist WLAN-Planung geraten.' },
-    { titel: '3. Frequenzbaender festlegen', text: '2,4 GHz fuer Reichweite und Altgeraete, 5 GHz fuer Standard-Clients, 6 GHz fuer moderne hohe Dichte. Altgeraete bewusst bewerten.' },
-    { titel: '4. Kanaele und AP-Positionen planen', text: 'Ueberlappung vermeiden, Sendeleistung anpassen, Access Points per Kabel anbinden und nicht einfach Repeater stapeln.' },
+    { titel: '1. Nutzung klären', text: 'Wie viele Nutzer, welche Geräte, welche Anwendungen? E-Mail und Warenwirtschaft brauchen andere Planung als Video, VoIP oder Lager-Scanner.' },
+    { titel: '2. Umgebung aufnehmen', text: 'Grundriss, Wände, Störquellen, Nachbar-WLANs, vorhandene Verkabelung und Stromversorgung prüfen. Ohne Standortanalyse ist WLAN-Planung geraten.' },
+    { titel: '3. Frequenzbänder festlegen', text: '2,4 GHz für Reichweite und Altgeräte, 5 GHz für Standard-Clients, 6 GHz für moderne hohe Dichte. Altgeräte bewusst bewerten.' },
+    { titel: '4. Kanäle und AP-Positionen planen', text: 'Überlappung vermeiden, Sendeleistung anpassen, Access Points per Kabel anbinden und nicht einfach Repeater stapeln.' },
     { titel: '5. Sicherheit definieren', text: 'WPA3 bevorzugen, mindestens WPA2 mit starkem Passwort. In Unternehmen WPA2/3-Enterprise, Gast-WLAN getrennt, WPS deaktivieren.' },
-    { titel: '6. Testen und dokumentieren', text: 'Signalstaerke, Durchsatz, Roaming und Stoerstellen messen. SSIDs, Kanaele, IP-Netze, VLANs und Passwortrichtlinien dokumentieren.' },
+    { titel: '6. Testen und dokumentieren', text: 'Signalstärke, Durchsatz, Roaming und Störstellen messen. SSIDs, Kanäle, IP-Netze, VLANs und Passwortrichtlinien dokumentieren.' },
   ]}
 />
 
 <Beispiel titel="Betriebliche Situation">
-Eine Arztpraxis braucht WLAN fuer Mitarbeitende, Patienten und medizinische Geraete. Die Mitarbeitenden greifen auf Praxissoftware zu, Patienten sollen nur Internet nutzen, und einige Geraete koennen nur 2,4 GHz. Eine gute Loesung waere: internes WLAN mit WPA2/3-Enterprise oder starkem WPA2/3-Personal, getrenntes Gast-WLAN in eigenem VLAN, 2,4 GHz nur dort aktivieren, wo Altgeraete es brauchen, 5 GHz fuer normale Clients und klare Dokumentation der Access Points.
+Eine Arztpraxis braucht WLAN für Mitarbeitende, Patienten und medizinische Geräte. Die Mitarbeitenden greifen auf Praxissoftware zu, Patienten sollen nur Internet nutzen, und einige Geräte können nur 2,4 GHz. Eine gute Lösung wäre: internes WLAN mit WPA2/3-Enterprise oder starkem WPA2/3-Personal, getrenntes Gast-WLAN in eigenem VLAN, 2,4 GHz nur dort aktivieren, wo Altgeräte es brauchen, 5 GHz für normale Clients und klare Dokumentation der Access Points.
 </Beispiel>
 
 ---
 
 ## Typische Fehler
 
-1. **WEP oder WPA als sicher bewerten.** Beide gehoeren nicht in neue Netze.
-2. **SSID-Verstecken als Sicherheit verkaufen.** Versteckte SSIDs koennen trotzdem erkannt werden und ersetzen keine Verschluesselung.
-3. **2,4 GHz mit vielen Kanaelen planen.** Praktisch sind nur wenige ueberlappungsfreie Kanaele sinnvoll.
+1. **WEP oder WPA als sicher bewerten.** Beide gehören nicht in neue Netze.
+2. **SSID-Verstecken als Sicherheit verkaufen.** Versteckte SSIDs können trotzdem erkannt werden und ersetzen keine Verschlüsselung.
+3. **2,4 GHz mit vielen Kanälen planen.** Praktisch sind nur wenige überlappungsfreie Kanäle sinnvoll.
 4. **Maximalwerte als echte Datenrate lesen.** Bruttoraten sind Labor- oder Standardwerte, nicht garantierter Durchsatz.
-5. **Repeater als Standardloesung nutzen.** Repeater koennen Durchsatz und Stabilitaet verschlechtern. Kabelgebundene Access Points sind meist besser.
-6. **Gast-WLAN ohne Trennung anbieten.** Gaeste duerfen nicht ins interne Netz.
+5. **Repeater als Standardlösung nutzen.** Repeater können Durchsatz und Stabilität verschlechtern. Kabelgebundene Access Points sind meist besser.
+6. **Gast-WLAN ohne Trennung anbieten.** Gäste dürfen nicht ins interne Netz.
 7. **WPS aktiviert lassen.** Bequeme Kopplung kann ein Sicherheitsrisiko sein und sollte in professionellen Netzen deaktiviert werden.
-8. **Roaming falsch verstehen.** Der Client entscheidet den Wechsel zwischen Access Points; schlechte AP-Positionen oder Sendeleistungen fuehren zu klebenden Clients.
+8. **Roaming falsch verstehen.** Der Client entscheidet den Wechsel zwischen Access Points; schlechte AP-Positionen oder Sendeleistungen führen zu klebenden Clients.
 
 ---
 
-## Typische Pruefungsaufgabe
+## Kurzer Selbstcheck
 
-> **Aufgabe (Klausur-Stil):** Ein Unternehmen betreibt ein WLAN mit 2,4 GHz auf den Kanaelen 1, 3 und 5. Es gibt Beschwerden ueber schlechte Verbindung. Zusaetzlich nutzen alle Mitarbeitenden ein gemeinsames WPA2-Passwort, und Gaeste bekommen dasselbe Passwort. Nenne drei Probleme und schlage passende Verbesserungen vor.
-
-**Musterantwort:** Problem 1: Die 2,4-GHz-Kanaele 1, 3 und 5 ueberlappen sich. Besser sind nicht ueberlappende Kanaele wie 1, 6 und 11 sowie eine Messung der Nachbar-WLANs. Problem 2: Ein gemeinsames Passwort fuer Mitarbeitende und Gaeste ist unsicher. Besser: getrenntes Gast-WLAN in eigenem VLAN mit Firewall-Regeln. Problem 3: Nur 2,4 GHz begrenzt Kapazitaet. Moderne Clients sollten 5 GHz oder 6 GHz nutzen, waehrend 2,4 GHz fuer Altgeraete reserviert bleibt. In Unternehmen ist WPA2/3-Enterprise mit individuellen Zugangsdaten sinnvoll.
+| Check | Lösung |
+|---|---|
+| Warum ist ein WLAN mit hoher Bruttorate trotzdem langsam? | Bruttorate ist nicht Nutzdatenrate. Overhead, Störungen, Entfernung, Kanalbreite, alte Clients und viele gleichzeitige Geräte senken den Durchsatz. |
+| Was ist am 2,4-GHz-Kanalplan 1, 3 und 5 problematisch? | Die Kanäle überlappen sich. Ein robuster Standardansatz mit 20-MHz-Kanälen ist oft 1, 6 und 11 plus Messung der Nachbar-WLANs. |
+| Warum reicht ein gemeinsames WPA2-Passwort für Mitarbeitende und Gäste nicht aus? | Gäste und interne Geräte müssen getrennt werden. Für Unternehmen sind getrennte SSIDs/VLANs, Firewall-Regeln und oft WPA-Enterprise besser. |
+| Wann passt 2,4 GHz trotzdem? | Bei Altgeräten, IoT oder größerer Fläche. Für hohe Kapazität und moderne Clients sind 5 GHz oder 6 GHz oft besser. |
+| Warum ist WPS in professionellen Netzen kritisch? | WPS vereinfacht Kopplung, vergrößert aber die Angriffs- und Fehlkonfigurationsfläche. In professionellen Netzen sollte es deaktiviert werden. |
 
 ---
 
@@ -135,12 +138,22 @@ Eine Arztpraxis braucht WLAN fuer Mitarbeitende, Patienten und medizinische Gera
     {
       label: 'IEEE 802.11 Working Group - About 802.11',
       href: 'https://www.ieee802.org/11/abt80211.html',
-      detail: 'Offizielle Einordnung der IEEE-802.11-Arbeitsgruppe und des Standards fuer Wireless LAN MAC/PHY.'
+      detail: 'Offizielle Einordnung der IEEE-802.11-Arbeitsgruppe und des Standards für Wireless LAN MAC/PHY.'
     },
     {
       label: 'IEEE SA - P802.11',
       href: 'https://standards.ieee.org/802_11.html',
-      detail: 'Offizielle IEEE-Seite zum 802.11-Standard fuer Wireless LAN.'
+      detail: 'Offizielle IEEE-Seite zum 802.11-Standard für Wireless LAN.'
+    },
+    {
+      label: 'IEEE SA - IEEE 802.11ax-2021',
+      href: 'https://standards.ieee.org/ieee/802.11ax/7180/',
+      detail: 'IEEE-Amendment für High-Efficiency-WLAN; fachlicher Anker für 802.11ax, Wi-Fi 6 und Wi-Fi 6E.'
+    },
+    {
+      label: 'IEEE SA - IEEE 802.11be-2024',
+      href: 'https://standards.ieee.org/ieee/802.11be/7516/',
+      detail: 'IEEE-Amendment für Extremely High Throughput; fachlicher Anker für 802.11be und Wi-Fi 7.'
     },
     {
       label: 'Wi-Fi Alliance - Wi-Fi CERTIFIED WPA3',
@@ -153,14 +166,14 @@ Eine Arztpraxis braucht WLAN fuer Mitarbeitende, Patienten und medizinische Gera
       detail: 'BSI-Grundlagen zu WLAN, LAN und der Empfehlung, WPA2 oder WPA3 zu verwenden.'
     },
     {
-      label: 'BSI - Sicherheitstipps im privaten und oeffentlichen WLAN',
-      href: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/Sicherheitstipps-fuer-privates-und-oeffentliches-WLAN/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html',
-      detail: 'BSI-Empfehlungen zu Routerpasswoertern, sicherer Konfiguration und vorsichtiger Nutzung fremder WLANs.'
+      label: 'BSI - Sicherheitstipps im privaten und öffentlichen WLAN',
+      href: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/Sicherheitstipps-für-privates-und-öffentliches-WLAN/sicherheitstipps-für-privates-und-öffentliches-wlan.html',
+      detail: 'BSI-Empfehlungen zu Routerpasswörtern, sicherer Konfiguration und vorsichtiger Nutzung fremder WLANs.'
     },
     {
       label: 'Microsoft Support - Faster and more secure Wi-Fi in Windows',
       href: 'https://support.microsoft.com/en-us/windows/faster-and-more-secure-wi-fi-in-windows-26177a28-38ed-1a8e-7eca-66f24dc63f09',
-      detail: 'Praxisnahe Herstellerinformation zu Wi-Fi 6/6E, Wi-Fi 7 und WPA3-Unterstuetzung in Windows.'
+      detail: 'Praxisnahe Herstellerinformation zu Wi-Fi 6/6E, Wi-Fi 7 und WPA3-Unterstützung in Windows.'
     },
   ]} 
 />

@@ -2,39 +2,38 @@
 
 <MetaBar
   lernfeld="LF 3 / LF 9 - Clients in Netzwerke einbinden und Dienste bereitstellen"
-  prüfungsrelevanz="PFLICHT - 5/5"
 />
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du <Term id="tcp">TCP</Term>, <Term id="udp">UDP</Term>, <Term id="portnummer">Portnummern</Term>, <Term id="socket">Sockets</Term>, Verbindungsaufbau, Zuverlaessigkeit, Reihenfolge und typische Dienste sicher unterscheiden. Du kannst erklaeren, warum HTTPS normalerweise TCP 443 nutzt, warum DNS meistens UDP 53 verwendet, warum VoIP keine alten Pakete nachgeliefert haben will und warum Firewall-Regeln immer Protokoll und Port nennen muessen.
+Nach diesem Kapitel kannst du <Term id="tcp">TCP</Term>, <Term id="udp">UDP</Term>, <Term id="portnummer">Portnummern</Term>, <Term id="socket">Sockets</Term>, Verbindungsaufbau, Zuverlässigkeit, Reihenfolge und typische Dienste sicher unterscheiden. Du kannst erklären, warum HTTPS normalerweise TCP 443 nutzt, warum DNS meistens UDP 53 verwendet, warum VoIP keine alten Pakete nachgeliefert haben will und warum Firewall-Regeln immer Protokoll und Port nennen müssen.
 
-Ausserdem verstehst du, warum TCP und UDP die Grundlage fuer viele andere Kapitel sind: OSI-Schicht 4, NAT, Port Forwarding, Firewall-Regeln, Webdienste, E-Mail, DNS, DHCP, Streaming, Gaming und Fehlersuche.
+Ausserdem verstehst du, warum TCP und UDP die Grundlage für viele andere Kapitel sind: OSI-Schicht 4, NAT, Port Forwarding, Firewall-Regeln, Webdienste, E-Mail, DNS, DHCP, Streaming, Gaming und Fehlersuche.
 
 ## Warum das wichtig ist
 
-IP bringt Pakete von Netz zu Netz. TCP und UDP sorgen auf der Transportschicht dafuer, dass Daten bei der richtigen Anwendung auf dem Zielsystem landen. Ein Server kann gleichzeitig HTTPS, SSH und DNS anbieten, weil Ports die Dienste unterscheiden.
+IP bringt Pakete von Netz zu Netz. TCP und UDP sorgen auf der Transportschicht dafür, dass Daten bei der richtigen Anwendung auf dem Zielsystem landen. Ein Server kann gleichzeitig HTTPS, SSH und DNS anbieten, weil Ports die Dienste unterscheiden.
 
-In der Praxis musst du staendig entscheiden: Welcher Port muss in der Firewall frei sein? Nutzt der Dienst TCP oder UDP? Ist Paketverlust schlimm oder ist Latenz schlimmer? Warum funktioniert DNS-Abfrage A, aber Zonentransfer B nicht? Warum reicht "Port 53 freigeben" als Aussage nicht aus?
+In der Praxis musst du ständig entscheiden: Welcher Port muss in der Firewall frei sein? Nutzt der Dienst TCP oder UDP? Ist Paketverlust schlimm oder ist Latenz schlimmer? Warum funktioniert DNS-Abfrage A, aber Zonentransfer B nicht? Warum reicht "Port 53 freigeben" als Aussage nicht aus?
 
 <Analogie>
-IP ist die Lieferadresse des Gebaeudes. Der Port ist die Zimmernummer. TCP ist ein Paketdienst mit Unterschrift, Sendungsverfolgung und erneuter Zustellung. UDP ist ein schneller Zuruf durch ein Fenster: wenig Aufwand, sofort da, aber ohne Garantie. Beides ist sinnvoll, nur fuer unterschiedliche Situationen.
+IP ist die Lieferadresse des Gebäudes. Der Port ist die Zimmernummer. TCP ist ein Paketdienst mit Unterschrift, Sendungsverfolgung und erneuter Zustellung. UDP ist ein schneller Zuruf durch ein Fenster: wenig Aufwand, sofort da, aber ohne Garantie. Beides ist sinnvoll, nur für unterschiedliche Situationen.
 </Analogie>
 
 ---
 
 ## Grundbegriffe
 
-| Begriff | Bedeutung | Pruefungsblick |
+| Begriff | Bedeutung | Praxisblick |
 |---|---|---|
 | <Term id="transportschicht">Transportschicht</Term> | OSI-Schicht 4, verbindet Anwendungen Ende-zu-Ende. | TCP und UDP sitzen hier. |
-| <Term id="tcp">TCP</Term> | Verbindungsorientiertes Transportprotokoll mit Zustellkontrolle. | Zuverlaessig, geordnet, mehr Overhead. |
+| <Term id="tcp">TCP</Term> | Verbindungsorientiertes Transportprotokoll mit Zustellkontrolle. | Zuverlässig, geordnet, mehr Overhead. |
 | <Term id="udp">UDP</Term> | Verbindungsloses Transportprotokoll ohne Zustellgarantie. | Schnell, schlank, Anwendung muss Verluste behandeln. |
 | <Term id="portnummer">Portnummer</Term> | Nummer, die einen Dienst oder Prozess auf einem Host adressiert. | HTTP 80, HTTPS 443, DNS 53, DHCP 67/68. |
 | <Term id="socket">Socket</Term> | Kombination aus IP-Adresse, Transportprotokoll und Port. | `192.168.10.20:443/TCP` beschreibt einen Endpunkt. |
 | <Term id="segment">Segment</Term> | Dateneinheit bei TCP auf Schicht 4. | OSI-PDU: TCP = Segment. |
 | <Term id="datagramm">Datagramm</Term> | Dateneinheit bei UDP. | OSI-PDU: UDP = Datagramm. |
-| <Term id="three-way-handshake">Three-Way-Handshake</Term> | TCP-Verbindungsaufbau mit SYN, SYN-ACK, ACK. | Wird oft als Ablaufdiagramm abgefragt. |
+| <Term id="three-way-handshake">Three-Way-Handshake</Term> | TCP-Verbindungsaufbau mit SYN, SYN-ACK, ACK. | Hilft, Verbindungsaufbau und Verbindungsfehler zu erkennen. |
 
 ---
 
@@ -44,15 +43,15 @@ IP ist die Lieferadresse des Gebaeudes. Der Port ist die Zimmernummer. TCP ist e
 |---|---|---|
 | Verbindung | verbindungsorientiert | verbindungslos |
 | Aufbau | Three-Way-Handshake vor Daten | kein Verbindungsaufbau |
-| Zuverlaessigkeit | Bestaetigungen, Sequenznummern, Wiederholung | keine automatische Wiederholung |
+| Zuverlässigkeit | Bestätigungen, Sequenznummern, Wiederholung | keine automatische Wiederholung |
 | Reihenfolge | stellt richtige Reihenfolge her | keine Reihenfolgegarantie |
 | Datenstrom | Byte-Strom | einzelne Datagramme |
 | Header | mindestens 20 Byte | 8 Byte |
-| Latenz | hoeher, dafuer kontrolliert | geringer, sehr schlank |
+| Latenz | mehr Transportmechanik, dafür kontrolliert | weniger Transportmechanik; echte Latenz hängt von Anwendung und Netz ab |
 | Typische Dienste | HTTPS, SSH, SMTP, IMAP, FTP | DNS, DHCP, VoIP, Streaming, Gaming |
 
-<Tipp titel="Pruefungssatz">
-TCP ist nicht "sicher" im Sinne von verschluesselt. TCP ist zuverlaessig im Sinne von geordnet, bestaetigt und wiederholbar. Verschluesselung kommt zum Beispiel durch TLS obendrauf.
+<Tipp titel="Merksatz">
+TCP ist nicht "sicher" im Sinne von verschlüsselt. TCP ist zuverlässig im Sinne von geordnet, bestätigt und wiederholbar. Verschlüsselung kommt zum Beispiel durch TLS obendrauf.
 </Tipp>
 
 ---
@@ -75,23 +74,23 @@ Wichtig: TCP-Port 53 und UDP-Port 53 sind technisch verschiedene Kommunikationsz
 |---|---:|---|
 | Well-known Ports | 0 - 1023 | bekannte Standarddienste, z. B. 80/443/53 |
 | Registered Ports | 1024 - 49151 | registrierte Anwendungen und Dienste |
-| Dynamic/Private Ports | 49152 - 65535 | kurzlebige Client-Ports, z. B. fuer ausgehende Verbindungen |
+| Dynamic/Private Ports | 49152 - 65535 | kurzlebige Client-Ports, z. B. für ausgehende Verbindungen |
 
 <Beispiel titel="Client ruft eine Website auf">
-Ein Client verbindet sich zu `https://example.org`. Der Zielport ist TCP 443. Der Client nutzt aber einen zufaelligen Quellport, zum Beispiel TCP 51544. Dadurch kann das Betriebssystem mehrere gleichzeitige Verbindungen unterscheiden.
+Ein Client verbindet sich zu `https://example.org`. Der Zielport ist TCP 443. Der Client nutzt aber einen zufälligen Quellport, zum Beispiel TCP 51544. Dadurch kann das Betriebssystem mehrere gleichzeitige Verbindungen unterscheiden.
 </Beispiel>
 
 ```text
 Client: 192.168.10.55:51544/TCP  ->  Webserver: 93.184.216.34:443/TCP
 ```
 
-Diese Kombination aus Quell-IP, Quellport, Ziel-IP, Zielport und Protokoll ist fuer Firewalls, NAT und Betriebssysteme extrem wichtig.
+Diese Kombination aus Quell-IP, Quellport, Ziel-IP, Zielport und Protokoll ist für Firewalls, NAT und Betriebssysteme extrem wichtig.
 
 ---
 
-## TCP: Verbindungsaufbau und Zuverlaessigkeit
+## TCP: Verbindungsaufbau und Zuverlässigkeit
 
-TCP baut vor der Datenuebertragung eine Verbindung auf. Der bekannte Ablauf heisst <Term id="three-way-handshake">Three-Way-Handshake</Term>:
+TCP baut vor der Datenübertragung eine Verbindung auf. Der bekannte Ablauf heißt <Term id="three-way-handshake">Three-Way-Handshake</Term>:
 
 ```text
 Client                         Server
@@ -103,15 +102,15 @@ Client                         Server
   | ======= Datenstrom =========> |
 ```
 
-Danach uebertraegt TCP Daten als geordneten Byte-Strom. Es nutzt unter anderem:
+Danach überträgt TCP Daten als geordneten Byte-Strom. Es nutzt unter anderem:
 
 - Sequenznummern, damit Reihenfolge rekonstruiert werden kann
-- Bestaetigungen, damit Empfang kontrolliert wird
+- Bestätigungen, damit Empfang kontrolliert wird
 - Wiederholungen, wenn Daten verloren gehen
-- Flusskontrolle, damit Empfaenger nicht ueberfordert werden
-- Staukontrolle, damit das Netz nicht unnoetig ueberlastet wird
+- Flusskontrolle, damit Empfänger nicht überfordert werden
+- Staukontrolle, damit das Netz nicht unnötig überlastet wird
 
-Das ist ideal fuer Webseiten, Dateiuebertragung, E-Mail, SSH, Datenbanken und viele APIs. Wenn ein Byte fehlt, ist eine Datei kaputt oder eine Anmeldung unvollstaendig. Dann ist erneute Uebertragung richtig.
+Das ist ideal für Webseiten, Dateiübertragung, E-Mail, SSH, Datenbanken und viele APIs. Wenn ein Byte fehlt, ist eine Datei kaputt oder eine Anmeldung unvollständig. Dann ist erneute Übertragung richtig.
 
 ---
 
@@ -124,9 +123,9 @@ UDP sendet Datagramme ohne vorherigen Verbindungsaufbau. Es garantiert nicht:
 - dass doppelte Datagramme verhindert werden
 - dass verlorene Datagramme automatisch wiederholt werden
 
-Das klingt schlecht, ist aber oft genau richtig. Bei Sprache, Livestreams oder Spielen ist ein Paket, das 2 Sekunden spaeter nachgeliefert wird, oft wertlos. Lieber fehlt kurz ein Tonfragment, als dass die ganze Verbindung haengt.
+Das klingt schlecht, ist aber oft genau richtig. Bei Sprache, Livestreams oder Spielen ist ein Paket, das 2 Sekunden später nachgeliefert wird, oft wertlos. Lieber fehlt kurz ein Tonfragment, als dass die ganze Verbindung hängt.
 
-UDP ist auch fuer einfache Anfrage-Antwort-Protokolle praktisch. DNS fragt haeufig kurz: "Welche IP hat dieser Name?" Die Antwort ist klein. Dafuer reicht UDP meistens. Wird es groesser oder spezieller, kann DNS auch TCP nutzen.
+UDP ist auch für einfache Anfrage-Antwort-Protokolle praktisch. DNS fragt häufig kurz: "Welche IP hat dieser Name?" Die Antwort ist klein. Dafür reicht UDP meistens. Wird es größer oder spezieller, kann DNS auch TCP nutzen.
 
 ---
 
@@ -140,14 +139,14 @@ UDP ist auch fuer einfache Anfrage-Antwort-Protokolle praktisch. DNS fragt haeuf
 | SMTP | 25 | TCP | Mailtransport zwischen Servern |
 | IMAP | 143 / 993 | TCP | Mailabruf, 993 mit TLS |
 | POP3 | 110 / 995 | TCP | Mailabruf, 995 mit TLS |
-| FTP | 20/21 | TCP | Dateiuebertragung, historisch |
-| DNS | 53 | UDP und TCP | normale Abfragen meist UDP, Zonentransfer/ grosse Antworten TCP |
+| FTP | 20/21 | TCP | Dateiübertragung, historisch |
+| DNS | 53 | UDP und TCP | normale Abfragen meist UDP, Zonentransfer/ große Antworten TCP |
 | DHCP | 67/68 | UDP | automatische Netzwerkkonfiguration |
 | NTP | 123 | UDP | Zeitsynchronisation |
 | VoIP/RTP | dynamisch | meist UDP | Echtzeit-Audio/Video |
 
 <Warnung titel="DNS ist die klassische Falle">
-DNS ist nicht einfach "UDP". Normale DNS-Abfragen laufen meistens ueber UDP 53. DNS kann aber auch TCP 53 nutzen, etwa fuer Zonentransfers oder wenn Antworten groesser sind. In Firewall-Regeln muss man also den konkreten Zweck kennen.
+DNS ist nicht einfach "UDP". Normale DNS-Abfragen laufen meistens über UDP 53. DNS kann aber auch TCP 53 nutzen, etwa für Zonentransfers oder wenn Antworten größer sind. In Firewall-Regeln muss man also den konkreten Zweck kennen.
 </Warnung>
 
 ---
@@ -157,12 +156,12 @@ DNS ist nicht einfach "UDP". Normale DNS-Abfragen laufen meistens ueber UDP 53. 
 | Situation | Besser | Warum |
 |---|---|---|
 | Datei herunterladen | TCP | Jedes Byte muss korrekt und in Reihenfolge ankommen. |
-| Login und Webformular | TCP | Vollstaendigkeit und Reihenfolge sind Pflicht. |
-| SSH-Session | TCP | Eingaben und Ausgaben muessen korrekt ankommen. |
+| Login und Webformular | TCP | Vollständigkeit und Reihenfolge sind Pflicht. |
+| SSH-Session | TCP | Eingaben und Ausgaben müssen korrekt ankommen. |
 | DNS-Standardabfrage | UDP | Kurze Anfrage, kurze Antwort, wenig Overhead. |
 | VoIP-Telefonat | UDP | Echtzeit ist wichtiger als Nachlieferung alter Pakete. |
 | Online-Spiel | UDP | Niedrige Latenz ist wichtiger als jedes alte Positionspaket. |
-| Livestream | UDP oder TCP je nach Technik | Echtzeit-Streams oft UDP, Web-Streaming haeufig TCP/HTTPS. |
+| Livestream | UDP oder TCP je nach Technik | Echtzeit-Streams oft UDP, Web-Streaming häufig TCP/HTTPS. |
 
 Die Entscheidung lautet also nicht "TCP gut, UDP schlecht". Sie lautet:
 
@@ -175,7 +174,7 @@ Oder brauche ich geringe Latenz und kann Verluste tolerieren?
 
 ## Bezug zu Firewall, NAT und Port Forwarding
 
-Firewall-Regeln muessen mindestens Richtung, Quelle, Ziel, Protokoll und Port sauber angeben.
+Firewall-Regeln müssen mindestens Richtung, Quelle, Ziel, Protokoll und Port sauber angeben.
 
 | Schlechte Aussage | Bessere Aussage |
 |---|---|
@@ -184,11 +183,11 @@ Firewall-Regeln muessen mindestens Richtung, Quelle, Ziel, Protokoll und Port sa
 | "Spielserver freigeben" | `Internet -> Gameserver, UDP 27015, nur notwendiger Port` |
 | "Adminzugriff erlauben" | `Admin-VPN -> Server, TCP 22, SSH, keine Freigabe aus dem ganzen Internet` |
 
-Bei NAT und Port Forwarding ist TCP/UDP ebenfalls entscheidend. Eine Weiterleitung fuer TCP 443 hilft keinem Dienst, der UDP 443 nutzt. Umgekehrt kann ein UDP-Port offen sein, obwohl TCP auf derselben Nummer blockiert ist.
+Bei NAT und Port Forwarding ist TCP/UDP ebenfalls entscheidend. Eine Weiterleitung für TCP 443 hilft keinem Dienst, der UDP 443 nutzt. Umgekehrt kann ein UDP-Port offen sein, obwohl TCP auf derselben Nummer blockiert ist.
 
 ---
 
-## Schritt fuer Schritt: Dienstregel richtig ableiten
+## Schritt für Schritt: Dienstregel richtig ableiten
 
 <StepByStep titel="Aus einer Anforderung eine Firewall-Regel machen">
   <Schritt nr={1} titel="Anwendung benennen">
@@ -203,7 +202,7 @@ Bei NAT und Port Forwarding ist TCP/UDP ebenfalls entscheidend. Eine Weiterleitu
   <Schritt nr={4} titel="Richtung formulieren">
     <p>Clients starten die Verbindung zum Server. Die Regel lautet also Client-Netz -> Webserver, nicht umgekehrt.</p>
   </Schritt>
-  <Schritt nr={5} titel="Regel pruefbar notieren">
+  <Schritt nr={5} titel="Regel prüfbar notieren">
     <pre><code>{`Quelle: 192.168.10.0/24
 Ziel:   10.20.0.15
 Proto:  TCP
@@ -212,7 +211,7 @@ Aktion: ALLOW
 Zweck:  HTTPS zum internen Wiki`}</code></pre>
   </Schritt>
   <Ergebnis>
-    <p>Die Regel ist fachlich pruefbar, weil Quelle, Ziel, Protokoll, Port, Richtung und Zweck klar sind.</p>
+    <p>Die Regel ist fachlich prüfbar, weil Quelle, Ziel, Protokoll, Port, Richtung und Zweck klar sind.</p>
   </Ergebnis>
 </StepByStep>
 
@@ -222,49 +221,51 @@ Zweck:  HTTPS zum internen Wiki`}</code></pre>
 
 <Schritte
   items={[
-    { titel: '1. Dienst und Ziel klaeren', text: 'Welche Anwendung soll erreicht werden? Beispiel: HTTPS auf TCP 443, DNS auf UDP 53 oder SSH auf TCP 22.' },
-    { titel: '2. Erreichbarkeit bis Schicht 3 pruefen', text: 'IP-Adresse, Routing und Gateway muessen stimmen. Wenn schon IP nicht funktioniert, ist TCP/UDP nicht der erste Fehler.' },
-    { titel: '3. Port und Protokoll pruefen', text: 'TCP und UDP getrennt betrachten. "Port 53 offen" ist ungenau, wenn nicht klar ist, ob UDP 53 oder TCP 53 gemeint ist.' },
-    { titel: '4. Firewall und NAT pruefen', text: 'Regeln auf Client, Server, Router und Perimeter-Firewall lesen. Auch NAT/Portforwarding kann nur fuer ein Protokoll gelten.' },
-    { titel: '5. Dienststatus pruefen', text: 'Lauscht die Anwendung wirklich auf dem erwarteten Port und der erwarteten IP-Adresse?' },
+    { titel: '1. Dienst und Ziel klären', text: 'Welche Anwendung soll erreicht werden? Beispiel: HTTPS auf TCP 443, DNS auf UDP 53 oder SSH auf TCP 22.' },
+    { titel: '2. Erreichbarkeit bis Schicht 3 prüfen', text: 'IP-Adresse, Routing und Gateway müssen stimmen. Wenn schon IP nicht funktioniert, ist TCP/UDP nicht der erste Fehler.' },
+    { titel: '3. Port und Protokoll prüfen', text: 'TCP und UDP getrennt betrachten. "Port 53 offen" ist ungenau, wenn nicht klar ist, ob UDP 53 oder TCP 53 gemeint ist.' },
+    { titel: '4. Firewall und NAT prüfen', text: 'Regeln auf Client, Server, Router und Perimeter-Firewall lesen. Auch NAT/Portforwarding kann nur für ein Protokoll gelten.' },
+    { titel: '5. Dienststatus prüfen', text: 'Lauscht die Anwendung wirklich auf dem erwarteten Port und der erwarteten IP-Adresse?' },
     { titel: '6. Logs auswerten', text: 'Firewall-DENY, TCP-Reset, Timeout oder Anwendungsmeldung liefern unterschiedliche Hinweise.' },
   ]}
 />
 
-Timeout bedeutet oft: Paket wird unterwegs verworfen oder Antwort kommt nicht zurueck. Connection refused bedeutet oft: Zielhost erreichbar, aber dort lauscht kein Dienst oder der Host lehnt aktiv ab. Das ist fuer Fehlersuche wertvoll.
+Timeout bedeutet oft: Paket wird unterwegs verworfen oder Antwort kommt nicht zurück. Connection refused bedeutet oft: Zielhost erreichbar, aber dort lauscht kein Dienst oder der Host lehnt aktiv ab. Das ist für Fehlersuche wertvoll.
 
 ---
 
 ## Typische Fehler
 
-1. **TCP als verschluesselt bezeichnen.** TCP ist zuverlaessig, nicht automatisch vertraulich. HTTPS nutzt TCP plus TLS.
-2. **UDP als unsicher oder falsch bewerten.** UDP ist bewusst schlank und fuer viele Echtzeit- oder Anfrage-Antwort-Dienste passend.
+1. **TCP als verschlüsselt bezeichnen.** TCP ist zuverlässig, nicht automatisch vertraulich. HTTPS nutzt TCP plus TLS.
+2. **UDP als unsicher oder falsch bewerten.** UDP ist bewusst schlank und für viele Echtzeit- oder Anfrage-Antwort-Dienste passend.
 3. **Portnummer ohne Protokoll nennen.** TCP 53 und UDP 53 sind nicht dasselbe.
 4. **DNS nur als UDP lernen.** DNS nutzt meistens UDP, kann aber TCP brauchen.
 5. **OSI-Schicht verwechseln.** TCP/UDP sind Schicht 4; IP ist Schicht 3; HTTP/DNS/SMTP sind Schicht 7.
-6. **TCP-Handshake mit TLS-Handshake verwechseln.** TCP baut die Transportverbindung auf, TLS schuetzt danach die Inhalte.
+6. **TCP-Handshake mit TLS-Handshake verwechseln.** TCP baut die Transportverbindung auf, TLS schützt danach die Inhalte.
 7. **Quellport vergessen.** Clients nutzen kurzlebige Quellports; Server nutzen bekannte Zielports.
 8. **"Schneller" falsch verstehen.** UDP hat weniger Overhead, aber die Anwendung muss mit Verlusten selbst umgehen.
 
 ---
 
-## Typische Pruefungsaufgabe
+## Beispiel: DNS-Regeln sauber formulieren
 
-> **Aufgabe (Klausur-Stil):** Ein Unternehmen erstellt Firewall-Regeln fuer einen DNS-Server. Clients sollen Namen aufloesen. Ausserdem soll ein zweiter DNS-Server Zonendaten uebertragen. Welche Regeln sind sinnvoll und warum reicht die Aussage "Port 53 freigeben" nicht?
+Ein Unternehmen erstellt Firewall-Regeln für einen DNS-Server. Clients sollen Namen auflösen. Ausserdem soll ein zweiter DNS-Server Zonendaten übertragen.
 
-**Musterantwort:** Fuer normale Client-Abfragen wird meist `Clients -> DNS-Server, UDP 53` erlaubt. Da DNS auch TCP nutzen kann, kann je nach Umgebung auch `Clients -> DNS-Server, TCP 53` noetig sein. Fuer Zonentransfers zwischen DNS-Servern ist `DNS-Server A -> DNS-Server B, TCP 53` gezielt zu erlauben. "Port 53 freigeben" reicht nicht, weil eine Firewall zwischen TCP und UDP unterscheidet und weil Quelle, Ziel, Richtung und Zweck angegeben werden muessen.
+Für normale Client-Abfragen wird meist `Clients -> DNS-Server, UDP 53` erlaubt. Da DNS auch TCP nutzen kann, kann je nach Umgebung auch `Clients -> DNS-Server, TCP 53` nötig sein. Für Zonentransfers zwischen DNS-Servern ist `DNS-Server A -> DNS-Server B, TCP 53` gezielt zu erlauben.
+
+Die Aussage "Port 53 freigeben" reicht nicht, weil eine Firewall zwischen TCP und UDP unterscheidet und weil Quelle, Ziel, Richtung und Zweck angegeben werden müssen.
 
 ---
 
-## Mini-Lerncheck
+## Kurzer Selbstcheck
 
-Beantworte diese Fragen ohne Nachsehen:
-
-1. Was ist der wichtigste Unterschied zwischen TCP und UDP?
-2. Warum braucht eine Firewall-Regel neben dem Port auch TCP oder UDP?
-3. Wie laeuft der TCP-Three-Way-Handshake ab?
-4. Warum ist UDP fuer VoIP sinnvoll?
-5. Warum ist DNS ein gutes Beispiel fuer "meistens stimmt, aber nicht immer"?
+| Check | Lösung |
+|---|---|
+| Wichtigster Unterschied zwischen TCP und UDP | TCP baut eine Verbindung auf und liefert einen geordneten, zuverlässigen Byte-Strom. UDP sendet einzelne Datagramme ohne Zustell- und Reihenfolgegarantie. |
+| Warum reicht eine Portnummer allein nicht? | TCP 53 und UDP 53 sind unterschiedliche Kommunikationsziele. Eine Regel braucht Protokoll, Port, Quelle, Ziel, Richtung und Zweck. |
+| Ablauf des TCP-Verbindungsaufbaus | SYN, SYN-ACK, ACK. Danach kann der Datenstrom laufen. |
+| Warum passt UDP zu VoIP? | Echtzeit ist wichtiger als späte Nachlieferung alter Pakete. Kurze Verluste stören weniger als hoher Verzug. |
+| Warum ist DNS ein gutes Grenzbeispiel? | Standardabfragen laufen meist über UDP 53, DNS muss aber auch TCP unterstützen und nutzt TCP besonders für größere Antworten oder Zonentransfers. |
 
 ---
 
@@ -274,27 +275,47 @@ Beantworte diese Fragen ohne Nachsehen:
     {
       label: 'RFC 9293 - Transmission Control Protocol (TCP)',
       href: 'https://www.rfc-editor.org/rfc/rfc9293',
-      detail: 'Aktuelle TCP-Spezifikation; Grundlage fuer Verbindung, Sequenznummern, Zuverlaessigkeit und Ports.'
+      detail: 'Aktuelle TCP-Spezifikation; Grundlage für Verbindung, Sequenznummern, Zuverlässigkeit und Ports.'
     },
     {
       label: 'RFC 768 - User Datagram Protocol (UDP)',
       href: 'https://www.rfc-editor.org/rfc/rfc768',
-      detail: 'UDP-Spezifikation fuer verbindungslose Transportkommunikation mit schlankem Header.'
+      detail: 'UDP-Spezifikation für verbindungslose Transportkommunikation mit schlankem Header.'
     },
     {
       label: 'IANA - Service Name and Transport Protocol Port Number Registry',
       href: 'https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml',
-      detail: 'Offizielles Register fuer Service-Namen, Portnummern und Transportprotokolle.'
+      detail: 'Offizielles Register für Service-Namen, Portnummern und Transportprotokolle.'
+    },
+    {
+      label: 'RFC 6335 - Service Name and Transport Protocol Port Number Registry',
+      href: 'https://www.rfc-editor.org/rfc/rfc6335',
+      detail: 'IANA-Verfahren und Portbereiche: Well-known, Registered und Dynamic/Private Ports.'
+    },
+    {
+      label: 'RFC 1035 - Domain Names: Implementation and Specification',
+      href: 'https://www.rfc-editor.org/rfc/rfc1035',
+      detail: 'DNS-Spezifikation zu Nachrichtenformat, Resource Records, TTL, UDP/TCP und Port 53.'
+    },
+    {
+      label: 'RFC 7766 - DNS Transport over TCP',
+      href: 'https://www.rfc-editor.org/rfc/rfc7766',
+      detail: 'Aktuelle Anforderungen daran, dass allgemeine DNS-Implementierungen UDP und TCP unterstützen.'
+    },
+    {
+      label: 'RFC 2131 - Dynamic Host Configuration Protocol',
+      href: 'https://www.rfc-editor.org/rfc/rfc2131',
+      detail: 'DHCP-Spezifikation zu automatischer Netzwerkkonfiguration über UDP.'
     },
     {
       label: 'RFC 9110 - HTTP Semantics',
       href: 'https://www.rfc-editor.org/rfc/rfc9110',
-      detail: 'Aktuelle HTTP-Semantik als Beispiel fuer ein Anwendungsprotokoll oberhalb der Transportschicht.'
+      detail: 'Aktuelle HTTP-Semantik als Beispiel für ein Anwendungsprotokoll oberhalb der Transportschicht.'
     },
     {
       label: 'RFC 8446 - The Transport Layer Security (TLS) Protocol Version 1.3',
       href: 'https://www.rfc-editor.org/rfc/rfc8446',
-      detail: 'TLS 1.3 als wichtige Abgrenzung: Verschluesselung liegt oberhalb von TCP und ist nicht Teil von TCP selbst.'
+      detail: 'TLS 1.3 als wichtige Abgrenzung: Verschlüsselung liegt oberhalb von TCP und ist nicht Teil von TCP selbst.'
     },
   ]}
 />

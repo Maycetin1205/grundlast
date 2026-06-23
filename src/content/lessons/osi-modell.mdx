@@ -1,170 +1,218 @@
-# OSI-Modell – sieben Schichten
+# OSI-Modell - sieben Schichten
 
 <MetaBar
-  lernfeld="LF 3 — Clients in Netzwerke einbinden"
+  lernfeld="LF 3 - Clients in Netzwerke einbinden"
   prüfungsrelevanz="PFLICHT · 5/5"
 />
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du das <Term id="osi">OSI-Modell</Term> als Werkzeug benutzen: für jede der sieben Schichten kannst du sagen, welche Aufgabe sie hat, welche Protokolle dort sitzen, welches Gerät die Schicht typischerweise bedient und wie die Dateneinheit (<Term id="pdu">PDU</Term>) auf dieser Ebene heißt. In Prüfungsaufgaben kannst du Begriffe wie *Frame*, *Paket*, *Segment*, *MAC* oder *Router* korrekt einer Schicht zuordnen und typische Stolperfallen wie die Einordnung von DNS oder ARP sicher beantworten.
+Nach diesem Kapitel kannst du das <Term id="osi">OSI-Modell</Term> als Werkzeug benutzen: Du erkennst die sieben Schichten, ordnest typische Protokolle und Geräte ein und verstehst, wie Nutzdaten beim Senden Schritt für Schritt verpackt werden. In Zuordnungs- und Diagnosefällen kannst du Begriffe wie *Frame*, *Paket*, *Segment*, *Port*, *MAC-Adresse*, *IP-Adresse*, *Switch* und *Router* sauber auseinanderhalten.
 
 ## 01 · Warum existiert das überhaupt?
 
-Netzwerkkommunikation ist viel zu komplex, um sie als einen einzigen Vorgang zu beschreiben. Zwischen „Browser öffnet google.de" und „elektrisches Signal im Kupferkabel" liegen Dutzende Einzelschritte: DNS-Auflösung, TCP-Verbindungsaufbau, IP-Routing, MAC-Adressierung, Signal-Codierung. Ohne ein Ordnungsschema verlierst du sofort den Überblick — und in einer Prüfungsaufgabe verlierst du Punkte, weil DNS auf Schicht 3 statt 7 landet.
+Netzwerkkommunikation ist zu komplex, um sie als einen einzigen Vorgang zu beschreiben. Zwischen "Browser öffnet eine Webseite" und "Signal läuft über Kabel oder WLAN" liegen viele getrennte Aufgaben: Namensauflösung, Transportverbindung, IP-Weiterleitung, MAC-Adressierung, Fehlererkennung und physikalische Übertragung.
 
-Genau dafür gibt es das OSI-Modell. Es ist **kein Protokoll**, sondern ein **Referenzmodell** der ISO/IEC: ein gedankliches Gerüst, das die Kommunikation in sieben aufeinander aufbauende Schichten zerlegt. Jede Schicht hat genau eine Aufgabe, kennt nur ihre direkten Nachbarn und kann unabhängig getauscht werden — Kupferkabel oder Glasfaser auf Schicht 1 ändert nichts an HTTP auf Schicht 7.
+Das OSI-Modell ist dafür ein **Referenzmodell**, also ein Denk- und Ordnungsschema. Es ist kein Protokoll, das ein Rechner direkt "spricht". Es teilt Kommunikation in sieben aufeinander aufbaünde Schichten. Jede Schicht hat einen abgegrenzten Aufgabenbereich und nutzt die Dienste der darunterliegenden Schicht.
 
-In der Prüfung wird das Modell aus zwei Richtungen gefragt: einmal als reine Zuordnungsaufgabe („Auf welcher Schicht arbeitet ein Switch?"), einmal als Diagnose-Hilfe („Welche Schicht prüfst du als nächstes?"). Beides löst du mit derselben Tabelle im Kopf.
+Für AP1 und Berufsschule ist das Modell besonders nützlich, weil es zwei Arten von Fragen entschärft:
+
+- **Zuordnung:** Auf welcher Schicht arbeiten IP, TCP, Ethernet, DNS, Switch oder Router?
+- **Fehlersuche:** Prüfe ich gerade Kabel/WLAN, lokale MAC-Kommunikation, IP-Routing, Ports oder die Anwendung?
 
 <Analogie>
-Ein Brief geht durch sieben Stationen. Du schreibst den Text (*Anwendung*). Du faltest ihn und legst eventuell Übersetzung oder Verschlüsselung bei (*Darstellung*). Du klärst, wer mit wem schreibt und ob die Konversation noch läuft (*Sitzung*). Du teilst lange Sendungen in mehrere Umschläge auf und nummerierst sie (*Transport*). Du schreibst die Stadt und Straße drauf (*Vermittlung*). Du gibst den Brief in den richtigen Briefkasten deiner Hausnummer (*Sicherung*). Und am Ende fährt ein LKW mit dem Brief über die Straße (*Bitübertragung*). Jede Station kennt nur ihre eigene Aufgabe — der LKW-Fahrer muss nicht wissen, was im Brief steht, und du musst nicht wissen, welche Autobahn er nimmt.
+Stell dir einen Brief vor. Du schreibst den Inhalt, packst ihn in einen Umschlag, setzt Empfängeradresse und Absender darauf, gibst ihn an die Post und am Ende wird er physisch transportiert. Jede Station hat eine eigene Aufgabe. Genau so trennt das OSI-Modell Netzwerkkommunikation in Schichten.
 </Analogie>
 
 ---
 
-## 02 · Das Grundprinzip
+## 02 · Die sieben Schichten
 
-### Merksatz von oben nach unten
+### Von oben nach unten merken
 
 > **A**lle **P**riester **S**aufen **T**equila **N**ach **D**er **P**redigt
 >
-> Anwendung · Präsentation · Sitzung · Transport · Vermittlung · Sicherung · Physical
+> Anwendung · Präsentation · Sitzung · Transport · Netzwerk/Vermittlung · Datensicherung/Sicherung · Physical/Bitübertragung
 
-Das „N" der Eselsbrücke steht für **N**etz (englisch *Network*) — der deutsche Standardbegriff der ISO/DIN ist **Vermittlung**. Beide Namen meinen dieselbe Schicht 3.
+Die Schichten werden offiziell von unten nach oben gezählt: **1** ist Bitübertragung, **7** ist Anwendung. Viele Merksätze laufen aber von oben nach unten. Wenn ein Client Daten sendet, wandern die Nutzdaten gedanklich von Schicht 7 nach Schicht 1. Beim Empfangen werden sie wieder von Schicht 1 nach Schicht 7 ausgepackt.
 
-Die Schichten werden von 1 (unten) nach 7 (oben) **gezählt**, aber in dieser Eselsbrücke von oben nach unten **aufgesagt**. Wenn du ein Datenpaket gedanklich „nach unten reichst", durchläufst du 7 → 1; beim Empfang läuft alles in umgekehrter Reihenfolge 1 → 7.
+### Überblick
 
-### Die 7 Schichten im Überblick
+| # | Deutsche Bezeichnung | Typische Aufgabe | PDU | Beispiele | Gerät/Bezug |
+|---:|---|---|---|---|---|
+| 7 | Anwendung | Dienst für Benutzer oder Anwendung | Daten | HTTP, SMTP, FTP, <Term id="dns">DNS</Term> | Browser, Mail-Client, Serverdienst |
+| 6 | Darstellung/Präsentation | Datenformat, Zeichensatz, Kompression, Verschlüsselung einordnen | Daten | JSON, JPEG, UTF-8, <Term id="tls">TLS</Term> als häufiger Grenzfall | - |
+| 5 | Sitzung | Gespräche/Sitzungen aufbauen, halten, beenden | Daten | RPC, NetBIOS als klassische Beispiele | - |
+| 4 | Transport | Ende-zu-Ende-Kommunikation zwischen Anwendungen | Segment/Datagramm | <Term id="tcp">TCP</Term>, <Term id="udp">UDP</Term>, Ports | Portnummern |
+| 3 | Vermittlung/Netzwerk | Pakete zwischen Netzen weiterleiten | Paket | <Term id="ip">IP</Term>, ICMP | Router |
+| 2 | Sicherung/Data Link | Frames im lokalen Netz übertragen, MAC-Adressen nutzen | Frame | Ethernet, WLAN 802.11, <Term id="arp">ARP</Term> als Grenzfall | Switch, MAC-Adresse |
+| 1 | Bitübertragung/Physical | Bits als elektrische, optische oder Funk-Signale übertragen | Bit | Kabel, Stecker, Funk, DSL | Hub, Repeater, Medium |
 
-| # | Schicht | Englisch | PDU | Beispiel-Protokolle | Gerät |
-|---|---|---|---|---|---|
-| 7 | Anwendung | Application | Daten | HTTP, FTP, SMTP, <Term id="dns">DNS</Term> | — |
-| 6 | Darstellung | Presentation | Daten | TLS/SSL, JPEG, ASCII | — |
-| 5 | Sitzung | Session | Daten | NetBIOS, RPC | — |
-| 4 | Transport | Transport | Segment (TCP) / Datagramm (UDP) | <Term id="tcp">TCP</Term>, <Term id="udp">UDP</Term> | — |
-| 3 | Vermittlung | Network | Paket | <Term id="ip">IP</Term>, ICMP, <Term id="arp">ARP</Term> | Router |
-| 2 | Sicherung | Data Link | Frame | Ethernet, WLAN (802.11) | Switch |
-| 1 | Bitübertragung | Physical | Bit | Kabel, WLAN-Signal, DSL | Hub, Repeater |
-
-<Tipp titel="Drei Spalten, die fast immer abgefragt werden">
-Wenn du dir nur drei Spalten merken kannst, dann diese: **Schichtnummer · Gerät · PDU**. Daraus lässt sich fast jede Zuordnungsaufgabe konstruieren.
+<Tipp titel="Drei Dinge zürst lernen">
+Wenn du wenig Zeit hast, lerne zürst **Schichtnummer**, **PDU** und **Gerät**. Daraus lassen sich viele AP1-nahe Zuordnungen ableiten: Switch = Schicht 2, Router = Schicht 3, TCP/UDP = Schicht 4, HTTP/DNS = Schicht 7.
 </Tipp>
 
-### Was jede Schicht konkret tut
+### Was die Schichten praktisch bedeuten
 
-**Schicht 1 — Physical:** wandelt Bits in physikalische Signale (Strom, Licht, Funk). Regelt Spannung, Takt, Stecker, Pinbelegung. Keine Logik — nur Physik.
+**Schicht 1 - Bitübertragung:** Hier geht es um Signale und Medien: Strom auf Kupfer, Licht in Glasfaser oder Funk bei WLAN. Auf dieser Ebene gibt es noch keine IP-Adresse, keinen Port und keine Datei.
 
-**Schicht 2 — Data Link:** adressiert Geräte im **gleichen Netzwerk** über die <Term id="mac">MAC-Adresse</Term>. Erkennt Übertragungsfehler über Prüfsummen. Protokoll: Ethernet (LAN), 802.11 (WLAN). Gerät: Switch.
+**Schicht 2 - Sicherung:** Hier zählt das lokale Netz. Ethernet und WLAN übertragen Frames zwischen direkt erreichbaren Geräten. Die typische Adresse ist die <Term id="mac">MAC-Adresse</Term>. Ein Switch entscheidet anhand von MAC-Adressen, an welchen Port ein Frame weitergeht.
 
-**Schicht 3 — Network:** verbindet **verschiedene Netzwerke**. Adressiert über IP-Adressen. Findet den Weg von A nach B über mehrere Netze (*Routing*). Gerät: Router.
+**Schicht 3 - Vermittlung:** Hier werden Netze verbunden. IP-Adressen ermöglichen, dass Pakete über Router von einem Netz in ein anderes gelangen. Subnetting, Gateway und Routing gehören deshalb in diese Denkwelt.
 
-**Schicht 4 — Transport:** regelt die Ende-zu-Ende-Kommunikation zwischen zwei Anwendungen. TCP garantiert Reihenfolge und Auslieferung, UDP ist schnell und verbindungslos. Hier sitzen die **Ports** (HTTP 80, HTTPS 443, SSH 22, FTP 21).
+**Schicht 4 - Transport:** Hier reden Anwendungen Ende-zu-Ende miteinander. TCP bietet eine verbindungsorientierte, zuverlässige Byte-Strom-Kommunikation. UDP bietet Datagramme ohne die TCP-Zusagen zu Reihenfolge und erneuter Übertragung. Ports ordnen Daten der passenden Anwendung zu.
 
-**Schicht 5 — Session:** öffnet, hält und schließt Sitzungen zwischen Anwendungen. In der Praxis meist Bestandteil der Anwendung selbst.
+**Schicht 5 - Sitzung:** Diese Schicht beschreibt Sitzungssteuerung. Im heutigen TCP/IP-Alltag steckt diese Logik oft in Anwendungsprotokollen oder Bibliotheken statt in einem sichtbar getrennten Protokoll.
 
-**Schicht 6 — Presentation:** sorgt dafür, dass Sender und Empfänger das gleiche Datenformat verstehen — Zeichensätze, Komprimierung, Verschlüsselung (TLS sitzt strenggenommen hier).
+**Schicht 6 - Darstellung:** Diese Schicht beschreibt Darstellung, Kodierung und Umformung von Daten. Dazu passen Zeichensätze, Formate, Kompression und Verschlüsselung als Denkbereich. <Term id="tls">TLS</Term> ist dabei ein Grenzfall: Es läuft im Internet-Stapel oberhalb von TCP und unterhalb vieler Anwendungsprotokolle, wird in OSI-Lernkontexten aber häufig der Darstellung oder Anwendung zugeordnet.
 
-**Schicht 7 — Application:** das, was der Nutzer sieht — Browser, Mail-Client, FTP-Client. Das Protokoll auf dieser Ebene (HTTP, SMTP, DNS) bestimmt die Form der Anfrage.
+**Schicht 7 - Anwendung:** Hier liegen Anwendungsprotokolle wie HTTP, DNS, SMTP oder FTP. Es geht nicht um "die App" als Programmfenster, sondern um das Protokoll, mit dem Anwendungen fachlich kommunizieren.
 
 ---
 
-## 03 · Datenkapselung — wie ein Paket entsteht
+## 03 · Kapselung: Wie Daten verpackt werden
 
-Beim Senden wandert eine Anwendungsnachricht durch alle sieben Schichten **von oben nach unten**. Jede Schicht klebt einen eigenen Header (manchmal auch einen Trailer) an die Daten der darüberliegenden Schicht. Am Empfänger werden diese Header in umgekehrter Reihenfolge wieder entfernt.
+Beim Senden bekommt jede relevante Schicht eigene Steuerinformationen. Das nennt man **Kapselung**. Beim Empfangen passiert der Vorgang umgekehrt: Jede Schicht liest und entfernt ihren passenden Header und reicht den Rest weiter.
 
 <Schritte
   items={[
-    { titel: 'Schicht 7 (Anwendung)', text: 'Die Anwendung erzeugt die Nutzdaten — z. B. einen HTTP-Request: GET / HTTP/1.1.' },
-    { titel: 'Schicht 6 → 5', text: 'Daten werden ggf. verschlüsselt (TLS), in ein einheitliches Format gebracht und einer Sitzung zugeordnet.' },
-    { titel: 'Schicht 4 (Transport)', text: 'TCP bzw. UDP setzt einen Transport-Header mit Quell-Port und Ziel-Port davor. Das Ergebnis heißt Segment (TCP) bzw. Datagramm (UDP).' },
-    { titel: 'Schicht 3 (Vermittlung)', text: 'IP setzt einen Header mit Quell- und Ziel-IP davor. Das Ergebnis heißt Paket.' },
-    { titel: 'Schicht 2 (Sicherung)', text: 'Ein Ethernet-Header (mit Quell-/Ziel-MAC) und eine Prüfsumme werden ergänzt. Das Ergebnis heißt Frame.' },
-    { titel: 'Schicht 1 (Bitübertragung)', text: 'Der Frame wird in Bits zerlegt und als elektrisches, optisches oder Funksignal über das Medium geschickt.' },
+    { titel: 'Schicht 7', text: 'Die Anwendung erzeugt Nutzdaten, zum Beispiel eine HTTP-Anfrage.' },
+    { titel: 'Schicht 6/5', text: 'Daten werden bei Bedarf kodiert, verschlüsselt, komprimiert oder einer Sitzung zugeordnet.' },
+    { titel: 'Schicht 4', text: 'TCP oder UDP ergänzt Quell- und Zielport. Bei TCP spricht man im OSI-Lernkontext meist von einem Segment, bei UDP von einem Datagramm.' },
+    { titel: 'Schicht 3', text: 'IP ergänzt Quell- und Ziel-IP-Adresse. Daraus entsteht ein IP-Paket.' },
+    { titel: 'Schicht 2', text: 'Ethernet oder WLAN verpackt das Paket in einen Frame mit Quell- und Ziel-MAC-Adresse.' },
+    { titel: 'Schicht 1', text: 'Der Frame wird als Folge von Bits über Kabel, Glasfaser oder Funk übertragen.' },
   ]}
 />
 
-<Warnung titel="PDU-Namen — die Lieblingsfrage der IHK">
-Schicht 4 = **Segment** (TCP) bzw. **Datagramm** (UDP). Schicht 3 = **Paket**. Schicht 2 = **Frame**. Schicht 1 = **Bit**. Wer „Paket" und „Frame" verwechselt, verliert sicher Punkte.
+<Warnung titel="PDU-Falle">
+Merke die Kernfolge: **Daten → Segment/Datagramm → Paket → Frame → Bit**. Ein IP-Paket ist nicht dasselbe wie ein Ethernet-Frame. Der Frame gilt nur auf dem nächsten lokalen Übertragungsabschnitt; das IP-Paket wird über Router weitertransportiert.
 </Warnung>
 
 ---
 
-## 04 · Beispiel: Was passiert beim Aufruf von google.de?
+## 04 · Beispiel: Aufruf einer HTTPS-Webseite
 
-<Beispiel titel="Vom Tippen in der Adresszeile bis zur Antwort">
-1. **Schicht 7:** Browser baut den HTTP-Request `GET / HTTP/1.1` zusammen. Vorher hat eine DNS-Anfrage (ebenfalls Schicht 7) den Namen `google.de` in eine IP-Adresse aufgelöst.
-2. **Schicht 6:** TLS verschlüsselt die Daten (bei HTTPS).
-3. **Schicht 4:** TCP verpackt den Request in ein Segment, setzt Ziel-Port 443 und einen zufälligen Quell-Port wie 54321.
-4. **Schicht 3:** IP setzt einen Header mit deiner Quell-IP und der Ziel-IP von Google davor — das Paket entsteht.
-5. **Schicht 2:** Ethernet packt das Paket in einen Frame mit deiner MAC-Adresse als Quelle und der MAC deines Routers als Ziel.
-6. **Schicht 1:** Bits werden als elektrisches Signal durch das Kupferkabel oder als Funksignal über WLAN geschickt.
-7. **Beim Ziel rückwärts:** Schicht 1 → 7. Jede Schicht entfernt ihren Header, prüft ihn und reicht den Rest nach oben.
+<Beispiel titel="Vom Namen zur Antwort">
+1. **Anwendung:** Der Browser will `https://wiki.firma.local` laden. Falls nur der Name bekannt ist, fragt er per DNS nach der passenden IP-Adresse.
+2. **Darstellung/Sicherheit:** Für HTTPS wird TLS verwendet. TLS schützt die Verbindung gegen Mitlesen, Manipulation und Fälschung, sitzt aber nicht auf derselben Ebene wie TCP oder UDP.
+3. **Transport:** TCP baut eine Verbindung zum Zielport 443 auf und transportiert die Daten zuverlässig.
+4. **Vermittlung:** IP adressiert das Zielnetz. Wenn das Ziel nicht im eigenen Subnetz liegt, geht das Paket an das Standardgateway.
+5. **Sicherung:** Im lokalen Netz wird die nächste MAC-Adresse benötigt, zum Beispiel die MAC-Adresse des Routers. ARP kann dafür eine IPv4-Adresse in eine MAC-Adresse auflösen.
+6. **Bitübertragung:** Die Bits laufen über Ethernet, WLAN oder ein anderes Medium.
+</Beispiel>
+
+Dieses Beispiel zeigt auch, warum eine Schichtenzuordnung allein nicht reicht. DNS ist ein Anwendungsprotokoll, nutzt aber UDP oder TCP als Transport und IP darunter. Ein Fehler bei DNS fühlt sich für Benutzer wie "Internet kaputt" an, obwohl Schicht 1 bis 4 funktionieren können.
+
+---
+
+## 05 · OSI und TCP/IP
+
+Das reale Internet wird meist mit dem TCP/IP- beziehungsweise Internet-Protokollstapel beschrieben. Dieses Modell ist kompakter als OSI:
+
+| OSI-Schichten | TCP/IP-Schicht |
+|---|---|
+| 7 Anwendung, 6 Darstellung, 5 Sitzung | Anwendung |
+| 4 Transport | Transport |
+| 3 Vermittlung/Netzwerk | Internet |
+| 2 Sicherung, 1 Bitübertragung | Link/Netzzugang |
+
+Das OSI-Modell bleibt trotzdem nützlich, weil es feiner trennt. Für Lernen, Dokumentation und Fehlersuche ist es oft praktischer zu sagen: "DNS ist Anwendung, TCP ist Transport, IP ist Vermittlung, Ethernet ist Sicherung."
+
+---
+
+## 06 · Häufige Fehlerfallen
+
+<Warnung titel="Typische OSI-Fallen">
+1. **Paket und Frame gleichsetzen:** IP arbeitet mit Paketen auf Schicht 3. Ethernet/WLAN arbeitet mit Frames auf Schicht 2.
+2. **DNS zu tief einordnen:** DNS löst Namen zu Adressen auf, ist aber ein Anwendungsprotokoll auf Schicht 7.
+3. **ARP zu simpel einordnen:** ARP nutzt IPv4- und MAC-Informationen. Für AP1 ist die sichere Formulierung: ARP löst im lokalen Netz IPv4-Adressen zu MAC-Adressen auf und wird meist der Sicherungs-/Link-Schicht als Grenzfall zugeordnet.
+4. **Geräte absolut sehen:** Ein einfacher Switch arbeitet auf Schicht 2, ein Router auf Schicht 3. Layer-3-Switches, Firewalls und Proxys können je nach Funktion höher arbeiten.
+5. **TLS wegen des Namens falsch einsortieren:** "Transport Layer Security" heißt nicht, dass TLS dasselbe ist wie TCP oder UDP. TLS läuft oberhalb des Transports und schützt Anwendungsdaten.
+6. **Ping überschätzen:** Ein erfolgreicher Ping auf eine IP zeigt IP-Erreichbarkeit per ICMP. Er beweist nicht automatisch, dass DNS, TLS, HTTP oder ein bestimmter TCP-Port funktionieren.
+</Warnung>
+
+---
+
+## 07 · Diagnosebeispiel
+
+<Beispiel titel="Wiki-Seite lädt nicht, IP-Ping klappt">
+Ein Mitarbeiter kann `https://wiki.firma.local` nicht öffnen. Ein Ping auf die direkte IP-Adresse des Servers funktioniert.
+
+Das spricht dafür, dass die grundlegende lokale Verbindung, IP-Konfiguration und IP-Erreichbarkeit bis zum Server zumindest teilweise funktionieren. Es beweist aber nicht, dass die Webseite erreichbar ist. Sinnvolle nächste Prüfungen sind:
+
+1. **DNS:** Wird `wiki.firma.local` zur richtigen IP-Adresse aufgelöst?
+2. **Transport:** Ist TCP-Port 443 erreichbar oder blockiert eine Firewall?
+3. **TLS/Anwendung:** Gibt es ein Zertifikatsproblem, eine Webserver-Störung oder eine falsche URL?
+
+Die OSI-Sicht verhindert hier einen Denkfehler: Ein erfolgreicher ICMP-Test ist kein Beweis für "alles bis Schicht 7 ist in Ordnung".
 </Beispiel>
 
 ---
 
-## 05 · OSI vs. TCP/IP — der Praxisbezug
+## 08 · Kurzer Selbstcheck
 
-Im echten Internet wird nicht OSI, sondern das **TCP/IP-Modell** verwendet. Es fasst die OSI-Schichten 5–7 zu einer Anwendungsschicht zusammen und Schichten 1–2 zu einer Netzzugangsschicht. Funktionell ist alles dabei, nur kompakter.
-
-| OSI-Schicht | TCP/IP-Schicht |
+| Aussage | Lösung |
 |---|---|
-| 7 Anwendung / 6 Darstellung / 5 Sitzung | Anwendung |
-| 4 Transport | Transport |
-| 3 Vermittlung | Internet |
-| 2 Sicherung / 1 Bitübertragung | Netzzugang |
-
-In der Prüfung wird trotzdem fast immer das **OSI-Modell** abgefragt, weil es die feinere Zuordnung erlaubt.
-
----
-
-## 06 · Fehlerfallen
-
-<Warnung titel="Die fünf häufigsten OSI-Fallen in Prüfungsaufgaben">
-1. **PDU-Namen vertauscht:** Paket vs. Frame vs. Segment — siehe Tabelle oben.
-2. **DNS auf der falschen Schicht:** DNS löst zwar IP-Adressen auf, läuft aber auf **Schicht 7** (Anwendung), nicht auf Schicht 3.
-3. **ARP-Einordnung:** ARP übersetzt IP- in MAC-Adressen. Es arbeitet **an der Grenze** zwischen Schicht 2 und 3, wird in der Prüfung meist als Schicht-2-Protokoll geführt.
-4. **Geräte falsch zugeordnet:** Hub = Schicht 1 (dumme Verteilung), Switch = Schicht 2 (MAC-basiert), Router = Schicht 3 (IP-basiert), L3-Switch und Firewall können je nach Funktion höher liegen.
-5. **TLS-Zuordnung:** TLS gehört strenggenommen auf Schicht 6, wird in vielen Lehrbüchern aber als Bestandteil von Schicht 7 dargestellt. Beides ist vertretbar — wichtig ist, dass TLS **nicht** auf Schicht 4 sitzt.
-</Warnung>
-
----
-
-## 07 · Typische Prüfungsaufgabe
-
-> **Aufgabe (Klausur-Stil):** Ein Mitarbeiter meldet, dass er die interne Wiki-Seite `https://wiki.firma.local` nicht erreicht. `ping` auf die IP des Servers funktioniert. Auf welcher OSI-Schicht liegt das Problem am wahrscheinlichsten? Begründe.
-
-**Musterantwort:** Da `ping` (Schicht 3, ICMP über IP) erfolgreich ist, funktionieren Bitübertragung (1), Sicherung (2) und Vermittlung (3). Auch Transport (4) ist mit hoher Wahrscheinlichkeit in Ordnung, da TCP-Verbindungen normalerweise funktionieren, wenn ICMP durchgeht. Die Fehlersuche konzentriert sich also auf **Schicht 7**: Namensauflösung (DNS), Zertifikatsprüfung (TLS, formal Schicht 6) oder die Anwendung selbst (Webserver).
+| Ein Switch leitet normalerweise anhand von MAC-Adressen weiter. | Schicht 2 |
+| Ein Router entscheidet anhand von IP-Zielen über den nächsten Weg. | Schicht 3 |
+| TCP nutzt Ports und bietet zuverlässige Ende-zu-Ende-Kommunikation. | Schicht 4 |
+| DNS ist Namensauflösung für Anwendungen. | Schicht 7 |
+| Ethernet verpackt IP-Pakete für den nächsten lokalen Abschnitt. | Schicht 2 |
 
 ---
 
 <Quellen
   quellen={[
     {
-      label: 'ITU-T X.200 — Open Systems Interconnection: Basic Reference Model',
+      label: 'ITU-T X.200 - Open Systems Interconnection: Basic Reference Model',
       href: 'https://www.itu.int/rec/T-REC-X.200/',
-      detail: 'Die normative Spezifikation des OSI-Referenzmodells durch die ITU-T. Inhaltlich identisch mit ISO/IEC 7498-1.'
+      detail: 'Normative Referenz zum OSI-Basisreferenzmodell; identischer Text zu ISO/IEC 7498-1.'
     },
     {
-      label: 'ISO/IEC 7498-1:1994 — Information technology — OSI: The Basic Model',
+      label: 'ISO/IEC 7498-1:1994 - OSI Basic Reference Model',
       href: 'https://www.iso.org/standard/20269.html',
-      detail: 'ISO-Norm zum OSI-Basisreferenzmodell. Definiert die sieben Schichten und ihre Aufgaben verbindlich.'
+      detail: 'ISO/IEC-Norm zum OSI-Basisreferenzmodell und den sieben Schichten.'
     },
     {
-      label: 'RFC 9293 — Transmission Control Protocol (TCP)',
+      label: 'RFC 1122 - Requirements for Internet Hosts: Communication Layers',
+      href: 'https://www.rfc-editor.org/rfc/rfc1122',
+      detail: 'Grundlage für die Internet-/TCP-IP-Schichten und das Zusammenspiel von Link, Internet und Transport.'
+    },
+    {
+      label: 'RFC 791 - Internet Protocol (IPv4)',
+      href: 'https://www.rfc-editor.org/rfc/rfc791',
+      detail: 'IPv4-Spezifikation; Grundlage für Adressierung und Pakete auf der Vermittlungs-/Internet-Schicht.'
+    },
+    {
+      label: 'RFC 826 - Address Resolution Protocol',
+      href: 'https://www.rfc-editor.org/rfc/rfc826',
+      detail: 'ARP-Grundlage für die Auflösung von IPv4-Adressen in MAC-Adressen im lokalen Netz.'
+    },
+    {
+      label: 'RFC 9293 - Transmission Control Protocol (TCP)',
       href: 'https://www.rfc-editor.org/rfc/rfc9293',
-      detail: 'Aktuelle TCP-Spezifikation. Grundlage für Schicht 4 in der OSI-Zuordnung.'
+      detail: 'Aktuelle TCP-Spezifikation; Grundlage für Ports, Segmente, Verbindungen und zuverlässigen Transport.'
     },
     {
-      label: 'RFC 768 — User Datagram Protocol (UDP)',
+      label: 'RFC 768 - User Datagram Protocol (UDP)',
       href: 'https://www.rfc-editor.org/rfc/rfc768',
-      detail: 'UDP-Spezifikation. Verbindungslose Transportkommunikation, ebenfalls Schicht 4.'
+      detail: 'UDP-Spezifikation für verbindungslose Datagramm-Kommunikation über IP.'
     },
     {
-      label: 'KMK — Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      label: 'RFC 9110 - HTTP Semantics',
+      href: 'https://www.rfc-editor.org/rfc/rfc9110',
+      detail: 'HTTP als Beispiel für ein zustandsloses Anwendungsprotokoll.'
+    },
+    {
+      label: 'RFC 8446 - TLS 1.3',
+      href: 'https://www.rfc-editor.org/rfc/rfc8446',
+      detail: 'TLS schützt Client-/Server-Kommunikation vor Mitlesen, Manipulation und Fälschung; wichtig für die korrekte OSI-Einordnung.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
       href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
-      detail: 'Berufsschulische Lernfelder für die FISI-/FIAE-Ausbildung. Verortet OSI in Lernfeld 3.'
+      detail: 'Berufsschulischer Bezug für LF3: Clients in Netzwerke einbinden.'
     },
   ]}
 />

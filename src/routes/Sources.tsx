@@ -117,7 +117,7 @@ export default function Sources() {
       <section className="section">
         <div className="sec-head">
           <h2 className="sec-title">
-            Qualitaets-<em>Freigabe</em>
+            Qualitäts-<em>Freigabe</em>
           </h2>
           <div className="sec-meta">ready vs. final</div>
         </div>
@@ -127,7 +127,7 @@ export default function Sources() {
         >
           <p className="m-0">
             <b>Ausgearbeitet</b> bedeutet: Das Kapitel ist als Lerninhalt nutzbar.
-            <b className="ml-1">Formal geprueft</b> bedeutet: Fachcheck, Quellencheck,
+            <b className="ml-1">Formal geprüft</b> bedeutet: Fachcheck, Quellencheck,
             Glossar, Build/Lint und Freigabe sind im <code>REVIEW_LOG.md</code>
             dokumentiert. Geplante Stubs werden nicht als Lernkapitel angeboten.
           </p>

@@ -19,6 +19,71 @@
     display: none;
   }
 
+  .audit-pill {
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    padding: 0.18rem 0.55rem;
+    background: var(--color-paper-deep);
+    color: var(--color-ink-2);
+  }
+
+  .audit-pill--teilgeprueft,
+  .audit-pill--geprueft {
+    border-color: color-mix(in oklch, var(--color-accent) 35%, var(--color-rule));
+    color: var(--color-accent);
+  }
+
+  .audit-pill--ungeprueft,
+  .audit-pill--gesperrt {
+    border-color: color-mix(in oklch, var(--color-accent-2) 35%, var(--color-rule));
+    color: var(--color-accent-2);
+  }
+
+  .audit-banner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 1.25rem;
+    border: 1px solid var(--color-rule);
+    border-left-width: 5px;
+    background: var(--color-paper);
+    padding: 0.95rem 1rem;
+    font-family: var(--font-ui);
+  }
+
+  .audit-banner--teilgeprueft,
+  .audit-banner--geprueft {
+    border-left-color: var(--color-accent);
+  }
+
+  .audit-banner--ungeprueft,
+  .audit-banner--gesperrt {
+    border-left-color: var(--color-accent-2);
+  }
+
+  .audit-banner-title {
+    margin-bottom: 0.2rem;
+    color: var(--color-ink);
+    font-size: 0.9rem;
+    font-weight: 750;
+  }
+
+  .audit-banner p {
+    margin: 0;
+    color: var(--color-ink-2);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .audit-banner > span {
+    max-width: 28ch;
+    color: var(--color-ink-3);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
+
   .lesson-body h2 {
     position: relative;
     margin: 3.75rem 0 1.15rem;
@@ -208,6 +273,14 @@
     .lesson-body {
       font-size: 1rem;
       line-height: 1.7;
+    }
+
+    .audit-banner {
+      flex-direction: column;
+    }
+
+    .audit-banner > span {
+      max-width: none;
     }
 
     .chapter-h1 {

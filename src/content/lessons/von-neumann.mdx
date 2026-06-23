@@ -11,27 +11,27 @@
 
 Fast jeder normale Computer folgt bis heute einer Grundidee: Programm und Daten liegen
 im Speicher, die *<Term id="cpu">CPU</Term>* holt nacheinander Befehle, dekodiert sie
-und fuehrt sie aus. Dieses Prinzip heisst Von-Neumann-Architektur oder Stored-Program-
+und führt sie aus. Dieses Prinzip heißt Von-Neumann-Architektur oder Stored-Program-
 Computer.
 
-Das ist AP1-relevant, weil daran viele andere Themen haengen: Warum braucht ein Rechner
+Das ist AP1-relevant, weil daran viele andere Themen hängen: Warum braucht ein Rechner
 *<Term id="ram">RAM</Term>*? Warum ist Cache so wichtig? Warum kann eine schnelle CPU
 trotzdem auf Speicher warten? Und warum sind Programme im Betrieb nicht nur "auf der
 Festplatte", sondern als Befehle im Arbeitsspeicher?
 
 ## Was du danach kannst
 
-- die Grundidee "Programm und Daten im gemeinsamen Speicher" erklaeren.
+- die Grundidee "Programm und Daten im gemeinsamen Speicher" erklären.
 - die Hauptbestandteile CPU, Rechenwerk, Steuerwerk, Speicher, Bus und Ein-/Ausgabe zuordnen.
-- den Fetch-Decode-Execute-Zyklus Schritt fuer Schritt beschreiben.
-- den Von-Neumann-Flaschenhals erklaeren und Cache als Gegenmassnahme einordnen.
+- den Fetch-Decode-Execute-Zyklus Schritt für Schritt beschreiben.
+- den Von-Neumann-Flaschenhals erklären und Cache als Gegenmassnahme einordnen.
 - Von-Neumann-Architektur grob von Harvard-Architektur unterscheiden.
-- typische Pruefungsfallen vermeiden: RAM vs. Massenspeicher, CPU vs. ALU, Speicher vs. Cache.
+- typische Prüfungsfallen vermeiden: RAM vs. Massenspeicher, CPU vs. ALU, Speicher vs. Cache.
 
 <Analogie>
-Stell dir eine Werkstatt vor. Im Regal liegen Arbeitsauftraege und Materialkarten
-durcheinander im selben Fach. Der Meister holt immer den naechsten Auftrag, liest ihn,
-gibt ihn an die passende Station weiter und legt das Ergebnis zurueck. Das Regal ist der
+Stell dir eine Werkstatt vor. Im Regal liegen Arbeitsaufträge und Materialkarten
+durcheinander im selben Fach. Der Meister holt immer den nächsten Auftrag, liest ihn,
+gibt ihn an die passende Station weiter und legt das Ergebnis zurück. Das Regal ist der
 Speicher, der Meister ist das Steuerwerk, die Rechenstation ist die ALU. Der Flur zwischen
 Regal und Werkbank ist der Bus. Wenn der Flur eng ist, wartet selbst der schnellste Meister.
 </Analogie>
@@ -43,9 +43,9 @@ Regal und Werkbank ist der Bus. Wenn der Flur eng ist, wartet selbst der schnell
 | Baustein | Kurzform | Aufgabe |
 |---|---|---|
 | Steuerwerk | Control Unit | Befehle holen, dekodieren und den Ablauf steuern |
-| Rechenwerk | ALU | Rechnen, vergleichen und logische Operationen ausfuehren |
-| Register | Register | Sehr kleine, sehr schnelle Speicherplaetze direkt in der CPU |
-| Arbeitsspeicher | RAM | Aktive Programme und Daten waehrend der Ausfuehrung halten |
+| Rechenwerk | ALU | Rechnen, vergleichen und logische Operationen ausführen |
+| Register | Register | Sehr kleine, sehr schnelle Speicherplätze direkt in der CPU |
+| Arbeitsspeicher | RAM | Aktive Programme und Daten während der Ausführung halten |
 | Bus | Daten-/Adress-/Steuerbus | CPU, Speicher und Ein-/Ausgabe verbinden |
 | Ein-/Ausgabe | I/O | Daten in den Rechner hinein oder aus ihm heraus bringen |
 
@@ -61,7 +61,7 @@ Das passt zum *<Term id="eva-prinzip">EVA-Prinzip</Term>*:
 | EVA-Schritt | Im Rechner |
 |---|---|
 | Eingabe | Tastatur, Maus, Netzwerk, Sensor, Datei |
-| Verarbeitung | CPU fuehrt Befehle aus und greift auf RAM zu |
+| Verarbeitung | CPU führt Befehle aus und greift auf RAM zu |
 | Ausgabe | Bildschirm, Drucker, Netzwerk, Datei |
 
 ---
@@ -69,10 +69,10 @@ Das passt zum *<Term id="eva-prinzip">EVA-Prinzip</Term>*:
 ## Die Kernidee: Stored Program
 
 Vor programmierbaren Rechnern musste Verhalten oft durch Verdrahtung, Schalter oder
-Steckfelder geaendert werden. Die Von-Neumann-Idee macht Programme selbst zu Daten:
-Ein Programm wird als Folge von Befehlen gespeichert, geladen und ausgefuehrt.
+Steckfelder geändert werden. Die Von-Neumann-Idee macht Programme selbst zu Daten:
+Ein Programm wird als Folge von Befehlen gespeichert, geladen und ausgeführt.
 
-Das ist der grosse Sprung:
+Das ist der große Sprung:
 
 | Vorher gedacht | Von-Neumann-Prinzip |
 |---|---|
@@ -81,7 +81,7 @@ Das ist der grosse Sprung:
 | Maschine wirkt spezialisiert | Maschine wird allgemein programmierbar |
 
 Darum kannst du auf derselben Hardware erst einen Browser, dann eine Tabellenkalkulation
-und danach ein Spiel starten. Die Hardware bleibt gleich; die Befehle im Speicher aendern
+und danach ein Spiel starten. Die Hardware bleibt gleich; die Befehle im Speicher ändern
 sich.
 
 ---
@@ -89,29 +89,29 @@ sich.
 ## Fetch, Decode, Execute
 
 Die CPU arbeitet nicht "magisch", sondern wiederholt einen Befehlszyklus. Moderne CPUs
-sind intern viel komplizierter, aber fuer AP1 reicht dieses Modell:
+sind intern viel komplizierter, aber für AP1 reicht dieses Modell:
 
 <StepByStep titel="Der Von-Neumann-Zyklus">
   <Schritt nr={1} titel="Fetch - Befehl holen">
-    Das Steuerwerk liest ueber den Bus den naechsten Maschinenbefehl aus dem RAM.
-    Der Program Counter zeigt dabei auf die Adresse des naechsten Befehls.
+    Das Steuerwerk liest über den Bus den nächsten Maschinenbefehl aus dem RAM.
+    Der Program Counter zeigt dabei auf die Adresse des nächsten Befehls.
   </Schritt>
   <Schritt nr={2} titel="Decode - Befehl verstehen">
     Die CPU dekodiert das Bitmuster: Ist es eine Addition, ein Vergleich, ein Sprung
-    oder ein Speicherzugriff? Daraus entstehen Steuersignale fuer die beteiligten
+    oder ein Speicherzugriff? Daraus entstehen Steuersignale für die beteiligten
     Bausteine.
   </Schritt>
-  <Schritt nr={3} titel="Execute - ausfuehren">
-    Das Rechenwerk fuehrt die Operation aus. Bei `ADD` addiert die ALU Werte, bei
-    `COMPARE` vergleicht sie, bei einem Sprung aendert das Steuerwerk den Program
+  <Schritt nr={3} titel="Execute - ausführen">
+    Das Rechenwerk führt die Operation aus. Bei `ADD` addiert die ALU Werte, bei
+    `COMPARE` vergleicht sie, bei einem Sprung ändert das Steuerwerk den Program
     Counter.
   </Schritt>
   <Schritt nr={4} titel="Memory/Writeback - Ergebnis sichern">
     Das Ergebnis landet in einem Register oder im RAM. Danach zeigt der Program
-    Counter auf den naechsten Befehl und der Zyklus beginnt von vorn.
+    Counter auf den nächsten Befehl und der Zyklus beginnt von vorn.
   </Schritt>
   <Ergebnis>
-    Der einfache Merksatz lautet: **holen, dekodieren, ausfuehren, Ergebnis sichern**.
+    Der einfache Merksatz lautet: **holen, dekodieren, ausführen, Ergebnis sichern**.
     Genau dieses Muster steckt hinter jedem laufenden Programm.
   </Ergebnis>
 </StepByStep>
@@ -132,19 +132,19 @@ STORE a     // Ergebnis unter a speichern
 
 Was daran wichtig ist:
 
-- Werte muessen vom Speicher zur CPU.
+- Werte müssen vom Speicher zur CPU.
 - Die ALU rechnet, nicht der RAM.
-- Ergebnisse muessen wieder in Register oder Speicher.
+- Ergebnisse müssen wieder in Register oder Speicher.
 - Viele Befehle bedeuten viele Speicher- und Busbewegungen.
 
-Genau hier entsteht spaeter der Flaschenhals.
+Genau hier entsteht später der Flaschenhals.
 
 ---
 
 ## Von-Neumann-Flaschenhals
 
-Das klassische Problem: CPU und Speicher sind getrennt, aber die CPU braucht staendig
-Befehle und Daten aus dem RAM. Wenn beide ueber denselben Weg muessen, begrenzt dieser
+Das klassische Problem: CPU und Speicher sind getrennt, aber die CPU braucht ständig
+Befehle und Daten aus dem RAM. Wenn beide über denselben Weg müssen, begrenzt dieser
 Weg die Geschwindigkeit.
 
 ```
@@ -154,25 +154,25 @@ CPU  <---- Bus ---->  RAM
       Ergebnisse
 ```
 
-Die CPU kann sehr schnell rechnen, wartet aber oft auf Daten. Deshalb fuehlt sich eine
+Die CPU kann sehr schnell rechnen, wartet aber oft auf Daten. Deshalb fühlt sich eine
 reine GHz-Zahl nie wie die ganze Wahrheit an. Entscheidend sind auch Cache, Speicher-
 bandbreite, Latenz und Zugriffsmuster.
 
 ### Cache als Gegenmassnahme
 
-Cache ist kleiner, aber deutlich schnellerer Speicher in oder nahe an der CPU. Er haelt
+Cache ist kleiner, aber deutlich schnellerer Speicher in oder nahe an der CPU. Er hält
 Daten und Befehle bereit, die vermutlich gleich wieder gebraucht werden.
 
-| Ebene | Typische Rolle | Pruefungsmerksatz |
+| Ebene | Typische Rolle | Prüfungsmerksatz |
 |---|---|---|
 | Register | Direkt in der CPU | am schnellsten, aber winzig |
 | L1-Cache | Pro Kern, sehr nah | extrem schnell, sehr klein |
-| L2-Cache | Pro Kern oder Kern-Gruppe | groesser, etwas langsamer |
-| L3-Cache | oft gemeinsam fuer mehrere Kerne | noch groesser, nochmals langsamer |
-| RAM | Arbeitsspeicher | viel groesser, aber deutlich langsamer |
+| L2-Cache | Pro Kern oder Kern-Gruppe | größer, etwas langsamer |
+| L3-Cache | oft gemeinsam für mehrere Kerne | noch größer, nochmals langsamer |
+| RAM | Arbeitsspeicher | viel größer, aber deutlich langsamer |
 | SSD/HDD | Massenspeicher | dauerhaft, aber viel langsamer als RAM |
 
-Cache loest den Flaschenhals nicht vollstaendig, aber er senkt die Wartezeit massiv,
+Cache löst den Flaschenhals nicht vollständig, aber er senkt die Wartezeit massiv,
 wenn Programme auf nahe beieinanderliegende oder wiederholt genutzte Daten zugreifen.
 
 ---
@@ -185,55 +185,55 @@ In einer Harvard-Architektur sind Programmspeicher und Datenspeicher getrennt.
 | Merkmal | Von-Neumann | Harvard |
 |---|---|---|
 | Programmbefehle und Daten | gemeinsamer Speicherraum | getrennte Speicher |
-| Zugriff | ein gemeinsamer Pfad kann bremsen | Befehle und Daten koennen parallel geholt werden |
+| Zugriff | ein gemeinsamer Pfad kann bremsen | Befehle und Daten können parallel geholt werden |
 | Typische Einordnung | allgemeine Rechner als Grundmodell | Mikrocontroller, DSPs, teils CPU-interne Caches |
 | AP1-Kern | Stored Program + gemeinsamer Speicher | Abgrenzung kennen, nicht im Detail rechnen |
 
-Wichtig: Moderne Rechner sind Mischformen. Nach aussen nutzt die Software meist ein
-Von-Neumann-Modell. Intern koennen getrennte Instruction- und Data-Caches wie eine
+Wichtig: Moderne Rechner sind Mischformen. Nach außen nutzt die Software meist ein
+Von-Neumann-Modell. Intern können getrennte Instruction- und Data-Caches wie eine
 Harvard-nahe Optimierung wirken.
 
 ---
 
-## Pruefungsnahe Einordnung
+## Prüfungsnahe Einordnung
 
 | Aussage | Bewertung |
 |---|---|
-| "Programme liegen bei der Ausfuehrung im RAM." | richtig |
+| "Programme liegen bei der Ausführung im RAM." | richtig |
 | "Programme sind dauerhaft auf SSD/HDD gespeichert." | ebenfalls richtig, aber anderer Zeitpunkt |
 | "Die ALU steuert den Ablauf." | falsch, das macht das Steuerwerk |
 | "Die ALU rechnet und vergleicht." | richtig |
 | "Cache ist Massenspeicher." | falsch, Cache ist schneller Zwischenspeicher |
-| "Von-Neumann bedeutet: Daten und Befehle koennen nie unterschieden werden." | falsch, sie liegen im gemeinsamen Speicherraum, haben aber unterschiedliche Bedeutung im Ablauf |
+| "Von-Neumann bedeutet: Daten und Befehle können nie unterschieden werden." | falsch, sie liegen im gemeinsamen Speicherraum, haben aber unterschiedliche Bedeutung im Ablauf |
 
 ---
 
 ## Typische Fehler
 
 - **RAM und Massenspeicher verwechseln.** SSD/HDD speichern Programme dauerhaft. Beim
-  Ausfuehren werden Programmteile in den RAM geladen. Genau dort arbeitet die CPU mit
+  Ausführen werden Programmteile in den RAM geladen. Genau dort arbeitet die CPU mit
   ihnen.
-- **CPU mit ALU gleichsetzen.** Die ALU ist nur das Rechenwerk. Zur CPU gehoeren auch
+- **CPU mit ALU gleichsetzen.** Die ALU ist nur das Rechenwerk. Zur CPU gehören auch
   Steuerwerk, Register und weitere interne Einheiten.
 - **Steuerwerk als "denkende" Einheit sehen.** Das Steuerwerk bewertet keine Aufgabe
   fachlich. Es dekodiert Befehle und steuert Hardware-Signale.
 - **Bus nur als Kabel vorstellen.** In der Architektur meint Bus allgemein den
   Kommunikationsweg samt Daten-, Adress- und Steuersignalen.
-- **Cache als optionalen Speicherplatz verstehen.** Cache ist keine Ablage fuer Nutzer-
-  Dateien, sondern ein automatischer Zwischenspeicher fuer Geschwindigkeit.
+- **Cache als optionalen Speicherplatz verstehen.** Cache ist keine Ablage für Nutzer-
+  Dateien, sondern ein automatischer Zwischenspeicher für Geschwindigkeit.
 - **Von-Neumann als exakten Bauplan moderner CPUs lesen.** Moderne CPUs haben Pipelines,
   mehrere Kerne, Caches, Sprungvorhersage und parallele Einheiten. Das AP1-Modell bleibt
-  trotzdem nuetzlich, weil es den Grundablauf erklaert.
+  trotzdem nützlich, weil es den Grundablauf erklärt.
 - **Flaschenhals nur als "zu wenig RAM" deuten.** Der Von-Neumann-Flaschenhals meint den
-  Datenverkehr zwischen CPU und Speicher, nicht einfach die RAM-Groesse.
+  Datenverkehr zwischen CPU und Speicher, nicht einfach die RAM-Größe.
 
 ---
 
-## Was haengen bleibt
+## Was hängen bleibt
 
-Die Von-Neumann-Architektur erklaert, warum ein Computer allgemein programmierbar ist:
+Die Von-Neumann-Architektur erklärt, warum ein Computer allgemein programmierbar ist:
 Befehle und Daten liegen im Speicher, die CPU arbeitet Befehle zyklisch ab, Ergebnisse
-gehen zurueck in Register oder Speicher. Die Staerke ist Flexibilitaet. Die Schwaeche ist
+gehen zurück in Register oder Speicher. Die Stärke ist Flexibilität. Die Schwäche ist
 der Weg zwischen CPU und Speicher, also der Von-Neumann-Flaschenhals.
 
 <Glossar
@@ -244,11 +244,11 @@ der Weg zwischen CPU und Speicher, also der Von-Neumann-Flaschenhals.
     },
     {
       term: 'Stored Program',
-      definition: 'Ein Programm liegt als gespeicherte Befehlsfolge im Speicher und kann geladen, ersetzt und ausgefuehrt werden, ohne die Hardware umzubauen.'
+      definition: 'Ein Programm liegt als gespeicherte Befehlsfolge im Speicher und kann geladen, ersetzt und ausgeführt werden, ohne die Hardware umzubauen.'
     },
     {
       term: 'ALU',
-      definition: 'Arithmetic Logic Unit: Rechenwerk der CPU fuer arithmetische und logische Operationen.'
+      definition: 'Arithmetic Logic Unit: Rechenwerk der CPU für arithmetische und logische Operationen.'
     },
     {
       term: 'Steuerwerk',
@@ -256,7 +256,7 @@ der Weg zwischen CPU und Speicher, also der Von-Neumann-Flaschenhals.
     },
     {
       term: 'Von-Neumann-Flaschenhals',
-      definition: 'Leistungsgrenze durch den Datenverkehr zwischen CPU und Speicher, besonders wenn Befehle und Daten ueber denselben Pfad laufen.'
+      definition: 'Leistungsgrenze durch den Datenverkehr zwischen CPU und Speicher, besonders wenn Befehle und Daten über denselben Pfad laufen.'
     },
   ]}
 />
@@ -266,17 +266,17 @@ der Weg zwischen CPU und Speicher, also der Von-Neumann-Flaschenhals.
     {
       label: 'Smithsonian Libraries - John von Neumann: First Draft of a Report on the EDVAC',
       href: 'https://library.si.edu/digital-library/book/firstdraftofrepo00vonn',
-      detail: 'Historische Primaerquelle zur Stored-Program-Idee und zum EDVAC-Entwurf.'
+      detail: 'Historische Primärquelle zur Stored-Program-Idee und zum EDVAC-Entwurf.'
     },
     {
       label: 'Computer History Museum - First Draft of Report on EDVAC published',
       href: 'https://www.computerhistory.org/tdih/june/30/',
-      detail: 'Historische Einordnung des EDVAC-Reports und der Idee eines gemeinsamen Speichers fuer Instruktionen und Daten.'
+      detail: 'Historische Einordnung des EDVAC-Reports und der Idee eines gemeinsamen Speichers für Instruktionen und Daten.'
     },
     {
       label: 'IBM - What is a Central Processing Unit (CPU)?',
       href: 'https://www.ibm.com/think/topics/central-processing-unit',
-      detail: 'Einfuehrung zu CPU, Control Unit und Instruction Cycle mit Fetch, Decode und Execute.'
+      detail: 'Einführung zu CPU, Control Unit und Instruction Cycle mit Fetch, Decode und Execute.'
     },
     {
       label: 'Cornell CS 3410 - The 5 Classic CPU Stages',

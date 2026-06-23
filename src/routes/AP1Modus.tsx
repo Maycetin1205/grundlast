@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { isLessonAvailable, lernfelder } from '../lib/toc'
+import { auditWeight, isTrustedForExam } from '../lib/audit'
 
 const PALETTE = ['sky', 'olive', 'teal', 'rose', 'plum', 'amber', 'sand', 'forest', 'indigo']
 
@@ -7,6 +8,7 @@ interface TopicMastery {
   name: string
   items: number
   ready: number
+  trusted: number
   mastery: number
   to: string
 }
@@ -20,14 +22,18 @@ function topicMastery(): TopicMastery[] {
       if (examLessons.length === 0) continue
       const availableLessons = examLessons.filter(isLessonAvailable)
       if (availableLessons.length === 0) continue
+      const trustedLessons = availableLessons.filter((lesson) => isTrustedForExam(lesson.slug))
       const ready = availableLessons.length
-      const firstLesson = availableLessons[0]
+      const trusted = trustedLessons.length
+      const firstLesson = trustedLessons[0] ?? availableLessons[0]
+      const weightedTrust = examLessons.reduce((sum, lesson) => sum + auditWeight(lesson.slug), 0)
 
       topics.push({
         name: modul.title,
         items: examLessons.length,
         ready,
-        mastery: examLessons.length > 0 ? ready / examLessons.length : 0,
+        trusted,
+        mastery: examLessons.length > 0 ? weightedTrust / examLessons.length : 0,
         to: `/lernen/${lf.slug}/${modul.slug}/${firstLesson.slug}`,
       })
     }
@@ -39,17 +45,19 @@ function topicMastery(): TopicMastery[] {
 
 export default function AP1Modus() {
   let totalExam = 0
-  let readyExam = 0
+  let contentReadyExam = 0
+  let trustedExam = 0
   for (const lf of lernfelder) {
     for (const modul of lf.moduls) {
       for (const lesson of modul.lessons) {
         if (!lesson.exam) continue
         totalExam += 1
-        if (isLessonAvailable(lesson)) readyExam += 1
+        if (isLessonAvailable(lesson)) contentReadyExam += 1
+        if (isLessonAvailable(lesson) && isTrustedForExam(lesson.slug)) trustedExam += 1
       }
     }
   }
-  const readiness = totalExam ? Math.round((readyExam / totalExam) * 100) : 0
+  const readiness = totalExam ? Math.round((trustedExam / totalExam) * 100) : 0
   const topics = topicMastery()
   const ap1Lernfelder = lernfelder
     .map((lf, idx) => ({ lf, idx }))
@@ -80,8 +88,8 @@ export default function AP1Modus() {
           Filtere alles auf <em>prüfungsrelevant</em>.
         </h1>
         <p className="hero-sub" style={{ maxWidth: '52ch' }}>
-          Der AP1-Modus zeigt nur ausgearbeitete Kapitel mit Prüfungsbezug. Geplante
-          Stubs bleiben ausgeblendet, damit beim Lernen nichts unfertig wirkt.
+          Der AP1-Modus trennt alte Inhaltsstände von geprüftem Vertrauen.
+          Ungeprüfte Kapitel bleiben sichtbar, aber zählen nicht als belastbar.
         </p>
         <div className="hero-cta" style={{ marginTop: 24 }}>
           <Link to="/prüfen" className="btn btn-accent no-underline">
@@ -91,16 +99,16 @@ export default function AP1Modus() {
 
         <div className="ap1-stats">
           <div>
-            <div className="ap1-stat-lbl">Bereitschaft</div>
+            <div className="ap1-stat-lbl">Belastbar</div>
             <div className="ap1-stat-val">
               {readiness}
               <small>%</small>
             </div>
           </div>
           <div>
-            <div className="ap1-stat-lbl">Inhalt fertig</div>
+            <div className="ap1-stat-lbl">Teil-geprüft</div>
             <div className="ap1-stat-val">
-              {readyExam}
+              {trustedExam}
               <small>/{totalExam}</small>
             </div>
           </div>
@@ -112,9 +120,10 @@ export default function AP1Modus() {
             </div>
           </div>
           <div>
-            <div className="ap1-stat-lbl">Themen-Cluster</div>
+            <div className="ap1-stat-lbl">Inhalt alt</div>
             <div className="ap1-stat-val">
-              {topics.length}
+              {contentReadyExam}
+              <small>/{totalExam}</small>
             </div>
           </div>
         </div>
@@ -126,7 +135,7 @@ export default function AP1Modus() {
             <h2 className="sec-title">
               Themen-<em>Beherrschung</em>
             </h2>
-            <div className="sec-meta">Schwächste oben · klick startet erstes Kapitel</div>
+            <div className="sec-meta">Wenig Vertrauen oben · klick startet erstes Kapitel</div>
           </div>
           <div className="topics">
             {topics.map((topic) => {
@@ -141,7 +150,7 @@ export default function AP1Modus() {
                   <div>
                     <div className="topic-name">{topic.name}</div>
                     <div className="topic-meta">
-                      {topic.items} Kapitel · {topic.ready} fertig
+                      {topic.items} Kapitel · {topic.trusted} teil-geprüft · {topic.ready} alter Inhalt
                     </div>
                     <div className={`topic-bar ${tone}`}>
                       <span style={{ width: `${pct}%` }} />
@@ -173,10 +182,17 @@ export default function AP1Modus() {
               (a, m) => a + m.lessons.filter((l) => l.exam && isLessonAvailable(l)).length,
               0,
             )
-            const lfPct = examTotal ? examReady / examTotal : 0
+            const examTrusted = lf.moduls.reduce(
+              (a, m) => a + m.lessons.filter((l) => l.exam && isLessonAvailable(l) && isTrustedForExam(l.slug)).length,
+              0,
+            )
+            const lfPct = examTotal ? examTrusted / examTotal : 0
             const firstReady = lf.moduls
               .flatMap((m) => m.lessons.map((l) => ({ modul: m, lesson: l })))
-              .find((entry) => entry.lesson.exam && isLessonAvailable(entry.lesson))
+              .find((entry) => entry.lesson.exam && isLessonAvailable(entry.lesson) && isTrustedForExam(entry.lesson.slug))
+              ?? lf.moduls
+                .flatMap((m) => m.lessons.map((l) => ({ modul: m, lesson: l })))
+                .find((entry) => entry.lesson.exam && isLessonAvailable(entry.lesson))
 
             const target = firstReady
               ? `/lernen/${lf.slug}/${firstReady.modul.slug}/${firstReady.lesson.slug}`
@@ -198,7 +214,7 @@ export default function AP1Modus() {
                 <h3 className="lf-title">{lf.title}</h3>
                 <div className="lf-foot">
                   <span>
-                    {examReady}/{examTotal} prüfungsrelevant fertig
+                    {examTrusted}/{examTotal} belastbar · {examReady} alter Inhalt
                   </span>
                   <span style={{ fontFamily: 'var(--font-mono)' }}>
                     {Math.round(lfPct * 100)}%

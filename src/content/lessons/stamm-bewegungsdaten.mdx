@@ -1,0 +1,205 @@
+# Stamm- und Bewegungsdaten
+
+<MetaBar
+  lernfeld="LF 5 / LF 8 - Daten in Software, Prozessen und Datenbanksystemen"
+  prüfungsrelevanz="PFLICHT - 4/5"
+/>
+
+## Worum geht's
+
+In betrieblichen Anwendungen tauchen Daten nicht zufällig auf. Ein <Term id="erp-system">ERP-System</Term>,
+ein <Term id="crm">CRM-System</Term>, ein Ticketsystem oder eine Datenbank speichert verschiedene
+Arten von Daten, weil sie verschiedene Aufgaben haben: Kunden beschreiben, Aufträge
+dokumentieren, Lagerbestände führen, Rechnungen erzeugen oder Auswertungen ermöglichen.
+
+Das Kapitel klärt die Grundfrage: **Welche Daten beschreiben etwas dauerhaft, welche
+Daten entstehen durch einen Vorgang und welche Daten zeigen einen aktuellen Zustand?**
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du <Term id="stammdaten">Stammdaten</Term>,
+<Term id="bewegungsdaten">Bewegungsdaten</Term>, <Term id="bestandsdaten">Bestandsdaten</Term>
+und <Term id="referenzdaten">Referenzdaten</Term> unterscheiden. Du erkennst typische
+Beispiele in ERP, CRM, Lager, Buchhaltung und Support. Ausserdem kannst du erklären,
+warum <Term id="datenqualität">Datenqualität</Term>, eindeutige Schlüssel und Datenschutz
+bei allen Datenarten wichtig sind.
+
+## Der Faktenkern
+
+| Datenart | Kernfrage | Typische Beispiele | Ändert sich typischerweise |
+|---|---|---|---|
+| <Term id="stammdaten">Stammdaten</Term> | Wer oder was ist das? | Kunde, Artikel, Lieferant, Mitarbeiter, Standort | eher selten |
+| <Term id="bewegungsdaten">Bewegungsdaten</Term> | Was ist passiert? | Bestellung, Rechnung, Zahlung, Ticket, Wareneingang | bei jedem Vorgang neu |
+| <Term id="bestandsdaten">Bestandsdaten</Term> | Wie ist der aktuelle Stand? | Lagerbestand, Kontostand, offene Tickets, freie Lizenzen | laufend durch Vorgänge |
+| <Term id="referenzdaten">Referenzdaten</Term> | Welche festen Werte dürfen verwendet werden? | Ländercode, Steuerkennzeichen, Mengeneinheit, Statuswert | selten, kontrolliert |
+
+Merksatz: **Stammdaten beschreiben Objekte, Bewegungsdaten beschreiben Ereignisse,
+Bestandsdaten beschreiben Zustände.**
+
+<Analogie>
+Stell dir einen Bibliotheksausweis vor. Die Leserin mit Name, Kundennummer und Adresse
+ist Stammdaten. Eine Ausleihe oder Rückgabe ist Bewegungsdaten. Wie viele Bücher
+gerade ausgeliehen sind, ist Bestandsdaten. Die erlaubten Ausleihstatus wie "offen",
+"verlängert" oder "überfällig" sind Referenzdaten.
+</Analogie>
+
+## Stammdaten: die ruhige Basis
+
+Stammdaten beschreiben wichtige Geschäftsobjekte. Sie sind nicht an genau eine
+Transaktion gebunden, sondern werden in vielen Vorgängen wiederverwendet.
+
+| Objekt | Typische Stammdaten | Wofür sie gebraucht werden |
+|---|---|---|
+| Kunde | Kundennummer, Name, Adresse, Zahlungsbedingung | Angebot, Auftrag, Rechnung, Supportfall |
+| Artikel | Artikelnummer, Bezeichnung, Einheit, Preisgruppe | Bestellung, Lager, Verkauf, Inventur |
+| Lieferant | Lieferantennummer, Kontakt, Konditionen | Einkauf, Wareneingang, Rechnung |
+| Mitarbeiter | Personalnummer, Rolle, Standort | Berechtigungen, Zeiterfassung, Servicezuordnung |
+
+Wichtig: "Stammdaten" heißt nicht "die wichtigsten Daten". Es heißt: Die Daten
+beschreiben einen Kerngegenstand des Unternehmens und werden in vielen Prozessen
+wiederverwendet.
+
+## Bewegungsdaten: der Ablauf wird gespeichert
+
+Bewegungsdaten entstehen, wenn in einem Prozess etwas passiert. Sie haben oft Datum,
+Uhrzeit, Menge, Betrag, Status, beteiligte Personen oder einen Bezug auf Stammdaten.
+
+| Vorgang | Bewegungsdaten | Bezug auf Stammdaten |
+|---|---|---|
+| Kundenauftrag | Auftragsnummer, Datum, Positionen, Menge, Status | Kunde, Artikel |
+| Rechnung | Rechnungsnummer, Betrag, Fälligkeit, Steuersatz | Kunde, Artikel, Zahlungsbedingung |
+| Wareneingang | Lieferschein, Menge, Zeitpunkt, Lagerort | Lieferant, Artikel |
+| Supportticket | Ticketnummer, Fehlerbeschreibung, Priorität, Bearbeitungsverlauf | Kunde, Benutzer, System |
+
+Bewegungsdaten sind für Nachvollziehbarkeit wichtig. Eine alte Rechnung bleibt als
+Beleg erhalten, auch wenn der Kunde später umzieht. Deshalb darf man historische
+Vorgänge nicht blind mit aktuellen Stammdaten überschreiben.
+
+## Bestandsdaten: der aktuelle Zustand
+
+Bestandsdaten zeigen einen Stand zu einem Zeitpunkt. Sie entstehen oft aus Bewegungen
+oder werden durch Bewegungen verändert.
+
+| Bestand | Was beeinflusst ihn? | Beispiel |
+|---|---|---|
+| Lagerbestand | Wareneingang, Verkauf, Inventurkorrektur | 42 Stück Artikel A im Lager Nord |
+| Kontostand | Zahlungseingang, Abbuchung, Gebühr | 1.250,00 EUR auf Konto 4711 |
+| Lizenzbestand | Kauf, Zuweisung, Rückgabe | 7 freie Lizenzen |
+| Ticketbestand | neue Tickets, Lösung, Eskalation | 13 offene Tickets im First Level |
+
+Prüfungsfalle: Eine Warenbewegung ist nicht dasselbe wie der Lagerbestand. Die
+Warenbewegung sagt, **was passiert ist**. Der Lagerbestand sagt, **wie viel danach da ist**.
+
+## Referenzdaten: erlaubte Werte
+
+Referenzdaten sind kleine, kontrollierte Wertelisten. Sie sorgen dafür, dass Systeme
+nicht mit beliebigen Schreibweisen arbeiten.
+
+| Ohne Referenzdaten | Mit Referenzdaten |
+|---|---|
+| "Deutschland", "DE", "BRD", "Germany" | Ländercode `DE` |
+| "Stk.", "Stück", "pcs" | Mengeneinheit `ST` |
+| "offen", "Offen", "open" | Status `OFFEN` |
+
+Referenzdaten sind oft unscheinbar, aber wichtig für Schnittstellen, Auswertungen und
+Datenqualität.
+
+## Datenqualität: warum die Unterscheidung praktisch wichtig ist
+
+Schlechte Stammdaten verursachen schlechte Bewegungsdaten. Eine falsche Kundenadresse
+kann falsche Lieferungen, falsche Rechnungen und unnötige Supportfälle erzeugen.
+
+| Qualitätskriterium | Frage | Typischer Fehler |
+|---|---|---|
+| Eindeutigkeit | Gibt es jeden Kunden oder Artikel nur einmal? | Dubletten wie `M. Meier` und `Max Meier` |
+| Vollständigkeit | Sind Pflichtfelder gefuellt? | Artikel ohne Einheit oder Kunde ohne Rechnungsadresse |
+| Korrektheit | Stimmen die Werte fachlich? | falscher Steuersatz, veraltete Bankverbindung |
+| Aktualität | Sind die Daten noch gültig? | alte Lieferadresse im Kundenstamm |
+| Konsistenz | Passen Werte in allen Systemen zusammen? | CRM und ERP haben verschiedene Kundennummern |
+| Nachvollziehbarkeit | Ist erkennbar, wer was wann geändert hat? | keine Historie bei Preis- oder Adressänderungen |
+
+## Datenschutz und Rechte
+
+Personenbezogene Daten können in jeder Datenart vorkommen. Eine Kundennummer allein
+kann mit anderen Informationen personenbezogen werden, wenn sie auf eine natürliche
+Person beziehbar ist. Dann gelten Datenschutzgrundsätze wie Zweckbindung,
+Datenminimierung, Speicherbegrenzung und Zugriffsbeschränkung.
+
+| Situation | Datenschutzgedanke |
+|---|---|
+| Kundendaten im CRM | Nur Daten speichern, die für Betreuung, Vertrag oder Service benötigt werden |
+| Rechnung im ERP | Aufbewahrungspflichten beachten, Zugriff auf Rollen beschränken |
+| Supportticket mit Fehlerbeschreibung | keine unnötigen privaten Inhalte oder Passwörter speichern |
+| Export nach Excel | prüfen, wer die Datei bekommt und ob der Export wirklich nötig ist |
+
+## Typische Denkfehler
+
+| Denkfehler | Korrektur |
+|---|---|
+| "Stammdaten sind einfach wichtige Daten." | Stammdaten beschreiben wiederverwendete Kernobjekte wie Kunden, Artikel oder Lieferanten. |
+| "Bewegungsdaten sind Daten, die sich bewegen." | Bewegungsdaten dokumentieren Vorgänge, Ereignisse oder Transaktionen. |
+| "Bestand und Bewegung sind gleich." | Bewegung ist der Vorgang, Bestand ist der Zustand nach oder zwischen Vorgängen. |
+| "Aktuelle Adresse darf in alte Rechnung kopiert werden." | Belege müssen nachvollziehbar bleiben; Historie und Stammdatenpflege trennen. |
+| "Dubletten sind nur optisch störend." | Dubletten führen zu falschen Auswertungen, doppelter Kommunikation und Prozessfehlern. |
+
+## Mini-Selbstcheck
+
+| Fall | Datenart | Warum |
+|---|---|---|
+| Kundennummer `K-10042` mit Name und Rechnungsadresse | Stammdaten | beschreibt den Kunden als wiederverwendetes Objekt |
+| Bestellung `B-7781` vom 03.06.2026 über 5 Monitore | Bewegungsdaten | dokumentiert einen konkreten Vorgang |
+| Aktuell 17 Monitore auf Lager | Bestandsdaten | zeigt den Zustand des Lagers |
+| Statuswerte `offen`, `in Bearbeitung`, `geloest` | Referenzdaten | kontrollierte Werteliste für Tickets |
+
+Wenn du bei einem Beispiel unsicher bist, frage in dieser Reihenfolge: Beschreibt es ein
+Objekt, ein Ereignis, einen Zustand oder eine erlaubte Werteliste?
+
+## Einordnung für LF5 und LF8
+
+In LF5 ist die Unterscheidung wichtig, weil Software Daten verarbeitet, Bedingungen
+prüft und Datenstrukturen braucht. In LF8 wird sie noch wichtiger, weil Datenbanksysteme
+Tabellen, Beziehungen, Schlüssel, Normalisierung, Rechte und Auswertungen sauber
+abbilden müssen.
+
+Das Kapitel ist deshalb ein Grundlagenbaustein für ER-Modelle, SQL, Normalisierung,
+Schnittstellen, ERP/CRM-Prozesse und Datenschutz.
+
+<Quellen
+  quellen={[
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizielle Lernfeld-Grundlage für LF5 Software zur Verwaltung von Daten anpassen und LF8 Daten systemübergreifend bereitstellen.'
+    },
+    {
+      label: 'FIAusbV - Fachinformatikerausbildungsverordnung',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung mit Ausbildungsrahmenplan und Prüfungsanforderungen für die ersten 18 Monate und die gestreckte Abschlussprüfung.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Praxishilfe zur modernisierten Fachinformatiker-Ausbildung mit betrieblichem Prozess-, Daten- und Systembezug.'
+    },
+    {
+      label: 'SAP Help Portal - What is MDM?',
+      href: 'https://help.sap.com/docs/SAP_NETWEAVER_MASTER_DATA_MANAGEMENT/99218f2c48044ddc8f2ea30adc0e38a1/471c5928cd0412b8e10000000a1553f7.html',
+      detail: 'SAP erklärt Master Data als Kerndaten eines Unternehmens, die unabhängig von einzelnen Transaktionen bestehen und in Geschäftsvorgängen referenziert werden.'
+    },
+    {
+      label: 'Microsoft Learn - Manage your data effectively with the right architecture and modeling',
+      href: 'https://learn.microsoft.com/en-us/dynamics365/guidance/implementation-guide/data-management-architecture',
+      detail: 'Microsoft unterscheidet Enterprise Data unter anderem in Master Data, Configuration Data, Transactional Data und Inferred Data.'
+    },
+    {
+      label: 'IBM - What is master data management?',
+      href: 'https://www.ibm.com/think/topics/master-data-management',
+      detail: 'IBM beschreibt Master Data Management, Stammdaten-Domains wie Customer/Product/Supplier/Location und Qualitätsprobleme wie Dubletten und Inkonsistenzen.'
+    },
+    {
+      label: 'EUR-Lex - Datenschutz-Grundverordnung (DSGVO)',
+      href: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=de',
+      detail: 'Amtlicher EU-Text der DSGVO, besonders Art. 5 zu Grundsätzen wie Zweckbindung, Datenminimierung und Speicherbegrenzung.'
+    },
+  ]}
+/>

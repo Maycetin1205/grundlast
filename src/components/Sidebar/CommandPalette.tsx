@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import * as Dialog from "@radix-ui/react-dialog"
 import Fuse from "fuse.js"
 import { Search, X } from "lucide-react"
+import { auditStatusShortLabel, getLessonAudit } from "../../lib/audit"
 import { isLessonAvailable, lessonIndex } from "../../lib/toc"
 import type { LessonSearchItem } from "../../lib/toc"
 import { shortcutLabel } from "./nav-config"
@@ -96,26 +97,33 @@ export default function CommandPalette({ open, onOpenChange }: CommandPalettePro
 
           <div className="max-h-[60vh] overflow-y-auto p-2">
             {results.length > 0 ? (
-              results.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => choose(item)}
-                  className="grid w-full grid-cols-[1fr_auto] gap-4 rounded-md px-4 py-3 text-left transition-colors hover:bg-paper-deep"
-                >
-                  <span className="min-w-0">
-                    <span className="block truncate font-ui text-sm font-semibold text-ink">
-                      {item.title}
+              results.map((item) => {
+                const audit = getLessonAudit(item.slug)
+
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => choose(item)}
+                    className="grid w-full grid-cols-[1fr_auto_auto] gap-3 rounded-md px-4 py-3 text-left transition-colors hover:bg-paper-deep"
+                  >
+                    <span className="min-w-0">
+                      <span className="block truncate font-ui text-sm font-semibold text-ink">
+                        {item.title}
+                      </span>
+                      <span className="mt-0.5 block truncate font-ui text-xs text-muted">
+                        {item.lernfeld} / {item.modul}
+                      </span>
                     </span>
-                    <span className="mt-0.5 block truncate font-ui text-xs text-muted">
-                      {item.lernfeld} / {item.modul}
+                    <span className="self-center rounded-sm border border-rule px-2 py-0.5 font-ui text-[10px] uppercase tracking-[0.1em] text-accent">
+                      {item.minutes ? `${item.minutes} min` : "Kapitel"}
                     </span>
-                  </span>
-                  <span className="self-center rounded-sm border border-rule px-2 py-0.5 font-ui text-[10px] uppercase tracking-[0.1em] text-accent">
-                    {item.minutes ? `${item.minutes} min` : "Kapitel"}
-                  </span>
-                </button>
-              ))
+                    <span className="self-center rounded-sm border border-rule bg-paper-deep px-2 py-0.5 font-mono text-[10px] font-semibold uppercase text-muted">
+                      {auditStatusShortLabel(audit.status)}
+                    </span>
+                  </button>
+                )
+              })
             ) : (
               <p className="px-4 py-8 text-center font-ui text-sm text-muted">Keine Treffer.</p>
             )}

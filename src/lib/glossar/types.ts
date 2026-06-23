@@ -15,7 +15,8 @@ export interface GlossarEintrag {
   begriff: string
   kurzdefinition: string
   definition: string[]
-  kapitel: GlossarKapitel
+  /** Optionaler Deeplink zu einer Lektion. Fehlt, wenn (noch) keine Lektion existiert. */
+  kapitel?: GlossarKapitel
 }
 
 export type GlossarRegister = Record<string, GlossarEintrag>

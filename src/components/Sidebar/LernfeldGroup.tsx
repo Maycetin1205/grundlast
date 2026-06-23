@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom"
 import { useAutoAnimate } from "@formkit/auto-animate/react"
 import { BookOpen, ChevronRight } from "lucide-react"
 import { cn } from "../../lib/cn"
+import { isTrustedForExam } from "../../lib/audit"
 import { isLessonAvailable, lessonIndex } from "../../lib/toc"
 import type { Lernfeld } from "../../lib/toc"
 import { ICONS } from "./nav-config"
@@ -37,6 +38,14 @@ export default function LernfeldGroup({ lf, onNavigate }: LernfeldGroupProps) {
     (sum, modul) => sum + modul.lessons.filter(isLessonAvailable).length,
     0,
   )
+  const trusted = lf.moduls.reduce(
+    (sum, modul) =>
+      sum +
+      modul.lessons.filter((lesson) => isLessonAvailable(lesson) && isTrustedForExam(lesson.slug))
+        .length,
+    0,
+  )
+  const oldContent = ready - trusted
   const planned = total - ready
   const availableModules = lf.moduls
     .map((modul) => ({
@@ -65,7 +74,8 @@ export default function LernfeldGroup({ lf, onNavigate }: LernfeldGroupProps) {
         <span className="min-w-0 flex-1">
           <span className="block truncate text-[14px] font-semibold leading-tight">{lf.title}</span>
           <span className="mt-0.5 block text-[11px] leading-tight text-muted">
-            {ready} verfuegbar{planned > 0 ? ` - ${planned} geplant` : ""}
+            {trusted} belastbar{oldContent > 0 ? ` - ${oldContent} alt` : ""}
+            {planned > 0 ? ` - ${planned} geplant` : ""}
           </span>
         </span>
         <ChevronRight

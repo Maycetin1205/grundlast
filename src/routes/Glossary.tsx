@@ -148,7 +148,7 @@ export default function Glossary() {
                       }}
                     >
                       <Link
-                        to={eintrag.kapitel.href}
+                        to={eintrag.kapitel ? eintrag.kapitel.href : `/glossar#${eintrag.id}`}
                         className="no-underline"
                         style={{
                           display: 'grid',
@@ -184,12 +184,14 @@ export default function Glossary() {
                           >
                             {eintrag.kurzdefinition}
                           </p>
-                          <p
-                            className="m-0 mt-1 font-mono uppercase text-ink-3"
-                            style={{ fontSize: 10.5, letterSpacing: '0.06em' }}
-                          >
-                            → {eintrag.kapitel.titel}
-                          </p>
+                          {eintrag.kapitel && (
+                            <p
+                              className="m-0 mt-1 font-mono uppercase text-ink-3"
+                              style={{ fontSize: 10.5, letterSpacing: '0.06em' }}
+                            >
+                              → {eintrag.kapitel.titel}
+                            </p>
+                          )}
                         </div>
                       </Link>
                     </li>

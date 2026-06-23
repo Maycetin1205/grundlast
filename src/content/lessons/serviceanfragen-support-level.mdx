@@ -9,7 +9,7 @@
 
 Nach diesem Kapitel kannst du Serviceanfragen sauber aufnehmen, in Incident, Service Request
 oder Problem einordnen, den passenden Support-Level bestimmen und ein Ticket so dokumentieren,
-dass ein anderer Techniker ohne Rueckfrage weiterarbeiten kann.
+dass ein anderer Techniker ohne Rückfrage weiterarbeiten kann.
 
 Das ist prüfungsrelevant, weil LF6 nicht nur Technik prüft. Die Aufgabe will sehen, ob du
 Kundenkontakt, Prozessdenken, SLA, Dokumentation und Fehleranalyse zusammenbringst.
@@ -17,7 +17,7 @@ Kundenkontakt, Prozessdenken, SLA, Dokumentation und Fehleranalyse zusammenbring
 <Analogie>
 Ein Service Desk ist wie die Notaufnahme im Krankenhaus. Nicht jeder Fall ist gleich kritisch:
 Ein gebrochener Arm, ein Rezeptwunsch und wiederkehrende Bauchschmerzen brauchen verschiedene
-Wege. Entscheidend ist zuerst die Triage: Was ist passiert, wie dringend ist es, wer kann helfen
+Wege. Entscheidend ist zürst die Triage: Was ist passiert, wie dringend ist es, wer kann helfen
 und was muss dokumentiert werden?
 </Analogie>
 
@@ -29,14 +29,14 @@ entgegengenommen, klassifiziert, priorisiert, bearbeitet, eskaliert und dokument
 | Begriff | Kurzdefinition | Typische Prüfungs-Erkennung |
 |---|---|---|
 | Service Desk | zentrale Kontaktstelle für Nutzer und Kunden | "Anwender meldet sich", "Support nimmt Anfrage auf" |
-| Ticket | dokumentierter Bearbeitungsfall | Ticketnummer, Status, Kategorie, Prioritaet |
-| Incident | ungeplante Stoerung oder Qualitaetsminderung eines Services | "funktioniert nicht", "Ausfall", "Stoerung" |
-| Service Request | vordefinierte Nutzeranfrage ohne Stoerung | "Passwort zuruecksetzen", "Software installieren", "Zugang beantragen" |
+| Ticket | dokumentierter Bearbeitungsfall | Ticketnummer, Status, Kategorie, Priorität |
+| Incident | ungeplante Störung oder Qualitätsminderung eines Services | "funktioniert nicht", "Ausfall", "Störung" |
+| Service Request | vordefinierte Nutzeranfrage ohne Störung | "Passwort zurücksetzen", "Software installieren", "Zugang beantragen" |
 | Problem | Ursache hinter einem oder mehreren Incidents | "tritt wiederholt auf", "Ursache unklar", "Root Cause" |
-| SLA | vereinbarter Service-Level mit messbaren Zielen | Reaktionszeit, Loesungszeit, Verfügbarkeit |
+| SLA | vereinbarter Service-Level mit messbaren Zielen | Reaktionszeit, Lösungszeit, Verfügbarkeit |
 
 <Warnung titel="Die wichtigste Verwechslung">
-Ein Incident ist die sichtbare Stoerung. Ein Problem ist die dahinterliegende Ursache.
+Ein Incident ist die sichtbare Störung. Ein Problem ist die dahinterliegende Ursache.
 Wenn ein Drucker einmal nicht druckt, ist das ein Incident. Wenn zehn Drucker wegen
 eines fehlerhaften Treibers ausfallen, ist der Treiber das Problem.
 </Warnung>
@@ -59,15 +59,15 @@ eines fehlerhaften Treibers ausfallen, ist der Treiber das Problem.
     },
     {
       titel: 'Bearbeiten oder eskalieren',
-      text: 'First Level loest Standardfaelle. Wenn Wissen, Rechte oder Werkzeuge fehlen, wird an Second oder Third Level weitergegeben.',
+      text: 'First Level löst Standardfälle. Wenn Wissen, Rechte oder Werkzeuge fehlen, wird an Second oder Third Level weitergegeben.',
     },
     {
       titel: 'Status dokumentieren',
-      text: 'Jede Diagnose, Rueckfrage, Maßnahme und Eskalation ins Ticket schreiben. Nicht nur das Ergebnis, sondern den Weg dokumentieren.',
+      text: 'Jede Diagnose, Rückfrage, Maßnahme und Eskalation ins Ticket schreiben. Nicht nur das Ergebnis, sondern den Weg dokumentieren.',
     },
     {
       titel: 'Abschluss und Reflexion',
-      text: 'Loesung mit dem Nutzer bestaetigen, Ticket schliessen, Wissensdatenbank aktualisieren und wiederkehrende Muster melden.',
+      text: 'Lösung mit dem Nutzer bestätigen, Ticket schließen, Wissensdatenbank aktualisieren und wiederkehrende Muster melden.',
     },
   ]}
 />
@@ -78,15 +78,15 @@ Support-Level beschreiben nicht "besser" oder "schlechter", sondern die Tiefe de
 
 | Level | Aufgabe | Beispiele | Eskalationsgrund |
 |---|---|---|---|
-| First Level | Annahme, Standardloesungen, einfache Diagnose | Passwort zuruecksetzen, Druckerwarteschlange leeren, FAQ nutzen | Fall ist nicht mit Standardmitteln loesbar |
-| Second Level | tiefere technische Analyse, Fachwissen | Treiberproblem, Netzwerkkonfiguration, Rechteproblem im Fachsystem | Hersteller, Entwicklung oder Spezialist noetig |
-| Third Level | Spezialisten, Hersteller, Entwicklung | Softwarefehler, Firmware-Bug, komplexe Infrastrukturstoerung | Code-/Produktanpassung oder Herstellerfix noetig |
+| First Level | Annahme, Standardlösungen, einfache Diagnose | Passwort zurücksetzen, Druckerwarteschlange leeren, FAQ nutzen | Fall ist nicht mit Standardmitteln lösbar |
+| Second Level | tiefere technische Analyse, Fachwissen | Treiberproblem, Netzwerkkonfiguration, Rechteproblem im Fachsystem | Hersteller, Entwicklung oder Spezialist nötig |
+| Third Level | Spezialisten, Hersteller, Entwicklung | Softwarefehler, Firmware-Bug, komplexe Infrastrukturstörung | Code-/Produktanpassung oder Herstellerfix nötig |
 
-Merksatz: **First Level fragt und filtert. Second Level analysiert. Third Level veraendert oft das System selbst.**
+Merksatz: **First Level fragt und filtert. Second Level analysiert. Third Level verändert oft das System selbst.**
 
-## Prioritaet: Auswirkung mal Dringlichkeit
+## Priorität: Auswirkung mal Dringlichkeit
 
-Die Prüfung fragt gerne, welches Ticket zuerst bearbeitet werden muss. Entscheidend sind zwei Achsen:
+Die Prüfung fragt gerne, welches Ticket zürst bearbeitet werden muss. Entscheidend sind zwei Achsen:
 
 | Achse | Leitfrage | Beispiel |
 |---|---|---|
@@ -106,35 +106,35 @@ Ein IT-Dienstleister betreut einen Kunden. Um 08:10 Uhr liegen drei Tickets vor:
 
 | Ticket | Meldung | Betroffen | Einschätzung |
 |---|---|---|---|
-| A | Ein Mitarbeiter kann sein Passwort nicht zuruecksetzen | ein Nutzer | Service Request, P3 |
+| A | Ein Mitarbeiter kann sein Passwort nicht zurücksetzen | ein Nutzer | Service Request, P3 |
 | B | Das Warenwirtschaftssystem ist für alle nicht erreichbar | gesamter Betrieb | Incident, P1 |
 | C | Ein Drucker im Besprechungsraum meldet Papierstau | wenige Nutzer | Incident, P4 |
 
-Ticket B wird zuerst bearbeitet. Nicht, weil es technisch spannender ist, sondern weil die
+Ticket B wird zürst bearbeitet. Nicht, weil es technisch spannender ist, sondern weil die
 betriebliche Auswirkung am größten ist. Ticket A ist wichtig, aber standardisiert. Ticket C
 hat geringe Auswirkung und kann warten.
 </Beispiel>
 
-## Was in ein gutes Ticket gehoert
+## Was in ein gutes Ticket gehört
 
-Ein gutes Ticket ist so geschrieben, dass der naechste Bearbeiter den Fall übernehmen kann,
+Ein gutes Ticket ist so geschrieben, dass der nächste Bearbeiter den Fall übernehmen kann,
 ohne alles neu zu erfragen.
 
 | Feld | Warum es wichtig ist | Beispiel |
 |---|---|---|
-| Betroffener Nutzer/Kunde | Rueckfragen und Zuordnung | m.mustermann, Standort Berlin |
+| Betroffener Nutzer/Kunde | Rückfragen und Zuordnung | m.mustermann, Standort Berlin |
 | Service/Asset | grenzt den Fehler ein | Warenwirtschaft, Notebook NB-204 |
 | Fehlerbild | beschreibt das Symptom | Login bricht mit Fehlercode 403 ab |
 | Zeitpunkt | erkennt Muster | seit Update am Montagmorgen |
-| Auswirkung | Grundlage für Prioritaet | gesamte Buchhaltung betroffen |
+| Auswirkung | Grundlage für Priorität | gesamte Buchhaltung betroffen |
 | Bisherige Schritte | verhindert Doppelarbeit | Passwort getestet, VPN verbunden |
 | Kategorie | Reporting und Routing | Netzwerk / Anwendung / Benutzerkonto |
-| Status | Transparenz im Prozess | neu, in Bearbeitung, wartend, geloest |
-| Loesung | Wissensaufbau | Cache geloescht, Rechtegruppe angepasst |
+| Status | Transparenz im Prozess | neu, in Bearbeitung, wartend, gelöst |
+| Lösung | Wissensaufbau | Cache gelöscht, Rechtegruppe angepasst |
 
 <Warnung titel="Ticket ohne Verlauf ist fast wertlos">
-"Geht wieder" reicht nicht. Wer nicht dokumentiert, was geprueft und geaendert wurde,
-zerstoert Wissen. Beim naechsten aehnlichen Fall faengt der Support wieder bei null an.
+"Geht wieder" reicht nicht. Wer nicht dokumentiert, was geprüft und geändert wurde,
+zerstört Wissen. Beim nächsten ähnlichen Fall fängt der Support wieder bei null an.
 </Warnung>
 
 ## Systematisch fragen
@@ -144,12 +144,12 @@ Guter Support ist kontrolliertes Fragen, nicht wildes Raten.
 | Frage | Zweck |
 |---|---|
 | Was genau funktioniert nicht? | Symptom eingrenzen |
-| Seit wann tritt es auf? | Zusammenhang mit Aenderung erkennen |
+| Seit wann tritt es auf? | Zusammenhang mit Änderung erkennen |
 | Wer ist betroffen? | Auswirkung bestimmen |
 | Tritt der Fehler immer oder nur manchmal auf? | Reproduzierbarkeit prüfen |
 | Was wurde bereits versucht? | Doppelarbeit vermeiden |
 | Gibt es eine Fehlermeldung? | konkrete Diagnosehinweise sichern |
-| Gab es Updates, Umzuege oder Rechteaenderungen? | Ursache eingrenzen |
+| Gab es Updates, Umzüge oder Rechteänderungen? | Ursache eingrenzen |
 
 ## Typische Aufgaben
 
@@ -157,33 +157,33 @@ Die Aufgabe fragt dieses Thema meistens nicht als Definitionsabfrage, sondern al
 
 Du bekommst zum Beispiel:
 
-- mehrere Tickets und sollst Prioritaeten vergeben
-- eine Stoerungsmeldung und sollst passende Rueckfragen formulieren
-- mehrere Faelle und sollst Support-Level zuordnen
+- mehrere Tickets und sollst Prioritäten vergeben
+- eine Störungsmeldung und sollst passende Rückfragen formulieren
+- mehrere Fälle und sollst Support-Level zuordnen
 - ein schlechtes Ticket und sollst fehlende Angaben nennen
 - eine SLA-Vorgabe und sollst prüfen, ob Reaktionszeiten eingehalten wurden
 
-## Musterloesung: Support-Level zuordnen
+## Musterlösung: Support-Level zuordnen
 
-| Fall | Einordnung | Begruendung |
+| Fall | Einordnung | Begründung |
 |---|---|---|
-| Passwort vergessen, Identitaet geprueft, Reset nach Standardprozess | First Level | Standardfall mit klarer Anleitung |
-| VPN verbindet, aber Zugriff auf Fachanwendung scheitert nur in einer Rechtegruppe | Second Level | tiefere Rechte-/Netzwerkanalyse noetig |
-| Nach Update stuerzt die Eigenentwicklung bei allen Kunden ab | Third Level | Entwickler oder Hersteller muss Fehler beheben |
-| Nutzer beantragt zusaetzlichen Monitor nach Arbeitsplatzstandard | Service Request | keine Stoerung, vordefinierter Wunsch |
+| Passwort vergessen, Identität geprüft, Reset nach Standardprozess | First Level | Standardfall mit klarer Anleitung |
+| VPN verbindet, aber Zugriff auf Fachanwendung scheitert nur in einer Rechtegruppe | Second Level | tiefere Rechte-/Netzwerkanalyse nötig |
+| Nach Update stürzt die Eigenentwicklung bei allen Kunden ab | Third Level | Entwickler oder Hersteller muss Fehler beheben |
+| Nutzer beantragt zusätzlichen Monitor nach Arbeitsplatzstandard | Service Request | keine Störung, vordefinierter Wunsch |
 
 ## Fehlerfallen
 
-1. **Lautstaerke mit Prioritaet verwechseln:** Prioritaet entsteht aus Auswirkung und Dringlichkeit.
+1. **Lautstärke mit Priorität verwechseln:** Priorität entsteht aus Auswirkung und Dringlichkeit.
 2. **Incident und Problem mischen:** Incident ist das Symptom, Problem ist die Ursache.
-3. **Service Request als Stoerung behandeln:** Ein Standardwunsch braucht Fulfilment, keine Fehleranalyse.
-4. **Eskalation zu spaet ausloesen:** Wenn Rechte, Wissen oder Zeitlimit fehlen, muss weitergegeben werden.
+3. **Service Request als Störung behandeln:** Ein Standardwunsch braucht Fulfilment, keine Fehleranalyse.
+4. **Eskalation zu spät auslösen:** Wenn Rechte, Wissen oder Zeitlimit fehlen, muss weitergegeben werden.
 5. **SLA nur als Vertrag sehen:** In der Aufgabe steckt oft eine konkrete Zeitvorgabe, die berechnet oder bewertet werden muss.
-6. **Ticketabschluss ohne Nutzerbestaetigung:** "Technisch geloest" ist nicht immer "für den Nutzer geloest".
+6. **Ticketabschluss ohne Nutzerbestätigung:** "Technisch gelöst" ist nicht immer "für den Nutzer gelöst".
 
 ## Merksatz
 
-Wenn du in einer Aufgabe unsicher bist, schreibe zuerst diese vier Woerter an den Rand:
+Wenn du in einer Aufgabe unsicher bist, schreibe zürst diese vier Wörter an den Rand:
 
 ```text
 Typ - Auswirkung - Dringlichkeit - Level

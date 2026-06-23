@@ -12,11 +12,11 @@ einordnen, APIPA als Notfall-Default lesen und im Fehlerfall die richtige
 Diagnose-Reihenfolge — Link, IP, Gateway, DNS, Anwendung — sauber durchgehen.
 
 <Tipp titel="So benutzt du dieses Kapitel">
-Lerne zuerst die vier Pflichtwerte einer IPv4-Konfiguration und danach die Diagnosekette.
+Lerne zürst die vier Pflichtwerte einer IPv4-Konfiguration und danach die Diagnosekette.
 DHCP, DNS und ARP erklären dann nur noch, **warum** die einzelnen Prüfungen funktionieren.
 </Tipp>
 
-| Wenn du siehst ... | Denk zuerst an ... | Nächster Test |
+| Wenn du siehst ... | Denk zürst an ... | Nächster Test |
 |---|---|---|
 | `169.254.x.x` | DHCP nicht erreicht, APIPA aktiv | DHCP, VLAN, Kabel, Pool |
 | Gateway fehlt oder liegt falsch | lokales Netz kann gehen, Internet nicht | Ping auf Gateway |
@@ -25,10 +25,10 @@ DHCP, DNS und ARP erklären dann nur noch, **warum** die einzelnen Prüfungen fu
 
 ## 01 · Warum existiert das überhaupt?
 
-In jeder Aufgabe der letzten Jahre kam die gleiche Aufgabe in einer Variante vor:
+Prüfungsnah taucht dieses Thema oft als Fehlersuche auf:
 Ein Anwender meldet „Internet geht nicht", auf dem Schirm steht eine *<Term id="apipa">APIPA</Term>*-Adresse,
 und du sollst in einer geordneten Reihenfolge erklären, was du prüfst und warum. Daneben
-steht fast immer eine zweite Aufgabe, in der die *<Term id="dhcp">DHCP</Term>*-Schritte
+können Aufgaben stehen, in denen die *<Term id="dhcp">DHCP</Term>*-Schritte
 in die richtige Reihenfolge gebracht werden müssen, oder ein Konfigurations-Screenshot,
 aus dem du Subnetz, *<Term id="gateway">Standardgateway</Term>* und Nameserver
 herausziehen musst. Beides verlangt nicht mehr Wissen, sondern strukturiertes Vorgehen
@@ -55,10 +55,11 @@ Empfänger wirklich wohnt.
 
 ## 02 · Das Grundprinzip
 
-### Vier Adressparameter, kein einziger optional
+### Vier zentrale Adressparameter
 
-Eine vollständige IPv4-Konfiguration besteht aus vier Werten — und nur wenn alle vier
-sauber zueinanderpassen, funktioniert das Netz wie erwartet:
+Für einen typischen Arbeitsplatz mit lokalem Netz, Internetzugang und Namensauflösung
+prüfst du vier Werte. Nur wenn sie sauber züinanderpassen, funktioniert das Netz wie
+erwartet:
 
 | Parameter | Beispiel | Wofür? |
 |---|---|---|
@@ -111,8 +112,9 @@ Standardgateways — alles weitere übernimmt der Router.
 
 ### APIPA — der Notfall-Default
 
-Erhält ein Windows- oder Linux-Client per DHCP keine Antwort, vergibt er sich selbst
-eine Adresse aus dem Bereich `169.254.0.0/16`. Diese *<Term id="apipa">APIPA</Term>*-Adresse
+Erhält ein Client per DHCP keine Antwort und ist IPv4-Link-Local-Autokonfiguration
+aktiv, kann er sich selbst eine Adresse aus dem Bereich `169.254.0.0/16` geben.
+Diese *<Term id="apipa">APIPA</Term>*-Adresse
 ist nicht routbar — sie funktioniert nur im lokalen Segment und nur für andere
 APIPA-Hosts. In der Diagnose ist sie deshalb ein klares Signal: wenn du `169.254.x.x`
 siehst, ist der DHCP-Server entweder nicht erreichbar, der Pool leer, oder der Client
@@ -120,7 +122,7 @@ hängt im falschen VLAN.
 
 <Tipp titel="Lese-Eselsbrücke">
 Vier Werte, vier Wirkungen: ohne IP keine Verbindung, ohne Maske keine Nachbarn, ohne
-Gateway kein Aussenkontakt, ohne DNS keine Namen. Wer in der Aufgabe eine Symptom-
+Gateway kein Außenkontakt, ohne DNS keine Namen. Wer in der Aufgabe eine Symptom-
 Aufgabe sieht, listet erst die fehlende Wirkung — dann ist der fehlende Wert klar.
 </Tipp>
 
@@ -137,9 +139,9 @@ auf Port 67, der Client auf Port 68.
 <Schritte
   items={[
     { titel: 'Discover (Client → Broadcast)', text: 'Der Client hat noch keine IP. Er sendet einen Broadcast (Quelle 0.0.0.0, Ziel 255.255.255.255) ins lokale Segment: „Gibt es hier einen DHCP-Server, der mir helfen kann?" Im Paket steht seine MAC-Adresse als Identifikator.' },
-    { titel: 'Offer (Server → Client)', text: 'Jeder erreichbare DHCP-Server antwortet mit einem Adress-Vorschlag, der freie Adresse aus dem Pool, plus Subnetzmaske, Gateway, DNS und vorgeschlagener Lease-Dauer. Antworten mehrere Server, kommen mehrere Offers an — der Client wählt eines.' },
+    { titel: 'Offer (Server → Client)', text: 'Jeder erreichbare DHCP-Server antwortet mit einem Adress-Vorschlag: freie Adresse aus dem Pool, plus Subnetzmaske, Gateway, DNS und vorgeschlagener Lease-Dauer. Je nach Clientzustand kann die Antwort passend adressiert oder als Broadcast gesendet werden. Antworten mehrere Server, kommen mehrere Offers an — der Client wählt eines.' },
     { titel: 'Request (Client → Broadcast)', text: 'Der Client schickt erneut einen Broadcast: „Ich hätte gern das Angebot von Server X, Adresse Y." Der Broadcast informiert auch alle anderen Server, dass ihre Angebote nicht angenommen werden — sie geben ihre vorgemerkten Adressen wieder frei.' },
-    { titel: 'Acknowledge (Server → Client)', text: 'Der gewählte Server bestätigt mit einem ACK und schickt die finalen DHCP-Optionen mit: Adresse (Option 50), Maske (1), Gateway (3), DNS (6), Domain-Suffix (15), Lease-Dauer (51). Erst nach dem ACK übernimmt der Client die Konfiguration und beginnt zu kommunizieren.' },
+    { titel: 'Acknowledge (Server → Client)', text: 'Der gewählte Server bestätigt mit einem ACK. Die zugewiesene Adresse steht im DHCP-Paket; wichtige Optionen sind Subnetzmaske (1), Gateway/Router (3), DNS (6), Domain-Suffix (15) und Lease-Dauer (51). Erst nach dem ACK übernimmt der Client die Konfiguration und beginnt zu kommunizieren.' },
     { titel: 'Renew (T1, halbe Lease-Zeit)', text: 'Sobald die Hälfte der Lease-Zeit verstrichen ist, schickt der Client einen DHCP-Request direkt (unicast) an seinen Server, um die Lease zu verlängern. Antwortet der Server, läuft das Lease einfach weiter — kein neuer DORA nötig.' },
     { titel: 'Rebind (T2, 87,5 Prozent der Lease)', text: 'Antwortet der ursprüngliche Server nicht, versucht der Client ab T2 (typisch 87,5 Prozent der Lease-Dauer) per Broadcast einen beliebigen DHCP-Server zu erreichen. Klappt das nicht, läuft die Lease ab — der Client verliert die Konfiguration und beginnt mit Discover von vorn.' },
   ]}
@@ -152,18 +154,18 @@ Namen vor jedem Verbindungsaufbau in eine IP-Adresse auf. Der typische Ablauf:
 
 <Schritte
   items={[
-    { titel: 'Cache prüfen', text: 'Der Client schaut zuerst in seinen lokalen DNS-Cache. Auf Windows mit "ipconfig /displaydns", auf Linux mit "resolvectl statistics". Ist der Eintrag noch frisch (TTL nicht abgelaufen), wird er ohne Netzwerkverkehr verwendet.' },
+    { titel: 'Cache prüfen', text: 'Der Client schaut zürst in seinen lokalen DNS-Cache. Auf Windows mit "ipconfig /displaydns", auf Linux mit "resolvectl statistics". Ist der Eintrag noch frisch (TTL nicht abgelaufen), wird er ohne Netzwerkverkehr verwendet.' },
     { titel: 'hosts-Datei lesen', text: 'Vor jedem DNS-Lookup wird die hosts-Datei konsultiert (Windows: C:\\Windows\\System32\\drivers\\etc\\hosts, Linux: /etc/hosts). Steht der Name dort, antwortet das Betriebssystem aus der Datei — kein Server gefragt. Klassische Falle: Ein verbotener Eintrag in hosts blockiert eine Domain weltweit auf diesem Gerät.' },
     { titel: 'Rekursiver Resolver fragen', text: 'Der Client schickt eine UDP-Anfrage an den im OS eingetragenen Nameserver, meist den Gateway-Router oder einen ISP-Resolver. Dieser Resolver übernimmt die ganze Auflösungs-Arbeit für den Client.' },
-    { titel: 'Root-Server anfragen', text: 'Hat der Resolver den Eintrag nicht im Cache, fragt er einen der 13 Root-Server-Cluster: „Wer ist für .de zuständig?" Antwort: die Liste der TLD-Server für .de.' },
+    { titel: 'Root-Server anfragen', text: 'Hat der Resolver den Eintrag nicht im Cache, fragt er eine Root-Server-Instanz: „Wer ist für .de zuständig?" Antwort: die Liste der TLD-Server für .de.' },
     { titel: 'TLD-Server fragen', text: 'Der Resolver fragt einen .de-TLD-Server: „Wer ist für heise.de zuständig?" Antwort: die autoritativen Nameserver der Zone heise.de.' },
     { titel: 'Autoritativen Server fragen', text: 'Der Resolver fragt den autoritativen Server: „Was ist die IPv4-Adresse von heise.de?" Antwort: der A-Record (z. B. 193.99.144.80) plus eine TTL — etwa 3600 Sekunden.' },
     { titel: 'Antwort an Client und Cache füllen', text: 'Der Resolver liefert die IP an den Client und merkt sich den Eintrag bis zum Ablauf der TTL. Erst dann wird der Datensatz erneut aus der Hierarchie geholt — jeder Cache-Treffer spart die Arbeit.' },
   ]}
 />
 
-Die TTL-Werte sind absichtlich hoch (Stunden bis Tage), damit das System nicht bei jeder
-Anfrage durch die Hierarchie laufen muss. Bei einem geplanten Server-Wechsel wird die
+TTL-Werte werden so gewählt, dass Resolver nicht bei jeder Anfrage durch die komplette
+Hierarchie laufen müssen. Bei einem geplanten Server-Wechsel wird die
 *<Term id="ttl-dns">TTL</Term>* einige Stunden vorher gesenkt (z. B. auf 300 Sekunden),
 damit Caches nach der Umstellung schnell auffrischen.
 
@@ -210,8 +212,8 @@ Ethernet-Adapter Ethernet:
   Autokonfiguration aktiviert . . . : Ja
   IPv4-Adresse  . . . . . . . . . . : 10.0.20.42 (Bevorzugt)
   Subnetzmaske  . . . . . . . . . . : 255.255.255.0
-  Lease erhalten. . . . . . . . . . : Montag, 28. April 2026 08:13:42
-  Lease läuft ab. . . . . . . . . . : Dienstag, 29. April 2026 08:13:42
+  Lease erhalten. . . . . . . . . . : 28. April 2026 08:13:42
+  Lease läuft ab. . . . . . . . . . : 29. April 2026 08:13:42
   Standardgateway . . . . . . . . . : 10.0.20.1
   DHCP-Server . . . . . . . . . . . : 10.0.20.1
   DNS-Server. . . . . . . . . . . . : 10.0.20.5
@@ -250,8 +252,8 @@ DNS `10.0.20.5`. Stimmt die Konfiguration?
     20:13 die Verlängerung.
   </Schritt>
   <Schritt nr={6} titel="MAC-Adresse als Querbezug">
-    Physische Adresse `90-2B-34-AA-BB-CC` — die ersten drei Oktette `90-2B-34` sind
-    der OUI von Intel. Bei Konflikt-Suche im Switch ist das die Zeichenfolge, nach der
+    Physische Adresse `90-2B-34-AA-BB-CC` — die ersten drei Oktette sind der
+    Herstellerkennungsteil (OUI). Bei Konflikt-Suche im Switch ist das die Zeichenfolge, nach der
     du im MAC-Address-Table greifst.
   </Schritt>
   <Ergebnis>
@@ -541,8 +543,8 @@ Beim Einschalten eines Notebooks erhält dieses per DHCP eine IPv4-Adresse. Brin
 folgenden Schritte in die korrekte Reihenfolge und beschreibe je Schritt in einem Satz,
 was passiert: Acknowledge — Offer — Discover — Request. Welche Ports nutzen DHCP-Server
 und DHCP-Client? Erläutere zusätzlich, warum die Discover- und die Request-Nachricht
-als Broadcast verschickt werden, die Offer-Antwort hingegen direkt an den anfragenden
-Client adressiert ist. **6 Punkte.**
+als Broadcast verschickt werden und wie eine Offer-Antwort den anfragenden Client
+trotz noch nicht finaler IP-Konfiguration erreichen kann. **6 Punkte.**
 
 ### Aufgabe 3 · Diagnose-Reihenfolge bei „Internet geht nicht"
 
@@ -734,15 +736,15 @@ Diagnose-Reihenfolge. Wenn du im Text den Überblick verlierst, spring hierher z
     },
     {
       term: 'ARP',
-      definition: 'Address Resolution Protocol (RFC 826). Loest IPv4-Adressen in MAC-Adressen auf — das Bindeglied zwischen Layer 3 und Layer 2.'
+      definition: 'Address Resolution Protocol (RFC 826). Löst IPv4-Adressen in MAC-Adressen auf — das Bindeglied zwischen Layer 3 und Layer 2.'
     },
     {
       term: 'MAC-Adresse',
-      definition: 'Hardware-Adresse einer Netzwerkschnittstelle. Sechs Hexadezimal-Bytes wie 90-2B-34-AA-BB-CC. Eindeutig je Karte.'
+      definition: 'Hardware-Adresse einer Netzwerkschnittstelle. Sechs Oktette, meist hexadezimal geschrieben, zum Beispiel 90-2B-34-AA-BB-CC. Sie identifiziert eine Schnittstelle im lokalen Netz.'
     },
     {
       term: 'APIPA',
-      definition: 'Automatic Private IP Addressing (RFC 3927). Notfall-Adresse aus 169.254.0.0/16, die der Client selbst vergibt, wenn kein DHCP antwortet. Nicht routbar.'
+      definition: 'Automatic Private IP Addressing (RFC 3927). Link-Local-Adresse aus 169.254.0.0/16, die ein Client selbst wählen kann, wenn kein DHCP antwortet. Nicht routbar.'
     },
     {
       term: 'ipconfig / ip a',
@@ -754,7 +756,7 @@ Diagnose-Reihenfolge. Wenn du im Text den Überblick verlierst, spring hierher z
     },
     {
       term: 'tracert / traceroute',
-      definition: 'Hop-für-Hop-Spur eines Pakets. Zeigt, an welchem Router die Route abbricht — wichtigste Frueh-Diagnose bei Routing-Problemen.'
+      definition: 'Hop-für-Hop-Spur eines Pakets. Zeigt, an welchem Router die Route abbricht — wichtigste Früh-Diagnose bei Routing-Problemen.'
     },
   ]}
 />
@@ -764,7 +766,7 @@ Diagnose-Reihenfolge. Wenn du im Text den Überblick verlierst, spring hierher z
     {
       label: 'RFC 2131 — Dynamic Host Configuration Protocol',
       href: 'https://www.rfc-editor.org/rfc/rfc2131',
-      detail: 'Normativer Standard für DHCP. Definiert den DORA-Handshake, die Lease-Verwaltung und die Zustaendigkeit von Server und Client.'
+      detail: 'Normativer Standard für DHCP. Definiert den DORA-Handshake, die Lease-Verwaltung und die Zuständigkeit von Server und Client.'
     },
     {
       label: 'RFC 1034 / RFC 1035 — Domain Names: Concepts and Implementation',
@@ -774,7 +776,7 @@ Diagnose-Reihenfolge. Wenn du im Text den Überblick verlierst, spring hierher z
     {
       label: 'RFC 826 — Ethernet Address Resolution Protocol (ARP)',
       href: 'https://www.rfc-editor.org/rfc/rfc826',
-      detail: 'Definitionsdokument für ARP. Loest IP-Adressen in MAC-Adressen im lokalen Segment auf.'
+      detail: 'Definitionsdokument für ARP. Löst IP-Adressen in MAC-Adressen im lokalen Segment auf.'
     },
     {
       label: 'RFC 3927 — Dynamic Configuration of IPv4 Link-Local Addresses',
@@ -799,7 +801,7 @@ Diagnose-Reihenfolge. Wenn du im Text den Überblick verlierst, spring hierher z
     {
       label: 'Elektronik-Kompendium — Netzwerk-Diagnose und Konfiguration',
       href: 'https://www.elektronik-kompendium.de/sites/net/0901051.htm',
-      detail: 'Fachportal mit kompakten Erklaerungen zu ipconfig, ping, tracert, nslookup und der typischen Diagnose-Reihenfolge in Praxis-Sprache.'
+      detail: 'Fachportal mit kompakten Erklärungen zu ipconfig, ping, tracert, nslookup und der typischen Diagnose-Reihenfolge in Praxis-Sprache.'
     },
   ]}
 />

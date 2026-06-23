@@ -1,183 +1,410 @@
-# Bit & Byte – die kleinsten Einheiten
+# Bit & Byte - die kleinsten Einheiten
 
 ## Worum geht's
 
-Du lernst, was die kleinsten Informationseinheiten im Computer sind, wie sie
-zusammenhängen und wie du Datenmengen sicher umrechnest. Danach kannst du
-Dateigrößen einordnen, Übertragungsraten richtig deuten und die typischen
-Fallen zwischen Bit und Byte oder zwischen Dezimal und Binär vermeiden.
+Computer speichern und übertragen keine "Texte", "Bilder" oder "Dateien" als
+solche. Ganz unten liegen nur Muster aus `0` und `1`. Dieses Kapitel baut die
+Grundlage dafür in der richtigen Reihenfolge auf:
 
----
+**Bit -> Byte -> 8 Bit = 256 Werte -> b/B-Falle -> Speicher und Datenrate ->
+Zeichen als Bitmuster.**
 
-## Erklärung
-
-### Vom Schalter zum Bit
-
-Ein Computer kann pro Stelle nur **zwei** Zustände sicher unterscheiden:
-**Strom an** oder **Strom aus**. Wir schreiben sie als **1** und **0**. Zwei
-Zustände sind technisch viel einfacher stabil zu halten als drei oder mehr —
-deshalb arbeitet praktisch jede digitale Schaltung binär.
-
-<Analogie>
-Stell dir einen einzelnen Lichtschalter vor. Er ist entweder an (1) oder aus
-(0). Mit einem Schalter kannst du also zwei Dinge unterscheiden — zum
-Beispiel ja/nein, wahr/falsch, hell/dunkel. Genau diese kleinste
-Informationseinheit heißt <Term id="bit">**Bit**</Term> (kurz für *binary
-digit*, also Binärziffer).
-</Analogie>
-
-Wenn du **zwei** Schalter nebeneinander stellst, hast du vier Kombinationen:
-`00`, `01`, `10`, `11`. Bei **drei** Schaltern sind es schon acht. Mit jedem
-zusätzlichen Schalter **verdoppelt** sich die Anzahl möglicher
-Kombinationen. Bei n Bit kannst du also 2ⁿ verschiedene Werte unterscheiden.
-
-### Vom Bit zum Byte
-
-Acht Bit gruppiert man zu einer Einheit: dem <Term id="byte">**Byte**</Term>.
-Ein Byte kann 2⁸ = **256 verschiedene Werte** annehmen — und zwar die Werte
-**0 bis 255**, nicht 1 bis 256. Die Null zählt als gültiger Wert mit.
-
-Historisch gab es auch Bytes mit 6 oder 9 Bit. Heute ist 1 Byte praktisch
-immer 8 Bit; im Lernkontext kannst du davon ausgehen, dass diese Gleichung
-gilt.
-
-Ein einzelnes Zeichen aus dem <Term id="ascii">ASCII</Term>-Zeichensatz wird
-in einem Byte gespeichert. Genau genommen nutzt Standard-ASCII nur 7 Bit
-(128 Codepunkte, 0 bis 127); das achte Bit ist dann auf 0 gesetzt. Praktisch
-rechnest du trotzdem mit „ein ASCII-Zeichen = 1 Byte".
-
-### Die Stufenleiter der Datenmengen
-
-Es gibt **zwei** offizielle Reihen von Präfixen — eine **dezimale** (Faktor
-1.000, SI-Präfixe) und eine **binäre** (Faktor 1.024, IEC-Präfixe nach
-IEC 80000-13). Die Verwechslung dieser beiden Reihen ist der häufigste
-Fehler bei Datenmengen.
-
-| Einheit | Symbol | Faktor | Wert in Byte |
-|---|---|---|---|
-| Bit | b | – | 1/8 Byte |
-| <Term id="nibble">Nibble</Term> | – | – | 4 Bit = 1/2 Byte |
-| Byte | B | – | 8 Bit |
-| Kilobyte | KB | 10³ | 1.000 |
-| Kibibyte | KiB | 2¹⁰ | 1.024 |
-| Megabyte | MB | 10⁶ | 1.000.000 |
-| Mebibyte | MiB | 2²⁰ | 1.048.576 |
-| Gigabyte | GB | 10⁹ | 1.000.000.000 |
-| Gibibyte | GiB | 2³⁰ | 1.073.741.824 |
-| Terabyte | TB | 10¹² | 1.000.000.000.000 |
-| Tebibyte | TiB | 2⁴⁰ | 1.099.511.627.776 |
-
-Das Schema setzt sich fort mit pebi (Pi), exbi (Ei), zebi (Zi), yobi (Yi)
-sowie seit 2025 robi (Ri) und quebi (Qi). Für die meisten Aufgaben reicht
-es bis TB beziehungsweise TiB.
-
----
-
-## Beispiele
-
-### Beispiel 1: Text in Byte
-
-Die Begrüßung „Hallo" enthält 5 Zeichen. Im ASCII-Standard belegt jedes
-Zeichen 1 Byte:
-
-```
-"Hallo" = 5 Zeichen × 1 Byte = 5 Byte = 40 Bit
-```
-
-### Beispiel 2: Film in Bit
-
-Ein HD-Film mit 4 GB belegt:
-
-```
-4 GB    = 4 × 1.000.000.000 Byte = 4.000.000.000 Byte
-        = 4.000.000.000 × 8 Bit  = 32.000.000.000 Bit
-```
-
-Das sind 32 Milliarden Einsen und Nullen — für einen einzigen Film.
-
-### Beispiel 3: Festplatte dezimal vs. Anzeige binär
-
-<StepByStep titel="Warum eine '1-TB-Festplatte' im OS als 931 GB erscheint">
-  <Schritt nr={1} titel="Hersteller-Definition">
-    Festplattenhersteller rechnen dezimal:
-    **1 TB = 1.000.000.000.000 Byte** (Faktor 10¹²).
-  </Schritt>
-  <Schritt nr={2} titel="Betriebssystem-Anzeige">
-    Windows und viele Tools zeigen die Größe binär an, also in GiB:
-    **1 GiB = 1.073.741.824 Byte** (Faktor 2³⁰).
-  </Schritt>
-  <Schritt nr={3} titel="Umrechnung">
-    1.000.000.000.000 ÷ 1.073.741.824 ≈ **931,32 GiB**.
-  </Schritt>
-  <Ergebnis>
-    Die Festplatte erscheint im System mit **etwa 931 GB** — kein Defekt,
-    sondern unterschiedliche Maßstäbe (dezimal vs. binär).
-  </Ergebnis>
-</StepByStep>
-
----
-
-## Typische Fehler
-
-- **„256 statt 0 bis 255".** Mit 8 Bit unterscheidest du 256 verschiedene
-  Werte — aber die Zählung beginnt bei 0 und endet bei 255. Die Null zählt
-  als gültiger Wert mit. Eine klassische Off-by-One-Falle.
-
-- **Groß- vs. Kleinschreibung beim Symbol.** Kleines `b` steht für Bit,
-  großes `B` für Byte. Übertragungsraten wie „DSL 16 Mbit/s" sind in **Bit**
-  angegeben — nicht Byte! Zum Umrechnen: Mbit/s ÷ 8 = MByte/s.
-
-- **Dezimal mit Binär verwechseln.** „1 KB" sind 1.000 Byte, „1 KiB" sind
-  1.024 Byte. Fragt eine Aufgabe explizit nach KiB, MiB oder GiB, ist die
-  binäre Variante gemeint. Schreibst du dann 1.000 statt 1.024, ist die
-  Antwort falsch.
-
-- **Mit 8 multiplizieren oder dividieren?** Von Byte zu Bit: **mal 8**. Von
-  Bit zu Byte: **geteilt durch 8**. Merksatz: das Byte ist die größere
-  Einheit, also brauchst du davon weniger als von Bit.
-
-- **„Extended ASCII"-Falle.** Wenn jemand „Extended ASCII" sagt, ist meistens
-  eine 8-Bit-Erweiterung gemeint (zum Beispiel ISO-8859-1 oder
-  Windows-1252). Das ist **kein offizieller Standard** — die genaue Codepage
-  muss dazu benannt sein, sonst ist die Aussage mehrdeutig. In modernen
-  Systemen wird ohnehin UTF-8 verwendet, das mit Standard-ASCII abwärts­
-  kompatibel ist.
-
-- **Die „1,44 MB"-Floppy-Disk** (historische Kuriosität): Diskettenhersteller
-  haben weder dezimal noch binär gerechnet, sondern eine Mischrechnung
-  benutzt: 1.440 × 1.024 Byte = 1.474.560 Byte. Weder 1,44 × 10⁶ noch
-  1,44 × 2²⁰. Du wirst das in der Klausur nicht brauchen — aber wenn dir die
-  Zahl seltsam vorkommt: sie *ist* seltsam.
+Wenn diese Kette sitzt, kannst du Dateigrößen, Downloadzeiten und
+Speicherangaben sicher einordnen.
 
 ---
 
 ## Was du danach kannst
 
-- Erklären, warum Computer mit zwei Zuständen arbeiten und was ein Bit ist.
-- Den Zusammenhang zwischen Bit, Byte und größeren Einheiten benennen und
-  in beide Richtungen umrechnen.
-- Dezimale Präfixe (KB, MB, GB, TB) und binäre Präfixe (KiB, MiB, GiB, TiB)
-  auseinanderhalten und die richtige Variante für eine Aufgabe wählen.
-- Übertragungsraten (in Bit/s) von Datenraten (in Byte/s) sauber trennen.
-- Erklären, warum eine „1-TB-Festplatte" im Betriebssystem als etwa 931 GB
-  erscheint.
+| Kernfähigkeit | Du kannst es, wenn ... |
+|---|---|
+| <Term id="bit">Bit</Term> erklären | du ein Bit als kleinste Ja/Nein-Information mit den Werten `0` oder `1` beschreiben kannst. |
+| <Term id="byte">Byte</Term> erklären | du weißt: 1 Byte = 8 Bit. |
+| 8-Bit-Werte einordnen | du erklären kannst, warum 8 Bit genau 256 Muster und den Bereich `0` bis `255` ergeben. |
+| `b` und `B` unterscheiden | du aus `Mbit/s` korrekt `MB/s` berechnen kannst. |
+| Speicher und Datenrate trennen | du erkennst, ob eine Angabe eine Datenmenge oder eine Geschwindigkeit meint. |
+| Zeichen als Bitmuster einordnen | du verstehst, dass Zeichenkodierungen Bitmuster auf Zeichen abbilden. |
+
+Der Kern ist nicht, jedes Präfix auswendig zu können. Der Kern ist:
+**Bit und Byte nicht verwechseln, Wertebereiche sauber zählen und Einheiten vor
+dem Rechnen angleichen.**
+
+---
+
+## Lernleiter
+
+| Schritt | Frage | Merksatz |
+|---|---|---|
+| 1 | Was ist ein Bit? | Ein Bit hat zwei mögliche Zustände. |
+| 2 | Was ist ein Byte? | Acht Bit bilden ein Byte. |
+| 3 | Wie viele Werte passen in 8 Bit? | `2^8 = 256`, gezählt von `0` bis `255`. |
+| 4 | Was bedeuten `b` und `B`? | Kleines `b` = Bit, großes `B` = Byte. |
+| 5 | Wie rechne ich Übertragung? | Erst gleiche Einheit, dann `Zeit = Datenmenge / Datenrate`. |
+| 6 | Was ist mit Zeichen? | Ein Bitmuster bekommt erst durch eine Kodierung Bedeutung. |
+
+Wenn du bei Rechnungen unsicher bist, prüfe zürst Schritt 4: Viele Fehler sind
+keine Rechenfehler, sondern Einheitenfehler.
+
+---
+
+## 1. Bit: eine Stelle mit zwei Möglichkeiten
+
+Ein <Term id="bit">Bit</Term> ist die kleinste Informationseinheit in der
+Digitaltechnik. Es kann genau zwei Werte annehmen:
+
+| Wert | typische Bedeutung |
+|---|---|
+| `0` | aus, nein, falsch, nicht gesetzt |
+| `1` | an, ja, wahr, gesetzt |
+
+Welche Bedeutung `0` und `1` konkret haben, entscheidet der Kontext. In einem
+Bild kann ein Bit zu einer Farbe gehören, in einer Berechnung zu einer Zahl, in
+einem Protokoll zu einem Flag.
+
+<Analogie>
+Ein Lichtschalter ist entweder aus oder an. Mit einem Schalter kannst du zwei
+Zustände unterscheiden. Mit zwei Schaltern sind es schon vier Kombinationen:
+`00`, `01`, `10`, `11`.
+</Analogie>
+
+Mit jedem zusätzlichen Bit verdoppelt sich die Anzahl der möglichen Muster:
+
+| Anzahl Bits | mögliche Muster | Beispielbereich als ganze Zahl |
+|---:|---:|---|
+| 1 | `2^1 = 2` | 0 bis 1 |
+| 2 | `2^2 = 4` | 0 bis 3 |
+| 3 | `2^3 = 8` | 0 bis 7 |
+| 4 | `2^4 = 16` | 0 bis 15 |
+| 8 | `2^8 = 256` | 0 bis 255 |
+
+<Tipp titel="Merksatz">
+  Anzahl der Muster: `2^n`. Größter unsigned Wert: `2^n - 1`, weil die Null
+  mitzählt.
+</Tipp>
+
+---
+
+## 2. Byte: acht Bit als Standardgruppe
+
+Ein <Term id="byte">Byte</Term> besteht heute praktisch immer aus **8 Bit**:
+
+```text
+1 Byte = 8 Bit
+```
+
+Ein halbes Byte heißt <Term id="nibble">Nibble</Term> und besteht aus 4 Bit.
+Das ist vor allem für Hexadezimalzahlen nützlich, weil eine Hex-Ziffer genau
+ein Nibble beschreibt.
+
+| Einheit | Größe | Wofür du sie brauchst |
+|---|---:|---|
+| Bit | 1 Bit | kleinste Informationseinheit, Datenraten |
+| Nibble | 4 Bit | eine Hex-Ziffer |
+| Byte | 8 Bit | Dateien, Speicher, Zeichenbeispiele |
+
+Historisch gab es abweichende Byte-Größen. Für Betriebssysteme, Netzwerke,
+Dateien und Speicher gilt aber ohne Sonderhinweis:
+
+```text
+1 Byte = 8 Bit
+```
+
+---
+
+## 3. Warum 8 Bit genau 256 Werte ergeben
+
+Acht Bit haben acht Stellen. Jede Stelle kann `0` oder `1` sein. Deshalb gibt
+es:
+
+```text
+2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 = 2^8 = 256
+```
+
+Wichtig ist der Wertebereich: **256 verschiedene Werte** bedeuten nicht `1`
+bis `256`, sondern `0` bis `255`.
+
+| Bitmuster | Dezimal gelesen |
+|---|---:|
+| `00000000` | 0 |
+| `00000001` | 1 |
+| `00000010` | 2 |
+| `00000011` | 3 |
+| `01111111` | 127 |
+| `10000000` | 128 |
+| `11111111` | 255 |
+
+<Warnung titel="Off-by-one-Falle">
+  8 Bit haben 256 mögliche Muster. Der größte Wert ist trotzdem 255, weil
+  `00000000` bereits das erste gültige Muster ist.
+</Warnung>
+
+Das gilt für **unsigned**, also vorzeichenlose Werte. Wenn dieselben 8 Bit als
+signed Zahl gelesen werden, kann der Bereich anders sein. Das gehört in das
+Kapitel zu Zahlensystemen; für dieses Kapitel reicht: Ein Bitmuster hat
+erst durch die vereinbarte Interpretation seinen Zahlenwert.
+
+<Tipp titel="Mini-Selbstcheck">
+  Ein Sensorwert wird unsigned in einem Byte gespeichert. Ein Byte hat 8 Bit,
+  also gibt es `2^8 = 256` verschiedene Muster. Weil `00000000` bereits den
+  Wert 0 darstellt, reicht der Bereich von `0` bis `255`.
+</Tipp>
+
+---
+
+## 4. Die b/B-Falle
+
+Die wichtigste Einheitenfalle:
+
+| Symbol | Bedeutung | Beispiel |
+|---|---|---|
+| `b` | Bit | `100 Mbit/s` |
+| `B` | Byte | `100 MB` |
+
+Kleines `b` und großes `B` unterscheiden sich um Faktor 8:
+
+```text
+1 B = 8 b
+1 b = 1/8 B
+```
+
+Internetanschlüsse und Netzwerkgeschwindigkeiten werden meistens in Bit pro
+Sekunde angegeben, zum Beispiel `100 Mbit/s`. Dateigrößen stehen meistens in
+Byte, zum Beispiel `250 MB`.
+
+<StepByStep titel="100 Mbit/s in MB/s umrechnen">
+  <Schritt nr={1} titel="Einheit lesen">
+    `Mbit/s` ist eine Datenrate in Bit pro Sekunde.
+  </Schritt>
+  <Schritt nr={2} titel="Von Bit zu Byte">
+    Durch 8 teilen: `100 Mbit/s ÷ 8 = 12,5 MB/s`.
+  </Schritt>
+  <Schritt nr={3} titel="Bedeutung">
+    Unter idealen Bedingungen könnten pro Sekunde etwa `12,5 MB` Nutzdaten
+    übertragen werden. Praktisch ist es wegen Overhead meist weniger.
+  </Schritt>
+  <Ergebnis>
+    `100 Mbit/s` sind nicht `100 MB/s`, sondern `12,5 MB/s`.
+  </Ergebnis>
+</StepByStep>
+
+<Warnung titel="Einheitenfalle">
+  Wenn `Mbit/s` steht und eine Datei in `MB` angegeben ist,
+  musst du vor dem Rechnen umrechnen. Sonst liegst du um Faktor 8 daneben.
+</Warnung>
+
+---
+
+## 5. Speicher ist Menge, Datenrate ist Geschwindigkeit
+
+Eine **Datenmenge** beschreibt, wie viel gespeichert oder übertragen wird:
+`Byte`, `KB`, `MB`, `GB`, `KiB`, `MiB`, `GiB`.
+
+Eine <Term id="datenrate">Datenrate</Term> beschreibt, wie schnell Daten pro
+Zeit übertragen werden: `bit/s`, `Mbit/s`, `MB/s`.
+
+| Angabe | Art | Bedeutung |
+|---|---|---|
+| `500 MB` | Datenmenge | Größe einer Datei |
+| `16 GB RAM` | Datenmenge | Größe des Arbeitsspeichers |
+| `250 Mbit/s` | Datenrate | Übertragungsgeschwindigkeit |
+| `550 MB/s` | Datenrate | typische sequenzielle SSD-Rate über SATA |
+
+Die drei Grundformeln sind:
+
+| Gesucht | Formel |
+|---|---|
+| Zeit | `Zeit = Datenmenge / Datenrate` |
+| Datenmenge | `Datenmenge = Datenrate * Zeit` |
+| Datenrate | `Datenrate = Datenmenge / Zeit` |
+
+Vorher müssen die Einheiten zusammenpassen. Rechne entweder alles in Bit oder
+alles in Byte.
+
+**Beispiel: 600 MB über 50 Mbit/s**
+
+| Schritt | Rechnung |
+|---|---|
+| Datenrate in MB/s | `50 Mbit/s ÷ 8 = 6,25 MB/s` |
+| Zeit | `600 MB ÷ 6,25 MB/s = 96 s` |
+
+Unter idealen Bedingungen dauert die Übertragung also `96 s`. In der Praxis
+liegt der <Term id="durchsatz">Durchsatz</Term> oft darunter, weil Protokolle,
+WLAN, Server, Verschlüsselung oder andere Nutzer Anteile kosten.
+
+<Tipp titel="Mini-Selbstcheck">
+  Rechne `200 MB` über `100 Mbit/s`: Erst die Rate angleichen,
+  `100 Mbit/s ÷ 8 = 12,5 MB/s`. Dann `200 MB ÷ 12,5 MB/s = 16 s`.
+  Wenn du vor der Zeitrechnung automatisch nach `b` und `B` schaust, sitzt die
+  wichtigste Einheitenfalle.
+</Tipp>
+
+---
+
+## 6. KB, KiB, MB, MiB: dezimal oder binär?
+
+Bei größeren Speichermengen gibt es zwei Präfixreihen:
+
+| Reihe | Beispiel | Faktor | Typische Verwendung |
+|---|---|---:|---|
+| <Term id="dezimalpräfix">Dezimalpräfix</Term> | `KB`, `MB`, `GB`, `TB` | 1000 | Festplatten, SSDs, Datenraten, Tarife |
+| <Term id="binärpräfix">Binärpräfix</Term> | `KiB`, `MiB`, `GiB`, `TiB` | 1024 | Betriebssysteme, RAM-nahe Angaben, technische Berechnung |
+
+| Dezimal | Wert in Byte | Binär | Wert in Byte |
+|---|---:|---|---:|
+| 1 KB | 1.000 | 1 KiB | 1.024 |
+| 1 MB | 1.000.000 | 1 MiB | 1.048.576 |
+| 1 GB | 1.000.000.000 | 1 GiB | 1.073.741.824 |
+| 1 TB | 1.000.000.000.000 | 1 TiB | 1.099.511.627.776 |
+
+Für einfache Rechenbeispiele ist die Regel pragmatisch:
+
+- Steht `KiB`, `MiB`, `GiB` oder `TiB`, rechne mit `1024`.
+- Steht `KB`, `MB`, `GB` oder `TB`, rechne ohne weiteren Hinweis dezimal mit
+  `1000`.
+- Wenn ein Hinweis ausdrücklich "binär gerechnet" sagt, folge ihm.
+
+<StepByStep titel="Warum 1 TB im System ungefähr 931 GiB sind">
+  <Schritt nr={1} titel="Herstellerangabe">
+    `1 TB = 1.000.000.000.000 Byte`.
+  </Schritt>
+  <Schritt nr={2} titel="Binäre Anzeige">
+    `1 GiB = 1.073.741.824 Byte`.
+  </Schritt>
+  <Schritt nr={3} titel="Umrechnung">
+    `1.000.000.000.000 ÷ 1.073.741.824 ≈ 931,32 GiB`.
+  </Schritt>
+  <Ergebnis>
+    Die Platte ist nicht defekt. Es werden unterschiedliche Maßstäbe benutzt:
+    dezimales TB gegen binäres GiB.
+  </Ergebnis>
+</StepByStep>
+
+---
+
+## 7. Zeichen: Bitmuster brauchen eine Kodierung
+
+Ein Bitmuster ist zunächst nur ein Muster. Damit daraus ein Zeichen wird,
+braucht man eine Zeichenkodierung.
+
+<Term id="ascii">ASCII</Term> ist ein klassisches Beispiel: Standard-ASCII
+ordnet 128 Zeichen Zahlenwerten von `0` bis `127` zu. Dafür reichen 7 Bit.
+In Dateien und Speicher wird ein ASCII-Zeichen trotzdem meist in einem Byte
+abgelegt.
+
+| Zeichen | ASCII-Dezimalwert | Bitmuster als 8 Bit |
+|---|---:|---|
+| `A` | 65 | `01000001` |
+| `B` | 66 | `01000010` |
+| `a` | 97 | `01100001` |
+| `0` | 48 | `00110000` |
+
+Für moderne Texte ist UTF-8 wichtiger. UTF-8 ist zu ASCII abwärtskompatibel:
+Die klassischen ASCII-Zeichen belegen dort 1 Byte. Zeichen wie `ä`, `€` oder
+viele Emojis brauchen mehr als 1 Byte.
+
+<Warnung titel="Zeichen-Falle">
+  "1 Zeichen = 1 Byte" ist nur für einfache ASCII-Zeichen eine brauchbare
+  vereinfachte Annahme. Bei UTF-8 kann ein Zeichen mehrere Byte belegen.
+</Warnung>
+
+Dieses Kapitel braucht Zeichencodierung nur so weit: Zeichen sind keine eigene
+Magie im Computer. Sie sind Zahlenwerte, die als Bitmuster gespeichert und
+durch eine Kodierung wieder als Zeichen gelesen werden.
+
+<Tipp titel="Mini-Selbstcheck">
+  `20` einfache ASCII-Zeichen belegen in dieser vereinfachten Rechnung
+  `20 Byte`, also `160 Bit`. Bei UTF-8 darfst du diese Regel nicht blind auf
+  jedes Zeichen übertragen: ASCII-Zeichen bleiben 1 Byte, viele andere Zeichen
+  brauchen mehrere Byte.
+</Tipp>
+
+---
+
+## Typische Fehler
+
+- **`b` und `B` verwechselt.** `100 Mbit/s` sind `12,5 MB/s`, nicht `100 MB/s`.
+- **Mit 8 in die falsche Richtung gerechnet.** Byte zu Bit: mal 8. Bit zu
+  Byte: geteilt durch 8.
+- **256 als höchsten 8-Bit-Wert genannt.** 8 Bit haben 256 Muster, aber der
+  unsigned Bereich ist `0` bis `255`.
+- **Speicher und Geschwindigkeit vermischt.** `500 MB` ist eine Menge,
+  `500 MB/s` ist eine Rate.
+- **KB und KiB gleichgesetzt.** `KB` ist dezimal 1000, `KiB` ist binär 1024.
+- **Zeichen pauschal als 1 Byte gerechnet.** Das passt für einfache
+  ASCII-Zeichen, aber nicht allgemein für UTF-8.
+- **Brutto und netto verwechselt.** Eine Leitung mit `250 Mbit/s` liefert in
+  der Praxis nicht automatisch dauerhaft `31,25 MB/s` Nutzdaten.
+
+## Kann ich es wirklich?
+
+| Check | Lösung | Woran du erkennst, dass es sitzt |
+|---|---|---|
+| Erkläre den Unterschied zwischen Bit und Byte. | 1 Byte = 8 Bit. | Du nennst Symbol `b`/`B` und Faktor 8. |
+| Wie viele Werte passen unsigned in 8 Bit? | 256 Werte, 0 bis 255. | Du vergisst die Null nicht. |
+| Wandle `64 Mbit/s` in `MB/s` um. | `8 MB/s`. | Du teilst durch 8. |
+| Wie lange dauern `400 MB` bei `80 Mbit/s` ideal? | `80 ÷ 8 = 10 MB/s`, also `40 s`. | Du bringst Menge und Rate auf dieselbe Einheit. |
+| Was ist der Unterschied zwischen MB und MiB? | MB = 1000er-Reihe, MiB = 1024er-Reihe. | Du erkennst dezimal vs. binär. |
+
+Wenn diese fünf Zeilen ohne Raten funktionieren, ist der Kernteil
+verstanden.
+
+---
+
+## Was hier bewusst nur angerissen wird
+
+| Thema | Warum nicht vollständig hier? | Wo es hingehört |
+|---|---|---|
+| Binärzahlen umrechnen | Hier geht es um Einheiten. Stellenwerte und Umrechnung sind ein eigenes Kapitel. | Zahlensysteme |
+| Signed/unsigned im Detail | Für den 8-Bit-Bereich reicht die Grundidee. Negative Zahlen brauchen Zweierkomplement. | Zahlensysteme |
+| UTF-8 vollständig | Zeichenkodierung ist ein eigenes Datenthema. Hier reicht: Zeichen sind codierte Bitmuster. | Daten-/Codierungs-Kapitel |
+| Durchsatz mit Overhead | Hier steht die Einheitenbasis. Netto-Rechnung kommt bei Datenraten ausführlicher. | Datenrate berechnen |
 
 <Quellen
   quellen={[
     {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizielle Lernfeld-Grundlage für IT-Systeme, Datenabbildung, Netzwerke und die rechnerischen Grundlagen in LF2 und LF3.'
+    },
+    {
+      label: 'FIAusbV - Verordnung über die Berufsausbildung in den IT-Berufen',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/',
+      detail: 'Amtliche Ausbildungsordnung. Sie rahmt die Ausbildung in den ersten 18 Monaten; Bit, Byte, Datenmengen und Datenraten sind darin Werkzeugwissen für IT-Systeme.'
+    },
+    {
+      label: 'BIBB - Umsetzungshilfe Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Praxishilfe zur Umsetzung der Ausbildungsordnung und zur Einordnung grundlegender IT-, Daten- und Systemkompetenzen.'
+    },
+    {
+      label: 'NIST IR 8354 - Digital Investigation Techniques',
+      href: 'https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8354.pdf',
+      detail: 'Renommierte technische Grundlage für Bitmuster, Stellenwertnotation, 8-Bit-Bytes und die Kontextabhängigkeit gespeicherter Daten.'
+    },
+    {
       label: 'IEC 80000-13 - Information science and technology',
       href: 'https://webstore.iec.ch/publication/80483',
-      detail: 'Internationaler Standard fuer Einheiten und Praefixe der Informationstechnik. Definiert kibi (Ki), mebi (Mi), gibi (Gi), tebi (Ti) und Folgepraefixe als reine Zweierpotenzen.'
+      detail: 'Internationaler Standard für Einheiten und Präfixe der Informationstechnik, darunter binäre Präfixe wie KiB, MiB und GiB.'
     },
     {
       label: 'NIST - Prefixes for Binary Multiples',
       href: 'https://physics.nist.gov/cuu/Units/binary.html',
-      detail: 'US-Standardisierungsbehoerde, dokumentiert die 1998 von der IEC eingefuehrten Binaerpraefixe und betont: sie sind NICHT Teil des SI.'
+      detail: 'Dokumentiert die IEC-Binärpräfixe und grenzt sie von SI-Präfixen ab.'
+    },
+    {
+      label: 'BIPM - SI prefixes',
+      href: 'https://www.bipm.org/en/measurement-units/si-prefixes',
+      detail: 'Offizielle SI-Präfixe: kilo, mega, giga und tera stehen dezimal für Potenzen von 1000.'
     },
     {
       label: 'ANSI INCITS 4-1986 (R2017) - 7-Bit ASCII',
       href: 'https://webstore.ansi.org/standards/incits/ansiincits41986r2017',
-      detail: 'US-Standard fuer den 7-Bit-ASCII-Zeichensatz mit 128 Codepunkten (95 druckbar, 33 Steuerzeichen). Speicherung erfolgt in 8-Bit-Bytes.'
+      detail: 'Standard für den 7-Bit-ASCII-Zeichensatz mit 128 Codepunkten.'
+    },
+    {
+      label: 'Unicode Standard - UTF-8',
+      href: 'https://www.unicode.org/versions/latest/core-spec/chapter-3/',
+      detail: 'Unicode-Standard zur UTF-8-Codierung: ASCII-Zeichen bleiben ein Byte, viele weitere Zeichen werden mit mehreren Bytes codiert.'
     },
   ]}
 />

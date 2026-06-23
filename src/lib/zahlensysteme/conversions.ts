@@ -181,6 +181,7 @@ export function isValidOctalMode(octal: string): boolean {
 // Kein Math.random (Build-/Test-Stabilität): kleiner LCG, Seed kommt von außen.
 
 export type SkillId = 'dec2bin' | 'bin2dec' | 'hex2dec' | 'chmod'
+export type ExamSkillId = SkillId | 'hex2bin' | 'bin2hex' | 'ipv4octet'
 
 export const SKILLS: { id: SkillId; label: string }[] = [
   { id: 'dec2bin', label: 'Dezimal → Binär' },
@@ -202,7 +203,7 @@ function pickInRange(seed: number, min: number, max: number): { value: number; s
 }
 
 export interface Exercise {
-  skill: SkillId
+  skill: ExamSkillId
   prompt: string
   /** Hinweis, wie die Antwort aussehen soll. */
   inputHint: string
@@ -210,6 +211,10 @@ export interface Exercise {
   answer: string
   /** Begründete Musterlösung. */
   explanation: string
+  /** Kurzer Hinweis, der bei Fehlern hilft, ohne neue Fakten zu erfinden. */
+  tip?: string
+  /** Quellen-/Kapitelanker, damit Feedback fachlich rückgebunden bleibt. */
+  sourceRefs?: string[]
 }
 
 function chmodExplanation(octal: string, mode: ChmodMode): string {
@@ -230,6 +235,8 @@ export function makeExercise(skill: SkillId, seed: number): Exercise {
         explanation: `${value} ÷ 2 wiederholt, Reste von unten nach oben: ${value
           .toString(2)
           .padStart(8, '0')}₂.`,
+        tip: 'Teile wiederholt durch 2. Der erste Rest ist später die rechte Stelle.',
+        sourceRefs: ['Kapitel: Dezimal → Binär', 'NIST IR 8354: Place Value Notation'],
       }
     }
     case 'bin2dec': {
@@ -245,6 +252,8 @@ export function makeExercise(skill: SkillId, seed: number): Exercise {
         inputHint: 'z. B. 180',
         answer: String(value),
         explanation: `Aktive Stellen ${weights.join(' + ')} = ${value}.`,
+        tip: 'Nutze die 8-Bit-Reihe 128, 64, 32, 16, 8, 4, 2, 1 und addiere nur Einsen.',
+        sourceRefs: ['Kapitel: Binär → Dezimal', 'NIST IR 8354: Byte und Binärdaten'],
       }
     }
     case 'hex2dec': {
@@ -258,6 +267,8 @@ export function makeExercise(skill: SkillId, seed: number): Exercise {
         inputHint: 'z. B. 192',
         answer: String(value),
         explanation: `${HEX_DIGITS[high]}×16 + ${HEX_DIGITS[low]}×1 = ${high * 16} + ${low} = ${value}.`,
+        tip: 'Eine zweistellige Hexzahl hat links den Stellenwert 16 und rechts den Stellenwert 1.',
+        sourceRefs: ['Kapitel: Hex → Dezimal', 'NIST IR 8354: Basis 16'],
       }
     }
     case 'chmod': {
@@ -270,6 +281,8 @@ export function makeExercise(skill: SkillId, seed: number): Exercise {
         inputHint: 'z. B. rwxr-xr-x',
         answer: mode.symbolic,
         explanation: chmodExplanation(octal, mode),
+        tip: 'Lies jede Oktalziffer einzeln: 4=r, 2=w, 1=x.',
+        sourceRefs: ['Kapitel: chmod lesen', 'POSIX chmod'],
       }
     }
   }
@@ -292,17 +305,37 @@ export function checkExercise(exercise: Exercise, raw: string): CheckResult {
   let normalized = trimmed
   if (exercise.skill === 'chmod') {
     normalized = trimmed.toLowerCase().replace(/\s+/g, '')
+    if (normalized.length === 10 && normalized[0] === '-') normalized = normalized.slice(1)
+  } else if (exercise.skill === 'dec2bin' || exercise.skill === 'hex2bin' || exercise.skill === 'ipv4octet') {
+    normalized = trimmed
+      .replace(/\s+/g, '')
+      .replace(/^0b/i, '')
+      .replace(/[₂₈₁₀₁₆]/g, '')
+      .toUpperCase()
+  } else if (exercise.skill === 'bin2hex') {
+    normalized = trimmed
+      .replace(/\s+/g, '')
+      .replace(/^0x/i, '')
+      .replace(/[₂₈₁₀₁₆]/g, '')
+      .toUpperCase()
   } else {
-    normalized = trimmed.replace(/\s+/g, '').toUpperCase()
+    normalized = trimmed
+      .replace(/\s+/g, '')
+      .replace(/[₂₈₁₀₁₆]/g, '')
+      .toUpperCase()
   }
 
   const expected = exercise.skill === 'chmod' ? exercise.answer.toLowerCase() : exercise.answer.toUpperCase()
 
-  // Binär-Antworten dürfen mit/ohne führende Nullen stimmen.
+  // Bei 8-Bit-Aufgaben zählen führende Nullen zur geforderten Darstellung.
   if (exercise.skill === 'dec2bin') {
-    const stripped = normalized.replace(/^0+/, '') || '0'
-    const expStripped = expected.replace(/^0+/, '') || '0'
-    if (/^[01]+$/.test(normalized) && stripped === expStripped) {
+    if (/^[01]{8}$/.test(normalized) && normalized === expected) {
+      return { correct: true, normalized, message: exercise.explanation }
+    }
+  }
+
+  if (exercise.skill === 'hex2bin') {
+    if (/^[01]{8}$/.test(normalized) && normalized === expected) {
       return { correct: true, normalized, message: exercise.explanation }
     }
   }
@@ -314,11 +347,129 @@ export function checkExercise(exercise: Exercise, raw: string): CheckResult {
   return {
     correct: false,
     normalized,
-    message: `Noch nicht. ${exercise.explanation}`,
+    message: `Noch nicht. ${exercise.tip ? `${exercise.tip} ` : ''}${exercise.explanation}`,
   }
 }
 
 /** Liefert für einen Aufgaben-Index einen reproduzierbaren Seed. */
 export function seedFor(skillIndex: number, round: number): number {
   return ((skillIndex + 1) * 2654435761 + round * 40503) >>> 0
+}
+
+// ── Prüfungstrainer: 30 gemischte Aufgaben mit deterministischen Lösungen ──
+
+export interface ExamExercise extends Exercise {
+  id: string
+  index: number
+}
+
+export const EXAM_SKILL_LABEL: Record<ExamSkillId, string> = {
+  dec2bin: 'Dezimal → Binär',
+  bin2dec: 'Binär → Dezimal',
+  hex2dec: 'Hex → Dezimal',
+  chmod: 'chmod lesen',
+  hex2bin: 'Hex → Binär',
+  bin2hex: 'Binär → Hex',
+  ipv4octet: 'IPv4-Oktett',
+}
+
+function shuffle<T>(items: T[], seed: number): T[] {
+  const result = [...items]
+  let currentSeed = seed
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const picked = pickInRange(currentSeed, 0, i)
+    currentSeed = picked.seed
+    const tmp = result[i]
+    result[i] = result[picked.value]
+    result[picked.value] = tmp
+  }
+  return result
+}
+
+function binaryContributions(bits: string): string {
+  const weights = bits
+    .split('')
+    .map((bit, index) => (bit === '1' ? 2 ** (bits.length - 1 - index) : 0))
+    .filter(Boolean)
+  return weights.length > 0 ? weights.join(' + ') : '0'
+}
+
+function makeHexToBin(seed: number): Exercise {
+  const { value } = pickInRange(seed, 0, 255)
+  const hex = value.toString(16).toUpperCase().padStart(2, '0')
+  const bits = hex
+    .split('')
+    .map((digit) => hexDigitToBits(digit))
+    .join('')
+  return {
+    skill: 'hex2bin',
+    prompt: `Wandle ${hex}₁₆ in Binär um (8 Bit).`,
+    inputHint: 'z. B. 11000000',
+    answer: bits,
+    explanation: `${hex
+      .split('')
+      .map((digit) => `${digit}=${hexDigitToBits(digit)}`)
+      .join(', ')} → ${bits.slice(0, 4)} ${bits.slice(4)}.`,
+    tip: 'Übersetze jede Hex-Ziffer einzeln in genau vier Bit.',
+    sourceRefs: ['Kapitel: Hex ↔ Binär', 'NIST IR 8354: vier Bit pro Hex-Ziffer'],
+  }
+}
+
+function makeBinToHex(seed: number): Exercise {
+  const { value } = pickInRange(seed, 0, 255)
+  const bits = value.toString(2).padStart(8, '0')
+  const hex = value.toString(16).toUpperCase().padStart(2, '0')
+  return {
+    skill: 'bin2hex',
+    prompt: `Wandle ${bits}₂ in Hex um.`,
+    inputHint: 'z. B. C0',
+    answer: hex,
+    explanation: `${bits.slice(0, 4)}=${bitsToHexDigit(bits.slice(0, 4))}, ${bits.slice(4)}=${bitsToHexDigit(bits.slice(4))} → ${hex}₁₆.`,
+    tip: 'Schneide von rechts in Vierergruppen. Jede Vierergruppe ist eine Hex-Ziffer.',
+    sourceRefs: ['Kapitel: Hex ↔ Binär', 'NIST IR 8354: Basis 16'],
+  }
+}
+
+function makeIpv4Octet(seed: number): Exercise {
+  const { value } = pickInRange(seed, 0, 255)
+  const bits = value.toString(2).padStart(8, '0')
+  return {
+    skill: 'ipv4octet',
+    prompt: `Schreibe das IPv4-Oktett ${value} als 8-Bit-Binärzahl.`,
+    inputHint: 'z. B. 11000000',
+    answer: bits,
+    explanation: `${value} = ${binaryContributions(bits)} → ${bits}₂. Ein IPv4-Oktett hat immer 8 Bit und Werte von 0 bis 255.`,
+    tip: 'Auch kleine Oktette brauchen führende Nullen, bis genau acht Stellen erreicht sind.',
+    sourceRefs: ['Kapitel: IPv4 und Binär', 'RFC 4632: CIDR-Präfixnotation'],
+  }
+}
+
+export function makeExamExercise(skill: ExamSkillId, seed: number): Exercise {
+  if (skill === 'hex2bin') return makeHexToBin(seed)
+  if (skill === 'bin2hex') return makeBinToHex(seed)
+  if (skill === 'ipv4octet') return makeIpv4Octet(seed)
+  return makeExercise(skill, seed)
+}
+
+export function makeExamSet(seed: number, count = 30): ExamExercise[] {
+  const balancedSkills: ExamSkillId[] = [
+    'dec2bin',
+    'bin2dec',
+    'hex2dec',
+    'hex2bin',
+    'bin2hex',
+    'chmod',
+    'ipv4octet',
+  ]
+  const skillPool = Array.from({ length: count }, (_, index) => balancedSkills[index % balancedSkills.length])
+  const shuffled = shuffle(skillPool, seed)
+
+  return shuffled.map((skill, index) => {
+    const exercise = makeExamExercise(skill, seedFor(balancedSkills.indexOf(skill), seed + index + 1))
+    return {
+      ...exercise,
+      id: `${seed}-${index}-${skill}`,
+      index: index + 1,
+    }
+  })
 }

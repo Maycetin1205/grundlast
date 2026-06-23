@@ -14,6 +14,12 @@ import {
   lessonStatusLabel,
 } from '../lib/toc'
 import type { Lernfeld, Lesson, Modul } from '../lib/toc'
+import {
+  auditStatusShortLabel,
+  auditWeight,
+  getLessonAudit,
+  isTrustedForExam,
+} from '../lib/audit'
 
 interface PhaseDefinition {
   id: string
@@ -29,6 +35,7 @@ interface PathLesson {
   lernfeld: Lernfeld
   to: string
   available: boolean
+  audit: ReturnType<typeof getLessonAudit>
 }
 
 const phaseDefinitions: PhaseDefinition[] = [
@@ -68,10 +75,10 @@ const phaseDefinitions: PhaseDefinition[] = [
     id: 'arbeit',
     eyebrow: 'Lehrjahr 2',
     title: 'Projekt, Betrieb, Kommunikation',
-    focus: 'Der Teil, der technische Entscheidungen in Arbeitsablaeufe und Kundenkontakte uebersetzt.',
+    focus: 'Der Teil, der technische Entscheidungen in Arbeitsablaeufe und Kundenkontakte übersetzt.',
     slugs: [
       'serviceanfragen-support-level',
-      'fehlermanagement-stoerungsannahme',
+      'fehlermanagement-störungsannahme',
       'bedarfsanalyse-feedback',
       'schulung-einweisung-key-user',
       'schulz-von-thun',
@@ -81,7 +88,7 @@ const phaseDefinitions: PhaseDefinition[] = [
     ],
   },
   {
-    id: 'pruefung',
+    id: 'prüfung',
     eyebrow: 'AP1-Kern',
     title: 'Rechnen, Sicherheit, Wirtschaft',
     focus: 'Die klassischen Punktebringer: Rechenwege, Schutzbedarf, Vertrage und Auswahlentscheidungen.',
@@ -109,6 +116,7 @@ function toPathLesson(slug: string): PathLesson | null {
     ...found,
     to: `/lernen/${found.lernfeld.slug}/${found.modul.slug}/${found.lesson.slug}`,
     available: isLessonAvailable(found.lesson),
+    audit: getLessonAudit(found.lesson.slug),
   }
 }
 
@@ -118,6 +126,11 @@ function phaseLessons(phase: PhaseDefinition) {
 
 function summarize(items: PathLesson[]) {
   const ready = items.filter((item) => item.available).length
+  const trusted = items.filter((item) => item.available && isTrustedForExam(item.lesson.slug)).length
+  const trustScore = items.reduce(
+    (sum, item) => sum + (item.available ? auditWeight(item.lesson.slug) : 0),
+    0,
+  )
   const minutes = items
     .filter((item) => item.available)
     .reduce((sum, item) => sum + (item.lesson.minutes ?? 0), 0)
@@ -126,9 +139,11 @@ function summarize(items: PathLesson[]) {
   return {
     total: items.length,
     ready,
+    trusted,
+    oldContent: ready - trusted,
     minutes,
     exam,
-    progress: items.length ? Math.round((ready / items.length) * 100) : 0,
+    progress: items.length ? Math.round((trustScore / items.length) * 100) : 0,
   }
 }
 
@@ -145,10 +160,16 @@ function collectPriorityGaps() {
         })),
       ),
     )
-    .filter((item) => item.lesson.exam && (item.lesson.importance ?? 0) >= 5 && !item.available)
+    .filter(
+      (item) =>
+        item.lesson.exam &&
+        (item.lesson.importance ?? 0) >= 5 &&
+        (!item.available || !isTrustedForExam(item.lesson.slug)),
+    )
     .sort((a, b) => {
       const statusRank = { stub: 0, draft: 1, ready: 2, final: 3 }
       return (
+        Number(b.available) - Number(a.available) ||
         statusRank[a.lesson.status ?? 'stub'] - statusRank[b.lesson.status ?? 'stub'] ||
         a.lesson.title.localeCompare(b.lesson.title, 'de')
       )
@@ -166,8 +187,11 @@ function LessonRow({ item }: { item: PathLesson }) {
       <span className="path-row-main">
         <span className="path-row-title">{item.lesson.title}</span>
         <span className="path-row-meta">
-          {item.lernfeld.title} · {item.modul.title}
+          {item.lernfeld.title} - {item.modul.title}
         </span>
+      </span>
+      <span className={`path-audit path-audit--${item.audit.status}`}>
+        {auditStatusShortLabel(item.audit.status)}
       </span>
       <span className="path-row-time">
         {item.lesson.minutes ? `${item.lesson.minutes} min` : 'offen'}
@@ -198,7 +222,9 @@ export default function Lernpfad() {
   })
   const allLessons = phases.flatMap((phase) => phase.lessons)
   const overall = summarize(allLessons)
-  const nextLesson = allLessons.find((item) => item.available)
+  const nextLesson =
+    allLessons.find((item) => item.available && isTrustedForExam(item.lesson.slug)) ??
+    allLessons.find((item) => item.available)
   const gaps = collectPriorityGaps()
 
   return (
@@ -227,19 +253,19 @@ export default function Lernpfad() {
           <div className="path-stat">
             <ListChecks size={17} aria-hidden="true" />
             <span>
-              <b>{overall.ready}</b>/{overall.total} Kernkapitel bereit
+              <b>{overall.trusted}</b>/{overall.total} Kernkapitel belastbar
             </span>
           </div>
           <div className="path-stat">
             <Clock3 size={17} aria-hidden="true" />
             <span>
-              <b>{overall.minutes}</b> Minuten Lernstoff
+              <b>{overall.ready}</b> bereit - {overall.oldContent} alt
             </span>
           </div>
           <div className="path-stat">
             <CircleDot size={17} aria-hidden="true" />
             <span>
-              <b>{overall.progress}%</b> Pfad ausgebaut
+              <b>{overall.progress}%</b> Vertrauen
             </span>
           </div>
         </div>
@@ -250,7 +276,7 @@ export default function Lernpfad() {
           <h2 className="sec-title">
             Lernpfad <em>in Reihenfolge</em>
           </h2>
-          <div className="sec-meta">{phases.length} Etappen · AP1-nah priorisiert</div>
+          <div className="sec-meta">{phases.length} Etappen - AP1-nah priorisiert</div>
         </div>
         <div className="path-lanes">
           {phases.map((phase, index) => (
@@ -258,7 +284,7 @@ export default function Lernpfad() {
               <div className="path-phase-head">
                 <div>
                   <div className="path-phase-eyebrow">
-                    {String(index + 1).padStart(2, '0')} · {phase.eyebrow}
+                    {String(index + 1).padStart(2, '0')} - {phase.eyebrow}
                   </div>
                   <h3>{phase.title}</h3>
                   <p>{phase.focus}</p>
@@ -268,7 +294,8 @@ export default function Lernpfad() {
                 </div>
               </div>
               <div className="path-phase-meta">
-                <span>{phase.summary.ready}/{phase.summary.total} bereit</span>
+                <span>{phase.summary.trusted}/{phase.summary.total} belastbar</span>
+                <span>{phase.summary.oldContent} alt</span>
                 <span>{phase.summary.exam} AP1-relevant</span>
                 <span>{phase.summary.minutes} min</span>
               </div>
@@ -286,24 +313,31 @@ export default function Lernpfad() {
         <section className="section">
           <div className="sec-head">
             <h2 className="sec-title">
-              Naechste <em>Ausbau-Luecken</em>
+              Nächste <em>Prüf-Lücken</em>
             </h2>
-            <div className="sec-meta">Pruefungsrelevant · Wichtigkeit 5</div>
+            <div className="sec-meta">Prüfungsrelevant - Wichtigkeit 5 - ungeprüft oder fehlend</div>
           </div>
           <div className="path-backlog">
-            {gaps.map((item) => (
-              <div key={item.lesson.slug} className="path-gap">
-                <span className={`path-status ${item.lesson.status ?? 'stub'}`}>
-                  {lessonStatusLabel(item.lesson.status)}
-                </span>
-                <div>
-                  <b>{item.lesson.title}</b>
-                  <span>
-                    {item.lernfeld.title} · {item.modul.title}
+            {gaps.map((item) => {
+              const audit = getLessonAudit(item.lesson.slug)
+
+              return (
+                <div key={item.lesson.slug} className="path-gap">
+                  <span className={`path-status ${item.lesson.status ?? 'stub'}`}>
+                    {item.available ? 'bereit' : lessonStatusLabel(item.lesson.status)}
+                  </span>
+                  <div>
+                    <b>{item.lesson.title}</b>
+                    <span>
+                      {item.lernfeld.title} - {item.modul.title}
+                    </span>
+                  </div>
+                  <span className={`path-audit path-audit--${audit.status}`}>
+                    {auditStatusShortLabel(audit.status)}
                   </span>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </section>
       )}

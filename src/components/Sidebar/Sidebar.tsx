@@ -11,6 +11,7 @@ import {
   Search,
 } from "lucide-react"
 import { cn } from "../../lib/cn"
+import { isTrustedForExam } from "../../lib/audit"
 import { isLessonAvailable, lernfelder, readyLessons, totalLessons } from "../../lib/toc"
 import ThemeToggle from "../ThemeToggle"
 import NavItem from "./NavItem"
@@ -25,7 +26,21 @@ interface SidebarProps {
 
 export default function Sidebar({ className, onNavigate, onSearchOpen }: SidebarProps) {
   const keys = useMemo(() => shortcutLabel(), [])
-  const progress = Math.round((readyLessons / totalLessons) * 100)
+  const trustedLessons = lernfelder.reduce(
+    (sum, lf) =>
+      sum +
+      lf.moduls.reduce(
+        (modulSum, modul) =>
+          modulSum +
+          modul.lessons.filter(
+            (lesson) => isLessonAvailable(lesson) && isTrustedForExam(lesson.slug),
+          ).length,
+        0,
+      ),
+    0,
+  )
+  const progress = Math.round((trustedLessons / totalLessons) * 100)
+  const oldContent = readyLessons - trustedLessons
 
   return (
     <aside
@@ -63,7 +78,7 @@ export default function Sidebar({ className, onNavigate, onSearchOpen }: Sidebar
               className="m-0 truncate font-mono text-[10.5px] uppercase leading-tight text-muted"
               style={{ letterSpacing: "0.12em" }}
             >
-              FIAE · FISI · 1.+2. Lehrjahr
+              FIAE - FISI - 1.+2. Lehrjahr
             </p>
           </div>
           <ThemeToggle />
@@ -85,9 +100,9 @@ export default function Sidebar({ className, onNavigate, onSearchOpen }: Sidebar
 
         <div>
           <div className="mb-2 flex items-center justify-between font-ui text-[12px]">
-            <span className="font-medium text-muted">Ausbau</span>
+            <span className="font-medium text-muted">Vertrauen</span>
             <span className="font-semibold text-ink">
-              {readyLessons}/{totalLessons}
+              {trustedLessons}/{totalLessons}
             </span>
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-rule">
@@ -133,7 +148,7 @@ export default function Sidebar({ className, onNavigate, onSearchOpen }: Sidebar
       <div className="border-t border-rule bg-paper px-4 py-3 font-ui text-[12px] text-muted">
         <div className="flex items-center gap-2">
           <CheckCircle2 size={15} className="text-accent" aria-hidden="true" />
-          <span>{progress}% als Lerninhalt verfuegbar</span>
+          <span>{progress}% belastbar - {oldContent} alte Inhalte</span>
         </div>
       </div>
     </aside>

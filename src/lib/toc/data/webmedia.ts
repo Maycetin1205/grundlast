@@ -11,17 +11,16 @@ export const webmedia: Lernfeld = {
       slug: "webdesign",
       title: "Webdesign & Ergonomie",
       lessons: [
-        { slug: "website-statisch-dynamisch", title: "Statische vs. dynamische Webseiten", minutes: 12, importance: 5, exam: true, status: "ready" },
-        { slug: "responsive-webdesign", title: "Responsive Webdesign", minutes: 10, importance: 4, exam: true, status: "stub" },
-        { slug: "mockup-wireframe", title: "Mockup & Wireframe", minutes: 8, importance: 4, exam: true, status: "stub" },
-        { slug: "softwareergonomie", title: "Softwareergonomie & Barrierefreiheit", minutes: 10, importance: 4, exam: true, status: "stub" },
+        { lf: 5, slug: "website-statisch-dynamisch", title: "Statische vs. dynamische Webseiten", minutes: 12, importance: 5, exam: true, status: "ready" },
+        { lf: 5, slug: "responsive-webdesign", title: "Responsive Webdesign", minutes: 10, importance: 4, exam: true, status: "stub" },
+        { lf: 5, slug: "mockup-wireframe", title: "Mockup & Wireframe", minutes: 8, importance: 4, exam: true, status: "stub" },
       ],
     },
     {
       slug: "medien",
       title: "Mediendaten & Kompression",
       lessons: [
-        { slug: "audio-kompression", title: "Audio, MP3 & Datenkompression", minutes: 12, importance: 4, exam: true, status: "stub" },
+        { lf: 5, slug: "audio-kompression", title: "Audio, MP3 & Datenkompression", minutes: 12, importance: 4, exam: true, status: "stub" },
       ],
     },
   ],

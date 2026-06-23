@@ -7,9 +7,14 @@
 
 export type LessonStatus = "final" | "ready" | "draft" | "stub"
 
+/** Offizielles KMK-Lernfeld (1-9, gemeinsam fuer alle FI-Fachrichtungen). */
+export type LernfeldNr = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
 export interface Lesson {
   slug: string
   title: string
+  /** Primaeres offizielles KMK-Lernfeld der Lektion (Orientierung im Navi). */
+  lf?: LernfeldNr
   minutes?: number
   importance?: 1 | 2 | 3 | 4 | 5
   exam?: boolean // AP1-prüfungsrelevant

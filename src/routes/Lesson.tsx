@@ -10,6 +10,7 @@ import {
 } from '../lib/toc'
 import { getSourcesForLesson } from '../lib/quellen'
 import { getLessonReview, reviewStatusLabel } from '../lib/review'
+import { auditStatusLabel, getLessonAudit } from '../lib/audit'
 import GrundlastMDXProvider from '../components/mdx/MDXProvider'
 import LessonSources from '../components/content/LessonSources'
 import ChapterFooter from '../components/content/ChapterFooter'
@@ -40,6 +41,7 @@ export default function Lesson() {
 
   const meta = lektion ? findLesson(lektion) : null
   const review = lektion ? getLessonReview(lektion) : null
+  const audit = getLessonAudit(lektion)
   const lessonSources = lektion ? getSourcesForLesson(lektion, meta?.lernfeld.slug) : []
   const chapterNav = lektion ? getLessonNeighbors(lektion) : { previous: null, next: null }
   const lessonKey = lektion ? `../content/lessons/${lektion}.mdx` : null
@@ -155,7 +157,7 @@ export default function Lesson() {
         <header className="chapter-head">
           <div className="chapter-eyebrow">
             <span className="chapter-eyebrow-tag">
-              {meta.lernfeld.title} · {meta.modul.title}
+              {meta.lesson.lf ? `LF${meta.lesson.lf} · ` : ''}{meta.lernfeld.title} · {meta.modul.title}
             </span>
           </div>
           <h1 className="chapter-h1">{meta.lesson.title}</h1>
@@ -173,14 +175,25 @@ export default function Lesson() {
               <span style={{ color: 'var(--color-accent)' }}>Ausgearbeitet</span>
             )}
             {meta.lesson.status === 'final' && (
-              <span style={{ color: 'var(--color-accent)' }}>Formal geprueft</span>
+              <span style={{ color: 'var(--color-accent)' }}>Formal geprüft</span>
             )}
             {review && (
               <span>{reviewStatusLabel(review.status)}</span>
             )}
+            <span className={`audit-pill audit-pill--${audit.status}`}>
+              Vertrauen: {auditStatusLabel(audit.status)}
+            </span>
           </div>
         </header>
       )}
+
+      <aside className={`audit-banner audit-banner--${audit.status}`}>
+        <div>
+          <div className="audit-banner-title">{audit.title}</div>
+          <p>{audit.summary}</p>
+        </div>
+        <span>{audit.nextAction}</span>
+      </aside>
 
       <div className="tabs" role="tablist" aria-label="Kapitelinhalt">
         <button

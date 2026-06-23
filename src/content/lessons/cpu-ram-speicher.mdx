@@ -1,230 +1,220 @@
-﻿# CPU, RAM und Speicher
+# CPU, RAM und Massenspeicher
+
+<MetaBar
+  lernfeld="LF 2 - Arbeitsplätze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT - 5/5"
+/>
 
 ## Worum geht's
 
-Du lernst die drei wichtigsten Hardwarekomponenten eines Computers kennen:
-CPU (Prozessor), RAM (Arbeitsspeicher) und Massenspeicher (HDD/SSD).
-Du kannst erklären, was jede Komponente tut, wie sie zusammenspielen
-und was die wichtigsten Kennwerte sind.
-Diese Grundlagen kommen in der Prüfung regelmäßig vor.
+Wenn ein Arbeitsplatz-PC, Notebook oder kleiner Server ausgewählt wird, reichen
+Produktnamen nicht. Du musst verstehen, welche Komponente welche Aufgabe hat:
+<Term id="cpu">CPU</Term>, <Term id="ram">RAM</Term> und <Term id="massenspeicher">Massenspeicher</Term>
+arbeiten zusammen, aber sie lösen unterschiedliche Probleme.
 
----
+Dieses Kapitel baut die Hardware-Grundlage für LF2: Du kannst erklären, was ein
+System schnell, reaktionsfähig, speicherstark oder passend für einen Kundenwunsch
+macht.
 
-## Die Analogie: Küche
+## Was du danach kannst
 
-Stell dir einen Computer wie eine Küche vor:
+Nach diesem Kapitel kannst du CPU, RAM, <Term id="ssd">SSD</Term> und <Term id="hdd">HDD</Term>
+sicher unterscheiden. Du erkennst, warum <Term id="taktfrequenz">Taktfrequenz</Term>,
+Kerne, <Term id="thread">Threads</Term>, <Term id="cache">Cache</Term>, RAM-Kapazität,
+DDR-Generation, SATA und <Term id="nvme">NVMe</Term> nicht austauschbare Kennwerte
+sind. Ausserdem kannst du einfache Hardwareentscheidungen begründen, ohne dich von
+einzelnen Zahlen oder Marketingnamen blenden zu lassen.
 
-| Komponente | Küchen-Analogie | Was sie tut |
+## Mentales Modell
+
+Stell dir den Computer wie eine Werkstatt vor:
+
+| Komponente | Werkstattbild | Aufgabe im Rechner |
 |---|---|---|
-| **CPU** (Prozessor) | Der Koch | Verarbeitet die Zutaten (Daten), führt Rezepte (Programme) aus |
-| **RAM** (Arbeitsspeicher) | Die Arbeitsfläche | Hier liegen die Zutaten, die gerade gebraucht werden — schnell griffbereit |
-| **Massenspeicher** (HDD/SSD) | Der Vorratsschrank | Hier lagern alle Zutaten langfristig — viel Platz, aber man muss erst aufstehen |
+| CPU | Fachkraft an der Werkbank | führt Befehle aus, rechnet, entscheidet |
+| RAM | freie Arbeitsfläche | hält aktive Programme und Daten bereit |
+| SSD/HDD | Regal und Archiv | speichert Programme, Dateien und Betriebssystem dauerhaft |
+| Cache | kleine Ablage direkt neben der Hand | hält besonders oft benötigte Daten extrem nah an der CPU |
 
-**Zusammenspiel:**
-1. Rezepte und Zutaten liegen im **Vorratsschrank** (SSD/HDD)
-2. Beim Kochen werden die benötigten Zutaten auf die **Arbeitsfläche** (RAM) gelegt
-3. Der **Koch** (CPU) verarbeitet sie Schritt für Schritt
+Wichtig ist das Zusammenspiel: Ein Programm liegt dauerhaft auf SSD oder HDD. Beim
+Start wird es in den RAM geladen. Die CPU holt sich Befehle und Daten aus dem RAM,
+nutzt Cache für häufig benötigte Teile und schreibt Ergebnisse wieder zurück.
 
-Je **größer die Arbeitsfläche** (RAM), desto mehr kann gleichzeitig bereitliegen.
-Je **schneller der Koch** (CPU), desto schneller wird das Essen fertig.
-Je **größer der Vorratsschrank** (SSD), desto mehr kann insgesamt gelagert werden.
+## Der Faktenkern
 
----
-
-## Die CPU (Central Processing Unit = Prozessor)
-
-Die CPU ist das **Gehirn** des Computers — sie führt alle Berechnungen durch.
-
-### Wichtige Kennwerte
-
-| Kennwert | Bedeutung | Beispiel |
-|---|---|---|
-| **Taktfrequenz** | Wie viele Operationen pro Sekunde — gemessen in GHz | 3,5 GHz = 3,5 Milliarden Takte pro Sekunde |
-| **Kerne (Cores)** | Wie viele Aufgaben gleichzeitig bearbeitet werden können | 8 Kerne = bis zu 8 Aufgaben parallel |
-| **Threads** | Virtuelle Kerne — erlauben jedem Kern, zwei Aufgaben scheinbar gleichzeitig zu bearbeiten | 8 Kerne, 16 Threads |
-| **Cache** | Kleiner, ultraschneller Zwischenspeicher direkt auf der CPU | L1, L2, L3 Cache (L1 am schnellsten, L3 am größten) |
-
-**Was ist ein GHz?**
-- **Hz** (Hertz) = 1 Takt pro Sekunde
-- **MHz** = 1 Million Takte pro Sekunde (Mega = 10⁶)
-- **GHz** = 1 Milliarde Takte pro Sekunde (Giga = 10⁹)
-- 3,5 GHz bedeutet: Die CPU kann 3.500.000.000 (3,5 Milliarden) einfache Operationen pro Sekunde ausführen.
-
-### Kerne und Threads erklärt
-
-**Analogie: Kerne = Köche in der Küche**
-
-| Kerne | Bedeutung |
-|---|---|
-| 1 Kern | 1 Koch — kann nur ein Gericht gleichzeitig kochen |
-| 4 Kerne | 4 Köche — können 4 Gerichte gleichzeitig kochen |
-| 8 Kerne | 8 Köche — können 8 Gerichte gleichzeitig kochen |
-
-**Threads = Multitasking pro Koch:**
-Jeder Koch kann zwischen zwei Gerichten schnell hin- und herwechseln (z. B. Nudeln kochen + Soße rühren).
-→ 8 Kerne mit je 2 Threads = 16 Threads → bis zu 16 Aufgaben scheinbar gleichzeitig.
-
-**Wichtig:** Mehr Kerne helfen nur, wenn das Programm die Kerne auch nutzen kann (= **parallelisierbar** ist). Ein einzelner Rechenweg wird nicht schneller durch mehr Kerne — nur durch höhere Taktfrequenz.
-
-### Der CPU-Cache
-
-| Cache-Level | Größe | Geschwindigkeit | Aufgabe |
+| Komponente | Kernfrage | Schnell gemerkt | Typische Kennwerte |
 |---|---|---|---|
-| **L1** | ~64 KB pro Kern | Am schnellsten | Sofort benötigte Daten |
-| **L2** | ~256 KB–1 MB pro Kern | Sehr schnell | Häufig benötigte Daten |
-| **L3** | ~8–64 MB (geteilt) | Schnell | Von allen Kernen geteilt |
+| CPU | Wie schnell werden Befehle verarbeitet? | Rechen- und Steürzentrale | Takt, Kerne, Threads, Cache, Leistungsaufnahme |
+| RAM | Wie viel kann gleichzeitig aktiv bereitliegen? | schneller, flüchtiger Arbeitsspeicher | Kapazität, DDR-Generation, Datenrate, Kanäle |
+| SSD/HDD | Wie viel bleibt dauerhaft gespeichert? | nichtflüchtiger Massenspeicher | Kapazität, Schnittstelle, Latenz, Durchsatz |
+| Mainboard | Was passt physisch und elektrisch zusammen? | Verbindungs- und Kompatibilitätsbasis | CPU-Sockel, RAM-Slots, M.2, SATA, PCIe |
 
-**Merkregel:** Je näher am Kern (L1 → L2 → L3 → RAM), desto schneller, aber desto kleiner.
+Merksatz: **CPU verarbeitet, RAM hält bereit, Massenspeicher bewahrt auf.**
 
----
+## CPU: Befehle ausführen
 
-## RAM (Random Access Memory = Arbeitsspeicher)
+Eine CPU führt Programmbefehle aus. Stark vereinfacht läuft immer wieder ein Zyklus:
+Befehl holen, Befehl interpretieren, Befehl ausführen. Moderne Prozessoren machen das
+hochoptimiert, parallel und mit mehreren Zwischenspeichern.
 
-Der RAM ist der **kurzfristige** Speicher — hier liegen alle Daten, die gerade aktiv benutzt werden.
-
-### Wichtige Eigenschaften
-
-| Eigenschaft | Bedeutung |
-|---|---|
-| **Flüchtig (volatil)** | Daten gehen beim Ausschalten verloren! |
-| **Schnell** | Viel schneller als SSD/HDD — Zugriff in Nanosekunden |
-| **Begrenzt** | Typisch: 8 GB, 16 GB, 32 GB, 64 GB |
-| **Wahlfreier Zugriff** | Jede Speicherstelle kann direkt angesprochen werden (daher „Random Access") |
-
-**Warum ist RAM flüchtig?**
-RAM speichert Daten als elektrische Ladungen in winzigen Kondensatoren. Wenn der Strom ausgeht, entladen sich die Kondensatoren → Daten weg. Deshalb braucht man zusätzlich einen Massenspeicher (SSD/HDD), der Daten dauerhaft speichert.
-
-### Was passiert bei zu wenig RAM?
-
-```
-Viele Programme offen → RAM voll
-    ↓
-Betriebssystem lagert Daten auf die SSD/HDD aus (= „Swapping" / „Auslagerung")
-    ↓
-SSD/HDD ist VIEL langsamer als RAM
-    ↓
-Computer wird spürbar langsam
-```
-
-**Typische RAM-Empfehlungen (Stand 2025):**
-
-| Einsatz | RAM |
-|---|---|
-| Büroarbeit (Office, Browser) | 8 GB |
-| Softwareentwicklung, Bildbearbeitung | 16 GB |
-| Video-Schnitt, Virtualisierung | 32–64 GB |
-
-### DDR-Generationen
-
-RAM wird in Generationen angegeben — neuere = schneller:
-
-| Generation | Typischer Takt | Merkmal |
+| Kennwert | Bedeutung | Worauf du achten musst |
 |---|---|---|
-| **DDR4** | 2400–3200 MHz | Aktuell weit verbreitet |
-| **DDR5** | 4800–6400 MHz | Neuere Systeme, schneller, teurer |
+| Taktfrequenz | Zyklen pro Sekunde, meist in GHz | nur innerhalb ähnlicher Generationen sinnvoll vergleichbar |
+| Kerne | mehrere Recheneinheiten in einer CPU | helfen bei parallelisierbarer Arbeit |
+| Threads | gleichzeitig planbare Ausführungsstränge | mehr Threads sind nicht automatisch mehr echte Kerne |
+| Cache | sehr schneller Speicher in/nahe der CPU | reduziert langsame Zugriffe auf RAM |
+| Leistungsaufnahme | Wärme und Strombedarf unter Last | beeinflusst Kühlung, Lautstärke, Netzteil und Notebook-Akkulaufzeit |
 
-**DDR** = Double Data Rate = doppelte Datenübertragung pro Takt.
+<Warnung titel="GHz ist kein Alleinurteil">
+3,8 GHz ist nicht automatisch schneller als 3,4 GHz. Architektur, Generation,
+Cache, Kerne, Speicheranbindung, Kühlung und die konkrete Aufgabe zählen mit.
+Takt ist ein Kennwert, kein vollständiger Leistungsvergleich.
+</Warnung>
 
-**Wichtig:** DDR4 und DDR5 sind **nicht kompatibel** — ein DDR5-Riegel passt physisch nicht in einen DDR4-Steckplatz (andere Kerbe im Anschluss).
+### Kerne und Threads
 
----
+Ein Kern kann echte Rechenarbeit ausführen. Mehrere Kerne helfen, wenn Arbeit aufgeteilt
+werden kann: Videöxport, Kompilieren, virtuelle Maschinen oder viele gleichzeitige
+Dienste profitieren eher als ein einzelner streng nacheinander laufender Ablauf.
 
-## Massenspeicher: HDD vs. SSD
+Threads sind die Einheiten, die das Betriebssystem der CPU zur Ausführung gibt. Eine
+CPU kann mehr Threads gleichzeitig bereitstellen als physische Kerne vorhanden sind,
+aber das macht einen einzelnen Ablauf nicht automatisch schneller.
 
-Massenspeicher speichert Daten **dauerhaft** — auch wenn der Strom aus ist.
+## RAM: aktive Daten bereithalten
 
-### HDD (Hard Disk Drive = Festplatte)
+RAM ist flüchtiger Arbeitsspeicher. Er hält Daten und Programme bereit, die gerade
+laufen. Beim Ausschalten ist der Inhalt weg; dauerhaft gespeichert wird auf SSD, HDD
+oder einem anderen nichtflüchtigen Speicher.
 
-**Funktionsweise:** Rotierende Magnetscheiben + Lesearm (wie ein Plattenspieler)
-
-| Eigenschaft | HDD |
+| RAM-Frage | Bedeutung für die Auswahl |
 |---|---|
-| **Speicherprinzip** | Magnetisch (rotierende Scheiben) |
-| **Geschwindigkeit** | Langsam (mechanische Teile) |
-| **Kapazität** | Sehr groß (1–20 TB üblich) |
-| **Preis pro GB** | Günstig |
-| **Geräusch** | Hörbar (mechanische Teile) |
-| **Stoßempfindlich** | Ja (Lesearm kann Scheibe beschädigen) |
+| Reicht die Kapazität? | Viele Programme, große Dateien oder VMs brauchen mehr RAM. |
+| Passt die DDR-Generation? | DDR4 und DDR5 sind nicht frei mischbar; Mainboard und CPU geben vor, was passt. |
+| Wie ist der RAM bestückt? | Zwei passende Module können Dual-Channel ermöglichen; Handbuch beachten. |
+| Was passiert bei zu wenig RAM? | Das Betriebssystem lagert auf Massenspeicher aus; das System wird träge. |
 
-### SSD (Solid State Drive)
+RAM fühlt sich in der Praxis oft wie "Reaktionsfähigkeit" an: Browser mit vielen Tabs,
+IDE, Datenbank, Teams, VM und Bildbearbeitung gleichzeitig brauchen Platz. Ist der RAM
+voll, hilft eine schnellere CPU nur begrenzt, weil Daten ständig ausgelagert werden.
 
-**Funktionsweise:** Elektronische Speicherchips (Flash-Speicher) — keine beweglichen Teile.
+## Massenspeicher: dauerhaft speichern
 
-| Eigenschaft | SSD |
-|---|---|
-| **Speicherprinzip** | Elektronisch (Flash-Speicher) |
-| **Geschwindigkeit** | Sehr schnell (5–50× schneller als HDD) |
-| **Kapazität** | 256 GB – 4 TB üblich |
-| **Preis pro GB** | Teurer als HDD |
-| **Geräusch** | Lautlos (keine beweglichen Teile) |
-| **Stoßempfindlich** | Nein (keine mechanischen Teile) |
+Massenspeicher bleibt auch ohne Strom erhalten. Für Arbeitsplätze sind vor allem HDD,
+SATA-SSD und NVMe-SSD wichtig.
 
-### Direktvergleich
+| Speicherart | Prinzip | Stark bei | Schwach bei |
+|---|---|---|---|
+| HDD | rotierende magnetische Scheiben | viel Kapazität günstig bereitstellen | Zugriffszeit, Geräusch, Stöße |
+| SATA-SSD | Flash-Speicher über SATA | schneller Alltagsbetrieb, leise, robust | SATA begrenzt den Durchsatz |
+| NVMe-SSD | Flash-Speicher über PCIe/NVMe | sehr kurze Zugriffszeiten, hoher Durchsatz | braucht passenden M.2-/PCIe-Anschluss |
 
-| | HDD | SSD |
-|---|---|---|
-| **Geschwindigkeit** | ~100–200 MB/s | ~500–7.000 MB/s |
-| **Kapazität** | Bis 20+ TB | Bis 4 TB (üblich) |
-| **Preis/GB** | Günstig (~2–4 ct/GB) | Teurer (~6–10 ct/GB) |
-| **Lebensdauer** | Sehr lang (mechanischer Verschleiß) | Begrenzte Schreibzyklen (aber in Praxis sehr lang) |
-| **Typischer Einsatz** | Archiv, Backup, große Datenmengen | Betriebssystem, Programme, Arbeitsdaten |
+Eine SSD macht ein System oft spürbar schneller, weil Betriebssystem, Programme und
+Dateien mit viel geringerer Wartezeit gelesen werden. Eine HDD ist trotzdem nicht
+"falsch": Für Archive, große Mediendaten und Backup-Ziele kann Kapazität wichtiger
+sein als maximale Reaktionszeit.
 
-**Warum ist eine SSD so viel schneller?**
-HDD: Der Lesearm muss physisch zur richtigen Stelle auf der Scheibe fahren → mechanische Verzögerung.
-SSD: Elektronischer Zugriff → jede Speicherstelle sofort erreichbar, keine Wartezeit.
+<Warnung titel="M.2 ist Form, NVMe ist Protokoll">
+M.2 beschreibt den Steckplatz beziehungsweise die Bauform. Eine M.2-SSD kann je nach
+System SATA oder NVMe verwenden. Entscheidend ist, was Mainboard, SSD und BIOS/UEFI
+tatsächlich unterstützen.
+</Warnung>
 
-### NVMe-SSD — die schnellste Variante
+## Zusammenspiel beim Programmstart
 
-| Anschluss | Geschwindigkeit | Erklärung |
-|---|---|---|
-| **SATA-SSD** | ~500 MB/s | Nutzt denselben Anschluss wie HDDs — wird durch den Anschluss gebremst |
-| **NVMe-SSD** | ~3.000–7.000 MB/s | Nutzt den PCIe-Bus direkt (M.2-Steckplatz) — viel schneller |
-
----
-
-## Die Speicherhierarchie
-
-Vom schnellsten zum langsamsten Speicher:
-
-```
-Geschwindigkeit ←————————————————→ Kapazität
-     hoch                              groß
-
-1. CPU-Register    ~1 ns      wenige Bytes       (ultraschnell, winzig)
-2. L1-Cache        ~1 ns      ~64 KB pro Kern
-3. L2-Cache        ~3 ns      ~256 KB–1 MB
-4. L3-Cache        ~10 ns     ~8–64 MB
-5. RAM             ~50 ns     8–64 GB            (schnell, flüchtig)
-6. SSD             ~0,1 ms    256 GB – 4 TB       (dauerhaft, schnell)
-7. HDD             ~5–10 ms   1–20 TB            (dauerhaft, langsam)
+```text
+1. Programm liegt dauerhaft auf SSD/HDD.
+2. Betriebssystem lädt benötigte Teile in den RAM.
+3. CPU holt Befehle und Daten aus RAM und Cache.
+4. Ergebnisse landen wieder im RAM.
+5. Dateien werden bei Bedarf dauerhaft auf SSD/HDD gespeichert.
 ```
 
-**Merkregel:** Je schneller, desto kleiner und teurer. Je größer, desto langsamer und günstiger.
+Darum ist "mehr Speicher" keine eindeutige Aussage. Mehr RAM hilft bei gleichzeitig
+aktiven Daten. Mehr SSD/HDD-Kapazität hilft bei dauerhaft gespeicherten Daten. Eine
+schnellere CPU hilft bei Rechenarbeit. Ein unausgeglichenes System wird durch eine
+einzige starke Komponente nicht automatisch gut.
 
-**ns** = Nanosekunde = 0,000000001 Sekunden (eine Milliardstel Sekunde)
-**ms** = Millisekunde = 0,001 Sekunden (eine Tausendstel Sekunde)
+## Auswahl nach Kundenwunsch
 
-Eine HDD braucht also ca. 5.000.000 ns (5 ms) für einen Zugriff — RAM nur ca. 50 ns. Das ist ein Faktor von 100.000!
-
----
+| Kundenwunsch | Hardwaregedanke |
+|---|---|
+| Office, Browser, Videokonferenz | solide CPU, genug RAM, SSD statt HDD für Reaktionsfähigkeit |
+| Softwareentwicklung | ausreichend RAM, schnelle SSD, CPU mit guter Single- und Mehrkernleistung |
+| Virtuelle Maschinen | viel RAM, mehrere Kerne, schnelle und große SSD |
+| Bild-/Videobearbeitung | CPU-Leistung, viel RAM, schnelle SSD für Projektdateien, ggf. separate Archivplatte |
+| Mobiles Arbeiten | Leistungsbedarf gegen Akkulaufzeit, Gewicht, Wärme und Lautstärke abwägen |
+| Dateiarchiv/Backupziel | Kapazität, Redundanz und Backupstrategie wichtiger als Boot-Geschwindigkeit |
 
 ## Typische Fehler
 
-**Falle 1: RAM und Massenspeicher verwechseln**
-→ RAM = flüchtig (Daten weg bei Stromausfall), schnell, klein
-→ SSD/HDD = dauerhaft (Daten bleiben), langsamer, groß
+| Fehler | Korrektur |
+|---|---|
+| RAM und SSD verwechseln | RAM ist flüchtig und aktiv; SSD/HDD ist dauerhaft. |
+| Nur auf GHz schauen | Takt nur mit Architektur, Kernen, Cache und Aufgabe bewerten. |
+| "Mehr Kerne = immer schneller" | Mehr Kerne helfen nur, wenn Arbeit parallel verteilt werden kann. |
+| DDR4 und DDR5 mischen wollen | RAM-Generation muss zu Mainboard und CPU passen. |
+| M.2 automatisch für NVMe halten | M.2 ist die Bauform; NVMe ist das schnelle Protokoll über PCIe. |
+| SSD als Backup verstehen | Eine SSD ist ein Speicherort, aber kein Backup-Konzept. |
 
-**Falle 2: Mehr Kerne ≠ immer schneller**
-→ Mehr Kerne helfen nur bei parallelisierbaren Aufgaben (z. B. Video-Rendering).
-→ Ein einzelner Prozess wird nicht schneller durch mehr Kerne — nur durch höhere Taktfrequenz.
+## Mini-Selbstcheck
 
-**Falle 3: SSD-Anschluss beachten**
-→ SATA-SSD: ~500 MB/s (durch SATA-Anschluss limitiert)
-→ NVMe-SSD: ~3.000–7.000 MB/s (direkt über PCIe)
-→ Beide sind SSDs, aber NVMe ist 6–14× schneller!
+| Frage | Saubere Antwort |
+|---|---|
+| Was verliert beim Ausschalten seinen Inhalt? | RAM. |
+| Was speichert Dateien dauerhaft? | Massenspeicher, zum Beispiel SSD oder HDD. |
+| Was führt Programmbefehle aus? | CPU. |
+| Warum kann ein PC mit wenig RAM langsam werden? | Das Betriebssystem muss auf SSD/HDD auslagern. |
+| Warum ist NVMe meist schneller als SATA-SSD? | NVMe ist für Flash über PCIe optimiert und umgeht SATA-Limitierungen. |
 
-**Falle 4: DDR-Generationen nicht mischbar**
-→ DDR4 und DDR5 sind physisch und elektrisch inkompatibel. Man kann keinen DDR5-Riegel in einen DDR4-Steckplatz stecken.
+## Anschlusswissen
 
----
+Dieses Kapitel trägt mehrere Folgethemen: In LF2 geht es um passende Arbeitsplätze,
+in LF3 um Clients im Netz, in LF4 um Schutzbedarf und in LF9 um Betrieb, Dienste und
+Verfügbarkeit. Für Speicher, RAID, Backup, Virtualisierung und Beschaffung brauchst du
+genau diese Grundlage.
 
+<Quellen
+  quellen={[
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizielle Grundlage für LF2 Arbeitsplätze nach Kundenwunsch ausstatten und die Einordnung von Hardware, Software, Ergonomie und Kundenanforderung.'
+    },
+    {
+      label: 'FIAusbV - Fachinformatikerausbildungsverordnung',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung mit Ausbildungsrahmenplan und Prüfungsanforderungen für die ersten 18 Monate.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Praxishilfe zur modernisierten Fachinformatiker-Ausbildung mit betrieblichem Hardware-, Kunden- und Systembezug.'
+    },
+    {
+      label: 'IBM - What is a Central Processing Unit (CPU)?',
+      href: 'https://www.ibm.com/think/topics/central-processing-unit',
+      detail: 'Einführung zu CPU, Control Unit und Instruction Cycle mit Fetch, Decode und Execute.'
+    },
+    {
+      label: 'Intel - CPU Speed: What Is CPU Clock Speed?',
+      href: 'https://www.intel.com/content/www/us/en/gaming/resources/cpu-clock-speed.html',
+      detail: 'Herstellererklärung zu Taktfrequenz, GHz, CPU-Zyklen und der Grenze von Takt als alleinigem Leistungsvergleich.'
+    },
+    {
+      label: 'Microsoft Support - All about SSD, HDD, and storage types',
+      href: 'https://support.microsoft.com/en-us/windows/all-about-ssd-hdd-and-storage-types-9c6c7c59-7d1c-4611-9ba9-676d53cc0ff1',
+      detail: 'Microsoft-Supportseite zu SSD, HDD, Kosten, Leistung und Speicherarten in PCs.'
+    },
+    {
+      label: 'NVM Express - NVMe FAQ',
+      href: 'https://www.nvmexpress.org/wp-content/uploads/NVMe-FAQ.pdf',
+      detail: 'Offizielle FAQ von NVM Express zu NVMe als für PCIe-basierte SSDs optimierter Schnittstellenspezifikation.'
+    },
+    {
+      label: 'Crucial - What Is the Difference Between DDR5, DDR4, DDR3, DDR2, DDR, and SDRAM?',
+      href: 'https://uk.crucial.com/content/crucial/en-gb/home/support/articles-faq-memory/difference-between-ddr4-ddr3-ddr2-ddr-sdram.html',
+      detail: 'Herstellererklärung zu DDR-Generationen, doppelter Datenrate und fehlender Mischbarkeit verschiedener RAM-Generationen.'
+    },
+  ]}
+/>

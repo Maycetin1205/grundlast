@@ -2,12 +2,30 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const iBisL: GlossarEintrag[] = [
   {
+      id: 'kombinatorische-logik',
+      begriff: 'Kombinatorische Logik',
+      kurzdefinition: 'Digitale Logik, deren Ausgang nur von den aktuellen Eingaben abhängt.',
+      definition: [
+        'Bei kombinatorischer Logik hängt das Ergebnis ausschliesslich von den gerade anliegenden Eingaben ab. Es gibt keinen Speicherzustand, der das Ergebnis zusätzlich beeinflusst.',
+        'Einfache UND-, ODER- und NICHT-Schaltungen sind kombinatorisch. Speicherbausteine und Flipflops gehören dagegen zur sequentiellen Logik.',
+      ],
+    },
+  {
+      id: 'logikgatter',
+      begriff: 'Logikgatter',
+      kurzdefinition: 'Digitaler Baustein, der eine boolesche Operation auf Eingaben anwendet und einen Ausgang liefert.',
+      definition: [
+        'Ein Logikgatter hat einen oder mehrere Eingänge, eine feste logische Regel und einen Ausgang. Beispiele sind UND, ODER und NICHT.',
+        'Viele Logikgatter zusammen bilden größere digitale Schaltungen, etwa Addierer, Vergleicher oder Steuerlogik in Prozessoren.',
+      ],
+    },
+  {
       id: 'increment',
       begriff: 'Increment (Scrum)',
-      kurzdefinition: 'Nutzbares, fertiges Stueck Produkt am Ende eines Sprints — alles, was die Definition of Done erfuellt.',
+      kurzdefinition: 'Nutzbares, fertiges Stück Produkt am Ende eines Sprints — alles, was die Definition of Done erfüllt.',
       definition: [
-        'Im Scrum Guide 2020 ist das Increment eines der drei Artefakte. Es ist der konkrete Schritt zum Product Goal und wird durch die Definition of Done auf Qualitaet verpflichtet.',
-        'Ein Increment ist additiv: jedes neue Increment ergaenzt die vorherigen. Folien, Mockups oder unfertige Features sind kein Increment — erst wenn die DoD erfuellt ist, gilt das Artefakt als Increment.',
+        'Im Scrum Guide 2020 ist das Increment eines der drei Artefakte. Es ist der konkrete Schritt zum Product Goal und wird durch die Definition of Done auf Qualität verpflichtet.',
+        'Ein Increment ist additiv: jedes neue Increment ergänzt die vorherigen. Folien, Mockups oder unfertige Features sind kein Increment — erst wenn die DoD erfüllt ist, gilt das Artefakt als Increment.',
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
@@ -17,10 +35,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'inkrementell',
       begriff: 'Inkrementell',
-      kurzdefinition: 'Vorgehen, das ein Produkt schrittweise um nutzbare Stuecke (Inkremente) erweitert.',
+      kurzdefinition: 'Vorgehen, das ein Produkt schrittweise um nutzbare Stücke (Inkremente) erweitert.',
       definition: [
-        'Inkrementelles Vorgehen liefert in jedem Schritt ein konkretes, nutzbares Stueck Produkt. Jedes Inkrement ergaenzt das Bisherige; es wird nicht alles auf einmal fertig.',
-        'Inkrementell ist nicht dasselbe wie iterativ. Inkrementell heisst „hinzufuegen", iterativ heisst „wiederholen". Agile Vorgehen wie Scrum sind beides: in jedem Sprint (Iteration) entsteht ein Inkrement.',
+        'Inkrementelles Vorgehen liefert in jedem Schritt ein konkretes, nutzbares Stück Produkt. Jedes Inkrement ergänzt das Bisherige; es wird nicht alles auf einmal fertig.',
+        'Inkrementell ist nicht dasselbe wie iterativ. Inkrementell heißt „hinzufügen", iterativ heißt „wiederholen". Agile Vorgehen wie Scrum sind beides: in jedem Sprint (Iteration) entsteht ein Inkrement.',
       ],
       kapitel: {
         titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
@@ -28,12 +46,25 @@ export const iBisL: GlossarEintrag[] = [
       },
     },
   {
+      id: 'intermediate-ca',
+      begriff: 'Intermediate-CA',
+      kurzdefinition: 'Eine Intermediate-CA steht zwischen Root-CA und Endzertifikat.',
+      definition: [
+        'Eine Intermediate-CA wird von einer Root-CA signiert und stellt im Alltag häufig Endzertifikate aus.',
+        'Sie reduziert das Risiko für die Root-CA: Wird eine Intermediate-CA kompromittiert oder abgelöst, kann sie getrennt widerrufen oder ersetzt werden.',
+      ],
+      kapitel: {
+        titel: 'PKI, CA und Zertifikate',
+        href: '/lernen/sicherheit/dsgvo-krypto/pki-zertifikate',
+      },
+    },
+  {
       id: 'inode',
       begriff: 'Inode',
-      kurzdefinition: 'Metadaten-Eintrag in Unix-aehnlichen Dateisystemen, der eine einzelne Datei beschreibt.',
+      kurzdefinition: 'Metadaten-Eintrag in Unix-ähnlichen Dateisystemen, der eine einzelne Datei beschreibt.',
       definition: [
-        'Ein Inode (Index Node) speichert in ext-Dateisystemen alle Metadaten einer Datei: Eigentuemer, Gruppe, Rechte, Groesse, Zeitstempel und Verweise auf die tatsaechlichen Datenbloecke. Der Dateiname steht nicht im Inode, sondern im Verzeichniseintrag.',
-        'Die Anzahl der Inodes wird beim Formatieren festgelegt. Sind alle Inodes belegt, koennen keine neuen Dateien angelegt werden — auch wenn freier Speicherplatz vorhanden ist.',
+        'Ein Inode (Index Node) speichert in ext-Dateisystemen alle Metadaten einer Datei: Eigentümer, Gruppe, Rechte, Größe, Zeitstempel und Verweise auf die tatsächlichen Datenblöcke. Der Dateiname steht nicht im Inode, sondern im Verzeichniseintrag.',
+        'Die Anzahl der Inodes wird beim Formatieren festgelegt. Sind alle Inodes belegt, können keine neuen Dateien angelegt werden — auch wenn freier Speicherplatz vorhanden ist.',
       ],
       kapitel: {
         titel: 'Dateisysteme (FAT32, NTFS, ext4, APFS)',
@@ -42,11 +73,11 @@ export const iBisL: GlossarEintrag[] = [
     },
   {
       id: 'integritaet',
-      begriff: 'Integritaet',
-      kurzdefinition: 'Schutzziel: Daten sind unversehrt; jede Veraenderung wird erkannt.',
+      begriff: 'Integrität',
+      kurzdefinition: 'Schutzziel: Daten sind unversehrt; jede Veränderung wird erkannt.',
       definition: [
-        'Integritaet bedeutet, dass Daten und Systeme korrekt, vollständig und unveraendert bleiben. Eine unbemerkte Aenderung verletzt das Schutzziel, auch wenn die Daten danach noch lesbar sind.',
-        'Hashwerte, digitale Signaturen, Pruefsummen und Schreibrechte schuetzen die Integritaet. RAID schuetzt Daten vor Plattendefekten, ist aber kein Ersatz für Backup oder Versionierung.',
+        'Integrität bedeutet, dass Daten und Systeme korrekt, vollständig und unverändert bleiben. Eine unbemerkte Änderung verletzt das Schutzziel, auch wenn die Daten danach noch lesbar sind.',
+        'Hashwerte, digitale Signaturen, Prüfsummen und Schreibrechte schützen die Integrität. RAID schützt Daten vor Plattendefekten, ist aber kein Ersatz für Backup oder Versionierung.',
       ],
       kapitel: {
         titel: 'Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz',
@@ -58,8 +89,8 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Interest',
       kurzdefinition: 'Zweite AIDA-Stufe: Interesse durch Relevanz für die Zielgruppe aufbauen.',
       definition: [
-        'Interest entsteht, wenn die Zielgruppe erkennt, dass das Thema sie betrifft. In IT-Aufgaben gelingt das zum Beispiel über Ausfallzeiten, Kosten, Bedienaufwand, Sicherheitsrisiken oder Servicequalitaet.',
-        'Pruefungsfalle: Interest ist noch kein Kaufwunsch. Es beantwortet die Frage "Warum ist das für mich wichtig?", nicht "Warum will ich genau diese Loesung?".',
+        'Interest entsteht, wenn die Zielgruppe erkennt, dass das Thema sie betrifft. In IT-Aufgaben gelingt das zum Beispiel über Ausfallzeiten, Kosten, Bedienaufwand, Sicherheitsrisiken oder Servicequalität.',
+        'Prüfungsfalle: Interest ist noch kein Kaufwunsch. Es beantwortet die Frage "Warum ist das für mich wichtig?", nicht "Warum will ich genau diese Lösung?".',
       ],
       kapitel: {
         titel: 'AIDA-Formel & Werbewirkung',
@@ -82,10 +113,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'interview',
       begriff: 'Interview (Erhebungsmethode)',
-      kurzdefinition: 'Strukturiertes oder halbstrukturiertes Gespraech mit Einzelpersonen, das tiefe qualitative Einblicke in Bedarf und Ursachen liefert.',
+      kurzdefinition: 'Strukturiertes oder halbstrukturiertes Gespräch mit Einzelpersonen, das tiefe qualitative Einblicke in Bedarf und Ursachen liefert.',
       definition: [
-        'Das Interview ist die Methode der Wahl, wenn Ursachen, Sonderfaelle oder Hintergruende erfragt werden sollen, die ein Fragebogen nicht abdeckt. Drei Formen: strukturiert (fester Fragenkatalog), halbstrukturiert (Leitfaden mit offenen Fragen), unstrukturiert (freies Gespraech).',
-        'Staerken: Tiefe, Anpassbarkeit an die Antwort, Sichtbarkeit nonverbaler Hinweise. Schwaechen: Zeitaufwendig, subjektiv, nur mit wenigen Personen möglich. Pruefungsrelevant: Methodenwahl begruenden - Interview eignet sich für Key User und Fuehrungskraefte, Fragebogen eher für breite Mitarbeiterkreise.',
+        'Das Interview ist die Methode der Wahl, wenn Ursachen, Sonderfälle oder Hintergründe erfragt werden sollen, die ein Fragebogen nicht abdeckt. Drei Formen: strukturiert (fester Fragenkatalog), halbstrukturiert (Leitfaden mit offenen Fragen), unstrukturiert (freies Gespräch).',
+        'Stärken: Tiefe, Anpassbarkeit an die Antwort, Sichtbarkeit nonverbaler Hinweise. Schwächen: Zeitaufwendig, subjektiv, nur mit wenigen Personen möglich. Prüfungsrelevant: Methodenwahl begründen - Interview eignet sich für Key User und Führungskräfte, Fragebogen eher für breite Mitarbeiterkreise.',
       ],
       kapitel: {
         titel: 'Bedarfsanalyse, Kommunikation & Feedback',
@@ -97,7 +128,7 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Intrinsische Motivation',
       kurzdefinition: 'Motivation aus der Aufgabe selbst, etwa Interesse, Sinn, Lernchance oder Verantwortung.',
       definition: [
-        'Intrinsische Motivation entsteht, wenn eine Person die Aufgabe selbst als sinnvoll, interessant oder entwicklungsfoerderlich erlebt.',
+        'Intrinsische Motivation entsteht, wenn eine Person die Aufgabe selbst als sinnvoll, interessant oder entwicklungsförderlich erlebt.',
         'Im IT-Kontext wirken zum Beispiel echte Verantwortung, Lernmöglichkeiten, gute Problembearbeitung und sichtbarer Nutzen für Anwender intrinsisch motivierend.',
       ],
       kapitel: {
@@ -111,7 +142,7 @@ export const iBisL: GlossarEintrag[] = [
       kurzdefinition: 'IP adressiert und vermittelt Pakete zwischen Netzwerken.',
       definition: [
         'IP steht für Internet Protocol. Es arbeitet auf OSI-Schicht 3 und sorgt dafür, dass Pakete über Netzwerkgrenzen hinweg weitergeleitet werden.',
-        'IP garantiert keine Zustellung und keine Reihenfolge. Diese Aufgaben übernehmen bei Bedarf Protokolle hoeherer Schichten, zum Beispiel TCP.',
+        'IP garantiert keine Zustellung und keine Reihenfolge. Diese Aufgaben übernehmen bei Bedarf Protokolle höherer Schichten, zum Beispiel TCP.',
       ],
       kapitel: {
         titel: 'OSI-Modell - sieben Schichten',
@@ -123,8 +154,8 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'ipconfig / ip a',
       kurzdefinition: 'ipconfig (Windows) und ip a beziehungsweise ip addr (Linux) zeigen die aktuelle IPv4-Konfiguration eines Hosts.',
       definition: [
-        'Unter Windows liefert "ipconfig /all" die volle Konfiguration je Adapter: IPv4-Adresse, Subnetzmaske, Standardgateway, DNS-Server, MAC-Adresse, DHCP-Lease und ob die Adresse statisch oder per DHCP vergeben wurde. "ipconfig /release" gibt die Lease zurueck, "ipconfig /renew" fordert eine neue an, "ipconfig /flushdns" leert den DNS-Cache.',
-        'Unter Linux entspricht das den Befehlen "ip a" (Adressen) und "ip r" (Routing-Tabelle inkl. Default-Gateway). Diese Befehle sind die erste Station der Layer-3-Diagnose: ohne saubere IP-Konfiguration nuetzt jeder weitere Test nichts.',
+        'Unter Windows liefert "ipconfig /all" die volle Konfiguration je Adapter: IPv4-Adresse, Subnetzmaske, Standardgateway, DNS-Server, MAC-Adresse, DHCP-Lease und ob die Adresse statisch oder per DHCP vergeben wurde. "ipconfig /release" gibt die Lease zurück, "ipconfig /renew" fordert eine neue an, "ipconfig /flushdns" leert den DNS-Cache.',
+        'Unter Linux entspricht das den Befehlen "ip a" (Adressen) und "ip r" (Routing-Tabelle inkl. Default-Gateway). Diese Befehle sind die erste Station der Layer-3-Diagnose: ohne saubere IP-Konfiguration nützt jeder weitere Test nichts.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -136,11 +167,11 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'IPsec',
       kurzdefinition: 'Protokollfamilie zur Absicherung von IP-Verkehr auf Netzwerkschicht.',
       definition: [
-        'IPsec schuetzt IP-Pakete mit Security Associations und Protokollen wie ESP und AH. Für die automatische Schluesselaushandlung wird haeufig IKEv2 eingesetzt.',
+        'IPsec schützt IP-Pakete mit Security Associations und Protokollen wie ESP und AH. Für die automatische Schlüsselaushandlung wird häufig IKEv2 eingesetzt.',
         'In AP1-Aufgaben taucht IPsec oft bei Site-to-Site-VPNs, Routerkopplung und sicheren Standortverbindungen auf.',
       ],
       kapitel: {
-        titel: 'Verschluesselung, Hashing, Zertifikate, Signatur & VPN',
+        titel: 'Verschlüsselung, Hashing, Zertifikate, Signatur & VPN',
         href: '/lernen/sicherheit/dsgvo-krypto/verschluesselung-hash-vpn',
       },
     },
@@ -158,12 +189,25 @@ export const iBisL: GlossarEintrag[] = [
       },
     },
   {
+      id: 'ipv6',
+      begriff: 'IPv6-Adresse',
+      kurzdefinition: 'Eine IPv6-Adresse ist eine 128-Bit-Adresse, die hexadezimal mit Doppelpunkten geschrieben wird.',
+      definition: [
+        'IPv6-Adressen bestehen aus 128 Bit. Sie werden als acht Gruppen mit je vier Hex-Ziffern geschrieben, zum Beispiel 2001:db8:abcd:12::1.',
+        'Ein IPv6-Interface kann mehrere Adressen gleichzeitig haben, etwa Link-Local für das lokale Netz, Global Unicast für geroutete Verbindungen und temporäre Privacy-Adressen.',
+      ],
+      kapitel: {
+        titel: 'IPv6 - Aufbau, Adressierung, Präfixe',
+        href: '/lernen/netzwerke/adressierung/ipv6-grundlagen',
+      },
+    },
+  {
       id: 'isms',
       begriff: 'ISMS',
       kurzdefinition: 'Information Security Management System; Regelwerk für Planung, Umsetzung, Prüfung und Verbesserung der Informationssicherheit.',
       definition: [
-        'Ein ISMS ist kein Produkt, sondern ein dokumentiertes System aus Leitlinien, Rollen, Prozessen und Massnahmen. Es legt fest, wer für Informationssicherheit verantwortlich ist, wie Risiken bewertet werden und wie auf Vorfaelle reagiert wird.',
-        'Internationaler Massstab für Anforderungen ist ISO/IEC 27001, in Deutschland zusaetzlich der BSI-Standard 200-1 mit der IT-Grundschutz-Methodik 200-2 und der Risikoanalyse 200-3.',
+        'Ein ISMS ist kein Produkt, sondern ein dokumentiertes System aus Leitlinien, Rollen, Prozessen und Maßnahmen. Es legt fest, wer für Informationssicherheit verantwortlich ist, wie Risiken bewertet werden und wie auf Vorfälle reagiert wird.',
+        'Internationaler Massstab für Anforderungen ist ISO/IEC 27001, in Deutschland zusätzlich der BSI-Standard 200-1 mit der IT-Grundschutz-Methodik 200-2 und der Risikoanalyse 200-3.',
       ],
       kapitel: {
         titel: 'Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz',
@@ -175,8 +219,8 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'ISO/IEC 27001',
       kurzdefinition: 'Internationale Norm mit Anforderungen an ein ISMS, herausgegeben von ISO und IEC.',
       definition: [
-        'ISO/IEC 27001 legt die Anforderungen an Aufbau, Betrieb, Ueberwachung und Verbesserung eines ISMS fest. Die aktuelle Fassung stammt aus 2022 und enthaelt im Anhang A einen Massnahmenkatalog mit organisatorischen, personellen, physischen und technischen Controls.',
-        'Eine Zertifizierung nach ISO/IEC 27001 weist gegenüber Kunden und Aufsichtsbehoerden nach, dass die Organisation Informationssicherheit systematisch managt. Der BSI IT-Grundschutz ist dazu kompatibel und kann als Pfad zur Zertifizierung genutzt werden.',
+        'ISO/IEC 27001 legt die Anforderungen an Aufbau, Betrieb, Überwachung und Verbesserung eines ISMS fest. Die aktuelle Fassung stammt aus 2022 und enthält im Anhang A einen Maßnahmenkatalog mit organisatorischen, personellen, physischen und technischen Controls.',
+        'Eine Zertifizierung nach ISO/IEC 27001 weist gegenüber Kunden und Aufsichtsbehörden nach, dass die Organisation Informationssicherheit systematisch managt. Der BSI IT-Grundschutz ist dazu kompatibel und kann als Pfad zur Zertifizierung genutzt werden.',
       ],
       kapitel: {
         titel: 'Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz',
@@ -188,8 +232,8 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Ist-Soll-Vergleich',
       kurzdefinition: 'Gegenüberstellung des aktuellen Zustands (Ist) und des angestrebten Zielzustands (Soll), aus der sich der Bedarf ableitet.',
       definition: [
-        'Der Ist-Soll-Vergleich ist die mathematische Form der Bedarfsdefinition: Bedarf = Soll minus Ist. Beispiel: Soll-Bearbeitungszeit pro Ticket 8 Minuten, Ist 14 Minuten - Bedarf ist die Schliessung der Luecke von 6 Minuten.',
-        'In Pruefungen wird der Vergleich oft mit Kennzahlen oder Tabellen abgefragt. Wichtig: Soll-Werte müssen vorher messbar definiert sein, sonst ist der Vergleich nicht belastbar. Auch im PDCA- und im Projekt-Controlling-Kontext findet sich dieselbe Logik wieder.',
+        'Der Ist-Soll-Vergleich ist die mathematische Form der Bedarfsdefinition: Bedarf = Soll minus Ist. Beispiel: Soll-Bearbeitungszeit pro Ticket 8 Minuten, Ist 14 Minuten - Bedarf ist die Schließung der Lücke von 6 Minuten.',
+        'In Prüfungen wird der Vergleich oft mit Kennzahlen oder Tabellen abgefragt. Wichtig: Soll-Werte müssen vorher messbar definiert sein, sonst ist der Vergleich nicht belastbar. Auch im PDCA- und im Projekt-Controlling-Kontext findet sich dieselbe Logik wieder.',
       ],
       kapitel: {
         titel: 'Bedarfsanalyse, Kommunikation & Feedback',
@@ -199,10 +243,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'iteration',
       begriff: 'Iteration',
-      kurzdefinition: 'Iteration wiederholt einen Anweisungsblock, solange eine Zaehllogik oder Bedingung es verlangt.',
+      kurzdefinition: 'Iteration wiederholt einen Anweisungsblock, solange eine Zähllogik oder Bedingung es verlangt.',
       definition: [
         'Iteration ist die allgemeine Bezeichnung für Wiederholung im Kontrollfluss. Dazu gehören FOR-Schleifen mit bekannter Anzahl, WHILE-Schleifen mit Vorbedingung und REPEAT-UNTIL-Schleifen mit Nachbedingung.',
-        'In AP1-Aufgaben zeigt eine Iteration meist eine Summe, ein Maximum, einen Zaehler, eine Suche oder eine Eingabewiederholung. Die Grenze der Wiederholung ist dabei fast immer der kritische Punkt.',
+        'In AP1-Aufgaben zeigt eine Iteration meist eine Summe, ein Maximum, einen Zähler, eine Suche oder eine Eingabewiederholung. Die Grenze der Wiederholung ist dabei fast immer der kritische Punkt.',
       ],
       kapitel: {
         titel: 'Pseudocode, Algorithmen & Kontrollstrukturen',
@@ -212,10 +256,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'journaling',
       begriff: 'Journaling',
-      kurzdefinition: 'Verfahren, bei dem ein Dateisystem geplante Aenderungen vor der Ausführung in einem Logbuch festhaelt.',
+      kurzdefinition: 'Verfahren, bei dem ein Dateisystem geplante Änderungen vor der Ausführung in einem Logbuch festhält.',
       definition: [
-        'Beim Journaling protokolliert das Dateisystem vor jeder Schreibaktion, was es vorhat. Stuerzt das System mitten in der Operation ab, kann das Dateisystem aus dem Journal entweder die Aenderung sauber abschliessen oder den vorherigen Zustand wiederherstellen.',
-        'Journaling schuetzt vor Inkonsistenzen nach Stromausfall oder Crash. NTFS und ext4 sind klassische Journaling-Dateisysteme; APFS nutzt stattdessen Copy-on-Write, das einen aehnlichen Schutz erreicht. FAT32 kennt kein Journaling.',
+        'Beim Journaling protokolliert das Dateisystem vor jeder Schreibaktion, was es vorhat. Stürzt das System mitten in der Operation ab, kann das Dateisystem aus dem Journal entweder die Änderung sauber abschliessen oder den vorherigen Zustand wiederherstellen.',
+        'Journaling schützt vor Inkonsistenzen nach Stromausfall oder Crash. NTFS und ext4 sind klassische Journaling-Dateisysteme; APFS nutzt stattdessen Copy-on-Write, das einen ähnlichen Schutz erreicht. FAT32 kennt kein Journaling.',
       ],
       kapitel: {
         titel: 'Dateisysteme (FAT32, NTFS, ext4, APFS)',
@@ -227,8 +271,8 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Kanban',
       kurzdefinition: 'Visuelles Pull-System mit Work-in-Progress-Limits; agiler Ansatz ohne feste Iterationen.',
       definition: [
-        'Kanban stammt urspruenglich aus der Toyota-Produktion und wurde fuer Wissensarbeit adaptiert. Arbeit wird auf einem Board mit Spalten (z.B. To Do, Doing, Done) sichtbar gemacht; pro Spalte gilt ein Work-in-Progress-Limit (WIP-Limit), das gleichzeitig laufende Aufgaben begrenzt.',
-        'Im Unterschied zu Scrum gibt es keine festen Sprints, keine Accountabilities-Pflicht und keine Sprint-Events. Engpaesse werden im Fluss sichtbar; Verbesserung erfolgt evolutionaer am laufenden System. Kanban wird oft mit Scrum kombiniert (Scrumban).',
+        'Kanban stammt ursprünglich aus der Toyota-Produktion und wurde für Wissensarbeit adaptiert. Arbeit wird auf einem Board mit Spalten (z.B. To Do, Doing, Done) sichtbar gemacht; pro Spalte gilt ein Work-in-Progress-Limit (WIP-Limit), das gleichzeitig laufende Aufgaben begrenzt.',
+        'Im Unterschied zu Scrum gibt es keine festen Sprints, keine Accountabilities-Pflicht und keine Sprint-Events. Engpässe werden im Fluss sichtbar; Verbesserung erfolgt evolutionär am laufenden System. Kanban wird oft mit Scrum kombiniert (Scrumban).',
       ],
       kapitel: {
         titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
@@ -240,11 +284,11 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Kapitalwert',
       kurzdefinition: 'Summe aller auf den heutigen Zeitpunkt abgezinsten Zahlungen einer Investition.',
       definition: [
-        'Der Kapitalwert (auch Net Present Value) summiert alle kuenftigen Ein- und Auszahlungen einer Investition, jeweils mit dem Kalkulationszinssatz auf den Startzeitpunkt abgezinst, abzueglich der Anschaffungsauszahlung.',
-        'Ein positiver Kapitalwert bedeutet, dass die Investition den geforderten Zins schlaegt. Bei mehreren Alternativen waehlt man die mit dem hoechsten Kapitalwert.',
+        'Der Kapitalwert (auch Net Present Value) summiert alle künftigen Ein- und Auszahlungen einer Investition, jeweils mit dem Kalkulationszinssatz auf den Startzeitpunkt abgezinst, abzüglich der Anschaffungsauszahlung.',
+        'Ein positiver Kapitalwert bedeutet, dass die Investition den geforderten Zins schlägt. Bei mehreren Alternativen wählt man die mit dem höchsten Kapitalwert.',
       ],
       kapitel: {
-        titel: 'Kaufmaennische Rechenaufgaben',
+        titel: 'Kaufmännische Rechenaufgaben',
         href: '/lernen/wirtschaft/kalkulation/kaufmaennische-rechenaufgaben',
       },
     },
@@ -253,7 +297,7 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Kaufvertrag',
       kurzdefinition: 'Vertrag über Übergabe, Eigentumsverschaffung und Zahlung des Kaufpreises.',
       definition: [
-        'Beim Kaufvertrag verpflichtet sich der Verkaeufer, die Sache zu übergeben und dem Kaeufer Eigentum zu verschaffen. Der Kaeufer zahlt den vereinbarten Kaufpreis und nimmt die Sache ab.',
+        'Beim Kaufvertrag verpflichtet sich der Verkäufer, die Sache zu übergeben und dem Käufer Eigentum zu verschaffen. Der Käufer zahlt den vereinbarten Kaufpreis und nimmt die Sache ab.',
         'In AP1-Aufgaben erkennst du ihn an Lieferung, Kaufpreis, Eigentumsübergang und einer konkreten Sache. Das unterscheidet ihn von Dienstvertrag und Werkvertrag.',
       ],
       kapitel: {
@@ -264,9 +308,9 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'kernkompetenz',
       begriff: 'Kernkompetenz',
-      kurzdefinition: 'Strategisch wichtige Faehigkeit, die den Erfolg eines Unternehmens stark beeinflusst.',
+      kurzdefinition: 'Strategisch wichtige Fähigkeit, die den Erfolg eines Unternehmens stark beeinflusst.',
       definition: [
-        'Eine Kernkompetenz ist eine Faehigkeit, die für den langfristigen Erfolg besonders wichtig ist und schwer ersetzbar sein kann.',
+        'Eine Kernkompetenz ist eine Fähigkeit, die für den langfristigen Erfolg besonders wichtig ist und schwer ersetzbar sein kann.',
         'In Make-or-Buy-Aufgaben spricht eine Kernkompetenz eher für Make: Wissen, Kontrolle und Weiterentwicklung bleiben im Unternehmen.',
       ],
       kapitel: {
@@ -277,10 +321,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'key-user',
       begriff: 'Key User',
-      kurzdefinition: 'Praxisnahe Schlüsselanwender, die frueh testen, Feedback geben und andere bei der Einfuehrung unterstützen.',
+      kurzdefinition: 'Praxisnahe Schlüsselanwender, die früh testen, Feedback geben und andere bei der Einführung unterstützen.',
       definition: [
-        'Key User verbinden Fachbereich und Projektteam. Sie kennen den Arbeitsalltag, testen neue Loesungen frueh und können typische Fragen aus der Praxis beantworten.',
-        'Bei IT-Einfuehrungen sind Key User wichtige Multiplikatoren, ersetzen aber keine strukturierte Schulung und keinen Supportprozess.',
+        'Key User verbinden Fachbereich und Projektteam. Sie kennen den Arbeitsalltag, testen neue Lösungen früh und können typische Fragen aus der Praxis beantworten.',
+        'Bei IT-Einführungen sind Key User wichtige Multiplikatoren, ersetzen aber keine strukturierte Schulung und keinen Supportprozess.',
       ],
       kapitel: {
         titel: 'Schulung, Einweisung, Key User und Multiplikatoren',
@@ -290,10 +334,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'kg',
       begriff: 'KG',
-      kurzdefinition: 'Kommanditgesellschaft mit Komplementaer und beschraenkt haftendem Kommanditisten.',
+      kurzdefinition: 'Kommanditgesellschaft mit Komplementär und beschränkt haftendem Kommanditisten.',
       definition: [
-        'KG steht für Kommanditgesellschaft. Sie verbindet mindestens einen persoenlich haftenden Gesellschafter mit mindestens einem beschraenkt haftenden Kommanditisten.',
-        'In Aufgaben ist die Rollenunterscheidung wichtig: Komplementaere tragen die persoenliche Haftung und fuehren typischerweise, Kommanditisten beteiligen sich mit einer Haftsumme.',
+        'KG steht für Kommanditgesellschaft. Sie verbindet mindestens einen persönlich haftenden Gesellschafter mit mindestens einem beschränkt haftenden Kommanditisten.',
+        'In Aufgaben ist die Rollenunterscheidung wichtig: Komplementäre tragen die persönliche Haftung und führen typischerweise, Kommanditisten beteiligen sich mit einer Haftsumme.',
       ],
       kapitel: {
         titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
@@ -303,10 +347,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'kompression',
       begriff: 'Kompression',
-      kurzdefinition: 'Kompression reduziert die Dateigroesse, indem Redundanzen entfernt oder Daten ungenauer gespeichert werden.',
+      kurzdefinition: 'Kompression reduziert die Dateigrösse, indem Redundanzen entfernt oder Daten ungenauer gespeichert werden.',
       definition: [
         'Verlustfreie Verfahren wie ZIP, PNG oder FLAC erlauben eine Wiederherstellung der Originaldaten. Verlustbehaftete Verfahren wie JPEG, MP3 oder H.264 werfen Daten weg, die das menschliche Auge oder Ohr ohnehin schlecht wahrnimmt - das Original ist danach nicht mehr exakt rekonstruierbar.',
-        'In AP1-Aufgaben heißt Komprimierung auf 50 Prozent meist: Originalgroesse mal 0,5. Das ist kein absoluter Abzug von 50 Bytes, sondern ein Faktor. Welche Verfahren in der Praxis welche Faktoren erreichen, regeln Normen wie ISO/IEC 10918 (JPEG) oder ITU-T H.264.',
+        'In AP1-Aufgaben heißt Komprimierung auf 50 Prozent meist: Originalgrösse mal 0,5. Das ist kein absoluter Abzug von 50 Bytes, sondern ein Faktor. Welche Verfahren in der Praxis welche Faktoren erreichen, regeln Normen wie ISO/IEC 10918 (JPEG) oder ITU-T H.264.',
       ],
       kapitel: {
         titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
@@ -318,8 +362,8 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Kontextwechsel',
       kurzdefinition: 'Wechsel der CPU von einem Thread oder Task zu einem anderen.',
       definition: [
-        'Bei einem Kontextwechsel speichert das Betriebssystem den aktuellen Ausfuehrungszustand und stellt den Zustand eines anderen Threads oder Tasks wieder her.',
-        'Kontextwechsel ermoeglichen Multitasking, kosten aber Zeit. Sehr viele Wechsel koennen ein System ausbremsen.',
+        'Bei einem Kontextwechsel speichert das Betriebssystem den aktuellen Ausführungszustand und stellt den Zustand eines anderen Threads oder Tasks wieder her.',
+        'Kontextwechsel ermöglichen Multitasking, kosten aber Zeit. Sehr viele Wechsel können ein System ausbremsen.',
       ],
       kapitel: {
         titel: 'Prozesse, Threads und Tasks',
@@ -335,7 +379,7 @@ export const iBisL: GlossarEintrag[] = [
         'Die kritische Menge ist der Punkt, bei dem beide Alternativen gleich teuer sind. Darüber lohnt die eine, darunter die andere Variante.',
       ],
       kapitel: {
-        titel: 'Kaufmaennische Rechenaufgaben',
+        titel: 'Kaufmännische Rechenaufgaben',
         href: '/lernen/wirtschaft/kalkulation/kaufmaennische-rechenaufgaben',
       },
     },
@@ -345,7 +389,7 @@ export const iBisL: GlossarEintrag[] = [
       kurzdefinition: 'Menge, bei der zwei Alternativen gleich hohe Gesamtkosten haben.',
       definition: [
         'Die kritische Menge entsteht, indem die Kostenfunktionen zweier Alternativen gleichgesetzt werden. An diesem Punkt sind beide rechnerisch gleich teuer.',
-        'Unterhalb und oberhalb der kritischen Menge kann jeweils eine andere Alternative guenstiger sein. Deshalb muss nach der Berechnung immer die Richtung geprueft werden.',
+        'Unterhalb und oberhalb der kritischen Menge kann jeweils eine andere Alternative günstiger sein. Deshalb muss nach der Berechnung immer die Richtung geprüft werden.',
       ],
       kapitel: {
         titel: 'Make-or-Buy-Entscheidung',
@@ -357,21 +401,21 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'KVM-Switch',
       kurzdefinition: 'Gerät zum Umschalten von Tastatur, Maus und Bildschirm zwischen mehreren Rechnern.',
       definition: [
-        'KVM steht für Keyboard, Video, Mouse. Ein KVM-Switch verbindet einen Arbeitsplatz (Tastatur, Maus, Monitor) mit mehreren Rechnern und schaltet die Eingabe- und Ausgabegeraete per Tastendruck oder Hotkey um.',
-        'Verbreitete Varianten sind klassische Hardware-Switches im Serverraum, KVM-over-IP-Loesungen für entfernte Administration und USB-C-Docks mit eingebautem KVM-Schalter für den Doppelarbeitsplatz aus Firmen- und Privatlaptop.',
+        'KVM steht für Keyboard, Video, Mouse. Ein KVM-Switch verbindet einen Arbeitsplatz (Tastatur, Maus, Monitor) mit mehreren Rechnern und schaltet die Eingabe- und Ausgabegeräte per Tastendruck oder Hotkey um.',
+        'Verbreitete Varianten sind klassische Hardware-Switches im Serverraum, KVM-over-IP-Lösungen für entfernte Administration und USB-C-Docks mit eingebautem KVM-Schalter für den Doppelarbeitsplatz aus Firmen- und Privatlaptop.',
       ],
       kapitel: {
-        titel: 'Hardware, Schnittstellen & Peripherie auswaehlen',
+        titel: 'Hardware, Schnittstellen & Peripherie auswählen',
         href: '/lernen/hardware/schnittstellen/hardware-schnittstellen',
       },
     },
   {
       id: 'latenz',
       begriff: 'Latenz',
-      kurzdefinition: 'Die Latenz ist die Zeit, die ein einzelnes Datenpaket bis zum Empfaenger braucht.',
+      kurzdefinition: 'Die Latenz ist die Zeit, die ein einzelnes Datenpaket bis zum Empfänger braucht.',
       definition: [
-        'Latenz misst die Verzoegerung pro Paket - typisch in Millisekunden. Ein hoher Ping zwischen Berlin und Tokio entsteht nicht durch geringe Bandbreite, sondern durch die Laufzeit auf langen Glasfasern und durch Paketverarbeitung in Routern.',
-        'Bandbreite und Latenz sind unabhaengig voneinander. Eine Satellitenleitung kann Hunderte Mbit/s liefern und trotzdem 600 ms Verzoegerung haben - was für Videokonferenzen oder Online-Spiele schmerzhaft ist, für einen Datei-Download aber kaum stoert.',
+        'Latenz misst die Verzögerung pro Paket - typisch in Millisekunden. Ein hoher Ping zwischen Berlin und Tokio entsteht nicht durch geringe Bandbreite, sondern durch die Laufzeit auf langen Glasfasern und durch Paketverarbeitung in Routern.',
+        'Bandbreite und Latenz sind unabhängig voneinander. Eine Satellitenleitung kann Hunderte Mbit/s liefern und trotzdem 600 ms Verzögerung haben - was für Videokonferenzen oder Online-Spiele schmerzhaft ist, für einen Datei-Download aber kaum stört.',
       ],
       kapitel: {
         titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
@@ -383,8 +427,8 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'DHCP-Lease',
       kurzdefinition: 'Ein Lease ist die zeitlich begrenzte Reservierung einer IP-Adresse, die ein DHCP-Server an einen Client vergibt.',
       definition: [
-        'Beim DORA-Handshake (Discover, Offer, Request, Acknowledge) erhaelt der Client eine IP-Konfiguration auf Zeit - die Lease-Dauer steht in der Acknowledge-Nachricht (DHCP-Option 51). Ist die Haelfte der Zeit abgelaufen, fragt der Client per DHCP-Request beim selben Server eine Verlaengerung an (Renew). Antwortet er nicht, wird ab 87,5 Prozent der Lease-Zeit ein Broadcast versucht (Rebind).',
-        'Wird ein Gerät ausgeschaltet oder das Netzwerk gewechselt, kann es per DHCP-Release seine Adresse zurueckgeben. Wichtig: Eine zu kurze Lease (z. B. 2 Stunden in einem Hotel-WLAN) entlastet den Pool, eine zu lange Lease (z. B. 8 Tage im Heimnetz) reduziert die DHCP-Last.',
+        'Beim DORA-Handshake (Discover, Offer, Request, Acknowledge) erhält der Client eine IP-Konfiguration auf Zeit - die Lease-Dauer steht in der Acknowledge-Nachricht (DHCP-Option 51). Ist die Hälfte der Zeit abgelaufen, fragt der Client per DHCP-Request beim selben Server eine Verlängerung an (Renew). Antwortet er nicht, wird ab 87,5 Prozent der Lease-Zeit ein Broadcast versucht (Rebind).',
+        'Wird ein Gerät ausgeschaltet oder das Netzwerk gewechselt, kann es per DHCP-Release seine Adresse zurückgeben. Wichtig: Eine zu kurze Lease (z. B. 2 Stunden in einem Hotel-WLAN) entlastet den Pool, eine zu lange Lease (z. B. 8 Tage im Heimnetz) reduziert die DHCP-Last.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -396,11 +440,11 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Leasing',
       kurzdefinition: 'Leasing ist die Nutzungsüberlassung einer Sache gegen wiederkehrende Raten.',
       definition: [
-        'Leasing ist zivilrechtlich ein atypischer Mietvertrag. Der Leasinggeber bleibt Eigentuemer, der Leasingnehmer nutzt das Objekt gegen Raten.',
+        'Leasing ist zivilrechtlich ein atypischer Mietvertrag. Der Leasinggeber bleibt Eigentümer, der Leasingnehmer nutzt das Objekt gegen Raten.',
         'Bilanziell landet das Objekt meist beim Leasinggeber; nur bei bestimmten Konstellationen (z. B. voller Barwert der Raten) wird es dem Leasingnehmer zugerechnet.',
       ],
       kapitel: {
-        titel: 'Kaufmaennische Rechenaufgaben',
+        titel: 'Kaufmännische Rechenaufgaben',
         href: '/lernen/wirtschaft/kalkulation/kaufmaennische-rechenaufgaben',
       },
     },
@@ -420,10 +464,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'leitbild',
       begriff: 'Leitbild',
-      kurzdefinition: 'Orientierung eines Unternehmens mit Selbstverstaendnis, Werten und Handlungsprinzipien.',
+      kurzdefinition: 'Orientierung eines Unternehmens mit Selbstverständnis, Werten und Handlungsprinzipien.',
       definition: [
         'Ein Leitbild beschreibt, wofür ein Unternehmen steht, welchen Nutzen es stiften will und nach welchen Werten gehandelt werden soll.',
-        'Pruefungsstark wird es, wenn du daraus konkrete Folgen ableitest, etwa für Service, Beschaffung, Datenschutz, Qualitaet, Schulung oder Nachhaltigkeit.',
+        'Prüfungsstark wird es, wenn du daraus konkrete Folgen ableitest, etwa für Service, Beschaffung, Datenschutz, Qualität, Schulung oder Nachhaltigkeit.',
       ],
       kapitel: {
         titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
@@ -433,10 +477,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'likert-skala',
       begriff: 'Likert-Skala',
-      kurzdefinition: 'Antwortformat in Fragebogen, das Zustimmungsgrade in meist fuenf oder sieben Stufen abbildet (von "stimme gar nicht zu" bis "stimme voll zu").',
+      kurzdefinition: 'Antwortformat in Fragebogen, das Zustimmungsgrade in meist fünf oder sieben Stufen abbildet (von "stimme gar nicht zu" bis "stimme voll zu").',
       definition: [
-        'Die Skala wurde 1932 von Rensis Likert eingefuehrt und ist heute Standard in Mitarbeiter-, Kunden- und Usability-Befragungen. Typisch sind Skalen mit fuenf Stufen (sehr unzufrieden - unzufrieden - neutral - zufrieden - sehr zufrieden) oder mit sieben für feinere Differenzierung.',
-        'Pruefungsrelevant: Die mittlere Stufe ("neutral") ist umstritten - manche Skalen lassen sie weg, um Antwort-Tendenzen zur Mitte zu vermeiden. Auswertung erfolgt entweder als Durchschnitt (mit Vorsicht, da Ordinaldaten) oder als Verteilung pro Stufe.',
+        'Die Skala wurde 1932 von Rensis Likert eingeführt und ist heute Standard in Mitarbeiter-, Kunden- und Usability-Befragungen. Typisch sind Skalen mit fünf Stufen (sehr unzufrieden - unzufrieden - neutral - zufrieden - sehr zufrieden) oder mit sieben für feinere Differenzierung.',
+        'Prüfungsrelevant: Die mittlere Stufe ("neutral") ist umstritten - manche Skalen lassen sie weg, um Antwort-Tendenzen zur Mitte zu vermeiden. Auswertung erfolgt entweder als Durchschnitt (mit Vorsicht, da Ordinaldaten) oder als Verteilung pro Stufe.',
       ],
       kapitel: {
         titel: 'Bedarfsanalyse, Kommunikation & Feedback',
@@ -457,12 +501,25 @@ export const iBisL: GlossarEintrag[] = [
       },
     },
   {
-      id: 'liquiditaet',
-      begriff: 'Liquiditaet',
-      kurzdefinition: 'Faehigkeit, faellige Zahlungen rechtzeitig leisten zu können.',
+      id: 'ieee-754',
+      begriff: 'IEEE 754',
+      kurzdefinition: 'IEEE 754 ist der wichtigste Standard für Gleitkommazahlen in Computern.',
       definition: [
-        'Liquiditaet beschreibt, ob ein Unternehmen genug verfuegbare Zahlungsmittel hat, um Rechnungen, Loehne, Raten und sonstige Verpflichtungen fristgerecht zu bezahlen.',
-        'Kauf bindet oft sofort viel Liquiditaet. Leasing und Miete verteilen Zahlungen über die Laufzeit und können dadurch kurzfristig entlasten.',
+        'IEEE 754 beschreibt, wie binäre und dezimale Gleitkommazahlen gespeichert und gerechnet werden. Bekannte Formate sind binary32 (float) und binary64 (double).',
+        'Der Standard erklärt auch typische Rundungseffekte, zum Beispiel warum 0.1 + 0.2 in vielen Programmiersprachen nicht exakt 0.3 ergibt.',
+      ],
+      kapitel: {
+        titel: 'Zahlensysteme (Dual, Hex, Dezimal)',
+        href: '/lernen/grundlagen/zahlen/zahlensysteme',
+      },
+    },
+  {
+      id: 'liquiditaet',
+      begriff: 'Liquidität',
+      kurzdefinition: 'Fähigkeit, fällige Zahlungen rechtzeitig leisten zu können.',
+      definition: [
+        'Liquidität beschreibt, ob ein Unternehmen genug verfügbare Zahlungsmittel hat, um Rechnungen, Löhne, Raten und sonstige Verpflichtungen fristgerecht zu bezahlen.',
+        'Kauf bindet oft sofort viel Liquidität. Leasing und Miete verteilen Zahlungen über die Laufzeit und können dadurch kurzfristig entlasten.',
       ],
       kapitel: {
         titel: 'Kauf, Leasing & Miete im Vergleich',
@@ -474,7 +531,7 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Listeneinkaufspreis',
       kurzdefinition: 'Angebots- oder Katalogpreis vor Rabatt, Skonto und Bezugskosten.',
       definition: [
-        'Der Listeneinkaufspreis ist der Ausgangswert der Bezugspreisrechnung. Von ihm wird zuerst ein Liefererrabatt abgezogen.',
+        'Der Listeneinkaufspreis ist der Ausgangswert der Bezugspreisrechnung. Von ihm wird zürst ein Liefererrabatt abgezogen.',
         'In AP1-Aufgaben darf der Listeneinkaufspreis nicht direkt mit anderen Angeboten verglichen werden, wenn Rabatt, Skonto oder Bezugskosten unterschiedlich sind.',
       ],
       kapitel: {

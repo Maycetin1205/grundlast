@@ -10,7 +10,9 @@ import type { Lesson } from "./types"
 
 export interface LessonSearchItem {
   id: string
+  slug: string
   title: string
+  lf?: Lesson["lf"]
   lernfeld: string
   modul: string
   to: string
@@ -23,7 +25,9 @@ export const lessonIndex: LessonSearchItem[] = lernfelder.flatMap((lf) =>
   lf.moduls.flatMap((modul) =>
     modul.lessons.map((lesson) => ({
       id: `${lf.slug}/${modul.slug}/${lesson.slug}`,
+      slug: lesson.slug,
       title: lesson.title,
+      lf: lesson.lf,
       lernfeld: lf.title,
       modul: modul.title,
       to: `/lernen/${lf.slug}/${modul.slug}/${lesson.slug}`,

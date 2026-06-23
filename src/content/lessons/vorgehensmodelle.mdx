@@ -16,7 +16,7 @@ Nach diesem Kapitel kannst du das **<Term id="wasserfallmodell">Wasserfallmodell
 In der AP1 musst du häufig entscheiden, welches Vorgehensmodell zu einer geschilderten Projektsituation passt: stabile Anforderungen, sicherheitskritische Hardware, lebendige Webanwendung, behördliches IT-Projekt mit Vergabe. Wer nur „Wasserfall = alt, Agil = neu" gelernt hat, fällt regelmäßig auf einfache Aufgaben rein. Im Betrieb ist die Wahl noch wichtiger: ein falsches Modell kostet Geld, Zeit und Vertrauen. Das gilt auch für die Mischformen, die im echten Alltag häufiger sind als die Reinformen aus dem Lehrbuch.
 
 <Analogie>
-Stell dir drei Bauprojekte vor. **Brückenbau** läuft im **Wasserfall**: Statik, Fundament, Pfeiler, Fahrbahn — wer das Fundament nach drei Monaten ändert, sprengt das ganze Projekt. **Behördliches Großprojekt** läuft als **V-Modell**: jede Konstruktionsentscheidung bekommt eine passende Prüfung — der Statiker rechnet, der Pruefingenieur prüft; der Brueckenbauer schweisst, die Materialprüfung kontrolliert die Naht. **App-Entwicklung** läuft **agil**: das Team baut eine erste Version, zeigt sie, lernt aus dem Feedback, baut weiter — jede Woche entsteht etwas Nutzbares. Manche Projekte, etwa ein modernes Auto, sind **hybrid**: Mechanik nach V-Modell (Crashtest pflichtig), Infotainment-Software in Sprints.
+Stell dir drei Bauprojekte vor. **Brückenbau** läuft im **Wasserfall**: Statik, Fundament, Pfeiler, Fahrbahn — wer das Fundament nach drei Monaten ändert, sprengt das ganze Projekt. **Behördliches Großprojekt** läuft als **V-Modell**: jede Konstruktionsentscheidung bekommt eine passende Prüfung — der Statiker rechnet, der Prüfingenieur prüft; der Brückenbauer schweisst, die Materialprüfung kontrolliert die Naht. **App-Entwicklung** läuft **agil**: das Team baut eine erste Version, zeigt sie, lernt aus dem Feedback, baut weiter — jede Woche entsteht etwas Nutzbares. Manche Projekte, etwa ein modernes Auto, sind **hybrid**: Mechanik nach V-Modell (Crashtest pflichtig), Infotainment-Software in Sprints.
 </Analogie>
 
 ---
@@ -57,8 +57,8 @@ Im Wasserfallmodell laufen die Phasen streng nacheinander. Jede Phase muss kompl
 
 | | Wasserfall |
 |---|---|
-| **Vorteile** | klare Struktur, gut planbar, vollstaendige Dokumentation, einfache Vertragsfaehigkeit |
-| **Nachteile** | starr bei Aenderungen, spätes Kundenfeedback, Fehler werden erst beim Test sichtbar |
+| **Vorteile** | klare Struktur, gut planbar, vollständige Dokumentation, einfache Vertragsfähigkeit |
+| **Nachteile** | starr bei Änderungen, spätes Kundenfeedback, Fehler werden erst beim Test sichtbar |
 | **Passt zu** | stabilen Anforderungen, regulierten / sicherheitskritischen Projekten, Bau, Hardware, Embedded |
 | **Passt nicht zu** | Software mit unklarem oder beweglichem Anforderungsbild, Innovationsprojekten |
 
@@ -105,8 +105,8 @@ Die aktuelle, offizielle Variante in Deutschland heißt **V-Modell XT** (aktuell
 | | V-Modell |
 |---|---|
 | **Vorteile** | strenge Qualitätssicherung, klare Vertragslage, jede Konstruktion bekommt eine Prüfung |
-| **Nachteile** | aufwendig, viel Dokumentation, schwerfaellig bei Aenderungen |
-| **Passt zu** | regulierten oder sicherheitskritischen Projekten, oeffentlicher Verwaltung, Medizintechnik, Verkehr |
+| **Nachteile** | aufwendig, viel Dokumentation, schwerfällig bei Änderungen |
+| **Passt zu** | regulierten oder sicherheitskritischen Projekten, öffentlicher Verwaltung, Medizintechnik, Verkehr |
 | **Passt nicht zu** | kleinen Web-/App-Projekten mit wechselnden Anforderungen |
 
 ---
@@ -119,7 +119,7 @@ Agile Softwareentwicklung wurde 2001 von 17 Autoren — darunter Kent Beck, Mart
 
 | Wir schätzen | mehr als |
 |---|---|
-| Individuen und Interaktionen | Prozesse und Werkzeuge |
+| Individün und Interaktionen | Prozesse und Werkzeuge |
 | Funktionierende Software | umfassende Dokumentation |
 | Zusammenarbeit mit dem Kunden | Vertragsverhandlung |
 | Reagieren auf Veränderung | Befolgen eines Plans |
@@ -156,7 +156,7 @@ Die vollständige Erklärung steht im Kapitel **[Scrum – Accountabilities, Eve
 | Iterationen | feste Sprints (max. 1 Monat) | keine festen Iterationen |
 | Rollen | drei Accountabilities | keine Pflicht-Rollen |
 | Steuerung | Sprint Goal + Sprint Backlog | WIP-Limits, kontinuierlicher Fluss |
-| Aenderung im Lauf | nichts, was Sprint Goal gefaehrdet | jederzeit, sofern Limits halten |
+| Änderung im Lauf | nichts, was Sprint Goal gefährdet | jederzeit, sofern Limits halten |
 
 Beide werden oft kombiniert (**Scrumban**).
 
@@ -180,16 +180,16 @@ Hybrid ist kein „halb-agil", sondern bewusste Zuweisung passender Modelle je T
 
 <StepByStep titel="Modellauswahl in vier Fragen">
   <Schritt nr={1} titel="Wie stabil sind die Anforderungen?">
-    Wenn sich Anforderungen mit hoher Wahrscheinlichkeit waehrend des Projekts aendern: agil. Wenn sie zu Projektbeginn klar sind und sich nicht aendern duerfen: Wasserfall oder V-Modell.
+    Wenn sich Anforderungen mit hoher Wahrscheinlichkeit während des Projekts ändern: agil. Wenn sie zu Projektbeginn klar sind und sich nicht ändern dürfen: Wasserfall oder V-Modell.
   </Schritt>
   <Schritt nr={2} titel="Wie hoch ist die Sicherheits- und Regulierungslast?">
-    Bei sicherheitskritischen, regulierten oder oeffentlich vergebenen Projekten ist V-Modell (oft V-Modell XT Bund) Pflicht oder de-facto Standard.
+    Bei sicherheitskritischen, regulierten oder öffentlich vergebenen Projekten ist V-Modell (oft V-Modell XT Bund) Pflicht oder de-facto Standard.
   </Schritt>
   <Schritt nr={3} titel="Wann braucht der Kunde Ergebnisse?">
-    Bei einmaliger Abnahme am Projektende: Wasserfall / V-Modell. Bei kontinuierlichem Feedback und lieferbaren Zwischenstaenden: agil.
+    Bei einmaliger Abnahme am Projektende: Wasserfall / V-Modell. Bei kontinuierlichem Feedback und lieferbaren Zwischenständen: agil.
   </Schritt>
   <Schritt nr={4} titel="Gibt es klar abgegrenzte Teilbereiche?">
-    Wenn Teilbereiche unterschiedliche Anforderungen haben (z.B. Hardware stabil, Software lebt), waehlt man pro Teilbereich das passende Modell — also hybrid.
+    Wenn Teilbereiche unterschiedliche Anforderungen haben (z.B. Hardware stabil, Software lebt), wählt man pro Teilbereich das passende Modell — also hybrid.
   </Schritt>
   <Ergebnis>
     Die Antworten ergeben fast immer eines der drei Bilder: ein stabiles Projekt im Wasserfall / V-Modell, ein bewegliches Projekt agil mit Scrum oder Kanban, oder ein hybrid aufgeteiltes Projekt mit beidem.
@@ -197,7 +197,7 @@ Hybrid ist kein „halb-agil", sondern bewusste Zuweisung passender Modelle je T
 </StepByStep>
 
 <Beispiel>
-**AP1-typische Frage:** „Eine Behörde beauftragt eine neue Fachanwendung. Der Funktionsumfang ist gesetzlich festgelegt, die Abnahme erfolgt einmalig durch eine Pruefstelle, und der Vertrag wurde nach UfAB ausgeschrieben. Welches Vorgehensmodell ist geeignet?" — **Antwort:** **V-Modell XT (Bund)**. Begründung: stabile, gesetzlich fixierte Anforderungen, einmalige Pruefung, oeffentlich vergebener Auftrag mit verbindlichem Vorgehensmodell.
+**AP1-typische Frage:** „Eine Behörde beauftragt eine neue Fachanwendung. Der Funktionsumfang ist gesetzlich festgelegt, die Abnahme erfolgt einmalig durch eine Prüfstelle, und der Vertrag wurde nach UfAB ausgeschrieben. Welches Vorgehensmodell ist geeignet?" — **Antwort:** **V-Modell XT (Bund)**. Begründung: stabile, gesetzlich fixierte Anforderungen, einmalige Prüfung, öffentlich vergebener Auftrag mit verbindlichem Vorgehensmodell.
 </Beispiel>
 
 <Beispiel>
@@ -208,17 +208,17 @@ Hybrid ist kein „halb-agil", sondern bewusste Zuweisung passender Modelle je T
 
 ## Typische Fehler
 
-- **„Royce hat den Wasserfall empfohlen."** Falsch. Royce (1970) hat das Modell beschrieben **und gleichzeitig als riskant bezeichnet**. Seine Empfehlung war ein iteratives Vorgehen mit mindestens zwei Durchlaeufen. Schulbuchwissen, das ihn als Wasserfall-Erfinder lobt, geht zu weit.
+- **„Royce hat den Wasserfall empfohlen."** Falsch. Royce (1970) hat das Modell beschrieben **und gleichzeitig als riskant bezeichnet**. Seine Empfehlung war ein iteratives Vorgehen mit mindestens zwei Durchläufen. Schulbuchwissen, das ihn als Wasserfall-Erfinder lobt, geht zu weit.
 
-- **„Wasserfall ist veraltet."** Falsch. Fuer regulierte, sicherheitskritische und stabile Projekte bleibt Wasserfall sinnvoll. Embedded-Systeme, Medizintechnik, Brueckenbau — agil waere dort gefaehrlich.
+- **„Wasserfall ist veraltet."** Falsch. Für regulierte, sicherheitskritische und stabile Projekte bleibt Wasserfall sinnvoll. Embedded-Systeme, Medizintechnik, Brückenbau — agil wäre dort gefährlich.
 
-- **„V-Modell ist nur Wasserfall mit Tests."** Falsch. Das V-Modell **koppelt jede Konstruktionsphase an eine korrespondierende Pruefphase**. Tests werden nicht „am Ende drangehaengt", sondern bereits in der Konstruktion vorbereitet.
+- **„V-Modell ist nur Wasserfall mit Tests."** Falsch. Das V-Modell **koppelt jede Konstruktionsphase an eine korrespondierende Prüfphase**. Tests werden nicht „am Ende drangehängt", sondern bereits in der Konstruktion vorbereitet.
 
-- **„Iterativ und inkrementell sind dasselbe."** Falsch. Iterativ heisst „wiederholend", inkrementell heisst „in Zuwaechsen". Agil ist beides, aber die Begriffe sind nicht synonym.
+- **„Iterativ und inkrementell sind dasselbe."** Falsch. Iterativ heißt „wiederholend", inkrementell heißt „in Zuwächsen". Agil ist beides, aber die Begriffe sind nicht synonym.
 
-- **„Agil = ohne Plan."** Falsch. Agile Vorgehen planen kurzzyklisch (Sprint Goal, Sprint Backlog, Definition of Done). Was sie nicht tun: einen Detailplan ueber Monate festschreiben.
+- **„Agil = ohne Plan."** Falsch. Agile Vorgehen planen kurzzyklisch (Sprint Goal, Sprint Backlog, Definition of Done). Was sie nicht tun: einen Detailplan über Monate festschreiben.
 
-- **„Scrum ist Agil."** Stimmt, aber **Agil ist nicht nur Scrum**. Kanban, XP und SAFe sind ebenfalls agil. Wenn die Aufgabe „agile Methode" sagt, ist Scrum ein gueltiges Beispiel — nicht das einzige.
+- **„Scrum ist Agil."** Stimmt, aber **Agil ist nicht nur Scrum**. Kanban, XP und SAFe sind ebenfalls agil. Wenn die Aufgabe „agile Methode" sagt, ist Scrum ein gültiges Beispiel — nicht das einzige.
 
 - **„Hybrid = halb-agil."** Falsch. Hybrid ist bewusste Trennung: Teilbereiche mit stabilen Anforderungen sequenziell, Teilbereiche mit beweglichen Anforderungen agil. Es ist kein Kompromiss aus Bequemlichkeit.
 
@@ -236,7 +236,7 @@ Hybrid ist kein „halb-agil", sondern bewusste Zuweisung passender Modelle je T
     {
       label: 'The Scrum Guide (2020)',
       href: 'https://scrumguides.org/scrum-guide.html',
-      detail: 'Primaerquelle fuer den Scrum-Abschnitt: Accountabilities, fuenf Events, drei Artefakte mit Commitments.'
+      detail: 'Primärquelle für den Scrum-Abschnitt: Accountabilities, fünf Events, drei Artefakte mit Commitments.'
     },
     {
       label: 'V-Modell XT - CIO Bund',
@@ -246,7 +246,7 @@ Hybrid ist kein „halb-agil", sondern bewusste Zuweisung passender Modelle je T
     {
       label: 'Royce 1970 - Managing the Development of Large Software Systems',
       href: 'https://www.cs.huji.ac.il/w~feit/sem/se09/Waterfall.pdf',
-      detail: 'IEEE WESCON 1970. Erstbeschreibung des Wasserfallmodells — von Royce ausdruecklich als „risky and invites failure" bezeichnet, mit Empfehlung fuer iteratives Vorgehen.'
+      detail: 'IEEE WESCON 1970. Erstbeschreibung des Wasserfallmodells — von Royce ausdrücklich als „risky and invites failure" bezeichnet, mit Empfehlung für iteratives Vorgehen.'
     },
   ]}
 />

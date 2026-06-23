@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react"
 import { NavLink } from "react-router-dom"
 import * as Popover from "@radix-ui/react-popover"
 import { cn } from "../../lib/cn"
+import { auditStatusLabel, auditStatusShortLabel, getLessonAudit } from "../../lib/audit"
 import { lessonStatusLabel } from "../../lib/toc"
 import type { LessonSearchItem } from "../../lib/toc"
 
@@ -20,6 +21,8 @@ interface ChapterLinkProps {
 export default function ChapterLink({ item, onNavigate }: ChapterLinkProps) {
   const [open, setOpen] = useState(false)
   const closeTimer = useRef<number | null>(null)
+  const audit = getLessonAudit(item.slug)
+  const trusted = audit.status === "teilgeprueft" || audit.status === "geprueft"
 
   function clearCloseTimer() {
     if (closeTimer.current) {
@@ -62,20 +65,36 @@ export default function ChapterLink({ item, onNavigate }: ChapterLinkProps) {
           <span
             className={cn(
               "h-2.5 w-2.5 justify-self-center rounded-full border",
-              item.status === "ready" || item.status === "final"
+              trusted
                 ? "border-accent bg-accent"
-                : item.status === "draft"
-                  ? "border-rule-2"
+                : audit.status === "gesperrt"
+                  ? "border-accent-2 bg-accent-2"
                   : "border-rule bg-transparent",
             )}
-            style={
-              item.status === "draft"
-                ? { background: "color-mix(in oklch, var(--color-c-amber) 70%, transparent)" }
-                : undefined
-            }
             aria-hidden="true"
           />
-          <span className="min-w-0 truncate">{item.title}</span>
+          <span className="flex min-w-0 items-center gap-1.5">
+            {item.lf && (
+              <span
+                className="shrink-0 rounded-sm bg-paper-deep px-1 py-px font-mono text-[9px] font-semibold leading-none text-muted"
+                title={`Lernfeld ${item.lf}`}
+              >
+                LF{item.lf}
+              </span>
+            )}
+            <span className="truncate">{item.title}</span>
+          </span>
+          <span
+            className={cn(
+              "justify-self-end rounded-sm border px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase leading-none",
+              trusted
+                ? "border-accent/35 bg-accent-soft text-accent"
+                : "border-rule bg-paper-deep text-muted",
+            )}
+            title={auditStatusLabel(audit.status)}
+          >
+            {auditStatusShortLabel(audit.status)}
+          </span>
         </NavLink>
       </Popover.Trigger>
       <Popover.Portal>
@@ -98,7 +117,8 @@ export default function ChapterLink({ item, onNavigate }: ChapterLinkProps) {
           <p className="mb-3 font-body text-sm leading-relaxed text-muted">{item.preview}</p>
           <div className="flex flex-wrap items-center gap-2 font-ui text-[11px] text-muted">
             {item.minutes && <span>{item.minutes} min</span>}
-            <span>{lessonStatusLabel(item.status)}</span>
+            <span>Inhalt: {lessonStatusLabel(item.status)}</span>
+            <span>Vertrauen: {auditStatusLabel(audit.status)}</span>
           </div>
         </Popover.Content>
       </Popover.Portal>

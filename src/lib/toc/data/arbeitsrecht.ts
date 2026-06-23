@@ -11,8 +11,8 @@ export const arbeitsrecht: Lernfeld = {
       slug: "ausbildung",
       title: "Ausbildung & Recht",
       lessons: [
-        { slug: "bbig-ausbildungsvertrag", title: "BBiG & Ausbildungsvertrag", minutes: 12, importance: 4, exam: false, status: "stub" },
-        { slug: "arbeitnehmerrechte", title: "Arbeitnehmerrechte & Kündigungsschutz", minutes: 12, importance: 3, exam: false, status: "stub" },
+        { lf: 1, slug: "bbig-ausbildungsvertrag", title: "BBiG & Ausbildungsvertrag", minutes: 12, importance: 4, exam: false, status: "stub" },
+        { lf: 1, slug: "arbeitnehmerrechte", title: "Arbeitnehmerrechte & Kündigungsschutz", minutes: 12, importance: 3, exam: false, status: "stub" },
       ],
     },
   ],

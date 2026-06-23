@@ -1,5 +1,10 @@
 ﻿import { Link } from 'react-router-dom'
 import { ArrowRight, Flame } from 'lucide-react'
+import {
+  auditStatusShortLabel,
+  getLessonAudit,
+  isTrustedForExam,
+} from '../lib/audit'
 import { isLessonAvailable, lernfelder } from '../lib/toc'
 
 const PALETTE = ['sky', 'olive', 'teal', 'rose', 'plum', 'amber', 'sand', 'forest', 'indigo']
@@ -10,18 +15,21 @@ function lfColor(index: number) {
 
 function chapterStats() {
   let total = 0
-  let ready = 0
+  let available = 0
+  let trusted = 0
 
   for (const lf of lernfelder) {
     for (const modul of lf.moduls) {
       for (const lesson of modul.lessons) {
         total += 1
-        if (isLessonAvailable(lesson)) ready += 1
+        if (!isLessonAvailable(lesson)) continue
+        available += 1
+        if (isTrustedForExam(lesson.slug)) trusted += 1
       }
     }
   }
 
-  return { total, ready }
+  return { total, available, trusted, oldContent: available - trusted }
 }
 
 function nextRecommendedLessons() {
@@ -31,6 +39,8 @@ function nextRecommendedLessons() {
     lernfeld: string
     minutes: number
     to: string
+    auditStatus: ReturnType<typeof getLessonAudit>['status']
+    trusted: boolean
   }
 
   const items: Recommendation[] = []
@@ -39,24 +49,33 @@ function nextRecommendedLessons() {
     for (const modul of lf.moduls) {
       for (const lesson of modul.lessons) {
         if (!isLessonAvailable(lesson)) continue
+        const audit = getLessonAudit(lesson.slug)
         items.push({
           slug: lesson.slug,
           title: lesson.title,
           lernfeld: lf.title,
           minutes: lesson.minutes ?? 0,
           to: `/lernen/${lf.slug}/${modul.slug}/${lesson.slug}`,
+          auditStatus: audit.status,
+          trusted: isTrustedForExam(lesson.slug),
         })
       }
     }
   }
 
-  items.sort((a, b) => a.minutes - b.minutes || a.title.localeCompare(b.title, 'de'))
+  items.sort(
+    (a, b) =>
+      Number(b.trusted) - Number(a.trusted) ||
+      a.minutes - b.minutes ||
+      a.title.localeCompare(b.title, 'de'),
+  )
   return items.slice(0, 4)
 }
 
 export default function Dashboard() {
   const stats = chapterStats()
-  const progress = stats.total ? Math.round((stats.ready / stats.total) * 100) : 0
+  const trustProgress = stats.total ? Math.round((stats.trusted / stats.total) * 100) : 0
+  const contentProgress = stats.total ? Math.round((stats.available / stats.total) * 100) : 0
   const recommendations = nextRecommendedLessons()
 
   return (
@@ -70,7 +89,7 @@ export default function Dashboard() {
         <div className="flex items-center gap-2.5">
           <div className="streak">
             <Flame size={14} aria-hidden="true" />
-            <b>{stats.ready}</b> Kapitel ausgearbeitet
+            <b>{stats.trusted}</b> Kapitel belastbar
           </div>
         </div>
       </div>
@@ -82,14 +101,14 @@ export default function Dashboard() {
             Dein Lernhaus für die <em>Ausbildung</em>.
           </h1>
           <p className="hero-sub">
-            {stats.total} Kapitel über {lernfelder.length} Lernfelder. {stats.ready} sind
-            ausgearbeitet, {stats.total - stats.ready} stehen noch als Stub. Fang mit einem
-            fertigen Kapitel an und folge dann den Themen in Ruhe weiter.
+            {stats.total} Kapitel ueber {lernfelder.length} Lernfelder. {stats.trusted} sind
+            belastbar, {stats.oldContent} alte Inhalte sind markiert. Fang mit einem geprueften
+            Einstieg an und pruefe den Rest nicht blind.
           </p>
           <div className="hero-cta">
             {recommendations[0] && (
               <Link to={recommendations[0].to} className="btn btn-accent no-underline">
-                Empfohlenes Kapitel
+                Belastbares Kapitel
                 <ArrowRight size={14} aria-hidden="true" />
               </Link>
             )}
@@ -102,33 +121,33 @@ export default function Dashboard() {
         <div className="hero-side">
           <div className="kpi">
             <div>
-              <div className="kpi-lbl">Inhaltsstand</div>
+              <div className="kpi-lbl">Vertrauen</div>
               <div className="kpi-val">
-                {progress}
+                {trustProgress}
                 <small>%</small>
               </div>
             </div>
             <div className="kpi-meta">
-              {stats.ready} von {stats.total} Kapiteln · {stats.total - stats.ready} offen
+              {stats.trusted} von {stats.total} Kapiteln belastbar - {stats.oldContent} alt
             </div>
-            <div className="ring" style={{ ['--p' as string]: progress }}>
-              <span>{progress}%</span>
+            <div className="ring" style={{ ['--p' as string]: trustProgress }}>
+              <span>{trustProgress}%</span>
             </div>
           </div>
 
           <div className="kpi">
             <div>
-              <div className="kpi-lbl">Themenbereiche</div>
+              <div className="kpi-lbl">Alter Ausbau</div>
               <div className="kpi-val">
-                {lernfelder.length}
-                <small> Felder</small>
+                {stats.available}
+                <small>/{stats.total}</small>
               </div>
             </div>
             <div className="kpi-meta">
-              thematisch sortiert mit Glossar, Quellen und Rechenwegen
+              vorhandene Lerntexte, aber nicht automatisch prüfungssicher
             </div>
-            <div className="ring" style={{ ['--p' as string]: progress }}>
-              <span>{lernfelder.length}</span>
+            <div className="ring" style={{ ['--p' as string]: contentProgress }}>
+              <span>{contentProgress}%</span>
             </div>
           </div>
         </div>
@@ -140,14 +159,16 @@ export default function Dashboard() {
             <h2 className="sec-title">
               Empfohlen <em>jetzt</em>
             </h2>
-            <div className="sec-meta">Kurzer Einstieg · Inhalt bereit</div>
+            <div className="sec-meta">Geprüft zürst - alte Inhalte markiert</div>
           </div>
           <div className="cont">
             {recommendations.map((item) => (
               <Link key={item.slug} to={item.to} className="cont-row no-underline text-ink">
                 <div className="cont-lf">{item.lernfeld}</div>
                 <div className="cont-title">{item.title}</div>
-                <div className="cont-mini" />
+                <div className={`cont-audit cont-audit--${item.auditStatus}`}>
+                  {auditStatusShortLabel(item.auditStatus)}
+                </div>
                 <div className="cont-when">{item.minutes} min</div>
               </Link>
             ))}
@@ -165,14 +186,26 @@ export default function Dashboard() {
         <div className="lf-grid">
           {lernfelder.map((lf, idx) => {
             const total = lf.moduls.reduce((a, m) => a + m.lessons.length, 0)
-            const ready = lf.moduls.reduce(
+            const available = lf.moduls.reduce(
               (a, m) => a + m.lessons.filter(isLessonAvailable).length,
               0,
             )
-            const lfPct = total ? ready / total : 0
+            const trusted = lf.moduls.reduce(
+              (a, m) =>
+                a +
+                m.lessons.filter(
+                  (lesson) => isLessonAvailable(lesson) && isTrustedForExam(lesson.slug),
+                ).length,
+              0,
+            )
+            const oldContent = available - trusted
+            const lfPct = total ? trusted / total : 0
             const firstReady = lf.moduls
               .flatMap((m) => m.lessons.map((l) => ({ modul: m, lesson: l })))
-              .find((entry) => isLessonAvailable(entry.lesson))
+              .find((entry) => isLessonAvailable(entry.lesson) && isTrustedForExam(entry.lesson.slug))
+              ?? lf.moduls
+                .flatMap((m) => m.lessons.map((l) => ({ modul: m, lesson: l })))
+                .find((entry) => isLessonAvailable(entry.lesson))
 
             const target = firstReady
               ? `/lernen/${lf.slug}/${firstReady.modul.slug}/${firstReady.lesson.slug}`
@@ -193,7 +226,7 @@ export default function Dashboard() {
                 <h3 className="lf-title">{lf.title}</h3>
                 <div className="lf-foot">
                   <span>
-                    {ready}/{total} fertig
+                    {trusted}/{total} belastbar - {oldContent} alt
                   </span>
                   <span style={{ fontFamily: 'var(--font-mono)' }}>
                     {Math.round(lfPct * 100)}%

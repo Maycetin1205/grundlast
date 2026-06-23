@@ -18,6 +18,12 @@ tmp-vite.log
 .tmp-review/
 *.local
 
+# Lernmaterial (z.T. urheberrechtlich geschuetzt) - NICHT committen
+probepruefungen/
+lernzettel/
+_ocr_out/
+_material_index/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
