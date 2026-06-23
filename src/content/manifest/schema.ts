@@ -72,7 +72,7 @@ export const lessonMetaSchema = z.strictObject({
   /** True, sobald technische/juristische/normative Fakten erklaert werden. */
   erklaert_fakten: z.boolean().default(true),
   fachlich: z.enum(VERTRAUENSSTATUS).default('ungeprueft'),
-  quellen: quellenSchema.default({}),
+  quellen: quellenSchema.default({ q1_scope: [], q2_fachquelle: [], q3_pruefungsrealitaet: [] }),
   modul: z.string().optional(),
 })
 
@@ -124,7 +124,7 @@ const ASCII_UMLAUT_PATTERNS = [
   '\\bpruefen\\b',
   '\\bLoesung\\b',
   '\\bloesen\\b',
-  '\\bmuss\\b',
+  '\\bmuessen\\b',
 ]
 
 export function detectEncodingFindings(text: string): EncodingCheck {
