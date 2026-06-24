@@ -192,15 +192,15 @@ export const AUFGABENFAMILIE_LABEL: Record<Aufgabenfamilie, string> = {
   rechnen: 'Rechnen',
   zeichnen: 'Zeichnen',
   zuordnen: 'Zuordnen',
-  begruenden: 'Begruenden',
+  begruenden: 'Begründen',
   diagnostizieren: 'Diagnostizieren',
   anwenden: 'Anwenden',
 }
 
 export const VERTRAUENS_LABEL: Record<Vertrauensstatus, string> = {
-  ungeprueft: 'KI-ungeprueft',
-  teilgeprueft: 'Teilweise geprueft',
-  geprueft: 'Geprueft',
+  ungeprueft: 'KI-ungeprüft',
+  teilgeprueft: 'Teilweise geprüft',
+  geprueft: 'Geprüft',
   gesperrt: 'Gesperrt',
 }
 
@@ -209,12 +209,12 @@ export const STATUS_LABEL: Record<LessonStatus, string> = {
   draft: 'Entwurf',
   review: 'Inhalt komplett, fachlich offen',
   ready: 'Ausgearbeitet',
-  final: 'Geprueft und freigegeben',
+  final: 'Geprüft und freigegeben',
   locked: 'Gesperrt',
 }
 
 export const QUELLEN_ROLLE_LABEL: Record<QuellenRolle, string> = {
   Q1_SCOPE: 'Q1 Scope',
   Q2_FACHQUELLE: 'Q2 Fachquelle',
-  Q3_PRUEFUNGSREALITAET: 'Q3 Pruefungsrealitaet',
+  Q3_PRUEFUNGSREALITAET: 'Q3 Prüfungsrealität',
 }

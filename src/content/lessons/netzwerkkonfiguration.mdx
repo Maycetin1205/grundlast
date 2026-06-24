@@ -12,11 +12,11 @@ einordnen, APIPA als Notfall-Default lesen und im Fehlerfall die richtige
 Diagnose-Reihenfolge — Link, IP, Gateway, DNS, Anwendung — sauber durchgehen.
 
 <Tipp titel="So benutzt du dieses Kapitel">
-Lerne zürst die vier Pflichtwerte einer IPv4-Konfiguration und danach die Diagnosekette.
+Lerne zuerst die vier Pflichtwerte einer IPv4-Konfiguration und danach die Diagnosekette.
 DHCP, DNS und ARP erklären dann nur noch, **warum** die einzelnen Prüfungen funktionieren.
 </Tipp>
 
-| Wenn du siehst ... | Denk zürst an ... | Nächster Test |
+| Wenn du siehst ... | Denk zuerst an ... | Nächster Test |
 |---|---|---|
 | `169.254.x.x` | DHCP nicht erreicht, APIPA aktiv | DHCP, VLAN, Kabel, Pool |
 | Gateway fehlt oder liegt falsch | lokales Netz kann gehen, Internet nicht | Ping auf Gateway |
@@ -154,7 +154,7 @@ Namen vor jedem Verbindungsaufbau in eine IP-Adresse auf. Der typische Ablauf:
 
 <Schritte
   items={[
-    { titel: 'Cache prüfen', text: 'Der Client schaut zürst in seinen lokalen DNS-Cache. Auf Windows mit "ipconfig /displaydns", auf Linux mit "resolvectl statistics". Ist der Eintrag noch frisch (TTL nicht abgelaufen), wird er ohne Netzwerkverkehr verwendet.' },
+    { titel: 'Cache prüfen', text: 'Der Client schaut zuerst in seinen lokalen DNS-Cache. Auf Windows mit "ipconfig /displaydns", auf Linux mit "resolvectl statistics". Ist der Eintrag noch frisch (TTL nicht abgelaufen), wird er ohne Netzwerkverkehr verwendet.' },
     { titel: 'hosts-Datei lesen', text: 'Vor jedem DNS-Lookup wird die hosts-Datei konsultiert (Windows: C:\\Windows\\System32\\drivers\\etc\\hosts, Linux: /etc/hosts). Steht der Name dort, antwortet das Betriebssystem aus der Datei — kein Server gefragt. Klassische Falle: Ein verbotener Eintrag in hosts blockiert eine Domain weltweit auf diesem Gerät.' },
     { titel: 'Rekursiver Resolver fragen', text: 'Der Client schickt eine UDP-Anfrage an den im OS eingetragenen Nameserver, meist den Gateway-Router oder einen ISP-Resolver. Dieser Resolver übernimmt die ganze Auflösungs-Arbeit für den Client.' },
     { titel: 'Root-Server anfragen', text: 'Hat der Resolver den Eintrag nicht im Cache, fragt er eine Root-Server-Instanz: „Wer ist für .de zuständig?" Antwort: die Liste der TLD-Server für .de.' },

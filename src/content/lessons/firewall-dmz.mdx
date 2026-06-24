@@ -17,7 +17,7 @@ Eine Firewall ist kein magischer Schutzschild. Sie ist eine kontrollierte Grenze
 Die DMZ ist dabei ein Kernkonzept: Systeme, die aus dem Internet erreichbar sein müssen, werden in ein getrenntes Netzsegment gestellt. Wenn ein Webserver kompromittiert wird, soll der Angreifer nicht direkt im internen LAN mit Clients, Dateiservern, Warenwirtschaft und Datenbank stehen.
 
 <Analogie>
-Stell dir ein Firmengelände vor. Das Internet ist die Strasse, das LAN sind die internen Büros, die DMZ ist der Empfangsbereich. Besucher dürfen zur Rezeption, aber nicht einfach in die Personalabteilung. Mitarbeitende dürfen zur Rezeption und nach draussen. Zwischen den Bereichen stehen kontrollierte Türen mit klaren Regeln.
+Stell dir ein Firmengelände vor. Das Internet ist die Straße, das LAN sind die internen Büros, die DMZ ist der Empfangsbereich. Besucher dürfen zur Rezeption, aber nicht einfach in die Personalabteilung. Mitarbeitende dürfen zur Rezeption und nach draußen. Zwischen den Bereichen stehen kontrollierte Türen mit klaren Regeln.
 </Analogie>
 
 ---
@@ -67,7 +67,7 @@ Eine Stateful Firewall blockiert nicht blind alle eingehenden Pakete. Sie erlaub
 Ein gutes Firewall-Regelwerk arbeitet nach dem Prinzip:
 
 ```text
-Erlaube nur, was benoetigt wird.
+Erlaube nur, was benötigt wird.
 Verbiete den Rest.
 ```
 
@@ -104,7 +104,7 @@ Das interne LAN enthält dagegen Clients, interne Server, Dateifreigaben, ERP, D
 ```text
 Internet
    |
-[Firewall aussen]
+[Firewall außen]
    |
 DMZ: Webserver / Reverse Proxy / Mail-Gateway
    |

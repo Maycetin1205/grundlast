@@ -38,8 +38,8 @@ Ein Rechtestring aus `ls -l` besteht aus Dateityp plus drei Dreiergruppen:
 - rwx r-x r--
 |  |   |   |
 |  |   |   +-- Other: lesen
-|  |   +------ Group: lesen + ausfuehren
-|  +---------- User: lesen + schreiben + ausfuehren
+|  |   +------ Group: lesen + ausführen
+|  +---------- User: lesen + schreiben + ausführen
 +------------- Dateityp: - = Datei, d = Verzeichnis
 ```
 
@@ -61,7 +61,7 @@ Die drei Rechte haben je nach Objekt eine leicht andere Bedeutung:
 Bei Dateien bedeutet `x`: ausführen. Bei Verzeichnissen bedeutet `x`: betreten beziehungsweise durchsuchen. Ohne `x` ist ein Verzeichnis praktisch verschlossen, selbst wenn man einzelne Namen kennt.
 </Tipp>
 
-Wichtig: `w` auf einem Verzeichnis ist mächtiger, als es zürst wirkt. Wer in einem Verzeichnis schreiben darf, kann dort Dateinamen erzeugen, entfernen oder umbenennen. Das betrifft Verzeichniseinträge, nicht nur den Inhalt vorhandener Dateien.
+Wichtig: `w` auf einem Verzeichnis ist mächtiger, als es zuerst wirkt. Wer in einem Verzeichnis schreiben darf, kann dort Dateinamen erzeugen, entfernen oder umbenennen. Das betrifft Verzeichniseinträge, nicht nur den Inhalt vorhandener Dateien.
 
 ---
 
