@@ -1,10 +1,52 @@
 {
   "prefixe": [
     {
-      "aussage": "Die IEC-Binärpräfixe (kibi, mebi, gibi …) entstehen, indem die ersten zwei Buchstaben des zugehörigen SI-Präfixes übernommen und die Silbe 'bi' (für binär) angehängt wird.",
-      "zitat": "the name of each new prefix is derived from the name of the corresponding SI prefix by retaining the first two letters of the name of the SI prefix",
+      "aussage": "SI-Präfixe beschreiben dezimale Vielfache und Teile von SI-Einheiten.",
+      "zitat": "Decimal multiples and submultiples of SI units can be written using the SI prefixes listed below:",
+      "quelleId": "bipm-si-prefixes",
+      "fundstelle": "BIPM, SI prefixes — Einleitung vor der Präfixtabelle",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Ein Mebibyte (MiB) entspricht 2²⁰ Byte beziehungsweise 1.048.576 Byte.",
+      "zitat": "1 MiB = 2<sup>20</sup> B = <b>1 048 576 B</b>",
       "quelleId": "nist-binary-prefixes",
-      "fundstelle": "NIST, Prefixes for binary multiples — Einleitungstext",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one mebibyte“",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Ein Megabyte (MB) entspricht 10⁶ Byte beziehungsweise 1.000.000 Byte.",
+      "zitat": "1 MB = 10<sup>6</sup> B = <b>1 000 000 B</b>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one megabyte“",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Ein Gibibyte (GiB) entspricht 2³⁰ Byte beziehungsweise 1.073.741.824 Byte.",
+      "zitat": "1 GiB = 2<sup>30</sup> B = <b>1 073 741 824 B</b>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one gibibyte“",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Ein Gigabyte (GB) entspricht 10⁹ Byte beziehungsweise 1.000.000.000 Byte.",
+      "zitat": "1 GB = 10<sup>9</sup> B = <b>1 000 000 000 B</b>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one gigabyte“",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Die IEC standardisierte Namen und Symbole für Binärpräfixe im Dezember 1998 für Datenverarbeitung und Datenübertragung.",
+      "zitat": "In December 1998 the International Electrotechnical Commission (IEC), the leading international organization for worldwide standardization in electrotechnology, approved as an IEC International Standard names and symbols for prefixes for binary multiples for use in the fields of data processing and data transmission.",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Einleitungsabsatz",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Binärpräfixe gehören nicht zum Internationalen Einheitensystem (SI).",
+      "zitat": "It is important to recognize that the new prefixes for binary multiples are not part of the International System of Units (SI), the modern metric system.",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Absatz nach der Vergleichstabelle",
       "abgerufenAm": "2026-06-26"
     }
   ]

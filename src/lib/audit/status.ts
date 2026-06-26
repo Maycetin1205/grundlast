@@ -7,12 +7,18 @@ export interface LessonAudit {
   nextAction: string
 }
 
-// Neustart: Jede Lektion gilt bis zu ihrem dokumentierten Kapitel-Audit als
-// `ungeprueft` (Quelle der Wahrheit: CONTENT_AUDIT_MATRIX.md + KAPITELSTANDARD.md).
-// Fruehere KI-Selbstfreigaben liegen nur noch als historische Referenz in
-// docs/archiv/. Ein Eintrag wird erst wieder ergaenzt, wenn ein Kapitel das
-// Abschluss-Gate nachvollziehbar erfuellt hat.
-const lessonAudits: Record<string, LessonAudit> = {}
+// Jede Lektion gilt bis zu ihrem dokumentierten Kapitel-Audit als `ungeprueft`
+// (Quelle der Wahrheit: CONTENT_AUDIT_MATRIX.md + KAPITELSTANDARD.md).
+// Frühere KI-Selbstfreigaben liegen nur noch als historische Referenz in
+// docs/archiv/.
+const lessonAudits: Record<string, LessonAudit> = {
+  prefixe: {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'SI- und Binärpräfixe mit sieben online geprüften Faktenbelegen.',
+    nextAction: 'Abgeschlossen; Lernpfad mit Zahlensystemen fortsetzen.',
+  },
+}
 
 const fallbackAudit: LessonAudit = {
   status: 'ungeprueft',
