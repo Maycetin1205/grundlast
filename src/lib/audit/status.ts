@@ -24,6 +24,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Zahlensysteme mit sieben online geprüften Faktenbelegen zu Basen, Ziffern und Literalen.',
     nextAction: 'Abgeschlossen; im Grundlagenpfad mit Datenmengen und Datenraten fortsetzen.',
   },
+  'datenvolumen-berechnung': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Datenmengen mit sechs online geprüften Belegen zu SI- und Binärpräfixen sowie nachgerechneten Scan- und Übertragungsbeispielen.',
+    nextAction: 'Abgeschlossen; im Grundlagenpfad mit Datenrate und Downloadzeit fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {

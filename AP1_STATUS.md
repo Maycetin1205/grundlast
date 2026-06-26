@@ -8,7 +8,7 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **2** | teilgeprueft **0** | ungeprueft **98**
+- Vertrauen: geprueft **3** | teilgeprueft **0** | ungeprueft **97**
 - Review dokumentiert: **0**
 - Mit Quellen-Tags: **67**
 
@@ -84,7 +84,7 @@
 | `port-forwarding` | ready | ungeprueft | - | ja | ja |
 | `wlan-standards` | ready | ungeprueft | - | ja | ja |
 | `datenrate-berechnung` | ready | ungeprueft | - | ja | ja |
-| `datenvolumen-berechnung` | ready | ungeprueft | - | ja | ja |
+| `datenvolumen-berechnung` | ready | geprueft | - | ja | ja |
 
 ### projekt
 
