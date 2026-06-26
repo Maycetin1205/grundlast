@@ -1,78 +1,94 @@
-import { useEffect, useRef, useState } from 'react'
-import { Outlet } from 'react-router-dom'
 import * as Dialog from '@radix-ui/react-dialog'
-import { Menu } from 'lucide-react'
-import Sidebar, { CommandPalette } from './Sidebar'
+import { Menu, Search } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import type { AppShellContext } from '../lib/shell'
 import { useThemeSync } from '../lib/theme'
+import Sidebar, { CommandPalette } from './Sidebar'
+import ThemeToggle from './ThemeToggle'
 
 export default function Layout() {
   useThemeSync()
-  const mainRef = useRef<HTMLElement>(null)
+  const location = useLocation()
+  const [scrollElement, setScrollElement] = useState<HTMLElement | null>(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [readingProgress, setReadingProgress] = useState(0)
+  const isLesson = location.pathname.startsWith('/lernen/')
+
+  const mainRef = useCallback((element: HTMLElement | null) => {
+    setScrollElement(element)
+  }, [])
 
   useEffect(() => {
-    const element = mainRef.current
-    if (!element) return
+    if (!scrollElement) return
+    const container = scrollElement
 
     function updateProgress() {
-      if (!element) return
-      const maxScroll = element.scrollHeight - element.clientHeight
-      setScrollProgress(maxScroll > 0 ? element.scrollTop / maxScroll : 0)
+      const maxScroll = container.scrollHeight - container.clientHeight
+      setReadingProgress(maxScroll > 0 ? container.scrollTop / maxScroll : 0)
     }
 
     updateProgress()
-    element.addEventListener('scroll', updateProgress, { passive: true })
+    container.addEventListener('scroll', updateProgress, { passive: true })
     window.addEventListener('resize', updateProgress)
-
     return () => {
-      element.removeEventListener('scroll', updateProgress)
+      container.removeEventListener('scroll', updateProgress)
       window.removeEventListener('resize', updateProgress)
     }
-  }, [])
+  }, [scrollElement, location.pathname])
 
   useEffect(() => {
-    const media = window.matchMedia('(min-width: 900px)')
+    scrollElement?.scrollTo({ top: 0 })
+  }, [location.pathname, scrollElement])
 
-    function closeMobileNav() {
-      if (media.matches) setMobileNavOpen(false)
-    }
-
-    closeMobileNav()
-    media.addEventListener('change', closeMobileNav)
-    return () => media.removeEventListener('change', closeMobileNav)
-  }, [])
-
-  function openSearch() {
-    setSearchOpen(true)
+  const shellContext: AppShellContext = {
+    scrollElement,
+    readingProgress,
+    scrollToTop: () => scrollElement?.scrollTo({ top: 0, behavior: 'smooth' }),
   }
 
   return (
-    <div className="min-h-full bg-paper text-ink">
-      <div
-        className="fixed right-0 top-0 z-[60] h-[2px] origin-left bg-accent left-0 min-[900px]:left-[344px]"
-        style={{ transform: `scaleX(${scrollProgress})` }}
-        aria-hidden="true"
-      />
+    <div className="app-shell">
+      {isLesson && (
+        <div className="reading-progress" aria-hidden="true">
+          <span style={{ transform: `scaleX(${readingProgress})` }} />
+        </div>
+      )}
 
-      <button
-        type="button"
-        onClick={() => setMobileNavOpen(true)}
-        className="fixed left-4 top-4 z-50 flex h-11 w-11 items-center justify-center border border-rule bg-paper-deep text-ink shadow-sm min-[900px]:hidden"
-        aria-label="Navigation öffnen"
-      >
-        <Menu size={20} aria-hidden="true" />
-      </button>
+      <header className="mobile-header">
+        <button
+          type="button"
+          onClick={() => setMobileNavOpen(true)}
+          className="mobile-header__button"
+          aria-label="Navigation öffnen"
+        >
+          <Menu size={18} aria-hidden="true" />
+        </button>
+        <div className="mobile-header__brand">
+          lern<span>haus</span>
+        </div>
+        <div className="mobile-header__actions">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className="mobile-header__button"
+            aria-label="Suche öffnen"
+          >
+            <Search size={17} aria-hidden="true" />
+          </button>
+          <ThemeToggle className="mobile-theme-toggle" />
+        </div>
+      </header>
 
-      <div className="fixed inset-y-0 left-0 z-40 hidden min-[900px]:block">
-        <Sidebar onSearchOpen={openSearch} />
+      <div className="desktop-rail">
+        <Sidebar onSearchOpen={() => setSearchOpen(true)} />
       </div>
 
       <Dialog.Root open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-[55] bg-ink/25 min-[900px]:hidden" />
-          <Dialog.Content className="fixed inset-y-0 left-0 z-[65] w-[344px] max-w-[calc(100vw-32px)] bg-paper-deep outline-none min-[900px]:hidden">
+          <Dialog.Overlay className="mobile-nav-overlay" />
+          <Dialog.Content className="mobile-nav-panel">
             <Dialog.Title className="sr-only">Navigation</Dialog.Title>
             <Sidebar
               onNavigate={() => setMobileNavOpen(false)}
@@ -85,12 +101,9 @@ export default function Layout() {
         </Dialog.Portal>
       </Dialog.Root>
 
-      <main
-        ref={mainRef}
-        className="h-screen overflow-y-auto bg-paper min-[900px]:ml-[344px]"
-      >
-        <div className="mx-auto w-full max-w-[1680px] px-5 pb-16 pt-20 sm:px-8 min-[900px]:px-12 min-[1400px]:px-16 min-[900px]:pb-24 min-[900px]:pt-14">
-          <Outlet />
+      <main ref={mainRef} className="app-main" data-app-scroll>
+        <div className="app-canvas">
+          <Outlet context={shellContext} />
         </div>
       </main>
 

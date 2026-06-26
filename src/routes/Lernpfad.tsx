@@ -1,346 +1,116 @@
+import { ArrowRight, BookOpen } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import {
-  ArrowRight,
-  BookOpenCheck,
-  CircleDot,
-  Clock3,
-  Flag,
-  ListChecks,
-} from 'lucide-react'
-import {
-  findLesson,
   isLessonAvailable,
+  learningFieldTitle,
   lernfelder,
-  lessonStatusLabel,
+  type LernfeldNr,
 } from '../lib/toc'
-import type { Lernfeld, Lesson, Modul } from '../lib/toc'
-import {
-  auditStatusShortLabel,
-  auditWeight,
-  getLessonAudit,
-  isTrustedForExam,
-} from '../lib/audit'
 
-interface PhaseDefinition {
-  id: string
-  eyebrow: string
-  title: string
-  focus: string
-  slugs: string[]
-}
+const LEARNING_FIELDS: LernfeldNr[] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 interface PathLesson {
-  lesson: Lesson
-  modul: Modul
-  lernfeld: Lernfeld
+  slug: string
+  title: string
+  minutes?: number
+  area: string
+  module: string
   to: string
-  available: boolean
-  audit: ReturnType<typeof getLessonAudit>
 }
 
-const phaseDefinitions: PhaseDefinition[] = [
-  {
-    id: 'basis',
-    eyebrow: 'Lehrjahr 1',
-    title: 'Rechner, Zahlen, Betriebssystem',
-    focus: 'Die technische Grundsprache: Einheiten, Architektur, Dateisysteme und Rechte.',
-    slugs: [
-      'bit-byte',
-      'zahlensysteme',
-      'prefixe',
-      'von-neumann',
-      'linux-chmod',
-      'dateisysteme',
-      'prozess-thread',
-    ],
-  },
-  {
-    id: 'netzwerk',
-    eyebrow: 'Lehrjahr 1',
-    title: 'Netzwerke sicher beherrschen',
-    focus: 'Alles, was in AP1-Aufgaben gern mit Protokollen, Adressen und Diagnose verknuepft wird.',
-    slugs: [
-      'osi-modell',
-      'tcp-udp',
-      'imap-pop3-smtp',
-      'ipv4-subnetting',
-      'netzwerkkonfiguration',
-      'ipv6-grundlagen',
-      'firewall-dmz',
-      'port-forwarding',
-      'wlan-standards',
-    ],
-  },
-  {
-    id: 'arbeit',
-    eyebrow: 'Lehrjahr 2',
-    title: 'Projekt, Betrieb, Kommunikation',
-    focus: 'Der Teil, der technische Entscheidungen in Arbeitsablaeufe und Kundenkontakte übersetzt.',
-    slugs: [
-      'serviceanfragen-support-level',
-      'fehlermanagement-störungsannahme',
-      'bedarfsanalyse-feedback',
-      'schulung-einweisung-key-user',
-      'schulz-von-thun',
-      'vorgehensmodelle',
-      'scrum',
-      'gantt-diagramm',
-    ],
-  },
-  {
-    id: 'prüfung',
-    eyebrow: 'AP1-Kern',
-    title: 'Rechnen, Sicherheit, Wirtschaft',
-    focus: 'Die klassischen Punktebringer: Rechenwege, Schutzbedarf, Vertrage und Auswahlentscheidungen.',
-    slugs: [
-      'datenrate-berechnung',
-      'datenvolumen-berechnung',
-      'schutzziele',
-      'verschluesselung-hash-vpn',
-      'endpoint-security',
-      'malware-grundlagen',
-      'kaufmaennische-rechenaufgaben',
-      'angebotsvergleich',
-      'make-or-buy',
-      'rechnung-zahlungsziel-aufbewahrungsfristen',
-    ],
-  },
-]
-
-function toPathLesson(slug: string): PathLesson | null {
-  const found = findLesson(slug)
-
-  if (!found) return null
-
-  return {
-    ...found,
-    to: `/lernen/${found.lernfeld.slug}/${found.modul.slug}/${found.lesson.slug}`,
-    available: isLessonAvailable(found.lesson),
-    audit: getLessonAudit(found.lesson.slug),
-  }
-}
-
-function phaseLessons(phase: PhaseDefinition) {
-  return phase.slugs.map(toPathLesson).filter((item): item is PathLesson => Boolean(item))
-}
-
-function summarize(items: PathLesson[]) {
-  const ready = items.filter((item) => item.available).length
-  const trusted = items.filter((item) => item.available && isTrustedForExam(item.lesson.slug)).length
-  const trustScore = items.reduce(
-    (sum, item) => sum + (item.available ? auditWeight(item.lesson.slug) : 0),
-    0,
-  )
-  const minutes = items
-    .filter((item) => item.available)
-    .reduce((sum, item) => sum + (item.lesson.minutes ?? 0), 0)
-  const exam = items.filter((item) => item.lesson.exam).length
-
-  return {
-    total: items.length,
-    ready,
-    trusted,
-    oldContent: ready - trusted,
-    minutes,
-    exam,
-    progress: items.length ? Math.round((trustScore / items.length) * 100) : 0,
-  }
-}
-
-function collectPriorityGaps() {
-  return lernfelder
-    .flatMap((lernfeld) =>
-      lernfeld.moduls.flatMap((modul) =>
-        modul.lessons.map((lesson) => ({
-          lesson,
-          modul,
-          lernfeld,
-          to: `/lernen/${lernfeld.slug}/${modul.slug}/${lesson.slug}`,
-          available: isLessonAvailable(lesson),
+function lessonsForLearningField(lf: LernfeldNr): PathLesson[] {
+  return lernfelder.flatMap((area) =>
+    area.moduls.flatMap((module) =>
+      module.lessons
+        .filter((lesson) => lesson.lf === lf && isLessonAvailable(lesson))
+        .map((lesson) => ({
+          slug: lesson.slug,
+          title: lesson.title,
+          minutes: lesson.minutes,
+          area: area.title,
+          module: module.title,
+          to: `/lernen/${area.slug}/${module.slug}/${lesson.slug}`,
         })),
-      ),
-    )
-    .filter(
-      (item) =>
-        item.lesson.exam &&
-        (item.lesson.importance ?? 0) >= 5 &&
-        (!item.available || !isTrustedForExam(item.lesson.slug)),
-    )
-    .sort((a, b) => {
-      const statusRank = { stub: 0, draft: 1, ready: 2, final: 3 }
-      return (
-        Number(b.available) - Number(a.available) ||
-        statusRank[a.lesson.status ?? 'stub'] - statusRank[b.lesson.status ?? 'stub'] ||
-        a.lesson.title.localeCompare(b.lesson.title, 'de')
-      )
-    })
-    .slice(0, 8)
-}
-
-function LessonRow({ item }: { item: PathLesson }) {
-  const status = item.lesson.status ?? 'stub'
-  const content = (
-    <>
-      <span className={`path-status ${status}`}>
-        {item.available ? 'bereit' : lessonStatusLabel(status)}
-      </span>
-      <span className="path-row-main">
-        <span className="path-row-title">{item.lesson.title}</span>
-        <span className="path-row-meta">
-          {item.lernfeld.title} - {item.modul.title}
-        </span>
-      </span>
-      <span className={`path-audit path-audit--${item.audit.status}`}>
-        {auditStatusShortLabel(item.audit.status)}
-      </span>
-      <span className="path-row-time">
-        {item.lesson.minutes ? `${item.lesson.minutes} min` : 'offen'}
-      </span>
-      {item.available && <ArrowRight size={15} aria-hidden="true" />}
-    </>
-  )
-
-  if (!item.available) {
-    return <div className="path-row muted">{content}</div>
-  }
-
-  return (
-    <Link to={item.to} className="path-row no-underline text-ink">
-      {content}
-    </Link>
+    ),
   )
 }
 
 export default function Lernpfad() {
-  const phases = phaseDefinitions.map((phase) => {
-    const lessons = phaseLessons(phase)
-    return {
-      ...phase,
-      lessons,
-      summary: summarize(lessons),
-    }
-  })
-  const allLessons = phases.flatMap((phase) => phase.lessons)
-  const overall = summarize(allLessons)
-  const nextLesson =
-    allLessons.find((item) => item.available && isTrustedForExam(item.lesson.slug)) ??
-    allLessons.find((item) => item.available)
-  const gaps = collectPriorityGaps()
+  const stages = LEARNING_FIELDS.map((lf) => ({
+    lf,
+    title: learningFieldTitle(lf),
+    lessons: lessonsForLearningField(lf),
+  }))
+  const firstLesson = stages.flatMap((stage) => stage.lessons)[0]
+  const lessonCount = stages.reduce((sum, stage) => sum + stage.lessons.length, 0)
 
   return (
-    <article>
-      <div className="topbar">
-        <div className="crumbs">
-          <span>Lernhaus</span>
-          <span className="sep">/</span>
-          <span className="now">Lernpfad</span>
+    <article className="editorial-page learning-path-page">
+      <header className="reference-header learning-path-header">
+        <p className="page-eyebrow">1. und 2. Lehrjahr</p>
+        <h1>Lernen entlang der neun Lernfelder.</h1>
+        <p>
+          Der Lernpfad ordnet die vorhandenen Kapitel nach den offiziellen Lernfeldern.
+          Er bewertet keinen Fortschritt und verspricht keine Prüfungsreife – er zeigt
+          einfach eine klare, nachvollziehbare Reihenfolge.
+        </p>
+        <div className="learning-path-header__meta">
+          <span>{lessonCount} vorhandene Kapitel</span>
+          <span>LF 1–9</span>
+          {firstLesson && (
+            <Link to={firstLesson.to}>
+              Beim ersten Kapitel beginnen
+              <ArrowRight size={15} aria-hidden="true" />
+            </Link>
+          )}
         </div>
-        {nextLesson && (
-          <Link to={nextLesson.to} className="btn btn-ghost no-underline">
-            <BookOpenCheck size={14} aria-hidden="true" />
-            Weiterlernen
-          </Link>
-        )}
+      </header>
+
+      <div className="learning-field-path">
+        {stages.map((stage) => (
+          <section key={stage.lf} className="learning-field-stage">
+            <div className="learning-field-stage__marker">
+              <span>LF</span>
+              <strong>{stage.lf}</strong>
+            </div>
+
+            <div className="learning-field-stage__content">
+              <header>
+                <p>{String(stage.lf).padStart(2, '0')} · Lernfeld</p>
+                <h2>{stage.title}</h2>
+                <span>
+                  {stage.lessons.length}{' '}
+                  {stage.lessons.length === 1 ? 'vorhandenes Kapitel' : 'vorhandene Kapitel'}
+                </span>
+              </header>
+
+              {stage.lessons.length > 0 ? (
+                <div className="learning-field-stage__lessons">
+                  {stage.lessons.map((lesson) => (
+                    <Link key={lesson.slug} to={lesson.to} className="path-lesson">
+                      <BookOpen size={16} aria-hidden="true" />
+                      <span>
+                        <strong>{lesson.title}</strong>
+                        <small>
+                          {lesson.area} · {lesson.module}
+                        </small>
+                      </span>
+                      <span className="path-lesson__time">
+                        {lesson.minutes ? `${lesson.minutes} min` : 'Kapitel'}
+                      </span>
+                      <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p className="learning-field-stage__empty">
+                  Für dieses Lernfeld ist noch kein Kapitel in der App vorhanden.
+                </p>
+              )}
+            </div>
+          </section>
+        ))}
       </div>
-
-      <section className="path-stage">
-        <div className="path-eyebrow">
-          <Flag size={15} aria-hidden="true" />
-          1. und 2. Lehrjahr
-        </div>
-        <h1 className="path-h1">Der kompakte Weg durch die wichtigsten FIAE/FISI-Basics.</h1>
-        <div className="path-summary">
-          <div className="path-stat">
-            <ListChecks size={17} aria-hidden="true" />
-            <span>
-              <b>{overall.trusted}</b>/{overall.total} Kernkapitel belastbar
-            </span>
-          </div>
-          <div className="path-stat">
-            <Clock3 size={17} aria-hidden="true" />
-            <span>
-              <b>{overall.ready}</b> bereit - {overall.oldContent} alt
-            </span>
-          </div>
-          <div className="path-stat">
-            <CircleDot size={17} aria-hidden="true" />
-            <span>
-              <b>{overall.progress}%</b> Vertrauen
-            </span>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="sec-head">
-          <h2 className="sec-title">
-            Lernpfad <em>in Reihenfolge</em>
-          </h2>
-          <div className="sec-meta">{phases.length} Etappen - AP1-nah priorisiert</div>
-        </div>
-        <div className="path-lanes">
-          {phases.map((phase, index) => (
-            <section key={phase.id} className="path-phase">
-              <div className="path-phase-head">
-                <div>
-                  <div className="path-phase-eyebrow">
-                    {String(index + 1).padStart(2, '0')} - {phase.eyebrow}
-                  </div>
-                  <h3>{phase.title}</h3>
-                  <p>{phase.focus}</p>
-                </div>
-                <div className="path-ring" style={{ ['--p' as string]: phase.summary.progress }}>
-                  <span>{phase.summary.progress}%</span>
-                </div>
-              </div>
-              <div className="path-phase-meta">
-                <span>{phase.summary.trusted}/{phase.summary.total} belastbar</span>
-                <span>{phase.summary.oldContent} alt</span>
-                <span>{phase.summary.exam} AP1-relevant</span>
-                <span>{phase.summary.minutes} min</span>
-              </div>
-              <div className="path-rows">
-                {phase.lessons.map((item) => (
-                  <LessonRow key={item.lesson.slug} item={item} />
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-      </section>
-
-      {gaps.length > 0 && (
-        <section className="section">
-          <div className="sec-head">
-            <h2 className="sec-title">
-              Nächste <em>Prüf-Lücken</em>
-            </h2>
-            <div className="sec-meta">Prüfungsrelevant - Wichtigkeit 5 - ungeprüft oder fehlend</div>
-          </div>
-          <div className="path-backlog">
-            {gaps.map((item) => {
-              const audit = getLessonAudit(item.lesson.slug)
-
-              return (
-                <div key={item.lesson.slug} className="path-gap">
-                  <span className={`path-status ${item.lesson.status ?? 'stub'}`}>
-                    {item.available ? 'bereit' : lessonStatusLabel(item.lesson.status)}
-                  </span>
-                  <div>
-                    <b>{item.lesson.title}</b>
-                    <span>
-                      {item.lernfeld.title} - {item.modul.title}
-                    </span>
-                  </div>
-                  <span className={`path-audit path-audit--${audit.status}`}>
-                    {auditStatusShortLabel(audit.status)}
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        </section>
-      )}
     </article>
   )
 }

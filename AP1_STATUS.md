@@ -1,6 +1,6 @@
 # AP1 - Status (GENERIERT)
 
-> Diese Datei wird aus dem Code erzeugt: `npm run emit:status` (bzw. `py scripts/emit_status.py`).
+> Diese Datei wird aus dem Code erzeugt: `npm run emit:status`.
 > **Nicht von Hand editieren.** Quelle der Wahrheit: `src/lib/toc/data/`, `src/lib/audit/status.ts`, `src/lib/review.ts`.
 > Massgeblich ist `Vertrauen` (ungeprueft -> teilgeprueft -> geprueft), nicht der technische `TOC`-Status.
 
@@ -8,7 +8,7 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **0** | teilgeprueft **14** | ungeprueft **86**
+- Vertrauen: geprueft **2** | teilgeprueft **12** | ungeprueft **86**
 - Review dokumentiert: **3**
 - Mit Quellen-Tags: **67**
 
@@ -55,8 +55,8 @@
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
 | `von-neumann` | ready | ungeprueft | - | ja | ja |
-| `bit-byte` | final | teilgeprueft | reviewed | ja | ja |
-| `zahlensysteme` | final | teilgeprueft | reviewed | ja | ja |
+| `bit-byte` | final | geprueft | reviewed | ja | ja |
+| `zahlensysteme` | final | geprueft | reviewed | ja | ja |
 | `prefixe` | final | teilgeprueft | - | ja | ja |
 
 ### hardware

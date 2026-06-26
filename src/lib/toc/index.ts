@@ -8,6 +8,7 @@ export type {
   Lesson,
   Modul,
   Lernfeld,
+  LernfeldNr,
   LessonStatus,
   LessonNavLink,
 } from "./types"
@@ -29,3 +30,8 @@ export {
   readyLessons,
   totalLessons,
 } from "./lessonIndex"
+
+export {
+  learningFieldTitle,
+  OFFICIAL_LEARNING_FIELDS,
+} from "./learningFields"

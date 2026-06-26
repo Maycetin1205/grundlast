@@ -20,10 +20,3 @@ export interface GlossarEintrag {
 }
 
 export type GlossarRegister = Record<string, GlossarEintrag>
-
-export interface GlossarStore {
-  einträge: GlossarRegister
-  findeEintrag: (id: string) => GlossarEintrag | undefined
-  registriereEintrag: (eintrag: GlossarEintrag) => void
-  registriereEinträge: (einträge: GlossarEintrag[]) => void
-}

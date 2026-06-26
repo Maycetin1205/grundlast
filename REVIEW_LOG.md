@@ -172,6 +172,19 @@ Dieses Log dokumentiert Kapitel, die nach dem neuen Goldstandard formal als
 - Ergebnis: `bit-byte` bleibt `review-final`.
 - Technik: `npm.cmd run lint` und `npm.cmd run build` erfolgreich.
 
+### Neustart-Audit 2026-06-25
+
+- Verbindlicher Status nach `LOS_MACH_WEITER.md`: `teilgeprüft`; historische `final`- und `reviewed`-Angaben gelten nicht als alleiniger Qualitätsnachweis.
+- Scope erneut bestätigt: eigenständiges Grundlagenkapitel für LF2/LF3; Schwerpunkt bleibt Bit, Byte, Wertebereich, b/B, Datenmenge/Datenrate, Präfixabgrenzung und ein kurzer Zeichenkodierungs-Ausblick.
+- Primärquellen erneut geprüft: KMK-Rahmenlehrplan, FIAusbV, NIST Binary Prefixes, BIPM SI Prefixes, RFC 20, RFC 3629 und Unicode.
+- Quellenpflege: RFC 20 und RFC 3629 als frei zugängliche Primärquellen in Quellenbank, Quellenzuordnung und Kapitel ergänzt; der kostenpflichtige ANSI-Webstore-Link ist nicht mehr der praktische ASCII-Hauptbeleg.
+- Didaktik: den eigenständigen Tabellenblock `Kann ich es wirklich?` entfernt. Die unmittelbar erklärten Mini-Selbstchecks bleiben erhalten und reichen für die Verständnissicherung ohne Aufgabenmodus aus.
+- Faktenpräzision: `550 MB/s` nicht mehr als typische SATA-SSD-Rate bezeichnet, sondern neutral als beispielhafte Speichermedienrate.
+- Lokaler Materialabgleich abgeschlossen: 13 Prüfungs-PDFs mit insgesamt 151 Seiten wurden temporär gerendert und per Windows OCR durchsucht. Dokumentiert wurden ausschließlich Aufgabentypen, keine geschützten Originaltexte.
+- Bestätigte Aufgabentypen: 8 Bit als 256 mögliche Zustände; Bit-zu-Byte-Umrechnung innerhalb einer mehrstufigen TiB-Datenmengenrechnung; Einordnung von Speicher- und Datenratenangaben.
+- Ergebnis: Das Kapitel vermittelt alle dafür nötigen Grundlagen. Die zusammengesetzte Scanrechnung gehört weiterhin in `scan-bilddaten` beziehungsweise `datenvolumen-berechnung`.
+- Status: `geprüft`. Offen: nichts.
+
 ## zahlensysteme
 - Status: `review-final`
 - Datum: 2026-06-03
@@ -182,6 +195,17 @@ Dieses Log dokumentiert Kapitel, die nach dem neuen Goldstandard formal als
 - Quellen: 10 Quellen-IDs geprueft, 0 fehlende Eintraege in `sourceBank.ts`; Quellenbasis umfasst KMK, FIAusbV, BIBB, NIST, IEC, POSIX, RFC 9542, W3C CSS Color 4, RFC 4632 und IEEE 754.
 - Technik: `npm.cmd run lint` und `npm.cmd run build` erfolgreich.
 - Re-Audit 2026-06-05: Scope, Quellen-/Benchmark-Matrix und Abschnitts-Audit erneut geprueft. Kleine Bereinigung im Lerntext: sichtbare Labels `Pflicht`, `Vertiefung` und `Muss sitzen` entfernt; Fakten, Rechenwege, Quellen und Glossar unveraendert stimmig. `npm.cmd run lint` und `npm.cmd run build` erfolgreich.
+
+### Neustart-Audit 2026-06-25
+
+- Entscheidung: als eigenständiges Grundlagenkapitel für LF2/LF3/LF5 behalten.
+- Primärquellen vollständig geprüft: NIST IR 8354, POSIX `chmod`, RFC 9542, W3C CSS Color 4, RFC 4632 und IEEE 754; Ausbildungsrahmen über KMK, FIAusbV und BIBB.
+- Externe Benchmarks: Computer Science Field Guide erklärt Hex als kompakte Vierergruppierung von Binärzahlen; Teach Computing beginnt niedrigschwellig mit Bits und Repräsentation. Die Lernfolge des Kapitels ist damit didaktisch plausibel.
+- Rechencheck erfolgreich: `46₁₀ = 101110₂`, `11000000₂ = 192₁₀`, `192₁₀ = C0₁₆`, `FF₁₆ = 255₁₀`, `chmod 755 = rwxr-xr-x`.
+- Lokaler Materialabgleich: bestätigte Aufgabenarten sind 8-Bit-Farbzustände, IPv6-Hexschreibweise, Präfixlängen und VLSM sowie die Einordnung von `chmod`. Spezialverfahren bleiben in den jeweiligen Folgekapiteln.
+- App-Integration: 30 eindeutige `<Term>`-IDs geprüft, keine fehlenden Glossareinträge; drei Umlaut-IDs auf die vorhandenen ASCII-IDs korrigiert. Zehn Quellen-IDs geprüft, keine fehlenden Einträge.
+- Didaktik: sichtbare AP1-/Pflicht-Metasprache sowie die eigenständigen Aufgaben- und Übungsblöcke entfernt. Erklärende Mini-Selbstchecks und interaktive Werkzeuge bleiben im Lernfluss.
+- Status: `geprüft`. Offen: nichts.
 
 ## Historische Freigaben
 

@@ -1,10 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import * as Tooltip from '@radix-ui/react-tooltip'
 import { BookOpen, X } from 'lucide-react'
-import { useState, type ReactNode } from 'react'
+import { useId, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '../../lib/cn'
-import { normalisiereGlossarId, useGlossarStore } from '../../lib/glossar'
+import { findeGlossarEintrag } from '../../lib/glossar'
 
 interface TermProps {
   id: string
@@ -14,7 +13,8 @@ interface TermProps {
 
 export default function Term({ id, children, className }: TermProps) {
   const [dialogOffen, setDialogOffen] = useState(false)
-  const eintrag = useGlossarStore((state) => state.einträge[normalisiereGlossarId(id)])
+  const tooltipId = useId()
+  const eintrag = findeGlossarEintrag(id)
 
   const termClassName = cn(
     'inline cursor-help appearance-none border-0 bg-transparent p-0 align-baseline font-[inherit] leading-[inherit]',
@@ -34,34 +34,20 @@ export default function Term({ id, children, className }: TermProps) {
 
   return (
     <Dialog.Root open={dialogOffen} onOpenChange={setDialogOffen}>
-      <Tooltip.Provider delayDuration={180}>
-        <Tooltip.Root>
-          <Tooltip.Trigger asChild>
-            <button
-              type="button"
-              className={termClassName}
-              onClick={() => setDialogOffen(true)}
-            >
-              {children}
-            </button>
-          </Tooltip.Trigger>
-          <Tooltip.Portal>
-            <Tooltip.Content
-              className={cn(
-                'z-50 max-w-xs rounded-md border border-rule bg-ink px-3 py-2 shadow-lg',
-                'font-ui text-sm leading-snug text-paper',
-              )}
-              sideOffset={7}
-            >
-              <span className="block font-ui text-xs font-bold uppercase text-paper/75">
-                {eintrag.begriff}
-              </span>
-              <span className="mt-1 block">{eintrag.kurzdefinition}</span>
-              <Tooltip.Arrow className="fill-ink" />
-            </Tooltip.Content>
-          </Tooltip.Portal>
-        </Tooltip.Root>
-      </Tooltip.Provider>
+      <span className="term-with-tooltip">
+        <button
+          type="button"
+          className={termClassName}
+          onClick={() => setDialogOffen(true)}
+          aria-describedby={tooltipId}
+        >
+          {children}
+        </button>
+        <span id={tooltipId} role="tooltip" className="term-tooltip">
+          <strong>{eintrag.begriff}</strong>
+          {eintrag.kurzdefinition}
+        </span>
+      </span>
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-ink/35" />

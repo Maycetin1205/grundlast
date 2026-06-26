@@ -1150,6 +1150,20 @@ export const sourceBank: SourceEntry[] = [
     tags: ['ordnung', 'ascii', 'zeichen', 'zeichenkodierung', 'bit', 'byte'],
   },
   {
+    id: 'rfc-20',
+    label: 'RFC 20 - ASCII format for Network Interchange',
+    href: 'https://www.rfc-editor.org/rfc/rfc20.html',
+    detail: 'Frei zugängliche Primärquelle zum 7-Bit-ASCII-Code und zu seiner Darstellung in einem 8-Bit-Byte.',
+    tags: ['ordnung', 'ascii', 'zeichen', 'zeichenkodierung', 'bit', 'byte', 'rfc'],
+  },
+  {
+    id: 'rfc-3629',
+    label: 'RFC 3629 - UTF-8',
+    href: 'https://www.rfc-editor.org/rfc/rfc3629.html',
+    detail: 'Definiert UTF-8 als Kodierung mit variabler Bytezahl und bestätigt die Ein-Byte-Darstellung des US-ASCII-Bereichs.',
+    tags: ['ordnung', 'unicode', 'utf-8', 'ascii', 'zeichen', 'zeichenkodierung', 'bit', 'byte', 'rfc'],
+  },
+  {
     id: 'unicode-utf-8',
     label: 'Unicode Standard - UTF-8',
     href: 'https://www.unicode.org/versions/latest/core-spec/chapter-3/',

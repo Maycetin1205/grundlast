@@ -83,7 +83,7 @@ sofort auf (~93 GiB „verloren"), bei einer kleinen 64-MB-Karte aber kaum.
 
 ---
 
-## Rechenweg: immer über Byte
+## Umrechnen: immer über Byte
 
 Eine einzige Heuristik löst praktisch jede Umrechnungsaufgabe:
 
@@ -165,8 +165,8 @@ Zahlen wird daraus aber ein echter Fehler.
   `MiB`, `GiB` oder `TiB` schreibt, ist die binäre Reihe gemeint —
   Faktor `1024`, nicht `1000`. Schreibt sie `kB`, `MB`, `GB`, `TB`, ist
   formal die dezimale Reihe gemeint. Bei unklarer Quelle (z.B. Anzeige
-  eines Programms) hilft der Rechenweg, im Lösungsweg zu begründen,
-  welche Variante du genommen hast.
+  eines Programms) solltest du ausdrücklich begründen, welche Variante du
+  verwendet hast.
 
 - **Symbol klein/groß durcheinander.** Offiziell ist `kilo` = `k` (klein),
   `kibi` = `Ki` (groß plus klein `i`). `M`, `G`, `T` sind in beiden Reihen
@@ -184,7 +184,7 @@ Zahlen wird daraus aber ein echter Fehler.
   von oben anwenden: erst alles in Byte.
 
 - **Einheit weglassen.** Ohne Einheit ist eine Zahl nicht sauber
-  interpretierbar, selbst wenn der Rechenweg stimmt. Immer mitschreiben —
+  interpretierbar, selbst wenn die Berechnung stimmt. Immer mitschreiben —
   und die *richtige* Einheit: `KiB` ≠ `kB`.
 
 - **OS-Anzeige sagt `GB`, rechnet aber eventuell binär.** Manche Programme
@@ -195,8 +195,8 @@ Zahlen wird daraus aber ein echter Fehler.
   1000er-Schritten.
 
 - **Folgepräfixe vergessen.** Nach `Ti` kommt `Pi` (Pebibyte, `2⁵⁰`),
-  dann `Ei` (Exbibyte, `2⁶⁰`). Sie sind seltener, aber es gilt dieselbe
-  Reihe und derselbe Rechenweg.
+  dann `Ei` (Exbibyte, `2⁶⁰`). Sie sind seltener, aber es gelten dieselbe
+  Reihe und dasselbe Verfahren.
 
 ---
 

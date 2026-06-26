@@ -1,23 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @import "./tokens.css";
 @import "./dark.css";
 @import "./base.css";
 
-@import "./components/buttons.css";
-@import "./components/topbar.css";
-@import "./components/hero.css";
-@import "./components/streak.css";
-@import "./components/mode-switch.css";
-@import "./components/section.css";
-@import "./components/lf-card.css";
-@import "./components/cont-list.css";
-@import "./components/chapter.css";
-@import "./components/tabs.css";
+@import "./components/shell.css";
+@import "./components/sidebar.css";
+@import "./components/editorial.css";
+@import "./components/reference.css";
 @import "./components/lesson.css";
-@import "./components/ch-list.css";
-@import "./components/ap1-stage.css";
-@import "./components/topic-mastery.css";
 @import "./components/learning-path.css";
-@import "./components/sources.css";

@@ -6,10 +6,10 @@ export type {
   GlossarEintrag,
   GlossarKapitel,
   GlossarRegister,
-  GlossarStore,
 } from "./types"
 
 export {
-  useGlossarStore,
+  findeGlossarEintrag,
+  glossarRegister,
   normalisiereGlossarId,
 } from "./store"

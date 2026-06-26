@@ -1,35 +1,26 @@
-/* =============================================================
-   Lernhaus Design-Tokens
-   Modern-akademische Lernoberfläche mit warmem Off-White,
-   gedecktem Akademie-Grün und akademischer Display-Serif.
-   ============================================================= */
-
 @theme {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-body: "Fraunces", ui-serif, Georgia, serif;
-  --font-ui: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: Aptos, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: Aptos, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: Aptos, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
 
-  --color-ink: oklch(22% 0.012 60);
-  --color-ink-2: oklch(36% 0.012 60);
-  --color-ink-3: oklch(52% 0.010 60);
-  --color-ink-4: oklch(68% 0.008 60);
-
-  --color-paper: oklch(99.2% 0.004 80);
-  --color-paper-deep: oklch(96.4% 0.008 80);
-  --color-bg: oklch(98.2% 0.006 80);
-  --color-bg-2: oklch(96.4% 0.008 80);
-  --color-bg-3: oklch(93.5% 0.010 80);
-
-  --color-rule: oklch(89% 0.010 80);
-  --color-rule-2: oklch(82% 0.012 80);
-  --color-muted: oklch(52% 0.010 60);
-
-  --color-accent: oklch(48% 0.09 145);
-  --color-accent-soft: oklch(94% 0.04 145);
-  --color-accent-2: oklch(60% 0.13 35);
-  --color-accent-2-soft: oklch(95% 0.03 35);
+  --color-ink: oklch(24% 0.012 65);
+  --color-ink-2: oklch(40% 0.010 65);
+  --color-ink-3: oklch(55% 0.008 65);
+  --color-ink-4: oklch(68% 0.006 65);
+  --color-paper: oklch(98.6% 0.004 85);
+  --color-paper-deep: oklch(96.9% 0.006 85);
+  --color-bg: oklch(98.6% 0.004 85);
+  --color-bg-2: oklch(96.9% 0.006 85);
+  --color-bg-3: oklch(94.4% 0.008 85);
+  --color-rule: oklch(90.5% 0.007 85);
+  --color-rule-2: oklch(85% 0.009 85);
+  --color-muted: oklch(55% 0.008 65);
+  --color-accent: oklch(54% 0.085 215);
+  --color-accent-soft: oklch(95% 0.025 215);
+  --color-accent-2: oklch(56% 0.13 45);
+  --color-accent-2-soft: oklch(96% 0.035 60);
 
   --color-c-sand: oklch(72% 0.07 75);
   --color-c-olive: oklch(58% 0.07 110);
@@ -41,65 +32,54 @@
   --color-c-forest: oklch(45% 0.07 155);
   --color-c-indigo: oklch(50% 0.08 275);
 
-  --color-tipp-bg: oklch(95% 0.04 145);
-  --color-tipp-border: oklch(48% 0.09 145);
-  --color-warn-bg: oklch(95% 0.04 30);
-  --color-analogy-bg: oklch(95% 0.06 85);
-  --color-term: oklch(50% 0.08 240);
+  --color-tipp-bg: oklch(95.5% 0.03 200);
+  --color-tipp-border: oklch(54% 0.085 215);
+  --color-warn-bg: oklch(96% 0.035 60);
+  --color-analogy-bg: oklch(96% 0.045 95);
+  --color-term: oklch(50% 0.09 250);
 
-  /* Skalen-Aliase für Bestandskomponenten (Quiz, Rechenweg, alte Routes) */
-  --color-ink-50: oklch(96% 0.005 60);
-  --color-ink-100: oklch(92% 0.008 60);
-  --color-ink-200: oklch(85% 0.010 60);
-  --color-ink-300: oklch(72% 0.010 60);
-  --color-ink-400: oklch(60% 0.010 60);
-  --color-ink-500: oklch(50% 0.010 60);
-  --color-ink-600: oklch(40% 0.012 60);
-  --color-ink-700: oklch(32% 0.012 60);
-  --color-ink-800: oklch(26% 0.012 60);
-  --color-ink-900: oklch(22% 0.012 60);
-  --color-ink-950: oklch(15% 0.012 60);
+  --color-ink-50: oklch(97% 0.004 85);
+  --color-ink-100: oklch(94% 0.006 85);
+  --color-ink-200: oklch(88% 0.008 85);
+  --color-ink-300: oklch(75% 0.008 65);
+  --color-ink-400: oklch(62% 0.008 65);
+  --color-ink-500: oklch(52% 0.009 65);
+  --color-ink-600: oklch(42% 0.010 65);
+  --color-ink-700: oklch(34% 0.011 65);
+  --color-ink-800: oklch(28% 0.012 65);
+  --color-ink-900: oklch(24% 0.012 65);
+  --color-ink-950: oklch(16% 0.012 65);
 
-  --color-brand-50: oklch(96% 0.02 145);
-  --color-brand-100: oklch(92% 0.04 145);
-  --color-brand-200: oklch(86% 0.06 145);
-  --color-brand-300: oklch(76% 0.08 145);
-  --color-brand-400: oklch(60% 0.10 145);
-  --color-brand-500: oklch(48% 0.09 145);
-  --color-brand-600: oklch(42% 0.10 145);
-  --color-brand-700: oklch(35% 0.10 145);
-  --color-brand-800: oklch(28% 0.09 145);
-  --color-brand-900: oklch(22% 0.08 145);
-  --color-brand-950: oklch(15% 0.06 145);
+  --color-brand-50: oklch(97% 0.015 215);
+  --color-brand-100: oklch(95% 0.025 215);
+  --color-brand-200: oklch(89% 0.045 215);
+  --color-brand-300: oklch(78% 0.07 215);
+  --color-brand-400: oklch(65% 0.085 215);
+  --color-brand-500: oklch(54% 0.085 215);
+  --color-brand-600: oklch(46% 0.095 218);
+  --color-brand-700: oklch(39% 0.09 218);
+  --color-brand-800: oklch(32% 0.075 218);
+  --color-brand-900: oklch(25% 0.06 218);
+  --color-brand-950: oklch(18% 0.04 218);
 
-  --color-accent-100: oklch(94% 0.04 145);
-  --color-accent-200: oklch(86% 0.06 145);
-  --color-accent-300: oklch(76% 0.08 145);
-  --color-accent-400: oklch(60% 0.10 145);
-  --color-accent-500: oklch(48% 0.09 145);
-  --color-accent-600: oklch(42% 0.10 145);
-  --color-accent-700: oklch(35% 0.10 145);
-  --color-accent-800: oklch(28% 0.09 145);
-  --color-accent-900: oklch(22% 0.08 145);
+  --color-accent-100: oklch(95% 0.025 215);
+  --color-accent-200: oklch(89% 0.045 215);
+  --color-accent-300: oklch(78% 0.07 215);
+  --color-accent-400: oklch(65% 0.085 215);
+  --color-accent-500: oklch(54% 0.085 215);
+  --color-accent-600: oklch(46% 0.095 218);
+  --color-accent-700: oklch(39% 0.09 218);
+  --color-accent-800: oklch(32% 0.075 218);
+  --color-accent-900: oklch(25% 0.06 218);
 }
 
 :root {
-  --r-sm: 6px;
-  --r-md: 10px;
-  --r-lg: 16px;
-  --r-xl: 22px;
-
-  --shadow-1: 0 1px 0 oklch(100% 0 0 / 0.6) inset, 0 1px 2px oklch(0% 0 0 / 0.04);
-  --shadow-2: 0 1px 0 oklch(100% 0 0 / 0.7) inset, 0 8px 24px -8px oklch(0% 0 0 / 0.12);
-
-  --paper-grain-strong: oklch(0% 0 0 / 0.015);
-  --paper-grain-soft: oklch(0% 0 0 / 0.010);
-  --paper-grain-blend: multiply;
+  --r-sm: 5px;
+  --r-md: 9px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --shadow-1: 0 1px 2px oklch(0% 0 0 / 0.05);
+  --shadow-2: 0 1px 2px oklch(0% 0 0 / 0.05), 0 8px 28px -16px oklch(0% 0 0 / 0.18);
+  --rail-width: clamp(232px, 18vw, 288px);
+  --mobile-rail-width: min(300px, 88vw);
 }
-
-/* =============================================================
-   Dark-Mode-Tokens
-   Aktiv über <html class="dark">. Akademie-Grün wird heller,
-   Coral kräftiger, Papier wechselt auf gedämpfte Anthrazit-
-   Töne. Body-Kontrast ist auf min. 7:1 (AAA) ausgelegt.
-   ============================================================= */

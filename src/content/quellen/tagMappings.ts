@@ -89,7 +89,8 @@ export const lessonSourceIds: Record<string, string[]> = {
     'iec-80000-13',
     'nist-binary-prefixes',
     'bipm-si-prefixes',
-    'ansi-x3-4-ascii',
+    'rfc-20',
+    'rfc-3629',
     'unicode-utf-8',
   ],
   'prefixe': [

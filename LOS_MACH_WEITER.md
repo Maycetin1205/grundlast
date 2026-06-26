@@ -24,8 +24,8 @@ Der gesamte fachliche Bestand kann KI-generiert sein.
 
 | Feld | Wert |
 |---|---|
-| Aktuelles Kapitel | `bit-byte` |
-| Kapiteldatei | `src/content/lessons/bit-byte.mdx` |
+| Aktuelles Kapitel | `prefixe` |
+| Kapiteldatei | `src/content/lessons/prefixe.mdx` |
 | Verbindlicher Status | `ungeprüft` |
 | Aktuelle Phase | Neustartprüfung noch offen |
 | Nächstes Kapitel | erst nach Abschluss festlegen |

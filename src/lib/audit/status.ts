@@ -9,10 +9,10 @@ export interface LessonAudit {
 
 const lessonAudits: Record<string, LessonAudit> = {
   'bit-byte': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Kernfakten und Didaktik sind auditiert. Echte AP1-/U-Form-Aufgaben fehlen noch.',
-    nextAction: 'Offene ASCII-Quelle in der Quellenbank nachziehen und mit legalen Aufgaben testen.',
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Kernfakten, Didaktik, Primärquellen und lokale legale Aufgabenarten zu 8-Bit-Wertebereich sowie Bit-zu-Byte-/TiB-Umrechnung sind vollständig abgeglichen.',
+    nextAction: 'Kein offener Punkt; Transferrechnungen werden in Scan-Bilddaten und Datenvolumen vertieft.',
   },
   prefixe: {
     status: 'teilgeprueft',
@@ -21,10 +21,10 @@ const lessonAudits: Record<string, LessonAudit> = {
     nextAction: 'Kurzen Selbstcheck ergaenzen und mit legalen Aufgaben testen.',
   },
   zahlensysteme: {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Stellenwerte, Umrechnungen und Anwendungen sind auditiert. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit echten/nahen AP1-Aufgaben gegenpruefen.',
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Stellenwerte, Umrechnungen, Anwendungen, Primärquellen, externe Lernangebote und lokale legale Aufgabenarten sind vollständig abgeglichen.',
+    nextAction: 'Kein offener Punkt; IPv6-Kompression und VLSM bleiben in den jeweiligen Netzwerk-Kapiteln.',
   },
   'datenrate-berechnung': {
     status: 'teilgeprueft',

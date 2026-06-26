@@ -31,7 +31,7 @@ const reviewLog: Record<string, LessonReview> = {
   'bit-byte': {
     lessonSlug: 'bit-byte',
     status: 'reviewed',
-    checkedAt: '2026-06-03',
+    checkedAt: '2026-06-25',
     reviewer: 'Codex',
     sourceIds: [
       'kmk-rahmenlehrplan',
@@ -41,18 +41,20 @@ const reviewLog: Record<string, LessonReview> = {
       'iec-80000-13',
       'nist-binary-prefixes',
       'bipm-si-prefixes',
-      'ansi-x3-4-ascii',
+      'rfc-20',
+      'rfc-3629',
       'unicode-utf-8',
     ],
     notes: [
-      'Neuer Goldstandard-Review abgeschlossen: Bit, Byte, 8-Bit-Wertebereich, b/B-Falle, Speicher/Datenrate und Zeichenkontext quellenbasiert geprüft.',
-      'Alte Übungsblöcke entfernt und auf erklärende Mini-Selbstchecks reduziert; kein Prüfungsmodus im Lernkapitel.',
+      'Neustart-Review abgeschlossen: Bit, Byte, 8-Bit-Wertebereich, b/B-Falle, Speicher/Datenrate, Präfixe und Zeichenkontext vollständig gegen Primärquellen geprüft.',
+      'Lokale legale Aufgabenarten bestätigen die benötigten Grundlagen für 8 Bit = 256 Zustände sowie mehrstufige Umrechnungen von Bit über Byte bis TiB.',
+      'Kein Prüfungsmodus im Lernkapitel; komplexe Scan- und Datenvolumenrechnungen bleiben in den passenden Folgekapiteln.',
     ],
   },
   zahlensysteme: {
     lessonSlug: 'zahlensysteme',
     status: 'reviewed',
-    checkedAt: '2026-06-03',
+    checkedAt: '2026-06-25',
     reviewer: 'Codex',
     sourceIds: [
       'kmk-rahmenlehrplan',
@@ -67,8 +69,10 @@ const reviewLog: Record<string, LessonReview> = {
       'ieee-754-2019',
     ],
     notes: [
-      'Neuer Goldstandard-Review abgeschlossen: Glossar-IDs und Quellen-IDs vollständig vorhanden.',
-      'Aufgaben-/Trainer-Elemente auf dezente Selbstchecks und erklärende Werkzeuge reduziert; kein Prüfungsmodus im Lernkapitel.',
+      'Neustart-Review abgeschlossen: Stellenwertsysteme, Binär/Dezimal, Hex/Nibble, Oktal/chmod und IPv4-Brücke vollständig gegen Primärquellen geprüft.',
+      'Externe Benchmarks bestätigen die Lernfolge von Stellenwerten über Binärumrechnung zur Hex-Vierergruppierung.',
+      'Lokale legale Aufgabenarten bestätigen Zahlensysteme als Werkzeug für 8-Bit-Farbzustände, IPv6-Hexschreibweise, Präfixlängen/VLSM und chmod.',
+      'Drei fehlerhafte Glossar-IDs korrigiert; Aufgaben- und Übungsmodus aus dem Lernkapitel entfernt.',
     ],
   },
 }

@@ -207,7 +207,7 @@ Zeit übertragen werden: `bit/s`, `Mbit/s`, `MB/s`.
 | `500 MB` | Datenmenge | Größe einer Datei |
 | `16 GB RAM` | Datenmenge | Größe des Arbeitsspeichers |
 | `250 Mbit/s` | Datenrate | Übertragungsgeschwindigkeit |
-| `550 MB/s` | Datenrate | typische sequenzielle SSD-Rate über SATA |
+| `550 MB/s` | Datenrate | beispielhafte Übertragungsrate eines Speichermediums |
 
 Die drei Grundformeln sind:
 
@@ -335,21 +335,6 @@ durch eine Kodierung wieder als Zeichen gelesen werden.
 - **Brutto und netto verwechselt.** Eine Leitung mit `250 Mbit/s` liefert in
   der Praxis nicht automatisch dauerhaft `31,25 MB/s` Nutzdaten.
 
-## Kann ich es wirklich?
-
-| Check | Lösung | Woran du erkennst, dass es sitzt |
-|---|---|---|
-| Erkläre den Unterschied zwischen Bit und Byte. | 1 Byte = 8 Bit. | Du nennst Symbol `b`/`B` und Faktor 8. |
-| Wie viele Werte passen unsigned in 8 Bit? | 256 Werte, 0 bis 255. | Du vergisst die Null nicht. |
-| Wandle `64 Mbit/s` in `MB/s` um. | `8 MB/s`. | Du teilst durch 8. |
-| Wie lange dauern `400 MB` bei `80 Mbit/s` ideal? | `80 ÷ 8 = 10 MB/s`, also `40 s`. | Du bringst Menge und Rate auf dieselbe Einheit. |
-| Was ist der Unterschied zwischen MB und MiB? | MB = 1000er-Reihe, MiB = 1024er-Reihe. | Du erkennst dezimal vs. binär. |
-
-Wenn diese fünf Zeilen ohne Raten funktionieren, ist der Kernteil
-verstanden.
-
----
-
 ## Was hier bewusst nur angerissen wird
 
 | Thema | Warum nicht vollständig hier? | Wo es hingehört |
@@ -397,9 +382,14 @@ verstanden.
       detail: 'Offizielle SI-Präfixe: kilo, mega, giga und tera stehen dezimal für Potenzen von 1000.'
     },
     {
-      label: 'ANSI INCITS 4-1986 (R2017) - 7-Bit ASCII',
-      href: 'https://webstore.ansi.org/standards/incits/ansiincits41986r2017',
-      detail: 'Standard für den 7-Bit-ASCII-Zeichensatz mit 128 Codepunkten.'
+      label: 'RFC 20 - ASCII format for Network Interchange',
+      href: 'https://www.rfc-editor.org/rfc/rfc20.html',
+      detail: 'Frei zugängliche Primärquelle zum 7-Bit-ASCII-Code und zu seiner Einbettung in ein 8-Bit-Byte.'
+    },
+    {
+      label: 'RFC 3629 - UTF-8',
+      href: 'https://www.rfc-editor.org/rfc/rfc3629.html',
+      detail: 'Definiert UTF-8 mit variabler Bytezahl; US-ASCII-Zeichen werden mit einem Byte in ihrem ursprünglichen Wert codiert.'
     },
     {
       label: 'Unicode Standard - UTF-8',

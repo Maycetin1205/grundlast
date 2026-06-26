@@ -76,8 +76,8 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 | Slug | AP1 alt | Status alt | Vertrauen | Prioritaet | Naechste Aktion |
 |---|---|---|---|---|---|
 | `von-neumann` | ja | ready | ungeprueft | P2 | Quellen- und Umfangsaudit |
-| `bit-byte` | ja | final | teilgeprueft | P1 | Quellenbank um offene ASCII-Quelle pruefen, dann Aufgabenabgleich |
-| `zahlensysteme` | ja | final | teilgeprueft | P1 | Aufgabenabgleich fehlt, CSS-Praezisierung erledigt |
+| `bit-byte` | ja | final | geprueft | erledigt | Quellen-, Fakten-, Didaktik- und lokaler Aufgabenarten-Abgleich abgeschlossen |
+| `zahlensysteme` | ja | final | geprueft | erledigt | Quellen-, Fakten-, Glossar-, Benchmark- und lokaler Aufgabenarten-Abgleich abgeschlossen |
 | `prefixe` | ja | final | teilgeprueft | P1 | Aufgabenabgleich fehlt, Textpraezisierung erledigt |
 
 ### Netzwerke
@@ -400,21 +400,33 @@ Bearbeiter: Codex
 
 ### Entscheidung
 
-- Vertrauen: `teilgeprueft`.
-- Grund: Die harten Kernfakten sind gegen Primaerquellen plausibel geprueft
-  und die Didaktik ist stark. `geprueft` waere zu frueh, weil externer
-  Didaktikbenchmark und legaler Aufgabenabgleich fehlen.
-- Nötige Änderungen:
-  - Keine akute Kapiteltext-Aenderung noetig.
-  - Quellenbank/Quellenliste spaeter um RFC 20 als offene ASCII-Quelle
-    ergaenzen oder ANSI-Webstore-Link als Normhinweis belassen, aber nicht als
-    einzige praktische Pruefquelle nutzen.
-  - Sobald echte/legale AP1- oder U-Form-Aufgaben vorliegen, mindestens einen
-    Aufgabentyp gegen dieses Kapitel testen.
-- Nächste Aktion:
-  - Entweder Quellenpflege fuer RFC 20 nachziehen oder mit `prefixe`
-    weiter-auditieren. Fuer den Lernfortschritt ist `prefixe` der naechste
-    fachliche Schritt.
+- Vertrauen: `geprueft`.
+- Grund: Kernfakten, Primärquellen, externe Didaktikbenchmarks und lokale
+  legale Aufgabenarten wurden vollständig abgeglichen.
+- Nötige Änderungen: erledigt. RFC 20/RFC 3629 sind gepflegt, der alte
+  Aufgabenblock ist entfernt und die Transfergrenze zu Scan-/Datenvolumen-
+  rechnungen ist dokumentiert.
+- Nächste Aktion: keine für `bit-byte`; Neustartprüfung von `zahlensysteme`.
+
+### Neustart-Nachtrag 25.06.2026
+
+- RFC 20 und RFC 3629 wurden als frei zugängliche Primärquellen in
+  `sourceBank.ts`, `tagMappings.ts`, `review.ts` und im Kapitel ergänzt.
+- Der eigenständige Fragen-/Lösungsblock `Kann ich es wirklich?` wurde gemäß
+  der neuen Kompendiumsregel entfernt; erklärende Mini-Selbstchecks bleiben.
+- Die konkrete Angabe `550 MB/s` wird nur noch als Beispiel für eine
+  Speichermedienrate verwendet, nicht als zeitabhängige typische SATA-Aussage.
+- Alle 13 lokalen Prüfungs-PDFs wurden temporär in 151 Bildseiten gerendert
+  und mit Windows OCR durchsucht. Rohtexte und Originalaufgaben wurden nicht
+  ins Projekt übernommen.
+- Bestätigte Aufgabenarten:
+  - 8 Bit als Grundlage für 256 mögliche Farbzustände;
+  - mehrstufige Datenmengenrechnung von Bit über Byte und IEC-Präfixe bis TiB;
+  - Einordnung von Speicherangaben und Datenraten in technischen Daten.
+- Das Kapitel deckt die benötigte Basis vollständig ab. Die zusammengesetzte
+  Scanrechnung bleibt fachlich richtig in `scan-bilddaten` und
+  `datenvolumen-berechnung` verortet.
+- Vertrauen wird auf `geprueft` gesetzt. Offen: nichts.
 
 ## Detailaudit: prefixe
 
@@ -652,18 +664,21 @@ Bearbeiter: Codex
 
 ### Entscheidung
 
-- Vertrauen: `teilgeprueft`.
-- Grund: Kernfakten, Rechenwege und Anwendungen sind gegen Primärquellen und
-  eigene Nachrechnung stabil. `geprueft` fehlt noch, weil echter
-  Aufgabenabgleich und externer Didaktikbenchmark fehlen.
-- Noetige Aenderungen:
-  - Erledigt: CSS-Formulierung von "drei Bytes" auf "drei 8-Bit-Werte"
-    präzisiert.
-  - Später: echte/legale AP1- oder U-Form-Aufgaben gegen die Umrechnungs- und
-    chmod-Aufgabentypen testen.
-- Naechste Aktion:
-  - Kein weiteres MD-Audit als nächster Schritt. Jetzt App-Umbau:
-    Audit-/Vertrauensstatus technisch abbilden und in der UI sichtbar machen.
+- Vertrauen: `geprueft`.
+- Grund: Kernfakten und Rechenwege sind gegen Primärquellen nachgerechnet.
+  Computer Science Field Guide und Teach Computing bestätigen die didaktische
+  Reihenfolge. Der lokale Materialabgleich bestätigt Zahlensysteme als
+  Werkzeug für 8-Bit-Farbzustände, IPv6-Hexschreibweise, Präfixlängen/VLSM
+  und chmod.
+- Erledigte Änderungen:
+  - sichtbare AP1-/Pflicht-Metasprache entfernt;
+  - eigenständige Aufgaben- und Übungsblöcke entfernt, Mini-Selbstchecks im
+    Erklärfluss beibehalten;
+  - Glossar-IDs `binaersystem`, `binaerzahl` und `fuehrende-null` korrigiert;
+  - Hardwareerklärung auf definierte digitale Signalbereiche präzisiert;
+  - pauschale Aussage zu `chmod 755` bei Skripten entfernt;
+  - MAC-Formulierung auf den 48-Bit-Ethernet-Kontext begrenzt.
+- Nächste Aktion: keine für `zahlensysteme`; Neustartprüfung von `prefixe`.
 
 ## Detailaudit: datenrate-berechnung
 

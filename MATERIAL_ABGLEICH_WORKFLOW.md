@@ -33,12 +33,35 @@ Wir wollen prüfen:
 
 ## Ablauf
 
+### 0. Bildbasierte PDFs vorbereiten
+
+Wenn `pdftotext` nur leere Seiten liefert, werden die PDFs ausschließlich
+temporär in PNG-Seiten gerendert und danach mit Windows OCR gelesen:
+
+```powershell
+$render = Join-Path ([IO.Path]::GetTempPath()) 'ap1-pdf-pages'
+$ocr = Join-Path ([IO.Path]::GetTempPath()) 'ap1-pdf-ocr'
+
+& powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File '.\scripts\render_pdf_pages_windows.ps1' `
+  -InputRoot '..\Neuer Ordner' `
+  -OutputRoot $render
+
+& powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File '.\scripts\ocr_windows.ps1' `
+  -InputRoot $render `
+  -OutputRoot $ocr
+```
+
+Die Ausgabe bleibt im Temp-Verzeichnis. In das Projekt gelangen nur
+Aufgabentypen, Themenabdeckung und festgestellte Lücken.
+
 ### 1. Inventar
 
 Skript:
 
 ```powershell
-& 'C:\Users\mu.aycetin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' scripts\material_inventory.py
+py scripts/material_inventory.py
 ```
 
 Ergebnis:
