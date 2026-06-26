@@ -49,5 +49,56 @@
       "fundstelle": "NIST, Prefixes for binary multiples — Absatz nach der Vergleichstabelle",
       "abgerufenAm": "2026-06-26"
     }
+  ],
+  "zahlensysteme": [
+    {
+      "aussage": "Python kann Ganzzahlliterale binär zur Basis 2, oktal zur Basis 8 und hexadezimal zur Basis 16 schreiben und verwendet dafür die Präfixe 0b, 0o und 0x.",
+      "zitat": "binary (base 2), octal (base 8), or hexadecimal (base 16)",
+      "quelleId": "python-lexical-integer-literals",
+      "fundstelle": "Python Language Reference, Lexical analysis, Abschnitt \"Integer literals\", erste Grammatikzeile",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Hexziffern für die Werte 10 bis 15 werden durch die Buchstaben A bis F dargestellt; Groß- und Kleinschreibung ist dabei gleichwertig.",
+      "zitat": "letters A - F , case-insensitive.",
+      "quelleId": "python-lexical-integer-literals",
+      "fundstelle": "Python Language Reference, Lexical analysis, Abschnitt \"Integer literals\", Absatz nach den Beispielen",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Die formale Python-Grammatik beschreibt ein Binärliteral mit 0b oder 0B und anschließenden Binärziffern.",
+      "zitat": "bininteger : \"0\" ( \"b\" | \"B\" ) ([ \"_\" ] bindigit )+",
+      "quelleId": "python-lexical-integer-literals",
+      "fundstelle": "Python Language Reference, Lexical analysis, Abschnitt \"Integer literals\", formale Grammatikregel \"bininteger\"",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Die formale Python-Grammatik beschreibt ein Oktalliteral mit 0o oder 0O und anschließenden Oktalziffern.",
+      "zitat": "octinteger : \"0\" ( \"o\" | \"O\" ) ([ \"_\" ] octdigit )+",
+      "quelleId": "python-lexical-integer-literals",
+      "fundstelle": "Python Language Reference, Lexical analysis, Abschnitt \"Integer literals\", formale Grammatikregel \"octinteger\"",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Die formale Python-Grammatik beschreibt ein Hexadezimalliteral mit 0x oder 0X und anschließenden Hexziffern.",
+      "zitat": "hexinteger : \"0\" ( \"x\" | \"X\" ) ([ \"_\" ] hexdigit )+",
+      "quelleId": "python-lexical-integer-literals",
+      "fundstelle": "Python Language Reference, Lexical analysis, Abschnitt \"Integer literals\", formale Grammatikregel \"hexinteger\"",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Binärziffern sind 0 und 1.",
+      "zitat": "bindigit : \"0\" | \"1\"",
+      "quelleId": "python-lexical-integer-literals",
+      "fundstelle": "Python Language Reference, Lexical analysis, Abschnitt \"Integer literals\", formale Grammatikregel \"bindigit\"",
+      "abgerufenAm": "2026-06-26"
+    },
+    {
+      "aussage": "Oktalziffern reichen von 0 bis 7.",
+      "zitat": "octdigit : \"0\" ... \"7\"",
+      "quelleId": "python-lexical-integer-literals",
+      "fundstelle": "Python Language Reference, Lexical analysis, Abschnitt \"Integer literals\", formale Grammatikregel \"octdigit\"",
+      "abgerufenAm": "2026-06-26"
+    }
   ]
 }

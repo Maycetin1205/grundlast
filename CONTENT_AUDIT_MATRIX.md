@@ -16,7 +16,7 @@ Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `zahlensysteme` | Kapitel | ungeprüft | Bit & Byte/Präfixe → Zahlensysteme → Datenmengen und Datenraten | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
+| `datenvolumen-berechnung` | Kapitel | ungeprüft | Bit & Byte/Präfixe → Zahlensysteme → Datenmengen → Datenraten | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -24,6 +24,70 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
 ## Abgeschlossene Audits
+
+### `zahlensysteme`
+
+Slug: `zahlensysteme`
+Kompetenz: Stellenwertsysteme mit Basis 2, 8, 10 und 16 lesen; nichtnegative
+ganze Zahlen zwischen diesen Schreibweisen umrechnen; Bit-, Byte-, Hex- und
+Oktalbezug in typischen IT-Kontexten einordnen.
+Form: Kapitel
+Status: geprüft
+Voraussetzungen → Anschluss: Bit & Byte/Präfixe → Zahlensysteme → Datenmengen
+und Datenraten
+
+Ausbildungsquelle: FIAusbV sowie KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe
+als Rahmen für Grundlagen zu IT-Systemen, Daten und Netzwerken. Zahlensysteme
+sind dafür Werkzeugwissen, kein eigenständiges Lernfeld.
+
+Fachliche Primärquelle: Python Language Reference, *Integer literals*, als
+online prüfbare Sprachspezifikation für Basisangaben, Ziffern und die
+Schreibkonventionen `0b`, `0o` und `0x`. Die Umrechnungsbeispiele im Kapitel
+sind vollständig über Stellenwerte und Division mit Rest selbst nachgerechnet.
+
+Didaktische Vergleiche: Die Kapitelstruktur setzt zuerst Stellenwert und
+Leserichtung, dann die zwei Umrechnungswege und erst danach Hex-, Oktal- und
+IPv4-Anwendungen. Das verhindert den verbreiteten Sprung zu Merktricks ohne
+Zahlverständnis.
+
+Lokaler Materialabgleich: Die Suche im lokalen Materialindex ergab keine
+passende Zahlensystem-Aufgabe. Daher wurden keine Aufgaben- oder Lösungstexte
+übernommen.
+
+Geprüfte Kernaussagen (7, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+
+1. Python kann Ganzzahlliterale binär zur Basis 2, oktal zur Basis 8 und
+   hexadezimal zur Basis 16 schreiben und verwendet dafür `0b`, `0o` und
+   `0x`.
+2. Die Hexwerte 10 bis 15 werden mit den Buchstaben A bis F dargestellt;
+   Groß- und Kleinschreibung ist gleichwertig.
+3. Die formale Python-Grammatik beschreibt Binärliterale mit `0b` oder `0B`
+   und anschließenden Binärziffern.
+4. Die formale Python-Grammatik beschreibt Oktalliterale mit `0o` oder `0O`
+   und anschließenden Oktalziffern.
+5. Die formale Python-Grammatik beschreibt Hexadezimalliterale mit `0x` oder
+   `0X` und anschließenden Hexziffern.
+6. Binärziffern sind `0` und `1`.
+7. Oktalziffern reichen von `0` bis `7`.
+
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg über Stellenwerte;
+vollständige Rechenwege für Binär↔Dezimal und Hex↔Binär/Dezimal; Fehlerfallen
+zu Basis, Rest-Leserichtung, führenden Nullen, Hexziffern und Oktalrechten;
+Anwendungen für MAC, CSS-Farben, `chmod` und IPv4-Bitmuster vorhanden.
+
+Glossar, Quellen und Links geprüft: Alle verwendeten `Term`-IDs sind gültig;
+Quellenkomponente, Quellenbank, Quellen-Tags und Glossar-Verweise sind
+integriert. Die jetzt belegte Python-Schreibweise ist im Kapitel als
+sprachspezifisches Beispiel formuliert. Voraussetzungen und Anschluss sind
+benannt.
+
+Technische Checks: `npm run check:sources` (14/14 online und Zitate gefunden),
+`npm run check:consistency`, `npm run lint`, `npm run test` (8 Tests) und
+`npm run build` — alle grün am 2026-06-26.
+
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Keine offenen Punkte.
 
 ### `prefixe`
 

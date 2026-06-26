@@ -18,6 +18,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'SI- und Binärpräfixe mit sieben online geprüften Faktenbelegen.',
     nextAction: 'Abgeschlossen; Lernpfad mit Zahlensystemen fortsetzen.',
   },
+  zahlensysteme: {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Zahlensysteme mit sieben online geprüften Faktenbelegen zu Basen, Ziffern und Literalen.',
+    nextAction: 'Abgeschlossen; im Grundlagenpfad mit Datenmengen und Datenraten fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {
