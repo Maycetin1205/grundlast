@@ -1,6 +1,7 @@
 import { lazy, Suspense, type ReactNode } from 'react'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
+import ErrorBoundary from './components/ErrorBoundary'
 
 const Dashboard = lazy(() => import('./routes/Dashboard'))
 const Lesson = lazy(() => import('./routes/Lesson'))
@@ -10,15 +11,17 @@ const Lernpfad = lazy(() => import('./routes/Lernpfad'))
 
 function withPageFallback(element: ReactNode) {
   return (
-    <Suspense
-      fallback={
-        <div className="mx-auto max-w-3xl py-12 text-center font-ui text-sm text-muted">
-          Ansicht wird geladen ...
-        </div>
-      }
-    >
-      {element}
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense
+        fallback={
+          <div className="mx-auto max-w-3xl py-12 text-center font-ui text-sm text-muted">
+            Ansicht wird geladen ...
+          </div>
+        }
+      >
+        {element}
+      </Suspense>
+    </ErrorBoundary>
   )
 }
 
