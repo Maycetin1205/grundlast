@@ -4,7 +4,6 @@ import Analogie from '../content/Analogie'
 import Tipp from '../content/Tipp'
 import Warnung from '../content/Warnung'
 import Beispiel from '../content/Beispiel'
-import Formel from '../content/Formel'
 import Schritte from '../content/Schritte'
 import Glossar from '../content/Glossar'
 import Quellen from '../content/Quellen'
@@ -42,7 +41,6 @@ const components = {
   Tipp,
   Warnung,
   Beispiel,
-  Formel,
   Schritte,
   Glossar,
   Quellen,
