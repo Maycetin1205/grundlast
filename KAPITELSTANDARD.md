@@ -80,6 +80,9 @@ Ein Kapitel ist erst `geprüft`, wenn alle Punkte erfüllt und in
 - Einordnung, Umfang und Lernpfad-Anschluss geklärt;
 - Quellen- und Vergleichsmatrix vorhanden;
 - Fakten, Zahlen und Rechenwege geprüft;
+- Faktenbelege hinterlegt: mind. 5 Kernaussagen in `src/content/quellen/belege.json`
+  (je wörtliches Zitat + Quellen-ID + Fundstelle + Abrufdatum), und
+  `npm run check:sources` ist grün (Quelle erreichbar, Zitat im Quelltext gefunden);
 - verständlicher Aufbau, Beispiele und Fehlerfallen vorhanden;
 - Glossar, Quellen, Links und Darstellung integriert;
 - Sprachprüfung durchgeführt;

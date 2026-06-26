@@ -37,7 +37,11 @@ Fachliche Primärquellen:
 Didaktische Vergleiche:
 Lokaler Materialabgleich:
 
-Geprüfte Kernaussagen:
+Geprüfte Kernaussagen (mind. 5, je mit maschinell prüfbarem Beleg in
+src/content/quellen/belege.json — Eintrag: { aussage, zitat (wörtlich),
+quelleId, fundstelle, abgerufenAm }). Eine Aussage zählt erst als belegt,
+wenn `npm run check:sources` grün ist (Quelle erreichbar + Zitat im Quelltext
+gefunden):
 1.
 2.
 3.

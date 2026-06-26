@@ -1,8 +1,17 @@
+import { readFileSync } from 'node:fs'
 import { describe, it, expect } from 'vitest'
 import { sourceBank } from './quellen'
 import { lessonSourceIds } from '../content/quellen/tagMappings'
 import { glossarEintraege } from '../content/glossar'
 import { normalisiereGlossarId, findeGlossarEintrag } from './glossar/store'
+
+type Beleg = { aussage: string; zitat: string; quelleId: string; fundstelle: string; abgerufenAm: string }
+const belege = JSON.parse(
+  readFileSync('src/content/quellen/belege.json', 'utf8'),
+) as Record<string, Beleg[]>
+const belegEintraege = Object.entries(belege).flatMap(([slug, liste]) =>
+  (liste ?? []).map((eintrag, index) => ({ slug, index, eintrag })),
+)
 
 // Datengetriebene Invarianten über den real importierten Content. Ersetzt das
 // bisher leere Test-Gate durch echte Assertions – läuft offline, deterministisch.
@@ -57,6 +66,32 @@ describe('Glossar-Integrität', () => {
     expect(asciiTreffer).toBeDefined()
     expect(umlautTreffer).toBeDefined()
     expect(umlautTreffer?.id).toBe(asciiTreffer?.id)
+  })
+})
+
+describe('Belege-Integrität (Quellen-/Faktenbindung)', () => {
+  const bekannteQuellen = new Set(sourceBank.map((q) => q.id))
+
+  it('jeder Beleg referenziert eine existierende Quellen-ID', () => {
+    const fehlend = belegEintraege
+      .filter(({ eintrag }) => !bekannteQuellen.has(eintrag.quelleId))
+      .map(({ slug, index, eintrag }) => `${slug}[${index}]: ${eintrag.quelleId}`)
+    expect(fehlend).toEqual([])
+  })
+
+  it('jeder Beleg hat nicht-leere Pflichtfelder und ein ISO-Abrufdatum', () => {
+    const fehler: string[] = []
+    for (const { slug, index, eintrag } of belegEintraege) {
+      for (const feld of ['aussage', 'zitat', 'quelleId', 'fundstelle', 'abgerufenAm'] as const) {
+        if (typeof eintrag[feld] !== 'string' || eintrag[feld].trim() === '') {
+          fehler.push(`${slug}[${index}].${feld} fehlt/leer`)
+        }
+      }
+      if (eintrag.abgerufenAm && !/^\d{4}-\d{2}-\d{2}$/.test(eintrag.abgerufenAm)) {
+        fehler.push(`${slug}[${index}].abgerufenAm kein ISO-Datum`)
+      }
+    }
+    expect(fehler).toEqual([])
   })
 })
 

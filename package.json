@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "check:consistency": "node scripts/check-consistency.mjs",
+    "check:sources": "node scripts/check-sources.mjs",
     "emit:status": "node scripts/emit-status.mjs",
     "prebuild": "npm run check:consistency",
     "prebuild:single": "npm run check:consistency",
