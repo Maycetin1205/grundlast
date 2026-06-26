@@ -1,1 +1,11 @@
-{}
+{
+  "prefixe": [
+    {
+      "aussage": "Die IEC-Binärpräfixe (kibi, mebi, gibi …) entstehen, indem die ersten zwei Buchstaben des zugehörigen SI-Präfixes übernommen und die Silbe 'bi' (für binär) angehängt wird.",
+      "zitat": "the name of each new prefix is derived from the name of the corresponding SI prefix by retaining the first two letters of the name of the SI prefix",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Einleitungstext",
+      "abgerufenAm": "2026-06-26"
+    }
+  ]
+}
