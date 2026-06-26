@@ -4,7 +4,16 @@ import { glossarEintraege } from '../../content/glossar'
 import type { GlossarEintrag, GlossarRegister } from './types'
 
 export function normalisiereGlossarId(id: string) {
-  return id.trim().toLowerCase()
+  // Umlaute/ß auf ASCII abbilden, damit <Term id="integrität"> und der
+  // Glossar-Eintrag "integritaet" zuverlässig zusammenfinden – egal, in welcher
+  // Schreibweise eine (KI-generierte) Lektion die ID notiert.
+  return id
+    .trim()
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
 }
 
 function mitNormalisierterId(eintrag: GlossarEintrag): GlossarEintrag {

@@ -8,8 +8,8 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **2** | teilgeprueft **12** | ungeprueft **86**
-- Review dokumentiert: **3**
+- Vertrauen: geprueft **0** | teilgeprueft **0** | ungeprueft **100**
+- Review dokumentiert: **0**
 - Mit Quellen-Tags: **67**
 
 ## Lektionen nach Lernfeld
@@ -55,9 +55,9 @@
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
 | `von-neumann` | ready | ungeprueft | - | ja | ja |
-| `bit-byte` | final | geprueft | reviewed | ja | ja |
-| `zahlensysteme` | final | geprueft | reviewed | ja | ja |
-| `prefixe` | final | teilgeprueft | - | ja | ja |
+| `bit-byte` | final | ungeprueft | - | ja | ja |
+| `zahlensysteme` | final | ungeprueft | - | ja | ja |
+| `prefixe` | final | ungeprueft | - | ja | ja |
 
 ### hardware
 
@@ -65,7 +65,7 @@
 |---|---|---|---|---|---|
 | `cpu-ram-speicher` | ready | ungeprueft | - | ja | ja |
 | `hardware-schnittstellen` | ready | ungeprueft | - | ja | ja |
-| `homeoffice-ergonomie` | ready | teilgeprueft | - | ja | ja |
+| `homeoffice-ergonomie` | ready | ungeprueft | - | ja | ja |
 | `raid-systeme` | draft | ungeprueft | - | ja | ja |
 | `usv-systeme` | draft | ungeprueft | - | ja | ja |
 | `scan-bilddaten` | draft | ungeprueft | - | ja | ja |
@@ -74,17 +74,17 @@
 
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
-| `osi-modell` | ready | teilgeprueft | - | ja | ja |
-| `tcp-udp` | ready | teilgeprueft | - | ja | ja |
+| `osi-modell` | ready | ungeprueft | - | ja | ja |
+| `tcp-udp` | ready | ungeprueft | - | ja | ja |
 | `imap-pop3-smtp` | ready | ungeprueft | - | ja | - |
-| `ipv4-subnetting` | ready | teilgeprueft | - | ja | ja |
-| `netzwerkkonfiguration` | ready | teilgeprueft | - | ja | ja |
-| `ipv6-grundlagen` | ready | teilgeprueft | - | ja | ja |
-| `firewall-dmz` | ready | teilgeprueft | - | ja | ja |
-| `port-forwarding` | ready | teilgeprueft | - | ja | ja |
-| `wlan-standards` | ready | teilgeprueft | - | ja | ja |
-| `datenrate-berechnung` | ready | teilgeprueft | - | ja | ja |
-| `datenvolumen-berechnung` | ready | teilgeprueft | - | ja | ja |
+| `ipv4-subnetting` | ready | ungeprueft | - | ja | ja |
+| `netzwerkkonfiguration` | ready | ungeprueft | - | ja | ja |
+| `ipv6-grundlagen` | ready | ungeprueft | - | ja | ja |
+| `firewall-dmz` | ready | ungeprueft | - | ja | ja |
+| `port-forwarding` | ready | ungeprueft | - | ja | ja |
+| `wlan-standards` | ready | ungeprueft | - | ja | ja |
+| `datenrate-berechnung` | ready | ungeprueft | - | ja | ja |
+| `datenvolumen-berechnung` | ready | ungeprueft | - | ja | ja |
 
 ### projekt
 
@@ -122,7 +122,7 @@
 | `verschluesselung-hash-vpn` | ready | ungeprueft | - | ja | ja |
 | `verschluesselung-sicherheit` | draft | ungeprueft | - | ja | ja |
 | `passwoerter-hashing` | draft | ungeprueft | - | ja | ja |
-| `pki-zertifikate` | final | ungeprueft | reviewed | ja | ja |
+| `pki-zertifikate` | final | ungeprueft | - | ja | ja |
 | `schutzziele` | ready | ungeprueft | - | ja | ja |
 | `backup-strategien` | draft | ungeprueft | - | ja | ja |
 | `mtbf-mttf` | draft | ungeprueft | - | ja | ja |

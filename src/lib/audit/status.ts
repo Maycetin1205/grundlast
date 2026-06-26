@@ -7,92 +7,12 @@ export interface LessonAudit {
   nextAction: string
 }
 
-const lessonAudits: Record<string, LessonAudit> = {
-  'bit-byte': {
-    status: 'geprueft',
-    title: 'Geprüft',
-    summary: 'Kernfakten, Didaktik, Primärquellen und lokale legale Aufgabenarten zu 8-Bit-Wertebereich sowie Bit-zu-Byte-/TiB-Umrechnung sind vollständig abgeglichen.',
-    nextAction: 'Kein offener Punkt; Transferrechnungen werden in Scan-Bilddaten und Datenvolumen vertieft.',
-  },
-  prefixe: {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'SI-/IEC-Fakten und Rechenwege sind auditiert. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Kurzen Selbstcheck ergaenzen und mit legalen Aufgaben testen.',
-  },
-  zahlensysteme: {
-    status: 'geprueft',
-    title: 'Geprüft',
-    summary: 'Stellenwerte, Umrechnungen, Anwendungen, Primärquellen, externe Lernangebote und lokale legale Aufgabenarten sind vollständig abgeglichen.',
-    nextAction: 'Kein offener Punkt; IPv6-Kompression und VLSM bleiben in den jeweiligen Netzwerk-Kapiteln.',
-  },
-  'datenrate-berechnung': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Rechenwege und Kernaussagen sind auditiert. Netto-Orientierung und echter Aufgabenabgleich fehlen noch.',
-    nextAction: 'Netto-Daumenregeln belegen oder klarer markieren und mit legalen Aufgaben testen.',
-  },
-  'datenvolumen-berechnung': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Datenmengen-, Scan-, Bitraten- und Übertragungsrechnungen wurden quellen- und rechenwegorientiert nachgezogen. Aufgabenmodus wurde neutralisiert.',
-    nextAction: 'Mit legalem AP1-Material unter Zeit gegen Scan-/Datenmengenfälle und Brutto-Netto-Rechnungen testen.',
-  },
-  'ipv4-subnetting': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'IPv4-/CIDR-Kernfakten, Subnetting-Rechenwege und Beispiele sind auditiert. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben unter Zeitdruck testen.',
-  },
-  netzwerkkonfiguration: {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'DHCP, DNS, ARP, APIPA und Diagnosekette sind fachlich nachgezogen. Echte Aufgaben- und Zeitpruefung fehlen noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen Diagnose- und Konfigurationsfaelle testen.',
-  },
-  'homeoffice-ergonomie': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Ergonomie, Telearbeit und Barrierefreiheit wurden gegen Arbeits- und Web-Barrierefreiheitsquellen nachgezogen. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen Auswahl- und Beratungsfaelle testen.',
-  },
-  'osi-modell': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'OSI-/TCP-IP-Einordnung, Kapselung, ARP/TLS-Grenzfaelle und Diagnosebezug wurden fachlich nachgezogen. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen Zuordnungs- und Diagnosefaelle testen.',
-  },
-  'tcp-udp': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'TCP/UDP, Ports, DNS-Grenzfall, Firewall-/NAT-Bezug und Schicht-4-Diagnose wurden fachlich nachgezogen. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen Port-, Protokoll- und Firewall-Regelfaelle testen.',
-  },
-  'wlan-standards': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'WLAN-Standards, Frequenzbaender, Kanalplanung, WPA2/WPA3 und Gastnetz-Trennung wurden fachlich nachgezogen. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen WLAN-Auswahl-, Sicherheits- und Diagnosefaelle testen.',
-  },
-  'firewall-dmz': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Firewall-Regeln, Default-Deny, DMZ-Zonen, Administration und Protokollierung wurden gegen BSI-Grundschutz und RFC 1918 abgeglichen. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen DMZ-Planungs-, Regelwerks- und Fehlersuchfaelle testen.',
-  },
-  'port-forwarding': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Private IPv4-Bereiche, NAT/NAPT, Portweiterleitung, CGNAT/DS-Lite und Sicherheitsgrenzen wurden gegen RFCs und BSI-Quellen abgeglichen. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen NAT-/Portweiterleitungs-, Provider- und Sicherheitsfaelle testen.',
-  },
-  'ipv6-grundlagen': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'IPv6-Adressaufbau, kanonische Schreibweise, Präfixe, Adresstypen, SLAAC und Privacy-Interface-Identifier wurden gegen RFCs abgeglichen. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Mit legalen AP1-/U-Form-Aufgaben gegen Kürzungs-, Präfix- und Adresstyp-Fälle testen.',
-  },
-}
+// Neustart: Jede Lektion gilt bis zu ihrem dokumentierten Kapitel-Audit als
+// `ungeprueft` (Quelle der Wahrheit: CONTENT_AUDIT_MATRIX.md + KAPITELSTANDARD.md).
+// Fruehere KI-Selbstfreigaben liegen nur noch als historische Referenz in
+// docs/archiv/. Ein Eintrag wird erst wieder ergaenzt, wenn ein Kapitel das
+// Abschluss-Gate nachvollziehbar erfuellt hat.
+const lessonAudits: Record<string, LessonAudit> = {}
 
 const fallbackAudit: LessonAudit = {
   status: 'ungeprueft',

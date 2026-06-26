@@ -106,6 +106,41 @@ function glossaryLessonLinks() {
   return links
 }
 
+// Muss identisch zu normalisiereGlossarId in src/lib/glossar/store.ts bleiben.
+function normalizeGlossarId(id) {
+  return id
+    .trim()
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+}
+
+function glossaryIdsByNormalized() {
+  const byNormalized = new Map()
+  const pattern = /^\s*id:\s*['"]([^'"]+)['"]/gm
+  for (const file of readdirSync(glossaryDir).filter((name) => extname(name) === '.ts').sort()) {
+    for (const match of read(join(glossaryDir, file)).matchAll(pattern)) {
+      const normalized = normalizeGlossarId(match[1])
+      if (!byNormalized.has(normalized)) byNormalized.set(normalized, new Set())
+      byNormalized.get(normalized).add(match[1])
+    }
+  }
+  return byNormalized
+}
+
+function termUsages() {
+  const usages = []
+  const pattern = /<Term\s+id="([^"]+)"/g
+  for (const file of readdirSync(lessonsDir).filter((name) => extname(name) === '.mdx')) {
+    for (const match of read(join(lessonsDir, file)).matchAll(pattern)) {
+      usages.push({ id: match[1], source: file })
+    }
+  }
+  return usages
+}
+
 function difference(left, right) {
   return Array.from(left).filter((item) => !right.has(item)).sort()
 }
@@ -169,6 +204,31 @@ function main() {
   for (const [slug, sources] of Array.from(deadLinks.entries()).sort()) {
     errors.push(`Glossar-Deeplink ins Leere: '${slug}' (in ${Array.from(sources).sort().join(', ')}).`)
   }
+
+  const glossaryById = glossaryIdsByNormalized()
+  for (const [normalized, raws] of Array.from(glossaryById.entries()).sort()) {
+    if (raws.size > 1) {
+      errors.push(
+        `Glossar-ID-Kollision nach Normalisierung ('${normalized}'): ${Array.from(raws).sort().map((raw) => `'${raw}'`).join(', ')}.`,
+      )
+    }
+  }
+  const glossaryNormalized = new Set(glossaryById.keys())
+  const usages = termUsages()
+  const deadTerms = new Map()
+  for (const usage of usages) {
+    if (glossaryNormalized.has(normalizeGlossarId(usage.id))) continue
+    if (!deadTerms.has(usage.id)) deadTerms.set(usage.id, new Set())
+    deadTerms.get(usage.id).add(usage.source)
+  }
+  for (const [id, sources] of Array.from(deadTerms.entries()).sort()) {
+    errors.push(
+      `<Term id="${id}"> ohne Glossar-Eintrag (in ${Array.from(sources).sort().join(', ')}).`,
+    )
+  }
+  infos.push(
+    `Glossar-IDs: ${glossaryNormalized.size} | <Term>-Verweise: ${usages.length} (eindeutige: ${new Set(usages.map((u) => u.id)).size})`,
+  )
 
   const learningFields = tocLearningFields()
   for (const entry of toc) {
