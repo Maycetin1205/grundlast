@@ -16,7 +16,7 @@ Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `hardware-schnittstellen` | Kapitel | ungeprüft | IT-Systeme: CPU, RAM und Massenspeicher → Hardware und Schnittstellen → Betriebssystem, Dateien, Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
+| `dateisysteme` | Kapitel | ungeprüft | IT-Systeme: Hardware und Schnittstellen → Betriebssystem/Dateien → Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -24,6 +24,107 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
 ## Abgeschlossene Audits
+
+### `hardware-schnittstellen`
+
+Slug: `hardware-schnittstellen`
+Kompetenz: Hardware-Anforderungen aus Szenarien ableiten; CPU, RAM,
+Massenspeicher und Mainboard auf Passung prüfen; USB-C, USB4, Thunderbolt,
+HDMI, DisplayPort, SATA, NVMe, PCIe und Peripherie unterscheiden; Docking-,
+Monitor- und Multifunktionsgeräte-Setups technisch und wirtschaftlich
+begründen.
+Form: Kapitel
+Status: geprüft
+Voraussetzungen → Anschluss: CPU, RAM und Massenspeicher → Hardware und
+Schnittstellen → Dateisysteme, Dateirechte und Virtualisierung
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für LF2, in dem Arbeitsplätze nach Kundenwunsch ausgestattet werden. Das
+Kapitel bleibt ein eigenständiges Grundlagenkapitel, weil es nach der
+Komponentenlehre die konkrete Passung von Schnittstellen, Peripherie,
+Beschaffung und Ergonomie prüfungsnah zusammenführt.
+
+Fachliche Primärquellen: USB-IF, *USB4 Specification*, *USB Type-C Cable and
+Connector Specification* und *USB Charger/USB Power Delivery*, für USB-C als
+Steckerform, USB4-Datenraten und USB-PD; Thunderbolt Technology FAQ für
+Thunderbolt über USB-C; VESA, *DisplayPort 2.1 Specification*, für DisplayPort
+über native Kabel, USB-C Alt Mode, USB4-Tunneling und DP80; HDMI Licensing
+Administrator für HDMI 2.2, 8K@60, 4K@120 und 96 Gbit/s; NVM Express,
+*Specifications*, für NVMe als Protokoll über mehrere Transporte und M.2 als
+separate Bauform. DGUV Information 215-410 bleibt als offizieller
+Ergonomieanker in der Quellenbasis.
+
+Didaktische Vergleiche: Das Vorgängerkapitel `cpu-ram-speicher` erklärt CPU,
+RAM, SSD/HDD, NVMe und M.2 grundsätzlich. Dieses Kapitel wiederholt diese
+Bausteine nur so weit, wie sie für Auswahl- und Kompatibilitätsentscheidungen
+nötig sind, und verschiebt den Fokus auf Schnittstellen, Docks, Monitore,
+Peripherie, Druckkosten, Kabel- und Versionsfallen. Der Anschluss an
+`dateisysteme` startet den nächsten Landkartenblock Betriebssystem, Dateien,
+Rechte und Virtualisierung.
+
+Lokaler Materialabgleich: `_material_index/AP1_ABGLEICH.md` ordnet
+`Prüfung_5`, Aufgabe 2, mit USB-, Schnittstellen- und Druckerbezug diesem
+Kapitel zu. Zusätzlich bestätigen die Extraktionen zu `Prüfung_4` typische
+Aufgabentypen zu Schnittstellenbezeichnung, Monitoranschluss und
+barrierefreier Arbeitsplatzhardware. Übernommen wurden nur Themenumfang und
+Denkoperationen: Standards erkennen, Peripherie passend anschließen,
+USB-Versionen/Druckeranforderungen vergleichen und Arbeitsplatzeignung
+begründen. Geschützte Aufgaben- oder Lösungstexte wurden nicht übernommen.
+
+Geprüfte Kernaussagen (11, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+
+1. Die BIBB-Umsetzungshilfe ordnet Fachinformatiker/Fachinformatikerin in eine
+   modernisierte Ausbildungsordnung mit komplexeren Anwendungen, Daten,
+   Systemen und Netzen ein.
+2. USB4 baut auf USB 3.2 und USB 2.0 auf, basiert auf dem
+   Thunderbolt-Protokoll und ermöglicht mehrere gleichzeitige Daten- und
+   Displayprotokolle.
+3. USB4 kann über USB-C-Kabel laufen und erreicht mit entsprechend zertifizierten
+   Kabeln bis zu 80 Gbit/s.
+4. USB Type-C beschreibt unter anderem eine reversible Steckerorientierung und
+   Kabelrichtung; der Stecker allein garantiert keine konkrete Datenrate.
+5. USB Power Delivery Revision 3.1 ermöglicht bis zu 240 W Leistung über voll
+   ausgestattete USB-C-Kabel und -Stecker.
+6. Thunderbolt ergänzt USB-C um Thunderbolt-Verbindungen mit 40, 80 oder
+   120 Gbit/s und DisplayPort über einen USB-C-Port.
+7. DisplayPort kann nativ, über DisplayPort Alt Mode am USB-C-Stecker oder
+   getunnelt über USB4 übertragen werden.
+8. VESA-zertifizierte DP80-Kabel unterstützen vier Lanes mit UHBR20 und damit
+   maximal 80 Gbit/s Durchsatz.
+9. HDMI 2.2 wird von HDMI LA mit unkomprimiertem 8K@60Hz und 4K@120Hz
+   beschrieben.
+10. HDMI LA nennt für HDMI 2.2 eine Bandbreite bis 96 Gbit/s.
+11. NVMe beschreibt, wie Host-Software mit nichtflüchtigem Speicher über mehrere
+   Transporte kommuniziert; M.2 ist davon getrennt eine mögliche Bauform.
+
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg über konkrete
+Beschaffungsszenarien; vier Auswahlfragen Leistung, Kompatibilität,
+Erweiterbarkeit und Standard; Tabellen zu CPU/RAM/Massenspeicher und
+Schnittstellen; USB-C/TB-Falle; Docking-Beispiel mit grober
+Display-Bandbreitenrechnung; Multifunktionsgerätebeispiel mit Toner- und
+Energiekosten; Fehlerfallen zu USB-Namensgebung, HDMI/DP, DDR-Generation,
+NVMe/M.2, CPU-Sockel, USB-PD, PCIe-Lanes, Kabeln und Standby-Leistung. Die
+Rechenwege wurden nachgerechnet, einschließlich MFG-Seitenmengen
+(121.500 SW- und 13.500 Farbseiten über drei Jahre), Tonerbedarf,
+Energiekosten (A ca. 488 €, B ca. 267 €) und Gesamtkosten (A ca. 7.573 €,
+B ca. 10.877 €).
+
+Glossar, Quellen und Links geprüft: `Term`-IDs für CPU, RAM, SSD, HDD,
+Mainboard, ECC-RAM, SATA, NVMe, PCIe, USB, Thunderbolt, USB-PD, HDMI,
+DisplayPort und KVM-Switch sind gültig. Quellenkomponente, Quellenbank und
+Quellen-Tags enthalten FIAusbV, KMK, BIBB, USB-IF, Thunderbolt Technology,
+VESA, HDMI LA, NVM Express und DGUV. Die sichtbaren Quellen wurden von
+Sekundärportalen auf offizielle Anker umgestellt.
+
+Technische Checks: `npm run check:sources` (55/55 online und Zitate gefunden,
+davon 11 für `hardware-schnittstellen`), `npm run check:consistency`,
+`npm run lint`, `npm run test` (8 Tests) und `npm run build` — alle grün am
+2026-06-29.
+
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Keine offenen Punkte für dieses Kapitel. Nächstes aktives
+Kapitel gemäß Landkarte: `dateisysteme`.
 
 ### `cpu-ram-speicher`
 

@@ -48,6 +48,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'CPU, RAM und Massenspeicher mit acht online geprüften Belegen zu CPU, RAM, Cache, Threads, Takt, SSD/HDD, NVMe und M.2.',
     nextAction: 'Abgeschlossen; im Lernpfad mit Hardware und Schnittstellen fortsetzen.',
   },
+  'hardware-schnittstellen': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Hardware, Schnittstellen und Peripherie mit elf online geprüften Belegen zu Ausbildungsrahmen, USB4, USB-C, USB-PD, Thunderbolt, DisplayPort, HDMI und NVMe.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit Dateisystemen fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {

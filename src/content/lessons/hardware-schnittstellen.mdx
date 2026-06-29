@@ -48,7 +48,7 @@ nicht passt oder das Netzteil zu klein ist.
 Jede Hardware-Auswahl in der Prüfung lässt sich auf **vier Fragen** reduzieren:
 
 1. **Leistung** — Reichen Rechenleistung, Speicher und Bandbreite für die Aufgabe?
-2. **Kompatibilität** — Passen Sockel, Stecker, Spannungen und Protokolle züinander?
+2. **Kompatibilität** — Passen Sockel, Stecker, Spannungen und Protokolle zueinander?
 3. **Erweiterbarkeit** — Bleiben Slots, Schächte und Anschlüsse für spätere Aufrüstungen frei?
 4. **Standards** — Welche Norm gilt für die Schnittstelle, und welche Version brauchst du?
 
@@ -57,7 +57,7 @@ nicht funktionsfähigen Arbeitsplatz. In der Aufgabe kostet ein vergessener Punk
 verlässlich Teilpunkte.
 
 <Tipp titel="Merksatz">
-Hardware-Auswahl ist Passung, nicht Maximierung. Die schnellste Komponente nützt
+Hardware-Auswahl ist Passung, nicht Maximierung. Die schnellste Komponente hilft
 nichts, wenn der schwächste Standard im System sie ausbremst — der Bus, das Kabel
 oder die Schnittstelle setzen das Limit.
 </Tipp>
@@ -72,7 +72,7 @@ Bei der CPU zählen vier Kennwerte und ein technischer Zwang:
 
 | Kennwert | Bedeutung | Worauf du achtest |
 |---|---|---|
-| Takt (GHz) | Operationen pro Sekunde je Kern | Hoch bei Singlethread-Lasten (Office, viele Geschäftsanwendungen) |
+| Takt (GHz) | CPU-Zyklen pro Sekunde | Hoch bei Singlethread-Lasten, aber nur zusammen mit Generation, Cache und Kühlung bewerten |
 | Kerne und Threads | parallele Rechenstränge | Viele Kerne bei Compilern, Rendering, Datenbanken, Virtualisierung |
 | Cache (L1/L2/L3) | sehr schneller Zwischenspeicher | Mehr Cache hilft bei häufigen Wiederzugriffen |
 | Architekturgeneration | Effizienz pro Takt | Neuere Generation schlägt oft höheren Takt einer alten |
@@ -89,8 +89,8 @@ nur in einen passenden AM-Sockel. Mischen geht nicht — auch nicht mit Adaptern
 | Größe (GB) | bestimmt, wie viele Programme gleichzeitig schnell laufen können |
 | Generation (DDR4/DDR5) | nicht mischbar, andere Kerbe im Slot, anderes Spannungsniveau |
 | Takt (MHz/MT/s) | begrenzt vom Mainboard und vom Speichercontroller der CPU |
-| Dual-Channel | zwei gleiche Riegel verdoppeln die Bandbreite zur CPU |
-| *<Term id="ecc-ram">ECC</Term>* | erkennt und korrigiert einzelne Bitfehler, Pflicht bei Servern |
+| Dual-Channel | zwei passend gesteckte Module können die Speicherbandbreite erhöhen |
+| *<Term id="ecc-ram">ECC</Term>* | erkennt und korrigiert bestimmte Speicherfehler; sinnvoll bei Servern und kritischen Daten |
 
 Faustregeln aus der Praxis:
 
@@ -100,9 +100,9 @@ Entwicklung, Bildbearbeitung:  16–32 GB
 Virtualisierung, Video, CAD:   32–64 GB oder mehr
 ```
 
-Bei Servern und Workstations mit kritischen Daten ist ECC-RAM vorgeschrieben — eine
-unbemerkte Bit-Kippung im Arbeitsspeicher führt sonst zu falschen Datenbankinhalten
-oder fehlerhaften Berechnungen, ohne dass der Rechner abstürzt.
+Bei Servern und Workstations mit kritischen Daten ist ECC-RAM ein starkes
+Auswahlkriterium. Ob es zwingend gefordert ist, hängt von Anforderung, Plattform und
+Beschaffungsrichtlinie ab; CPU, Mainboard und RAM-Modul müssen ECC gemeinsam unterstützen.
 
 ### 03.3 · Massenspeicher: HDD, SSD, NVMe
 
@@ -110,33 +110,34 @@ oder fehlerhaften Berechnungen, ohne dass der Rechner abstürzt.
 |---|---|---|---|---|
 | HDD | *<Term id="sata">SATA</Term>* | 100–250 MB/s | groß, günstig | langsam, mechanisch |
 | SATA-SSD | SATA | ca. 500 MB/s | leise, robust | von SATA gebremst |
-| *<Term id="nvme">NVMe</Term>*-SSD | M.2 / *<Term id="pcie">PCIe</Term>* | 3.000–7.000 MB/s | extrem schnell | belegt PCIe-Lanes |
+| *<Term id="nvme">NVMe</Term>*-SSD | meist M.2 über *<Term id="pcie">PCIe</Term>* | 3.000–7.000 MB/s | extrem schnell | belegt PCIe-Lanes |
 
 Wichtig in der Aufgabe: NVMe ist **nicht** die Bauform, sondern das Protokoll. NVMe-SSDs
-werden meist im M.2-Steckplatz verbaut, sind aber nur dann schnell, wenn der Slot
-tatsächlich PCIe-Lanes bekommt. Manche M.2-Slots auf günstigen Mainboards akzeptieren
-nur SATA-SSDs — dann landet eine NVMe-Platte mit 7.000 MB/s bei 500 MB/s.
+werden meist im M.2-Steckplatz verbaut, sind aber nur dann nutzbar, wenn der Slot
+tatsächlich PCIe/NVMe unterstützt. Ein M.2-Slot kann auch nur SATA führen: Dann bleibt
+eine SATA-M.2-SSD bei SATA-Tempo, während eine reine NVMe-SSD dort nicht funktioniert.
 
 ### 03.4 · Bus- und Schnittstellenstandards
 
 Schnittstellen führen Daten, Bild oder Strom zwischen Geräten. Die häufigsten in der
 Prüfung:
 
-| Standard | Träger | Typische Bandbreite | Typischer Einsatz |
+| Standard | Träger | Typische Obergrenze | Typischer Einsatz |
 |---|---|---|---|
 | *<Term id="usb">USB 2.0</Term>* | A/B/Mini/Micro | 480 Mbit/s | Tastatur, Maus, einfache Geräte |
-| USB 3.2 Gen 1 | A oder C | 5 Gbit/s | externe Festplatten, Webcams |
-| USB 3.2 Gen 2 | meist C | 10 Gbit/s | schnelle externe SSDs |
-| USB4 | C | bis 40 Gbit/s | Docks, externe Speicher, Displays |
-| *<Term id="thunderbolt">Thunderbolt</Term>* 4 | C | 40 Gbit/s + DP + PD | Docks, Multi-4K, eGPU |
-| *<Term id="hdmi">HDMI</Term>* 2.0 / 2.1 | HDMI-Stecker | 4K@60 / bis 8K@60 | Monitore, Beamer, TV |
-| *<Term id="displayport">DisplayPort</Term>* 1.4 / 2.1 | DP / USB-C | 4K@120 / bis 8K | Monitore, Daisy-Chain, Pro-Setup |
-| PCIe x4 / x16 | Slot auf Mainboard | 8 GB/s / 32 GB/s (Gen 4) | Grafikkarten, NVMe-SSDs, Karten |
+| USB 3.2 Gen 1x1 | A oder C | 5 Gbit/s | externe Festplatten, Webcams |
+| USB 3.2 Gen 2x1 / 2x2 | meist C | 10 / 20 Gbit/s | schnelle externe SSDs |
+| USB4 | C | bis 80 Gbit/s | Docks, externe Speicher, Displays |
+| *<Term id="thunderbolt">Thunderbolt</Term>* 4 / 5 | C | 40 / 80 bis 120 Gbit/s + DP | Docks, Multi-Display, schnelle Peripherie |
+| *<Term id="hdmi">HDMI</Term>* | HDMI-Stecker | versionsabhängig, aktuell bis 96 Gbit/s | Monitore, Beamer, TV |
+| *<Term id="displayport">DisplayPort</Term>* 1.4 / 2.1 | DP / USB-C | bis 80 Gbit/s bei DP80 | Monitore, Daisy-Chain, Pro-Setup |
+| PCIe x4 / x16 | Slot auf Mainboard | abhängig von Generation und Lane-Anzahl | Grafikkarten, NVMe-SSDs, Erweiterungskarten |
 
-USB-C ist nur ein Stecker. Was im Kabel transportiert wird, hängt vom Host und vom
-Kabel selbst ab. Ein USB-C-Kabel kann USB 2.0 mit 480 Mbit/s, USB4 mit 40 Gbit/s,
-Thunderbolt 4 oder *<Term id="usb-pd">USB Power Delivery</Term>* führen — oder
-Kombinationen davon. Steht es nicht auf dem Kabel, ist es im Zweifel langsam.
+USB-C ist zuerst eine Steckerform, keine Geschwindigkeitsgarantie. Was darüber läuft,
+hängt von Host, Gerät, Kabel und Aushandlung ab: USB 2.0, USB 3.2, USB4, Thunderbolt,
+DisplayPort Alt Mode und *<Term id="usb-pd">USB Power Delivery</Term>* sind unterschiedliche
+Funktionen. Ein reines USB-C-Ladekabel kann für ein Dock völlig ungeeignet sein, obwohl
+der Stecker mechanisch passt.
 
 ### 03.5 · Peripherie und Mensch-Maschine-Schnittstelle
 
@@ -145,11 +146,11 @@ Die wichtigsten Peripheriegeräte und ihre typischen Auswahlkriterien:
 - **Monitor:** Diagonale, Auflösung, Bildwiederholrate, Anschluss (HDMI/DP/USB-C),
   Höhenverstellbarkeit, ergonomische Eignung.
 - **Tastatur und Maus:** kabellos vs. kabelgebunden, Layout, Funkstandard (USB-Dongle,
-  Blütooth), Akkulaufzeit.
+  Bluetooth), Akkulaufzeit.
 - **Drucker und Multifunktionsgeräte (MFG):** Druckverfahren (Laser/Tinte), Druckleistung,
   Kosten je Seite, Netzwerkanbindung (LAN/WLAN), Duplex, Scanleistung, Sicherheitsfunktionen.
 - **Headset und Konferenztechnik:** Bauform (Over-Ear/On-Ear), Mikrofonqualität,
-  USB- oder Blütooth-Anbindung, Zertifizierung für gängige UC-Plattformen.
+  USB- oder Bluetooth-Anbindung, Zertifizierung für gängige UC-Plattformen.
 - *<Term id="kvm-switch">KVM-Switch</Term>*: schaltet Tastatur, Maus und Bildschirm
   zwischen mehreren Rechnern um, klassisch im Serverraum, modern als USB-C-Dock am
   Doppelarbeitsplatz aus Firmen- und Privatlaptop.
@@ -203,8 +204,8 @@ Welche Komponenten passen jeweils — und warum?
   <Schritt nr={3} titel="RAM dimensionieren">
     CAD: 32 GB DDR5 als 2 × 16 GB im Dual-Channel — Reserve für große Modelle.
     Office: 16 GB DDR5 als 2 × 8 GB, Dual-Channel der iGPU spürbar zugutekommt.
-    Server: 64 GB ECC, Aufrüstung auf 128 GB möglich; ECC ist Pflicht, ein gekipptes
-    Bit in einer ERP-Tabelle ist ein stiller Datenverlust.
+    Server: 64 GB ECC, Aufrüstung auf 128 GB möglich; ECC ist bei diesem
+    Integritätsanspruch begründet, weil stille Speicherfehler Daten verfälschen können.
   </Schritt>
   <Schritt nr={4} titel="Massenspeicher festlegen">
     CAD: 1 TB NVMe-SSD (System und Projekte), zusätzlich 4 TB SATA-HDD als
@@ -266,15 +267,17 @@ Welche Schnittstellen-Topologie funktioniert ohne Engpass?
     sie ausbremsen.
   </Schritt>
   <Schritt nr={5} titel="Bandbreite gegenrechnen">
-    Thunderbolt 4 hat 40 Gbit/s. Davon belegen 4K@60 ca. 12 Gbit/s, zwei Full-HD@60
-    je ca. 3 Gbit/s, USB-Geräte plus Ethernet zusammen unter 5 Gbit/s. Reserve für
-    die externe SSD bleibt — solange beide Monitore nicht gleichzeitig 4K@120 laufen.
+    Thunderbolt 4 hat 40 Gbit/s. Als grobe Rohdatenrechnung belegt 4K@60 bei 24 Bit
+    Farbtiefe knapp 12 Gbit/s, zwei Full-HD@60 je knapp 3 Gbit/s. USB-Geräte und
+    Ethernet sind im Alltag deutlich kleiner, die externe SSD braucht aber eigene
+    10 Gbit/s. Bei mehreren 4K-Displays oder hoher Farbtiefe entscheidet die konkrete
+    Dock-Spezifikation.
   </Schritt>
   <Ergebnis>
     Ein Thunderbolt-4-Dock plus ein direkter USB-C-Port am Notebook decken alle sieben
-    Geräte ab. Wichtig: TB4-zertifiziertes Kabel verwenden, sonst fällt das Dock
-    automatisch auf USB-C-Niveau zurück und die Bandbreite für drei Monitore reicht
-    nicht.
+    Geräte ab. Wichtig: ein für Thunderbolt 4 geeignetes, zertifiziertes Kabel
+    verwenden. Ein einfaches USB-C-Ladekabel passt mechanisch, garantiert aber weder
+    Thunderbolt noch DisplayPort noch die nötige Datenrate.
   </Ergebnis>
 </StepByStep>
 
@@ -326,8 +329,9 @@ Welches Gerät ist über drei Jahre günstiger — und reicht es überhaupt?
   <Schritt nr={6} titel="Empfehlung formulieren">
     Gesamtkosten über drei Jahre: A ≈ 7.573 €, B ≈ 10.877 €. Modell A ist trotz
     höherer Anschaffung deutlich günstiger, weil Toner und Energie pro Seite günstiger
-    sind. Die Druckleistung beider Geräte deckt den Bedarf, die Netzwerk- und
-    Duplex-Funktionen sind bei A bereits enthalten.
+    sind. Vor der Bestellung muss zusätzlich das empfohlene monatliche Druckvolumen aus
+    dem Datenblatt geprüft werden; Netzwerk- und Duplex-Funktionen sind bei A bereits
+    enthalten.
   </Schritt>
   <Ergebnis>
     Empfehlung: **Modell A**. Vorteil über drei Jahre rund 3.300 €, plus deutlich
@@ -354,10 +358,12 @@ funktioniert.
 
 ### Hot-Plug, Hot-Swap und USB-Power-Delivery
 
-USB, Thunderbolt und SATA mit AHCI sind *<i>hot-plug</i>*-fähig: Geräte dürfen im
-laufenden Betrieb gesteckt und gezogen werden. *Hot-Swap* (RAID-Festplatten,
-Server-Netzteile) geht noch weiter — der Austausch erfolgt ohne Systemstillstand.
-PCIe-Karten und RAM hingegen erfordern einen Shutdown.
+USB und Thunderbolt sind für das Stecken im laufenden Betrieb ausgelegt. SATA kann mit
+passender AHCI-/Controller- und Betriebssystemunterstützung ebenfalls hot-plug-fähig
+sein. *Hot-Swap* (zum Beispiel Serverlaufwerke oder redundante Netzteile) geht weiter:
+Der Austausch ist konstruktiv für den Betrieb ohne Systemstillstand vorgesehen. RAM und
+gewöhnliche PCIe-Steckkarten werden im Arbeitsplatz-PC dagegen nur im ausgeschalteten
+Zustand gewechselt.
 
 USB-PD verhandelt Spannung und Stromstärke dynamisch. Ein 100-W-Notebook lädt an
 einem 65-W-Netzteil nur langsam oder gar nicht — die maximale Watt-Zahl ist im Profil
@@ -383,13 +389,15 @@ auch wenn die Aufgabe vor allem nach Anschlüssen fragt.
 
 ### Mehrere Standards parallel: USB-C und Thunderbolt
 
-USB-C ist nur die Stecker-Form. Was sie überträgt, hängt vom Host und vom Kabel ab:
+USB-C ist nur die Steckerform. Was sie überträgt, hängt von Host, Gerät, Kabel und
+Aushandlung ab:
 
 ```
-USB-C-Stecker  →  USB 2.0       (480 Mbit/s, kein DP, kein PD)
+USB-C-Stecker  →  USB 2.0       (480 Mbit/s, kein DisplayPort)
 USB-C-Stecker  →  USB 3.2 Gen 2 (10 Gbit/s, optional DP-Alt-Mode)
-USB-C-Stecker  →  USB4          (bis 40 Gbit/s, DP-Tunnel, PD)
-USB-C-Stecker  →  Thunderbolt 4 (40 Gbit/s + DP + 100 W PD, zertifiziert)
+USB-C-Stecker  →  USB4          (bis 80 Gbit/s, DisplayPort-Tunnel möglich)
+USB-C-Stecker  →  Thunderbolt 4 (40 Gbit/s + DisplayPort, zertifiziert)
+USB-C-Stecker  →  USB-PD        (Stromprofil; aktuell bis 240 W möglich)
 ```
 
 Wenn die Aufgabe „USB-C“ schreibt, ist das eine Stecker-Aussage, keine Bandbreiten-Aussage.
@@ -417,15 +425,16 @@ Nach diesem Kapitel kannst du:
   *dieselbe Geschwindigkeit* (5 Gbit/s) — die Namensgebung ist mehrfach umbenannt
   worden. Wer sich von der Bezeichnung ins Bockshorn jagen lässt, ordnet die
   Bandbreite falsch zu.
-- **DisplayPort und HDMI gleichsetzen.** HDMI 1.4 schafft 4K nur mit 30 Hz.
-  Wer 4K@60 oder gar 4K@120 will, braucht HDMI 2.0/2.1 oder DisplayPort 1.2/1.4.
+- **DisplayPort und HDMI gleichsetzen.** Entscheidend sind Version, Kabel und
+  Gerätekette. 4K@60, 4K@120 oder 8K funktionieren nur, wenn Quelle, Kabel, Dock und
+  Monitor die nötige HDMI- oder DisplayPort-Version samt Bandbreite unterstützen.
   Adapter helfen nicht, wenn der Quell-Port den Standard nicht beherrscht.
 - **DDR-Generationen mischen.** DDR4 und DDR5 haben unterschiedliche Kerben und
-  unterschiedliche Spannungsniveaus. Die Riegel passen physisch nicht in den falschen
-  Slot — und wenn doch, wäre die elektrische Beschädigung garantiert.
-- **NVMe ohne PCIe-Anbindung erwarten.** Manche M.2-Slots auf günstigen Mainboards
-  unterstützen nur SATA. Eine darauf gesteckte NVMe-SSD funktioniert nicht. Im
-  Mainboard-Handbuch steht, welcher Slot welches Protokoll führt.
+  unterschiedliche elektrische Anforderungen. Die Riegel sind nicht frei austauschbar;
+  Mainboard, CPU und RAM-Generation müssen zusammenpassen.
+- **NVMe ohne PCIe-Anbindung erwarten.** Manche M.2-Slots unterstützen nur SATA.
+  Eine darauf gesteckte NVMe-SSD funktioniert nicht. Im Mainboard-Handbuch steht,
+  welcher Slot welches Protokoll führt.
 - **Falscher CPU-Sockel.** Eine Ryzen-CPU passt nicht in einen Intel-Sockel und
   umgekehrt. Auch innerhalb eines Herstellers ändert sich der Sockel zwischen
   Generationen — neue CPU plus altes Mainboard ist meist nicht kompatibel.
@@ -480,10 +489,10 @@ Hardware-Leistung hinausgehen. Ordne jede Anforderung einer konkreten Komponente
 oder Eigenschaft zu (z. B. Monitor, Tastatur, Beleuchtung). **4 Punkte.**
 
 <Tipp titel="Lösungsansatz zu Aufgabe 4 (Kurzform)">
-Eine Intel-Core-CPU der 14. Generation nutzt den Sockel LGA 1700. Ist das vorhandene
-Mainboard ein älteres LGA-1200-Modell, ist die CPU ohne Mainboard-Tausch nicht
-einsetzbar. Selbst bei passendem Sockel braucht es einen kompatiblen Chipsatz und ein
-aktuelles BIOS-Update — andernfalls bootet das System nicht.
+DDR4 allein entscheidet die Frage nicht. Eine Intel-Core-CPU der 14. Generation nutzt
+LGA 1700; ein älteres LGA-1200-Board scheidet deshalb aus. Bei einem LGA-1700-DDR4-Board
+müssen zusätzlich Chipsatz, BIOS-Version und Hersteller-Supportliste passen, sonst bootet
+das System nicht zuverlässig.
 </Tipp>
 
 ---
@@ -579,11 +588,11 @@ Massenspeicher dürfen nicht alle durch denselben schwachen Standard gedrückt w
     },
     {
       term: 'RAM (Random Access Memory)',
-      definition: 'Flüchtiger Arbeitsspeicher, deutlich schneller als SSD/HDD. DDR4 und DDR5 sind nicht mischbar; Dual-Channel verdoppelt die Bandbreite zur CPU.'
+      definition: 'Flüchtiger Arbeitsspeicher, deutlich schneller als SSD/HDD. DDR4 und DDR5 sind nicht frei austauschbar; passend gesteckte Module können Dual-Channel ermöglichen.'
     },
     {
       term: 'ECC-RAM',
-      definition: 'Speicher mit Fehlerkorrektur. Erkennt und korrigiert einzelne Bitfehler im Betrieb. Pflicht in Servern und Workstations mit kritischen Daten.'
+      definition: 'Speicher mit Fehlerkorrektur. Erkennt und korrigiert bestimmte Speicherfehler im Betrieb; wichtig bei Servern, Workstations und kritischen Daten.'
     },
     {
       term: 'SSD',
@@ -595,7 +604,7 @@ Massenspeicher dürfen nicht alle durch denselben schwachen Standard gedrückt w
     },
     {
       term: 'NVMe',
-      definition: 'Protokoll für Flash-Speicher direkt über PCIe. Im M.2-Slot eingebaut; typische Bandbreiten 3.000–7.000 MB/s.'
+      definition: 'Protokoll für Flash-Speicher über PCIe und weitere Transporte. Häufig als M.2-SSD umgesetzt; Bauform und Protokoll sind getrennte Fragen.'
     },
     {
       term: 'PCIe',
@@ -607,11 +616,11 @@ Massenspeicher dürfen nicht alle durch denselben schwachen Standard gedrückt w
     },
     {
       term: 'USB',
-      definition: 'Universal Serial Bus. Generationen reichen von 480 Mbit/s (USB 2.0) bis 40 Gbit/s (USB4). Der Stecker (A/B/C) sagt nichts über die Geschwindigkeit aus.'
+      definition: 'Universal Serial Bus. Generationen reichen von 480 Mbit/s (USB 2.0) bis zu USB4 mit sehr hohen Datenraten. Der Stecker (A/B/C) sagt nichts über die Geschwindigkeit aus.'
     },
     {
       term: 'Thunderbolt',
-      definition: 'Hochleistungsschnittstelle (40 Gbit/s) über USB-C, kombiniert Daten, DisplayPort und USB-PD bis 100 W. Ideal für Docks und Multi-Display-Setups.'
+      definition: 'Hochleistungsschnittstelle über USB-C, kombiniert schnelle Datenübertragung und DisplayPort. Ideal für Docks und Multi-Display-Setups.'
     },
     {
       term: 'DisplayPort',
@@ -619,7 +628,7 @@ Massenspeicher dürfen nicht alle durch denselben schwachen Standard gedrückt w
     },
     {
       term: 'HDMI',
-      definition: 'Audio/Video-Standard im Consumer-Bereich. Maximale Auflösung und Bildrate hängen stark von der Version ab (1.4 bis 2.1).'
+      definition: 'Audio/Video-Standard im Consumer-Bereich. Maximale Auflösung und Bildrate hängen stark von Version, Kabel und Gerätekette ab.'
     },
     {
       term: 'USB Power Delivery',
@@ -639,44 +648,59 @@ Massenspeicher dürfen nicht alle durch denselben schwachen Standard gedrückt w
 <Quellen
   quellen={[
     {
-      label: 'USB Implementers Forum — USB-Spezifikationen',
-      href: 'https://www.usb.org/documents',
-      detail: 'Offizielle Dokumente zu USB 2.0, USB 3.2, USB4 und USB Power Delivery — verbindliche Quelle für Versionen und Bandbreiten.'
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizielle Einordnung von LF2: Arbeitsplätze nach Kundenwunsch ausstatten.'
     },
     {
-      label: 'VESA — DisplayPort Standards',
-      href: 'https://www.vesa.org/displayport-developer/',
-      detail: 'VESA-Standards zu DisplayPort 1.4 und 2.1 inklusive Multi-Stream-Transport (Daisy-Chain).'
+      label: 'FIAusbV - Fachinformatikerausbildungsverordnung',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung mit Ausbildungsrahmenplan und Prüfungsanforderungen.'
     },
     {
-      label: 'HDMI Forum — Specifications',
-      href: 'https://www.hdmi.org/spec/index',
-      detail: 'Versionen und Funktionsumfang von HDMI 1.4, 2.0 und 2.1 — verbindliche Referenz für Bandbreite und maximale Auflösung.'
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ausbildungsquelle zur modernisierten Fachinformatiker-Ausbildung und zur praktischen Umsetzung.'
     },
     {
-      label: 'BIBB — Berufsprofil Fachinformatiker und Rahmenlehrplan',
-      href: 'https://www.bibb.de/de/berufeinfo.php',
-      detail: 'Bundesinstitut für Berufsbildung mit Umsetzungshilfen zur Prüfung und Rahmenlehrplan Lernfeld 2.'
+      label: 'USB-IF - USB4 Specification',
+      href: 'https://www.usb.org/usb4',
+      detail: 'Offizielle USB-IF-Seite zu USB4, zertifizierten Datenraten und USB-C als Träger.'
     },
     {
-      label: 'BSI IT-Grundschutz — Baustein SYS.2 IT-Systeme',
-      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz_node.html',
-      detail: 'Anforderungen an Hardware-Auswahl, Beschaffung und Lebenszyklus von Clients und Servern.'
+      label: 'USB-IF - USB Type-C Cable and Connector Specification',
+      href: 'https://www.usb.org/usb-type-cr-cable-and-connector-specification',
+      detail: 'Offizielle USB-IF-Seite zu USB-C als reversibler Stecker- und Kabelspezifikation.'
+    },
+    {
+      label: 'USB-IF - USB Charger/USB Power Delivery',
+      href: 'https://www.usb.org/usb-charger-pd',
+      detail: 'Offizielle USB-IF-Seite zu USB Power Delivery und Leistungsprofilen über USB-C.'
+    },
+    {
+      label: 'Thunderbolt Technology - Frequently Asked Questions',
+      href: 'https://www.thunderbolttechnology.net/tech/faq',
+      detail: 'Offizielle Thunderbolt-Einordnung zu USB-C, Datenrate und DisplayPort über Thunderbolt.'
+    },
+    {
+      label: 'VESA - DisplayPort 2.1 Specification',
+      href: 'https://vesa.org/featured-articles/vesa-releases-displayport-2-1-specification/',
+      detail: 'VESA-Veröffentlichung zu DisplayPort 2.1, USB-C/USB4-Ausrichtung und DP40/DP80-Kabeln.'
+    },
+    {
+      label: 'HDMI Licensing Administrator - HDMI 2.2 Features',
+      href: 'https://www.hdmi.org/spec21sub/eightk60_fourk120',
+      detail: 'Offizielle HDMI-Seite zu hoher Auflösung, Bildrate und Bandbreite aktueller HDMI-Spezifikationen.'
+    },
+    {
+      label: 'NVM Express - NVMe Specifications',
+      href: 'https://nvmexpress.org/specifications/',
+      detail: 'Offizielle HTML-Seite zu NVMe als Spezifikation für nichtflüchtigen Speicher über PCIe und weitere Transporte.'
     },
     {
       label: 'DGUV Information 215-410 — Bildschirm- und Büroarbeitsplätze',
-      href: 'https://publikationen.dguv.de/regelwerk/dguv-informationen/3445/bildschirm-und-büroarbeitsplätze',
-      detail: 'Praxis-Leitfaden der gesetzlichen Unfallversicherung zu ergonomischen Anforderungen am Arbeitsplatz.'
-    },
-    {
-      label: 'Elektronik-Kompendium — Hardware-Schnittstellen',
-      href: 'https://www.elektronik-kompendium.de/sites/com/index.htm',
-      detail: 'Fachportal mit detaillierten Erklärungen zu USB, PCIe, SATA, DisplayPort, HDMI und Thunderbolt.'
-    },
-    {
-      label: 'heise online — Hardware-Standards und Tests',
-      href: 'https://www.heise.de/thema/Hardware',
-      detail: 'Aktuelle redaktionelle Berichterstattung zu CPU-Generationen, Mainboard-Chipsätzen und Schnittstellen.'
+      href: 'https://publikationen.dguv.de/regelwerk/dguv-informationen/3445/bildschirm-und-bueroarbeitsplaetze',
+      detail: 'Praxisleitfaden der gesetzlichen Unfallversicherung zu ergonomischen Anforderungen am Arbeitsplatz.'
     },
   ]}
 />

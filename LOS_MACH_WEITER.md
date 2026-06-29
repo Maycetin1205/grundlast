@@ -6,11 +6,11 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 
 | Feld | Wert |
 |---|---|
-| Aktuelles Kapitel | `hardware-schnittstellen` |
-| Kapiteldatei | `src/content/lessons/hardware-schnittstellen.mdx` |
+| Aktuelles Kapitel | `dateisysteme` |
+| Kapiteldatei | `src/content/lessons/dateisysteme.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
 | Phase | Quellen-, Fakten- und Didaktikaudit vorbereiten |
-| Nächstes Kapitel | Erst nach dokumentiertem Abschluss von `hardware-schnittstellen` gemäß Lernpfad festlegen |
+| Nächstes Kapitel | Erst nach dokumentiertem Abschluss von `dateisysteme` gemäß Lernpfad festlegen |
 
 ## Für jeden neuen Arbeitsabschnitt
 

@@ -318,5 +318,84 @@
       "fundstelle": "NVM Express, Specifications, Abschnitt \"NVMe Set of Specifications Overview\"",
       "abgerufenAm": "2026-06-29"
     }
+  ],
+  "hardware-schnittstellen": [
+    {
+      "aussage": "Die BIBB-Umsetzungshilfe ordnet Fachinformatiker/Fachinformatikerin in eine modernisierte Ausbildungsordnung mit komplexeren Anwendungen, Daten, Systemen und Netzen ein.",
+      "zitat": "Daten, Systemen und Netzen spiegeln sich in der modernisierten Ausbildungsordnung",
+      "quelleId": "bibb-fachinformatiker",
+      "fundstelle": "BIBB, Fachinformatiker/Fachinformatikerin, Abstract",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "USB4 baut auf USB 3.2 und USB 2.0 auf, basiert auf dem Thunderbolt-Protokoll und ermöglicht mehrere gleichzeitige Daten- und Displayprotokolle.",
+      "zitat": "USB4 doubles the maximum aggregate bandwidth of USB and enables multiple simultaneous data and display protocols.",
+      "quelleId": "usb-if-usb4",
+      "fundstelle": "USB-IF, USB4 Specification, Einleitung",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "USB4 kann über USB-C-Kabel laufen und erreicht mit entsprechend zertifizierten Kabeln bis zu 80 Gbit/s.",
+      "zitat": "Two-lane operation using existing USB Type-C cables and up to 80 Gbps operation over 80 Gbps certified cables",
+      "quelleId": "usb-if-usb4",
+      "fundstelle": "USB-IF, USB4 Specification, Key characteristics",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "USB Type-C beschreibt unter anderem eine reversible Steckerorientierung und Kabelrichtung; der Stecker allein garantiert keine konkrete Datenrate.",
+      "zitat": "Features reversible plug orientation and cable direction",
+      "quelleId": "usb-if-type-c",
+      "fundstelle": "USB-IF, USB Type-C Cable and Connector Specification, Key Messages",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "USB Power Delivery Revision 3.1 ermöglicht bis zu 240 W Leistung über voll ausgestattete USB-C-Kabel und -Stecker.",
+      "zitat": "Increased power levels from existing USB standards up to 240W.",
+      "quelleId": "usb-if-power-delivery",
+      "fundstelle": "USB-IF, USB Charger (USB Power Delivery), Absatz zu USB PD Revision 3.1",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Thunderbolt ergänzt USB-C um Thunderbolt-Verbindungen mit 40, 80 oder 120 Gbit/s und DisplayPort über einen USB-C-Port.",
+      "zitat": "Thunderbolt™ is a superset solution which adds a 40Gbps, 80 Gbps, or 120 Gbps Thunderbolt™ connection and DisplayPort from a single USB-C port.",
+      "quelleId": "thunderbolt-faq",
+      "fundstelle": "Thunderbolt Technology, Frequently Asked Questions, \"What is the difference between Thunderbolt™ and USB-C?\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "DisplayPort kann nativ, über DisplayPort Alt Mode am USB-C-Stecker oder getunnelt über USB4 übertragen werden.",
+      "zitat": "via DisplayPort Alt Mode (DisplayPort over the USB Type-C connector), or tunneled through the USB4 link",
+      "quelleId": "vesa-displayport-21",
+      "fundstelle": "VESA, DisplayPort 2.1 Specification, Absatz zu DisplayPort über native Kabel, USB-C und USB4",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "VESA-zertifizierte DP80-Kabel unterstützen vier Lanes mit UHBR20 und damit maximal 80 Gbit/s Durchsatz.",
+      "zitat": "VESA certified DP80 cables support up to the UHBR20 link rate (20 Gbps), with four lanes, providing a maximum throughput of 80 Gbps.",
+      "quelleId": "vesa-displayport-21",
+      "fundstelle": "VESA, DisplayPort 2.1 Specification, Absatz zu DP40- und DP80-Kabeln",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "HDMI 2.2 wird von HDMI LA mit unkomprimiertem 8K@60Hz und 4K@120Hz sowie höherer Bandbreite beschrieben.",
+      "zitat": "HDMI 2.2 8K resolution including uncompressed 8K@60Hz and 4K@120Hz",
+      "quelleId": "hdmi-la-bandwidths-resolutions",
+      "fundstelle": "HDMI Licensing Administrator, HDMI 2.2 Feature - Bandwidths and Resolutions Overview",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "HDMI LA nennt für HDMI 2.2 eine Bandbreite bis 96 Gbit/s.",
+      "zitat": "Higher 96Gbps bandwidth",
+      "quelleId": "hdmi-la-bandwidths-resolutions",
+      "fundstelle": "HDMI Licensing Administrator, HDMI 2.2 Feature - Bandwidths and Resolutions Overview",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "NVMe beschreibt, wie Host-Software mit nichtflüchtigem Speicher über mehrere Transporte kommuniziert; M.2 ist davon getrennt eine mögliche Bauform.",
+      "zitat": "host software communicates with non-volatile memory across multiple transports",
+      "quelleId": "nvmexpress-specifications",
+      "fundstelle": "NVM Express, Specifications, Abschnitt \"NVMe Set of Specifications Overview\"",
+      "abgerufenAm": "2026-06-29"
+    }
   ]
 }
