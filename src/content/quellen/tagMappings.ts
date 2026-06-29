@@ -120,8 +120,8 @@ export const lessonSourceIds: Record<string, string[]> = {
     'ibm-cpu-instruction-cycle',
     'intel-cpu-clock-speed',
     'microsoft-ssd-hdd-storage',
-    'nvmexpress-faq',
-    'crucial-ddr-generations',
+    'nvmexpress-specifications',
+    'kingston-ddr5-overview',
   ],
   zahlensysteme: [
     'kmk-rahmenlehrplan',

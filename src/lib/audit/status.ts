@@ -42,6 +42,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Von-Neumann-Architektur mit neun online geprüften Belegen zu gemeinsamem Speicher, CPU-Bausteinen, Instruction Cycle, Bus, Takt und Cache.',
     nextAction: 'Abgeschlossen; im Lernpfad mit CPU, RAM und Massenspeicher fortsetzen.',
   },
+  'cpu-ram-speicher': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'CPU, RAM und Massenspeicher mit acht online geprüften Belegen zu CPU, RAM, Cache, Threads, Takt, SSD/HDD, NVMe und M.2.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit Hardware und Schnittstellen fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {

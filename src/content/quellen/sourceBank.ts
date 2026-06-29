@@ -128,6 +128,20 @@ export const sourceBank: SourceEntry[] = [
     tags: ['ordnung', 'hardware', 'ssd', 'nvme', 'pcie', 'massenspeicher', 'speicher'],
   },
   {
+    id: 'nvmexpress-specifications',
+    label: 'NVM Express - NVMe Specifications',
+    href: 'https://nvmexpress.org/specifications/',
+    detail: 'Offizielle HTML-Seite zu NVMe-Spezifikationen und zur Kommunikation mit nichtflüchtigem Speicher über PCIe und andere Transporte.',
+    tags: ['ordnung', 'hardware', 'ssd', 'nvme', 'pcie', 'massenspeicher', 'speicher', 'protokoll'],
+  },
+  {
+    id: 'kingston-ddr5-overview',
+    label: 'Kingston - DDR5 Memory Standard',
+    href: 'https://www.kingston.com/en/blog/pc-performance/ddr5-overview',
+    detail: 'Herstellererklärung zu DDR5, Modul-Keying, DDR-Kompatibilität und ECC-Hinweisen.',
+    tags: ['ordnung', 'hardware', 'ram', 'ddr', 'ddr4', 'ddr5', 'ecc', 'arbeitsspeicher', 'kompatibilitaet'],
+  },
+  {
     id: 'crucial-ddr-generations',
     label: 'Crucial - DDR memory generations explained',
     href: 'https://uk.crucial.com/content/crucial/en-gb/home/support/articles-faq-memory/difference-between-ddr4-ddr3-ddr2-ddr-sdram.html',

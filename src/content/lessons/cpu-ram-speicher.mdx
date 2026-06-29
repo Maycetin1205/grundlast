@@ -22,7 +22,7 @@ Nach diesem Kapitel kannst du CPU, RAM, <Term id="ssd">SSD</Term> und <Term id="
 sicher unterscheiden. Du erkennst, warum <Term id="taktfrequenz">Taktfrequenz</Term>,
 Kerne, <Term id="thread">Threads</Term>, <Term id="cache">Cache</Term>, RAM-Kapazität,
 DDR-Generation, SATA und <Term id="nvme">NVMe</Term> nicht austauschbare Kennwerte
-sind. Ausserdem kannst du einfache Hardwareentscheidungen begründen, ohne dich von
+sind. Außerdem kannst du einfache Hardwareentscheidungen begründen, ohne dich von
 einzelnen Zahlen oder Marketingnamen blenden zu lassen.
 
 ## Mentales Modell
@@ -44,7 +44,7 @@ nutzt Cache für häufig benötigte Teile und schreibt Ergebnisse wieder zurück
 
 | Komponente | Kernfrage | Schnell gemerkt | Typische Kennwerte |
 |---|---|---|---|
-| CPU | Wie schnell werden Befehle verarbeitet? | Rechen- und Steürzentrale | Takt, Kerne, Threads, Cache, Leistungsaufnahme |
+| CPU | Wie schnell werden Befehle verarbeitet? | Rechen- und Steuerzentrale | Takt, Kerne, Threads, Cache, Leistungsaufnahme |
 | RAM | Wie viel kann gleichzeitig aktiv bereitliegen? | schneller, flüchtiger Arbeitsspeicher | Kapazität, DDR-Generation, Datenrate, Kanäle |
 | SSD/HDD | Wie viel bleibt dauerhaft gespeichert? | nichtflüchtiger Massenspeicher | Kapazität, Schnittstelle, Latenz, Durchsatz |
 | Mainboard | Was passt physisch und elektrisch zusammen? | Verbindungs- und Kompatibilitätsbasis | CPU-Sockel, RAM-Slots, M.2, SATA, PCIe |
@@ -55,7 +55,9 @@ Merksatz: **CPU verarbeitet, RAM hält bereit, Massenspeicher bewahrt auf.**
 
 Eine CPU führt Programmbefehle aus. Stark vereinfacht läuft immer wieder ein Zyklus:
 Befehl holen, Befehl interpretieren, Befehl ausführen. Moderne Prozessoren machen das
-hochoptimiert, parallel und mit mehreren Zwischenspeichern.
+hochoptimiert, parallel und mit mehreren Zwischenspeichern. Die CPU arbeitet dabei
+eng mit RAM und Cache zusammen: RAM hält aktive Daten bereit, Cache hält besonders
+häufig benötigte Daten noch näher an der CPU.
 
 | Kennwert | Bedeutung | Worauf du achten musst |
 |---|---|---|
@@ -74,12 +76,12 @@ Takt ist ein Kennwert, kein vollständiger Leistungsvergleich.
 ### Kerne und Threads
 
 Ein Kern kann echte Rechenarbeit ausführen. Mehrere Kerne helfen, wenn Arbeit aufgeteilt
-werden kann: Videöxport, Kompilieren, virtuelle Maschinen oder viele gleichzeitige
+werden kann: Videoexport, Kompilieren, virtuelle Maschinen oder viele gleichzeitige
 Dienste profitieren eher als ein einzelner streng nacheinander laufender Ablauf.
 
-Threads sind die Einheiten, die das Betriebssystem der CPU zur Ausführung gibt. Eine
-CPU kann mehr Threads gleichzeitig bereitstellen als physische Kerne vorhanden sind,
-aber das macht einen einzelnen Ablauf nicht automatisch schneller.
+Threads sind Befehlsfolgen, die das Betriebssystem plant und der CPU zur Ausführung
+gibt. Viele moderne CPUs können mehr gleichzeitige Threads anbieten als physische
+Kerne vorhanden sind; das macht einen einzelnen Ablauf aber nicht automatisch schneller.
 
 ## RAM: aktive Daten bereithalten
 
@@ -92,11 +94,17 @@ oder einem anderen nichtflüchtigen Speicher.
 | Reicht die Kapazität? | Viele Programme, große Dateien oder VMs brauchen mehr RAM. |
 | Passt die DDR-Generation? | DDR4 und DDR5 sind nicht frei mischbar; Mainboard und CPU geben vor, was passt. |
 | Wie ist der RAM bestückt? | Zwei passende Module können Dual-Channel ermöglichen; Handbuch beachten. |
+| Braucht der Einsatz ECC-RAM? | Server und Workstations können von Fehlerkorrektur profitieren; CPU, Mainboard und Modul müssen ECC unterstützen. |
 | Was passiert bei zu wenig RAM? | Das Betriebssystem lagert auf Massenspeicher aus; das System wird träge. |
 
 RAM fühlt sich in der Praxis oft wie "Reaktionsfähigkeit" an: Browser mit vielen Tabs,
 IDE, Datenbank, Teams, VM und Bildbearbeitung gleichzeitig brauchen Platz. Ist der RAM
 voll, hilft eine schnellere CPU nur begrenzt, weil Daten ständig ausgelagert werden.
+
+ECC ist kein anderes Wort für "mehr RAM". ECC-RAM speichert zusätzliche Prüfinformationen,
+damit geeignete Systeme bestimmte Speicherfehler erkennen und korrigieren können. Für
+normale Office-Clients ist meist Kapazität und Kompatibilität wichtiger; bei Servern,
+Workstations und dauerhaft laufenden Systemen kann ECC ein begründetes Auswahlkriterium sein.
 
 ## Massenspeicher: dauerhaft speichern
 
@@ -115,9 +123,10 @@ Dateien mit viel geringerer Wartezeit gelesen werden. Eine HDD ist trotzdem nich
 sein als maximale Reaktionszeit.
 
 <Warnung titel="M.2 ist Form, NVMe ist Protokoll">
-M.2 beschreibt den Steckplatz beziehungsweise die Bauform. Eine M.2-SSD kann je nach
-System SATA oder NVMe verwenden. Entscheidend ist, was Mainboard, SSD und BIOS/UEFI
-tatsächlich unterstützen.
+M.2 beschreibt einen Steckplatz beziehungsweise eine SSD-Bauform. NVMe beschreibt
+das Kommunikationsprotokoll für nichtflüchtigen Speicher, häufig über PCIe. Eine
+M.2-SSD kann je nach System SATA oder NVMe verwenden. Entscheidend ist, was
+Mainboard, SSD und BIOS/UEFI tatsächlich unterstützen.
 </Warnung>
 
 ## Zusammenspiel beim Programmstart
@@ -207,14 +216,14 @@ genau diese Grundlage.
       detail: 'Microsoft-Supportseite zu SSD, HDD, Kosten, Leistung und Speicherarten in PCs.'
     },
     {
-      label: 'NVM Express - NVMe FAQ',
-      href: 'https://www.nvmexpress.org/wp-content/uploads/NVMe-FAQ.pdf',
-      detail: 'Offizielle FAQ von NVM Express zu NVMe als für PCIe-basierte SSDs optimierter Schnittstellenspezifikation.'
+      label: 'NVM Express - NVMe Specifications',
+      href: 'https://nvmexpress.org/specifications/',
+      detail: 'Offizielle HTML-Seite von NVM Express zu NVMe als Spezifikation für die Kommunikation mit nichtflüchtigem Speicher über PCIe und andere Transporte.'
     },
     {
-      label: 'Crucial - What Is the Difference Between DDR5, DDR4, DDR3, DDR2, DDR, and SDRAM?',
-      href: 'https://uk.crucial.com/content/crucial/en-gb/home/support/articles-faq-memory/difference-between-ddr4-ddr3-ddr2-ddr-sdram.html',
-      detail: 'Herstellererklärung zu DDR-Generationen, doppelter Datenrate und fehlender Mischbarkeit verschiedener RAM-Generationen.'
+      label: 'Kingston - DDR5 Memory Standard',
+      href: 'https://www.kingston.com/en/blog/pc-performance/ddr5-overview',
+      detail: 'Herstellererklärung zu DDR5, Modul-Keying, DDR-Kompatibilität und ECC-Hinweisen.'
     },
   ]}
 />

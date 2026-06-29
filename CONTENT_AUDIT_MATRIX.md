@@ -16,7 +16,7 @@ Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `cpu-ram-speicher` | Kapitel | ungeprüft | IT-Systeme: Von-Neumann-Grundidee → CPU, RAM und Massenspeicher → Hardware und Schnittstellen → Betriebssystem, Dateien, Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
+| `hardware-schnittstellen` | Kapitel | ungeprüft | IT-Systeme: CPU, RAM und Massenspeicher → Hardware und Schnittstellen → Betriebssystem, Dateien, Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -24,6 +24,92 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
 ## Abgeschlossene Audits
+
+### `cpu-ram-speicher`
+
+Slug: `cpu-ram-speicher`
+Kompetenz: CPU, RAM, Cache, SSD, HDD, NVMe, M.2, SATA, DDR-Generation, ECC-RAM
+und grundlegende Hardware-Auswahlkriterien unterscheiden; typische
+Kundenwünsche in begründete Komponentenentscheidungen übersetzen; RAM,
+Massenspeicher und CPU-Leistungsangaben in Prüfungsfragen sauber trennen.
+Form: Kapitel
+Status: geprüft
+Voraussetzungen → Anschluss: Von-Neumann-Grundidee → CPU, RAM und
+Massenspeicher → Hardware und Schnittstellen → Betriebssystem, Dateien, Rechte
+und Virtualisierung
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für LF2, in dem Arbeitsplätze nach Kundenwunsch ausgestattet werden. Das
+Kapitel bleibt ein eigenständiges Grundlagenkapitel, weil es die Auswahl und
+Begründung zentraler Arbeitsplatzkomponenten vorbereitet und danach
+Schnittstellen, Betriebssystem, Dateien, Rechte und Virtualisierung anschließt.
+
+Fachliche Primärquellen: IBM, *What is a Central Processing Unit (CPU)?*, für
+CPU, Speicherbezug, Cache und Threads; Intel, *CPU Speed: What Is CPU Clock
+Speed?*, für Taktfrequenz und die Grenze von GHz als Einzelvergleich; Microsoft
+Support, *All about SSD, HDD, and storage types*, für SSD/HDD-Abgrenzung; NVM
+Express, *NVMe Specifications*, als HTML-Alternative zur PDF-FAQ für NVMe,
+M.2-Formfaktoren und nichtflüchtigen Speicher über PCIe und weitere Transporte.
+Kingston, *DDR5 Memory Standard*, wurde als Herstellervergleich für
+DDR-Keying/ECC im Text genutzt, aber nicht als maschineller Beleganker gezählt,
+weil `npm run check:sources` dort HTTP 403 erhält. Die alte Crucial-URL lieferte
+HTTP 404 und wurde deshalb aus der aktuellen Kapitelzuordnung entfernt.
+
+Didaktische Vergleiche: Das Vorgängerkapitel `von-neumann` erklärt
+Architekturmodell, ALU, Steuerwerk, Bus, Fetch-Decode-Execute und Cache als
+Grundidee. Dieses Kapitel wiederholt das nur knapp und verschiebt den Fokus auf
+Komponentenauswahl, RAM-Kapazität, SSD/HDD/NVMe, DDR-Kompatibilität,
+ECC-Einordnung, Kundenwünsche und typische AP1-Verwechslungen. Das Folgekapitel
+`hardware-schnittstellen` kann danach Mainboard, Steckplätze, Ports, Peripherie,
+Kühlung, Netzteil und konkrete Schnittstellen vertiefen.
+
+Lokaler Materialabgleich: `_material_index/AP1_ABGLEICH.md` ordnet
+`Prüfung_4`, Aufgabe 2, mit CPU-, RAM-/Arbeitsspeicher-, SSD-/HDD- und
+Beschaffungsbezug diesem Kapitel zu. Übernommen wurden nur Themenumfang und
+Denkoperation: begründete PC-Auswahl, CPU-/RAM-/SSD-Unterscheidung,
+DDR-/ECC-Hinweis, SSD-Vor- und Nachteile gegenüber HDD und Anschluss an
+Monitor/Grafik/Schnittstellen. Geschützte Aufgaben- oder Lösungstexte wurden
+nicht übernommen; Montage- und Schnittstellenthemen bleiben Anschlussstoff für
+`hardware-schnittstellen`.
+
+Geprüfte Kernaussagen (8, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+
+1. Eine CPU speichert und führt Programmbefehle über ihre Schaltungen aus.
+2. RAM beziehungsweise Arbeitsspeicher dient als kurzfristiger Speicher für
+   aktuell genutzte Daten.
+3. CPU-Cache liegt näher an der CPU und kann typische Speicherzugriffe schneller
+   bedienen als RAM.
+4. Threads sind virtuelle Befehlsfolgen, die an eine CPU ausgegeben werden.
+5. Taktfrequenz beschreibt CPU-Zyklen pro Sekunde und wird in GHz gemessen.
+6. SSDs sind im Microsoft-Support als kleiner und schneller als HDDs beschrieben.
+7. NVMe beschreibt, wie Host-Software mit nichtflüchtigem Speicher über mehrere
+   Transporte kommuniziert.
+8. M.2 ist bei NVM Express als Formfaktor für SSDs aufgeführt; NVMe ist davon
+   getrennt die Spezifikation.
+
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg über
+Arbeitsplatz-/Serverauswahl; Werkstattmodell; Faktenkern zu CPU, RAM,
+Massenspeicher und Mainboard; CPU-Kennwerte mit GHz-Falle; Kerne/Threads;
+RAM-Kapazität, DDR-Kompatibilität und ECC-Abgrenzung; SSD/HDD/NVMe-Tabelle;
+M.2-/NVMe-Warnung; Programmstart-Ablauf; Auswahl nach Kundenwunsch; typische
+Fehler und Mini-Selbstcheck vorhanden. Keine Rechenwege im Kapitel; die
+Entscheidungsbeispiele sind qualitativ geprüft.
+
+Glossar, Quellen und Links geprüft: `Term`-IDs für CPU, RAM, SSD, HDD,
+Taktfrequenz, Thread, Cache, Massenspeicher und NVMe sind gültig. Quellenbank,
+Quellen-Tags und sichtbare Quellen enthalten FIAusbV, KMK, BIBB, IBM, Intel,
+Microsoft, NVM Express und Kingston; maschinell gezählte Faktenbelege verwenden
+nur die erreichbaren HTML-Anker IBM, Intel, Microsoft und NVM Express. Der
+Anschluss an `hardware-schnittstellen` ist als nächster Lernpfadschritt
+festgelegt.
+
+Technische Checks: `npm run check:sources` (44/44 online und Zitate gefunden,
+davon 8 für `cpu-ram-speicher`), `npm run check:consistency`, `npm run lint`,
+`npm run test` (8 Tests) und `npm run build` — alle grün am 2026-06-29.
+
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Keine offenen Punkte für dieses Kapitel.
 
 ### `von-neumann`
 

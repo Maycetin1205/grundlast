@@ -260,5 +260,63 @@
       "fundstelle": "Intel, CPU Speed: What Is CPU Clock Speed?, Abschnitt zu Leistungsfaktoren",
       "abgerufenAm": "2026-06-29"
     }
+  ],
+  "cpu-ram-speicher": [
+    {
+      "aussage": "Eine CPU speichert und führt Programmbefehle über ihre Schaltungen aus.",
+      "zitat": "It stores and executes program instructions through its vast networks of circuitry.",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"What is a central processing unit (CPU)?\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "RAM beziehungsweise Arbeitsspeicher dient als kurzfristiger Speicher für aktuell genutzte Daten.",
+      "zitat": "Memory usually takes the form of short-term storage for the files most often accessed during recent computer use.",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"Guiding concepts: Data storage and memory\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "CPU-Cache liegt näher an der CPU und kann typische Speicherzugriffe schneller bedienen als RAM.",
+      "zitat": "modern CPUs have one or multiple layers of cache that routinely handle such tasks (at speeds faster than RAM can achieve)",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"Cache\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Threads sind als virtuelle Befehlsfolgen zu verstehen, die an eine CPU ausgegeben werden.",
+      "zitat": "Threads can be thought of as virtual sequences of instructions that are issued to a CPU.",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"What are threads?\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Taktfrequenz beschreibt CPU-Zyklen pro Sekunde und wird in GHz gemessen.",
+      "zitat": "The clock speed measures the number of cycles your CPU executes per second, measured in GHz",
+      "quelleId": "intel-cpu-clock-speed",
+      "fundstelle": "Intel, CPU Speed: What Is CPU Clock Speed?, Abschnitt \"What Is Clock Speed?\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "SSDs sind im Microsoft-Support als kleiner und schneller als HDDs beschrieben.",
+      "zitat": "SSDs are smaller and faster than hard disk drives (HDDs).",
+      "quelleId": "microsoft-ssd-hdd-storage",
+      "fundstelle": "Microsoft Support, All about SSD, HDD, and storage types, Kernaussagenliste",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "NVMe beschreibt, wie Host-Software mit nichtflüchtigem Speicher über mehrere Transporte kommuniziert.",
+      "zitat": "host software communicates with non-volatile memory across multiple transports",
+      "quelleId": "nvmexpress-specifications",
+      "fundstelle": "NVM Express, Specifications, Abschnitt \"NVMe Set of Specifications Overview\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "M.2 ist bei NVM Express als Formfaktor für SSDs aufgeführt; NVMe ist davon getrennt die Spezifikation.",
+      "zitat": "solid state drives (SSDs) in all form factors (U.2, M.2, AIC, EDSFF)",
+      "quelleId": "nvmexpress-specifications",
+      "fundstelle": "NVM Express, Specifications, Abschnitt \"NVMe Set of Specifications Overview\"",
+      "abgerufenAm": "2026-06-29"
+    }
   ]
 }

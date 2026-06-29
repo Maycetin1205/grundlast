@@ -8,7 +8,7 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **5** | teilgeprueft **0** | ungeprueft **95**
+- Vertrauen: geprueft **6** | teilgeprueft **0** | ungeprueft **94**
 - Review dokumentiert: **0**
 - Mit Quellen-Tags: **67**
 
@@ -63,7 +63,7 @@
 
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
-| `cpu-ram-speicher` | ready | ungeprueft | - | ja | ja |
+| `cpu-ram-speicher` | ready | geprueft | - | ja | ja |
 | `hardware-schnittstellen` | ready | ungeprueft | - | ja | ja |
 | `homeoffice-ergonomie` | ready | ungeprueft | - | ja | ja |
 | `raid-systeme` | draft | ungeprueft | - | ja | ja |
