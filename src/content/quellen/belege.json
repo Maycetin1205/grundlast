@@ -479,7 +479,7 @@
       "abgerufenAm": "2026-06-29"
     },
     {
-      "aussage": "Der Dateimodus besteht aus den Dateizugriffsbits sowie den set-user-ID-, set-group-ID- und Sticky-Bits.",
+      "aussage": "Der Dateimodus umfasst die Dateizugriffsbits (file permission bits).",
       "zitat": "The file mode consists of the file permission bits",
       "quelleId": "linux-man-pages-chmod2",
       "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Klammerzusatz zur Zusammensetzung des Dateimodus",
@@ -487,13 +487,13 @@
     },
     {
       "aussage": "Der mode-Operand von chmod ist entweder ein symbolischer Ausdruck oder eine nicht-negative Oktalzahl.",
-      "zitat": "expression or a non-negative octal integer",
+      "zitat": "The mode operand shall be either a symbolic_mode expression or a non-negative octal integer.",
       "quelleId": "posix-chmod",
       "fundstelle": "IEEE Std 1003.1 (POSIX), chmod, EXTENDED DESCRIPTION, erster Absatz",
       "abgerufenAm": "2026-06-29"
     },
     {
-      "aussage": "Die who-Symbole u, g und o bezeichnen den User-, Group- und Other-Teil der Modus-Bits; das Symbol a ist gleichbedeutend mit ugo.",
+      "aussage": "Im symbolischen chmod-Modus ist das who-Symbol a gleichbedeutend mit ugo.",
       "zitat": "A who consisting of the symbol a shall be equivalent to ugo",
       "quelleId": "posix-chmod",
       "fundstelle": "IEEE Std 1003.1 (POSIX), chmod, EXTENDED DESCRIPTION, Absatz zu den who-Symbolen",

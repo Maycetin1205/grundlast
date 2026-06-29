@@ -6,11 +6,11 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 
 | Feld | Wert |
 |---|---|
-| Aktuelles Kapitel | `linux-chmod` |
-| Kapiteldatei | `src/content/lessons/linux-chmod.mdx` |
+| Aktuelles Kapitel | `bit-byte` |
+| Kapiteldatei | `src/content/lessons/bit-byte.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
-| Phase | Review – unabhängiger Prüfer-Pass (Prompt 3 aus `PROMPTS.md`); Phase A gebaut, Status ungeprüft |
-| Nächstes Kapitel | Aus der `fehlt`-/`ungeprüft`-Liste in `ABDECKUNGSMATRIX.md`, erst nach dokumentiertem Abschluss von `linux-chmod` |
+| Phase | Bau – Kapitel vorhanden, aber noch keine Faktenbelege in `belege.json`; Quellen-/Vergleichsmatrix und ≥5 belegte Kernaussagen nach `KAPITELSTANDARD.md` §2/§8 ergänzen, danach unabhängiger Prüfer-Pass |
+| Nächstes Kapitel | Aus der `fehlt`-/`ungeprüft`-Liste in `ABDECKUNGSMATRIX.md`, erst nach dokumentiertem Abschluss von `bit-byte` |
 
 ## Für jeden neuen Arbeitsabschnitt
 

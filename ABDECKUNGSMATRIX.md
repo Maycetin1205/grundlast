@@ -39,7 +39,7 @@ Zeile mit Status `fehlt` anlegen.
 
 Die Ketten unten sind aus `AUSBILDUNGSLANDKARTE.md` und dem aktuellen
 Lektionsbestand befüllt; die Statuswerte stammen aus `CONTENT_AUDIT_MATRIX.md`
-und der generierten Übersicht `AP1_STATUS.md` (Stand: 8 geprüft, 92 ungeprüft).
+und der generierten Übersicht `AP1_STATUS.md` (Stand: 9 geprüft, 91 ungeprüft).
 Die **feine** Auflösung je Aufgabentyp und die `fehlt`-Zeilen werden gegen den
 Anker (IHK-Prüfungskatalog + Probeprüfungen) vervollständigt; das ist der erste
 verbindliche Arbeitsschritt unter diesem Plan. Erfundene Themen oder Quellen
@@ -69,7 +69,7 @@ sind unzulässig: Eine Zeile entsteht nur aus einem belegten Anker.
 | USV-Systeme und Verfügbarkeit | `usv-systeme` | ungeprüft |
 | Scan-/Bilddaten (DPI, Farbtiefe) rechnen | `scan-bilddaten` | ungeprüft |
 | Dateisysteme | `dateisysteme` | geprüft |
-| Dateirechte unter Linux (chmod) | `linux-chmod` | ungeprüft (aktiv) |
+| Dateirechte unter Linux (chmod) | `linux-chmod` | geprüft |
 | Prozesse und Threads | `prozess-thread` | ungeprüft |
 | Zentrale vs. dezentrale Systeme | `zentral-dezentral` | ungeprüft |
 | Virtualisierung | `virtualisierung` | ungeprüft |
@@ -173,10 +173,10 @@ eine Lücke (Vorkapitel zuerst).
 `bit-byte` liefert Konzepte aus Zeile 1, ist aber noch `ungeprüft`; vor seiner
 Freigabe gelten Bit/Byte als von `prefixe` getragen.
 
-`linux-chmod` (Zeile 9) ist gebaut, aber noch `ungeprüft`; der Registereintrag ist
-provisorisch und wird mit dem unabhängigen Prüfer-Pass bestätigt. Voraussetzungen
-sind bereits eingeführt: Oktal aus `zahlensysteme` (Zeile 2), Inode/Metadaten aus
-`dateisysteme` (Zeile 8).
+`linux-chmod` (Zeile 9) ist am 2026-06-29 durch den unabhängigen Prüfer-Pass
+bestätigt (`geprüft`); der Registereintrag ist nicht mehr provisorisch.
+Voraussetzungen sind bereits eingeführt: Oktal aus `zahlensysteme` (Zeile 2),
+Inode/Metadaten aus `dateisysteme` (Zeile 8).
 
 ## Pflege
 

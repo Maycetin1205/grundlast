@@ -60,6 +60,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Dateisysteme mit zehn online geprüften Belegen zu FAT32-Limit, NTFS-Log und ACLs, ext4-Inodes, Extents und Journal sowie APFS-Clones und Space Sharing.',
     nextAction: 'Abgeschlossen; im Lernpfad mit Linux-Dateirechten fortsetzen.',
   },
+  'linux-chmod': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Linux-Dateirechte (chmod) mit elf online geprüften Belegen zu Modus-Bits, r=4/w=2/x=1 (S_IRUSR/S_IWUSR/S_IXUSR), Oktal- gegenüber symbolischem Modus und den Sonderbits setuid (4000), setgid (2000) und sticky (1000).',
+    nextAction: 'Abgeschlossen; im Lernpfad mit Prozessen/Threads bzw. Virtualisierung fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {

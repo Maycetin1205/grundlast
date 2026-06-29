@@ -8,7 +8,7 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **8** | teilgeprueft **0** | ungeprueft **92**
+- Vertrauen: geprueft **9** | teilgeprueft **0** | ungeprueft **91**
 - Review dokumentiert: **0**
 - Mit Quellen-Tags: **68**
 
@@ -34,7 +34,7 @@
 
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
-| `linux-chmod` | ready | ungeprueft | - | ja | ja |
+| `linux-chmod` | ready | geprueft | - | ja | ja |
 | `dateisysteme` | ready | geprueft | - | ja | ja |
 | `prozess-thread` | ready | ungeprueft | - | ja | ja |
 | `zentral-dezentral` | ready | ungeprueft | - | ja | ja |

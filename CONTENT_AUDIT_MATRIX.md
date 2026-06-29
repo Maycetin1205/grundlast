@@ -20,7 +20,7 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `linux-chmod` | Kapitel | ungeprüft | IT-Systeme: Betriebssystem/Dateien → Rechte → Virtualisierung | Phase A gebaut (Belege, Quellen, Lösbarkeitsnachweis dokumentiert). Offen: unabhängiger Prüfer-Pass. |
+| `bit-byte` | Kapitel | ungeprüft | Digitale Grundlagen: Bit und Byte → Präfixe → Zahlensysteme | Phase Bau: Kapitel vorhanden, Faktenbelege in `belege.json` ausstehend. Davor: `linux-chmod` am 2026-06-29 geprüft. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -29,9 +29,11 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 
 ## Gebaut, ungeprüft – Review ausstehend
 
-Phase A (Bau) abgeschlossen und dokumentiert; der Boden ist grün. `geprüft` ist
-erst nach einem unabhängigen Prüfer-Pass (Erzeuger ≠ Prüfer) zulässig. Bis dahin
-bleibt der Status `ungeprüft`.
+Derzeit kein Kapitel in diesem Zustand. Das nächste Kapitel `bit-byte` ist in
+Phase Bau (Faktenbelege in `belege.json` stehen noch aus) und erscheint hier
+erst, wenn sein Boden grün ist und es zum Review ansteht.
+
+## Abgeschlossene Audits
 
 ### `linux-chmod`
 
@@ -43,7 +45,7 @@ und Verzeichnissen erklären; symbolische `chmod`-Befehle (`u+x`, `g-w`, `o=`,
 `a+r`) und Sonderbits (setuid, setgid, sticky) einordnen; riskante Modi wie `777`
 als sicherheitskritisch erkennen.
 Form: Kapitel
-Status: ungeprüft (Phase A gebaut; unabhängiger Prüfer-Pass steht aus)
+Status: geprüft
 Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Dateirechte unter Linux (chmod)" in
 Abschnitt 2 · IT-Systeme (LF2, Jahr 1).
 Voraussetzungen → Anschluss: Zahlensysteme (Oktal) und Dateisysteme (Inode,
@@ -76,11 +78,10 @@ Geprüfte Kernaussagen (11, mit maschinell prüfbarem Beleg in
 `src/content/quellen/belege.json`; `npm run check:sources` grün):
 
 1. Die Systemaufrufe chmod()/fchmod() ändern die Modus-Bits einer Datei. (man7)
-2. Der Dateimodus besteht aus den Dateizugriffsbits plus set-user-ID, set-group-ID
-   und Sticky-Bit. (man7)
-3. Der mode-Operand ist entweder symbolisch oder eine nicht-negative Oktalzahl.
-   (POSIX)
-4. Die who-Symbole u, g, o bezeichnen User, Group, Other; a ist gleich ugo. (POSIX)
+2. Der Dateimodus umfasst die Dateizugriffsbits (file permission bits). (man7)
+3. Der mode-Operand ist entweder ein symbolischer Ausdruck (symbolic_mode) oder
+   eine nicht-negative Oktalzahl. (POSIX)
+4. Im symbolischen Modus ist das who-Symbol a gleichbedeutend mit ugo. (POSIX)
 5. Eigentümer-Lesen entspricht S_IRUSR mit Oktalwert 0400. (man7)
 6. Eigentümer-Schreiben entspricht S_IWUSR mit Oktalwert 0200. (man7)
 7. Eigentümer-Ausführen entspricht S_IXUSR (0100); bei Verzeichnissen erlaubt es
@@ -112,18 +113,27 @@ Oktalmodus und Sticky Bit ab. Sichtbare Quellen und
 und man7.
 Sprachprüfung: echte Umlaute und ß; Title-Case-Überschriften in deutsche
 Kleinschreibung korrigiert; Tippfehler („wiederzürkennen", „Ausserdem") behoben.
-Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): AUSSTEHEND —
-dies ist Phase A (Bau); die Freigabe erfolgt nur in einem getrennten
-Prüfer-Durchgang (Prompt 3 aus `PROMPTS.md`).
+Unabhängiger Prüfer-Pass (Erzeuger ≠ Prüfer): 2026-06-29, keine offenen Funde.
+Gegnerisch nach §7 geprüft: Definitionen und alle Oktalrechnungen selbst
+nachgerechnet (755=rwxr-xr-x, 750=rwxr-x---, 700=rwx------, 644=rw-r--r--,
+600=rw-------, 640=rw-r-----; Sonderbits 4000/2000/1000), rwx-Semantik bei Datei
+gegenüber Verzeichnis, symbolische Modi, Voraussetzungen und Lösbarkeit Typ A/B;
+`<Term>`- und Quellen-IDs sowie der Materialbeleg in `Prüfung_7.md` gegengeprüft.
+Funde (alle behoben): Drei Beleg-Zitate in `belege.json` stützten nur einen
+Halbsatz. Claim 2 (Dateimodus-Zusammensetzung) und Claim 4 (who-Symbole) wurden
+auf den robust zitierbaren Quellsatz eingegrenzt, Claim 3 auf den vollen
+POSIX-Satz erweitert. Ein robustes Zitat der jeweils weggelassenen Satzhälfte
+scheitert am Zeilenumbruch der man7-Seite (`set- user-ID`) bzw. am Symbol-Markup
+der POSIX-Seite (`u , g , o`); die betroffenen Fakten (set-*/Sticky-Bits, u/g/o)
+bleiben über die Claims 9–11 und den Faktenkern des Kapitels gedeckt.
 Technische Checks: `npm run check:sources` (76/76 online und Zitate gefunden, davon
 11 für `linux-chmod`), `npm run check:consistency`, `npm run lint`, `npm run test`
-(8 Tests) und `npm run build` — alle grün am 2026-06-29.
+(8 Tests) und `npm run build` — alle grün am 2026-06-29, erneut nach dem
+Prüfer-Pass und den Beleg-Korrekturen bestätigt.
 Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
-Grundlagenpfad. Offen ist allein der unabhängige Prüfer-Pass; erst danach werden
-Status in `CONTENT_AUDIT_MATRIX.md` und `ABDECKUNGSMATRIX.md` auf `geprüft` gesetzt
-und der Eintrag aus „Gebaut, ungeprüft" nach „Abgeschlossene Audits" überführt.
-
-## Abgeschlossene Audits
+Grundlagenpfad. Keine offenen Punkte. Nächstes aktives Kapitel gemäß Lückenliste
+und Abhängigkeitsketten: `bit-byte` (oberste `ungeprüft`-Zeile, Wurzel von
+Kette 1; Phase Bau, Faktenbelege ausstehend).
 
 ### `dateisysteme`
 
