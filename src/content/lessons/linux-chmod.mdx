@@ -7,13 +7,13 @@
 
 ## Worum geht's
 
-Linux speichert an Dateien und Verzeichnissen, wer lesen, schreiben oder ausführen darf. Das ist ein Grundthema für Betriebssysteme, Sicherheit und den Umgang mit Servern. In der Prüfung taucht es oft als kurze Rechen- oder Zuordnungsaufgabe auf: `chmod 755`, `-rw-r--r--`, `rwxr-x---` oder die Frage, warum ein Benutzer zwar eine Datei sehen, aber nicht betreten oder starten kann.
+Linux speichert an Dateien und Verzeichnissen <Term id="dateirechte">Dateirechte</Term>: wer lesen, schreiben oder ausführen darf. Das ist ein Grundthema für Betriebssysteme, Sicherheit und den Umgang mit Servern. In der Prüfung taucht es oft als kurze Rechen- oder Zuordnungsaufgabe auf: `chmod 755`, `-rw-r--r--`, `rwxr-x---` oder die Frage, warum ein Benutzer zwar eine Datei sehen, aber nicht betreten oder starten kann.
 
 Die Idee ist klein, aber sehr wichtig: Pro Rolle gibt es drei Rechte. Jedes Recht ist ein <Term id="bit">Bit</Term>. Drei Bits ergeben eine Oktalziffer. Genau deshalb passen Linux-Rechte so gut zu Oktalzahlen aus dem Kapitel Zahlensysteme.
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du Linux-Rechte in symbolischer Form (`rwxr-xr-x`) und als Oktalzahl (`755`) lesen, berechnen und begründen. Du kannst erklären, warum `r=4`, `w=2`, `x=1` gilt, warum die Reihenfolge immer User-Group-Other ist und warum Rechte bei Dateien und Verzeichnissen nicht exakt dasselbe bedeuten. Ausserdem erkennst du riskante Einstellungen wie `777` und kannst symbolische `chmod`-Befehle wie `u+x`, `g-w` oder `o=` einordnen.
+Nach diesem Kapitel kannst du Linux-Rechte in symbolischer Form (`rwxr-xr-x`) und als Oktalzahl (`755`) lesen, berechnen und begründen. Du kannst erklären, warum `r=4`, `w=2`, `x=1` gilt, warum die Reihenfolge immer User-Group-Other ist und warum Rechte bei Dateien und Verzeichnissen nicht exakt dasselbe bedeuten. Außerdem erkennst du riskante Einstellungen wie `777` und kannst symbolische `chmod`-Befehle wie `u+x`, `g-w` oder `o=` einordnen.
 
 <Analogie>
 Stell dir ein Firmengebäude mit drei Personengruppen vor: Eigentümer, Team und Besucher. Jede Gruppe kann drei Schlüssel bekommen: einen Leseschlüssel zum Anschauen, einen Schreibschlüssel zum Verändern und einen Ausführungsschlüssel zum Betreten oder Starten. `chmod` ist dann die kurze Notiz am Türplan: Wer bekommt welche Schlüssel?
@@ -47,7 +47,7 @@ Bei einem normalen <Term id="dateisystem">Dateisystem</Term> landen diese Inform
 
 ---
 
-## Rechte Lesen: rwx
+## Rechte lesen: rwx
 
 Die drei Rechte haben je nach Objekt eine leicht andere Bedeutung:
 
@@ -103,7 +103,7 @@ Typische Muster:
 
 ---
 
-## Schritt Für Schritt: chmod 755 Lesen
+## Schritt für Schritt: chmod 755 lesen
 
 <StepByStep titel="Was bedeutet chmod 755?">
   <Schritt nr={1} titel="Stellen trennen">
@@ -165,9 +165,9 @@ Du hast `backup.sh` erstellt und bekommst beim Start `Permission denied`. Mit `l
 
 ---
 
-## Sonderbits Kurz Einordnen
+## Sonderbits kurz einordnen
 
-POSIX-Rechte haben neben `rwx` noch besondere Bits. Für AP1 reicht meist, sie wiederzürkennen und nicht mit den normalen drei Ziffern zu verwechseln:
+POSIX-Rechte haben neben `rwx` noch besondere Bits. Für AP1 reicht meist, sie wiederzuerkennen und nicht mit den normalen drei Ziffern zu verwechseln:
 
 | Sonderbit | Oktalstelle | Typisches Beispiel | Kurzidee |
 |---|---|---|---|
@@ -201,7 +201,7 @@ Die normale AP1-Rechnung bleibt trotzdem dieselbe: Die letzten drei Ziffern sind
 
 ---
 
-## Was Hängen Bleibt
+## Was hängen bleibt
 
 Linux-Rechte sind drei Bits pro Rolle: `r=4`, `w=2`, `x=1`. Die Rollen stehen immer in der Reihenfolge User, Group, Other. Deshalb wird aus `rwxr-xr-x` die Zahl `755` und aus `rw-r--r--` die Zahl `644`. Bei Verzeichnissen ist besonders `x` wichtig, weil es Betreten und Pfadauflösung erlaubt. `chmod` ist damit kein Auswendiglern-Zauber, sondern einfache Bitrechnung plus Sicherheitsverstand.
 
@@ -228,6 +228,21 @@ Linux-Rechte sind drei Bits pro Rolle: `r=4`, `w=2`, `x=1`. Die Rollen stehen im
 
 <Quellen
   quellen={[
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizielle Einordnung von LF2: Arbeitsplätze nach Kundenwunsch ausstatten.'
+    },
+    {
+      label: 'FIAusbV - Fachinformatikerausbildungsverordnung',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung mit Ausbildungsrahmenplan und Prüfungsanforderungen.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ausbildungsquelle zur modernisierten Fachinformatiker-Ausbildung und zur praktischen Umsetzung.'
+    },
     {
       label: 'IEEE Std 1003.1 (POSIX) - chmod',
       href: 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/chmod.html',

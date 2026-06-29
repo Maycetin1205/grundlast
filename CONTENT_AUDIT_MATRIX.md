@@ -3,6 +3,10 @@
 Diese Datei ist der Nachweis für die tatsächliche Qualität einzelner Kapitel.
 Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
+`geprüft` setzt zusätzlich zum Faktencheck einen unabhängigen Prüfer-Pass
+(Erzeuger ≠ Prüfer), einen dokumentierten Lösbarkeitsnachweis und die
+aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`).
+
 ## Statuswerte
 
 | Status | Bedeutung |
@@ -16,12 +20,108 @@ Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `linux-chmod` | Kapitel | ungeprüft | IT-Systeme: Betriebssystem/Dateien → Rechte → Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
+| `linux-chmod` | Kapitel | ungeprüft | IT-Systeme: Betriebssystem/Dateien → Rechte → Virtualisierung | Phase A gebaut (Belege, Quellen, Lösbarkeitsnachweis dokumentiert). Offen: unabhängiger Prüfer-Pass. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
 nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
+
+## Gebaut, ungeprüft – Review ausstehend
+
+Phase A (Bau) abgeschlossen und dokumentiert; der Boden ist grün. `geprüft` ist
+erst nach einem unabhängigen Prüfer-Pass (Erzeuger ≠ Prüfer) zulässig. Bis dahin
+bleibt der Status `ungeprüft`.
+
+### `linux-chmod`
+
+Slug: `linux-chmod`
+Kompetenz: Linux-Dateirechte symbolisch (`rwxr-xr-x`) und oktal (`755`) lesen,
+berechnen und begründen; `r=4`, `w=2`, `x=1` und die feste Reihenfolge
+User-Group-Other anwenden; den Bedeutungsunterschied von `r`/`w`/`x` bei Dateien
+und Verzeichnissen erklären; symbolische `chmod`-Befehle (`u+x`, `g-w`, `o=`,
+`a+r`) und Sonderbits (setuid, setgid, sticky) einordnen; riskante Modi wie `777`
+als sicherheitskritisch erkennen.
+Form: Kapitel
+Status: ungeprüft (Phase A gebaut; unabhängiger Prüfer-Pass steht aus)
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Dateirechte unter Linux (chmod)" in
+Abschnitt 2 · IT-Systeme (LF2, Jahr 1).
+Voraussetzungen → Anschluss: Zahlensysteme (Oktal) und Dateisysteme (Inode,
+Metadaten) → Linux-Dateirechte (chmod) → Prozesse/Threads bzw. Virtualisierung.
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als Rahmen
+für LF2 (Arbeitsplätze ausstatten, IT-Systeme einrichten, Rechte und Sicherheit
+begründen). Eigenständiges Grundlagenkapitel, weil die in `dateisysteme`
+angerissene Rechteachse hier vertieft und für Server- und Sicherheitsthemen
+vorbereitet wird.
+Fachliche Primärquellen: IEEE Std 1003.1 (POSIX) chmod für symbolischen gegenüber
+oktalem Modus, die who-Symbole (u/g/o/a), die Operatoren (+/-/=) und die absolute
+Wirkung der Oktalzahl; Linux man-pages chmod(2) für die Modus-Bits mit Oktalwerten
+(S_IRUSR 0400, S_IWUSR 0200, S_IXUSR 0100), die x-Bedeutung bei Verzeichnissen
+sowie die Sonderbits S_ISUID (4000), S_ISGID (2000) und S_ISVTX/Sticky (1000). GNU
+Coreutils chmod bleibt als praxisnahe Sekundärquelle im sichtbaren Quellenblock,
+wurde aber nicht als maschineller Beleg gezählt, weil `npm run check:sources` dort
+HTTP 403 erhält (gleiche Einschränkung wie bei Kingston in `cpu-ram-speicher`).
+Didaktische Vergleiche: Aufbau Faktenkern (Rollen + r/w/x-Werte) → rwx lesen (Datei
+gegenüber Verzeichnis) → Oktalschreibweise → Schritt-für-Schritt-Umrechnung in
+beide Richtungen → symbolische Modi → Sonderbits → Fehlerfallen. Vorausgesetzt
+werden nur bereits eingeführte Konzepte: Oktal aus `zahlensysteme`, Inode und
+Metadaten aus `dateisysteme`.
+Lokaler Materialabgleich: In `_material_index/extraktion/Prüfung_7.md` erscheint
+`chmod` in einer Befehl-zu-Bedeutung-Zuordnung (chmod = Ändern von
+Zugriffsrechten). Übernommen wurde nur die abstrakte Denkoperation; kein
+geschützter Aufgaben- oder Lösungstext.
+
+Geprüfte Kernaussagen (11, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+
+1. Die Systemaufrufe chmod()/fchmod() ändern die Modus-Bits einer Datei. (man7)
+2. Der Dateimodus besteht aus den Dateizugriffsbits plus set-user-ID, set-group-ID
+   und Sticky-Bit. (man7)
+3. Der mode-Operand ist entweder symbolisch oder eine nicht-negative Oktalzahl.
+   (POSIX)
+4. Die who-Symbole u, g, o bezeichnen User, Group, Other; a ist gleich ugo. (POSIX)
+5. Eigentümer-Lesen entspricht S_IRUSR mit Oktalwert 0400. (man7)
+6. Eigentümer-Schreiben entspricht S_IWUSR mit Oktalwert 0200. (man7)
+7. Eigentümer-Ausführen entspricht S_IXUSR (0100); bei Verzeichnissen erlaubt es
+   den Zugriff auf die Einträge. (man7)
+8. Für jedes gesetzte Bit der Oktalzahl wird das zugehörige Rechtebit gesetzt, alle
+   anderen werden gelöscht (absolute Wirkung). (POSIX)
+9. Das set-user-ID-Bit S_ISUID hat den Oktalwert 4000. (man7)
+10. Das set-group-ID-Bit S_ISGID hat den Oktalwert 2000. (man7)
+11. Das Sticky-Bit S_ISVTX hat den Oktalwert 1000 und wirkt als eingeschränktes
+    Löschflag. (man7)
+
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
+Typ A (aus Prüfung_7, abstrahiert): „Ordne den Befehl `chmod` seiner Bedeutung zu"
+ist über den Abschnitt „Worum geht's" und das Glossar `chmod`/`dateirechte`
+lösbar. Typ B (prüfungsüblicher Kern): „Rechne `-rw-r-----` in eine Oktalzahl um
+und benenne, wer ausführen darf" ist über Faktenkern (r=4/w=2/x=1, Reihenfolge
+UGO), Oktaltabelle und die StepByStep-Umrechnung lösbar; im Kapitel als „Typische
+Prüfungsaufgabe" mit Ergebnis 640 vollständig durchgerechnet. Beide Typen brauchen
+keinen Begriff außerhalb dieses Kapitels oder bereits geprüfter Vorkapitel.
+Didaktik, Fehlerfallen und Anwendung geprüft: Ziel/Einstieg, Schlüssel-Analogie,
+Faktenkern, Datei-/Verzeichnis-Tabelle, Oktaltabelle, zwei StepByStep-Umrechnungen,
+symbolische Modi, Sonderbits, sieben Fehlerfallen und ein Praxisfall vorhanden.
+Alle Umrechnungen nachgerechnet: 755=rwxr-xr-x, 750=rwxr-x---, 644=rw-r--r--,
+640=rw-r-----.
+Glossar, Quellen und Links geprüft: `<Term>`-IDs `dateirechte`, `bit`,
+`dateisystem` und `inode` sind gültig; das lokale `<Glossar>` deckt chmod, rwx,
+Oktalmodus und Sticky Bit ab. Sichtbare Quellen und
+`lessonSourceIds['linux-chmod']` enthalten KMK, FIAusbV, BIBB, POSIX, GNU Coreutils
+und man7.
+Sprachprüfung: echte Umlaute und ß; Title-Case-Überschriften in deutsche
+Kleinschreibung korrigiert; Tippfehler („wiederzürkennen", „Ausserdem") behoben.
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): AUSSTEHEND —
+dies ist Phase A (Bau); die Freigabe erfolgt nur in einem getrennten
+Prüfer-Durchgang (Prompt 3 aus `PROMPTS.md`).
+Technische Checks: `npm run check:sources` (76/76 online und Zitate gefunden, davon
+11 für `linux-chmod`), `npm run check:consistency`, `npm run lint`, `npm run test`
+(8 Tests) und `npm run build` — alle grün am 2026-06-29.
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Offen ist allein der unabhängige Prüfer-Pass; erst danach werden
+Status in `CONTENT_AUDIT_MATRIX.md` und `ABDECKUNGSMATRIX.md` auf `geprüft` gesetzt
+und der Eintrag aus „Gebaut, ungeprüft" nach „Abgeschlossene Audits" überführt.
 
 ## Abgeschlossene Audits
 
@@ -657,6 +757,7 @@ Slug:
 Kompetenz:
 Form:
 Status:
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md):
 Voraussetzungen → Anschluss:
 
 Ausbildungsquelle:
@@ -675,8 +776,10 @@ gefunden):
 4.
 5.
 
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
 Didaktik, Fehlerfallen und Anwendung geprüft:
 Glossar, Quellen und Links geprüft:
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer):
 Technische Checks:
 Entscheidung und offene Punkte:
 ```

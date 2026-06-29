@@ -110,6 +110,9 @@ export const lessonSourceIds: Record<string, string[]> = {
     'gnu-coreutils-df',
   ],
   'linux-chmod': [
+    'kmk-rahmenlehrplan',
+    'fiausbv',
+    'bibb-fachinformatiker',
     'posix-chmod',
     'gnu-coreutils-chmod',
     'linux-man-pages-chmod2',

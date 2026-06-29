@@ -469,5 +469,84 @@
       "fundstelle": "Apple Developer, About Apple File System, Abschnitt \"Clones Reduce the Cost of Copying\"",
       "abgerufenAm": "2026-06-29"
     }
+  ],
+  "linux-chmod": [
+    {
+      "aussage": "Die Systemaufrufe chmod() und fchmod() ändern die Modus-Bits einer Datei.",
+      "zitat": "system calls change a file's mode bits",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, erster Satz",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Der Dateimodus besteht aus den Dateizugriffsbits sowie den set-user-ID-, set-group-ID- und Sticky-Bits.",
+      "zitat": "The file mode consists of the file permission bits",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Klammerzusatz zur Zusammensetzung des Dateimodus",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Der mode-Operand von chmod ist entweder ein symbolischer Ausdruck oder eine nicht-negative Oktalzahl.",
+      "zitat": "expression or a non-negative octal integer",
+      "quelleId": "posix-chmod",
+      "fundstelle": "IEEE Std 1003.1 (POSIX), chmod, EXTENDED DESCRIPTION, erster Absatz",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Die who-Symbole u, g und o bezeichnen den User-, Group- und Other-Teil der Modus-Bits; das Symbol a ist gleichbedeutend mit ugo.",
+      "zitat": "A who consisting of the symbol a shall be equivalent to ugo",
+      "quelleId": "posix-chmod",
+      "fundstelle": "IEEE Std 1003.1 (POSIX), chmod, EXTENDED DESCRIPTION, Absatz zu den who-Symbolen",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Das Leserecht des Eigentümers entspricht dem Modus-Bit S_IRUSR mit dem Oktalwert 0400.",
+      "zitat": "S_IRUSR  (00400) read by owner",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Liste der Modus-Bits",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Das Schreibrecht des Eigentümers entspricht dem Modus-Bit S_IWUSR mit dem Oktalwert 0200.",
+      "zitat": "S_IWUSR  (00200) write by owner",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Liste der Modus-Bits",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Das Ausführungsrecht des Eigentümers (S_IXUSR, Oktalwert 0100) bedeutet bei Verzeichnissen, dass auf Einträge im Verzeichnis zugegriffen werden kann.",
+      "zitat": "S_IXUSR  (00100) execute/search by owner (\"search\" applies for directories, and means that entries within the directory can be accessed)",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Liste der Modus-Bits, Eintrag S_IXUSR",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Für jedes in der Oktalzahl gesetzte Bit wird das zugehörige Rechtebit gesetzt; alle anderen Rechtebits werden gelöscht.",
+      "zitat": "For each bit set in the octal number, the corresponding file permission bit shown in the following table shall be set; all other file permission bits shall be cleared.",
+      "quelleId": "posix-chmod",
+      "fundstelle": "IEEE Std 1003.1 (POSIX), chmod, EXTENDED DESCRIPTION, Absatz vor der Oktaltabelle",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Das set-user-ID-Bit (S_ISUID) hat den Oktalwert 4000.",
+      "zitat": "S_ISUID  (04000) set-user-ID",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Liste der Modus-Bits",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Das set-group-ID-Bit (S_ISGID) hat den Oktalwert 2000.",
+      "zitat": "S_ISGID  (02000) set-group-ID",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Liste der Modus-Bits",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Das Sticky-Bit (S_ISVTX) hat den Oktalwert 1000 und wirkt als eingeschränktes Löschflag.",
+      "zitat": "S_ISVTX  (01000) sticky bit (restricted deletion flag",
+      "quelleId": "linux-man-pages-chmod2",
+      "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Liste der Modus-Bits",
+      "abgerufenAm": "2026-06-29"
+    }
   ]
 }
