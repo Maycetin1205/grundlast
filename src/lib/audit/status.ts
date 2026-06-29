@@ -36,6 +36,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Datenrate und Downloadzeit mit sieben online geprüften Belegen zu Bit/Byte, SI-Präfixen, MB/GB und TCP-Durchsatz.',
     nextAction: 'Abgeschlossen; im Lernpfad mit der Von-Neumann-Grundidee fortsetzen.',
   },
+  'von-neumann': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Von-Neumann-Architektur mit neun online geprüften Belegen zu gemeinsamem Speicher, CPU-Bausteinen, Instruction Cycle, Bus, Takt und Cache.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit CPU, RAM und Massenspeicher fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {

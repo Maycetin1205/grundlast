@@ -16,7 +16,7 @@ Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `von-neumann` | Kapitel | ungeprüft | IT-Systeme: Von-Neumann-Grundidee → Hardware und Schnittstellen → Betriebssystem, Dateien, Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
+| `cpu-ram-speicher` | Kapitel | ungeprüft | IT-Systeme: Von-Neumann-Grundidee → CPU, RAM und Massenspeicher → Hardware und Schnittstellen → Betriebssystem, Dateien, Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -24,6 +24,86 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
 ## Abgeschlossene Audits
+
+### `von-neumann`
+
+Slug: `von-neumann`
+Kompetenz: Die Von-Neumann-Grundidee als Modell für Allzweckrechner erklären;
+CPU-Bausteine, gemeinsamen Speicher, Bus, Fetch-Decode-Execute-Zyklus,
+Flaschenhals und Cache einordnen; RAM, Massenspeicher, ALU und Steuerwerk in
+Prüfungsfragen sauber trennen.
+Form: Kapitel
+Status: geprüft
+Voraussetzungen → Anschluss: Datenmengen und Datenraten → Von-Neumann-Grundidee
+→ CPU, RAM und Massenspeicher → Hardware und Schnittstellen
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für gemeinsames Grundlagenwissen zu IT-Systemen, Arbeitsplätzen und
+Vernetzung. Die Kapitelentscheidung ist ein eigenständiges Grundlagenkapitel in
+LF2, weil die Rechnerarchitektur späteres Verständnis von Hardwareauswahl,
+Betriebssystemen, Dateien, Rechten und Virtualisierung vorbereitet.
+
+Fachliche Primärquellen: Smithsonian Libraries, *First Draft of a Report on the
+EDVAC*, als historische Primärquelle zur Stored-Program-Idee; Computer History
+Museum als online prüfbarer HTML-Anker zur Einordnung des EDVAC-Reports und des
+gemeinsamen Speichers; IBM, *What is a Central Processing Unit (CPU)?*, für ALU,
+Bus und Instruction Cycle; Intel, *CPU Speed: What Is CPU Clock Speed?*, für
+Taktfrequenz, GHz und Cache als Leistungsfaktor. Cornell CS 3410 wurde als
+didaktischer Vergleich für die klassische Stufenreihenfolge Fetch, Decode,
+Execute, Memory und Writeback genutzt.
+
+Didaktische Vergleiche: Das Folgekapitel `cpu-ram-speicher` behandelt
+Komponentenauswahl, RAM-Größe, Massenspeicher und PC-Kaufentscheidungen. Dieses
+Kapitel bleibt deshalb bei der Architekturidee, dem Befehlszyklus und den
+typischen AP1-Verwechslungen. Die Harvard-Abgrenzung ist knapp gehalten und dient
+nur dazu, den gemeinsamen Speicherraum der Von-Neumann-Architektur kontrastiv zu
+verstehen.
+
+Lokaler Materialabgleich: `_material_index/AP1_ABGLEICH.md` ordnet lokale
+CPU-/RAM-/SSD-Aufgabentypen dem Kapitel `cpu-ram-speicher` zu. Für
+`von-neumann` wurde daher kein Aufgaben- oder Lösungstext übernommen; der
+Materialabgleich bestätigt nur den Anschluss an das nächste Hardwarekapitel.
+
+Geprüfte Kernaussagen (9, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+
+1. Die Von-Neumann-Grundidee nutzt einen gemeinsamen internen Speicher, in dem
+   Instruktionen und Daten gehalten werden können.
+2. Die ALU ist der Teil der CPU, der arithmetische und logische Operationen
+   ausführt.
+3. CPU-Arbeit wird als wiederholter Instruction Cycle beschrieben.
+4. Beim Fetch-Schritt werden Daten beziehungsweise Befehle aus dem Speicher
+   geholt.
+5. Beim Decode-Schritt übersetzt die CPU Binärinstruktionen in elektrische
+   Steuersignale.
+6. Beim Execute-Schritt interpretiert und führt der Computer
+   Programminstruktionen aus.
+7. Ein Bus verbindet CPU und Speicher und trägt damit den Datenfluss zwischen
+   diesen Komponenten.
+8. Die Taktfrequenz misst CPU-Zyklen pro Sekunde und wird in GHz angegeben.
+9. CPU-Leistung hängt nicht nur von der Taktfrequenz ab; Cache-Größe und
+   Cache-Effizienz sind relevante Faktoren.
+
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg über den gemeinsamen
+Speicherraum; Werkstattanalogie, Faktenkern, EVA-Einordnung,
+Fetch-Decode-Execute-Zyklus, Mini-Assemblerbeispiel, Flaschenhals, Cache,
+Harvard-Abgrenzung und prüfungsnahe Aussagen vorhanden. Keine Rechenwege im
+Kapitel; die Mini-Addition wurde als Ablaufbeispiel geprüft. Fehlerfallen zu
+RAM/Massenspeicher, CPU/ALU, Steuerwerk, Bus, Cache und
+Von-Neumann-Flaschenhals sind enthalten.
+
+Glossar, Quellen und Links geprüft: `Term`-IDs für CPU, RAM, Cache,
+Massenspeicher und EVA-Prinzip sind gültig. Quellenkomponente, Quellenbank und
+Quellen-Tags enthalten FIAusbV, KMK, BIBB, Smithsonian, Computer History Museum,
+IBM, Cornell und Intel. Der Anschluss an `cpu-ram-speicher` ist als nächster
+Lernpfadschritt festgelegt.
+
+Technische Checks: `npm run check:sources` (36/36 online und Zitate gefunden,
+davon 9 für `von-neumann`), `npm run check:consistency`, `npm run lint`,
+`npm run test` (8 Tests) und `npm run build` — alle grün am 2026-06-29.
+
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Keine offenen Punkte für dieses Kapitel.
 
 ### `datenrate-berechnung`
 

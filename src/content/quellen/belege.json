@@ -195,5 +195,70 @@
       "fundstelle": "RFC 6349, Abschnitt 4.1.2, TCP Transfer Time and Transfer Time Ratio Calculation",
       "abgerufenAm": "2026-06-29"
     }
+  ],
+  "von-neumann": [
+    {
+      "aussage": "Die Von-Neumann-Grundidee nutzt einen gemeinsamen internen Speicher, in dem Instruktionen und Daten gehalten werden können.",
+      "zitat": "advantages of using just one large internal memory, in which instructions as well as data could be held",
+      "quelleId": "computer-history-museum-edvac",
+      "fundstelle": "Computer History Museum, This Day in History, 30. Juni, Abschnitt zum EDVAC-Report",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Die ALU ist der Teil der CPU, der arithmetische und logische Operationen ausführt.",
+      "zitat": "The arithmetic/logic unit (ALU) handles all arithmetic operations and logical operations.",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"Arithmetic/logic unit\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "CPU-Arbeit wird als wiederholter Instruction Cycle beschrieben.",
+      "zitat": "CPU work occurs according to an established cycle, known as the CPU instruction cycle",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"CPU instruction cycle\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Beim Fetch-Schritt werden Daten beziehungsweise Befehle aus dem Speicher geholt.",
+      "zitat": "Fetches occur anytime data is retrieved from memory.",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"CPU instruction cycle\", Schritt \"Fetch\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Beim Decode-Schritt übersetzt die CPU Binärinstruktionen in elektrische Steuersignale.",
+      "zitat": "The decoder within the CPU translates binary instructions into electrical signals",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"CPU instruction cycle\", Schritt \"Decode\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Beim Execute-Schritt interpretiert und führt der Computer Programminstruktionen aus.",
+      "zitat": "Execution occurs when computers interpret and carry out a computer program",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"CPU instruction cycle\", Schritt \"Execute\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Ein Bus verbindet CPU und Speicher und trägt damit den Datenfluss zwischen diesen Komponenten.",
+      "zitat": "Buses provide a way for computers to link CPUs to on-board memory",
+      "quelleId": "ibm-cpu-instruction-cycle",
+      "fundstelle": "IBM, What is a Central Processing Unit (CPU)?, Abschnitt \"Buses\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Die Taktfrequenz misst CPU-Zyklen pro Sekunde und wird in GHz angegeben.",
+      "zitat": "The clock speed measures the number of cycles your CPU executes per second, measured in GHz",
+      "quelleId": "intel-cpu-clock-speed",
+      "fundstelle": "Intel, CPU Speed: What Is CPU Clock Speed?, Abschnitt \"What Is Clock Speed?\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "CPU-Leistung hängt nicht nur von der Taktfrequenz ab; Cache-Größe und Cache-Effizienz sind relevante Faktoren.",
+      "zitat": "The size and efficiency of the CPU cache",
+      "quelleId": "intel-cpu-clock-speed",
+      "fundstelle": "Intel, CPU Speed: What Is CPU Clock Speed?, Abschnitt zu Leistungsfaktoren",
+      "abgerufenAm": "2026-06-29"
+    }
   ]
 }

@@ -8,7 +8,7 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **4** | teilgeprueft **0** | ungeprueft **96**
+- Vertrauen: geprueft **5** | teilgeprueft **0** | ungeprueft **95**
 - Review dokumentiert: **0**
 - Mit Quellen-Tags: **67**
 
@@ -54,7 +54,7 @@
 
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
-| `von-neumann` | ready | ungeprueft | - | ja | ja |
+| `von-neumann` | ready | geprueft | - | ja | ja |
 | `bit-byte` | final | ungeprueft | - | ja | ja |
 | `zahlensysteme` | final | geprueft | - | ja | ja |
 | `prefixe` | final | geprueft | - | ja | ja |

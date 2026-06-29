@@ -76,10 +76,14 @@ export const slugTags: Record<string, string[]> = {
 
 export const lessonSourceIds: Record<string, string[]> = {
   'von-neumann': [
+    'kmk-rahmenlehrplan',
+    'fiausbv',
+    'bibb-fachinformatiker',
     'smithsonian-edvac-first-draft',
     'computer-history-museum-edvac',
     'ibm-cpu-instruction-cycle',
     'cornell-cpu-stages',
+    'intel-cpu-clock-speed',
   ],
   'bit-byte': [
     'kmk-rahmenlehrplan',

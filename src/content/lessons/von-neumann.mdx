@@ -9,22 +9,23 @@
 
 ## Worum geht's
 
-Fast jeder normale Computer folgt bis heute einer Grundidee: Programm und Daten liegen
-im Speicher, die *<Term id="cpu">CPU</Term>* holt nacheinander Befehle, dekodiert sie
-und führt sie aus. Dieses Prinzip heißt Von-Neumann-Architektur oder Stored-Program-
-Computer.
+Die meisten Allzweckrechner lassen sich bis heute mit einer Grundidee erklären:
+Programm und Daten liegen im gemeinsamen Speicherraum, die *<Term id="cpu">CPU</Term>*
+holt Befehle, dekodiert sie und führt sie aus. Dieses Prinzip heißt
+Von-Neumann-Architektur oder Stored-Program-Computer.
 
 Das ist AP1-relevant, weil daran viele andere Themen hängen: Warum braucht ein Rechner
-*<Term id="ram">RAM</Term>*? Warum ist Cache so wichtig? Warum kann eine schnelle CPU
-trotzdem auf Speicher warten? Und warum sind Programme im Betrieb nicht nur "auf der
-Festplatte", sondern als Befehle im Arbeitsspeicher?
+*<Term id="ram">RAM</Term>*? Warum ist <Term id="cache">Cache</Term> so wichtig?
+Warum kann eine schnelle CPU trotzdem auf Speicher warten? Und warum sind Programme
+im Betrieb nicht nur auf dem *<Term id="massenspeicher">Massenspeicher</Term>*,
+sondern als Befehle und Daten im Arbeitsspeicher?
 
 ## Was du danach kannst
 
 - die Grundidee "Programm und Daten im gemeinsamen Speicher" erklären.
 - die Hauptbestandteile CPU, Rechenwerk, Steuerwerk, Speicher, Bus und Ein-/Ausgabe zuordnen.
 - den Fetch-Decode-Execute-Zyklus Schritt für Schritt beschreiben.
-- den Von-Neumann-Flaschenhals erklären und Cache als Gegenmassnahme einordnen.
+- den Von-Neumann-Flaschenhals erklären und Cache als Gegenmaßnahme einordnen.
 - Von-Neumann-Architektur grob von Harvard-Architektur unterscheiden.
 - typische Prüfungsfallen vermeiden: RAM vs. Massenspeicher, CPU vs. ALU, Speicher vs. Cache.
 
@@ -158,10 +159,11 @@ Die CPU kann sehr schnell rechnen, wartet aber oft auf Daten. Deshalb fühlt sic
 reine GHz-Zahl nie wie die ganze Wahrheit an. Entscheidend sind auch Cache, Speicher-
 bandbreite, Latenz und Zugriffsmuster.
 
-### Cache als Gegenmassnahme
+### Cache als Gegenmaßnahme
 
-Cache ist kleiner, aber deutlich schnellerer Speicher in oder nahe an der CPU. Er hält
-Daten und Befehle bereit, die vermutlich gleich wieder gebraucht werden.
+Cache ist kleiner, aber schneller erreichbarer Speicher in oder nahe an der CPU. Er hält
+Daten und Befehle bereit, die vermutlich gleich wieder gebraucht werden, und kann dadurch
+Wartezeit auf den langsameren Arbeitsspeicher verringern.
 
 | Ebene | Typische Rolle | Prüfungsmerksatz |
 |---|---|---|
@@ -172,7 +174,7 @@ Daten und Befehle bereit, die vermutlich gleich wieder gebraucht werden.
 | RAM | Arbeitsspeicher | viel größer, aber deutlich langsamer |
 | SSD/HDD | Massenspeicher | dauerhaft, aber viel langsamer als RAM |
 
-Cache löst den Flaschenhals nicht vollständig, aber er senkt die Wartezeit massiv,
+Cache löst den Flaschenhals nicht vollständig, aber er kann die Wartezeit stark senken,
 wenn Programme auf nahe beieinanderliegende oder wiederholt genutzte Daten zugreifen.
 
 ---
@@ -191,7 +193,8 @@ In einer Harvard-Architektur sind Programmspeicher und Datenspeicher getrennt.
 
 Wichtig: Moderne Rechner sind Mischformen. Nach außen nutzt die Software meist ein
 Von-Neumann-Modell. Intern können getrennte Instruction- und Data-Caches wie eine
-Harvard-nahe Optimierung wirken.
+Harvard-nahe Optimierung wirken. Für AP1 reicht diese Abgrenzung; du musst keine
+Mikroarchitektur im Detail nachzeichnen.
 
 ---
 
@@ -264,6 +267,21 @@ der Weg zwischen CPU und Speicher, also der Von-Neumann-Flaschenhals.
 <Quellen
   quellen={[
     {
+      label: 'Fachinformatikerausbildungsverordnung (FIAusbV)',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Grundlage für Ausbildungsrahmen, Arbeitsplatzausstattung und IT-Systeme.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Berufsschulische Einordnung in die gemeinsamen Lernfelder zu IT-Systemen.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ausbildungs- und Prüfungsrahmen der modernisierten IT-Berufe.'
+    },
+    {
       label: 'Smithsonian Libraries - John von Neumann: First Draft of a Report on the EDVAC',
       href: 'https://library.si.edu/digital-library/book/firstdraftofrepo00vonn',
       detail: 'Historische Primärquelle zur Stored-Program-Idee und zum EDVAC-Entwurf.'
@@ -282,6 +300,11 @@ der Weg zwischen CPU und Speicher, also der Von-Neumann-Flaschenhals.
       label: 'Cornell CS 3410 - The 5 Classic CPU Stages',
       href: 'https://www.cs.cornell.edu/courses/cs3410/2025fa/notes/cpu_stages.html',
       detail: 'Lehrmaterial zu Fetch, Decode, Execute, Memory und Writeback als klassischem CPU-Stufenmodell.'
+    },
+    {
+      label: 'Intel - CPU Speed: What Is CPU Clock Speed?',
+      href: 'https://www.intel.com/content/www/us/en/gaming/resources/cpu-clock-speed.html',
+      detail: 'Herstellererklärung zu Taktfrequenz, GHz und weiteren Leistungsfaktoren wie Cache.'
     },
   ]}
 />
