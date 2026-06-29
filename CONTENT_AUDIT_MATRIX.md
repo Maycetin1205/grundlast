@@ -16,7 +16,7 @@ Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `dateisysteme` | Kapitel | ungeprüft | IT-Systeme: Hardware und Schnittstellen → Betriebssystem/Dateien → Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
+| `linux-chmod` | Kapitel | ungeprüft | IT-Systeme: Betriebssystem/Dateien → Rechte → Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -24,6 +24,99 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
 ## Abgeschlossene Audits
+
+### `dateisysteme`
+
+Slug: `dateisysteme`
+Kompetenz: Dateisysteme als Organisationsschicht zwischen Speicherblöcken und
+Dateien erklären; FAT32, exFAT, NTFS, ext4 und APFS nach Plattform,
+Einzeldateigröße, Rechtemodell, Integritätsschutz und Einsatzfall unterscheiden;
+für USB-Stick, Windows-Client, Linux-Server und Mac-Systemvolume eine begründete
+Wahl treffen.
+Form: Kapitel
+Status: geprüft
+Voraussetzungen → Anschluss: Hardware und Schnittstellen → Dateisysteme →
+Linux-Dateirechte und Virtualisierung
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für LF2, in dem Arbeitsplätze nach Kundenwunsch ausgestattet, IT-Systeme
+eingerichtet und betriebliche Anforderungen begründet werden. Das Kapitel bleibt
+ein eigenständiges Grundlagenkapitel, weil die Wahl des Dateisystems direkt an
+Massenspeicher und Betriebssystem anschließt und spätere Themen zu Rechten,
+Backup, Virtualisierung und Serverbetrieb vorbereitet.
+
+Fachliche Primärquellen: Microsoft Learn, *File System Functionality
+Comparison*, für FAT32-Grenze, NTFS/FAT32-Vergleich, Journaling- und
+Sicherheitsachsen; Microsoft Learn, *NTFS Overview*, für NTFS als
+Windows-Dateisystem mit Transaktionslog und ACLs; Linux Kernel Documentation zu
+ext4-Inodes, `inode.i_block`/Extents und Journal (jbd2) für Inodes, Extent Tree
+und Journal; Apple Developer, *About Apple File System*, als prüfbare JSON-
+Variante der Apple-Dokumentation für APFS, Clones, Snapshots, Space Sharing und
+Sparse Files; POSIX `chmod` als Anschlussquelle für Dateimodus-Bits und
+Rollen/Rechte. Nicht prüfbare PDF-/JS-Anker wurden nicht als Faktenbelege
+gezählt.
+
+Didaktische Vergleiche: Das Vorgängerkapitel `hardware-schnittstellen` endet bei
+Massenspeicher, Schnittstellen und Arbeitsplatzpassung. Dieses Kapitel übernimmt
+nur die logische Organisation auf dem Datenträger und verzichtet bewusst auf
+versionsabhängige theoretische Maximalgrößen, weil sie prüfungsdidaktisch weniger
+tragfähig sind als Plattform, FAT32-Einzeldateilimit, Rechte und Integrität. Das
+Folgekapitel `linux-chmod` vertieft die Rechteachse; `virtualisierung` kann
+danach Dateisystemwahl für VM-Images und Snapshots wieder aufnehmen.
+
+Lokaler Materialabgleich: `_material_index/extraktion/Prüfung_4.md` enthält in
+Aufgabe 2 f) einen tabellarischen Aufgabentyp zu FAT32, NTFS, APFS und EXT4 mit
+Einsatzzwecken. Übernommen wurden nur Themenumfang und Denkoperation:
+Dateisysteme anhand Einsatzgebiet/Plattform begründen und nicht als
+Detail-Spezifikation auswendig lernen. Geschützte Aufgaben- oder Lösungstexte
+wurden nicht übernommen.
+
+Geprüfte Kernaussagen (10, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+
+1. FAT32 hat in Microsofts Dateisystemvergleich ein maximales Einzeldatei-Limit
+   von 4 GiB.
+2. NTFS verbessert die Zuverlässigkeit durch ein transaktionsbasiertes Log und
+   Checkpoint-Informationen.
+3. NTFS unterstützt detaillierte Berechtigungen auf Dateien und Ordnern über
+   Access Control Lists.
+4. In Unix-ähnlichen Dateisystemen speichert der Inode Metadaten einer Datei;
+   der Name liegt im Verzeichniseintrag.
+5. ext4 ersetzt die ältere Blockabbildung für Dateien durch einen Extent Tree.
+6. ext4 verwendet ein Journal, um bei Systemabstürzen vor
+   Metadaten-Inkonsistenzen zu schützen.
+7. APFS ersetzt HFS Plus als Standard-Dateisystem für iOS 10.3 und neuer sowie
+   macOS High Sierra und neuer.
+8. APFS unterstützt Cloning, Snapshots, Space Sharing, Fast Directory Sizing,
+   Atomic Safe-Save und Sparse Files.
+9. APFS-Clones belegen beim Erstellen keine zusätzlichen Datenblöcke.
+10. Bei APFS-Clones werden Änderungen an anderer Stelle geschrieben, während
+    unveränderte Blöcke geteilt bleiben.
+
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg über typische
+Kundensituationen; Archivmodell als mentale Brücke; Grundprinzip über Blöcke,
+Metadaten, Rechte und Crash-Schutz; Vergleichstabelle mit prüfungsnahen Achsen
+statt unzuverlässiger Zahlenlisten; Einzeldarstellung von FAT32, NTFS, ext4 und
+APFS; Auswahlverfahren in sechs Schritten; Szenariotabelle; Beispiel zur
+5,4-GB-Datei auf FAT32; Serverbeispiel Windows/NTFS gegen Linux/ext4;
+Fehlerfallen zu FAT32/exFAT, Journaling/Backup, Rechten, NTFS-Austauschformat,
+APFS und Formatieren vorhanden. Die einzige explizite Rechengrenze wurde geprüft:
+4 GiB entspricht rund 4,29 GB und liegt unter 5,4 GB, daher scheitert die
+Beispieldatei unabhängig von freier Gesamtkapazität.
+
+Glossar, Quellen und Links geprüft: `Term`-IDs für Dateisystem, MFT, Inode,
+Journaling, Copy-on-Write und Dateirechte sind gültig. Quellenbank,
+Quellen-Tags und sichtbare Quellen enthalten FIAusbV, KMK, BIBB, Microsoft
+Learn, Linux Kernel Documentation, Apple Developer und POSIX. Das Kapitel benennt
+den Anschluss an `linux-chmod` und danach Virtualisierung.
+
+Technische Checks: `npm run check:sources` (65/65 online und Zitate gefunden,
+davon 10 für `dateisysteme`), `npm run check:consistency`, `npm run lint`,
+`npm run test` (8 Tests) und `npm run build` — alle grün am 2026-06-29.
+
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Keine offenen Punkte für dieses Kapitel. Nächstes aktives
+Kapitel gemäß Landkarte: `linux-chmod`.
 
 ### `hardware-schnittstellen`
 

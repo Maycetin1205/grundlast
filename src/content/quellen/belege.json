@@ -397,5 +397,77 @@
       "fundstelle": "NVM Express, Specifications, Abschnitt \"NVMe Set of Specifications Overview\"",
       "abgerufenAm": "2026-06-29"
     }
+  ],
+  "dateisysteme": [
+    {
+      "aussage": "FAT32 hat in Microsofts Dateisystemvergleich ein maximales Einzeldatei-Limit von 4 GiB.",
+      "zitat": "Maximum file size 2^64–1 bytes 2^64–1 bytes 2^64–1 bytes 4 GiB",
+      "quelleId": "microsoft-filesystem-functionality",
+      "fundstelle": "Microsoft Learn, File System Functionality Comparison, Abschnitt \"Limits\", Tabellenzeile \"Maximum file size\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "NTFS verbessert die Zuverlässigkeit durch ein transaktionsbasiertes Log und Checkpoint-Informationen.",
+      "zitat": "NTFS enhances reliability by maintaining a transaction-based log file and checkpoint information.",
+      "quelleId": "microsoft-ntfs-overview",
+      "fundstelle": "Microsoft Learn, NTFS Overview, Abschnitt \"Increased reliability\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "NTFS unterstützt detaillierte Berechtigungen auf Dateien und Ordnern über Access Control Lists.",
+      "zitat": "NTFS enables you to assign detailed permissions to files and folders using Access Control Lists (ACLs).",
+      "quelleId": "microsoft-ntfs-overview",
+      "fundstelle": "Microsoft Learn, NTFS Overview, Abschnitt \"Increased security\", Punkt \"Granular access control with ACLs\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "In Unix-ähnlichen Dateisystemen speichert der Inode die Metadaten einer Datei; der Name liegt im Verzeichniseintrag.",
+      "zitat": "the inode stores all the metadata pertaining to the file",
+      "quelleId": "linux-kernel-ext4-inodes",
+      "fundstelle": "Linux Kernel Documentation, ext4, Abschnitt \"Index Nodes\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "ext4 ersetzt die ältere Blockabbildung für Dateien durch einen Extent Tree.",
+      "zitat": "In ext4, the file to logical block map has been replaced with an extent tree.",
+      "quelleId": "linux-kernel-ext4-ifork",
+      "fundstelle": "Linux Kernel Documentation, ext4, Abschnitt \"Extent Tree\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "ext4 verwendet ein Journal, um das Dateisystem bei Systemabstürzen vor Metadaten-Inkonsistenzen zu schützen.",
+      "zitat": "the ext4 filesystem employs a journal to protect the filesystem against metadata inconsistencies in the case of a system crash",
+      "quelleId": "linux-kernel-ext4-journal",
+      "fundstelle": "Linux Kernel Documentation, ext4, Abschnitt \"Journal (jbd2)\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "APFS ersetzt HFS Plus als Standard-Dateisystem für iOS 10.3 und neuer sowie macOS High Sierra und neuer.",
+      "zitat": "Apple File System replaces HFS Plus as the default file system for iOS 10.3 and later, and for macOS High Sierra and later.",
+      "quelleId": "apple-apfs-foundation-json",
+      "fundstelle": "Apple Developer, About Apple File System, Abschnitt \"Overview\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "APFS unterstützt unter anderem Cloning, Snapshots, Space Sharing und Sparse Files.",
+      "zitat": "including cloning, snapshots, space sharing, fast directory sizing, atomic safe-save, and sparse files.",
+      "quelleId": "apple-apfs-foundation-json",
+      "fundstelle": "Apple Developer, About Apple File System, Abschnitt \"Overview\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "APFS-Clones belegen beim Erstellen keine zusätzlichen Datenblöcke und erlauben schnelle Kopien auf demselben Volume.",
+      "zitat": "A clone is a copy of a file or directory that occupies no additional space on disk.",
+      "quelleId": "apple-apfs-foundation-json",
+      "fundstelle": "Apple Developer, About Apple File System, Abschnitt \"Clones Reduce the Cost of Copying\"",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Bei APFS-Clones werden Änderungen an anderer Stelle geschrieben, während unveränderte Blöcke geteilt bleiben.",
+      "zitat": "Modifications to the data are written elsewhere, and both files continue to share the unmodified blocks.",
+      "quelleId": "apple-apfs-foundation-json",
+      "fundstelle": "Apple Developer, About Apple File System, Abschnitt \"Clones Reduce the Cost of Copying\"",
+      "abgerufenAm": "2026-06-29"
+    }
   ]
 }

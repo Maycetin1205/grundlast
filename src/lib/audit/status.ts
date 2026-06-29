@@ -54,6 +54,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Hardware, Schnittstellen und Peripherie mit elf online geprüften Belegen zu Ausbildungsrahmen, USB4, USB-C, USB-PD, Thunderbolt, DisplayPort, HDMI und NVMe.',
     nextAction: 'Abgeschlossen; im Lernpfad mit Dateisystemen fortsetzen.',
   },
+  dateisysteme: {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Dateisysteme mit zehn online geprüften Belegen zu FAT32-Limit, NTFS-Log und ACLs, ext4-Inodes, Extents und Journal sowie APFS-Clones und Space Sharing.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit Linux-Dateirechten fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {

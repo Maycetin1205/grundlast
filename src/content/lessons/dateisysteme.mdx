@@ -1,154 +1,340 @@
-# Dateisysteme – FAT32, NTFS, ext4, APFS
+# Dateisysteme - FAT32, NTFS, ext4, APFS
 
 <MetaBar
-  lernfeld="LF 2 — Arbeitsplätze nach Kundenwunsch ausstatten"
-  prüfungsrelevanz="PFLICHT · 4/5"
+  lernfeld="LF 2 - Arbeitsplätze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT - 4/5"
 />
+
+<Tipp titel="So benutzt du dieses Kapitel">
+Lies zuerst das Grundprinzip und die Vergleichstabelle. In Aufgaben entscheidet
+meist nicht eine auswendig gelernte Eigenschaft, sondern die Kombination aus
+Plattform, Dateigröße, Rechten und Schutz vor Inkonsistenzen.
+</Tipp>
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du erklären, was ein <Term id="dateisystem">Dateisystem</Term> überhaupt tut, die vier prüfungsrelevanten Systeme **FAT32, NTFS, ext4 und APFS** entlang der wichtigen Achsen — Kompatibilität, maximale Dateigröße, Rechtemodell, Journaling, Metadaten — gegeneinanderstellen und für ein konkretes Szenario (USB-Stick, Windows-Client, Linux-Server, macOS-Notebook) das passende Dateisystem mit Begründung auswählen. Du erkennst typische Prüfungsfallen wie das 4-GiB-Limit bei FAT32 oder die Verwechslung von ACL- und POSIX-Rechten.
+Nach diesem Kapitel kannst du erklären, was ein <Term id="dateisystem">Dateisystem</Term>
+leistet, FAT32, NTFS, ext4 und APFS in typischen AP1-Szenarien unterscheiden und
+eine passende Formatierung begründen. Du erkennst insbesondere, warum eine große
+Einzeldatei auf FAT32 scheitert, wann NTFS-Rechte sinnvoll sind, warum ext4 gut
+zu Linux-Systemen passt und weshalb APFS kein Austauschformat für gemischte
+Windows-/Linux-Umgebungen ist.
 
-## 01 · Warum existiert das überhaupt?
+Du brauchst dafür die Grundlagen aus Hardware und Massenspeicher: Ein Datenträger
+liefert Blöcke. Das Dateisystem macht daraus Dateien, Verzeichnisse, Namen,
+Rechte, Zeitstempel und eine Struktur, die ein Betriebssystem zuverlässig
+wiederfinden kann.
 
-Eine Festplatte oder SSD ist physisch nichts weiter als eine riesige Reihe nummerierter Speicherbausteine. Damit aus diesen Rohbits eine Datei mit Namen, Größe, Berechtigung und Speicherort wird, braucht es ein Organisationsschema. Genau das macht ein **Dateisystem**: es legt fest, wie Dateien benannt, in Verzeichnisse einsortiert, mit Metadaten versehen und auf die physischen Speicherblöcke verteilt werden.
+## 01 - Warum existiert das überhaupt?
 
-In der Prüfung wird das Thema selten als Definition gefragt, fast immer als **Auswahlentscheidung in einer Kundensituation**. Beispiele: Ein Kunde will einen USB-Stick zwischen Windows und Mac tauschen. Ein Linux-Server soll RAID-fähig formatiert werden. Ein Mitarbeiter klagt, dass eine 6-GB-Videodatei „nicht passt", obwohl der Stick noch 12 GB frei hat. Wer die wichtigsten vier Dateisysteme entlang ihrer Schwächen und Stärken kennt, beantwortet alle drei Aufgaben in unter zwei Minuten.
+Eine SSD speichert keine "Datei namens Angebot.pdf". Sie speichert Blöcke. Erst
+das Dateisystem legt fest, welche Blöcke zusammengehören, wie der Dateiname
+lautet, welche Metadaten dazugehören und wer die Datei benutzen darf.
 
-Im Betrieb hat die Wahl handfeste Folgen: ein falsches Dateisystem kostet Rechte, Backup-Fähigkeit, maximale Dateigröße oder Kompatibilität. Eine spätere Migration ist möglich, aber aufwendig — sie bedeutet meist Daten sichern, Volume neu formatieren, zurückspielen.
+In der Prüfung wird das selten als reine Definition gefragt. Häufiger bekommst du
+eine Kundensituation:
+
+- Ein USB-Stick soll zwischen Windows, macOS und Linux genutzt werden.
+- Eine 5,4-GB-Backupdatei passt nicht auf einen FAT32-Stick, obwohl genug freier
+  Speicher angezeigt wird.
+- Eine Windows-Arbeitsstation braucht getrennte Rechte für mehrere Benutzer.
+- Ein Linux-Server soll eine robuste Datenpartition bekommen.
+- Ein MacBook soll mit Verschlüsselung, Snapshots und platzsparenden Kopien
+  arbeiten.
+
+Die richtige Antwort entsteht, wenn du zuerst die Anforderungen sortierst und
+erst danach das Dateisystem nennst.
 
 <Analogie>
-Ein Dateisystem ist wie das Ordnungsschema eines Archivs. Die Festplatte ist der Lagerraum. Ohne Schema liegen alle Akten ungeordnet auf dem Boden. Mit einem **Aktenschrank mit Schubladen und beschrifteten Hängemappen** weißt du sofort, wo etwas zu finden ist, wer es eingestellt hat und wann zuletzt darauf zugegriffen wurde. Verschiedene Schrank-Hersteller setzen unterschiedliche Akzente: einer macht riesige, einfache Fächer (FAT32 — passt überall hin, aber keine Schlösser). Einer hat Einzelschlösser pro Mappe und Schadensprotokoll (NTFS). Einer ist für ein Großarchiv ausgelegt und protokolliert jede Bewegung (ext4). Und einer kann Schubladen kopieren, ohne den Inhalt zu duplizieren (APFS).
+Ein Dateisystem ist wie das Ordnungssystem eines Archivs. Der Datenträger ist der
+Lagerraum, die Blöcke sind Regalfächer. Ohne Ordnungssystem weiß niemand, welche
+Fächer zu welchem Vorgang gehören. FAT32 ist ein einfacher, sehr kompatibler
+Archivplan. NTFS führt detaillierte Zugriffslisten und ein Änderungsprotokoll.
+ext4 arbeitet mit Inodes und Extents für Linux-Systeme. APFS kann Kopien und
+Snapshots platzsparend verwalten.
 </Analogie>
 
----
+## 02 - Das Grundprinzip
 
-## 02 · Das Grundprinzip
+Jedes Dateisystem beantwortet vier Fragen:
 
-Jedes Dateisystem muss vier Dinge können — die Unterschiede liegen darin, *wie gut* und *mit welchen Zusatzfunktionen*.
-
-| Aufgabe | Was das Dateisystem leistet |
+| Frage | Bedeutung in der Praxis |
 |---|---|
-| **Adressierung** | Welche physischen Blöcke gehören zu welcher Datei? FAT32 nutzt eine Allokationstabelle, NTFS die <Term id="mft">MFT</Term>, ext4 <Term id="inode">Inodes</Term>, APFS Copy-on-Write-Verweise. |
-| **Metadaten** | Name, Größe, Eigentümer, Zeitstempel, Rechte. FAT32 speichert hier sehr wenig, NTFS/ext4/APFS sehr viel. |
-| **Integrität** | Was passiert bei Stromausfall mitten im Schreiben? Lösung über <Term id="journaling">Journaling</Term> oder <Term id="cow-copy-on-write">Copy-on-Write</Term>. |
-| **Rechte** | Wer darf was lesen, schreiben, ausführen? Reicht von „gar nichts" (FAT32) bis zu fein granularen ACLs (NTFS) und Snapshots/Verschlüsselung (APFS). |
+| Wo liegen die Daten? | Zuordnung von Dateien zu Blöcken, Clustern, Extents oder anderen Verweisen. |
+| Was gehört zur Datei? | Metadaten wie Name, Größe, Zeitstempel, Eigentümer und Typ. |
+| Wer darf was? | Kein Rechtemodell, ACLs oder POSIX-Rechte mit Lesen, Schreiben und Ausführen. |
+| Was passiert bei einem Crash? | Kein Schutz, Journal/Log oder Copy-on-Write-Verhalten gegen inkonsistente Metadaten. |
 
-<Tipp titel="Die Achse, die fast immer abgefragt wird">
-Wenn du dir nur eine Eigenschaft pro Dateisystem merkst, dann das **Rechtemodell** und die **maximale Dateigröße**. Aus diesen beiden Achsen folgen 80 % aller Klausur-Begründungen.
+Die Begriffe klingen technischer, als sie sind:
+
+- Eine **Datei** ist die logische Einheit, mit der Benutzer und Programme arbeiten.
+- Ein **Verzeichnis** ordnet Namen zu Dateien oder weiteren Verzeichnissen.
+- **Metadaten** beschreiben Dateien, ohne selbst der Dateiinhalt zu sein.
+- Ein *<Term id="mft">MFT</Term>*-Eintrag ist in NTFS der zentrale Datensatz zu
+  einer Datei.
+- Ein *<Term id="inode">Inode</Term>* ist in ext-Dateisystemen der Metadaten-
+  Eintrag zu einer Datei.
+- *<Term id="journaling">Journaling</Term>* beziehungsweise ein Transaktionslog
+  hilft, Metadaten nach Abstürzen wieder konsistent zu machen.
+- *<Term id="cow-copy-on-write">Copy-on-Write</Term>* schreibt Änderungen an
+  anderer Stelle und aktualisiert danach die Verweise.
+
+<Tipp titel="Prüfungsmerksatz">
+FAT32 ist das Austauschformat für einfache, kleine Dateien. NTFS ist die
+Windows-Wahl mit ACLs. ext4 ist die naheliegende Linux-Wahl. APFS ist die
+Apple-Wahl mit Clones, Snapshots und Space Sharing.
 </Tipp>
 
----
+## 03 - Die vier Systeme im Vergleich
 
-## 03 · Die vier prüfungsrelevanten Systeme im Vergleich
-
-| Merkmal | FAT32 | NTFS | ext4 | APFS |
+| Achse | FAT32 | NTFS | ext4 | APFS |
 |---|---|---|---|---|
-| **Hersteller** | Microsoft (1996) | Microsoft (1993) | Linux-Community (2008) | Apple (2017) |
-| **Hauptplattform** | plattformübergreifend | Windows | Linux | macOS, iOS |
-| **Max. Dateigröße** | **4 GiB − 1 Byte** | 16 TiB (theoret. 256 TiB+) | 16 TiB | 8 EiB |
-| **Max. Volumegröße** | 2 TiB (praktisch) | 256 TiB | 1 EiB | 8 EiB |
-| **Journaling** | nein | **ja** | **ja** | nein (Copy-on-Write) |
-| **Rechtemodell** | keines | **ACL** (fein granular) | **POSIX** (rwx, Owner/Group/Other) | POSIX + ACL |
-| **Verschlüsselung** | keine | EFS, BitLocker (extern) | extern (LUKS) | **nativ** |
-| **Snapshots** | nein | über Schattenkopien | extern (LVM) | **nativ** |
-| **Hardlinks / Symlinks** | nein / nein | ja / ja | ja / ja | ja / ja |
-| **Typische Einsatzgebiete** | USB-Sticks, SD-Karten, BIOS/UEFI-Partitionen | Windows-Systeme, NTFS-Server | Linux-Server, Workstations | macOS-Systeme, iPhones, iPads |
+| Typische Plattform | Austauschmedien, Kameras, UEFI/Boot-Medien | Windows-Clients und Windows-Server | Linux-Clients und Linux-Server | macOS, iOS, iPadOS |
+| Große Einzeldateien | ungeeignet ab rund 4 GiB | geeignet | geeignet | geeignet |
+| Rechte | kein brauchbares Mehrbenutzer-Rechtemodell | ACLs für Benutzer und Gruppen | POSIX-Rechte, auf Linux erweiterbar | POSIX-Rechte und Apple-Mechanismen |
+| Crash-Schutz | kein Journal | Transaktionslog/Journal | Journal, standardmäßig vor allem für Metadaten | Copy-on-Write-Verhalten, Snapshots |
+| Stärke | sehr breite Kompatibilität | Windows-Integration, ACLs, Log, große Volumes | robust und Linux-nativ | Clones, Snapshots, Space Sharing |
+| Typischer Einsatz | USB-Stick mit kleinen Dateien | Windows-Systemlaufwerk, Datenlaufwerk, Freigabe | Linux-Datenpartition, Server, Workstation | Mac-Systemvolume, Apple-Geräte |
+| Typische Falle | freie Kapazität hilft nicht gegen das Einzeldatei-Limit | nicht automatisch bestes Austauschformat für macOS/Linux | Windows kann ext4 nicht ohne Zusatzlösung nutzen | nicht als allgemeines Austauschformat einplanen |
 
-### FAT32 — der kleinste gemeinsame Nenner
+Diese Tabelle ist bewusst prüfungsnah. Theoretische Maximalgrößen sind je nach
+Version, Blockgröße und Betriebssystemgrenze unterschiedlich. Für AP1 ist die
+harte, regelmäßig abgefragte Grenze: FAT32 kann keine großen Einzeldateien über
+rund 4 GiB speichern.
 
-FAT32 versteht praktisch jedes Betriebssystem — Windows, macOS, Linux, Android, Spielekonsolen, Kameras. Genau dort liegt sein Wert: ein FAT32-Stick funktioniert überall. Der Preis: keine Rechte, kein Schutz, keine Verschlüsselung — und vor allem die berüchtigte **4-GiB-Grenze** pro Datei. Eine 5-GB-Video- oder Backup-Datei lässt sich auf FAT32 nicht ablegen, selbst wenn 100 GB frei sind. Der Nachfolger **exFAT** löst dieses Problem und wird in der Prüfung gerne als „verbesserte FAT-Variante für große Dateien" abgefragt.
+## 04 - Die Systeme einzeln
 
-### NTFS — der Windows-Standard
+### FAT32 - kompatibel, aber einfach
 
-NTFS ist seit Windows NT der Standard. Wichtige Bausteine: die zentrale **MFT** als „Inhaltsverzeichnis" des Datenträgers, **Journaling** für Crash-Schutz, **ACLs** für feingranulare Rechte (jeder Benutzer und jede Gruppe kann pro Datei eigene Berechtigungen haben), **Schattenkopien** (Volume Shadow Copies) als Snapshot-Mechanismus, sowie native Komprimierung und **EFS** (Encrypting File System). Lesezugriff von macOS und Linux ist möglich, Schreibzugriff klappt zuverlässig nur mit Zusatztreibern.
+FAT32 ist alt, einfach und deshalb breit einsetzbar. Für USB-Sticks,
+Speicherkarten, Kameras und kleine Austauschdateien ist das oft genau richtig.
+Der Preis: FAT32 kennt kein modernes Rechtemodell, kein Journaling und ein
+Einzeldatei-Limit von rund 4 GiB.
 
-### ext4 — der Linux-Klassiker
+Das erklärt die klassische Aufgabe: Ein Stick zeigt noch 30 GB frei an, aber eine
+5,4-GB-Datei lässt sich nicht kopieren. Nicht die freie Kapazität ist das Problem,
+sondern die maximale Größe einer einzelnen Datei.
 
-ext4 ist seit 2008 das Standard-Dateisystem der meisten Linux-Distributionen. Es nutzt **Inodes** für Metadaten, **Extents** statt einzelner Blockverweise (effizienter bei großen Dateien) und ein **Journal** gegen Inkonsistenzen. Rechtemodell ist klassisch **POSIX** — `rwx` für Owner, Group und Other (siehe Linux-`chmod`). Hat solide Werkzeuge zur Wartung (`fsck`, `tune2fs`), unterstützt sehr große Volumes und ist robust im Server-Einsatz.
+Wenn große Dateien plattformübergreifend transportiert werden sollen, ist **exFAT**
+meist die naheliegende Alternative: ähnlich gedacht für Wechselmedien, aber ohne
+das FAT32-Limit für große Einzeldateien.
 
-### APFS — Apples Antwort auf moderne Anforderungen
+### NTFS - Windows mit Rechten und Log
 
-APFS ersetzt seit 2017 das ältere HFS+. Es ist auf **SSDs** optimiert (kein klassisches Journaling — stattdessen **Copy-on-Write**), unterstützt **Snapshots** und **Klone** ohne doppelten Speicherbedarf, hat **native Verschlüsselung** und nutzt **Space Sharing**: mehrere logische Volumes teilen sich einen physischen Container und holen sich Platz dynamisch. Auf Windows und Linux nur eingeschränkt lesbar.
+NTFS ist die Standardwahl für moderne Windows-Systeme. Es nutzt die Master File
+Table als zentrales Verzeichnis der Dateisystemobjekte, unterstützt detaillierte
+ACLs und hält Änderungen in einem transaktionsbasierten Log fest. Dadurch kann
+Windows nach einem Absturz Dateisystem-Metadaten wieder konsistenter herstellen.
 
----
+In Aufgaben ist NTFS stark, wenn mehrere Benutzer auf demselben Windows-System
+arbeiten, wenn Freigaben mit abgestuften Berechtigungen gebraucht werden oder
+wenn ein Windows-Datenträger große Einzeldateien zuverlässig speichern soll.
 
-## 04 · Vorgehen: das richtige Dateisystem wählen
+Merke aber: NTFS ist keine gute Standardantwort für "USB-Stick für alle
+Betriebssysteme". Wenn macOS oder Linux ohne Zusatztreiber sicher schreiben
+sollen, musst du die Kompatibilität ausdrücklich prüfen.
+
+### ext4 - Linux-Dateisystem mit Inodes, Extents und Journal
+
+ext4 ist eine typische Wahl für Linux-Installationen. Es speichert Dateimetadaten
+in Inodes und ordnet Dateiinhalte über Extents effizient Blöcken zu. Ein Extent
+beschreibt einen zusammenhängenden Blockbereich; das ist bei großen Dateien
+effizienter als viele einzelne Blockverweise.
+
+ext4 nutzt außerdem ein Journal. Standardmäßig werden vor allem Metadaten über
+das Journal abgesichert. Das verhindert nicht jeden Datenverlust, reduziert aber
+das Risiko, dass das Dateisystem nach einem Crash in einem halbfertigen
+Metadatenzustand stecken bleibt.
+
+Für Rechte denkst du bei Linux zuerst an *<Term id="dateirechte">Dateirechte</Term>*:
+Owner, Group und Other mit `r`, `w` und `x`. Das Detailtraining dazu folgt im
+Kapitel Linux-`chmod`.
+
+### APFS - Apple mit Clones, Snapshots und Space Sharing
+
+APFS ist Apples modernes Dateisystem für macOS und iOS/iPadOS. In AP1-Aufgaben
+ist wichtig: APFS ist nicht "FAT32, nur neuer", sondern für Apple-Systeme und
+moderne Speichermechanik gedacht.
+
+Die wichtigsten Ideen:
+
+- **Clones:** Eine Kopie kann zunächst ohne zusätzliche Datenblöcke entstehen.
+  Erst wenn sich Inhalt ändert, werden neue Blöcke geschrieben.
+- **Snapshots:** Ein Zustand eines Volumes kann als Momentaufnahme festgehalten
+  werden. Das hilft für Updates, Wiederherstellung und Versionierung.
+- **Space Sharing:** Mehrere APFS-Volumes können freien Platz in einem Container
+  gemeinsam nutzen, statt starre Partitionsgrenzen zu erzwingen.
+
+Für einen Mac ist APFS die naheliegende Wahl. Für einen USB-Stick, der ohne
+Vorbereitung an Windows- und Linux-Rechnern beschrieben werden soll, ist APFS
+nicht die passende Standardantwort.
+
+## 05 - Auswahlverfahren
 
 <Schritte
   items={[
-    { titel: '1. Plattformen klären', text: 'Auf welchen Betriebssystemen muss der Datenträger lesbar UND beschreibbar sein? Nur Windows? Nur Linux? Plattformübergreifend?' },
-    { titel: '2. Maximale Dateigröße prüfen', text: 'Sollen einzelne Dateien größer als 4 GiB sein (Videos, VM-Images, Backups, ISOs)? Dann scheidet FAT32 sofort aus.' },
-    { titel: '3. Rechtebedarf einschätzen', text: 'Werden differenzierte Zugriffsrechte gebraucht (Multi-User, Server)? Dann FAT32 ausschließen. Windows-Umfeld → NTFS. Linux-Umfeld → ext4. macOS-Umfeld → APFS.' },
-    { titel: '4. Schutz vor Datenverlust nötig?', text: 'Bei Server- und Produktivsystemen ist Journaling (NTFS, ext4) bzw. Copy-on-Write (APFS) Pflicht. Reine Transportmedien können ohne auskommen.' },
-    { titel: '5. Verschlüsselung / Snapshots gefordert?', text: 'Native Verschlüsselung: APFS. Snapshots: APFS oder NTFS-Schattenkopien. Sonst externe Lösungen (BitLocker, LUKS).' },
-    { titel: '6. Entscheidung dokumentieren', text: 'Im Lasten-/Pflichtenheft oder im Übergabeprotokoll festhalten, warum dieses Dateisystem gewählt wurde — gerade bei Kundensystemen wichtig.' },
+    { titel: '1. Plattform klären', text: 'Welche Betriebssysteme müssen den Datenträger lesen und schreiben: Windows, Linux, macOS, Kameras, UEFI, Geräte mit eigener Firmware?' },
+    { titel: '2. Einzeldateien prüfen', text: 'Kommen Dateien über rund 4 GiB vor, etwa Videos, ISOs, VM-Images oder Backups? Dann FAT32 ausschließen.' },
+    { titel: '3. Rechtebedarf bewerten', text: 'Braucht das System Benutzer, Gruppen, getrennte Zugriffe oder Serverrechte? Dann kein FAT32. Windows spricht für NTFS, Linux für ext4, Apple für APFS.' },
+    { titel: '4. Integrität beachten', text: 'Produktivsysteme brauchen Schutz vor inkonsistenten Metadaten: NTFS/ext4 mit Log beziehungsweise Journal oder APFS mit Copy-on-Write/Snapshots.' },
+    { titel: '5. Austauschformat wählen', text: 'Für reine Transportmedien zählt Kompatibilität stärker als Serverfunktionen. FAT32 bei kleinen Dateien, exFAT bei großen Dateien.' },
+    { titel: '6. Formatierung dokumentieren', text: 'Vor dem Formatieren Daten sichern und im Übergabeprotokoll festhalten, warum dieses Dateisystem gewählt wurde.' },
   ]}
 />
 
-<Beispiel titel="Vier typische Szenarien und ihre Antwort">
-| Szenario | Wahl | Begründung |
+## 06 - Typische Szenarien
+
+| Szenario | Gute Wahl | Begründung |
 |---|---|---|
-| USB-Stick zum Datenaustausch zwischen Windows-, Mac- und Linux-Rechnern, max. 2 GB pro Datei | **FAT32** | Beste Kompatibilität, keine Rechte nötig, Dateien bleiben unter 4 GiB. |
-| USB-Stick mit Videodateien bis 20 GB, Plattformwechsel nötig | **exFAT** | Plattformübergreifend wie FAT32, aber ohne 4-GiB-Limit. |
-| Festplatte in einem Windows-10-Arbeitsplatz mit mehreren Benutzern | **NTFS** | Standard, ACLs für Multi-User, Journaling gegen Datenverlust. |
-| Datenpartition auf einem Linux-Webserver | **ext4** | Linux-nativ, Journaling, POSIX-Rechte für Apache/MySQL-User. |
-| Systemvolume auf einem MacBook | **APFS** | macOS-Standard, SSD-optimiert, native Verschlüsselung. |
+| USB-Stick für Windows, macOS und Linux, nur kleine Dateien | FAT32 | Sehr kompatibel, Rechte und Journal nicht nötig, Dateien bleiben unter rund 4 GiB. |
+| USB-Stick mit Videodateien oder ISO-Dateien über 4 GiB | exFAT | Für Wechselmedien gedacht und für große Einzeldateien geeignet. |
+| Windows-Client mit mehreren lokalen Benutzern | NTFS | ACLs, Windows-Integration, Log und große Dateien. |
+| Datenpartition auf einem Linux-Server | ext4 | Linux-nativ, Inodes, Extents, Journal und POSIX-Rechte. |
+| Systemvolume auf einem aktuellen MacBook | APFS | Apple-Standard mit Clones, Snapshots und Space Sharing. |
+| Austauschplatte für eine gemischte Werkstatt mit alten Geräten | erst Anforderungen prüfen | Manche Altgeräte können nur FAT32; bei großen Dateien ist exFAT oft besser, muss aber vom Gerät unterstützt werden. |
+
+<Beispiel titel="Klassiker: 5,4-GB-Datei auf FAT32">
+Eine Kundin möchte ein 5,4 GB großes Backup-Image auf einen USB-Stick kopieren.
+Der Stick ist mit FAT32 formatiert und zeigt 30 GB freien Speicher an. Der
+Kopiervorgang bricht trotzdem ab.
+
+**Ursache:** FAT32 hat ein Einzeldatei-Limit von rund 4 GiB. Die freie
+Gesamtkapazität hilft nicht, wenn eine einzelne Datei größer als das
+Dateisystem-Limit ist.
+
+**Lösung 1:** Stick sichern und als exFAT neu formatieren, wenn Windows, macOS
+und Linux oder andere Geräte große Dateien austauschen sollen.
+
+**Lösung 2:** Stick sichern und als NTFS formatieren, wenn die Nutzung klar im
+Windows-Umfeld liegt und Windows-Rechte oder Windows-Werkzeuge wichtiger sind.
 </Beispiel>
 
----
+<Beispiel titel="Serverentscheidung: Windows-Dateiserver oder Linux-Webserver">
+Ein Windows-Dateiserver für eine Abteilung braucht Gruppenrechte: Einkauf darf
+lesen und schreiben, Vertrieb nur lesen, Auszubildende gar nicht. Hier ist NTFS
+naheliegend, weil ACLs genau solche Abstufungen abbilden.
 
-## 05 · Fehlerfallen
+Ein Linux-Webserver braucht dagegen eine Datenpartition für Webinhalte, Logs und
+Backups. Hier ist ext4 eine passende Standardwahl: Linux kann es nativ verwalten,
+Inodes speichern Metadaten und das Journal schützt Dateisystemstrukturen nach
+Abstürzen besser als ein einfaches Austauschformat.
+</Beispiel>
 
-<Warnung titel="Die sechs häufigsten Stolperfallen in Prüfungsaufgaben">
-1. **Die 4-GiB-Grenze bei FAT32** vergessen. Eine 5-GB-Datei „passt nicht", obwohl der Stick noch 100 GB frei hat — das ist die klassische Begründungsfrage.
-2. **FAT32 und exFAT verwechseln.** FAT32 ist das alte, kompatible, mit 4-GiB-Limit. exFAT ist der Nachfolger ohne Größenlimit, aber etwas weniger universell unterstützt.
-3. **NTFS auf einem USB-Stick für den Mac-Austausch.** macOS kann NTFS standardmäßig nur lesen, nicht beschreiben. Der Stick wirkt „kaputt", ist es aber nicht.
-4. **ACL und POSIX-Rechte gleichsetzen.** POSIX = drei Klassen (Owner, Group, Other) mit rwx. ACLs erlauben pro Benutzer und Gruppe individuelle Rechte und sind feiner granuliert.
-5. **Formatieren mit Datenverlust gleichsetzen ohne Differenzierung.** Schnellformatierung löscht nur die Allokationstabelle; ein Forensik-Tool kann Reste oft wiederherstellen. Sicheres Löschen verlangt mehrfaches Überschreiben oder physische Zerstörung.
-6. **Journaling = Backup.** Ein Journal schützt vor inkonsistenten Zuständen nach Stromausfall — nicht vor versehentlichem Löschen, Ransomware oder Hardwareausfall. Backup bleibt eigenständige Pflicht.
+## 07 - Typische Fehler
+
+<Warnung titel="Die häufigsten Stolperfallen">
+1. **Freien Speicher mit Einzeldatei-Limit verwechseln.** 30 GB frei bedeuten
+   nicht, dass FAT32 eine einzelne 5,4-GB-Datei speichern kann.
+2. **FAT32 und exFAT gleichsetzen.** Beide sind für Austauschmedien relevant,
+   aber exFAT ist die moderne Antwort für große Einzeldateien.
+3. **Journaling als Backup deuten.** Ein Journal schützt gegen inkonsistente
+   Metadaten nach Crashs. Es rettet keine gelöschten Dateien und ersetzt kein
+   Backup.
+4. **Rechtemodell vergessen.** FAT32 ist für Server- oder Mehrbenutzerrechte die
+   falsche Wahl. NTFS und Linux-Rechte/ACLs sind dafür gedacht.
+5. **NTFS als universelles Austauschformat wählen.** In Windows ist NTFS stark;
+   als Wechselmedium für alle Plattformen muss Schreibunterstützung geprüft
+   werden.
+6. **APFS für fremde Systeme einplanen.** APFS gehört in die Apple-Welt. Für
+   Windows-/Linux-Austausch ist es nur mit Zusatzlösungen sinnvoll.
+7. **Formatieren ohne Datensicherung.** Formatieren erstellt ein neues
+   Dateisystem und kann vorhandene Daten unzugänglich machen. Vorher sichern.
 </Warnung>
 
----
+## Was hängen bleibt
 
-## 06 · Typische Prüfungsaufgabe
+Ein Dateisystem ist die Organisationsschicht zwischen rohen Speicherblöcken und
+benutzbaren Dateien. FAT32 gewinnt bei einfacher Kompatibilität, verliert aber
+bei großen Einzeldateien und Rechten. NTFS ist die Windows-Wahl mit ACLs und Log.
+ext4 ist eine robuste Linux-Wahl mit Inodes, Extents und Journal. APFS ist die
+Apple-Wahl mit Clones, Snapshots und gemeinsam genutztem freien Platz. In
+Prüfungsaufgaben entscheidest du nicht nach Namen, sondern nach Plattform,
+Dateigröße, Rechten und Schutzbedarf.
 
-> **Aufgabe (Klausur-Stil):** Eine Kundin möchte ein 5,4 GB großes Backup-Image auf einen vorhandenen USB-Stick kopieren, der mit FAT32 formatiert ist. Der Kopiervorgang bricht mit der Meldung „Datei zu groß" ab, obwohl der Stick 30 GB freien Speicher hat. Erkläre die Ursache und nenne zwei mögliche Lösungen.
-
-**Musterantwort:** FAT32 erlaubt pro Einzeldatei maximal **4 GiB − 1 Byte** (rund 4,29 GB). Das 5,4-GB-Image überschreitet diese Grenze, daher bricht der Kopiervorgang ab — unabhängig vom freien Platz auf dem Stick.
-
-Lösung 1: Den Stick auf **exFAT** umformatieren. exFAT ist plattformübergreifend kompatibel und hat kein 4-GiB-Limit. Vor dem Umformatieren müssen vorhandene Daten gesichert werden.
-
-Lösung 2: Den Stick auf **NTFS** umformatieren, falls die Kompatibilität mit macOS oder Linux nicht entscheidend ist (NTFS-Schreibzugriff dort eingeschränkt). NTFS hat ebenfalls kein 4-GiB-Limit und bietet zusätzlich Journaling und ACLs.
-
----
+<Glossar
+  einträge={[
+    {
+      term: 'Dateisystem',
+      definition: 'Organisationsschema auf einem Datenträger. Es ordnet Dateien zu Blöcken, speichert Metadaten und stellt Verzeichnisse, Rechte und Verwaltungsfunktionen bereit.'
+    },
+    {
+      term: 'FAT32',
+      definition: 'Einfaches, sehr kompatibles Dateisystem für Austauschmedien. Hauptfalle: einzelne Dateien über rund 4 GiB sind ungeeignet.'
+    },
+    {
+      term: 'NTFS',
+      definition: 'Windows-Dateisystem mit Master File Table, ACLs, Transaktionslog und Unterstützung für große Volumes und große Dateien.'
+    },
+    {
+      term: 'ext4',
+      definition: 'Linux-Dateisystem mit Inodes, Extents und Journal. Typisch für Linux-Clients, Server und Datenpartitionen.'
+    },
+    {
+      term: 'APFS',
+      definition: 'Apple File System für moderne Apple-Geräte. Unterstützt Clones, Snapshots, Space Sharing und Copy-on-Write-Verhalten.'
+    },
+    {
+      term: 'ACL',
+      definition: 'Access Control List; feinere Berechtigungsliste, mit der einzelnen Benutzern oder Gruppen konkrete Zugriffe erlaubt oder verweigert werden.'
+    },
+    {
+      term: 'exFAT',
+      definition: 'Dateisystem für Wechselmedien, das bei großen Einzeldateien oft die bessere Austauschwahl als FAT32 ist.'
+    },
+  ]}
+/>
 
 <Quellen
   quellen={[
     {
-      label: 'Microsoft Learn — NTFS Overview',
-      href: 'https://learn.microsoft.com/en-us/windows-server/storage/file-server/ntfs-overview',
-      detail: 'Offizielle Microsoft-Dokumentation zu NTFS: Architektur, MFT, Journaling, ACLs, EFS und Größenlimits.'
-    },
-    {
-      label: 'Microsoft Learn — FAT, HPFS and NTFS File Systems',
-      href: 'https://learn.microsoft.com/en-us/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems',
-      detail: 'Offizielle Spezifikation der FAT-Familie mit Cluster-Größen, Dateigrößen-Limits und Kompatibilitätsangaben.'
-    },
-    {
-      label: 'Linux Kernel Documentation — ext4 Filesystem',
-      href: 'https://www.kernel.org/doc/Documentation/filesystems/ext4.txt',
-      detail: 'Normative Beschreibung von ext4: Inodes, Extents, Journaling-Modi, Größenlimits.'
-    },
-    {
-      label: 'Apple Developer — Apple File System Reference',
-      href: 'https://developer.apple.com/support/apple-file-system/',
-      detail: 'Offizielle APFS-Übersicht von Apple: Copy-on-Write, Snapshots, Klone, Space Sharing, Verschlüsselung.'
-    },
-    {
-      label: 'KMK — Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
       href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
-      detail: 'Berufsschulische Lernfelder; Dateisysteme sind Bestandteil von Lernfeld 2 (Arbeitsplätze ausstatten).'
+      detail: 'Offizielle Einordnung von LF2: Arbeitsplätze nach Kundenwunsch ausstatten.'
+    },
+    {
+      label: 'FIAusbV - Fachinformatikerausbildungsverordnung',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung mit Ausbildungsrahmenplan und Prüfungsanforderungen.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ausbildungsquelle zur modernisierten Fachinformatiker-Ausbildung und zur praktischen Umsetzung.'
+    },
+    {
+      label: 'Microsoft Learn - File System Functionality Comparison',
+      href: 'https://learn.microsoft.com/en-us/windows/win32/fileio/filesystem-functionality-comparison',
+      detail: 'Microsoft-Vergleich von NTFS, exFAT, UDF und FAT32 mit Limits, Journaling und Sicherheitsfunktionen.'
+    },
+    {
+      label: 'Microsoft Learn - NTFS Overview',
+      href: 'https://learn.microsoft.com/en-us/windows-server/storage/file-server/ntfs-overview',
+      detail: 'Offizielle Microsoft-Dokumentation zu NTFS, ACLs, Transaktionslog, Metadaten und großen Volumes.'
+    },
+    {
+      label: 'Linux Kernel Documentation - ext4 Index Nodes',
+      href: 'https://docs.kernel.org/filesystems/ext4/inodes.html',
+      detail: 'Kernel-Dokumentation zu ext4-Inodes, Metadaten, Dateimodus, Eigentümer und Zeitstempeln.'
+    },
+    {
+      label: 'Linux Kernel Documentation - ext4 Extents',
+      href: 'https://docs.kernel.org/filesystems/ext4/ifork.html',
+      detail: 'Kernel-Dokumentation zu Blockabbildung, Extent Tree und Datenblock-Verweisen in ext4.'
+    },
+    {
+      label: 'Linux Kernel Documentation - ext4 Journal',
+      href: 'https://docs.kernel.org/filesystems/ext4/journal.html',
+      detail: 'Kernel-Dokumentation zum ext4-Journal (jbd2), Crash-Schutz und Metadata-Journaling.'
+    },
+    {
+      label: 'Apple Developer - About Apple File System',
+      href: 'https://developer.apple.com/documentation/foundation/about-apple-file-system',
+      detail: 'Apple-Dokumentation zu APFS als Standard-Dateisystem sowie Clones, Snapshots, Space Sharing und Sparse Files.'
+    },
+    {
+      label: 'IEEE Std 1003.1 (POSIX) - chmod',
+      href: 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/chmod.html',
+      detail: 'POSIX-Spezifikation für Dateimodus-Bits, Rollen und Rechte wie Lesen, Schreiben und Ausführen.'
     },
   ]}
 />
