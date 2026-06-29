@@ -16,7 +16,7 @@ Technische Navigations- oder Altstatus sind kein Ersatz für einen Audit.
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `datenrate-berechnung` | Kapitel | ungeprüft | Bit & Byte/Präfixe → Zahlensysteme → Datenmengen → Datenraten | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
+| `von-neumann` | Kapitel | ungeprüft | IT-Systeme: Von-Neumann-Grundidee → Hardware und Schnittstellen → Betriebssystem, Dateien, Rechte und Virtualisierung | Einordnung, Quellen- und Vergleichsmatrix neu prüfen. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -24,6 +24,85 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
 ## Abgeschlossene Audits
+
+### `datenrate-berechnung`
+
+Slug: `datenrate-berechnung`
+Kompetenz: Datenmenge, Zeit und Datenrate über eine gemeinsame Einheit
+berechnen; bit/s und Byte/s sauber trennen; Brutto-, Netto- und
+Durchsatzangaben mit vorgegebenem Wirkungsgrad in Download-, Upload- und
+Backup-Zeiten übersetzen.
+Form: Kapitel
+Status: geprüft
+Voraussetzungen → Anschluss: Bit & Byte/Präfixe → Zahlensysteme → Datenmengen
+und Übertragungsdauer → Von-Neumann-Grundidee als Start der nächsten
+Abhängigkeitskette
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für gemeinsames Grundlagenwissen zu IT-Systemen, Datenmengen,
+Arbeitsplatzausstattung und Vernetzung. Die Kapitelentscheidung ist ein
+eigenständiges Rechen- und Einordnungskapitel im gemeinsamen Grundlagenpfad.
+
+Fachliche Primärquellen: BIPM, *SI prefixes*, für dezimale Präfixe; NIST,
+*Prefixes for binary multiples*, für Byte, MB, GB und die Abgrenzung zu
+Binärpräfixen; RFC 6349, *Framework for TCP Throughput Testing*, für
+TCP-Durchsatz als Datenmenge pro Zeit, tatsächliche Transferzeit, ideale
+Transferzeit und Overhead-Bezug. IEC 80000-13 bleibt als Normkontext in der
+Quellenbank, wurde aber nicht als maschineller Faktenbeleg verwendet, weil die
+frei prüfbaren NIST-/BIPM-/RFC-Seiten die benötigten Kernaussagen tragen.
+
+Didaktische Vergleiche: Das bereits geprüfte Kapitel
+`datenvolumen-berechnung` behandelt Datenmengen und Übertragungsdauer nur mit
+vorgegebener effektiver Datenrate. Dieses Kapitel übernimmt deshalb nicht die
+Scan- oder Bildrechnung, sondern vertieft Bandbreite, Durchsatz, Brutto/Netto,
+Downloadzeit, Backupfenster und die Umkehrformeln. Die pauschale Tabelle mit
+Netto-Prozentwerten wurde entfernt; stattdessen gilt didaktisch sauber: In
+Rechenaufgaben werden vorgegebene Messwerte oder Wirkungsgrade verwendet, sonst
+wird die Idealrechnung ohne zusätzlichen Overhead ausdrücklich benannt.
+
+Lokaler Materialabgleich: `_material_index/AP1_ABGLEICH.md` weist aktuell keine
+eigene Aufgabe direkt `datenrate-berechnung` zu. In
+`_material_index/extraktion/Prüfung_9.md` kommen Downloadgeschwindigkeit,
+Bandbreite und Firewall-Durchsatz als typische Prüfungs- und Datenblattbegriffe
+vor. Übernommen wurden nur Themenumfang und Denkoperation; keine geschützten
+Aufgaben- oder Lösungstexte.
+
+Geprüfte Kernaussagen (7, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+
+1. `1 Byte = 8 Bit`.
+2. SI-Präfixe bezeichnen dezimale Vielfache und Teile von SI-Einheiten.
+3. `1 MB = 10⁶ B = 1.000.000 B`.
+4. `1 GB = 10⁹ B = 1.000.000.000 B`.
+5. RFC 6349 beschreibt TCP-Durchsatz als Datenmenge, die TCP pro Zeiteinheit
+   transportiert.
+6. Die tatsächliche TCP-Transferzeit ist die Zeit für die Übertragung eines
+   Datenblocks über TCP-Verbindungen.
+7. Die ideale TCP-Transferzeit wird aus maximal erreichbarem TCP-Durchsatz
+   abgeleitet und steht im Zusammenhang mit Layer-1- bis Layer-4-Overheads.
+
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg über berufliche
+Backup-, Cloud-Sync- und Downloadfälle; vollständige Rechenwege für
+Downloadzeit, Backupfenster, benötigte Datenrate, maximale Datenmenge,
+WLAN-Brutto/Netto und Standortbackup; Fehlerfallen zu bit/Byte, GB/GiB,
+Brutto/Netto, Zeitbasis, Rundung, Download/Upload und Latenz vorhanden. Alle
+Beispielrechnungen wurden nachgerechnet, einschließlich 600-GB-Backup
+(30.000 s = 8 h 20 min), Cloud-Sync (200 Mbit/s netto), WLAN-Beispiel
+(201,5 s) und Standortbackup (20.571,43 s ≈ 5 h 43 min).
+
+Glossar, Quellen und Links geprüft: `Term`-IDs für Datenrate, Durchsatz,
+Latenz, Bit, Byte und Bandbreite sind gültig. Quellenkomponente, Quellenbank
+und Quellen-Tags enthalten FIAusbV, KMK, BIBB, BIPM, NIST und RFC 6349; nicht
+prüfbare Norm-/PDF-Belege wurden nicht als Faktenbelege verwendet. Voraussetzung
+Datenmengen/Präfixe und Anschluss an die nächste Landkartenkette sind benannt.
+
+Technische Checks: `npm run check:sources` (27/27 online und Zitate gefunden,
+davon 7 für `datenrate-berechnung`), `npm run check:consistency`,
+`npm run lint`, `npm run test` (8 Tests) und `npm run build` — alle grün am
+2026-06-29.
+
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Keine offenen Punkte für dieses Kapitel.
 
 ### `datenvolumen-berechnung`
 

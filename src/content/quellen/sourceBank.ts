@@ -898,6 +898,13 @@ export const sourceBank: SourceEntry[] = [
     tags: ['netzwerk', 'tcp', 'osi'],
   },
   {
+    id: 'rfc-6349',
+    label: 'RFC 6349 - Framework for TCP Throughput Testing',
+    href: 'https://www.rfc-editor.org/rfc/rfc6349.html',
+    detail: 'IETF-Framework für TCP-Durchsatztests; definiert TCP-Durchsatz als Datenmenge pro Zeit und beschreibt Transferzeit, Idealzeit und Overhead-Bezug.',
+    tags: ['netzwerk', 'tcp', 'datenrate', 'durchsatz', 'overhead', 'transferzeit'],
+  },
+  {
     id: 'rfc-768',
     label: 'RFC 768 - User Datagram Protocol (UDP)',
     href: 'https://www.rfc-editor.org/rfc/rfc768',

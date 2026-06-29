@@ -11,13 +11,17 @@ Prüfungsgold: Internetanschluss, Backupfenster, Cloud-Sync, NAS-Übertragung,
 WLAN-Bruttorate, Video-Bitrate und "Wie lange dauert der Download?" sind immer dieselbe
 Rechenmechanik mit anderen Kleidern.
 
+Voraussetzung ist, dass du Bit, Byte sowie Dezimal- und Binärpräfixe schon
+unterscheiden kannst. Hier geht es um die Zeitachse: Wie viel Datenmenge passt
+bei welcher Datenrate durch ein Übertragungsfenster?
+
 ## Was du danach kannst
 
 - Mbit/s, Gbit/s, MB/s, GB, GiB und MiB sauber unterscheiden.
 - Downloadzeit, Uploadzeit, Datenrate und Datenmenge mit einer Formel berechnen.
 - Brutto- und Nettodatenrate mit Wirkungsgrad rechnen.
 - Aufgaben in Sekunden, Minuten, Stunden und Tagen vernünftig ausgeben.
-- typische Prüfungsfallen erkennen: kleines `b`, grosses `B`, 1000 gegen 1024, Overhead.
+- typische Prüfungsfallen erkennen: kleines `b`, großes `B`, 1000 gegen 1024, Overhead.
 
 <Tipp titel="Der Kern">
 Erst Einheiten sauber machen, dann Formel einsetzen. Fast alle Fehler entstehen vor der
@@ -64,7 +68,7 @@ Internetanschlüsse und Netzwerktechnik werden meist in bit/s angegeben:
 1 Gbit/s
 ```
 
-Dateigrössen, Datenträger und viele Betriebssystemanzeigen werden meist in Byte angegeben:
+Dateigrößen, Datenträger und viele Betriebssystemanzeigen werden meist in Byte angegeben:
 
 ```text
 500 MB
@@ -166,16 +170,12 @@ Wirkungsgrad: 80 %
 Netto:        100 Mbit/s * 0,80 = 80 Mbit/s
 ```
 
-Typische Orientierung, wenn eine Aufgabe diskutiert statt exakt rechnet:
-
-| Übertragungsweg | Grobe Netto-Orientierung |
-|---|---:|
-| Fast/Gigabit Ethernet im LAN | etwa 90 bis 95 % |
-| TCP über Internet/VDSL | etwa 75 bis 90 % |
-| WLAN in guter Umgebung | etwa 40 bis 75 % |
-| WLAN in gestörter Umgebung | deutlich darunter |
-
-In Rechenaufgaben gilt aber immer: Wenn ein Wirkungsgrad im Text steht, diesen Wert nehmen.
+Für Rechenaufgaben gilt: Wenn ein Wirkungsgrad, eine Messung oder eine
+Nettodatenrate im Text steht, nimm genau diesen Wert. Wenn nichts zu Overhead
+gesagt wird, rechnest du die ideale Übertragungszeit aus und kennzeichnest sie
+als Rechnung ohne zusätzlichen Overhead. Eigene Pauschalquoten setzt du nicht
+ein, weil Protokoll, WLAN-Umgebung, Geräte, Verschlüsselung und paralleler
+Verkehr den Durchsatz sehr unterschiedlich beeinflussen.
 
 ---
 
@@ -342,7 +342,7 @@ Wenn du eine Aufgabe mit Datenrate siehst, arbeite immer in dieser Reihenfolge:
 2. Welche Datenmenge?
 3. Welche Datenrate?
 4. bit oder Byte?
-5. dezimal oder binaer?
+5. dezimal oder binär?
 6. brutto oder netto?
 7. Welche Zeiteinheit soll die Antwort haben?
 ```
@@ -442,7 +442,7 @@ Datenmenge = Datenrate * Zeit
 Netto = Brutto * Wirkungsgrad
 
 GB/MB  = dezimal, 1000er-Schritte
-GiB/MiB = binaer, 1024er-Schritte
+GiB/MiB = binär, 1024er-Schritte
 ```
 
 <Glossar
@@ -481,24 +481,29 @@ GiB/MiB = binaer, 1024er-Schritte
 <Quellen
   quellen={[
     {
-      label: 'IEC 80000-13:2008 - Quantities and units, Part 13: Information science and technology',
-      href: 'https://webstore.iec.ch/publication/31898',
-      detail: 'Internationale Norm für Informationsgrössen und Binärpräfixe wie KiB, MiB, GiB und TiB.'
+      label: 'BIPM - SI prefixes',
+      href: 'https://www.bipm.org/en/measurement-units/si-prefixes',
+      detail: 'Offizielle Definition der dezimalen SI-Präfixe wie kilo, mega und giga.'
     },
     {
-      label: 'BIPM - SI Brochure',
-      href: 'https://www.bipm.org/en/publications/si-brochure',
-      detail: 'Offizielle Grundlage für SI-Präfixe wie kilo, mega, giga und tera als 1000er-Schritte.'
+      label: 'NIST - Prefixes for Binary Multiples',
+      href: 'https://physics.nist.gov/cuu/Units/binary.html',
+      detail: 'Online prüfbare Werte für Byte, MB, GB, MiB und GiB sowie die Abgrenzung der Binärpräfixe.'
     },
     {
-      label: 'BIBB - Fachinformatiker/-in Ausbildungsordnung und Rahmenplan',
-      href: 'https://www.bibb.de/de/berufeinfo.php',
-      detail: 'Offizielle Berufsprofil- und Ordnungsmaterialien für die IT-Berufe und die Lernfelder der Ausbildung.'
+      label: 'IETF RFC 6349 - Framework for TCP Throughput Testing',
+      href: 'https://www.rfc-editor.org/rfc/rfc6349.html',
+      detail: 'Definiert TCP-Durchsatz als Datenmenge pro Zeit und beschreibt Transferzeit, Idealzeit und Overhead-Bezug.'
     },
     {
-      label: 'IETF RFC 9110 - HTTP Semantics',
-      href: 'https://www.rfc-editor.org/rfc/rfc9110',
-      detail: 'Technischer Kontext für Übertragungen über HTTP; relevant, weil Nutzdatenübertragung immer Protokoll-Overhead einschliesst.'
+      label: 'Fachinformatikerausbildungsverordnung (FIAusbV)',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung als Rahmen für IT-Systeme, Daten und Vernetzung in der Ausbildung.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ausbildungsordnung, Ausbildungsrahmenplan und Lernfelder für die modernisierten IT-Berufe.'
     },
   ]}
 />

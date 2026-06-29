@@ -252,6 +252,7 @@ export const lessonSourceIds: Record<string, string[]> = {
     'nist-binary-prefixes',
     'iec-80000-13',
     'rfc-9293',
+    'rfc-6349',
     'rfc-9110',
     'ieee-80211-working-group',
     'bsi-wlan-lan-grundlagen',

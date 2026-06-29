@@ -144,5 +144,56 @@
       "fundstelle": "NIST, Prefixes for binary multiples — Absatz nach der Vergleichstabelle",
       "abgerufenAm": "2026-06-26"
     }
+  ],
+  "datenrate-berechnung": [
+    {
+      "aussage": "Ein Byte besteht aus acht Bit.",
+      "zitat": "1 B = 2<sup>3</sup> bit = <strong>8 bit</strong>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one byte“",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "SI-Präfixe bezeichnen dezimale Vielfache und Teile von SI-Einheiten.",
+      "zitat": "Decimal multiples and submultiples of SI units can be written using the SI prefixes listed below:",
+      "quelleId": "bipm-si-prefixes",
+      "fundstelle": "BIPM, SI prefixes — Einleitung vor der Präfixtabelle",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Ein Megabyte (MB) entspricht 10⁶ Byte beziehungsweise 1.000.000 Byte.",
+      "zitat": "1 MB = 10<sup>6</sup> B = <b>1 000 000 B</b>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one megabyte“",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Ein Gigabyte (GB) entspricht 10⁹ Byte beziehungsweise 1.000.000.000 Byte.",
+      "zitat": "1 GB = 10<sup>9</sup> B = <b>1 000 000 000 B</b>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one gigabyte“",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "TCP-Durchsatz beschreibt bei RFC 6349 die Datenmenge, die TCP pro Zeiteinheit transportiert.",
+      "zitat": "achievable TCP Throughput is that amount of data per unit of time",
+      "quelleId": "rfc-6349",
+      "fundstelle": "RFC 6349, Abschnitt 1, Einführung",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Die tatsächliche TCP-Transferzeit ist die Zeit, die für die Übertragung eines Datenblocks über TCP-Verbindungen benötigt wird.",
+      "zitat": "The Actual TCP Transfer Time is simply the time it takes to transfer a block of data across TCP connection(s).",
+      "quelleId": "rfc-6349",
+      "fundstelle": "RFC 6349, Abschnitt 4.1.2, TCP Transfer Time and Transfer Time Ratio Calculation",
+      "abgerufenAm": "2026-06-29"
+    },
+    {
+      "aussage": "Die ideale TCP-Transferzeit wird aus dem maximal erreichbaren TCP-Durchsatz abgeleitet und hängt auch mit Layer-1- bis Layer-4-Overheads zusammen.",
+      "zitat": "The Ideal TCP Transfer Time is derived from the Maximum Achievable TCP Throughput, which is related to the BB and Layer 1/2/3/4 overheads associated with the network path.",
+      "quelleId": "rfc-6349",
+      "fundstelle": "RFC 6349, Abschnitt 4.1.2, TCP Transfer Time and Transfer Time Ratio Calculation",
+      "abgerufenAm": "2026-06-29"
+    }
   ]
 }

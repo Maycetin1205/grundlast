@@ -30,6 +30,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Datenmengen mit sechs online geprüften Belegen zu SI- und Binärpräfixen sowie nachgerechneten Scan- und Übertragungsbeispielen.',
     nextAction: 'Abgeschlossen; im Grundlagenpfad mit Datenrate und Downloadzeit fortsetzen.',
   },
+  'datenrate-berechnung': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Datenrate und Downloadzeit mit sieben online geprüften Belegen zu Bit/Byte, SI-Präfixen, MB/GB und TCP-Durchsatz.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit der Von-Neumann-Grundidee fortsetzen.',
+  },
 }
 
 const fallbackAudit: LessonAudit = {

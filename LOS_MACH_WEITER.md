@@ -6,11 +6,11 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 
 | Feld | Wert |
 |---|---|
-| Aktuelles Kapitel | `datenrate-berechnung` |
-| Kapiteldatei | `src/content/lessons/datenrate-berechnung.mdx` |
+| Aktuelles Kapitel | `von-neumann` |
+| Kapiteldatei | `src/content/lessons/von-neumann.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
 | Phase | Quellen-, Fakten- und Didaktikaudit vorbereiten |
-| Nächstes Kapitel | Erst nach dokumentiertem Abschluss von `datenrate-berechnung` gemäß Lernpfad festlegen |
+| Nächstes Kapitel | Erst nach dokumentiertem Abschluss von `von-neumann` gemäß Lernpfad festlegen |
 
 ## Für jeden neuen Arbeitsabschnitt
 
