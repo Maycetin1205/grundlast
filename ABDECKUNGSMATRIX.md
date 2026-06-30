@@ -171,6 +171,7 @@ eine Lücke (Vorkapitel zuerst).
 | 9 | `homeoffice-ergonomie` | Bildschirmarbeitsplatz, Telearbeit, Homeoffice, mobiles Arbeiten, Ergonomie, Barrierefreiheit, Softwareergonomie, WCAG-Prinzipien, Gefährdungsbeurteilung, Unterweisung, Mehrfaktor-Authentisierung (MFA), VPN als geschützter Remote-Zugriff |
 | 10 | `dateisysteme` | Dateisystem, Partition, Mount, Journaling (Konzeptliste beim nächsten Durchlauf am Kapitel verifizieren) |
 | 11 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
+| 12 | `raid-systeme` | RAID, RAID-Level, Striping, Mirroring, Parität, doppelte Parität, Speichereffektivität, Rohkapazität, Nettokapazität, Ausfalltoleranz, Rebuild |
 
 `bit-byte` ist als Wurzelkapitel eingetragen und am 2026-06-30 durch den
 unabhängigen Prüfer-Pass bestätigt (`geprüft`). Spätere Kapitel dürfen die dort

@@ -664,5 +664,56 @@
       "fundstelle": "BITV 2.0 § 3 Abs. 1, Anzuwendende Standards",
       "abgerufenAm": "2026-06-30"
     }
+  ],
+  "raid-systeme": [
+    {
+      "aussage": "RAID nutzt unter anderem Striping, Mirroring und Striping mit Parität, um Redundanz, geringere Latenz, höhere Bandbreite und Wiederherstellungsfähigkeit nach Laufwerksausfällen zu erreichen.",
+      "zitat": "RAID uses techniques such as disk striping (RAID Level 0), disk mirroring (RAID Level 1), and disk striping with parity (RAID Levels 4, 5 and 6) to achieve redundancy, lower latency, increased bandwidth, and maximized ability to recover from hard disk crashes.",
+      "quelleId": "redhat-rhel8-managing-raid",
+      "fundstelle": "Red Hat Enterprise Linux 8, Managing storage devices, Abschnitt 20.1/20.3 Managing RAID",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "RAID 0 ist Striping, verteilt Daten über die Mitgliedslaufwerke und bietet keine Redundanz.",
+      "zitat": "RAID level 0, often called striping, is a performance-oriented striped data mapping technique.",
+      "quelleId": "redhat-rhel8-managing-raid",
+      "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 0",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "RAID 1 spiegelt identische Daten auf jedes Mitgliedslaufwerk und erhöht dadurch die Datenverfügbarkeit.",
+      "zitat": "RAID level 1, or mirroring, provides redundancy by writing identical data to each member disk of the array, leaving a mirrored copy on each disk.",
+      "quelleId": "redhat-rhel8-managing-raid",
+      "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 1",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "RAID 1 hat als nutzbare Kapazität die Kapazität des kleinsten gespiegelten Laufwerks.",
+      "zitat": "The storage capacity of the level 1 array is equal to the capacity of the smallest mirrored hard disk in a hardware RAID or the smallest mirrored partition in a software RAID.",
+      "quelleId": "redhat-rhel8-managing-raid",
+      "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 1",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "RAID 5 verteilt Parität über alle Mitgliedslaufwerke; Lesen ist typischerweise deutlich schneller als Schreiben.",
+      "zitat": "Level 5 has asymmetrical performance, and reads substantially outperforming writes.",
+      "quelleId": "redhat-rhel8-managing-raid",
+      "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 5",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Bei RAID 6 werden für die Kapazitätsrechnung zwei Laufwerke statt eines Laufwerks für zusätzliche Parität abgezogen.",
+      "zitat": "The total capacity of a RAID level 6 array is calculated similarly to RAID level 5 and 4, except that you must subtract two devices instead of one from the device count for the extra parity storage space.",
+      "quelleId": "redhat-rhel8-managing-raid",
+      "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 6",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "RAID 10 kombiniert die Performance-Vorteile von RAID 0 mit der Redundanz von RAID 1.",
+      "zitat": "This RAID level attempts to combine the performance advantages of level 0 with the redundancy of level 1.",
+      "quelleId": "redhat-rhel8-managing-raid",
+      "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 10",
+      "abgerufenAm": "2026-06-30"
+    }
   ]
 }

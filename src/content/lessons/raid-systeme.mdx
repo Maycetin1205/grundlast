@@ -1,131 +1,309 @@
-﻿# RAID-Systeme (0, 1, 5, 6, 10)
+# RAID-Systeme (0, 1, 5, 6, 10)
 
-## Worum geht's
+<MetaBar
+  lernfeld="LF 2 - Arbeitsplätze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT · 5/5"
+/>
 
-Du lernst, wie mehrere Festplatten zu einem RAID-Verbund zusammengeschaltet werden — und warum
-das in Firmen Standard ist. In der Prüfung musst du RAID-Level unterscheiden, Kapazitäten ausrechnen
-und wissen: **RAID ist kein Backup.**
+<Tipp titel="So benutzt du dieses Kapitel">
+Wenn eine Aufgabe nach RAID fragt, arbeite immer in dieser Reihenfolge:
+Level erkennen, Rohkapazität bestimmen, nutzbare Kapazität berechnen,
+Ausfalltoleranz prüfen und zum Schluss sagen, warum RAID kein Backup ersetzt.
+</Tipp>
 
----
+## 01 · Warum existiert RAID?
 
-## Erklärung
+Ein einzelnes Laufwerk ist ein einzelner Ausfallpunkt. Fällt es aus, sind die
+Daten oder der Dienst erst einmal weg. Ein *<Term id="raid">RAID</Term>* fasst
+mehrere *<Term id="hdd">HDDs</Term>* oder *<Term id="ssd">SSDs</Term>* zu einem
+logischen Laufwerk zusammen. Das Betriebssystem sieht dann nicht fünf einzelne
+Platten, sondern ein Array.
 
-**RAID** = **R**edundant **A**rray of **I**ndependent **D**isks  
-Übersetzt: Mehrere Festplatten werden zu einem logischen Laufwerk zusammengeschaltet.
+RAID kann drei Ziele verfolgen:
 
-Je nach RAID-Level bekommst du entweder mehr **Geschwindigkeit**, mehr **Ausfallsicherheit**
-oder beides — aber immer auf Kosten von Kapazität oder Geschwindigkeit.
-
-### Die Grundidee: Striping vs. Mirroring
-
-Zwei Grundprinzipien stecken hinter allen RAID-Leveln:
-
-| Prinzip | Bedeutung | Merkwort |
+| Ziel | Bedeutung in der Aufgabe | Typisches Mittel |
 |---|---|---|
-| **Striping** (Streifen) | Daten werden auf mehrere Platten aufgeteilt → schneller | „Verteilen" |
-| **Mirroring** (Spiegelung) | Dieselben Daten liegen auf mehreren Platten → sicherer | „Kopieren" |
-| **Parität** | Wiederherstellungs-Info wird mitgespeichert → 1 Platte darf ausfallen | „Versicherung" |
+| Mehr Durchsatz | Daten werden parallel von mehreren Laufwerken gelesen oder geschrieben. | Striping |
+| Höhere Verfügbarkeit | Das System läuft trotz Laufwerksausfall weiter. | Mirroring oder Parität |
+| Bessere Speichereffizienz als reine Spiegelung | Nicht jede Platte ist eine vollständige Kopie. | verteilte Parität |
 
-### Analogie: Pakete ausliefern
+Wichtig: RAID schützt nur gegen bestimmte Laufwerksausfälle und erhöht damit
+die technische *Verfügbarkeit*. RAID ist **kein Backup**. Gelöschte Dateien,
+verschlüsselte Daten, falsche Änderungen, Brand, Diebstahl oder ein defekter
+RAID-Controller können alle Laufwerke oder alle Kopien gleichzeitig betreffen.
+Dafür brauchst du ein separates Backup mit getesteter Wiederherstellung.
 
-**RAID 0 — Zwei schnelle Motorräder:**
-Du teilst deine Pakete auf 2 Fahrer auf → doppelt so schnell!
-Problem: Fällt ein Fahrer aus → die Hälfte der Pakete ist weg. Kein Sicherheitsnetz.
+## 02 · Die drei Bausteine
 
-**RAID 1 — Zwei Autos mit denselben Paketen:**
-Beide Autos haben dieselben Pakete (Spiegelung).
-Ein Auto kaputt? Das andere hat noch alles. Aber du brauchst doppelt so viele Pakete.
+### Striping
 
-**RAID 5 — Drei Autos mit cleverer Aufteilung:**
-Pakete werden aufgeteilt + Ersatzinfo wird mitgenommen.
-Ein Auto kaputt? Die anderen zwei können die fehlenden Pakete wiederherstellen.
+Beim Striping werden Daten in Blöcke zerlegt und auf mehrere Laufwerke verteilt.
+Dadurch können mehrere Laufwerke gleichzeitig arbeiten. Das erhöht den
+Durchsatz, aber ein einzelner Laufwerksausfall zerstört Teile vieler Dateien.
+Striping allein ist also schnell, aber nicht ausfallsicher.
 
-### Die RAID-Level im Überblick
+### Mirroring
 
-| RAID | Name | Min. Platten | Nutzbare Kapazität | Ausfall erlaubt | Speed |
-|---|---|---|---|---|---|
-| **RAID 0** | Striping | 2 | 100 % (alle Platten) | **NEIN** — 1 Platte tot = alles weg | Sehr schnell |
-| **RAID 1** | Mirroring | 2 | 50 % (n/2) | JA — 1 Platte darf ausfallen | Lesen schnell, Schreiben normal |
-| **RAID 5** | Striping + Parität | 3 | (n−1)/n | JA — 1 Platte darf ausfallen | Lesen schnell, Schreiben langsam |
-| **RAID 6** | Doppelte Parität | 4 | (n−2)/n | JA — **2 Platten** dürfen ausfallen | Mittel |
-| **RAID 10** | RAID 1+0 (kombiniert) | 4 | 50 % | JA — pro Spiegelpaar 1 Platte | Sehr schnell |
+Beim Mirroring werden dieselben Daten auf mehrere Laufwerke geschrieben. Fällt
+ein Laufwerk aus, ist auf dem Spiegel noch eine vollständige Kopie vorhanden.
+Das erhöht die Verfügbarkeit, kostet aber Kapazität: Bei zwei gleich großen
+Laufwerken ist nur die Kapazität eines Laufwerks nutzbar.
 
-**Wichtig:** RAID ist **kein Backup!**
-RAID schützt nur vor Festplattenausfall — nicht vor Viren, versehentlichem Löschen,
-Bränden oder Hackerangriffen. Ein separates Backup bleibt zwingend erforderlich.
+### Parität
 
----
+Parität ist Wiederherstellungsinformation. Stark vereinfacht: Aus Datenblöcken
+und Paritätsblock kann ein fehlender Datenblock rekonstruiert werden. Bei RAID 5
+gibt es Parität für den Ausfall eines Laufwerks. Bei RAID 6 gibt es doppelte
+Parität für den Ausfall von zwei Laufwerken.
 
-## Beispiele – Schritt für Schritt
+<Tipp titel="Prüfungsmerksatz">
+RAID 0 verteilt nur. RAID 1 spiegelt nur. RAID 5 verteilt Daten und eine Parität.
+RAID 6 verteilt Daten und zwei Paritäten. RAID 10 spiegelt Paare und verteilt
+dann über diese Spiegelpaare.
+</Tipp>
+
+## 03 · RAID-Level im Überblick
+
+Die Tabelle gilt für gleich große Laufwerke. In Aufgaben ist das fast immer so.
+Sind die Laufwerke unterschiedlich groß, zählt für einfache Prüfungsrechnungen
+meist die kleinste Laufwerksgröße als gemeinsame Größe.
+
+| Level | Prinzip | Mindestanzahl | Nutzbare Kapazität bei n gleichen Laufwerken | Ausfalltoleranz | Typischer Einsatz |
+|---|---|---:|---|---|---|
+| RAID 0 | Striping | 2 | `n × Laufwerksgröße` | keine | Temporäre Daten, Cache, nicht kritische Hochgeschwindigkeit |
+| RAID 1 | Mirroring | 2 | `1 × Laufwerksgröße` bei zwei Laufwerken | ein Laufwerk; bei mehr Spiegeln bis nur noch eine Kopie übrig ist | Systemplatte, kleine Server |
+| RAID 5 | Striping + verteilte Parität | 3 | `(n - 1) × Laufwerksgröße` | 1 Laufwerk | Dateiserver mit guter Kapazitätsausnutzung |
+| RAID 6 | Striping + doppelte verteilte Parität | 4 | `(n - 2) × Laufwerksgröße` | 2 Laufwerke | größere Arrays, längere Wiederherstellungszeiten |
+| RAID 10 | Spiegelpaare + Striping | 4 in der klassischen AP1-Form | `n / 2 × Laufwerksgröße` | je Spiegelpaar 1 Laufwerk, ungünstig aber auch weniger | Datenbanken, virtualisierte Server, hohe I/O-Last |
+
+### Geschwindigkeit grob einordnen
+
+| Level | Lesen | Schreiben | Warum? |
+|---|---|---|---|
+| RAID 0 | sehr schnell | sehr schnell | Alle Laufwerke arbeiten parallel, aber ohne Redundanz. |
+| RAID 1 | oft schneller als Einzelplatte | ungefähr Einzelplatte | Lesen kann von mehreren Kopien kommen, Schreiben muss auf jede Kopie. |
+| RAID 5 | gut | langsamer | Schreiben braucht Paritätsberechnung und zusätzliche Schreibvorgänge. |
+| RAID 6 | gut | langsamer als RAID 5 | Doppelte Parität kostet zusätzliche Rechen- und Schreibarbeit. |
+| RAID 10 | sehr gut | gut | Striping bringt Tempo, Mirroring vermeidet Paritätsberechnung. |
+
+## 04 · Rechenverfahren
+
+### Schrittfolge für jede Kapazitätsaufgabe
+
+1. Anzahl der Laufwerke `n` notieren.
+2. Größe eines Laufwerks notieren.
+3. RAID-Level auswählen.
+4. Netto-Laufwerke bestimmen: RAID 0 `n`, RAID 1 bei zwei Laufwerken `1`, RAID 5
+   `n - 1`, RAID 6 `n - 2`, RAID 10 `n / 2`.
+5. Nutzbare Kapazität berechnen: `Netto-Laufwerke × Laufwerksgröße`.
+6. Speichereffektivität berechnen: `Netto-Laufwerke / n × 100 %`.
 
 <Schritte
-  title="Nutzbare Kapazität: RAID 1 mit 2 × 2 TB"
+  title="RAID 5 mit 5 × 4 TB"
   steps={[
     {
-      title: "RAID-Level verstehen",
-      formula: "RAID 1 = Mirroring\nJede Platte ist eine vollständige Kopie der anderen.",
-      explanation: "Bei RAID 1 liegen auf beiden Platten exakt dieselben Daten. Fällt eine aus, läuft das System ohne Datenverlust weiter."
+      title: "Level lesen",
+      formula: "RAID 5 = Striping + eine verteilte Parität",
+      explanation: "Das Äquivalent eines Laufwerks wird für Parität benötigt."
     },
     {
-      title: "Formel anwenden",
-      formula: "Nutzbar = Größe EINER Platte\nNutzbar = 2 TB",
-      explanation: "Die zweite Platte ist der Spiegel — sie stellt keinen zusätzlichen Speicher bereit. Von 4 TB Rohkapazität sind 2 TB nutzbar."
+      title: "Netto-Laufwerke bestimmen",
+      formula: "n - 1 = 5 - 1 = 4",
+      explanation: "Von fünf Laufwerken stehen vier Laufwerke rechnerisch für Daten zur Verfügung."
+    },
+    {
+      title: "Kapazität berechnen",
+      formula: "4 × 4 TB = 16 TB",
+      explanation: "Die Rohkapazität beträgt 20 TB, nutzbar sind 16 TB."
+    },
+    {
+      title: "Speichereffektivität berechnen",
+      formula: "4 / 5 × 100 % = 80 %",
+      explanation: "20 % der Rohkapazität gehen rechnerisch für Parität weg."
     }
   ]}
 />
 
 <Schritte
-  title="Nutzbare Kapazität: RAID 5 mit 4 × 2 TB"
+  title="RAID 6 mit 5 × 4 TB"
   steps={[
     {
-      title: "Formel merken",
-      formula: "Nutzbar = (n − 1) × Plattengröße",
-      explanation: "Bei RAID 5 wird das Äquivalent einer Platte für Paritätsdaten verwendet. Diese Parität ist verteilt — nicht auf einer festen Platte, aber die Gesamtkapazität entspricht n−1 Platten."
+      title: "Level lesen",
+      formula: "RAID 6 = Striping + doppelte verteilte Parität",
+      explanation: "Das Äquivalent von zwei Laufwerken wird für Parität benötigt."
     },
     {
-      title: "Einsetzen",
-      formula: "n = 4 Platten, Plattengröße = 2 TB\nNutzbar = (4 − 1) × 2 TB\nNutzbar = 3 × 2 TB = 6 TB",
-      explanation: "Von 8 TB Rohkapazität sind 6 TB nutzbar. 2 TB gehen für die Parität weg."
+      title: "Netto-Laufwerke bestimmen",
+      formula: "n - 2 = 5 - 2 = 3",
+      explanation: "Von fünf Laufwerken stehen drei Laufwerke rechnerisch für Daten zur Verfügung."
     },
     {
-      title: "Ergebnis prüfen",
-      formula: "Rohkapazität: 4 × 2 TB = 8 TB\nNutzbar:      6 TB\nOverhead:     2 TB (25 %)",
-      explanation: "25 % Overhead für Sicherheit — deutlich besser als RAID 1 mit 50 % Overhead. Dafür darf nur 1 Platte ausfallen, nicht 2."
+      title: "Kapazität berechnen",
+      formula: "3 × 4 TB = 12 TB",
+      explanation: "RAID 6 ist weniger speichereffizient als RAID 5, toleriert dafür zwei Laufwerksausfälle."
+    },
+    {
+      title: "Speichereffektivität berechnen",
+      formula: "3 / 5 × 100 % = 60 %",
+      explanation: "Gegenüber RAID 5 sinkt die Speichereffektivität von 80 % auf 60 %."
     }
   ]}
 />
 
 <Schritte
-  title="Nutzbare Kapazität: RAID 6 mit 6 × 4 TB"
+  title="RAID 10 mit 8 × 2 TB"
   steps={[
     {
-      title: "Formel für RAID 6",
-      formula: "Nutzbar = (n − 2) × Plattengröße",
-      explanation: "RAID 6 speichert doppelte Parität. Zwei Platten dürfen gleichzeitig ausfallen — deshalb gehen zwei Plattenäquivalente für Parität weg."
+      title: "Spiegelpaare bilden",
+      formula: "8 Laufwerke / 2 = 4 Spiegelpaare",
+      explanation: "In der klassischen AP1-Form wird immer ein Laufwerk durch seinen Spiegel abgesichert."
     },
     {
-      title: "Einsetzen",
-      formula: "n = 6, Plattengröße = 4 TB\nNutzbar = (6 − 2) × 4 TB\nNutzbar = 4 × 4 TB = 16 TB",
-      explanation: "Von 24 TB Rohkapazität sind 16 TB nutzbar. 8 TB (2 Platten) gehen für doppelte Parität weg."
+      title: "Kapazität berechnen",
+      formula: "4 × 2 TB = 8 TB",
+      explanation: "Die Hälfte der Rohkapazität ist nutzbar, die andere Hälfte ist Spiegelung."
+    },
+    {
+      title: "Ausfalltoleranz einordnen",
+      formula: "pro Spiegelpaar darf 1 Laufwerk ausfallen",
+      explanation: "Fallen beide Laufwerke desselben Spiegelpaares aus, ist das Array beschädigt."
     }
   ]}
 />
 
----
+## 05 · RAID 5 auf RAID 6 umstellen
 
-## Typische Fehler
+Dieser Aufgabentyp kommt sehr direkt vor: Ein bestehender RAID-5-Verbund soll
+auf RAID 6 umgestellt werden. Gefragt wird dann nicht nach einem Roman, sondern
+nach der Wirkung auf nutzbare Laufwerke und Speichereffektivität.
 
-- **RAID 0 als „sicheres" System**: RAID 0 bietet null Ausfallsicherheit — eine defekte Platte
-  zerstört das gesamte Array. In Aufgaben wird es manchmal als „schnelles" System für kritische
-  Daten präsentiert. Das ist falsch — RAID 0 nur wenn Ausfall tolerierbar ist.
+Bei `5` gleich großen Laufwerken gilt:
 
-- **Kapazität bei RAID 5 falsch berechnen**: Viele rechnen `n × Größe` und vergessen den Abzug
-  für Parität. Richtig: `(n−1) × Größe`. Bei 4 × 1 TB = 3 TB nutzbar, nicht 4 TB.
+| Verbund | Brutto-Laufwerke | Netto-Laufwerke für Daten | Speichereffektivität | Ausfalltoleranz |
+|---|---:|---:|---:|---:|
+| RAID 5 | 5 | `5 - 1 = 4` | `4 / 5 = 80 %` | 1 Laufwerk |
+| RAID 6 | 5 | `5 - 2 = 3` | `3 / 5 = 60 %` | 2 Laufwerke |
 
-- **RAID ist kein Backup**: Diese Falle steht fast immer in Aufgaben. RAID schützt vor
-  Plattenausfall — aber nicht vor Ransomware, die alle Platten gleichzeitig verschlüsselt.
+Die Umstellung erhöht also die Ausfalltoleranz, verringert aber die nutzbare
+Kapazität um ein weiteres Laufwerk. Genau dieser Satz bringt in Prüfungen oft
+den Begründungspunkt.
 
-- **RAID 10 Kapazität**: RAID 10 kombiniert Striping + Mirroring. Immer 50 % der Rohkapazität
-  nutzbar — egal wie viele Platten. 8 × 1 TB = 4 TB nutzbar.
+## 06 · Entscheidung nach Szenario
 
----
+| Szenario | Passender Gedanke | Sinnvolle Antwort |
+|---|---|---|
+| Maximale Geschwindigkeit, Daten sind ersetzbar | Ausfall darf wehtun, aber nicht kritisch sein. | RAID 0 |
+| Kleine Systemplatte soll trotz Laufwerksausfall weiterlaufen | Einfach, robust, geringe Laufwerkszahl. | RAID 1 |
+| Viele Daten, gute Kapazitätsausnutzung, ein Ausfall soll toleriert werden | Ein Laufwerksäquivalent für Parität reicht. | RAID 5 |
+| Größeres Array, lange Rebuild-Zeit, höhere Sicherheit gegen zweiten Ausfall | Zwei Paritäten sind wichtiger als maximale Kapazität. | RAID 6 |
+| Datenbank oder Virtualisierung mit hoher I/O-Last | Schreiblast ohne Paritätsbremse, trotzdem redundant. | RAID 10 |
+
+RAID ersetzt dabei keine Beschaffungsentscheidung. Du musst weiterhin auf
+Schnittstelle, Controller, Hot-Swap-Fähigkeit, Ersatzlaufwerke, Monitoring,
+Backup, Stromverbrauch und Wiederherstellungszeit achten.
+
+## 07 · Energieeffizienz bei RAID
+
+Wenn die Aufgabe nach Energieeffizienz fragt, nenne konkrete technische
+Maßnahmen und nicht nur "weniger Strom verbrauchen":
+
+- Energieeffiziente Laufwerke wählen, zum Beispiel SSDs oder sparsame
+  Nearline-HDDs passend zur Last.
+- Anzahl der Laufwerke passend dimensionieren; ein unnötig großes Array erhöht
+  Stromverbrauch, Wärme und Kühlbedarf.
+- 2,5-Zoll-Laufwerke oder SSDs prüfen, wenn Kapazität und I/O-Anforderung dazu
+  passen.
+- Hot-Spare-Laufwerke nur dann dauerhaft drehen lassen, wenn die
+  Verfügbarkeitsanforderung das rechtfertigt; sonst Controller-/Systemfunktion
+  sauber bewerten.
+- Power-Management und Spin-down nur bei geeigneten Archiv- oder Backup-Arrays
+  nutzen, nicht bei latenzkritischen Produktivsystemen.
+- Monitoring aktivieren: Ein degradiertes RAID verbraucht während Rebuilds mehr
+  Ressourcen und ist fachlich riskanter.
+
+## 08 · Typische Fehler
+
+- **RAID 0 als sicher bezeichnen.** RAID 0 bietet keine Redundanz. Ein
+  Laufwerksausfall reicht, um das Array unbrauchbar zu machen.
+- **RAID 5 und RAID 6 nur als "sicherer" vergleichen.** Korrekt ist:
+  RAID 6 toleriert zwei statt einen Laufwerksausfall, hat aber weniger nutzbare
+  Kapazität und langsamere Schreibvorgänge.
+- **Speichereffektivität mit Kapazität verwechseln.** `80 %` ist eine Quote,
+  `16 TB` ist eine Kapazität.
+- **Parität als feste Paritätsplatte erklären.** Bei RAID 5 und RAID 6 ist die
+  Parität verteilt. In der einfachen Rechnung entspricht sie aber einem oder
+  zwei Laufwerksäquivalenten.
+- **RAID als Backup verkaufen.** RAID hält ein System bei bestimmten
+  Laufwerksausfällen verfügbar. Es stellt keine alte Dateiversion wieder her und
+  schützt nicht vor Löschung, Schadsoftware oder Standortschaden.
+- **Ungleiche Laufwerke ignorieren.** Für Prüfungsaufgaben mit gleichen Platten
+  gelten die Formeln direkt. Bei ungleichen Laufwerken begrenzt oft das kleinste
+  Laufwerk die gemeinsam nutzbare Größe.
+- **RAID 10-Ausfalltoleranz zu pauschal angeben.** "Zwei Laufwerke dürfen
+  ausfallen" ist nur dann sicher, wenn sie in unterschiedlichen Spiegelpaaren
+  liegen. Fallen beide Laufwerke eines Spiegelpaares aus, ist das Array defekt.
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- RAID 0, 1, 5, 6 und 10 nach Striping, Mirroring und Parität unterscheiden.
+- nutzbare Kapazität und Speichereffektivität aus Laufwerkszahl und
+  Laufwerksgröße berechnen.
+- die Umstellung von RAID 5 auf RAID 6 fachlich und rechnerisch erklären.
+- typische Prüfungsfallen zu RAID 0, RAID 10, Parität und Backup vermeiden.
+- konkrete Energieeffizienzmaßnahmen für RAID-Systeme nennen.
+
+<Glossar
+  einträge={[
+    {
+      term: 'RAID',
+      definition: 'Verbund aus mehreren Laufwerken, der je nach Level Durchsatz, Verfügbarkeit oder beides verbessert.'
+    },
+    {
+      term: 'Striping',
+      definition: 'Verteilung von Datenblöcken auf mehrere Laufwerke. Erhöht Durchsatz, bietet allein aber keine Redundanz.'
+    },
+    {
+      term: 'Mirroring',
+      definition: 'Spiegelung derselben Daten auf mehrere Laufwerke. Erhöht Verfügbarkeit, kostet aber Kapazität.'
+    },
+    {
+      term: 'Parität',
+      definition: 'Wiederherstellungsinformation, mit der ein fehlender Datenblock aus den verbleibenden Blöcken rekonstruiert werden kann.'
+    },
+    {
+      term: 'Speichereffektivität',
+      definition: 'Anteil der Rohkapazität, der für Nutzdaten zur Verfügung steht: Netto-Laufwerke geteilt durch Brutto-Laufwerke.'
+    },
+    {
+      term: 'Rebuild',
+      definition: 'Wiederherstellung eines RAID-Verbunds nach Austausch eines ausgefallenen Laufwerks.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizielle Einordnung in LF2: Arbeitsplätze nach Kundenwunsch ausstatten.'
+    },
+    {
+      label: 'FIAusbV - Fachinformatikerausbildungsverordnung',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung mit Ausbildungsrahmenplan und Prüfungsanforderungen.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ausbildungsquelle zur modernisierten Fachinformatiker-Ausbildung und zur praktischen Umsetzung.'
+    },
+    {
+      label: 'Red Hat Enterprise Linux 8 - Managing RAID',
+      href: 'https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/managing-raid_managing-storage-devices',
+      detail: 'Fachlicher Anker zu RAID 0, 1, 5, 6 und 10, Striping, Mirroring, Parität, Kapazität und Redundanz.'
+    },
+  ]}
+/>

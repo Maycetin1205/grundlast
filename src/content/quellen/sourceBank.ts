@@ -149,6 +149,13 @@ export const sourceBank: SourceEntry[] = [
     tags: ['ordnung', 'hardware', 'ssd', 'hdd', 'massenspeicher', 'speicher', 'storage'],
   },
   {
+    id: 'redhat-rhel8-managing-raid',
+    label: 'Red Hat Enterprise Linux 8 - Managing RAID',
+    href: 'https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/managing-raid_managing-storage-devices',
+    detail: 'Red-Hat-Dokumentation zu RAID-Leveln, Striping, Mirroring, Parität, Kapazität und Redundanz.',
+    tags: ['ordnung', 'hardware', 'storage', 'raid', 'striping', 'mirroring', 'paritaet', 'redundanz', 'verfuegbarkeit'],
+  },
+  {
     id: 'nvmexpress-faq',
     label: 'NVM Express - NVMe FAQ',
     href: 'https://www.nvmexpress.org/wp-content/uploads/NVMe-FAQ.pdf',

@@ -13,7 +13,7 @@ export const slugTags: Record<string, string[]> = {
   'hardware-schnittstellen': ['ordnung', 'hardware', 'lf2', 'schnittstelle', 'peripherie', 'usb', 'usb-c', 'usb4', 'usb-pd', 'thunderbolt', 'displayport', 'hdmi', 'pcie', 'sata', 'nvme', 'm2', 'mainboard', 'dock', 'monitor', 'drucker', 'kvm', 'ergonomie'],
   dateisysteme: ['ordnung', 'betriebssystem', 'dateisystem', 'fat32', 'exfat', 'ntfs', 'ext4', 'apfs', 'windows', 'linux', 'macos', 'ios', 'inode', 'mft', 'journaling', 'cow', 'acl', 'posix', 'dateirechte', 'metadaten', 'metadata', 'snapshot', 'clone', 'space-sharing'],
   'homeoffice-ergonomie': ['ordnung', 'hardware', 'arbeitsschutz', 'ergonomie', 'barrierefreiheit', 'telearbeit', 'homeoffice', 'mobile-arbeit', 'softwareergonomie', 'wcag', 'bitv'],
-  'raid-systeme': ['sicherheit', 'backup'],
+  'raid-systeme': ['ordnung', 'hardware', 'storage', 'raid', 'striping', 'mirroring', 'paritaet', 'redundanz', 'verfuegbarkeit', 'backup'],
   'usv-systeme': ['sicherheit', 'verfuegbarkeit'],
   'scan-bilddaten': ['ordnung'],
   'linux-chmod': ['sicherheit', 'betriebssystem', 'linux', 'chmod', 'oktal', 'dateirechte', 'posix', 'rwx', 'owner', 'group', 'other', 'suid', 'sgid', 'sticky'],
@@ -139,6 +139,12 @@ export const lessonSourceIds: Record<string, string[]> = {
     'hdmi-la-bandwidths-resolutions',
     'nvmexpress-specifications',
     'dguv-215-410',
+  ],
+  'raid-systeme': [
+    'kmk-rahmenlehrplan',
+    'fiausbv',
+    'bibb-fachinformatiker',
+    'redhat-rhel8-managing-raid',
   ],
   dateisysteme: [
     'kmk-rahmenlehrplan',

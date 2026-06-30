@@ -20,7 +20,100 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `raid-systeme` | Kapitel | ungeprüft | IT-Systeme: Hardware/Schnittstellen → Ergonomie/Telearbeit → RAID-Level | Phase Bau: Quellenbasis, Faktenbelege und Lösbarkeitsnachweis herstellen. |
+| `raid-systeme` | Kapitel | ungeprüft | IT-Systeme: Hardware/Schnittstellen → Ergonomie/Telearbeit → RAID-Level | Phase Review: gebaut, Boden grün; unabhängiger Prüfer-Pass steht aus. |
+
+## Gebaute, ungeprüfte Kapitel
+
+### `raid-systeme`
+
+Slug: `raid-systeme`
+Kompetenz: RAID 0, 1, 5, 6 und 10 nach Striping, Mirroring und Parität
+unterscheiden; nutzbare Kapazität und Speichereffektivität aus Laufwerkszahl und
+Laufwerksgröße berechnen; die Umstellung von RAID 5 auf RAID 6 fachlich
+begründen; RAID klar von Backup abgrenzen; konkrete Energieeffizienzmaßnahmen
+für RAID-Systeme nennen.
+Form: Kapitel
+Status: ungeprüft
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „RAID-Level (0,1,5,6,10)" in Abschnitt
+2 · IT-Systeme (LF2, Jahr 1).
+Voraussetzungen → Anschluss: Hardware/Schnittstellen und Massenspeicher
+(HDD/SSD, Schnittstellen, Server-/Workstation-Auswahl) → RAID-Level,
+Kapazität, Speichereffektivität und Ausfalltoleranz → USV-Systeme,
+Scan-/Bilddaten und spätere Backup-/Verfügbarkeitsthemen.
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für LF2 „Arbeitsplätze nach Kundenwunsch ausstatten". Das Thema bleibt
+ein eigenständiges Kapitel, weil AP1-Aufgaben RAID-Level vergleichen,
+Netto-Laufwerke und Speichereffektivität berechnen sowie RAID gegen Backup und
+Energieeffizienz abgrenzen lassen.
+Fachliche Primärquellen: Red Hat Enterprise Linux 8, „Managing RAID", als
+fachlicher HTML-Anker zu RAID 0, RAID 1, RAID 5, RAID 6 und RAID 10, Striping,
+Mirroring, Parität, Kapazität und Redundanz. Nicht frei prüfbare oder
+paywallartige Norm-/Hersteller-PDFs wurden nicht als maschinelle Faktenbelege
+verwendet.
+Didaktische Vergleiche: Das Vorgängerkapitel `hardware-schnittstellen` erwähnt
+RAID nur als Auswahlaspekt bei Servern/Workstations. `raid-systeme` vertieft
+genau die Prüfungsoperationen: Level erkennen, Kapazität rechnen,
+Speichereffektivität bestimmen, Ausfalltoleranz begründen, Backup-Falle
+vermeiden und Energieeffizienzmaßnahmen nennen.
+Lokaler Materialabgleich: `_material_index/extraktion/Prüfung_5.md` enthält den
+Aufgabentyp RAID 5 auf RAID 6 umstellen, nutzbare Laufwerke und
+Speichereffektivität bestimmen, drei Ursachen von Datenverlust nennen, gegen
+die RAID nicht schützt, sowie zwei Energieeffizienzmaßnahmen für RAID-Systeme.
+Übernommen wurden nur Themenumfang und Denkoperation; kein geschützter
+Aufgaben- oder Lösungstext.
+
+Geprüfte Kernaussagen (7, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm.cmd run check:sources` grün):
+1. RAID nutzt Striping, Mirroring und Striping mit Parität, um Redundanz,
+   geringere Latenz, höhere Bandbreite und Wiederherstellungsfähigkeit nach
+   Laufwerksausfällen zu erreichen. (Red Hat)
+2. RAID 0 ist Striping, verteilt Daten über Mitgliedslaufwerke und bietet keine
+   Redundanz. (Red Hat)
+3. RAID 1 spiegelt identische Daten auf jedes Mitgliedslaufwerk und erhöht damit
+   Datenverfügbarkeit. (Red Hat)
+4. RAID 1 hat als nutzbare Kapazität die Kapazität des kleinsten gespiegelten
+   Laufwerks. (Red Hat)
+5. RAID 5 verteilt Parität über alle Mitgliedslaufwerke; Lesen ist typischerweise
+   deutlich schneller als Schreiben. (Red Hat)
+6. Bei RAID 6 werden für die Kapazitätsrechnung zwei Laufwerke statt eines
+   Laufwerks für zusätzliche Parität abgezogen. (Red Hat)
+7. RAID 10 kombiniert die Performance-Vorteile von RAID 0 mit der Redundanz von
+   RAID 1. (Red Hat)
+
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
+Typ A (aus `_material_index/extraktion/Prüfung_5.md`, abstrahiert): „Ein
+RAID-5-Verbund mit fünf gleich großen Laufwerken soll auf RAID 6 umgestellt
+werden. Gib nutzbare Laufwerke, Speichereffektivität und Wirkung auf die
+Ausfalltoleranz an." Allein mit der Lerndatei lösbar über „RAID-Level im
+Überblick", „Schrittfolge für jede Kapazitätsaufgabe" und „RAID 5 auf RAID 6
+umstellen": RAID 5 = `5 - 1 = 4` Netto-Laufwerke, `4 / 5 = 80 %`; RAID 6 =
+`5 - 2 = 3` Netto-Laufwerke, `3 / 5 = 60 %`; Wirkung: ein Laufwerk weniger
+nutzbar, dafür zwei statt ein Laufwerksausfall tolerierbar. Typ B
+(gleicher Materialanker, abstrahiert): „Nenne Ursachen von Datenverlust, gegen
+die RAID nicht schützt, und Energieeffizienzmaßnahmen für ein RAID-System." Über
+„Warum existiert RAID?", „Energieeffizienz bei RAID" und „Typische Fehler"
+lösbar: RAID schützt nicht vor Löschung, Schadsoftware/Ransomware,
+Standortschaden/Brand/Diebstahl oder falschen Änderungen; Maßnahmen sind
+passend dimensionierte/effiziente Laufwerke, geeignete SSDs/2,5-Zoll-Laufwerke,
+Hot-Spare-/Power-Management bewusst bewerten, Monitoring und Rebuild-Risiko
+beachten.
+Didaktik, Fehlerfallen und Anwendung geprüft: Reihenfolge Nutzen → Bausteine →
+Level-Tabelle → Rechenverfahren → RAID-5-/RAID-6-Prüfungstyp →
+Szenarioentscheidung → Energieeffizienz → Fehlerfallen trägt. Alle
+Beispielrechnungen nachgerechnet: RAID 5 mit 5 × 4 TB = 16 TB und 80 %; RAID 6
+mit 5 × 4 TB = 12 TB und 60 %; RAID 10 mit 8 × 2 TB = 8 TB.
+Glossar, Quellen und Links geprüft: `<Term>`-IDs `raid`, `hdd` und `ssd` sind
+vorhanden; lokales Glossar im Kapitel definiert Striping, Mirroring, Parität,
+Speichereffektivität und Rebuild; Quellenbank und
+`lessonSourceIds['raid-systeme']` enthalten Ausbildungsquellen und Red Hat.
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): offen,
+noch nicht durchgeführt. Kapitel bleibt deshalb `ungeprüft`.
+Technische Checks: `npm.cmd run check:sources`, `npm.cmd run check:consistency`,
+`npm.cmd run lint`, `npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30.
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+IT-Systeme-Pfad. Offen: unabhängiger Prüfer-Pass nach `KAPITELSTANDARD.md` §7;
+Status darf nicht auf `geprüft` gesetzt werden.
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich

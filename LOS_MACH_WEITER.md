@@ -9,7 +9,7 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 | Aktuelles Kapitel | `raid-systeme` |
 | Kapiteldatei | `src/content/lessons/raid-systeme.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
-| Phase | Bau – erst Quellenbasis, Einordnung, Faktenbelege und Lösbarkeitsnachweis herstellen |
+| Phase | Review – Kapitel gebaut, Quellenbasis/Faktenbelege/Lösbarkeitsnachweis vorhanden; unabhängiger Prüfer-Pass steht aus |
 | Nächstes Kapitel | Nach dokumentiertem Abschluss von `raid-systeme` aus der nächsten `fehlt`-/`ungeprüft`-Zeile in `ABDECKUNGSMATRIX.md` wählen |
 
 ## Für jeden neuen Arbeitsabschnitt
