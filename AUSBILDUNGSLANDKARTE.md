@@ -62,7 +62,11 @@ Reihenfolge oder Doppelung belegt.
 
 ## Arbeitsstand der Landkarte
 
-Die Lernfelder und Abhängigkeitsketten sind der verbindliche Rahmen. Die
-detaillierte Zuordnung aller bestehenden und fehlenden Themen entsteht
-schrittweise bei der Kapitelarbeit; sie ist ausdrücklich kein Anlass, alle
-Kapitel auf einmal zu analysieren.
+Die Lernfelder und Abhängigkeitsketten sind der verbindliche Rahmen. Die Liste
+der prüfbaren Themen (Sollwert) wird in `ABDECKUNGSMATRIX.md` geführt und aus
+FIAusbV, KMK-Rahmenlehrplan, IHK-Prüfungskatalog und realen Probeprüfungen
+vervollständigt. Das Themen-Universum zu erfassen ist Pflicht und die
+Voraussetzung dafür, Lücken überhaupt sehen zu können — das ist nicht dasselbe
+wie alle Kapitel auf einmal zu auditieren. Auditiert wird weiterhin genau ein
+Kapitel nach dem anderen; die Reihenfolge folgt den Abhängigkeitsketten und der
+Lückenliste der Abdeckungsmatrix.
