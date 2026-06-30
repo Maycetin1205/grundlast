@@ -160,23 +160,25 @@ eine Lücke (Vorkapitel zuerst).
 
 | Reihenfolge | Kapitel | Erstmals eingeführte Kernkonzepte |
 |---:|---|---|
-| 1 | `prefixe` | Bit, Byte, SI-Präfix, Binärpräfix (IEC), Datenmenge in Byte |
-| 2 | `zahlensysteme` | Stellenwertsystem, Basis 2/8/10/16, Umrechnung, Hexziffern |
-| 3 | `datenvolumen-berechnung` | Farbtiefe, Auflösung, Datenmenge aus Pixeln, Faktor 8 |
-| 4 | `datenrate-berechnung` | Datenrate, Durchsatz, Bandbreite, Latenz, Brutto/Netto, Übertragungsdauer |
-| 5 | `von-neumann` | CPU, ALU, Steuerwerk, gemeinsamer Speicher, Bus, Fetch-Decode-Execute, Cache, Flaschenhals, EVA |
-| 6 | `cpu-ram-speicher` | RAM, Cache-Ebenen, Takt, Thread, SSD/HDD, NVMe, M.2, SATA, DDR-Generation, ECC |
-| 7 | `hardware-schnittstellen` | USB/USB-C/USB4, Thunderbolt, USB-PD, HDMI, DisplayPort, PCIe, Docking, KVM |
-| 8 | `dateisysteme` | Dateisystem, Partition, Mount, Journaling (Konzeptliste beim nächsten Durchlauf am Kapitel verifizieren) |
-| 9 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
+| 1 | `bit-byte` | Bit, Byte, Bitmuster, 8-Bit-Wertebereich, b/B-Unterscheidung, Datenmenge vs. Datenrate, Zeichenkodierung, ASCII, UTF-8 |
+| 2 | `prefixe` | SI-Präfix, Binärpräfix (IEC), Datenmenge in Byte |
+| 3 | `zahlensysteme` | Stellenwertsystem, Basis 2/8/10/16, Umrechnung, Hexziffern |
+| 4 | `datenvolumen-berechnung` | Farbtiefe, Auflösung, Datenmenge aus Pixeln, Faktor 8 |
+| 5 | `datenrate-berechnung` | Datenrate, Durchsatz, Bandbreite, Latenz, Brutto/Netto, Übertragungsdauer |
+| 6 | `von-neumann` | CPU, ALU, Steuerwerk, gemeinsamer Speicher, Bus, Fetch-Decode-Execute, Cache, Flaschenhals, EVA |
+| 7 | `cpu-ram-speicher` | RAM, Cache-Ebenen, Takt, Thread, SSD/HDD, NVMe, M.2, SATA, DDR-Generation, ECC |
+| 8 | `hardware-schnittstellen` | USB/USB-C/USB4, Thunderbolt, USB-PD, HDMI, DisplayPort, PCIe, Docking, KVM |
+| 9 | `dateisysteme` | Dateisystem, Partition, Mount, Journaling (Konzeptliste beim nächsten Durchlauf am Kapitel verifizieren) |
+| 10 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
 
-`bit-byte` liefert Konzepte aus Zeile 1, ist aber noch `ungeprüft`; vor seiner
-Freigabe gelten Bit/Byte als von `prefixe` getragen.
+`bit-byte` ist als Wurzelkapitel eingetragen, bleibt aber bis zum unabhängigen
+Prüfer-Pass `ungeprüft`. Bis zur Freigabe dürfen spätere neue Kapitel die dort
+eingeführten Konzepte nicht als geprüft voraussetzen.
 
-`linux-chmod` (Zeile 9) ist am 2026-06-29 durch den unabhängigen Prüfer-Pass
+`linux-chmod` (Zeile 10) ist am 2026-06-29 durch den unabhängigen Prüfer-Pass
 bestätigt (`geprüft`); der Registereintrag ist nicht mehr provisorisch.
-Voraussetzungen sind bereits eingeführt: Oktal aus `zahlensysteme` (Zeile 2),
-Inode/Metadaten aus `dateisysteme` (Zeile 8).
+Voraussetzungen sind bereits eingeführt: Oktal aus `zahlensysteme` (Zeile 3),
+Inode/Metadaten aus `dateisysteme` (Zeile 9).
 
 ## Pflege
 

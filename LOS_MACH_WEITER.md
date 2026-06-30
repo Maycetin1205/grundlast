@@ -9,7 +9,7 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 | Aktuelles Kapitel | `bit-byte` |
 | Kapiteldatei | `src/content/lessons/bit-byte.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
-| Phase | Bau – Kapitel vorhanden, aber noch keine Faktenbelege in `belege.json`; Quellen-/Vergleichsmatrix und ≥5 belegte Kernaussagen nach `KAPITELSTANDARD.md` §2/§8 ergänzen, danach unabhängiger Prüfer-Pass |
+| Phase | Review – Kapitel gebaut, Faktenbelege und Audit-Eintrag ergänzt, Boden grün; unabhängiger Prüfer-Pass nach `KAPITELSTANDARD.md` §7 steht aus |
 | Nächstes Kapitel | Aus der `fehlt`-/`ungeprüft`-Liste in `ABDECKUNGSMATRIX.md`, erst nach dokumentiertem Abschluss von `bit-byte` |
 
 ## Für jeden neuen Arbeitsabschnitt

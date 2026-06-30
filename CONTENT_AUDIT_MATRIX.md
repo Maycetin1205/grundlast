@@ -20,7 +20,7 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `bit-byte` | Kapitel | ungeprüft | Digitale Grundlagen: Bit und Byte → Präfixe → Zahlensysteme | Phase Bau: Kapitel vorhanden, Faktenbelege in `belege.json` ausstehend. Davor: `linux-chmod` am 2026-06-29 geprüft. |
+| `bit-byte` | Kapitel | ungeprüft | Digitale Grundlagen: Bit und Byte → Präfixe → Zahlensysteme | Phase Review: Kapitel gebaut, Faktenbelege und Lösbarkeitsnachweis dokumentiert; unabhängiger Prüfer-Pass ausstehend. Davor: `linux-chmod` am 2026-06-29 geprüft. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -29,9 +29,88 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 
 ## Gebaut, ungeprüft – Review ausstehend
 
-Derzeit kein Kapitel in diesem Zustand. Das nächste Kapitel `bit-byte` ist in
-Phase Bau (Faktenbelege in `belege.json` stehen noch aus) und erscheint hier
-erst, wenn sein Boden grün ist und es zum Review ansteht.
+### `bit-byte`
+
+Slug: `bit-byte`
+Kompetenz: Bit als kleinste digitale Ja/Nein-Information erklären; Byte als
+Gruppe aus 8 Bit anwenden; 8-Bit-Muster als 256 mögliche Werte von 0 bis 255
+einordnen; `b` und `B` unterscheiden; Datenmenge und Datenrate nur nach
+Einheitenangleichung verrechnen; einfache ASCII-/UTF-8-Zeichen als codierte
+Bitmuster verstehen.
+Form: Kapitel
+Status: ungeprüft
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Bit und Byte als kleinste Einheiten“
+in Abschnitt 1 · Digitale Grundlagen (LF2, Jahr 1).
+Voraussetzungen → Anschluss: keine inhaltlichen Vorkapitel; Wurzel der digitalen
+Grundlagen → Präfixe → Zahlensysteme → Datenmengen und Datenraten.
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für LF2/LF3, in denen IT-Systeme, Speicher, Datenabbildung und
+Vernetzung vorbereitet werden. Das Thema bleibt ein eigenständiges
+Grundlagenkapitel, weil spätere Rechen- und Codierungskapitel ohne stabile
+Bit-/Byte-Einheiten nicht allein lösbar sind.
+Fachliche Primärquellen: NIST, *Prefixes for Binary Multiples*, für `1 B = 8
+bit` sowie Bit-/Byte-Schreibweise in Datenmengeneinheiten; BIPM, *SI prefixes*,
+für dezimale SI-Präfixe; RFC 20 für 7-Bit-ASCII im 8-Bit-Byte; RFC 3629 für
+UTF-8 als variable 1- bis 4-Oktett-Codierung mit ASCII-Kompatibilität. NIST IR
+8354 und IEC 80000-13 bleiben als Quellenbasis sichtbar, wurden aber nicht als
+maschinelle Belege gezählt, weil PDF/Webstore-Zitate im Quellencheck nicht
+robust prüfbar sind.
+Didaktische Vergleiche: Das Folgekapitel `prefixe` vertieft SI- und
+Binärpräfixe; `zahlensysteme` vertieft Stellenwerte, Hex und signed/unsigned;
+`datenvolumen-berechnung` und `datenrate-berechnung` vertiefen die
+Rechenverfahren. `bit-byte` beschränkt sich deshalb auf die Reihenfolge Bit →
+Byte → 8-Bit-Wertebereich → b/B-Falle → Menge gegen Rate → Zeichen als
+Bitmuster.
+Lokaler Materialabgleich: `_material_index/extraktion/Prüfung_5.md` enthält bei
+der Bilddatenrechnung die Denkoperation `8 Bit = 1 Byte` und die anschließende
+Umrechnung über KiB/MiB/GiB/TiB. Übernommen wurden nur Themenumfang und
+Umrechnungsbedarf; kein geschützter Aufgaben- oder Lösungstext.
+
+Geprüfte Kernaussagen (8, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm run check:sources` grün):
+1. Ein Byte besteht aus acht Bit. (NIST)
+2. Ein Kibibit entspricht 2¹⁰ Bit beziehungsweise 1024 Bit; Bit ist damit die
+   Grundeinheit in binären Datenmengenangaben. (NIST)
+3. SI-Präfixe bezeichnen dezimale Vielfache und Teile von SI-Einheiten. (BIPM)
+4. RFC 20 schlägt Standard-ASCII als 7-Bit-Code vor, eingebettet in ein
+   8-Bit-Byte mit führendem Nullbit. (RFC 20)
+5. RFC 20 beschreibt die ASCII-Zeichendarstellung als 7 Bit mit b7 als
+   höchstwertigem und b1 als niedrigstwertigem Bit. (RFC 20)
+6. UTF-8 bewahrt den vollständigen US-ASCII-Bereich; US-ASCII-Zeichen werden in
+   einem Oktett mit dem normalen ASCII-Wert codiert. (RFC 3629)
+7. UTF-8 codiert Unicode-Zeichen mit variabler Oktettzahl. (RFC 3629)
+8. UTF-8 codiert Zeichen aus U+0000 bis U+10FFFF mit Sequenzen aus 1 bis 4
+   Oktetten. (RFC 3629)
+
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
+Typ A (aus `_material_index/extraktion/Prüfung_5.md`, abstrahiert):
+„Berechne aus einer Bitmenge eine Speichergröße und wandle über Byte in größere
+Einheiten weiter.“ Der erste zwingende Schritt `Bit → Byte` ist allein über die
+Kapitelteile „Byte: acht Bit als Standardgruppe“ und „Die b/B-Falle“ lösbar; die
+anschließenden Präfixschritte sind als Anschluss an `prefixe` bewusst
+ausgelagert. Typ B (prüfungsüblicher Kern): „Wie lange dauert eine 600-MB-Datei
+bei 50 Mbit/s ideal?“ ist allein mit „Die b/B-Falle“ und „Speicher ist Menge,
+Datenrate ist Geschwindigkeit“ lösbar: `50 Mbit/s ÷ 8 = 6,25 MB/s`,
+`600 MB ÷ 6,25 MB/s = 96 s`.
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg, Lernleiter,
+Lichtschaltermodell, 2^n-Mustertabelle, 8-Bit-Wertebereich, b/B-Umrechnung,
+Menge-/Rate-Tabelle, drei Grundformeln, Präfix-Einordnung als Vorschau, ASCII-
+und UTF-8-Abgrenzung sowie typische Fehler vorhanden. Rechenwege geprüft:
+`2^8 = 256`, Bereich `0` bis `255`, `100 Mbit/s = 12,5 MB/s`, `600 MB` bei
+`50 Mbit/s = 96 s`, `200 MB` bei `100 Mbit/s = 16 s`, `1 TB ≈ 931,32 GiB`,
+`20 ASCII-Zeichen = 160 Bit`.
+Glossar, Quellen und Links geprüft: `<Term>`-IDs `bit`, `byte`, `nibble`,
+`datenrate`, `durchsatz`, `dezimalpräfix`, `binärpräfix` und `ascii` sind
+vorhanden; Quellenbank und `lessonSourceIds['bit-byte']` enthalten
+Ausbildungsquellen, NIST, BIPM, RFC 20, RFC 3629 und Unicode.
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): offen; darf
+erst in einem getrennten Review erfolgen.
+Technische Checks: `npm.cmd run check:sources`, `npm.cmd run check:consistency`,
+`npm.cmd run lint`, `npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30.
+Entscheidung und offene Punkte: Eigenständiges Wurzelkapitel im gemeinsamen
+Grundlagenpfad. Offen: unabhängiger Prüfer-Pass nach `KAPITELSTANDARD.md` §7;
+Status bleibt `ungeprüft`.
 
 ## Abgeschlossene Audits
 

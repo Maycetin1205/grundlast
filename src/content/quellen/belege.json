@@ -1,4 +1,62 @@
 {
+  "bit-byte": [
+    {
+      "aussage": "Ein Byte besteht aus acht Bit.",
+      "zitat": "1 B = 2<sup>3</sup> bit = <strong>8 bit</strong>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one byte“",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Ein Kibibit entspricht 2¹⁰ Bit beziehungsweise 1024 Bit; Bit ist damit die Grundeinheit in binären Datenmengenangaben.",
+      "zitat": "1 Kibit = 2<sup>10</sup> bit = 1024 bit",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one kibibit“",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "SI-Präfixe bezeichnen dezimale Vielfache und Teile von SI-Einheiten.",
+      "zitat": "Decimal multiples and submultiples of SI units can be written using the SI prefixes listed below:",
+      "quelleId": "bipm-si-prefixes",
+      "fundstelle": "BIPM, SI prefixes — Einleitung vor der Präfixtabelle",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "RFC 20 schlägt für den Netzaustausch Standard-ASCII als 7-Bit-Code vor, eingebettet in ein 8-Bit-Byte mit führendem Nullbit.",
+      "zitat": "For concreteness, we suggest the use of standard 7-bit ASCII embedded in an 8 bit byte whose high order bit is always 0.",
+      "quelleId": "rfc-20",
+      "fundstelle": "RFC 20, Einleitung vor Abschnitt 1",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "RFC 20 beschreibt die Standard-ASCII-Zeichendarstellung als 7 Bit mit b7 als höchstwertigem und b1 als niedrigstwertigem Bit.",
+      "zitat": "The standard 7-bit character representation, with b7 the high-order bit and b1 the low-order bit, is shown below:",
+      "quelleId": "rfc-20",
+      "fundstelle": "RFC 20, Abschnitt 3, Character Representation and Code Identification",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "UTF-8 bewahrt den vollständigen US-ASCII-Bereich; US-ASCII-Zeichen werden in einem Oktett mit dem normalen ASCII-Wert codiert.",
+      "zitat": "US-ASCII characters are encoded in one octet having the normal US-ASCII value",
+      "quelleId": "rfc-3629",
+      "fundstelle": "RFC 3629, Abschnitt 1, Introduction",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "UTF-8 codiert Unicode-Zeichen mit variabler Oktettzahl.",
+      "zitat": "UTF-8 encodes UCS characters as a varying number of octets",
+      "quelleId": "rfc-3629",
+      "fundstelle": "RFC 3629, Abschnitt 1, Introduction",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "UTF-8 codiert Zeichen aus dem Bereich U+0000 bis U+10FFFF mit Sequenzen aus 1 bis 4 Oktetten.",
+      "zitat": "In UTF-8, characters from the U+0000..U+10FFFF range (the UTF-16 accessible range) are encoded using sequences of 1 to 4 octets.",
+      "quelleId": "rfc-3629",
+      "fundstelle": "RFC 3629, Abschnitt 3, UTF-8 definition",
+      "abgerufenAm": "2026-06-30"
+    }
+  ],
   "prefixe": [
     {
       "aussage": "SI-Präfixe beschreiben dezimale Vielfache und Teile von SI-Einheiten.",
