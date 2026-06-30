@@ -12,6 +12,12 @@ export interface LessonAudit {
 // Frühere KI-Selbstfreigaben liegen nur noch als historische Referenz in
 // docs/archiv/.
 const lessonAudits: Record<string, LessonAudit> = {
+  'bit-byte': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Bit und Byte mit acht online geprüften Belegen zu 1 Byte = 8 Bit, b/B, SI-/Binärpräfixen, ASCII und UTF-8 sowie nachgerechneten Einheitenbeispielen.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit Präfixen und Zahlensystemen fortsetzen.',
+  },
   prefixe: {
     status: 'geprueft',
     title: 'Geprüft',

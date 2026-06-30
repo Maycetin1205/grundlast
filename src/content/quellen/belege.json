@@ -8,7 +8,7 @@
       "abgerufenAm": "2026-06-30"
     },
     {
-      "aussage": "Ein Kibibit entspricht 2¹⁰ Bit beziehungsweise 1024 Bit; Bit ist damit die Grundeinheit in binären Datenmengenangaben.",
+      "aussage": "Ein Kibibit entspricht 2¹⁰ Bit beziehungsweise 1024 Bit.",
       "zitat": "1 Kibit = 2<sup>10</sup> bit = 1024 bit",
       "quelleId": "nist-binary-prefixes",
       "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one kibibit“",

@@ -20,14 +20,14 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `bit-byte` | Kapitel | ungeprüft | Digitale Grundlagen: Bit und Byte → Präfixe → Zahlensysteme | Phase Review: Kapitel gebaut, Faktenbelege und Lösbarkeitsnachweis dokumentiert; unabhängiger Prüfer-Pass ausstehend. Davor: `linux-chmod` am 2026-06-29 geprüft. |
+| `homeoffice-ergonomie` | Kapitel | ungeprüft | IT-Systeme: Hardware/Schnittstellen → Ergonomie, Barrierefreiheit, Telearbeit | Phase Bau: nächstes Kapitel aus der obersten ungeprüften Zeile der `ABDECKUNGSMATRIX.md`, nachdem `bit-byte` am 2026-06-30 geprüft wurde. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
 nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
-## Gebaut, ungeprüft – Review ausstehend
+## Abgeschlossene Audits
 
 ### `bit-byte`
 
@@ -38,7 +38,7 @@ einordnen; `b` und `B` unterscheiden; Datenmenge und Datenrate nur nach
 Einheitenangleichung verrechnen; einfache ASCII-/UTF-8-Zeichen als codierte
 Bitmuster verstehen.
 Form: Kapitel
-Status: ungeprüft
+Status: geprüft
 Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Bit und Byte als kleinste Einheiten“
 in Abschnitt 1 · Digitale Grundlagen (LF2, Jahr 1).
 Voraussetzungen → Anschluss: keine inhaltlichen Vorkapitel; Wurzel der digitalen
@@ -70,8 +70,7 @@ Umrechnungsbedarf; kein geschützter Aufgaben- oder Lösungstext.
 Geprüfte Kernaussagen (8, mit maschinell prüfbarem Beleg in
 `src/content/quellen/belege.json`; `npm run check:sources` grün):
 1. Ein Byte besteht aus acht Bit. (NIST)
-2. Ein Kibibit entspricht 2¹⁰ Bit beziehungsweise 1024 Bit; Bit ist damit die
-   Grundeinheit in binären Datenmengenangaben. (NIST)
+2. Ein Kibibit entspricht 2¹⁰ Bit beziehungsweise 1024 Bit. (NIST)
 3. SI-Präfixe bezeichnen dezimale Vielfache und Teile von SI-Einheiten. (BIPM)
 4. RFC 20 schlägt Standard-ASCII als 7-Bit-Code vor, eingebettet in ein
    8-Bit-Byte mit führendem Nullbit. (RFC 20)
@@ -101,18 +100,30 @@ und UTF-8-Abgrenzung sowie typische Fehler vorhanden. Rechenwege geprüft:
 `50 Mbit/s = 96 s`, `200 MB` bei `100 Mbit/s = 16 s`, `1 TB ≈ 931,32 GiB`,
 `20 ASCII-Zeichen = 160 Bit`.
 Glossar, Quellen und Links geprüft: `<Term>`-IDs `bit`, `byte`, `nibble`,
-`datenrate`, `durchsatz`, `dezimalpräfix`, `binärpräfix` und `ascii` sind
+`datenrate`, `durchsatz`, `dezimalpraefix`, `binaerpraefix` und `ascii` sind
 vorhanden; Quellenbank und `lessonSourceIds['bit-byte']` enthalten
 Ausbildungsquellen, NIST, BIPM, RFC 20, RFC 3629 und Unicode.
-Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): offen; darf
-erst in einem getrennten Review erfolgen.
+Unabhängiger Prüfer-Pass (Erzeuger ≠ Prüfer): 2026-06-30, keine offenen Funde.
+Gegnerisch nach §7 geprüft: Definitionen und Zahlen selbst nachgerechnet
+(`2^8 = 256`, Wertebereich `0` bis `255`, `100 Mbit/s = 12,5 MB/s`, `600 MB`
+bei `50 Mbit/s = 96 s`, `200 MB` bei `100 Mbit/s = 16 s`,
+`1 TB ≈ 931,32 GiB`, `20 ASCII-Zeichen = 160 Bit`), Zitate gegen die belegten
+Aussagen geprüft, Voraussetzungen als Wurzelkapitel verifiziert und den
+Lösbarkeitsnachweis Typ A/B allein mit der Lerndatei durchgespielt.
+Funde (alle behoben):
+1. Zwei `<Term>`-IDs nutzten Umlaut-IDs (`dezimalpräfix`, `binärpräfix`) statt
+   der vorhandenen Glossar-IDs `dezimalpraefix` und `binaerpraefix`; in
+   `bit-byte.mdx` korrigiert.
+2. Das im Kapitel eingeführte Kernkonzept `Nibble` fehlte im
+   Voraussetzungs-Register; Registereintrag ergänzt.
+3. Der zweite Faktenbeleg formulierte über das Zitat hinaus, Bit sei damit die
+   Grundeinheit binärer Datenmengenangaben; Aussage auf den belegten
+   Kibibit-Wert eingegrenzt.
 Technische Checks: `npm.cmd run check:sources`, `npm.cmd run check:consistency`,
 `npm.cmd run lint`, `npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30.
 Entscheidung und offene Punkte: Eigenständiges Wurzelkapitel im gemeinsamen
-Grundlagenpfad. Offen: unabhängiger Prüfer-Pass nach `KAPITELSTANDARD.md` §7;
-Status bleibt `ungeprüft`.
-
-## Abgeschlossene Audits
+Grundlagenpfad. Keine offenen Punkte. Nächstes aktives Kapitel gemäß
+Lückenliste: `homeoffice-ergonomie` (Phase Bau).
 
 ### `linux-chmod`
 

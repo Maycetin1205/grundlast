@@ -51,7 +51,7 @@ sind unzulässig: Eine Zeile entsteht nur aus einem belegten Anker.
 
 | Prüfbares Thema | Kapitel | Status |
 |---|---|---|
-| Bit und Byte als kleinste Einheiten | `bit-byte` | ungeprüft |
+| Bit und Byte als kleinste Einheiten | `bit-byte` | geprüft |
 | SI- und Binärpräfixe (kB vs. KiB) | `prefixe` | geprüft |
 | Zahlensysteme (Dual, Oktal, Hex, Dezimal) | `zahlensysteme` | geprüft |
 | Datenmengen aus Auflösung/Farbtiefe rechnen | `datenvolumen-berechnung` | geprüft |
@@ -160,7 +160,7 @@ eine Lücke (Vorkapitel zuerst).
 
 | Reihenfolge | Kapitel | Erstmals eingeführte Kernkonzepte |
 |---:|---|---|
-| 1 | `bit-byte` | Bit, Byte, Bitmuster, 8-Bit-Wertebereich, b/B-Unterscheidung, Datenmenge vs. Datenrate, Zeichenkodierung, ASCII, UTF-8 |
+| 1 | `bit-byte` | Bit, Byte, Nibble, Bitmuster, 8-Bit-Wertebereich, b/B-Unterscheidung, Datenmenge vs. Datenrate, Zeichenkodierung, ASCII, UTF-8 |
 | 2 | `prefixe` | SI-Präfix, Binärpräfix (IEC), Datenmenge in Byte |
 | 3 | `zahlensysteme` | Stellenwertsystem, Basis 2/8/10/16, Umrechnung, Hexziffern |
 | 4 | `datenvolumen-berechnung` | Farbtiefe, Auflösung, Datenmenge aus Pixeln, Faktor 8 |
@@ -171,9 +171,9 @@ eine Lücke (Vorkapitel zuerst).
 | 9 | `dateisysteme` | Dateisystem, Partition, Mount, Journaling (Konzeptliste beim nächsten Durchlauf am Kapitel verifizieren) |
 | 10 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
 
-`bit-byte` ist als Wurzelkapitel eingetragen, bleibt aber bis zum unabhängigen
-Prüfer-Pass `ungeprüft`. Bis zur Freigabe dürfen spätere neue Kapitel die dort
-eingeführten Konzepte nicht als geprüft voraussetzen.
+`bit-byte` ist als Wurzelkapitel eingetragen und am 2026-06-30 durch den
+unabhängigen Prüfer-Pass bestätigt (`geprüft`). Spätere Kapitel dürfen die dort
+eingeführten Konzepte als geprüft voraussetzen.
 
 `linux-chmod` (Zeile 10) ist am 2026-06-29 durch den unabhängigen Prüfer-Pass
 bestätigt (`geprüft`); der Registereintrag ist nicht mehr provisorisch.

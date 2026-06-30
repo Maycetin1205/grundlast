@@ -6,11 +6,11 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 
 | Feld | Wert |
 |---|---|
-| Aktuelles Kapitel | `bit-byte` |
-| Kapiteldatei | `src/content/lessons/bit-byte.mdx` |
+| Aktuelles Kapitel | `homeoffice-ergonomie` |
+| Kapiteldatei | `src/content/lessons/homeoffice-ergonomie.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
-| Phase | Review – Kapitel gebaut, Faktenbelege und Audit-Eintrag ergänzt, Boden grün; unabhängiger Prüfer-Pass nach `KAPITELSTANDARD.md` §7 steht aus |
-| Nächstes Kapitel | Aus der `fehlt`-/`ungeprüft`-Liste in `ABDECKUNGSMATRIX.md`, erst nach dokumentiertem Abschluss von `bit-byte` |
+| Phase | Bau – erst Quellenbasis, Einordnung, Faktenbelege und Lösbarkeitsnachweis herstellen |
+| Nächstes Kapitel | Nach dokumentiertem Abschluss von `homeoffice-ergonomie` aus der nächsten `fehlt`-/`ungeprüft`-Zeile in `ABDECKUNGSMATRIX.md` wählen |
 
 ## Für jeden neuen Arbeitsabschnitt
 
