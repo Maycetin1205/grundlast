@@ -65,7 +65,7 @@ sind unzulässig: Eine Zeile entsteht nur aus einem belegten Anker.
 | CPU, RAM, Massenspeicher auswählen | `cpu-ram-speicher` | geprüft |
 | Schnittstellen, Peripherie, Docking | `hardware-schnittstellen` | geprüft |
 | Ergonomie, Barrierefreiheit, Telearbeit | `homeoffice-ergonomie` | geprüft |
-| RAID-Level (0,1,5,6,10) | `raid-systeme` | ungeprüft |
+| RAID-Level (0,1,5,6,10) | `raid-systeme` | geprüft |
 | USV-Systeme und Verfügbarkeit | `usv-systeme` | ungeprüft |
 | Scan-/Bilddaten (DPI, Farbtiefe) rechnen | `scan-bilddaten` | ungeprüft |
 | Dateisysteme | `dateisysteme` | geprüft |

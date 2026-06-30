@@ -66,6 +66,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Ergonomie, Barrierefreiheit und Telearbeit mit acht online geprüften Belegen zu ArbStättV, ArbSchG, WCAG und BITV sowie dokumentiertem Lösbarkeitsnachweis für barrierefreie Arbeitsplatz-Hardware.',
     nextAction: 'Abgeschlossen; im Lernpfad mit RAID-Systemen fortsetzen.',
   },
+  'raid-systeme': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'RAID 0, 1, 5, 6 und 10 mit sieben online geprüften Belegen zu Striping, Mirroring, Parität, Kapazität, Redundanz und RAID-10-Kombination sowie nachgerechneter RAID-5-zu-RAID-6-Umstellung.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit USV-Systemen fortsetzen.',
+  },
   dateisysteme: {
     status: 'geprueft',
     title: 'Geprüft',

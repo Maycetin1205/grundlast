@@ -6,11 +6,11 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 
 | Feld | Wert |
 |---|---|
-| Aktuelles Kapitel | `raid-systeme` |
-| Kapiteldatei | `src/content/lessons/raid-systeme.mdx` |
+| Aktuelles Kapitel | `usv-systeme` |
+| Kapiteldatei | `src/content/lessons/usv-systeme.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
-| Phase | Review – Kapitel gebaut, Quellenbasis/Faktenbelege/Lösbarkeitsnachweis vorhanden; unabhängiger Prüfer-Pass steht aus |
-| Nächstes Kapitel | Nach dokumentiertem Abschluss von `raid-systeme` aus der nächsten `fehlt`-/`ungeprüft`-Zeile in `ABDECKUNGSMATRIX.md` wählen |
+| Phase | Bau |
+| Nächstes Kapitel | Nach dokumentiertem Abschluss von `usv-systeme` aus der nächsten `fehlt`-/`ungeprüft`-Zeile in `ABDECKUNGSMATRIX.md` wählen |
 
 ## Für jeden neuen Arbeitsabschnitt
 

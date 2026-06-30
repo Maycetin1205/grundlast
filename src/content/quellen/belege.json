@@ -695,7 +695,7 @@
       "abgerufenAm": "2026-06-30"
     },
     {
-      "aussage": "RAID 5 verteilt Parität über alle Mitgliedslaufwerke; Lesen ist typischerweise deutlich schneller als Schreiben.",
+      "aussage": "Bei RAID 5 ist die Leseleistung typischerweise deutlich höher als die Schreibleistung.",
       "zitat": "Level 5 has asymmetrical performance, and reads substantially outperforming writes.",
       "quelleId": "redhat-rhel8-managing-raid",
       "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 5",

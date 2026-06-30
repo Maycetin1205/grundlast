@@ -20,9 +20,9 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `raid-systeme` | Kapitel | ungeprüft | IT-Systeme: Hardware/Schnittstellen → Ergonomie/Telearbeit → RAID-Level | Phase Review: gebaut, Boden grün; unabhängiger Prüfer-Pass steht aus. |
+| `usv-systeme` | Kapitel | ungeprüft | IT-Systeme: RAID-Level → USV-Systeme | Phase Bau: Quellenbasis, Faktenbelege, Lerndatei und Lösbarkeitsnachweis nach Kapitelstandard herstellen. |
 
-## Gebaute, ungeprüfte Kapitel
+## Laufende und zuletzt bearbeitete Kapitel
 
 ### `raid-systeme`
 
@@ -33,7 +33,7 @@ Laufwerksgröße berechnen; die Umstellung von RAID 5 auf RAID 6 fachlich
 begründen; RAID klar von Backup abgrenzen; konkrete Energieeffizienzmaßnahmen
 für RAID-Systeme nennen.
 Form: Kapitel
-Status: ungeprüft
+Status: geprüft
 Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „RAID-Level (0,1,5,6,10)" in Abschnitt
 2 · IT-Systeme (LF2, Jahr 1).
 Voraussetzungen → Anschluss: Hardware/Schnittstellen und Massenspeicher
@@ -74,8 +74,8 @@ Geprüfte Kernaussagen (7, mit maschinell prüfbarem Beleg in
    Datenverfügbarkeit. (Red Hat)
 4. RAID 1 hat als nutzbare Kapazität die Kapazität des kleinsten gespiegelten
    Laufwerks. (Red Hat)
-5. RAID 5 verteilt Parität über alle Mitgliedslaufwerke; Lesen ist typischerweise
-   deutlich schneller als Schreiben. (Red Hat)
+5. Bei RAID 5 ist die Leseleistung typischerweise deutlich höher als die
+   Schreibleistung. (Red Hat)
 6. Bei RAID 6 werden für die Kapazitätsrechnung zwei Laufwerke statt eines
    Laufwerks für zusätzliche Parität abgezogen. (Red Hat)
 7. RAID 10 kombiniert die Performance-Vorteile von RAID 0 mit der Redundanz von
@@ -107,13 +107,24 @@ Glossar, Quellen und Links geprüft: `<Term>`-IDs `raid`, `hdd` und `ssd` sind
 vorhanden; lokales Glossar im Kapitel definiert Striping, Mirroring, Parität,
 Speichereffektivität und Rebuild; Quellenbank und
 `lessonSourceIds['raid-systeme']` enthalten Ausbildungsquellen und Red Hat.
-Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): offen,
-noch nicht durchgeführt. Kapitel bleibt deshalb `ungeprüft`.
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer):
+2026-06-30, keine offenen Funde. Gegnerisch nach §7 geprüft: Definitionen,
+Zahlen und Regeln gegen Red-Hat-Belege und eigene Rechnung geprüft; Zitate gegen
+die belegten Aussagen gegengelesen; Materialtyp aus Prüfung 5 allein mit der
+Lerndatei durchgespielt; Voraussetzungen gegen Register geprüft.
+Funde (alle behoben):
+1. Der RAID-5-Faktenbeleg behauptete „verteilte Parität" und
+   Lese-/Schreibverhalten, das wörtliche Zitat trug aber nur das
+   Lese-/Schreibverhalten. Aussage in `belege.json` und Auditmatrix auf die
+   tatsächlich zitierte Performance-Aussage eingegrenzt.
+2. `Verfügbarkeit` wurde vor der lokalen Erklärung als Zielbegriff benutzt.
+   Kurzdefinition im Einstieg ergänzt: Weiterbetrieb bei bestimmten
+   Laufwerksausfällen bis Ersatz und Wiederherstellung.
 Technische Checks: `npm.cmd run check:sources`, `npm.cmd run check:consistency`,
 `npm.cmd run lint`, `npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30.
 Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
-IT-Systeme-Pfad. Offen: unabhängiger Prüfer-Pass nach `KAPITELSTANDARD.md` §7;
-Status darf nicht auf `geprüft` gesetzt werden.
+IT-Systeme-Pfad. Keine offenen Punkte. Nächstes aktives Kapitel gemäß
+Lückenliste: `usv-systeme` (Phase Bau).
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
