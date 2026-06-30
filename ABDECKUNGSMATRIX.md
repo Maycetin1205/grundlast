@@ -172,6 +172,7 @@ eine Lücke (Vorkapitel zuerst).
 | 10 | `dateisysteme` | Dateisystem, Partition, Mount, Journaling (Konzeptliste beim nächsten Durchlauf am Kapitel verifizieren) |
 | 11 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
 | 12 | `raid-systeme` | RAID, RAID-Level, Striping, Mirroring, Parität, doppelte Parität, Speichereffektivität, Rohkapazität, Nettokapazität, Ausfalltoleranz, Rebuild |
+| 13 | `usv-systeme` | USV, Überbrückungszeit, Wattstunde, Scheinleistung, Wirkleistung, Leistungsfaktor, Standby-USV, Line-interactive-USV, Online-Doppelwandler-USV, Verfügbarkeitsrechnung |
 
 `bit-byte` ist als Wurzelkapitel eingetragen und am 2026-06-30 durch den
 unabhängigen Prüfer-Pass bestätigt (`geprüft`). Spätere Kapitel dürfen die dort

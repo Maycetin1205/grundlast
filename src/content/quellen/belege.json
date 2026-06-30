@@ -715,5 +715,70 @@
       "fundstelle": "Red Hat Enterprise Linux 8, Managing RAID, Abschnitt 20.3, Level 10",
       "abgerufenAm": "2026-06-30"
     }
+  ],
+  "usv-systeme": [
+    {
+      "aussage": "Line-interactive-USV-Systeme liefern sowohl Spannungsaufbereitung als auch Batterie-Backup.",
+      "zitat": "Line-interactive UPS systems provide both power conditioning and battery backup.",
+      "quelleId": "vertiv-ups-types",
+      "fundstelle": "Vertiv, What are the Different Types of UPS Systems?, Abschnitt \"Line-Interactive\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Eine Line-interactive-USV schützt gegen häufige Stromprobleme, hat beim Wechsel auf Batterie aber typischerweise eine kurze Unterbrechung.",
+      "zitat": "Line-interactive UPS technology provides power conditioning with a 4-6 millisecond break in power when transferring to battery back-up",
+      "quelleId": "vertiv-ups-types",
+      "fundstelle": "Vertiv, What are the Different Types of UPS Systems?, Abschnitt \"Line-Interactive\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Offline- beziehungsweise Standby-USV-Systeme leiten im Normalbetrieb Netzstrom zum geschützten Ausgang durch.",
+      "zitat": "An offline UPS system passes utility AC power straight through the unit",
+      "quelleId": "vertiv-ups-types",
+      "fundstelle": "Vertiv, What are the Different Types of UPS Systems?, Abschnitt \"Offline/Standby/Battery Backup\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Eine echte Online-Doppelwandler-USV bietet durchgehende Spannungsaufbereitung und keine Umschaltzeit auf Batterie.",
+      "zitat": "A true online, double-conversion UPS provides 100% power conditioning, zero transfer time to battery",
+      "quelleId": "vertiv-ups-types",
+      "fundstelle": "Vertiv, What are the Different Types of UPS Systems?, Abschnitt \"Online Double Conversion\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Bei der USV-Auswahl müssen Gesamtlast und benötigte Laufzeit während eines Ausfalls bestimmt werden.",
+      "zitat": "Organizations must first determine load capacities. This includes finding the total power load of all connected devices and the runtime required during an outage.",
+      "quelleId": "techtarget-ups-definition",
+      "fundstelle": "TechTarget, What is an uninterruptible power supply (UPS)?, Abschnitt \"Important considerations for choosing a UPS system\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Der Leistungsfaktor beschreibt den Unterschied zwischen Wirkleistung und Scheinleistung; eine 100-kVA-USV mit Leistungsfaktor 0,8 kann 80 kW Wirkleistung liefern.",
+      "zitat": "power factor (pf) is the difference between real power and apparent power",
+      "quelleId": "techtarget-ups-definition",
+      "fundstelle": "TechTarget, What is an uninterruptible power supply (UPS)?, Abschnitt \"UPS power factor\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Google SRE beschreibt Verfügbarkeit traditionell als Anteil der System-Uptime.",
+      "zitat": "this metric is traditionally calculated based on the proportion of system uptime",
+      "quelleId": "google-sre-embracing-risk",
+      "fundstelle": "Google SRE, Embracing Risk, Abschnitt \"Measuring Service Risk\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Bei einem Verfügbarkeitsziel von 99,99 Prozent sind ungefähr 52,56 Minuten Ausfallzeit pro Jahr zulässig.",
+      "zitat": "a system with an availability target of 99.99% can be down for up to 52.56 minutes in a year",
+      "quelleId": "google-sre-embracing-risk",
+      "fundstelle": "Google SRE, Embracing Risk, Abschnitt \"Measuring Service Risk\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Die Google-SRE-Verfügbarkeitstabelle nennt für 99,9 Prozent Verfügbarkeit 8,76 Stunden zulässige Ausfallzeit pro Jahr.",
+      "zitat": "99.9% 8.76 hours",
+      "quelleId": "google-sre-availability-table",
+      "fundstelle": "Google SRE, Availability Table, Tabelle 1-1",
+      "abgerufenAm": "2026-06-30"
+    }
   ]
 }

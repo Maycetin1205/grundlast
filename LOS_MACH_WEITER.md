@@ -9,7 +9,7 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 | Aktuelles Kapitel | `usv-systeme` |
 | Kapiteldatei | `src/content/lessons/usv-systeme.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
-| Phase | Bau |
+| Phase | Review |
 | Nächstes Kapitel | Nach dokumentiertem Abschluss von `usv-systeme` aus der nächsten `fehlt`-/`ungeprüft`-Zeile in `ABDECKUNGSMATRIX.md` wählen |
 
 ## Für jeden neuen Arbeitsabschnitt

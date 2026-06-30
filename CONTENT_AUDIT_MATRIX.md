@@ -24,6 +24,98 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 ## Laufende und zuletzt bearbeitete Kapitel
 
+### `usv-systeme`
+
+Slug: `usv-systeme`
+Kompetenz: USV als Verfügbarkeitsmaßnahme einordnen; Standby-, Line-interactive-
+und Online-Doppelwandler-USV unterscheiden; Überbrückungszeit aus Spannung,
+Amperestunden, Akkuanzahl, nutzbarem Anteil und Last berechnen; `kWh / kW`-
+Aufgaben lösen; `VA`, `W` und Leistungsfaktor einordnen; Verfügbarkeit aus
+Gesamtzeit und Ausfallzeit berechnen.
+Form: Kapitel
+Status: ungeprüft
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „USV-Systeme und Verfügbarkeit“ in
+Abschnitt 2 · IT-Systeme (LF2, Jahr 1).
+Voraussetzungen → Anschluss: RAID-Level und technische Verfügbarkeit →
+USV-Systeme, Überbrückungszeit und Verfügbarkeitsrechnung → Scan-/Bilddaten,
+Prozesse/Threads und spätere Informationssicherheit mit Schutzzielen,
+Backup-Strategien und MTBF/MTTF.
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für LF2 „Arbeitsplätze nach Kundenwunsch ausstatten“ sowie die AP1-
+Aufgabenrealität zu Hardware, IT-Sicherheit und Verfügbarkeit. Das Thema bleibt
+ein eigenständiges Kapitel, weil reale Aufgaben USV als infrastrukturelle
+Sicherheitsmaßnahme nennen lassen und gleichzeitig Laufzeit- und
+Verfügbarkeitsrechnungen verlangen.
+Fachliche Primärquellen: Vertiv als Herstellerquelle zu USV-Bauarten
+Offline/Standby, Line-interactive und Online-Doppelwandler; Google SRE als
+fachlicher HTML-Anker für Verfügbarkeitsmessung und Ausfallzeitziele.
+TechTarget wurde als frei prüfbare fachliche Vergleichsquelle für
+USV-Auswahlkriterien, Last, Laufzeit und Leistungsfaktor genutzt. Nicht robust
+prüfbare Norm-/PDF-Quellen wurden nicht als maschinelle Faktenbelege gezählt.
+Didaktische Vergleiche: `raid-systeme` erklärt technische Verfügbarkeit bei
+Laufwerksausfällen und grenzt RAID von Backup ab. `usv-systeme` übernimmt nur
+den bereits eingeführten Verfügbarkeitsbegriff und vertieft Stromschutz,
+Laufzeitrechnung und Prozentverfügbarkeit. `schutzziele` und `mtbf-mttf` werden
+nicht vorausgesetzt, sondern später angeschlossen.
+Lokaler Materialabgleich: `_material_index/extraktion/Prüfung_9.md` enthält den
+Aufgabentyp Schutzbedarfsfeststellung mit Verfügbarkeit sowie die Maßnahme
+„Anbindung der IT-Systeme an eine unterbrechungsfreie Stromversorgung (USV)“ als
+infrastrukturelle Maßnahme. Übernommen wurden nur Themenumfang und Denkoperation;
+kein geschützter Aufgaben- oder Lösungstext.
+
+Geprüfte Kernaussagen (9, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm.cmd run check:sources` grün):
+1. Line-interactive-USV-Systeme liefern Spannungsaufbereitung und Batterie-
+   Backup. (Vertiv)
+2. Line-interactive-USV-Systeme haben beim Wechsel auf Batterie typischerweise
+   eine kurze Umschaltunterbrechung. (Vertiv)
+3. Offline-/Standby-USV-Systeme leiten im Normalbetrieb Netzstrom zum
+   geschützten Ausgang durch. (Vertiv)
+4. Eine echte Online-Doppelwandler-USV bietet vollständige Spannungsaufbereitung
+   und keine Umschaltzeit auf Batterie. (Vertiv)
+5. Bei der USV-Auswahl müssen Gesamtlast und benötigte Laufzeit während eines
+   Ausfalls bestimmt werden. (TechTarget)
+6. Der Leistungsfaktor beschreibt den Unterschied zwischen Wirkleistung und
+   Scheinleistung. (TechTarget)
+7. Google SRE beschreibt Verfügbarkeit traditionell als Anteil der System-
+   Uptime. (Google SRE)
+8. 99,99 % Verfügbarkeit erlauben ungefähr 52,56 Minuten Ausfall pro Jahr.
+   (Google SRE)
+9. Die Google-SRE-Verfügbarkeitstabelle nennt für 99,9 % Verfügbarkeit 8,76
+   Stunden zulässige Ausfallzeit pro Jahr. (Google SRE)
+
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
+Typ A (aus `_material_index/extraktion/Prüfung_9.md`, abstrahiert): „Ordne USV
+als Maßnahme zur Verbesserung der IT-Sicherheit beziehungsweise Verfügbarkeit in
+einem Sicherheitskonzept ein und begründe die Kategorie.“ Allein mit der
+Lerndatei lösbar über „Warum existiert eine USV?“, „Auswahl und Betrieb“ und
+„Typische Fehler“: USV ist eine infrastrukturelle Maßnahme, schützt gegen
+Stromausfall/Netzstörung, erhöht Verfügbarkeit, ersetzt aber weder Backup noch
+Redundanz. Typ B (prüfungsnahe Rechenform): „Berechne die Überbrückungszeit
+einer USV aus Akkuwerten, Restladung und Last; berechne zusätzlich eine
+Jahresverfügbarkeit aus Ausfallstunden.“ Lösbar über „Leistung, Energie und
+Laufzeit“, „Rechenverfahren“ und „Verfügbarkeit berechnen“.
+Didaktik, Fehlerfallen und Anwendung geprüft: Reihenfolge Nutzen →
+USV-Bauarten → Einheiten/Formeln → Rechenverfahren → Verfügbarkeit →
+Auswahl/Betrieb → Fehlerfallen trägt. Beispielrechnungen nachgerechnet:
+`12 V × 4,5 Ah = 54 Wh`; `54 Wh × 20 = 1080 Wh`; `1080 Wh × 0,70 = 756 Wh`;
+`756 Wh / 800 W = 0,945 h = 56,7 min`; `6 kWh / 11 kW = 0,545 h = 32,7 min`;
+`6 kWh / 8,25 kW = 0,727 h = 43,6 min`; `3000 VA × 0,9 = 2700 W`;
+`2100 / 2700 = 77,8 %`; `8740 / 8760 = 99,77 %`.
+Glossar, Quellen und Links geprüft: `<Term>`-IDs `usv` und `verfügbarkeit` sind
+vorhanden; lokales Glossar definiert USV, Überbrückungszeit, Wattstunde,
+Scheinleistung, Wirkleistung, Leistungsfaktor und Online-Doppelwandler-USV.
+Quellenbank und `lessonSourceIds['usv-systeme']` enthalten Ausbildungsquellen,
+Vertiv, TechTarget und Google SRE.
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): offen, noch
+nicht durchgeführt. Status bleibt `ungeprüft`.
+Technische Checks: `npm.cmd run check:sources`, `npm.cmd run check:consistency`,
+`npm.cmd run lint`, `npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30.
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+IT-Systeme-Pfad. Offen: unabhängiger Prüfer-Pass nach Kapitelstandard §7; keine
+Freigabe durch den Erzeuger.
+
 ### `raid-systeme`
 
 Slug: `raid-systeme`

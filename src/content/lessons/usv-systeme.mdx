@@ -1,172 +1,354 @@
-﻿# USV-Systeme
+# USV-Systeme und Verfügbarkeit
 
-## Worum geht's
+<MetaBar
+  lernfeld="LF 2 - Arbeitsplätze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT · 4/5"
+/>
 
-Eine <Term id="usv">USV</Term> (Unterbrechungsfreie Stromversorgung) schützt Server und
-Netzwerkgeräte vor Stromausfällen. Du lernst, wie lange eine USV Geräte überbrücken kann
-und wie man Verfügbarkeit berechnet — beides kommt in Prüfungs-Rechenaufgaben vor.
+<Tipp titel="So benutzt du dieses Kapitel">
+Wenn eine Aufgabe nach USV fragt, trenne zuerst Zweck, Leistung und Laufzeit:
+Was soll weiterlaufen, wie viel elektrische Last hängt daran, wie viel Energie
+steht nutzbar zur Verfügung, und was passiert nach der Überbrückungszeit?
+</Tipp>
 
----
+## 01 · Warum existiert eine USV?
 
-## Erklärung
+Eine *<Term id="usv">USV</Term>* ist eine unterbrechungsfreie Stromversorgung.
+Sie hält IT-Systeme bei Stromausfall oder schlechter Netzqualität kurzzeitig am
+Laufen. Das Ziel ist nicht "für immer weiterarbeiten", sondern Zeit gewinnen:
+für den Weiterbetrieb bis ein Generator übernimmt, für einen kontrollierten
+Shutdown oder für das Überbrücken kurzer Ausfälle.
 
-### Was macht eine USV?
+Für AP1-Aufgaben ist eine USV vor allem eine Maßnahme für
+*<Term id="verfügbarkeit">Verfügbarkeit</Term>*. Verfügbarkeit heißt hier: Ein
+Dienst oder System ist nutzbar, wenn er gebraucht wird. RAID schützt gegen
+bestimmte Laufwerksausfälle; eine USV schützt gegen bestimmte Stromprobleme.
+Beides ersetzt kein Backup.
 
-Wenn der Strom ausfällt, liefert die USV sofort Energie aus ihren Akkus — übergangslos.
-Das gibt IT-Systemen Zeit, sich **geordnet herunterzufahren**, ohne Datenverlust.
+| Situation | Was die USV leistet | Was sie nicht allein leistet |
+|---|---|---|
+| kurzer Stromausfall | Akku übernimmt die Last für Minuten | dauerhaften Betrieb ohne Generator |
+| Spannungsschwankung | je nach USV-Typ Glättung oder Umschaltung | Ersatz für fehlerhafte Hausinstallation |
+| Server-Shutdown | Zeit für sauberes Herunterfahren | Schutz vor gelöschten oder verschlüsselten Daten |
+| Rechenzentrum | Brücke bis zur Netzersatzanlage | Brandschutz, Backup, Redundanzplanung |
 
-> **Analogie:** Eine USV ist wie ein Notstrom-Akku im Laptop. Wenn der Stecker zufällig
-> rausgezogen wird, läuft der Laptop weiter, bis du ihn sauber herunterfahren kannst.
+## 02 · Die drei typischen USV-Bauarten
 
-### Die Grundformel: Energie in Wattstunden
+USV-Systeme unterscheiden sich darin, wie stark sie die Netzspannung aufbereiten
+und ob es beim Wechsel auf Akku eine kurze Umschaltzeit gibt.
 
-Akkus werden in **Volt (V)** und **Amperestunden (Ah)** angegeben:
+| Bauart | Prinzip | Typische Einordnung |
+|---|---|---|
+| Offline/Standby | Netzstrom wird im Normalfall durchgereicht; bei Ausfall schaltet die USV auf Akku und Wechselrichter. | günstige Arbeitsplatz- oder Kleinserver-Absicherung |
+| Line-interactive | wie Standby, aber mit Spannungsregelung gegen Unter- und Überspannung. | Netzwerkraum, kleine Server, schwankende Netzqualität |
+| Online/Doppelwandler | Eingang wird dauerhaft gleichgerichtet und wieder zu sauberem Wechselstrom gewandelt. | kritische Systeme, Rechenzentrum, höchste Stromqualität |
 
-```
-Wh (Wattstunden) = V × Ah
-```
+Für Prüfungsantworten genügt meist diese Reihenfolge: Standby ist einfach und
+günstig, Line-interactive ist der robuste Mittelweg, Online-Doppelwandler ist
+für kritische Lasten am saubersten, aber aufwendiger.
 
-- Eine Akku-Zelle mit 12 V und 4,5 Ah hat eine Kapazität von: 12 × 4,5 = **54 Wh**
+## 03 · Leistung, Energie und Laufzeit
 
-Mehrere Akkus zusammen:
-```
-Gesamt-Wh = Wh_pro_Akku × Anzahl_Akkus
-```
+USV-Rechenaufgaben bestehen fast immer aus denselben Größen:
 
-### Restladung berücksichtigen
+| Größe | Einheit | Bedeutung |
+|---|---|---|
+| Spannung `U` | Volt `V` | elektrische Spannung eines Akkus oder Systems |
+| Ladungsmenge `Q` | Amperestunden `Ah` | wie viel Ladung ein Akku speichern kann |
+| Energie `E` | Wattstunden `Wh` oder Kilowattstunden `kWh` | nutzbarer Energievorrat |
+| Leistung `P` | Watt `W` oder Kilowatt `kW` | angeschlossene Last pro Zeit |
+| Zeit `t` | Stunden `h` oder Minuten `min` | Überbrückungszeit |
 
-In der Praxis darf ein Akku nie komplett entladen werden (schadet der Lebensdauer).
-Wenn eine Restladung von z.B. 30 % angegeben ist, sind nur **70 %** nutzbar:
+Die Grundformel für einfache Akkuangaben lautet:
 
-```
-Nutzbare Wh = Gesamt-Wh × (1 − Restladung_als_Dezimalzahl)
-```
-
-Beispiel: 30 % Restladung → 1 − 0,30 = 0,70 → 70 % nutzbar.
-
-### Überbrückungszeit berechnen
-
-Wenn die nutzbare Energie und die angeschlossene Last bekannt sind:
-
-```
-t (Stunden) = Nutzbare Wh / Last in W
-t (Minuten) = t × 60
-```
-
-Auf **volle Minuten abrunden** — in der Praxis kannst du keine halbe Minute schätzen.
-
-### kWh-Variante (direkt gegeben)
-
-Manchmal gibt die Aufgabe die USV-Kapazität direkt in kWh an (bereits nutzbar):
-
-```
-t (Stunden) = Kapazität in kWh / Last in kW
-```
-
-Einheiten müssen passen: kWh ÷ kW = Stunden.
-
-### Verfügbarkeit
-
-Verfügbarkeit (Availability) beschreibt, wie oft ein System tatsächlich läuft:
-
-```
-A = (Gesamtzeit − Ausfallzeit) / Gesamtzeit
+```text
+E in Wh = U in V × Q in Ah
 ```
 
-Ergebnis als Dezimalzahl (z.B. 0,9977) oder in Prozent (99,77 %).
+Mehrere gleiche Akkus addieren ihre Energie:
 
----
+```text
+Gesamtenergie = Energie pro Akku × Anzahl Akkus
+```
 
-## Beispiele
+Wenn die Aufgabe eine Restladung oder Entladetiefe vorgibt, rechnest du nur mit
+dem nutzbaren Anteil:
+
+```text
+nutzbare Energie = Gesamtenergie × nutzbarer Anteil
+```
+
+Danach gilt:
+
+```text
+t in Stunden = nutzbare Energie in Wh / Last in W
+t in Minuten = t in Stunden × 60
+```
+
+Bei einer direkten kWh-Angabe musst du nur die Einheiten angleichen:
+
+```text
+t in Stunden = Kapazität in kWh / Last in kW
+```
+
+<Tipp titel="Einheiten zuerst">
+`Wh / W = h` und `kWh / kW = h`. Mischst du `Wh` mit `kW` oder `kWh` mit `W`,
+ist das Ergebnis um den Faktor 1000 falsch.
+</Tipp>
+
+### kVA, kW und Leistungsfaktor
+
+USV-Datenblätter nennen oft `VA` oder `kVA` statt `W` oder `kW`. `VA` ist
+Scheinleistung, `W` ist Wirkleistung. Für die Lastrechnung brauchst du die
+Wirkleistung:
+
+```text
+Wirkleistung in W = Scheinleistung in VA × Leistungsfaktor
+```
+
+Wenn eine Aufgabe keinen Leistungsfaktor nennt, darfst du `kVA` nicht einfach
+exakt als `kW` behandeln. In Prüfungsaufgaben steht dann entweder ein
+Leistungsfaktor dabei, eine Leistung in Watt wird direkt genannt, oder die
+Vereinfachung wird ausdrücklich erlaubt.
+
+## 04 · Rechenverfahren
 
 <Schritte
-  title="Beispiel 1: Akkus + Restladung → Überbrückungszeit in Minuten"
+  title="Akkus mit Restladung: 20 × 12 V × 4,5 Ah, Last 800 W"
   steps={[
     {
-      title: "Gesamtlast der angeschlossenen Geräte bestimmen",
-      formula: "2 Disk-Arrays à 400 W → Last = 2 × 400 = 800 W",
-      explanation: "Alle angeschlossenen Geräte addieren."
+      title: "Last addieren",
+      formula: "2 Disk-Arrays × 400 W = 800 W",
+      explanation: "Alle Geräte, die an der USV hängen, zählen zur Last."
     },
     {
       title: "Energie pro Akku berechnen",
-      formula: "Wh_Akku = 12 V × 4,5 Ah = 54 Wh",
-      explanation: "Wattstunden = Volt mal Amperestunden. Das ist die Kapazität eines einzelnen Akkus."
+      formula: "12 V × 4,5 Ah = 54 Wh",
+      explanation: "Amperestunden werden erst mit der Spannung zu Wattstunden."
     },
     {
-      title: "Gesamt-Kapazität aller 20 Akkus",
-      formula: "Gesamt = 54 Wh × 20 = 1080 Wh",
-      explanation: "Alle 20 Akkus zusammen liefern 1080 Wh."
+      title: "Gesamtenergie berechnen",
+      formula: "54 Wh × 20 = 1080 Wh",
+      explanation: "Alle gleichen Akkus werden addiert."
     },
     {
-      title: "Nutzbare Energie (Restladung 30 % → 70 % nutzbar)",
-      formula: "Nutzbar = 1080 Wh × 0,70 = 756 Wh",
-      explanation: "30 % Restladung bedeutet: nur 70 % der Kapazität darf verwendet werden."
+      title: "Restladung berücksichtigen",
+      formula: "30 % Restladung → 70 % nutzbar\n1080 Wh × 0,70 = 756 Wh",
+      explanation: "Restladung ist der nicht genutzte Anteil."
     },
     {
       title: "Überbrückungszeit berechnen",
-      formula: "t = 756 Wh / 800 W = 0,945 h\nt (min) = 0,945 × 60 = 56,7 min → 56 Minuten",
-      explanation: "Auf volle Minuten abrunden. Die USV überbrückt 56 Minuten."
-    }
+      formula: "756 Wh / 800 W = 0,945 h\n0,945 h × 60 = 56,7 min",
+      explanation: "Prüfungssicher: 56 Minuten, wenn auf volle Minuten abgerundet werden soll."
+    },
   ]}
 />
 
 <Schritte
-  title="Beispiel 2: kWh-Angabe + Laständerung"
+  title="Direkte kWh-Angabe: 6 kWh für vier Racks"
   steps={[
     {
-      title: "Gesamtlast: 4 Racks à 2,75 kW",
-      formula: "P_gesamt = 4 × 2,75 kW = 11,0 kW",
-      explanation: "Alle Racks addieren."
+      title: "Gesamtlast bestimmen",
+      formula: "4 × 2,75 kW = 11,0 kW",
+      explanation: "Die Aufgabe gibt die Leistung bereits in kW an."
     },
     {
-      title: "Überbrückungszeit bei voller Last",
-      formula: "t = 6 kWh / 11,0 kW = 0,545 h = 32,7 min",
-      explanation: "Einheiten passen: kWh ÷ kW = h. 0,545 × 60 = 32,7 Minuten."
+      title: "Laufzeit bei voller Last",
+      formula: "6 kWh / 11,0 kW = 0,545 h\n0,545 h × 60 = 32,7 min",
+      explanation: "kWh geteilt durch kW ergibt Stunden."
     },
     {
-      title: "Überbrückungszeit wenn 1 Rack abgeschaltet wird",
-      formula: "P_neu = 3 × 2,75 kW = 8,25 kW\nt_neu = 6 kWh / 8,25 kW = 0,727 h = 43,6 min",
-      explanation: "Weniger Last → längere Überbrückungszeit. Das macht Sinn: mit weniger Verbrauch hält der Akku länger."
-    }
+      title: "Ein Rack abschalten",
+      formula: "3 × 2,75 kW = 8,25 kW\n6 kWh / 8,25 kW = 0,727 h = 43,6 min",
+      explanation: "Weniger Last verlängert die Laufzeit."
+    },
   ]}
 />
 
 <Schritte
-  title="Beispiel 3: Verfügbarkeit berechnen"
+  title="VA mit Leistungsfaktor: 3000 VA, Leistungsfaktor 0,9"
   steps={[
     {
-      title: "Gesamtbetriebszeit des Jahres berechnen",
-      formula: "Gesamtzeit = 365 Tage × 24 h = 8760 h",
-      explanation: "Ein Jahr bei 24/7-Betrieb = 8760 Stunden."
+      title: "Wirkleistung berechnen",
+      formula: "3000 VA × 0,9 = 2700 W",
+      explanation: "Nur diese Wirkleistung darf als echte Last angesetzt werden."
     },
     {
-      title: "Gesamte Ausfallzeit addieren",
-      formula: "Ausfallzeit = 2 h + 4 h + 6 h + 8 h = 20 h",
-      explanation: "Alle gemeldeten Ausfälle summieren."
+      title: "Sicherheitsreserve prüfen",
+      formula: "Serverlast 2100 W → 2100 W / 2700 W = 77,8 %",
+      explanation: "Die USV ist nicht überlastet; eine Reserve für Einschaltspitzen und Wachstum bleibt."
+    },
+  ]}
+/>
+
+## 05 · Verfügbarkeit berechnen
+
+Verfügbarkeit wird in Aufgaben häufig als Zeitanteil berechnet:
+
+```text
+Verfügbarkeit = (Gesamtzeit - Ausfallzeit) / Gesamtzeit
+```
+
+oder gleichwertig:
+
+```text
+Verfügbarkeit = Betriebszeit / Gesamtzeit
+```
+
+Das Ergebnis wird meist in Prozent angegeben.
+
+<Schritte
+  title="Jahresverfügbarkeit mit 20 Stunden Ausfall"
+  steps={[
+    {
+      title: "Gesamtzeit bestimmen",
+      formula: "365 Tage × 24 h = 8760 h",
+      explanation: "Für 24/7-Betrieb rechnest du mit allen Stunden des Jahres."
+    },
+    {
+      title: "Betriebszeit berechnen",
+      formula: "8760 h - 20 h = 8740 h",
+      explanation: "Alle Ausfallzeiten werden von der Gesamtzeit abgezogen."
     },
     {
       title: "Verfügbarkeit berechnen",
-      formula: "A = (8760 − 20) / 8760 = 8740 / 8760 ≈ 0,9977 = 99,77 %",
-      explanation: "Verfügbarkeit ist fast immer nahe 100 % bei gut gewarteter Hardware. 99,77 % ist realistisch für Unternehmens-IT."
-    }
+      formula: "8740 h / 8760 h = 0,997716...\n= 99,77 %",
+      explanation: "Auf zwei Nachkommastellen gerundet: 99,77 %."
+    },
   ]}
 />
 
----
+### Was eine Prozentzahl praktisch bedeutet
 
-## Typische Fehler
+Hohe Prozentwerte wirken ähnlich, erlauben aber sehr unterschiedliche
+Ausfallzeiten:
 
-- **Ah mit Wh verwechseln:** 4,5 Ah ist noch keine Energie — erst mit der Spannung (V) multiplizieren
-  ergibt Wattstunden. Formel: Wh = V × Ah.
+| Ziel | Maximaler Ausfall pro Jahr, grob | Einordnung |
+|---|---:|---|
+| 99,0 % | 3,65 Tage | für viele Büroprozesse schon spürbar niedrig |
+| 99,9 % | 8,76 Stunden | oft "drei Neunen" genannt |
+| 99,99 % | 52,6 Minuten | deutlich anspruchsvoller |
+| 99,999 % | 5,26 Minuten | sehr hohe Verfügbarkeit |
 
-- **Restladung falsch anwenden:** 30 % Restladung → nutzbar sind **70 %**, nicht 30 %.
-  Rechne: Nutzbar = Gesamt-Wh × (1 − 0,30) = Gesamt-Wh × 0,70.
+Eine USV verbessert diese Werte nur für Stromausfälle. Für eine echte
+Verfügbarkeitsarchitektur brauchst du zusätzlich Redundanz, Monitoring,
+Wartungsfenster, Backup, Wiederanlaufplan und je nach Schutzbedarf zweite
+Standorte oder Generatoren.
 
-- **kVA ≠ kW:** USVen werden manchmal in Kilovoltampere (kVA) angegeben. Ohne Leistungsfaktor
-  (cos φ) kann man nicht exakt umrechnen. Die Aufgabe gibt meist explizit kW an oder sagt,
-  dass kVA ≈ kW gesetzt werden soll.
+## 06 · Auswahl und Betrieb
 
-- **Einheiten mischen:** Bei der kWh-Variante muss die Last in kW angegeben sein — nicht in W.
-  Wenn die Last in W angegeben ist: erst durch 1000 teilen, dann rechnen.
+Eine passende USV wird nicht nur nach Akkugröße gekauft. Prüfe mindestens:
 
----
+| Auswahlfrage | Warum sie zählt |
+|---|---|
+| Welche Last in Watt hängt daran? | Überlastete USV schaltet ab oder hält zu kurz. |
+| Wie lang muss überbrückt werden? | Shutdown, Generatorstart oder Weiterbetrieb brauchen unterschiedliche Zeiten. |
+| Welche USV-Bauart passt? | Standby, Line-interactive und Online schützen unterschiedlich stark. |
+| Gibt es Kommunikationsschnittstellen? | Server sollen bei niedrigem Akkustand automatisch herunterfahren können. |
+| Wie werden Akkus überwacht und ersetzt? | Akkus fallen besonders dann auf, wenn sie plötzlich Last liefern müssen. |
+| Welche Umgebung liegt vor? | Wärme, Rackplatz, Wartung, Brandschutz und Generatorbetrieb beeinflussen die Auswahl. |
+
+Der AP1-Merksatz: Eine USV ist eine infrastrukturelle Maßnahme. Sie passt in
+dieselbe Denkfamilie wie Zutrittskontrolle, Brandschutz und redundante
+Rechenzentrumsinfrastruktur. Sie gehört aber rechnerisch zu Leistung, Energie,
+Laufzeit und Verfügbarkeit.
+
+## 07 · Typische Fehler
+
+- **Ah als Energie behandeln.** `Ah` ist Ladung. Erst `V × Ah` ergibt `Wh`.
+- **Restladung vertauschen.** 30 % Restladung heißt 70 % nutzbar, nicht 30 %.
+- **W und kW mischen.** Vor der Division müssen Energie- und Leistungseinheit
+  zusammenpassen.
+- **kVA als kW lesen.** Ohne Leistungsfaktor ist das nur eine grobe und oft
+  falsche Vereinfachung.
+- **USV als Backup bezeichnen.** Eine USV hält Strom bereit; sie stellt keine
+  alte Dateiversion wieder her.
+- **Laufzeit mit Verfügbarkeit verwechseln.** Laufzeit ist Minutenreserve einer
+  USV. Verfügbarkeit ist ein Zeitanteil über einen Betrachtungszeitraum.
+- **Online-USV pauschal immer fordern.** Für kritische Systeme oft sinnvoll,
+  aber teurer und energieintensiver. Die Anforderung entscheidet.
+
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- erklären, welchen Beitrag eine USV zur Verfügbarkeit leistet.
+- Standby-, Line-interactive- und Online-Doppelwandler-USV unterscheiden.
+- Überbrückungszeit aus `V`, `Ah`, Akkuanzahl, Restladung und Last berechnen.
+- direkte `kWh / kW`-Aufgaben lösen und Laständerungen begründen.
+- `VA`, `W` und Leistungsfaktor in einfachen USV-Datenblättern einordnen.
+- Verfügbarkeit aus Gesamtzeit und Ausfallzeit berechnen.
+- eine USV als technische oder infrastrukturelle Schutzmaßnahme begründen.
+
+<Glossar
+  einträge={[
+    {
+      term: 'USV',
+      definition: 'Unterbrechungsfreie Stromversorgung. Sie versorgt angeschlossene Systeme bei Stromausfall kurzzeitig weiter und ermöglicht Weiterbetrieb, Generatorübergang oder geordnetes Herunterfahren.'
+    },
+    {
+      term: 'Überbrückungszeit',
+      definition: 'Zeit, die eine USV eine definierte Last aus nutzbarer Akkuenergie versorgen kann.'
+    },
+    {
+      term: 'Wattstunde (Wh)',
+      definition: 'Energieeinheit. Eine Last von 1 Watt verbraucht in 1 Stunde 1 Wh.'
+    },
+    {
+      term: 'Scheinleistung (VA)',
+      definition: 'Produkt aus Spannung und Strom ohne Berücksichtigung des Leistungsfaktors. USV-Anlagen werden häufig in VA oder kVA angegeben.'
+    },
+    {
+      term: 'Wirkleistung (W)',
+      definition: 'Leistung, die als nutzbare elektrische Arbeit oder Wärme umgesetzt wird. Für Last- und Laufzeitrechnungen zählt die Wirkleistung.'
+    },
+    {
+      term: 'Leistungsfaktor',
+      definition: 'Verhältnis zwischen Wirkleistung und Scheinleistung. Formel in einfachen Aufgaben: W = VA × Leistungsfaktor.'
+    },
+    {
+      term: 'Online-Doppelwandler-USV',
+      definition: 'USV-Bauart, bei der die Eingangsspannung dauerhaft gleichgerichtet und wieder zu Wechselspannung gewandelt wird; schützt kritische Lasten besonders stark gegen Netzstörungen.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizielle Einordnung in LF2: Arbeitsplätze nach Kundenwunsch ausstatten.'
+    },
+    {
+      label: 'FIAusbV - Fachinformatikerausbildungsverordnung',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Ausbildungsordnung mit Ausbildungsrahmenplan und Prüfungsanforderungen.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ausbildungsquelle zur modernisierten Fachinformatiker-Ausbildung und zur praktischen Umsetzung.'
+    },
+    {
+      label: 'Vertiv - What are the Different Types of UPS Systems?',
+      href: 'https://www.vertiv.com/en-us/insights/articles/educational-articles/what-are-the-different-types-of-ups-systems/',
+      detail: 'Herstellerquelle zu Offline/Standby-, Line-interactive- und Online-Doppelwandler-USV.'
+    },
+    {
+      label: 'TechTarget - What is an uninterruptible power supply (UPS)?',
+      href: 'https://www.techtarget.com/searchdatacenter/definition/uninterruptible-power-supply',
+      detail: 'Fachliche Vergleichsquelle zu USV-Auswahl, Last, Laufzeit, Leistungsfaktor und Batterieaspekten.'
+    },
+    {
+      label: 'Google SRE - Embracing Risk',
+      href: 'https://sre.google/sre-book/embracing-risk/',
+      detail: 'Fachliche Quelle zur Verfügbarkeitsmessung über Uptime, Downtime und Verfügbarkeitsziele.'
+    },
+    {
+      label: 'Google SRE - Availability Table',
+      href: 'https://sre.google/sre-book/availability-table/',
+      detail: 'Tabelle zu erlaubten Ausfallzeiten bei 99 %, 99,9 %, 99,99 % und 99,999 % Verfügbarkeit.'
+    },
+  ]}
+/>
