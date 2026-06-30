@@ -37,6 +37,27 @@ export const sourceBank: SourceEntry[] = [
     tags: ['recht', 'arbeitsschutz', 'ergonomie', 'telearbeit'],
   },
   {
+    id: 'arbstaettv-2-telearbeit',
+    label: 'ArbStättV § 2 - Begriffsbestimmungen',
+    href: 'https://www.gesetze-im-internet.de/arbst_ttv_2004/__2.html',
+    detail: 'Amtliche Definition von Bildschirmarbeitsplatz, Telearbeitsplatz und Einrichtung.',
+    tags: ['recht', 'arbeitsschutz', 'ergonomie', 'telearbeit', 'bildschirmarbeit'],
+  },
+  {
+    id: 'arbstaettv-anhang-6-bildschirmarbeit',
+    label: 'ArbStättV Anhang Nr. 6 - Bildschirmarbeitsplätze',
+    href: 'https://www.gesetze-im-internet.de/arbst_ttv_2004/anhang.html',
+    detail: 'Amtliche Anforderungen an Bildschirmarbeitsplätze, Bildschirme, Eingabemittel und Benutzerfreundlichkeit.',
+    tags: ['recht', 'arbeitsschutz', 'ergonomie', 'bildschirmarbeit', 'softwareergonomie'],
+  },
+  {
+    id: 'arbschg-5-gefaehrdungsbeurteilung',
+    label: 'ArbSchG § 5 - Beurteilung der Arbeitsbedingungen',
+    href: 'https://www.gesetze-im-internet.de/arbschg/__5.html',
+    detail: 'Amtliche Pflicht zur Gefährdungsbeurteilung und Ermittlung erforderlicher Arbeitsschutzmaßnahmen.',
+    tags: ['recht', 'arbeitsschutz', 'gefaehrdungsbeurteilung'],
+  },
+  {
     id: 'dguv-215-410',
     label: 'DGUV Information 215-410 - Bildschirm- und Büroarbeitsplätze',
     href: 'https://publikationen.dguv.de/regelwerk/dguv-informationen/3445/bildschirm-und-bueroarbeitsplaetze',
@@ -55,6 +76,13 @@ export const sourceBank: SourceEntry[] = [
     label: 'Barrierefreie-Informationstechnik-Verordnung (BITV 2.0)',
     href: 'https://www.gesetze-im-internet.de/bitv_2_0/',
     detail: 'Deutscher Rechtsrahmen für barrierefreie Informationstechnik öffentlicher Stellen des Bundes.',
+    tags: ['recht', 'barrierefreiheit', 'web', 'softwareergonomie', 'wcag'],
+  },
+  {
+    id: 'bitv-2-0-3-standards',
+    label: 'BITV 2.0 § 3 - Anzuwendende Standards',
+    href: 'https://www.gesetze-im-internet.de/bitv_2_0/__3.html',
+    detail: 'Amtlicher BITV-Abschnitt zu wahrnehmbarer, bedienbarer, verständlicher und robuster Informationstechnik.',
     tags: ['recht', 'barrierefreiheit', 'web', 'softwareergonomie', 'wcag'],
   },
   {

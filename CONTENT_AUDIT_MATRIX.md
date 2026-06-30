@@ -20,7 +20,7 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `homeoffice-ergonomie` | Kapitel | ungeprüft | IT-Systeme: Hardware/Schnittstellen → Ergonomie, Barrierefreiheit, Telearbeit | Phase Bau: nächstes Kapitel aus der obersten ungeprüften Zeile der `ABDECKUNGSMATRIX.md`, nachdem `bit-byte` am 2026-06-30 geprüft wurde. |
+| `raid-systeme` | Kapitel | ungeprüft | IT-Systeme: Hardware/Schnittstellen → Ergonomie/Telearbeit → RAID-Level | Phase Bau: Quellenbasis, Faktenbelege und Lösbarkeitsnachweis herstellen. |
 
 Alle nicht unten dokumentierten bestehenden Lektionen gelten bis zu ihrem eigenen Audit als
 `ungeprüft`. Historische Freigaben, Bewertungen und Review-Texte befinden sich
@@ -28,6 +28,95 @@ nur zur Nachvollziehbarkeit in `docs/archiv/`; sie werden nicht automatisch
 übernommen.
 
 ## Abgeschlossene Audits
+
+### `homeoffice-ergonomie`
+
+Slug: `homeoffice-ergonomie`
+Kompetenz: Telearbeit, Homeoffice und mobiles Arbeiten unterscheiden;
+Bildschirmarbeitsplätze ergonomisch bewerten; Barrieren bei Hardware und
+Software erkennen; eine Ausstattung für Bildschirmarbeit, Barrierefreiheit,
+Kommunikation und sicheren Remote-Zugriff begründet auswählen.
+Form: Kapitel
+Status: geprüft
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Ergonomie, Barrierefreiheit,
+Telearbeit“ in Abschnitt 2 · IT-Systeme (LF2, Jahr 1).
+Voraussetzungen → Anschluss: Hardware/Schnittstellen → Ergonomie,
+Barrierefreiheit und Telearbeit → RAID-Level, USV, Scan-/Bilddaten.
+
+Ausbildungsquelle: FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe als
+Rahmen für LF2-Arbeitsplätze nach Kundenwunsch. Das Thema bleibt ein
+eigenständiges Kapitel, weil reale AP1-Aufgaben Hardwareauswahl,
+Barrierefreiheit, Bildschirmarbeit und Telearbeit fallbezogen begründen lassen.
+Fachliche Primärquellen: ArbStättV § 2 Abs. 7 für Telearbeit; ArbStättV Anhang
+Nr. 6 für Bildschirmarbeitsplätze, Blendung, getrennte Tastatur und
+Softwareanforderungen; ArbSchG § 5 für Gefährdungsbeurteilung; W3C WCAG für die
+vier Barrierefreiheitsprinzipien; BITV 2.0 § 3 für die deutsche
+Rechtsanbindung wahrnehmbar/bedienbar/verständlich/robust.
+Didaktische Vergleiche: Das Vorgängerkapitel `hardware-schnittstellen` liefert
+Monitor, Eingabegeräte, Docking und Peripherie. Dieses Kapitel ordnet dieselbe
+Hardware nach Aufgabe, Gesundheit, Barrierefreiheit und Remote-Arbeit ein.
+Lokaler Materialabgleich: `_material_index/extraktion/Prüfung_4.md` enthält den
+Aufgabentyp „Nenne vier Hardwaremaßnahmen für einen barrierefreien Arbeitsplatz“.
+Übernommen wurden nur Themenumfang und Denkoperation; kein geschützter
+Aufgabentext.
+
+Geprüfte Kernaussagen (8, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `npm.cmd run check:sources` grün):
+1. Telearbeitsplätze sind vom Arbeitgeber fest eingerichtete
+   Bildschirmarbeitsplätze im Privatbereich der Beschäftigten. (ArbStättV)
+2. Telearbeit setzt vereinbarte Arbeitszeit, Dauer, Bedingungen und
+   bereitgestellte Ausstattung voraus. (ArbStättV)
+3. Bildschirmarbeitsplätze müssen Sicherheit und Gesundheit gewährleisten; die
+   Grundsätze der Ergonomie sind anzuwenden. (ArbStättV)
+4. Reflexionen und Blendungen sind bei Bildschirmarbeit zu vermeiden.
+   (ArbStättV)
+5. Für ortsgebundene Bildschirmarbeitsplätze müssen Tastaturen vom Bildschirm
+   getrennte Einheiten sein. (ArbStättV)
+6. Der Arbeitgeber ermittelt per Gefährdungsbeurteilung die erforderlichen
+   Arbeitsschutzmaßnahmen. (ArbSchG)
+7. WCAG 2.2 ordnet Leitlinien den vier Prinzipien wahrnehmbar, bedienbar,
+   verständlich und robust zu. (W3C)
+8. BITV 2.0 verlangt für die genannten IT-Angebote Barrierefreiheit nach diesen
+   vier Prinzipien. (BITV 2.0)
+
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
+Typ A (aus `_material_index/extraktion/Prüfung_4.md`, abstrahiert): „Nenne vier
+Hardwaremaßnahmen, die einen barrierefreien Arbeitsplatz unterstützen.“ Allein
+mit der Lerndatei lösbar über „Hardwaremaßnahmen für Barrierefreiheit“:
+großer/höhenverstellbarer Monitor oder Bildschirmlesegerät, Braillezeile oder
+Braille-Tastatur, Trackball/Spezialtaster/Fußpedal/Spracheingabe,
+höhenverstellbarer Tisch/geeigneter Stuhl/Beinraum, Headset/Hörverstärkung.
+Typ B (prüfungsnah): „Ordne einen regelmäßigen Arbeitsplatz zu Hause rechtlich
+ein und begründe Ausstattung.“ Allein lösbar über „Die drei Arbeitsformen“,
+„Ergonomische Bildschirmarbeit“, „Ausstattung für einen Telearbeitsplatz“ und
+„Datenschutz und Datensicherheit“.
+Didaktik, Fehlerfallen und Anwendung geprüft: Reihenfolge Arbeitsformen →
+Ergonomie/Barrierefreiheit → Bildschirmarbeit → Software/WCAG →
+Ausstattung/Sicherheit → Auswahlbeispiel trägt. Keine Rechenwege im Kapitel;
+alle Richtwerte als Richtwerte, nicht als starre Gesetze formuliert. Der
+Telearbeitsfall wurde gegen § 2 Abs. 7 gegengelesen.
+Glossar, Quellen und Links geprüft: `<Term>`-IDs `barrierefreiheit`,
+`softwareergonomie` und `wcag` sind gültig; Quellenbank und
+`lessonSourceIds['homeoffice-ergonomie']` enthalten Ausbildungsquellen,
+ArbStättV, ArbSchG, DGUV, BAuA, W3C und BITV.
+Unabhängiger Prüfer-Pass (Erzeuger ≠ Prüfer): 2026-06-30, keine offenen Funde.
+Gegnerisch nach §7 geprüft: Definitionen und Zitate gegen amtliche/W3C-Quellen
+geprüft; AP1-Aufgabentyp aus Prüfung_4 allein mit der Lerndatei durchgespielt;
+Voraussetzungen gegen Register geprüft.
+Funde (alle behoben):
+1. Belege fehlten vollständig; acht maschinell prüfbare Kernaussagen in
+   `belege.json` ergänzt und exakte Unterseiten in der Quellenbank angelegt.
+2. Auswahlbeispiel setzte drei feste Tage zu Hause zu unscharf mit Telearbeit
+   gleich; auf ArbStättV-Kriterien eingegrenzt.
+3. Der reale Aufgabentyp verlangte Hardwaremaßnahmen; Kapitel um konkrete
+   Hardwaremaßnahmen für Seh-, Bewegungs-, Haltungs- und Hörbarrieren ergänzt.
+4. MFA/VPN wurden benutzt, bevor sie erklärt waren; Kurzdefinitionen im
+   Sicherheitsabschnitt ergänzt und Register gepflegt.
+Technische Checks: `npm.cmd run check:sources`, `npm.cmd run check:consistency`,
+`npm.cmd run lint`, `npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30.
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+Grundlagenpfad. Keine offenen Punkte. Nächstes aktives Kapitel gemäß
+Lückenliste: `raid-systeme` (Phase Bau).
 
 ### `bit-byte`
 

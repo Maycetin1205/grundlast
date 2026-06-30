@@ -6,11 +6,11 @@ Diese Datei ist der einzige operative Einstieg für die Kapitelarbeit.
 
 | Feld | Wert |
 |---|---|
-| Aktuelles Kapitel | `homeoffice-ergonomie` |
-| Kapiteldatei | `src/content/lessons/homeoffice-ergonomie.mdx` |
+| Aktuelles Kapitel | `raid-systeme` |
+| Kapiteldatei | `src/content/lessons/raid-systeme.mdx` |
 | Status | ungeprüft – historische Freigaben zählen nicht als Nachweis |
 | Phase | Bau – erst Quellenbasis, Einordnung, Faktenbelege und Lösbarkeitsnachweis herstellen |
-| Nächstes Kapitel | Nach dokumentiertem Abschluss von `homeoffice-ergonomie` aus der nächsten `fehlt`-/`ungeprüft`-Zeile in `ABDECKUNGSMATRIX.md` wählen |
+| Nächstes Kapitel | Nach dokumentiertem Abschluss von `raid-systeme` aus der nächsten `fehlt`-/`ungeprüft`-Zeile in `ABDECKUNGSMATRIX.md` wählen |
 
 ## Für jeden neuen Arbeitsabschnitt
 

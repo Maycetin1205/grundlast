@@ -60,6 +60,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'Hardware, Schnittstellen und Peripherie mit elf online geprüften Belegen zu Ausbildungsrahmen, USB4, USB-C, USB-PD, Thunderbolt, DisplayPort, HDMI und NVMe.',
     nextAction: 'Abgeschlossen; im Lernpfad mit Dateisystemen fortsetzen.',
   },
+  'homeoffice-ergonomie': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Ergonomie, Barrierefreiheit und Telearbeit mit acht online geprüften Belegen zu ArbStättV, ArbSchG, WCAG und BITV sowie dokumentiertem Lösbarkeitsnachweis für barrierefreie Arbeitsplatz-Hardware.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit RAID-Systemen fortsetzen.',
+  },
   dateisysteme: {
     status: 'geprueft',
     title: 'Geprüft',

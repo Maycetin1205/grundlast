@@ -606,5 +606,63 @@
       "fundstelle": "Linux man-pages, chmod(2), Abschnitt DESCRIPTION, Liste der Modus-Bits",
       "abgerufenAm": "2026-06-29"
     }
+  ],
+  "homeoffice-ergonomie": [
+    {
+      "aussage": "Telearbeitsplätze sind vom Arbeitgeber fest eingerichtete Bildschirmarbeitsplätze im Privatbereich der Beschäftigten.",
+      "zitat": "Telearbeitspl&#228;tze sind vom Arbeitgeber fest eingerichtete Bildschirmarbeitspl&#228;tze im Privatbereich der Besch&#228;ftigten",
+      "quelleId": "arbstaettv-2-telearbeit",
+      "fundstelle": "ArbStättV § 2 Abs. 7, Begriffsbestimmungen",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Ein Telearbeitsplatz setzt vereinbarte Arbeitszeit, Dauer, Bedingungen und bereitgestellte Ausstattung voraus.",
+      "zitat": "vereinbarte w&#246;chentliche Arbeitszeit und die Dauer der Einrichtung festgelegt hat",
+      "quelleId": "arbstaettv-2-telearbeit",
+      "fundstelle": "ArbStättV § 2 Abs. 7, Begriffsbestimmungen",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Bildschirmarbeitsplätze müssen so eingerichtet und betrieben werden, dass Sicherheit und Gesundheit gewährleistet sind; die Grundsätze der Ergonomie sind anzuwenden.",
+      "zitat": "Bildschirmarbeitspl&#228;tze sind so einzurichten und zu betreiben, dass die Sicherheit und der Schutz der Gesundheit der Besch&#228;ftigten gew&#228;hrleistet sind",
+      "quelleId": "arbstaettv-anhang-6-bildschirmarbeit",
+      "fundstelle": "ArbStättV Anhang Nr. 6.1 Abs. 1",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Bei Bildschirmarbeit müssen Reflexionen und Blendungen vermieden werden.",
+      "zitat": "frei von st&#246;renden Reflexionen und Blendungen",
+      "quelleId": "arbstaettv-anhang-6-bildschirmarbeit",
+      "fundstelle": "ArbStättV Anhang Nr. 6.1 Abs. 4 und 5",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Für ortsgebundene Bildschirmarbeitsplätze müssen Tastaturen vom Bildschirm getrennte Einheiten sein.",
+      "zitat": "sie m&#252;ssen vom Bildschirm getrennte Einheiten sein",
+      "quelleId": "arbstaettv-anhang-6-bildschirmarbeit",
+      "fundstelle": "ArbStättV Anhang Nr. 6.3 Abs. 2",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Der Arbeitgeber muss durch Gefährdungsbeurteilung ermitteln, welche Arbeitsschutzmaßnahmen erforderlich sind.",
+      "zitat": "welche Ma&#223;nahmen des Arbeitsschutzes erforderlich sind",
+      "quelleId": "arbschg-5-gefaehrdungsbeurteilung",
+      "fundstelle": "ArbSchG § 5 Abs. 1, Beurteilung der Arbeitsbedingungen",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "WCAG 2.2 ordnet seine Leitlinien den vier Prinzipien wahrnehmbar, bedienbar, verständlich und robust zu.",
+      "zitat": "4 principles: perceivable, operable, understandable, and robust",
+      "quelleId": "w3c-wcag",
+      "fundstelle": "W3C WAI, WCAG 2 Overview, Abschnitt “What is in WCAG 2”",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "BITV 2.0 verlangt für die genannten IT-Angebote, Anwendungen und Dienste Barrierefreiheit nach den Prinzipien wahrnehmbar, bedienbar, verständlich und robust.",
+      "zitat": "Dies erfordert, dass sie wahrnehmbar, bedienbar, verst&#228;ndlich und robust sind.",
+      "quelleId": "bitv-2-0-3-standards",
+      "fundstelle": "BITV 2.0 § 3 Abs. 1, Anzuwendende Standards",
+      "abgerufenAm": "2026-06-30"
+    }
   ]
 }

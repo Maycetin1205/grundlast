@@ -64,7 +64,7 @@ sind unzulässig: Eine Zeile entsteht nur aus einem belegten Anker.
 | Von-Neumann-Grundidee, Befehlszyklus, Cache | `von-neumann` | geprüft |
 | CPU, RAM, Massenspeicher auswählen | `cpu-ram-speicher` | geprüft |
 | Schnittstellen, Peripherie, Docking | `hardware-schnittstellen` | geprüft |
-| Ergonomie, Barrierefreiheit, Telearbeit | `homeoffice-ergonomie` | ungeprüft |
+| Ergonomie, Barrierefreiheit, Telearbeit | `homeoffice-ergonomie` | geprüft |
 | RAID-Level (0,1,5,6,10) | `raid-systeme` | ungeprüft |
 | USV-Systeme und Verfügbarkeit | `usv-systeme` | ungeprüft |
 | Scan-/Bilddaten (DPI, Farbtiefe) rechnen | `scan-bilddaten` | ungeprüft |
@@ -168,17 +168,18 @@ eine Lücke (Vorkapitel zuerst).
 | 6 | `von-neumann` | CPU, ALU, Steuerwerk, gemeinsamer Speicher, Bus, Fetch-Decode-Execute, Cache, Flaschenhals, EVA |
 | 7 | `cpu-ram-speicher` | RAM, Cache-Ebenen, Takt, Thread, SSD/HDD, NVMe, M.2, SATA, DDR-Generation, ECC |
 | 8 | `hardware-schnittstellen` | USB/USB-C/USB4, Thunderbolt, USB-PD, HDMI, DisplayPort, PCIe, Docking, KVM |
-| 9 | `dateisysteme` | Dateisystem, Partition, Mount, Journaling (Konzeptliste beim nächsten Durchlauf am Kapitel verifizieren) |
-| 10 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
+| 9 | `homeoffice-ergonomie` | Bildschirmarbeitsplatz, Telearbeit, Homeoffice, mobiles Arbeiten, Ergonomie, Barrierefreiheit, Softwareergonomie, WCAG-Prinzipien, Gefährdungsbeurteilung, Unterweisung, Mehrfaktor-Authentisierung (MFA), VPN als geschützter Remote-Zugriff |
+| 10 | `dateisysteme` | Dateisystem, Partition, Mount, Journaling (Konzeptliste beim nächsten Durchlauf am Kapitel verifizieren) |
+| 11 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
 
 `bit-byte` ist als Wurzelkapitel eingetragen und am 2026-06-30 durch den
 unabhängigen Prüfer-Pass bestätigt (`geprüft`). Spätere Kapitel dürfen die dort
 eingeführten Konzepte als geprüft voraussetzen.
 
-`linux-chmod` (Zeile 10) ist am 2026-06-29 durch den unabhängigen Prüfer-Pass
+`linux-chmod` (Zeile 11) ist am 2026-06-29 durch den unabhängigen Prüfer-Pass
 bestätigt (`geprüft`); der Registereintrag ist nicht mehr provisorisch.
 Voraussetzungen sind bereits eingeführt: Oktal aus `zahlensysteme` (Zeile 3),
-Inode/Metadaten aus `dateisysteme` (Zeile 9).
+Inode/Metadaten aus `dateisysteme` (Zeile 10).
 
 ## Pflege
 
