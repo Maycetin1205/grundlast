@@ -65,26 +65,20 @@ null Kapitel als fertig erscheinen.
 Diese Dateien bleiben verfügbar, gelten aber bis zu einer echten Prüfung als
 Rohmaterial.
 
-### Prüfen und zusammenführen: Projektsteuerung
+### Projektsteuerung (konsolidiert am 02.07.2026)
 
-- `AP1_NEUSTART.md`
-- `AP1_KONTROLLZENTRUM_2026.md`
-- `AP1_AUDIT_MATRIX.md`
-- `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md`
-- `INHALTSVERZEICHNIS_JAHR_1_2.md`
-- `CURRICULUM_MAPPING.md`
-- `SCOPE-LANDKARTE_LF1-9.md`
-- `CONTENT_GUIDELINES.md`
-- `KAPITEL_ARBEITSABLAUF.md`
-- `KAPITEL_QUALITAET.md`
-- `MATERIAL_ABGLEICH_WORKFLOW.md`
-- `LOS_MACH_WEITER.md`
-- `REVIEW_LOG.md`
-- `PLAN_RECHENWEG.md`
+Das frühere Ziel „kleine, nachvollziehbare Dokumentation statt vieler
+konkurrierender Anweisungen" ist umgesetzt:
 
-Diese Dokumente überschneiden sich stark und sind ebenfalls unbestätigt. Ziel
-ist eine kleine, nachvollziehbare Dokumentation statt vieler konkurrierender
-Anweisungen.
+- `PROJEKT.md` — das einzige verbindliche Regelwerk
+- `QUEUE.md` — Arbeitsstand, Warteschlange, Lücken-Audit, Start-Prompt
+- Daten-/Belegdateien bleiben: `AP1_STATUS.md` (generiert),
+  `AP1_AUDIT_MATRIX.md`, `INHALTSVERZEICHNIS_JAHR_1_2.md`,
+  `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md`, `CURRICULUM_MAPPING.md`,
+  `REVIEW_LOG.md`
+- offene Pläne: `docs/` (z. B. `docs/PLAN_RECHENWEG.md`)
+- alte Steuerdokumente: `docs/archiv/` (nur Historie, nicht mehr verbindlich)
+- externes Lernmaterial: `material/`
 
 ### Generiert oder lokal
 
@@ -103,9 +97,10 @@ Es gibt vorerst keinen großen Manifest-, TOC- oder Statusumbau. Die vorhandenen
 bearbeitet. Die 20 TOC-Platzhalter ohne Kapiteldatei bleiben zunächst außen
 vor.
 
-Der verbindliche Einstieg für jeden neuen Chat steht in
-`LOS_MACH_WEITER.md`. Dort werden das aktuelle Kapitel, die aktuelle Phase und
-das nächste zulässige Vorgehen gepflegt.
+Der verbindliche Einstieg für jeden neuen Chat steht in `QUEUE.md`
+(Arbeitsstand + Start-Prompt); die Regeln stehen in `PROJEKT.md`. Dort werden
+das aktuelle Kapitel, die aktuelle Phase und das nächste zulässige Vorgehen
+gepflegt.
 
 Pro Kapitel wird entschieden:
 
