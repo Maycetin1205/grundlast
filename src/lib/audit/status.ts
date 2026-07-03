@@ -72,6 +72,18 @@ const lessonAudits: Record<string, LessonAudit> = {
     summary: 'RAID 0, 1, 5, 6 und 10 mit sieben online geprüften Belegen zu Striping, Mirroring, Parität, Kapazität, Redundanz und RAID-10-Kombination sowie nachgerechneter RAID-5-zu-RAID-6-Umstellung.',
     nextAction: 'Abgeschlossen; im Lernpfad mit USV-Systemen fortsetzen.',
   },
+  'usv-systeme': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'USV-Systeme mit neun geprüften Belegen zu Standby-, Line-interactive- und Online-Doppelwandler-USV, Last, Laufzeit, Leistungsfaktor und Verfügbarkeitsrechnung; Rechenwege und Lösbarkeitsnachweis am 2026-06-30 abgeschlossen.',
+    nextAction: 'Abgeschlossen; im Lernpfad mit Scan- und Bilddaten fortsetzen.',
+  },
+  'scan-bilddaten': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Scan- und Bilddaten mit neun geprüften Belegen zu Bit/Byte, SI- und Binärpräfixen, Rasterbilddimensionen, Farbtiefe und Kompression; AP1-naher Zahlenfall durch eigenständiges Lernbeispiel ersetzt.',
+    nextAction: 'Abgeschlossen; kein nächstes Kapitel begonnen.',
+  },
   dateisysteme: {
     status: 'geprueft',
     title: 'Geprüft',
@@ -83,6 +95,12 @@ const lessonAudits: Record<string, LessonAudit> = {
     title: 'Geprüft',
     summary: 'Linux-Dateirechte (chmod) mit elf online geprüften Belegen zu Modus-Bits, r=4/w=2/x=1 (S_IRUSR/S_IWUSR/S_IXUSR), Oktal- gegenüber symbolischem Modus und den Sonderbits setuid (4000), setgid (2000) und sticky (1000).',
     nextAction: 'Abgeschlossen; im Lernpfad mit Prozessen/Threads bzw. Virtualisierung fortsetzen.',
+  },
+  'prozess-thread': {
+    status: 'geprueft',
+    title: 'Geprüft',
+    summary: 'Prozesse, Software-Threads, Tasks, Scheduling, Kontextwechsel und Multitasking mit sieben geprüften Belegen zu Prozessressourcen, Thread-Ausführung, präemptivem Multitasking und Linux-CFS; CPU-Datenblatt-Threads sind ausdrücklich von Software-Threads abgegrenzt.',
+    nextAction: 'Abgeschlossen; nächstes Kapitel laut Warteschlange: Nutzwertanalyse.',
   },
 }
 

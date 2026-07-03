@@ -20,9 +20,236 @@ aktualisierte Zeile in `ABDECKUNGSMATRIX.md` voraus (siehe `KAPITELSTANDARD.md`)
 
 | Kapitel | Form | Status | Lernpfad | Nächste Aktion |
 |---|---|---|---|---|
-| `usv-systeme` | Kapitel | ungeprüft | IT-Systeme: RAID-Level → USV-Systeme | Phase Bau: Quellenbasis, Faktenbelege, Lerndatei und Lösbarkeitsnachweis nach Kapitelstandard herstellen. |
+| `nutzwertanalyse` | Kapitel | teilgeprüft | Wirtschaft: Beschaffung/Entscheidung → Nutzwertanalyse → Angebotsvergleich | Entwurf/Einordnung am 2026-07-03 abgeschlossen; nächste Phase: Belege. |
 
 ## Laufende und zuletzt bearbeitete Kapitel
+
+### `nutzwertanalyse`
+
+Slug: `nutzwertanalyse`
+Kompetenz: Alternativen anhand gewichteter Kriterien vergleichen, Muss-Kriterien
+vor der Rechnung ausschließen, Tabellenlücken über Gewichtung/Bewertung/Teilnutzwert
+berechnen, Rangfolge bilden und eine betriebliche Empfehlung begründen.
+Form: Kapitel
+Status: teilgeprüft – Entwurf/Einordnung am 2026-07-03 abgeschlossen; Belege,
+unabhängiger Prüfer-Pass, Fix-Pass und Abschluss-Gate sind offen.
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Beschaffung und Entscheidung
+(Nutzwert, Make-or-buy, Angebot, Finanzierung)“ in Abschnitt 6 · Betriebliche
+Anwendung – Wirtschaft, Recht, Projekt, Qualität (LF1/LF6, Jahr 1/2).
+Voraussetzungen → Anschluss: Prozentrechnung, einfache Multiplikation/Division
+und Grundverständnis betrieblicher Anforderungen → Nutzwertanalyse →
+`angebotsvergleich`, `make-or-buy`, `kauf-leasing-miete`.
+
+Quellen- und Vergleichsmatrix:
+
+| Rolle | Grundlage |
+|---|---|
+| Ausbildungsquelle | FIAusbV/Entsprechungsliste und KMK-Rahmenlehrplan ordnen das Thema in das Beurteilen marktgängiger IT-Systeme, das Bewerten von Angeboten sowie wirtschaftliches Handeln nach Anforderungen und Budget ein. BIBB bestätigt die modernisierte Ausbildungsgrundlage und dient als offizieller Ausbildungskontext. |
+| Fachliche Primärquelle | KMK/FIAusbV als amtliche Ordnungsmittel für Kompetenzrahmen; für die Methode selbst Springer Gabler Wirtschaftslexikon als Fachlexikon zu Nutzwertanalyse, Kriteriengewichtung und Rangbildung. |
+| Didaktischer Vergleich | Vorhandene Kapitel `angebotsvergleich` und `make-or-buy` zeigen Überschneidungen: Dieses Kapitel muss die qualitative, gewichtete Entscheidung erklären, aber keine Bezugskalkulation oder vollständige Make-or-buy-Rechnung vorwegnehmen. |
+| Lokales Material | `..\PRUEFUNGSINVENTAR_2021_2024.md` nennt AP1 2023 Frühjahr mit Nutzwertanalyse ergänzen, gewichtete Punktsummen berechnen, auswählen und weiteres Kriterium begründen; außerdem AP1 2023 Herbst mit Nutzwertanalyse vervollständigen, Rangfolge bilden und Ausschlusskriterium anwenden. `_material_index\ocr_text\p9\seite_05.txt`/`p9_lsg\seite_05.txt` bestätigen den Probeprüfungstyp Tabellenlücken, gewichtete Bewertung und höchster Nutzwert. |
+| Eigene Schlussfolgerung | Eigenständiges Kapitel ist gerechtfertigt, weil AP1-Aufgaben nicht nur die Definition, sondern Tabelle ergänzen, Prozentgewichte umrechnen, Teilnutzwerte addieren, K.O.-Kriterien beachten und eine begründete Empfehlung verlangen. |
+
+Abschnitts-Audit vor Textarbeit:
+
+| Abschnitt | Entscheidung |
+|---|---|
+| Kapitelumfang | Kapitel statt Box/Glossar, weil echte AP1-Aufgaben 16–22 Punkte und mehrere Denkoperationen enthalten. |
+| Matrixabdeckung | Die bestehende Matrixzeile deckt den Aufgabentyp ab; keine neue Zeile nötig. Die Untertypen „Tabellenlücken berechnen“, „Rangfolge bilden“, „Ausschlusskriterium anwenden“ und „weiteres Kriterium begründen“ sind im Audit konkret dokumentiert. |
+| Überschneidung | Preis-/Bezugskalkulation bleibt bei `angebotsvergleich`; dieses Kapitel trennt qualitative Nutzwertpunkte von Euro-Kosten. |
+| Voraussetzungen | Prozentwerte als Dezimalzahl, Multiplikation, Division und Addition werden im Kapitel erneut kurz gezeigt; keine ungeprüfte IT-Spezialvoraussetzung nötig. |
+| Textänderung | Ergänzt wurden Rückwärtsformeln für Tabellenlücken, Kontrollfragen zu 100-%-Gewichtung und Punktelogik sowie eine AP1-nahe Begründung zusätzlicher Kriterien. |
+
+Geprüfte Kernaussagen im Entwurf (noch ohne Beleg-Gate):
+
+1. Muss-Kriterien werden vor der Nutzwertrechnung geprüft.
+2. Soll-Kriterien werden gewichtet und einheitlich bewertet.
+3. Teilnutzwert = Gewichtung × Bewertung.
+4. Gesamtnutzwert = Summe der Teilnutzwerte.
+5. Bei hohen Punktzahlen für „gut“ muss die Preisbewertung so herum vergeben
+   werden, dass das günstigere beziehungsweise wirtschaftlich vorteilhaftere
+   Angebot mehr Punkte erhält.
+6. Tabellenlücken lassen sich durch Umstellen der Grundformel berechnen.
+7. Zusätzliche Kriterien müssen aus dem Bedarf begründet werden.
+
+Lösbarkeitsnachweis (Entwurfsstand):
+
+- Reale, abstrahierte Aufgabe: Nutzwerttabelle mit fehlenden Bewertungen und
+  Teilnutzwerten vervollständigen, Summe bilden, Angebot mit höchstem Nutzwert
+  auswählen; zusätzlich Kriterium begründen oder Ausschlusskriterium beachten.
+- Tragende Kapitelteile: „Das Verfahren in 6 Schritten“, Formelblock,
+  Rückwärtsformeln für Tabellenlücken, Beispiele 1/2, Abschnitt
+  „Subjektivität richtig verstehen“.
+- Ergebnis: Entwurf deckt den Aufgabentyp ab; maschinell prüfbare Belege und
+  unabhängiger Prüfer-Pass fehlen noch.
+
+Offen:
+
+- Belege-Phase: mindestens 5 Kernaussagen in `src/content/quellen/belege.json`
+  mit wörtlichen Zitaten und `npm run check:sources`.
+- Danach unabhängiger Prüfer-Pass und Fix-Pass.
+- Erst nach Abschluss-Gate Status in `ABDECKUNGSMATRIX.md`, `src/lib/audit/status.ts`
+  und `src/lib/review.ts` bewegen.
+
+### `prozess-thread`
+
+Slug: `prozess-thread`
+Kompetenz: Prozess, Thread, Task, Scheduler, Kontextwechsel und Multitasking
+unterscheiden; Diagnosehinweise aus Task-Manager, `top`/`htop` oder `ps`
+einordnen; erklären, warum mehrere Threads nicht automatisch echte Parallelität
+oder höhere Geschwindigkeit bedeuten.
+Form: Kapitel
+Status: geprüft – Builder-Pass, Belege, unabhängiger Prüfer-Pass und Fix-Pass
+am 2026-07-03 abgeschlossen; keine offenen Funde.
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Prozesse und Threads“ in Abschnitt
+2 · IT-Systeme (LF2, Jahr 1).
+Voraussetzungen → Anschluss: Von-Neumann-Grundidee, CPU/RAM, Dateisysteme und
+Linux-Rechte → Prozesse/Threads → zentrale/dezentrale Systeme und
+Virtualisierung.
+
+Quellen- und Vergleichsmatrix:
+
+| Rolle | Grundlage |
+|---|---|
+| Ausbildungsquelle | FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe rahmen LF2: Arbeitsplätze und IT-Systeme nach Kundenanforderung bereitstellen, betreiben und beurteilen. |
+| Fachliche Primärquelle | Microsoft Learn zu Prozessen, Threads, präemptivem Multitasking und Scheduling-Prioritäten; Linux Kernel Documentation zum CFS als Scheduler-Modell. |
+| Didaktischer Vergleich | `von-neumann` und `cpu-ram-speicher` liefern CPU, Kerne, RAM und Thread-Grundbezug; dieses Kapitel verschiebt den Fokus auf Betriebssystemeinheiten, Ressourcenbesitz, Scheduling und Diagnose. |
+| Lokales Material | `_material_index` zeigt AP1-nahe Hardware-Auswahl mit Kern-/Thread-Angaben; übernommen wurden nur Themenumfang und Denkoperation, keine Aufgabenformulierung und keine Lösung. |
+| Eigene Schlussfolgerung | Eigenständiges Betriebssystemkapitel, weil Lernende Prozess, Thread, Task, CPU-Kern, Wartezustand und Ressourcengrenze sicher trennen müssen, bevor Virtualisierung und Systembetrieb folgen. |
+
+Geprüfte Kernaussagen (7, mit maschinell prüfbarem Beleg in
+`src/content/quellen/belege.json`; `prozess-thread`-Belege im
+`npm run check:sources`-Lauf fehlerfrei):
+
+1. Ein Prozess stellt Ressourcen zur Programmausführung bereit.
+2. Ein Prozess besitzt unter anderem virtuellen Adressraum, Code, Handles,
+   Sicherheitskontext, Prozess-ID, Umgebungsvariablen, Prioritätsklasse,
+   Working-Set-Grenzen und mindestens einen Thread.
+3. Ein Thread ist die Einheit innerhalb eines Prozesses, die zur Ausführung
+   eingeplant werden kann.
+4. Ein Thread ist die Grundeinheit, der das Betriebssystem Prozessorzeit
+   zuteilt.
+5. Präemptives Multitasking erzeugt den Eindruck gleichzeitiger Ausführung
+   mehrerer Threads aus mehreren Prozessen.
+6. Windows weist Zeitscheiben prioritätsbasiert zu; Threads gleicher höchster
+   Priorität werden Round-Robin behandelt.
+7. Die Linux-Kernel-Dokumentation beschreibt CFS als Completely Fair Scheduler.
+
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
+Ein PC-Datenblatt oder Betriebssystemwerkzeug nennt mehrere CPU-Kerne und
+Threads beziehungsweise einen Prozess mit mehreren Threads. Gefragt ist die
+Einordnung: Software-Thread ist nicht CPU-Kern und nicht automatisch
+Datenblatt-Thread, Prozess ist nicht Programmdatei oder Fenster, viele Threads
+bedeuten auf einem Ein-Kern-System keine echte parallele Berechnung. Der
+Software-Thread-Teil ist lösbar mit „Grundbegriffe“, „Prozess vs. Thread“,
+„Zustände, Scheduling und CPU-Zeit“, „Multitasking, Parallelität und CPU-Kerne“
+sowie „Typische Fehler“. Der Datenblatt-Teil zu CPU-Kernen und CPU-Threads wird
+im Abschnitt „Multitasking, Parallelität und CPU-Kerne“ ausdrücklich als
+Hardware-Einordnung zum geprüften Vorkapitel `cpu-ram-speicher` abgegrenzt. Das
+lokale Material wurde nur als abstrakter Aufgabentyp genutzt.
+
+Didaktik, Fehlerfallen und Anwendung geprüft: Einstieg über Betriebssystem als
+Zeitverteiler; Restaurant-Analogie; Grundbegriffstabelle; Prozess/Thread-Tabelle;
+Zustände und Scheduling ergänzt; Diagnoseablauf für hängende Anwendungen;
+Fehlerfallen zu Programm/Prozess, Thread/Kern, Task-Kontext, RAM/CPU/I/O und
+hartem Beenden vorhanden. Der frühere Klausur-Stil-Block wurde als kurzer
+Mini-Selbstcheck formuliert, damit das Kapitel Lernkapitel bleibt.
+
+Glossar, Quellen und Links geprüft: `Term`-IDs für Prozess, Thread, Task,
+Scheduler, Kontextwechsel und Multitasking sind vorhanden. Quellenbank und
+Quellen-Tags enthalten FIAusbV, KMK, BIBB, Microsoft Learn und Linux Kernel
+Documentation; `lessonSourceIds` für `prozess-thread` wurde ergänzt.
+
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer):
+2026-07-03, gegnerisch nach Abschnitt 7 geprüft. Quellenbasis: FIAusbV, KMK,
+BIBB, Microsoft Learn „About Processes and Threads“, Microsoft Learn
+„Processes and Threads“, Microsoft Learn „Scheduling Priorities“, Linux Kernel
+Documentation „CFS Scheduler“ sowie lokale `_material_index`-Treffer nur als
+Aufgabentypen-Check.
+
+Funde (alle behoben):
+1. Der Kapiteltext trennte Software-Threads und CPU-Kerne, aber der
+   dokumentierte lokale Aufgabentyp enthält CPU-Datenblattwerte wie „6 Kerne /
+   12 Threads“. Fix am 2026-07-03: Im Abschnitt „Multitasking, Parallelität und
+   CPU-Kerne“ ergänzt, dass Datenblatt-„Threads“ Hardware-Threads beziehungsweise
+   logisch planbare CPU-Ausführungskontexte meinen und nicht dasselbe sind wie
+   die Software-Threads eines einzelnen Prozesses; für die Hardware-Einordnung
+   verweist das Kapitel auf `cpu-ram-speicher`.
+
+Technische Checks: `npm run check:consistency`, `npm run check:sources`,
+`npm run lint`, `npm run test` (8 Tests) und `npm run build` grün am
+2026-07-03.
+
+Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
+IT-Systeme-Pfad. Keine offenen Punkte. Abschlussstatus in
+`ABDECKUNGSMATRIX.md`, `src/lib/audit/status.ts`, `src/lib/review.ts` und
+generiertem `AP1_STATUS.md` synchronisiert.
+
+### `scan-bilddaten`
+
+Slug: `scan-bilddaten`
+Kompetenz: Scan- und Bilddaten aus Format, Auflösung/DPI, Farbtiefe,
+Kompression und Stückzahl berechnen; zwischen Bit und Byte sowie SI- und
+Binärpräfixen sauber unterscheiden; typische A4-Scanrechnungen nachvollziehbar
+lösen.
+Form: Kapitel
+Status: geprüft
+Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „Scan-/Bilddaten (DPI, Farbtiefe)
+rechnen“ in Abschnitt 2 · IT-Systeme (LF2, Jahr 1).
+Voraussetzungen → Anschluss: Bit/Byte, Präfixe, Datenvolumen,
+Datenrate/Übertragungsdauer und USV-Systeme → Scan-/Bilddaten →
+Prozesse/Threads und weitere IT-System-Themen.
+
+Quellen- und Vergleichsmatrix:
+
+| Rolle | Grundlage |
+|---|---|
+| Ausbildungsquelle | FIAusbV, KMK-Rahmenlehrplan und BIBB-Umsetzungshilfe ordnen das Thema dem Einrichten, Betreiben und Bewerten von IT-Systemen im gemeinsamen Ausbildungsteil zu. |
+| Fachliche Primärquelle | NIST/BIPM für Bit/Byte sowie SI- und Binärpräfixe; W3C PNG für Rasterbilddimensionen, Farbinformation und verlustfreie Bildkompression; ISO/IEC 10918-1 als JPEG-Kompressionsstandard. |
+| Didaktischer Vergleich | Das geprüfte Kapitel `datenvolumen-berechnung` liefert die allgemeine Einheitenmechanik; `scan-bilddaten` fokussiert nur den AP1-Scanfall. |
+| Lokales Material | `_material_index` und OCR-Extraktionen zeigen den Aufgabentyp A4-Scanrechnung mit Format, DPI, Farbtiefe, Jahresmenge, Kompression und TiB-Zieleinheit. |
+| Eigene Schlussfolgerung | Eigenständiges kurzes Rechenkapitel, weil der Aufgabentyp mehrere bereits eingeführte Grundlagen kombiniert und typische Fehler an DPI, Farbtiefe, Kompression und TiB entstehen. |
+
+Fakten- und Rechencheck: Beispielrechnung wurde nach dem Fix mit eigenständigen
+Werten gegengerechnet: 29,7/2,54 ≈ 11,6929; 21,0/2,54 ≈ 8,2677;
+2.923 × 2.067 = 6.041.841 px; × 24 / 8 = 18.125.523 Byte je Scan;
+× 264.000 = 4.785.138.072.000 Byte; / 1024⁴ ≈ 4,35 TiB; × 0,6 ≈
+2,61 TiB. Das Graustufen-Gegenbeispiel ergibt bei 8 Bit 6.041.841 Byte je
+Scan.
+
+Lösbarkeitsnachweis (realer, abstrahierter Aufgabentyp + tragende Kapitelteile):
+A4-Dokumente werden über einen Arbeitszeitraum mit vorgegebener täglicher
+Stückzahl, 200 × 200 dpi, 24 Bit Farbtiefe und Kompression auf 50 Prozent
+archiviert; gesucht ist die Jahresmenge in TiB. Lösbar mit den Kapitelteilen
+„Was bei einem Scan gespeichert wird“, „Die Formel“, „Beispiel:
+DIN-A4-Archiv pro Jahr“, „Varianten sicher lesen“ und „Rundung und
+Musterwerte“. Keine AP1-Aufgabenformulierung oder Lösung wurde übernommen;
+übernommen wurde nur der abstrahierte Aufgabentyp und der Themenumfang.
+
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer):
+2026-06-30, keine offenen Funde. Gegnerisch nach §7 geprüft: Definitionen,
+DPI-Umrechnung, Pixel-/Bit-/Byte-Rechenweg, SI-/Binärpräfix-Abgrenzung,
+Kompressionsannahmen, Belegtragfähigkeit, Voraussetzungen und Lösbarkeit.
+
+Funde (alle behoben):
+1. Der Beispiel-Rechenfall lag zu nah am lokalen AP1-Aufgabentyp und konnte wie
+   eine nachgebaute Aufgabe wirken; Kapitel nutzt jetzt eigenständige Werte
+   (250 dpi, 1.200 Scans/Tag, 220 Arbeitstage, 60 Prozent Restgröße) und bleibt
+   damit Lernkapitel statt Aufgabensammlung.
+2. Die Abschlussdokumentation stand noch auf „Prüfer-Pass offen“; Auditmatrix,
+   Abdeckungsmatrix, Review-Log und Vertrauensstatus dokumentieren jetzt den
+   abgeschlossenen Fix-Pass für genau `scan-bilddaten`.
+
+Technische Checks: `npm.cmd run check:consistency`, `npm.cmd run lint`,
+`npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30. `npm.cmd run
+check:sources` zweimal ausgeführt, davon einmal außerhalb der Sandbox; einziger
+Fehler ist HTTP 503 bei `https://www.bipm.org/en/measurement-units/si-prefixes`
+in mehreren Kapiteln (`bit-byte`, `prefixe`, `datenvolumen-berechnung`,
+`scan-bilddaten`, `datenrate-berechnung`). Inhaltlicher Belegfehler im Kapitel
+nicht festgestellt.
+Entscheidung und offene Punkte: Eigenständiges kurzes Rechenkapitel im
+gemeinsamen IT-Systeme-Pfad. Keine offenen Punkte. Kein nächstes Kapitel
+begonnen.
 
 ### `usv-systeme`
 
@@ -33,7 +260,7 @@ Amperestunden, Akkuanzahl, nutzbarem Anteil und Last berechnen; `kWh / kW`-
 Aufgaben lösen; `VA`, `W` und Leistungsfaktor einordnen; Verfügbarkeit aus
 Gesamtzeit und Ausfallzeit berechnen.
 Form: Kapitel
-Status: ungeprüft
+Status: geprüft
 Deckt ab (Zeile in ABDECKUNGSMATRIX.md): „USV-Systeme und Verfügbarkeit“ in
 Abschnitt 2 · IT-Systeme (LF2, Jahr 1).
 Voraussetzungen → Anschluss: RAID-Level und technische Verfügbarkeit →
@@ -77,7 +304,8 @@ Geprüfte Kernaussagen (9, mit maschinell prüfbarem Beleg in
 5. Bei der USV-Auswahl müssen Gesamtlast und benötigte Laufzeit während eines
    Ausfalls bestimmt werden. (TechTarget)
 6. Der Leistungsfaktor beschreibt den Unterschied zwischen Wirkleistung und
-   Scheinleistung. (TechTarget)
+   Scheinleistung. (TechTarget; Beleg-Aussage im Fix-Pass auf das tatsächlich
+   gestützte Zitat eingegrenzt)
 7. Google SRE beschreibt Verfügbarkeit traditionell als Anteil der System-
    Uptime. (Google SRE)
 8. 99,99 % Verfügbarkeit erlauben ungefähr 52,56 Minuten Ausfall pro Jahr.
@@ -108,13 +336,23 @@ vorhanden; lokales Glossar definiert USV, Überbrückungszeit, Wattstunde,
 Scheinleistung, Wirkleistung, Leistungsfaktor und Online-Doppelwandler-USV.
 Quellenbank und `lessonSourceIds['usv-systeme']` enthalten Ausbildungsquellen,
 Vertiv, TechTarget und Google SRE.
-Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer): offen, noch
-nicht durchgeführt. Status bleibt `ungeprüft`.
-Technische Checks: `npm.cmd run check:sources`, `npm.cmd run check:consistency`,
+Unabhängiger Prüfer-Pass (Datum; Funde behoben; Erzeuger ≠ Prüfer):
+2026-06-30, keine offenen Funde. Gegnerisch nach §7 geprüft: Definitionen,
+USV-Bauarten, Leistungs-/Energieformeln, Rechenwege, Verfügbarkeitstabelle,
+Belegtragfähigkeit, Voraussetzungen und Lösbarkeit.
+
+Funde (alle behoben):
+1. Beleg-Aussage zum Leistungsfaktor war breiter als das hinterlegte wörtliche
+   Zitat; `belege.json` wurde auf die belegte Kernaussage eingegrenzt.
+2. Die Laufzeitformel war für Prüfungsrechnungen korrekt, aber ohne Hinweis auf
+   idealisierte Annahmen zu glatt; Kapitel ergänzt jetzt den Hinweis auf
+   Wirkungsgrad, Alter, Temperatur, Entladestrom und Hersteller-Laufzeittabellen.
+
+Technische Checks: `npm.cmd run check:consistency`, `npm.cmd run check:sources`,
 `npm.cmd run lint`, `npm.cmd run test`, `npm.cmd run build` grün am 2026-06-30.
 Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
-IT-Systeme-Pfad. Offen: unabhängiger Prüfer-Pass nach Kapitelstandard §7; keine
-Freigabe durch den Erzeuger.
+IT-Systeme-Pfad. Keine offenen Punkte. Nächstes aktives Kapitel gemäß
+Lückenliste und Abhängigkeitsketten: `scan-bilddaten`.
 
 ### `raid-systeme`
 
@@ -1013,7 +1251,7 @@ Technische Checks: `npm run check:sources` (20/20 online und Zitate gefunden),
 `npm run build` — alle grün am 2026-06-26.
 
 Entscheidung und offene Punkte: Eigenständiges Kapitel im gemeinsamen
-Grundlagenpfad. Das separate, noch ungeprüfte Kapitel `scan-bilddaten` ist als
+Grundlagenpfad. Das separate, inzwischen geprüfte Kapitel `scan-bilddaten` ist als
 inhaltliche Doppelung festgestellt, wurde gemäß Einzelkapitelregel aber nicht
 verändert. Keine offenen Punkte für dieses Kapitel.
 

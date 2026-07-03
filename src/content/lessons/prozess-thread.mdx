@@ -55,6 +55,30 @@ Ein Thread ist leichter als ein Prozess, weil Threads desselben Prozesses viele 
 
 ---
 
+## Zustände, Scheduling und CPU-Zeit
+
+Ein Prozess oder Thread ist nicht immer gerade auf der CPU. Für die Diagnose ist
+wichtig, grob zwischen drei Zuständen zu unterscheiden:
+
+| Zustand | Bedeutung | Typischer Hinweis |
+|---|---|---|
+| **lauffähig** | Könnte rechnen, wartet aber auf CPU-Zeit. | Viele lauffähige Threads können hohe CPU-Last und Wartezeit erzeugen. |
+| **laufend** | Wird gerade von einem CPU-Kern ausgeführt. | Auf einem Kern kann immer nur ein Thread gleichzeitig laufen. |
+| **wartend/blockiert** | Wartet auf I/O, Netzwerk, Sperre, Timer oder ein anderes Ereignis. | Fenster reagiert nicht, obwohl die CPU-Last niedrig ist. |
+
+Der Scheduler entscheidet nicht nach Fenstern, sondern nach ausführbaren
+Einheiten. Dabei zählen Zustand, Priorität, Fairness und verfügbare Kerne. Ein
+Kontextwechsel speichert den Zustand des bisherigen Threads und stellt den
+Zustand eines anderen Threads her. Das ermöglicht flüssiges Arbeiten, kostet aber
+Zeit. Sehr viele Kontextwechsel können ein System ausbremsen.
+
+<Tipp titel="Diagnosegedanke">
+„Hängt“ heißt nicht automatisch „rechnet“. Es kann auch bedeuten: Der sichtbare
+UI-Thread wartet auf eine Datei, eine Datenbank, das Netzwerk oder eine Sperre.
+</Tipp>
+
+---
+
 ## Multitasking, Parallelität und CPU-Kerne
 
 <Term id="multitasking">Multitasking</Term> bedeutet, dass ein Betriebssystem mehrere Aufgaben so verwaltet, dass sie für den Benutzer gleichzeitig wirken. Auf einem einzigen CPU-Kern passiert das durch schnelles Umschalten. Auf mehreren Kernen können wirklich mehrere Threads gleichzeitig laufen.
@@ -70,6 +94,8 @@ Wichtig ist die Unterscheidung:
 
 Ein System mit vielen Threads ist deshalb nicht automatisch schneller. Threads bringen etwas, wenn Arbeit sinnvoll aufgeteilt werden kann, etwa in Benutzeroberfläche, Netzwerk, Berechnung und Hintergrundaufgaben. Sie bringen wenig, wenn alle Threads auf dieselbe Ressource warten oder sich gegenseitig blockieren.
 
+Wenn ein CPU-Datenblatt etwa „6 Kerne / 12 Threads“ nennt, meint es Hardware-Threads beziehungsweise logisch planbare Ausführungskontexte der CPU. Das ist nicht dasselbe wie die Software-Threads eines einzelnen Prozesses; für diese Hardware-Einordnung brauchst du das Vorkapitel `cpu-ram-speicher`.
+
 ---
 
 ## Schritt für Schritt: hängende Anwendung einordnen
@@ -79,7 +105,7 @@ Ein System mit vielen Threads ist deshalb nicht automatisch schneller. Threads b
     { titel: '1. Prozess identifizieren', text: 'Im Task-Manager, in top/htop oder ps prüfen, welcher Prozess betroffen ist. Name, Prozess-ID und Benutzer beachten.' },
     { titel: '2. Ressource ansehen', text: 'CPU, RAM, Datenträger, Netzwerk und ggf. GPU betrachten. Hohe CPU bedeutet etwas anderes als hoher RAM-Verbrauch oder blockierte I/O.' },
     { titel: '3. Warten oder rechnen unterscheiden', text: 'Hohe CPU-Last deutet auf aktive Berechnung oder Schleife hin. Niedrige CPU bei hängendem Fenster deutet oft auf Warten, Deadlock, I/O oder blockierten UI-Thread hin.' },
-    { titel: '4. Threads/Unterprozesse prüfen', text: 'Bei komplexen Anwendungen ansehen, ob mehrere Threads oder Kindprozesse beteiligt sind, zum Beispiel Browser-Tabs, Datenbank-Worker oder Serverdienste.' },
+    { titel: '4. Threads und Kindprozesse prüfen', text: 'Bei komplexen Anwendungen ansehen, ob mehrere Threads oder Kindprozesse beteiligt sind, zum Beispiel Browser-Tabs, Datenbank-Worker oder Serverdienste.' },
     { titel: '5. Maßnahme wählen', text: 'Erst sauber beenden oder Dienst neu starten, dann Logs/Ereignisanzeige prüfen. Prozess hart beenden nur, wenn Datenverlust und Nebenwirkungen vertretbar sind.' },
   ]} 
 />
@@ -103,11 +129,12 @@ Ein Mitarbeiter meldet: „Mein Warenwirtschaftsprogramm ist abgestürzt." Im Ta
 
 ---
 
-## Typische Prüfungsaufgabe
+## Mini-Selbstcheck
 
-> **Aufgabe (Klausur-Stil):** Ein Betriebssystem zeigt für eine Anwendung einen Prozess mit acht Threads an. Erkläre den Unterschied zwischen Prozess und Thread. Warum kann die Anwendung trotz acht Threads auf einem Ein-Kern-System nicht acht Dinge wirklich gleichzeitig berechnen?
+Ein Betriebssystem zeigt für eine Anwendung einen Prozess mit acht Threads an.
+Was bedeutet das?
 
-**Musterantwort:** Der Prozess ist die laufende Instanz eines Programms und besitzt Ressourcen wie Speicherbereich, geöffnete Dateien, Rechte und Prozess-ID. Ein Thread ist ein Ausführungsstrang innerhalb dieses Prozesses und bekommt CPU-Zeit vom Scheduler. Mehrere Threads eines Prozesses teilen viele Ressourcen des Prozesses.
+**Antwort:** Der Prozess ist die laufende Instanz eines Programms und besitzt Ressourcen wie Speicherbereich, geöffnete Dateien, Rechte und Prozess-ID. Ein Thread ist ein Ausführungsstrang innerhalb dieses Prozesses und bekommt CPU-Zeit vom Scheduler. Mehrere Threads eines Prozesses teilen viele Ressourcen des Prozesses.
 
 Auf einem Ein-Kern-System kann zu einem Zeitpunkt nur ein Thread wirklich auf der CPU laufen. Der Scheduler wechselt sehr schnell zwischen lauffähigen Threads. Dadurch wirkt die Ausführung gleichzeitig, ist aber zeitlich aufgeteilt. Echte parallele Berechnung braucht mehrere CPU-Kerne oder Prozessoren.
 

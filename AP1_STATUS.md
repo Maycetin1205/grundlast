@@ -8,8 +8,8 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **12** | teilgeprueft **0** | ungeprueft **88**
-- Review dokumentiert: **0**
+- Vertrauen: geprueft **15** | teilgeprueft **0** | ungeprueft **85**
+- Review dokumentiert: **7**
 - Mit Quellen-Tags: **68**
 
 ## Lektionen nach Lernfeld
@@ -34,9 +34,9 @@
 
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
-| `linux-chmod` | ready | geprueft | - | ja | ja |
+| `linux-chmod` | ready | geprueft | reviewed | ja | ja |
 | `dateisysteme` | ready | geprueft | - | ja | ja |
-| `prozess-thread` | ready | ungeprueft | - | ja | ja |
+| `prozess-thread` | ready | geprueft | reviewed | ja | ja |
 | `zentral-dezentral` | ready | ungeprueft | - | ja | ja |
 | `virtualisierung` | draft | ungeprueft | - | ja | ja |
 | `crm-erp-dms` | ready | ungeprueft | - | ja | ja |
@@ -55,7 +55,7 @@
 | Slug | TOC | Vertrauen | Review | MDX | Quellen |
 |---|---|---|---|---|---|
 | `von-neumann` | ready | geprueft | - | ja | ja |
-| `bit-byte` | final | geprueft | - | ja | ja |
+| `bit-byte` | final | geprueft | reviewed | ja | ja |
 | `zahlensysteme` | final | geprueft | - | ja | ja |
 | `prefixe` | final | geprueft | - | ja | ja |
 
@@ -65,10 +65,10 @@
 |---|---|---|---|---|---|
 | `cpu-ram-speicher` | ready | geprueft | - | ja | ja |
 | `hardware-schnittstellen` | ready | geprueft | - | ja | ja |
-| `homeoffice-ergonomie` | ready | geprueft | - | ja | ja |
-| `raid-systeme` | draft | geprueft | - | ja | ja |
-| `usv-systeme` | draft | ungeprueft | - | ja | ja |
-| `scan-bilddaten` | draft | ungeprueft | - | ja | ja |
+| `homeoffice-ergonomie` | ready | geprueft | reviewed | ja | ja |
+| `raid-systeme` | draft | geprueft | reviewed | ja | ja |
+| `usv-systeme` | draft | geprueft | reviewed | ja | ja |
+| `scan-bilddaten` | draft | geprueft | reviewed | ja | ja |
 
 ### netzwerke
 

@@ -1,167 +1,263 @@
-﻿# Scan- & Bilddaten rechnen
+# Scan- und Bilddaten rechnen
 
-## Worum geht's
+<MetaBar
+  lernfeld="LF 2 - Scan- und Bilddaten"
+  prüfungsrelevanz="A4-Scanrechnung · D3"
+/>
 
-Du lernst, wie groß eine Bilddatei oder ein Scan wirklich ist — und wie du das ausrechnest.
-Das ist eine klassische Prüfungs-Rechenaufgabe: DIN-A4-Dokument scannen, Speicherbedarf für ein
-ganzes Jahr berechnen. Schritt für Schritt, Formel für Formel.
+Dieses Kapitel ist der Spezialpass für Scanaufgaben: Aus Format, Auflösung,
+<Term id="farbtiefe">Farbtiefe</Term>, Kompression und Stückzahl berechnest du
+den Speicherbedarf. Die Grundlagen zu <Term id="bit">Bit</Term>,
+<Term id="byte">Byte</Term> und <Term id="binaerpraefix">Binärpräfixen</Term>
+kennst du bereits aus den Grundlagenkapiteln; hier setzt du sie zu einer
+reproduzierbaren Rechnung zusammen.
 
----
+<Tipp titel="Prüfungsreihenfolge">
+Zentimeter in Inch -> Pixel in Breite und Höhe -> Pixel gesamt -> Bit -> Byte ->
+Zieleinheit -> Stückzahl -> Kompressionsfaktor. Runde erst am Ende oder nur so,
+wie die Aufgabe es vorgibt.
+</Tipp>
 
-## Erklärung
+## Was bei einem Scan gespeichert wird
 
-### Die vier Bausteine
+Ein Scan ist ein Rasterbild. Die Seite wird in viele kleine Bildpunkte zerlegt.
+Wie viele Bildpunkte entstehen, hängt von der physischen Größe der Vorlage und
+der Auflösung ab. Die Auflösung steht bei Scannern meistens als
+<Term id="dpi">DPI</Term>: Punkte pro Inch.
 
-Um die Dateigröße eines Scans oder Bildes zu berechnen, brauchst du vier Dinge:
+Wichtig ist die Reihenfolge:
 
-**1. Maße in Pixel umrechnen**
+1. **Format** liefert Breite und Höhe der Vorlage, zum Beispiel DIN A4 mit
+   29,7 cm × 21,0 cm.
+2. **Auflösung** liefert Punkte je Inch, zum Beispiel 200 dpi × 200 dpi.
+3. **Farbtiefe** liefert Bit pro Pixel, zum Beispiel 1 Bit, 8 Bit, 24 Bit oder
+   32 Bit.
+4. **Kompression** verändert die Datenmenge nach der Rohdatenrechnung.
 
-Ein Scanner arbeitet mit **DPI** (Dots Per Inch = Punkte pro Zoll). Zoll (Inch) ist eine
-andere Längeneinheit:
+Die Begriffe "Punkt" und "Pixel" werden in Prüfungsrechnungen oft praktisch
+gleich behandelt: Aus den DPI-Werten berechnest du die Pixelzahl in Breite und
+Höhe. In echten Bildformaten sind Breite, Höhe, Farbinformation und Kompression
+getrennte Eigenschaften; für die AP1-Rechnung reicht aber das feste
+Rechenmodell.
 
-```
-1 Inch = 2,54 cm
-→ cm in Inch umrechnen: Inch = cm / 2,54
-```
+## Die Formel
 
-Dann:
-```
-Breite in Pixel = Breite_in_Inch × DPI
-Höhe in Pixel  = Höhe_in_Inch  × DPI
-```
+Eine Scanrechnung besteht aus festen Bausteinen.
 
-**2. Pixelanzahl berechnen**
+<Schritte
+  items={[
+    { titel: 'Maße umrechnen', text: 'DPI bedeutet Punkte je Inch. Wenn Breite und Höhe in Zentimetern angegeben sind, rechnest du zuerst: Inch = Zentimeter ÷ 2,54.' },
+    { titel: 'Pixel bestimmen', text: 'Breite_px = Breite_inch × DPI_x. Höhe_px = Höhe_inch × DPI_y. Bei 200 × 200 dpi nimmst du in beiden Richtungen 200; bei 600 × 300 dpi rechnest du die Richtungen getrennt.' },
+    { titel: 'Pixel und Bits berechnen', text: 'Pixelanzahl = Breite_px × Höhe_px. Bits gesamt = Pixelanzahl × Farbtiefe. Eine Farbtiefe von 24 Bit bedeutet 24 Bit pro Pixel, also 3 Byte pro Pixel.' },
+    { titel: 'In Byte und Zieleinheit umrechnen', text: 'Bytes = Bits ÷ 8. Für MiB, GiB und TiB teilst du durch 1024er-Potenzen: 1024², 1024³ oder 1024⁴. Für MB, GB und TB nutzt du 1000er-Potenzen.' },
+    { titel: 'Menge und Kompression anwenden', text: 'Bei vielen Scans multiplizierst du mit der Stückzahl. Eine Kompression „auf 50 Prozent" bedeutet danach × 0,5: Die Hälfte der Rohdaten bleibt übrig.' },
+  ]}
+/>
 
-```
-Pixelanzahl = Breite_px × Höhe_px
-```
+```text
+Breite_inch = Breite_cm / 2,54
+Höhe_inch   = Höhe_cm / 2,54
 
-**3. Bits berechnen**
+Breite_px = Breite_inch × DPI_x
+Höhe_px   = Höhe_inch × DPI_y
 
-Die **Farbtiefe** gibt an, wie viele Bits pro Pixel gespeichert werden.
-
-| Farbtiefe | Bedeutung | Bits pro Pixel |
-|---|---|---|
-| 1 Bit | Schwarz-Weiß | 1 |
-| 8 Bit | Graustufen (256 Grautöne) | 8 |
-| 24 Bit | RGB-Farbe (16,7 Mio. Farben) | 24 |
-| 32 Bit | RGB + Transparenz (RGBA) | 32 |
-
-```
-Bits gesamt = Pixelanzahl × Farbtiefe (in Bit)
-```
-
-**4. Bytes und Einheiten**
-
-```
+Pixel = Breite_px × Höhe_px
+Bits  = Pixel × Farbtiefe
 Bytes = Bits / 8
 
-Dann weiter umrechnen (Binärpräfixe!):
-KiB = Bytes / 1.024
-MiB = Bytes / 1.024²  = Bytes / 1.048.576
-GiB = Bytes / 1.024³  = Bytes / 1.073.741.824
-TiB = Bytes / 1.024⁴  = Bytes / 1.099.511.627.776
+Gesamt = Bytes je Scan × Anzahl Scans × Kompressionsfaktor
 ```
 
-> **Wichtig:** In Aufgaben steht fast immer TiB, GiB oder MiB — also Binärpräfixe
-> (Teiler = Potenzen von 1.024), nicht SI-Präfixe (Teiler = Potenzen von 1.000).
+## Farbtiefe richtig lesen
 
-**Komprimierung**
+Die Farbtiefe ist keine Dateigröße. Sie sagt, wie viele Bit ein Pixel für seine
+Farb- oder Helligkeitsinformation bekommt.
 
-Wenn die Aufgabe eine Komprimierung angibt (z. B. „auf 50 % komprimiert"), dann:
+| Angabe | Bedeutung für die Rechnung | Typischer Kontext |
+|---|---|---|
+| 1 Bit | 1 Bit pro Pixel | Schwarz/Weiß, zwei Zustände |
+| 8 Bit | 8 Bit pro Pixel | Graustufen oder indizierte Farben |
+| 24 Bit | 24 Bit pro Pixel = 3 Byte pro Pixel | RGB-Farbe mit 8 Bit je Kanal |
+| 32 Bit | 32 Bit pro Pixel = 4 Byte pro Pixel | RGB plus Alpha/Transparenz |
+
+Wenn ein Aufgabentext "24 Bit Farbtiefe" nennt, multiplizierst du die Pixelzahl
+mit 24 und teilst danach durch 8. Du rechnest nicht mit 24 Byte pro Pixel.
+
+## Beispiel: DIN-A4-Archiv pro Jahr
+
+<Beispiel titel="A4-Scan mit 250 dpi, 24 Bit und 60 Prozent Restgröße">
+Ein Unternehmen scannt täglich 1.200 einseitige DIN-A4-Dokumente. Ein Jahr hat
+220 Arbeitstage. DIN A4 wird mit **29,7 cm × 21,0 cm**, **250 dpi × 250 dpi**,
+**24 Bit Farbtiefe** und einer Kompression **auf 60 Prozent** angesetzt. Gesucht
+ist die Datenmenge pro Jahr in TiB.
+</Beispiel>
+
+<StepByStep titel="Speicherbedarf für das Scanarchiv">
+  <Schritt nr={1} titel="DIN A4 in Inch umrechnen">
+    Breite: 29,7 cm ÷ 2,54 = **11,6929 Inch**.
+    Höhe: 21,0 cm ÷ 2,54 = **8,2677 Inch**.
+  </Schritt>
+  <Schritt nr={2} titel="Pixelwerte bestimmen">
+    Breite_px = 11,6929 × 250 ≈ **2.923 px**.
+    Höhe_px = 8,2677 × 250 ≈ **2.067 px**.
+    Pixelanzahl = 2.923 × 2.067 = **6.041.841 px**.
+  </Schritt>
+  <Schritt nr={3} titel="Bit- und Bytemenge pro Scan">
+    Bits je Scan = 6.041.841 × 24 = **145.004.184 Bit**.
+    Byte je Scan = 145.004.184 ÷ 8 = **18.125.523 Byte**.
+  </Schritt>
+  <Schritt nr={4} titel="Auf ein Jahr hochrechnen">
+    Scans/Jahr = 1.200 × 220 = **264.000 Scans**.
+    Rohdaten/Jahr = 18.125.523 × 264.000 = **4.785.138.072.000 Byte**.
+  </Schritt>
+  <Schritt nr={5} titel="In TiB umrechnen und Kompression anwenden">
+    Rohdaten in TiB = 4.785.138.072.000 ÷ 1.099.511.627.776 ≈ **4,35 TiB**.
+    Komprimiert auf 60 Prozent Restgröße: 4,35 × 0,6 ≈ **2,61 TiB**.
+  </Schritt>
+  <Ergebnis>
+    Das Archiv benötigt bei diesen Vorgaben ungefähr **2,61 TiB pro Jahr**.
+    Der Rohwert vor Kompression liegt bei ungefähr **4,35 TiB**.
+  </Ergebnis>
+</StepByStep>
+
+## Kleines Gegenbeispiel: Graustufen statt Farbe
+
+Nimm dieselbe A4-Seite mit denselben gerundeten Pixelwerten, aber nur **8 Bit
+Graustufen** und keine Kompression.
+
+```text
+6.041.841 Pixel × 8 Bit = 48.334.728 Bit
+48.334.728 Bit / 8 = 6.041.841 Byte
 ```
-Komprimierte Größe = Ursprungsgröße × Komprimierungsfaktor
-z. B. auf 50 % → × 0,5
-```
 
----
+Der Scan ist damit nur ein Drittel so groß wie bei 24 Bit Farbe, weil 8 Bit statt
+24 Bit pro Pixel gespeichert werden. Die Auflösung ist gleich geblieben; nur die
+Farbinformation je Pixel ist kleiner.
 
-## Beispiele
+## Varianten sicher lesen
 
-<Schritte
-  title="Beispiel 1: DIN-A4-Scan – Jahresspeicherbedarf"
-  steps={[
-    {
-      title: "Aufgabe und gegebene Werte",
-      formula: "Format: DIN A4 = 29,7 cm × 21,0 cm\nAuflösung: 200 DPI\nFarbtiefe: 24 Bit\nKomprimierung: auf 50 %\nDokumente/Tag: 1.800\nArbeitstage/Jahr: 250",
-      explanation: "Typische IHK-Aufgabe: Ein Unternehmen scannt täglich Dokumente. Wie viel Speicher braucht es pro Jahr?"
-    },
-    {
-      title: "Schritt 1: cm → Inch umrechnen",
-      formula: "Breite: 29,7 cm / 2,54 ≈ 11,69 Inch\nHöhe:  21,0 cm / 2,54 ≈  8,27 Inch",
-      explanation: "DPI-Angaben beziehen sich auf Inch. Zürst müssen die Maße von Zentimetern in Inch umgerechnet werden."
-    },
-    {
-      title: "Schritt 2: Pixel berechnen",
-      formula: "Breite: 11,69 × 200 ≈ 2.338 px\nHöhe:   8,27 × 200 ≈ 1.654 px\n\nPixelanzahl = 2.338 × 1.654 = 3.867.052 px",
-      explanation: "Inch × DPI ergibt die Pixel in einer Richtung. Breite × Höhe ergibt die Gesamtpixelzahl."
-    },
-    {
-      title: "Schritt 3: Bits berechnen",
-      formula: "Bits = 3.867.052 × 24 = 92.809.248 Bit",
-      explanation: "Jeder Pixel braucht 24 Bit (RGB-Farbe). Pixelanzahl × Farbtiefe = Bits gesamt."
-    },
-    {
-      title: "Schritt 4: Bytes berechnen",
-      formula: "Bytes = 92.809.248 / 8 = 11.601.156 Bytes",
-      explanation: "1 Byte = 8 Bit. Division durch 8 ergibt die Größe in Bytes."
-    },
-    {
-      title: "Schritt 5: Komprimierung anwenden",
-      formula: "Komprimiert = 11.601.156 × 0,5 = 5.800.578 Bytes",
-      explanation: "Auf 50 % komprimiert bedeutet: die Hälfte der Originalgröße bleibt übrig. Deshalb × 0,5."
-    },
-    {
-      title: "Schritt 6: Scans pro Jahr",
-      formula: "Scans/Jahr = 1.800 × 250 = 450.000 Scans",
-      explanation: "Tägliche Menge × Arbeitstage ergibt die Jahresanzahl."
-    },
-    {
-      title: "Schritt 7: Gesamtspeicher in TiB",
-      formula: "Gesamt = 5.800.578 × 450.000 = 2.610.260.100.000 Bytes\n\nTiB = 2.610.260.100.000 / 1.099.511.627.776\n    ≈ 2,37 TiB",
-      explanation: "Bytes pro Scan × Anzahl Scans = Gesamtbytes. Dann durch 2^40 (= 1.099.511.627.776) für TiB. Ergebnis: ca. 2,37 TiB pro Jahr."
-    }
-  ]}
-/>
+| Aufgabentext | Bedeutung in der Rechnung |
+|---|---|
+| `200 dpi` | meist 200 Punkte je Inch in Breite und Höhe |
+| `200 × 200 dpi` | 200 Punkte je Inch horizontal und vertikal |
+| `600 × 300 dpi` | Breite mit 600, Höhe mit 300 rechnen, wenn der Text keine andere Zuordnung vorgibt |
+| `DIN A4: 29,7 cm × 21,0 cm` | beide Maße erst durch 2,54 teilen |
+| `24 Bit Farbtiefe` | 24 Bit pro Pixel; danach durch 8 für Byte |
+| `8 Bit Graustufen` | 8 Bit pro Pixel |
+| `unkomprimiert` | kein Kompressionsfaktor |
+| `auf 50 Prozent komprimiert` | Ergebnis mit 0,5 multiplizieren |
+| `um 50 Prozent reduziert` | ebenfalls Faktor 0,5, wenn keine andere Restgröße genannt ist |
+| `Kompressionsrate 4:1` | Rohdaten durch 4 teilen; 25 Prozent bleiben übrig |
+| `MiB/GiB/TiB` | durch 1024er-Potenzen teilen |
+| `MB/GB/TB` | durch 1000er-Potenzen teilen |
 
-<Schritte
-  title="Beispiel 2: Einzelbild – Dateigröße in MiB"
-  steps={[
-    {
-      title: "Aufgabe",
-      formula: "Bild: 1.000 × 1.000 Pixel\nFarbtiefe: 24 Bit\nGesucht: Dateigröße in MiB (unkomprimiert)",
-      explanation: "Einfachere Variante: Pixelzahl ist direkt gegeben, kein Inch-Umrechnen nötig."
-    },
-    {
-      title: "Bits berechnen",
-      formula: "Pixelanzahl = 1.000 × 1.000 = 1.000.000 px\nBits = 1.000.000 × 24 = 24.000.000 Bit",
-      explanation: "Breite × Höhe = Pixelanzahl. Dann × Farbtiefe."
-    },
-    {
-      title: "Bytes → MiB",
-      formula: "Bytes = 24.000.000 / 8 = 3.000.000 Bytes\nMiB = 3.000.000 / 1.048.576 ≈ 2,86 MiB",
-      explanation: "3 Millionen Bytes durch 2^20 (= 1.048.576) ergibt ca. 2,86 MiB."
-    }
-  ]}
-/>
+<Warnung titel="Kompression ist kein fester Naturwert">
+PNG, JPEG, TIFF oder PDF sagen allein noch nicht, welche Dateigröße in einer
+Rechenaufgabe entsteht. Verlustfreie Kompression kann Originaldaten exakt
+wiederherstellen, verlustbehaftete Kompression nicht. Für die AP1 rechnest du
+aber nur mit dem Kompressionsfaktor, der im Text ausdrücklich angegeben ist.
+</Warnung>
 
----
+## Rundung und Musterwerte
+
+Wenn eine Aufgabenstellung Pixelwerte vorgibt oder eine Musterrechnung mit
+gerundeten Pixelwerten arbeitet, rechnest du mit diesen Werten weiter. In der
+A4-Rechnung oben werden 11,6929 × 250 zu 2.923 px gerundet und 8,2677 × 250 zu
+2.067 px. Würdest du mit ungerundeten Pixelwerten weiterrechnen, entsteht ein
+leicht anderer Endwert. Das ist kein Konzeptfehler, sondern ein Rundungseffekt.
+
+Sauber ist:
+
+- Einheiten bei jedem Zwischenschritt notieren.
+- Erst am Ende runden, wenn keine Zwischenwerte vorgegeben sind.
+- Vorgegebene Zwischenwerte übernehmen, wenn die Aufgabe damit weiterrechnen
+  will.
 
 ## Typische Fehler
 
-- **cm ↔ Inch vergessen:** Die Aufgabe gibt Maße in cm an, DPI bezieht sich auf Inch.
-  Ohne Umrechnung (÷ 2,54) kommen falsche Pixelzahlen raus.
+- **Zentimeter direkt mit DPI multiplizieren.** DPI bezieht sich auf Inch, nicht
+  auf Zentimeter.
+- **DPI nur einmal verwenden.** Ein Scan hat Breite und Höhe. Du brauchst also
+  Pixel in beiden Richtungen.
+- **Nichtquadratische DPI ignorieren.** Bei 600 × 300 dpi sind die beiden
+  Richtungen nicht gleich.
+- **Bit und Byte vertauschen.** Farbtiefe steht in Bit pro Pixel; Dateigrößen
+  werden meist in Byte-Einheiten angegeben.
+- **24 Bit als 24 Byte lesen.** 24 Bit sind 3 Byte pro Pixel.
+- **Kompression falsch lesen.** "Auf 50 Prozent" heißt: 50 Prozent bleiben
+  übrig. Das ist ein Faktor von 0,5.
+- **MB und MiB mischen.** Bei TiB rechnest du mit 1024⁴ Byte, nicht mit 1000⁴.
+- **Formatdetails erfinden.** Header, Metadaten, OCR-Text und Dateisystem-Overhead
+  werden nur berücksichtigt, wenn die Aufgabe sie ausdrücklich nennt.
 
-- **24 Bit mit 24 Byte verwechseln:** Die Farbtiefe ist immer in **Bit**, nicht Byte.
-  24 Bit = 3 Byte pro Pixel. In der Rechnung × 24 (Bit), dann am Ende ÷ 8 für Bytes.
+## Mini-Selbstcheck
 
-- **Komprimierung falsch interpretiert:** „Auf 50 % komprimiert" heißt × 0,5 (die Hälfte
-  bleibt übrig). NICHT: minus 50 Byte. NICHT: durch 50.
+| Frage | Kurze Lösung |
+|---|---|
+| Warum steht in der Formel `/ 8`? | Weil 8 Bit ein Byte ergeben. |
+| Was ist bei 300 dpi und DIN A4 der erste Rechenschritt? | 29,7 cm und 21,0 cm jeweils durch 2,54 teilen. |
+| Wann wird der Faktor 0,5 angewendet? | Nach der Rohdatenrechnung, wenn "auf 50 Prozent komprimiert" angegeben ist. |
+| Was bedeutet 24 Bit Farbtiefe praktisch? | 24 Bit pro Pixel, also 3 Byte pro Pixel. |
+| Was ändert sich bei 8 Bit Graustufen statt 24 Bit Farbe? | Die Bytemenge pro Pixel sinkt von 3 Byte auf 1 Byte. |
 
-- **MiB vs. MB verwechseln:** In Aufgaben fast immer MiB/GiB/TiB gefragt (Binärpräfixe,
-  Teiler 1.024). Mit 1.000 zu teilen (SI-Präfixe) gibt ein falsches Ergebnis.
+## Abgrenzung
 
-- **DPI in beide Richtungen:** 200 DPI bedeutet 200 Punkte pro Inch in x-Richtung UND
-  200 Punkte pro Inch in y-Richtung. Bei „200 × 200 DPI" gilt jeweils 200 für Breite und Höhe.
+Dieses Kapitel erklärt Scan- und Bilddatenrechnungen. Es erklärt nicht:
 
----
+| Nicht hier vertieft | Warum nicht | Anschluss |
+|---|---|---|
+| Datenrate und Übertragungsdauer | Das ist dieselbe Einheitenmechanik, aber ein anderer Aufgabentyp. | Datenrate & Downloadzeit berechnen |
+| Bildformate im Detail | PNG, JPEG, TIFF und PDF haben eigene Formatregeln. Die AP1-Rechnung nutzt nur vorgegebene Faktoren. | Medien-/Datenkompressionskapitel |
+| OCR und Dokumentenmanagement | Texterkennung und Archivprozesse verändern den fachlichen Kontext, nicht die Grundformel für Rohbilddaten. | Betriebliche Anwendungen |
+| Scannerinstallation und Treiber | Gehört zur Arbeitsplatz- und Peripheriebetreuung, nicht zur Speicherrechnung. | Schnittstellen, Peripherie, Docking |
+
+<Glossar
+  einträge={[
+    {
+      term: 'DPI',
+      definition: 'Dots per Inch, also Punkte je Inch. Für Scanrechnungen müssen Zentimetermaße deshalb zuerst in Inch umgerechnet werden.'
+    },
+    {
+      term: 'Farbtiefe',
+      definition: 'Anzahl der Bits pro Pixel. 1 Bit reicht für zwei Zustände, 8 Bit für 256 Werte, 24 Bit typischerweise für RGB-Farbe.'
+    },
+    {
+      term: 'Kompression',
+      definition: 'Vorgegebener Faktor für die Rechnung. Auf 50 Prozent komprimiert bedeutet, dass 50 Prozent der Rohdatenmenge übrig bleiben.'
+    },
+    {
+      term: 'TiB',
+      definition: 'Tebibyte, also 1024 hoch 4 Byte. Diese Einheit gehört zur binären Präfixreihe.'
+    },
+  ]}
+/>
+
+<Quellen
+  quellen={[
+    {
+      label: 'NIST - Prefixes for binary multiples',
+      href: 'https://physics.nist.gov/cuu/Units/binary.html',
+      detail: 'Faktor 8 zwischen Bit und Byte sowie binäre Präfixe wie MiB, GiB und TiB.'
+    },
+    {
+      label: 'BIPM - SI prefixes',
+      href: 'https://www.bipm.org/en/measurement-units/si-prefixes',
+      detail: 'Dezimale SI-Präfixe für MB, GB und TB.'
+    },
+    {
+      label: 'W3C - PNG Specification',
+      href: 'https://www.w3.org/TR/png/',
+      detail: 'Bilddaten enthalten Breite, Höhe, Bit Depth, Color Type und Kompressionsinformationen; PNG ist ein verlustfreies Rasterbildformat.'
+    },
+    {
+      label: 'ISO/IEC 10918-1 - JPEG still image compression',
+      href: 'https://www.iso.org/standard/18902.html',
+      detail: 'Normative Einordnung von JPEG als Bildkompressionsstandard.'
+    },
+    {
+      label: 'Fachinformatikerausbildungsverordnung (FIAusbV)',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Ausbildungsrahmen für das Einrichten und Betreiben von IT-Systemen.'
+    },
+  ]}
+/>

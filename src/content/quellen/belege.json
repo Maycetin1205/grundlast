@@ -203,6 +203,71 @@
       "abgerufenAm": "2026-06-26"
     }
   ],
+  "scan-bilddaten": [
+    {
+      "aussage": "Ein Byte besteht aus acht Bit; Scanrechnungen teilen die Bitmenge deshalb durch acht, um Byte zu erhalten.",
+      "zitat": "1 B = 2<sup>3</sup> bit = <strong>8 bit</strong>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one byte“",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Ein Mebibyte (MiB) entspricht 2²⁰ Byte beziehungsweise 1.048.576 Byte.",
+      "zitat": "1 MiB = 2<sup>20</sup> B = <b>1 048 576 B</b>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one mebibyte“",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Ein Gibibyte (GiB) entspricht 2³⁰ Byte beziehungsweise 1.073.741.824 Byte.",
+      "zitat": "1 GiB = 2<sup>30</sup> B = <b>1 073 741 824 B</b>",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Examples and comparisons with SI prefixes“, Zeile „one gibibyte“",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Der Binärpräfix tebi (Ti) steht für den Faktor 2⁴⁰.",
+      "zitat": "2<sup>40</sup> tebi Ti",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Tabelle „Prefixes for binary multiples“, Zeile „tebi“",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "SI-Präfixe bezeichnen dezimale Vielfache und Teile von SI-Einheiten.",
+      "zitat": "Decimal multiples and submultiples of SI units can be written using the SI prefixes listed below:",
+      "quelleId": "bipm-si-prefixes",
+      "fundstelle": "BIPM, SI prefixes — Einleitung vor der Präfixtabelle",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Binärpräfixe gehören nicht zum Internationalen Einheitensystem (SI).",
+      "zitat": "It is important to recognize that the new prefixes for binary multiples are not part of the International System of Units (SI), the modern metric system.",
+      "quelleId": "nist-binary-prefixes",
+      "fundstelle": "NIST, Prefixes for binary multiples — Absatz nach der Vergleichstabelle",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "PNG ist als verlustfreies Rasterbildformat beschrieben; daraus folgt, dass Kompression und Rohdatenmenge unterschieden werden müssen.",
+      "zitat": "method of data compression that permits reconstruction of the original data exactly, bit-for-bit.",
+      "quelleId": "w3c-png-3",
+      "fundstelle": "W3C, PNG Specification (Third Edition) — 3 Terms, definitions, and abbreviated terms, „lossless“",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "In PNG geben Breite und Höhe die Bilddimensionen in Pixeln an.",
+      "zitat": "Width and height give the image dimensions in pixels.",
+      "quelleId": "w3c-png-3",
+      "fundstelle": "W3C, PNG Specification (Third Edition) — 11.2.1 IHDR Image header",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "PNG-Truecolor-Pixel bestehen aus einem RGB-Tripel; das stützt die Rechnung mit getrennten Farbkanälen.",
+      "zitat": "Each pixel is an R,G,B triple",
+      "quelleId": "w3c-png-3",
+      "fundstelle": "W3C, PNG Specification (Third Edition) — Tabelle 12, Truecolor",
+      "abgerufenAm": "2026-06-30"
+    }
+  ],
   "datenrate-berechnung": [
     {
       "aussage": "Ein Byte besteht aus acht Bit.",
@@ -753,7 +818,7 @@
       "abgerufenAm": "2026-06-30"
     },
     {
-      "aussage": "Der Leistungsfaktor beschreibt den Unterschied zwischen Wirkleistung und Scheinleistung; eine 100-kVA-USV mit Leistungsfaktor 0,8 kann 80 kW Wirkleistung liefern.",
+      "aussage": "Der Leistungsfaktor beschreibt den Unterschied zwischen Wirkleistung und Scheinleistung.",
       "zitat": "power factor (pf) is the difference between real power and apparent power",
       "quelleId": "techtarget-ups-definition",
       "fundstelle": "TechTarget, What is an uninterruptible power supply (UPS)?, Abschnitt \"UPS power factor\"",
@@ -778,6 +843,57 @@
       "zitat": "99.9% 8.76 hours",
       "quelleId": "google-sre-availability-table",
       "fundstelle": "Google SRE, Availability Table, Tabelle 1-1",
+      "abgerufenAm": "2026-06-30"
+    }
+  ],
+  "prozess-thread": [
+    {
+      "aussage": "Ein Prozess stellt die Ressourcen bereit, die zur Ausführung eines Programms benötigt werden.",
+      "zitat": "Each process provides the resources needed to execute a program.",
+      "quelleId": "microsoft-processes-threads",
+      "fundstelle": "Microsoft Learn, About Processes and Threads, Abschnitt \"In this article\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Ein Prozess besitzt unter anderem virtuellen Adressraum, ausführbaren Code, Handles, Sicherheitskontext, Prozess-ID, Umgebungsvariablen, Prioritätsklasse, Working-Set-Grenzen und mindestens einen Thread.",
+      "zitat": "A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution.",
+      "quelleId": "microsoft-processes-threads",
+      "fundstelle": "Microsoft Learn, About Processes and Threads, Abschnitt \"In this article\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Ein Thread ist die Einheit innerhalb eines Prozesses, die zur Ausführung eingeplant werden kann.",
+      "zitat": "A thread is the entity within a process that can be scheduled for execution.",
+      "quelleId": "microsoft-processes-threads",
+      "fundstelle": "Microsoft Learn, About Processes and Threads, Abschnitt \"In this article\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Microsoft beschreibt den Thread als Grundeinheit, der das Betriebssystem Prozessorzeit zuteilt.",
+      "zitat": "A thread is the basic unit to which the operating system allocates processor time.",
+      "quelleId": "microsoft-processes-threads-overview",
+      "fundstelle": "Microsoft Learn, Processes and Threads, Abschnitt \"In this article\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Windows erzeugt durch präemptives Multitasking den Eindruck gleichzeitiger Ausführung mehrerer Threads aus mehreren Prozessen.",
+      "zitat": "Microsoft Windows supports preemptive multitasking , which creates the effect of simultaneous execution of multiple threads from multiple processes.",
+      "quelleId": "microsoft-processes-threads",
+      "fundstelle": "Microsoft Learn, About Processes and Threads, Abschnitt \"In this article\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Windows weist Zeitscheiben zuerst den Threads mit der höchsten Priorität zu.",
+      "zitat": "The system assigns time slices in a round-robin fashion to all threads with the highest priority.",
+      "quelleId": "microsoft-scheduling-priorities",
+      "fundstelle": "Microsoft Learn, Scheduling Priorities, Abschnitt \"Scheduling Priorities\"",
+      "abgerufenAm": "2026-06-30"
+    },
+    {
+      "aussage": "Der Linux-CFS wird als Completely Fair Scheduler beschrieben.",
+      "zitat": "CFS stands for \"Completely Fair Scheduler,\"",
+      "quelleId": "linux-kernel-cfs",
+      "fundstelle": "Linux Kernel Documentation, CFS Scheduler, Abschnitt \"Overview\"",
       "abgerufenAm": "2026-06-30"
     }
   ]

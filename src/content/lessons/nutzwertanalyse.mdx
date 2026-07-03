@@ -1,119 +1,351 @@
-﻿# Nutzwertanalyse
+# Nutzwertanalyse
 
-## Worum geht's
+## Warum das im Beruf wichtig ist
 
-Die Nutzwertanalyse ist eine Methode, um Alternativen systematisch zu vergleichen — wenn nicht
-nur der Preis entscheidet. In Prüfung ist sie eine der häufigsten Rechenaufgaben (10–15 Punkte!).
-Du lernst die 5 Schritte auswendig und kannst jede Variante sicher durchrechnen.
+In der IT entscheidet selten nur der niedrigste Preis. Ein günstiges Notebook kann zu
+wenig Akkulaufzeit haben, ein günstiger Dienstleister kann langsam reagieren, und eine
+Software kann preiswert sein, aber nicht zur vorhandenen Umgebung passen. Im Betrieb
+müssen solche Entscheidungen nachvollziehbar sein, damit Einkauf, Fachabteilung und IT
+verstehen, warum eine Alternative gewählt wurde.
 
----
+Die <Term id="nutzwertanalyse">Nutzwertanalyse</Term> hilft genau dabei: Sie macht aus
+mehreren Kriterien eine geordnete Entscheidung. Dadurch wird sichtbar, welche Alternative
+insgesamt am besten zum Bedarf passt.
 
-## Erklärung
+## Was du danach kannst
 
-Stell dir vor, du sollst für deine Firma drei Laptops vergleichen. Laptop A ist am billigsten,
-Laptop B hat den besten Akku, Laptop C hat die höchste Leistung. Welchen nimmst du?
+Nach diesem Kapitel kannst du:
 
-Nur den Preis zu vergleichen wäre zu einfach — in der Realität zählen viele Faktoren.
-Die **Nutzwertanalyse** macht das systematisch und nachvollziehbar: Jedes Kriterium bekommt
-eine Gewichtung, jede Alternative eine Bewertung — am Ende gewinnt der höchste Nutzwert.
+- Kriterien für eine IT-Entscheidung sinnvoll auswählen.
+- zwischen Muss-Kriterien, Soll-Kriterien, quantitativen und qualitativen Kriterien unterscheiden.
+- Gewichtungen und Bewertungen richtig lesen.
+- Nutzwerte Schritt für Schritt berechnen.
+- eine Empfehlung formulieren, die Preis, Qualität und betriebliche Anforderungen trennt.
 
-### Die 5 Schritte
+## Die Grundidee
 
-```
-SCHRITT 1: Kriterien festlegen    (z. B. Preis, Qualität, Service)
-SCHRITT 2: Gewichtung festlegen   (Summe MUSS 100 % ergeben!)
-SCHRITT 3: Alternativen bewerten  (z. B. 1–10 Punkte)
-SCHRITT 4: Nutzwert berechnen     Nutzwert = Gewichtung × Bewertung (pro Kriterium)
-SCHRITT 5: Summe bilden           → Höchster Gesamtnutzwert gewinnt
-```
+Stell dir vor, ein Ausbildungsbetrieb beschafft neue Laptops. Drei Modelle stehen zur
+Wahl:
 
-**Die Formel:**
+- Modell A ist günstig.
+- Modell B hat den besten Akku.
+- Modell C hat die höchste Leistung.
 
-```
-Nutzwert gesamt = Σ (Gewichtung × Bewertung)
-```
+Wenn nur der Preis zählt, wäre die Entscheidung einfach. Im IT-Alltag reicht das aber
+oft nicht. Für mobile Mitarbeitende kann Akkulaufzeit wichtiger sein als maximale
+Rechenleistung. Für die Administration kann Kompatibilität mit vorhandenen Dockingstations
+wichtiger sein als ein schöneres Display.
 
-Das Sigma-Zeichen (Σ) bedeutet: alle Teilprodukte addieren.
+Eine Nutzwertanalyse beantwortet deshalb nicht nur die Frage "Was ist billig?", sondern
+"Welche Alternative erfüllt unsere Anforderungen insgesamt am besten?".
 
-| Begriff | Bedeutung |
-|---|---|
-| Kriterium | Was wird bewertet? (Preis, Akku, Design …) |
-| Gewichtung | Wie wichtig ist das Kriterium? (in %, Summe = 100 %) |
-| Bewertung | Wie gut erfüllt die Alternative dieses Kriterium? (z. B. 1–10) |
-| Nutzwert | Gewichtung × Bewertung — pro Kriterium addiert |
+## Begriffe in sinnvoller Reihenfolge
 
----
+| Begriff | Einfache Bedeutung | Beispiel |
+|---|---|---|
+| Alternative | Eine auswählbare Möglichkeit | Laptop A, Laptop B, Laptop C |
+| Kriterium | Eigenschaft, nach der verglichen wird | Preis, Leistung, Support, Lieferzeit |
+| Muss-Kriterium | Bedingung, die zwingend erfüllt sein muss | Gerät muss Windows 11 unterstützen |
+| Soll-Kriterium | Wünschenswerte Eigenschaft, die bewertet wird | langer Akku, schneller Support |
+| Gewichtung | Wichtigkeit eines Soll-Kriteriums | Preis 40 %, Support 30 % |
+| Bewertung | Punktzahl einer Alternative bei einem Kriterium | 1 = schwach, 5 = sehr gut |
+| Teilnutzwert | Gewichtung mal Bewertung für ein Kriterium | 0,40 x 5 = 2,00 |
+| Gesamtnutzwert | Summe aller Teilnutzwerte einer Alternative | 4,25 Punkte |
 
-## Beispiele
+Die Reihenfolge ist wichtig: Erst muss klar sein, welche Alternativen verglichen werden.
+Dann prüfst du Muss-Kriterien. Erst danach lohnt sich eine Punktbewertung der
+Soll-Kriterien.
+
+## Muss-Kriterium und Soll-Kriterium
+
+Ein **Muss-Kriterium** entscheidet vor der eigentlichen Nutzwertrechnung. Wenn eine
+Alternative ein Muss-Kriterium nicht erfüllt, scheidet sie aus. Ein Beispiel: Für ein
+Unternehmen sind Netzwerkgeräte mit PoE+ erforderlich, weil Access Points darüber mit
+Strom versorgt werden. Ein Switch ohne PoE+ kann dann noch so günstig sein; er passt
+nicht zum Bedarf.
+
+Ein **Soll-Kriterium** wird dagegen bewertet. Eine längere Garantie, kürzere Lieferzeit
+oder bessere Dokumentation kann Pluspunkte bringen, schließt eine Alternative aber nicht
+automatisch aus.
+
+<Warnung titel="Muss-Kriterien nicht mit Punkten retten">
+Wenn eine Alternative eine zwingende Anforderung nicht erfüllt, gehört sie nicht in die
+Endauswahl. Eine hohe Punktzahl bei anderen Kriterien macht das nicht wieder gut.
+</Warnung>
+
+## Quantitativ und qualitativ
+
+Bei Entscheidungen trennst du zwei Arten von Kriterien:
+
+| Art | Frage | Typische Werte | Ergebnis |
+|---|---|---|---|
+| Quantitativ | Was lässt sich direkt berechnen? | Preis, Betriebskosten, Lieferkosten, Stromverbrauch | Geldbetrag, Zeit, Menge |
+| Qualitativ | Wie gut passt etwas fachlich? | Support, Kompatibilität, Bedienbarkeit, Dokumentation | Punkte oder begründete Einschätzung |
+
+Beim <Term id="qualitativer-angebotsvergleich">qualitativen Angebotsvergleich</Term>
+geht es um Eigenschaften, die nicht direkt in Euro gemessen werden. Genau dort ist die
+Nutzwertanalyse stark. Sie ersetzt aber keine Preisrechnung. Preis und Nutzwertpunkte
+sind verschiedene Größen.
+
+## Das Verfahren in 6 Schritten
 
 <Schritte
-  title="Beispiel 1: Laptop-Vergleich (3 Alternativen)"
-  steps={[
+  items={[
     {
-      title: "Schritt 1+2: Kriterien und Gewichtungen festlegen",
-      formula: "Preis:        40 %\nLeistung:     30 %\nAkkulaufzeit: 20 %\nDesign:       10 %\n─────────────────\nSumme:       100 %  ✓",
-      explanation: "Die Gewichtungen zeigen, was wichtiger ist. Preis (40 %) ist hier das wichtigste Kriterium. Kontrolle: Alle Gewichtungen müssen genau 100 % ergeben."
+      titel: 'Alternativen festlegen',
+      text: 'Notiere, welche Angebote, Produkte oder Lösungen verglichen werden. Sie müssen denselben Bedarf abdecken.',
     },
     {
-      title: "Schritt 3: Bewertungen vergeben (1–10 Punkte)",
-      formula: "              Laptop A  Laptop B  Laptop C\nPreis (40 %):    8        9         7\nLeistung (30 %): 9        7        10\nAkku (20 %):     7        8         6\nDesign (10 %):   6        7         9",
-      explanation: "Jede Alternative bekommt pro Kriterium eine Note. Hohe Zahl = gut. Laptop B hat beim Preis die beste Note (9), Laptop C bei der Leistung (10)."
+      titel: 'Muss-Kriterien prüfen',
+      text: 'Streiche Alternativen, die zwingende Anforderungen nicht erfüllen, zum Beispiel Schnittstelle, Betriebssystem, Liefertermin oder Sicherheitsvorgabe.',
     },
     {
-      title: "Schritt 4+5: Nutzwert für Laptop A berechnen",
-      formula: "= (0,40 × 8) + (0,30 × 9) + (0,20 × 7) + (0,10 × 6)\n= 3,20 + 2,70 + 1,40 + 0,60\n= 7,90 Punkte",
-      explanation: "Gewichtung als Dezimalzahl schreiben (40 % = 0,40). Dann jede Gewichtung mit der Bewertung multiplizieren und alles addieren."
+      titel: 'Soll-Kriterien bestimmen',
+      text: 'Lege fest, welche Eigenschaften bewertet werden: Preis, Support, Leistung, Garantie, Lieferzeit, Kompatibilität oder Nachhaltigkeit.',
     },
     {
-      title: "Nutzwert für Laptop B berechnen",
-      formula: "= (0,40 × 9) + (0,30 × 7) + (0,20 × 8) + (0,10 × 7)\n= 3,60 + 2,10 + 1,60 + 0,70\n= 8,00 Punkte",
-      explanation: "Laptop B hat bei Preis und Akku bessere Noten als A — das zeigt sich im Ergebnis."
+      titel: 'Gewichtungen vergeben',
+      text: 'Bestimme, wie wichtig jedes Soll-Kriterium ist. Die Summe der Gewichtungen sollte 100 % ergeben.',
     },
     {
-      title: "Nutzwert für Laptop C berechnen",
-      formula: "= (0,40 × 7) + (0,30 × 10) + (0,20 × 6) + (0,10 × 9)\n= 2,80 + 3,00 + 1,20 + 0,90\n= 7,90 Punkte",
-      explanation: "Laptop C hat die beste Leistung (10), aber beim wichtigsten Kriterium Preis nur 7 — das kostet Punkte."
+      titel: 'Bewertungen vergeben',
+      text: 'Bewerte jede Alternative pro Kriterium auf einer einheitlichen Skala, zum Beispiel 1 bis 5. Hohe Punktzahl bedeutet: erfüllt das Kriterium gut.',
     },
     {
-      title: "Ergebnis auswerten",
-      formula: "Laptop A: 7,90 Punkte\nLaptop B: 8,00 Punkte  ← Gewinner!\nLaptop C: 7,90 Punkte",
-      explanation: "Laptop B gewinnt mit 8,00 Punkten. A und C sind gleichauf — obwohl A bei Preis schlechter ist, holt C den Vorsprung beim Design nicht auf."
-    }
+      titel: 'Nutzwert berechnen und begründen',
+      text: 'Rechne je Kriterium Gewichtung mal Bewertung, addiere die Teilwerte und formuliere eine Empfehlung mit den wichtigsten Gründen.',
+    },
   ]}
 />
 
-<Schritte
-  title="Beispiel 2: Server-Angebote vergleichen (IHK-Szenario)"
-  steps={[
-    {
-      title: "Aufgabe und Gewichtungen",
-      formula: "Kriterien:\nAnschaffungskosten: 50 %\nSupport-Reaktionszeit: 30 %\nErweiterbarkeit: 20 %\n────────────────────────\nSumme: 100 % ✓",
-      explanation: "Typisches IHK-Szenario: IT-Abteilung soll einen neuen Server beschaffen. Kosten sind hier mit 50 % am wichtigsten."
-    },
-    {
-      title: "Bewertungen und Berechnung",
-      formula: "           Anbieter X  Anbieter Y\nKosten:        9          6\nSupport:       6          9\nErweiterb.:    7          8\n\nAnbieter X: (0,5×9)+(0,3×6)+(0,2×7)\n          = 4,50 + 1,80 + 1,40 = 7,70\n\nAnbieter Y: (0,5×6)+(0,3×9)+(0,2×8)\n          = 3,00 + 2,70 + 1,60 = 7,30",
-      explanation: "Anbieter X gewinnt (7,70 vs. 7,30) — obwohl Y beim Support besser ist, ziehen die höheren Kosten ihn herunter."
-    }
-  ]}
-/>
+Die Formel lautet:
 
----
+```text
+Teilnutzwert = Gewichtung x Bewertung
+Gesamtnutzwert = Summe aller Teilnutzwerte
+```
+
+Wenn Gewichtungen als Prozentwerte angegeben sind, wandelst du sie für die Rechnung in
+Dezimalzahlen um:
+
+```text
+50 % = 0,50
+30 % = 0,30
+20 % = 0,20
+```
+
+In Prüfungsaufgaben ist die Tabelle manchmal nicht vollständig. Dann nutzt du dieselbe
+Formel rückwärts. Fehlt zum Beispiel der Teilnutzwert, multiplizierst du Gewichtung und
+Bewertung. Fehlt die Bewertung, teilst du den Teilnutzwert durch die Gewichtung.
+
+```text
+Bewertung = Teilnutzwert : Gewichtung
+Gewichtung = Teilnutzwert : Bewertung
+```
+
+Dabei prüfst du immer zwei Dinge:
+
+- Ergeben alle Gewichtungen zusammen 100 %?
+- Passt die Punktelogik zum Kriterium?
+
+Gerade beim Preis ist die Punktelogik wichtig. Wenn hohe Punkte immer "gut" bedeuten,
+bekommt beim Preis normalerweise das günstigere Angebot mehr Punkte. Steht in der Aufgabe
+eine andere Skala, gilt die angegebene Skala.
+
+## Beispiel 1: Laptop-Auswahl
+
+<Beispiel titel="Ausgangslage">
+Ein Betrieb beschafft Laptops für Mitarbeitende im Außendienst. Alle drei Modelle
+erfüllen die Muss-Kriterien: Windows 11 Pro, mindestens 16 GB RAM, USB-C-Docking und
+Lieferung innerhalb von vier Wochen. Jetzt werden die Soll-Kriterien bewertet.
+
+Bewertungsskala: **1 = schwach**, **5 = sehr gut**.
+</Beispiel>
+
+| Kriterium | Gewichtung | Laptop A | Laptop B | Laptop C |
+|---|---:|---:|---:|---:|
+| Preis | 40 % | 5 | 4 | 3 |
+| Akkulaufzeit | 30 % | 3 | 5 | 4 |
+| Leistung | 20 % | 4 | 4 | 5 |
+| Garantie und Service | 10 % | 3 | 4 | 4 |
+
+Die Tabelle bedeutet: Der Preis ist mit 40 % am wichtigsten. Akkulaufzeit folgt mit
+30 %. Leistung zählt mit 20 %, Garantie und Service mit 10 %. Die Gewichtungen ergeben
+zusammen 100 %, also ist die Bewertung vollständig.
+
+<StepByStep titel="Nutzwerte berechnen">
+  <Schritt nr={1} titel="Laptop A berechnen">
+    A = 0,40 x 5 + 0,30 x 3 + 0,20 x 4 + 0,10 x 3
+    = 2,00 + 0,90 + 0,80 + 0,30
+    = **4,00 Punkte**.
+  </Schritt>
+  <Schritt nr={2} titel="Laptop B berechnen">
+    B = 0,40 x 4 + 0,30 x 5 + 0,20 x 4 + 0,10 x 4
+    = 1,60 + 1,50 + 0,80 + 0,40
+    = **4,30 Punkte**.
+  </Schritt>
+  <Schritt nr={3} titel="Laptop C berechnen">
+    C = 0,40 x 3 + 0,30 x 4 + 0,20 x 5 + 0,10 x 4
+    = 1,20 + 1,20 + 1,00 + 0,40
+    = **3,80 Punkte**.
+  </Schritt>
+  <Schritt nr={4} titel="Ergebnis deuten">
+    Laptop B hat mit **4,30 Punkten** den höchsten Gesamtnutzwert. Er ist nicht der
+    billigste Laptop, passt aber wegen der sehr guten Akkulaufzeit und des guten Service
+    am besten zur Außendienst-Situation.
+  </Schritt>
+</StepByStep>
+
+## Beispiel 2: Angebot mit K.O.-Kriterium
+
+<Beispiel titel="Ausgangslage">
+Ein Unternehmen sucht 24 Monitore für CAD-Arbeitsplätze. Ein Muss-Kriterium ist eine
+Auflösung von mindestens 2.560 x 1.440 Pixeln. Außerdem sollen Preis, Garantie und
+Ergonomie bewertet werden.
+</Beispiel>
+
+| Angebot | Auflösung | Preisbewertung | Garantie | Ergonomie |
+|---|---:|---:|---:|---:|
+| A | 2.560 x 1.440 | 4 | 3 | 4 |
+| B | 1.920 x 1.080 | 5 | 5 | 5 |
+| C | 2.560 x 1.440 | 3 | 5 | 4 |
+
+Angebot B ist bei den Soll-Kriterien stark, erfüllt aber die erforderliche Auflösung
+nicht. Es wird deshalb ausgeschlossen, bevor die Nutzwertrechnung beginnt.
+
+Für A und C gelten diese Gewichtungen:
+
+| Kriterium | Gewichtung |
+|---|---:|
+| Preis | 50 % |
+| Garantie | 30 % |
+| Ergonomie | 20 % |
+
+<StepByStep titel="Nur zulässige Alternativen bewerten">
+  <Schritt nr={1} titel="Angebot A berechnen">
+    A = 0,50 x 4 + 0,30 x 3 + 0,20 x 4
+    = 2,00 + 0,90 + 0,80
+    = **3,70 Punkte**.
+  </Schritt>
+  <Schritt nr={2} titel="Angebot C berechnen">
+    C = 0,50 x 3 + 0,30 x 5 + 0,20 x 4
+    = 1,50 + 1,50 + 0,80
+    = **3,80 Punkte**.
+  </Schritt>
+  <Schritt nr={3} titel="Empfehlung formulieren">
+    Angebot C erreicht mit **3,80 Punkten** den höchsten Nutzwert unter den zulässigen
+    Alternativen. Angebot B wird nicht empfohlen, obwohl es viele Punkte bekommen hätte,
+    weil es die Mindestauflösung nicht erfüllt.
+  </Schritt>
+</StepByStep>
+
+## Subjektivität richtig verstehen
+
+Eine Nutzwertanalyse wirkt mathematisch, ist aber nicht vollkommen objektiv. Die
+Rechnung ist eindeutig, sobald Gewichtungen und Bewertungen feststehen. Die Auswahl der
+Kriterien, die Höhe der Gewichtungen und die Punktbewertung enthalten jedoch fachliche
+Einschätzungen.
+
+Das ist kein Fehler, solange die Einschätzungen begründet werden. Gute Kriterien kommen
+aus dem Bedarf: Was muss der Arbeitsplatz leisten? Welche Risiken gibt es? Welche
+Folgekosten oder Serviceanforderungen sind wichtig? In einem Betrieb sollten solche
+Gewichtungen mit den Beteiligten abgestimmt werden, zum Beispiel IT, Einkauf,
+Fachabteilung und Datenschutz.
+
+In AP1-Aufgaben kann deshalb auch gefragt werden, welches zusätzliche Kriterium sinnvoll
+wäre. Gute Antworten nennen nicht nur ein Wort, sondern verbinden es mit dem Bedarf:
+"Datenschutz" wäre bei Software sinnvoll, wenn personenbezogene Daten verarbeitet werden;
+"Kompatibilität" wäre bei Hardware sinnvoll, wenn vorhandene Dockingstations,
+Monitore oder Verwaltungswerkzeuge weitergenutzt werden sollen.
 
 ## Typische Fehler
 
-- **Gewichtungen ergeben nicht 100 %:** Die häufigste Fehlerquelle. Wenn die Aufgabe
-  Gewichtungen vorgibt und sie sich nicht auf 100 % summieren, ist das ein Fehler in der
-  Aufgabe oder du hast eine übersehen. Immer kontrollieren!
+1. **Muss-Kriterien erst nach der Rechnung beachten.** Zwingende Anforderungen werden
+   vorher geprüft. Nicht passende Alternativen werden ausgeschlossen.
+2. **Gewichtungen ergeben nicht 100 %.** Dann ist die Rechnung verzerrt oder ein
+   Kriterium fehlt.
+3. **Prozentwerte falsch einsetzen.** 40 % wird als 0,40 gerechnet, nicht als 40.
+4. **Unterschiedliche Skalen mischen.** Wenn ein Kriterium mit 1 bis 5 bewertet wird
+   und ein anderes mit 1 bis 10, entsteht ein unfairer Vergleich.
+5. **Preisbewertung falsch herum vergeben.** Beim Kriterium Preis bedeutet eine hohe
+   Punktzahl normalerweise: günstig oder wirtschaftlich vorteilhaft. Das muss vor der
+   Bewertung klar sein.
+6. **Nutzwertpunkte als Euro behandeln.** 4,30 Punkte sind kein Geldbetrag. Sie helfen
+   bei der Entscheidung, ersetzen aber keine Kostenrechnung.
+7. **Scheinpräzision erzeugen.** Zwei Ergebnisse wie 4,01 und 4,00 wirken rechnerisch
+   verschieden, können fachlich aber praktisch gleichwertig sein. Dann zählen die
+   wichtigsten Kriterien und die Begründung.
+8. **Kriterien doppelt zählen.** Wenn "Preis" und "Gesamtkosten" dasselbe meinen,
+   bekommt derselbe Aspekt zu viel Gewicht.
 
-- **Höchster Nutzwert = schlechteste Alternative?** NEIN — **höchster Nutzwert = beste
-  Alternative**. Das klingt offensichtlich, aber unter Prüfungsdruck werden die Ergebnisse
-  manchmal falsch interpretiert.
+## Kurze Zusammenfassung
 
-- **Nutzwert in Euro umrechnen:** Der Nutzwert ist eine dimensionslose Punktzahl — kein
-  Geldwert. Man kann ihn nicht in Euro ausdrücken.
+Eine Nutzwertanalyse vergleicht Alternativen anhand gewichteter Soll-Kriterien. Vorher
+werden Muss-Kriterien geprüft. Die Rechnung ist einfach: Gewichtung x Bewertung ergibt
+den Teilnutzwert, alle Teilnutzwerte zusammen ergeben den Gesamtnutzwert. Die Alternative
+mit dem höchsten Gesamtnutzwert passt nach den gewählten Kriterien am besten. Wichtig ist
+eine saubere Begründung, weil Kriterien, Gewichtungen und Bewertungen fachliche
+Entscheidungen enthalten.
 
-- **Dezimal vs. Prozent verwechseln:** 40 % Gewichtung → 0,40 in der Rechnung.
-  Wer mit 40 statt 0,40 multipliziert, kommt auf absurd hohe Zahlen.
+<Glossar
+  einträge={[
+    {
+      term: 'Alternative',
+      definition: 'Eine auswählbare Möglichkeit, zum Beispiel ein Produkt, ein Anbieter oder eine technische Lösung.'
+    },
+    {
+      term: 'Bewertung',
+      definition: 'Punktzahl, die zeigt, wie gut eine Alternative ein Kriterium erfüllt.'
+    },
+    {
+      term: 'Gewichtung',
+      definition: 'Prozentuale Wichtigkeit eines Kriteriums innerhalb der Entscheidung. Die Gewichtungen sollten zusammen 100 % ergeben.'
+    },
+    {
+      term: 'Kriterium',
+      definition: 'Eigenschaft, nach der Alternativen verglichen werden, zum Beispiel Preis, Leistung, Support oder Lieferzeit.'
+    },
+    {
+      term: 'Muss-Kriterium',
+      definition: 'Zwingende Anforderung. Wird sie nicht erfüllt, scheidet die Alternative aus.'
+    },
+    {
+      term: 'Nutzwertanalyse',
+      definition: 'Verfahren zur Bewertung von Alternativen mit gewichteten Kriterien und Punktwerten.'
+    },
+    {
+      term: 'Soll-Kriterium',
+      definition: 'Wünschenswerte Eigenschaft, die bewertet wird und den Nutzwert beeinflusst.'
+    },
+  ]}
+/>
 
----
+<Quellen
+  quellen={[
+    {
+      label: 'Springer Gabler Wirtschaftslexikon - Nutzwertanalyse',
+      href: 'https://wirtschaftslexikon.gabler.de/definition/nutzwertanalyse-42926',
+      detail: 'Fachliche Grundlage für die Bewertung von Alternativen mit gewichteten Kriterien und Nutzwerten.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Offizieller Ausbildungskontext der IT-Berufe mit betrieblichem Handeln, Kundenbezug und wirtschaftlicher Entscheidung.'
+    },
+    {
+      label: 'Fachinformatikerausbildungsverordnung (FIAusbV)',
+      href: 'https://www.gesetze-im-internet.de/fiausbv/BJNR025000020.html',
+      detail: 'Amtliche Grundlage der Fachinformatiker-Ausbildung und des Ausbildungsrahmenplans.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Berufsschulischer Rahmen mit Lernfeldern zu betrieblichem Handeln, Kundenbedarf und wirtschaftlicher Auswahl von Lösungen.'
+    },
+    {
+      label: 'HGB Paragraf 255 - Anschaffungskosten',
+      href: 'https://www.gesetze-im-internet.de/hgb/__255.html',
+      detail: 'Amtliche Grundlage für Anschaffungspreis, Anschaffungsnebenkosten und Anschaffungspreisminderungen als Hintergrund für kaufmännische Preisvergleiche.'
+    },
+  ]}
+/>

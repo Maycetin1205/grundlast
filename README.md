@@ -46,6 +46,7 @@ Abdeckungsmatrix.
 
 | Datei | Zweck |
 |---|---|
+| `AGENTS.md` | Verfassung und verbindlicher Einstieg für jede KI (Codex, Claude, …). |
 | `LOS_MACH_WEITER.md` | Aktives Kapitel und nächster konkreter Schritt. |
 | `ABDECKUNGSMATRIX.md` | Sollwert aller prüfbaren Themen, Abdeckung und Lückenliste. |
 | `AUSBILDUNGSLANDKARTE.md` | Ausbildungsrahmen, Lernpfade und Abhängigkeiten. |

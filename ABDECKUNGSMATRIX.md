@@ -27,6 +27,14 @@ Regel: Jeder Aufgabentyp aus den Probeprüfungen muss als Zeile auftauchen.
 Findet sich ein Typ, der zu keinem Sollwert-Thema passt, fehlt das Thema –
 Zeile mit Status `fehlt` anlegen.
 
+Eine Zeile darf nur dann als Abdeckung gelten, wenn die prüfbare Denkoperation
+sichtbar ist: erklären, zuordnen, berechnen, planen, vergleichen, begründen,
+diagnostizieren oder konfigurieren. Bloße Begriffserwähnungen in einem Kapitel
+zählen nicht. Findet ein Kapitel-Chat bei lokaler Recherche oder in seriösen
+Ausbildungs-/Primärquellen einen eigenständigen Aufgabentyp, muss er ihn als
+eigene Zeile oder als ausdrücklich benannten Teil einer Zeile erfassen, bevor
+Kapiteltext ergänzt oder ein Status erhöht wird.
+
 ## Statuswerte
 
 | Status | Bedeutung |
@@ -66,11 +74,11 @@ sind unzulässig: Eine Zeile entsteht nur aus einem belegten Anker.
 | Schnittstellen, Peripherie, Docking | `hardware-schnittstellen` | geprüft |
 | Ergonomie, Barrierefreiheit, Telearbeit | `homeoffice-ergonomie` | geprüft |
 | RAID-Level (0,1,5,6,10) | `raid-systeme` | geprüft |
-| USV-Systeme und Verfügbarkeit | `usv-systeme` | ungeprüft |
-| Scan-/Bilddaten (DPI, Farbtiefe) rechnen | `scan-bilddaten` | ungeprüft |
+| USV-Systeme und Verfügbarkeit | `usv-systeme` | geprüft |
+| Scan-/Bilddaten (DPI, Farbtiefe) rechnen | `scan-bilddaten` | geprüft |
 | Dateisysteme | `dateisysteme` | geprüft |
 | Dateirechte unter Linux (chmod) | `linux-chmod` | geprüft |
-| Prozesse und Threads | `prozess-thread` | ungeprüft |
+| Prozesse und Threads | `prozess-thread` | geprüft |
 | Zentrale vs. dezentrale Systeme | `zentral-dezentral` | ungeprüft |
 | Virtualisierung | `virtualisierung` | ungeprüft |
 | Betriebliche Anwendungen (CRM, ERP, DMS) | `crm-erp-dms` | ungeprüft |
@@ -151,6 +159,44 @@ sind unzulässig: Eine Zeile entsteht nur aus einem belegten Anker.
 | Mockup / Wireframe | `mockup-wireframe` | ungeprüft |
 | Audio-/Medienkompression | `audio-kompression` | ungeprüft |
 
+### Nachtrag 02.07.2026 — Lücken aus Lernzettel-/Prüfungsabgleich
+
+Anker: Prüfungsinventar 2021–2024 (`..\PRUEFUNGSINVENTAR_2021_2024.md`),
+Themen-Extrakt Lernzettel Kurzform (`_material_index\LERNZETTEL_KURZFORM_THEMEN.md`),
+Community-Lernplan (`..\Lerndateien\AP1 Lernplan.md`). Es gilt: ALLE Zeilen
+werden gebaut — die Warteschlange regelt nur, wann.
+
+| Prüfbares Thema | Kapitel | Status |
+|---|---|---|
+| Schreibtischtest / Trace-Table (laut Community-Lernplan Dauerbrenner) | Erweiterung `pseudocode-einstieg` | fehlt |
+| Netzwerkdiagnose (APIPA, ipconfig/ping/arp/tracert/nslookup, LED-Deutung) | Erweiterung `netzwerkkonfiguration` | fehlt |
+| DHCP-Ablauf (DORA, Lease) | Erweiterung `netzwerkkonfiguration` | fehlt |
+| VLAN, Trunk/Tagging, Netzsegmentierung (vs. Subnetz) | — | fehlt |
+| Anschlusstechnik (DSL/VDSL/ADSL/SDSL, Modem) | — | fehlt |
+| PoE (Power over Ethernet) | — (Box-/Glossar-Kandidat) | fehlt |
+| IoT-Protokolle (MQTT: Publisher/Subscriber/Broker/Topic) | — | fehlt |
+| Parallele vs. serielle Übertragung | — (Box-Kandidat) | fehlt |
+| BIOS/UEFI, Bootvorgang, MBR/GPT | — | fehlt |
+| Speichernetze (DAS/NAS/SAN) | — | fehlt |
+| Industrie 4.0 / IoT-Grundbegriffe | — | fehlt |
+| AAA (Authentisierung/Authentifizierung/Accounting), RADIUS | — | fehlt |
+| VPN-Typen (End-to-End/End-to-Site/Site-to-Site), IPsec-Modi | Erweiterung `verschluesselung-hash-vpn` | fehlt |
+| KRITIS-Sektoren, APT | — (Box-Kandidat) | fehlt |
+| Datenschutz vs. Datensicherheit vs. Datensicherung (Abgrenzung) | — (Glossar/Box) | fehlt |
+| Compiler vs. Interpreter | Teil `programmierparadigmen` (explizit machen) | fehlt |
+| Softwarearten (Standard-/Individual-/angepasste, proprietär) | — | fehlt |
+| Softwareentwicklungsphasen | Erweiterung `vorgehensmodelle` | fehlt |
+| Dateiformate (Text- vs. Binärdatei, Kompatibilität, 2024F 9 P.) | — | fehlt |
+| Betriebliche Kennzahlen (EK-Rentabilität, Wirtschaftlichkeit, Produktivität) | — | fehlt |
+| ABC-Analyse | — | fehlt |
+| SWOT-Analyse | — | fehlt |
+| Darlehen/Tilgungsplan (2024H, 7 P.) | Erweiterung `eigenfremdfinanzierung` | fehlt |
+| Wirtschaftssektoren, ökonomische Ziele | — (Box-Kandidat) | fehlt |
+| IMAC/R/D (Hardware-Lebenszyklus) | — (Box-Kandidat) | fehlt |
+| Präsentationstechnik (2022F, 9 P.) | — | fehlt |
+| Fachenglisch-Strategie (Fehlermeldungen, Handbücher deuten) | — | fehlt |
+| Risikoanalyse (Identifizieren→Überwachen), Stakeholderanalyse | Erweiterung `machbarkeitsanalyse`/PM-Kette | fehlt |
+
 ## Voraussetzungs-Register (was bis hier eingeführt ist)
 
 Damit „baut aufeinander auf" prüfbar bleibt: Jedes geprüfte Kapitel trägt hier
@@ -173,6 +219,8 @@ eine Lücke (Vorkapitel zuerst).
 | 11 | `linux-chmod` | Dateimodus-Bits, rwx mit r=4/w=2/x=1, Oktalmodus in Reihenfolge User-Group-Other, symbolische Modi (u/g/o/a mit +/-/=), Sonderbits setuid/setgid/sticky |
 | 12 | `raid-systeme` | RAID, RAID-Level, Striping, Mirroring, Parität, doppelte Parität, Speichereffektivität, Rohkapazität, Nettokapazität, Ausfalltoleranz, Rebuild |
 | 13 | `usv-systeme` | USV, Überbrückungszeit, Wattstunde, Scheinleistung, Wirkleistung, Leistungsfaktor, Standby-USV, Line-interactive-USV, Online-Doppelwandler-USV, Verfügbarkeitsrechnung |
+| 14 | `scan-bilddaten` | DPI, Scanrechnung, Zentimeter-zu-Inch-Umrechnung, Pixelberechnung aus Breite und Höhe, Farbtiefe je Pixel, Bildkompressionsfaktor, TiB-Zieleinheit |
+| 15 | `prozess-thread` | Prozess, Software-Thread, Task, Scheduler, Kontextwechsel, Multitasking, Prozess-ID, virtueller Adressraum, Thread-Zustand, CPU-Zeit, blockierter Thread |
 
 `bit-byte` ist als Wurzelkapitel eingetragen und am 2026-06-30 durch den
 unabhängigen Prüfer-Pass bestätigt (`geprüft`). Spätere Kapitel dürfen die dort

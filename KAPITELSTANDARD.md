@@ -34,6 +34,23 @@ Vor jeder Änderung klären und in der Auditmatrix notieren:
   (Abschnitt 5) bereits in einem früheren Kapitel eingeführt sein.
 - Welche vorhandenen Kapitel überschneiden sich damit?
 
+Zusätzlich gilt vor jeder Textarbeit ein **Recherche- und Aufgabentypen-Gate**:
+
+- Lokale Materialien (`_material_index/`, `probepruefungen/`, `lernzettel/`,
+  `_ocr_out/`) werden aktiv nach passenden Aufgabentypen durchsucht. Sie dienen
+  nur für Themenumfang, Denkoperationen und Lücken, nie als Faktenquelle.
+- Seriöse Ausbildungs- und Primärquellen werden für den Rahmen und die Fakten
+  herangezogen: FIAusbV/Gesetze, KMK, BIBB, RFC/IANA, BSI, Normgeber,
+  offizielle Hersteller- oder Projektdokumentation. Lernseiten und Blogs sind
+  höchstens didaktischer Vergleich, keine Faktenanker.
+- Jeder gefundene prüfbare Aufgabentyp muss in der `ABDECKUNGSMATRIX.md` als
+  eigene Zeile oder eindeutig als Teil einer Zeile sichtbar sein. Eine bloße
+  Erwähnung im Kapitel zählt nicht als Abdeckung.
+- Fehlt ein Aufgabentyp in der Matrix, wird vor Kapiteltextarbeit eine
+  `fehlt`- oder `ungeprüft`-Zeile angelegt oder im Audit als konkrete
+  Matrix-Korrektur dokumentiert. Der Kapiteltext darf die Lücke nicht durch
+  stilles Nebenbei-Erwähnen verstecken.
+
 ## 2. Quellen- und Vergleichsbasis
 
 Vor dem Schreiben liegt eine kurze Matrix vor:
@@ -74,6 +91,32 @@ Lernbewegung:
 Beispiele erklären den Stoff. Kleine, direkt erklärte Selbstchecks sind erlaubt;
 der Kerntext wird nicht zu einer Aufgabensammlung. Begriffe werden beim ersten
 sinnvollen Auftreten mit dem Glossar verbunden.
+
+### Erklärtiefe
+
+Im Zweifel wird mehr erklärt, nicht weniger. Zwischen zwei Aussagen darf keine
+Lücke liegen, die nur durch Raten, Fachjargon oder unausgesprochenes Vorwissen
+zu schließen ist – auch nicht bei einem scheinbar trivialen Schritt. Maßstab
+ist eine Person, die ausschließlich die im Voraussetzungs-Register vor diesem
+Kapitel stehenden Konzepte kennt und sonst nichts: Für sie muss jeder Schritt
+ohne Nachschlagen an anderer Stelle nachvollziehbar sein. Das ist keine
+Ermunterung zu Füllwörtern oder Wiederholung, sondern eine Pflicht, echte
+Zwischenschritte auszuschreiben statt sie zu überspringen. Dieser Punkt ist
+Teil des Prüfer-Passes (Abschnitt 7) und damit ein echtes Gate, kein Stilrat.
+
+### Ton
+
+Ein Kapitel darf nicht wie eine Spezifikation klingen. Erwünscht, solange kein
+Fachbegriff dadurch unklar oder falsch wird: ein Einstieg über eine konkrete,
+vorstellbare Situation statt eine abstrakte Aussage, gelegentliche Analogien,
+direkte Ansprache. Beispiel: Statt „Ein einzelnes Laufwerk ist ein einzelner
+Ausfallpunkt." besser „Freitag, 16:47 Uhr: Die Festplatte im Fileserver klingt
+plötzlich wie eine Kaffeemaschine. Zehn Minuten später ist sie tot – und mit ihr
+jede Datei, die nur auf ihr lag. Genau das ist der Grund, warum RAID existiert:
+Ein einzelnes Laufwerk ist ein einzelner Ausfallpunkt." Beide Sätze behaupten
+dasselbe; nur einer bleibt im Kopf. Dieser Abschnitt ist bewusst keine
+Prüfer-Pass-Gate-Bedingung wie Abschnitt 6/7 – Ton ist Kalibrierung durch
+Beispiel, nicht Nachweispflicht.
 
 ## 5. Integration und Voraussetzungs-Register
 
@@ -118,6 +161,9 @@ geprüft" aus und versucht aktiv, das Kapitel zu zerlegen:
 - Vollständig: Fehlt ein Pflichtinhalt, den eine reale Aufgabe braucht?
 - Didaktisch: Trägt die Reihenfolge? Wird ein Begriff benutzt, bevor er erklärt
   ist?
+- Erklärtiefe: Gibt es einen Gedankensprung, den nur Raten, Fachjargon oder
+  unausgesprochenes Vorwissen schließt? Im Zweifel muss ergänzt werden, auch
+  wenn der Schritt trivial wirkt (siehe Abschnitt 4).
 - Voraussetzungen: Baut das Kapitel nur auf bereits Eingeführtem auf?
 - Lösbarkeit: Hält der Nachweis aus Abschnitt 6 einer ehrlichen Gegenrechnung
   stand?
@@ -144,7 +190,10 @@ Ein Kapitel ist erst `geprüft`, wenn alle Punkte erfüllt und in
 - Sprachprüfung durchgeführt;
 - Boden grün: `check:consistency`, `check:sources`, `lint`, `test`, `build` –
   oder ein reiner Umgebungsfehler exakt dokumentiert;
-- Zeile in `ABDECKUNGSMATRIX.md` auf `geprüft` aktualisiert.
+- Zeile in `ABDECKUNGSMATRIX.md` auf `geprüft` aktualisiert;
+- `src/lib/audit/status.ts` (Vertrauen) und `src/lib/review.ts` (Prüfer-Pass mit
+  Datum, Prüfer und Quellen-IDs) aktualisiert, damit `AP1_STATUS.md` nach
+  `npm run emit:status` denselben Stand zeigt wie dieser Auditeintrag.
 
 ## Kurzformat für den Abschluss
 
