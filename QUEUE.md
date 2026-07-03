@@ -1,6 +1,6 @@
 # QUEUE.md — Arbeitsstand und Warteschlange
 
-Stand: 02.07.2026 · Regeln: `PROJEKT.md`. Diese Datei beantwortet nur:
+Stand: 03.07.2026 · Regeln: `PROJEKT.md`. Diese Datei beantwortet nur:
 **wo stehen wir, was kommt als Nächstes und warum.**
 
 Bestand (aus `AP1_STATUS.md`, generiert): 100 Kapitel im TOC (80 mit Inhalt,
@@ -34,9 +34,47 @@ Verbindlich: Erst Quellen-/Benchmark-Matrix, dann Abschnitts-Audit, erst
 dann Text (PROJEKT.md Abschnitt 5). Web-Recherche mit mindestens 3 Quellen,
 davon 1 Primärquelle. Material in material/ nur als Themen-Checkliste.
 Keine neuen Kapitel, Kategorien oder Roadmaps erfinden. Am Ende: technische
-Checks, AP1_AUDIT_MATRIX.md ergänzen, QUEUE.md (Arbeitsstand + Haken)
-aktualisieren, Abschlussformat aus PROJEKT.md Abschnitt 7 ausgeben.
+Checks, AP1_AUDIT_MATRIX.md ergänzen, QUEUE.md aktualisieren (Arbeitsstand +
+Haken + abgeschlossenes Kapitel in die Prüf-Warteschlange in Abschnitt 2b
+eintragen), Abschlussformat aus PROJEKT.md Abschnitt 7 ausgeben.
 ```
+
+## 2b. Prüf-Prompt — unabhängiger Prüfer (starkes Modell, z. B. Opus auf max)
+
+**Wann Pflicht** (Erzeuger≠Prüfer, siehe PROJEKT.md Abschnitt 5, Audit-Gates):
+
+- **Sofort nach jedem Rechen-Kapitel** (alles mit Formeln/Zahlen: Subnetting,
+  Nutzwertanalyse, Datenraten, Handelskalkulation, Energiekosten, AfA …).
+- Sonst gesammelt **alle 3–5 abgeschlossenen Kapitel**.
+- Der Arbeits-Chat trägt seine Kapitel nach Abschluss unten in die
+  Prüf-Warteschlange ein; der Prüf-Chat hakt sie ab. So geht nichts vergessen.
+
+```text
+Du arbeitest im Projekt grundlast als unabhängiger Prüfer.
+
+Lies PROJEKT.md (verbindliche Regeln). Prüfe die Kapitel aus der
+Prüf-Warteschlange in QUEUE.md Abschnitt 2b (alle offenen Haken).
+
+Du hast diese Kapitel NICHT geschrieben und darfst nichts davon glauben.
+Deine Aufgabe ist es, Fehler zu FINDEN, nicht das Kapitel zu loben:
+- Rechne jede Zahl, Formel und Tabelle selbst nach (mit Einheiten).
+- Prüfe jede Definition und Regel per Web-Recherche gegen Primärquellen
+  (Quellenhierarchie aus PROJEKT.md Abschnitt 4).
+- Prüfe die Audit-Gates aus PROJEKT.md Abschnitt 5 einzeln nach.
+- Prüfe: ohne Vorwissen verständlich? Reihenfolge logisch?
+
+Ergebnis pro Kapitel: BESTANDEN oder DURCHGEFALLEN mit konkreter Fehlerliste.
+Bei DURCHGEFALLEN: Vertrauensstatus in src/lib/audit/status.ts NICHT anheben,
+Befund als neuen Eintrag oben in die Warteschlange (Abschnitt 4, P0) und in
+die Notizen (Abschnitt 5) eintragen. Fehler nicht selbst fixen — nur
+dokumentieren, der nächste Arbeits-Chat behebt sie.
+Bei BESTANDEN: Befund in AP1_AUDIT_MATRIX.md dokumentieren und den Haken
+in der Prüf-Warteschlange abhaken.
+```
+
+### Prüf-Warteschlange (vom Arbeits-Chat befüllen, vom Prüf-Chat abhaken)
+
+_(leer — Arbeits-Chats tragen hier abgeschlossene Kapitel ein: `- [ ] slug`)_
 
 ## 3. Lücken-Audit gegen den offiziellen AP1-Rahmen
 
