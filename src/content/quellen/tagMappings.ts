@@ -89,8 +89,10 @@ export const lessonSourceIds: Record<string, string[]> = {
     'iec-80000-13',
     'nist-binary-prefixes',
     'bipm-si-prefixes',
+    'rfc-20-ascii',
     'ansi-x3-4-ascii',
     'unicode-utf-8',
+    'rfc-3629-utf8',
   ],
   'prefixe': [
     'kmk-rahmenlehrplan',

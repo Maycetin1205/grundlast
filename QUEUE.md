@@ -4,17 +4,17 @@ Stand: 03.07.2026 · Regeln: `PROJEKT.md`. Diese Datei beantwortet nur:
 **wo stehen wir, was kommt als Nächstes und warum.**
 
 Bestand (aus `AP1_STATUS.md`, generiert): 100 Kapitel im TOC (80 mit Inhalt,
-20 Stubs). Vertrauen: **0 geprüft, 14 teilgeprüft, 86 ungeprüft.**
+20 Stubs). Vertrauen: **2 geprüft, 12 teilgeprüft, 86 ungeprüft.**
 
 ## 1. Aktueller Arbeitsstand
 
 | Feld | Wert |
 |---|---|
-| Aktueller Queue-Eintrag | `bit-byte` (Neustartprüfung abschließen) |
-| Kapiteldatei | `src/content/lessons/bit-byte.mdx` |
+| Aktueller Queue-Eintrag | `zahlensysteme` (Audit abschließen) |
+| Kapiteldatei | `src/content/lessons/zahlensysteme.mdx` |
 | Vertrauen | `teilgeprüft` |
-| Aktuelle Phase | Aufgabenabgleich + Restaudit offen |
-| Nächster Eintrag | erst nach Abschluss festlegen (nächster offener Haken unten) |
+| Aktuelle Phase | Aufgabenabgleich offen (Stellenwerte/Umrechnungen/Anwendungen laut `status.ts` bereits auditiert) |
+| Nächster Eintrag | `docs/PLAN_RECHENWEG.md` umsetzen (nächster offener P0-Haken) |
 
 **Jeder Chat aktualisiert diese Tabelle und hakt seinen Eintrag unten ab.**
 
@@ -74,7 +74,8 @@ in der Prüf-Warteschlange abhaken.
 
 ### Prüf-Warteschlange (vom Arbeits-Chat befüllen, vom Prüf-Chat abhaken)
 
-_(leer — Arbeits-Chats tragen hier abgeschlossene Kapitel ein: `- [ ] slug`)_
+- [ ] `bit-byte` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht vor endgueltiger Bestaetigung. Umlaut-Term-IDs `dezimalpräfix`/`binärpräfix` (Z. 249/250) am 2026-07-03 auf ASCII `dezimalpraefix`/`binaerpraefix` gefixt — beim Pruef-Pass nur noch verifizieren, dass sich beide Terme ins Glossar aufloesen (siehe Notiz Abschnitt 5).
+- [ ] `prefixe` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht vor endgueltiger Bestaetigung. Mitpruefen: der ~93-GiB-Bezugspunkt (1024−931 GiB) und die auf ASCII gefixten Glossar-Term-IDs.
 
 ## 3. Lücken-Audit gegen den offiziellen AP1-Rahmen
 
@@ -121,8 +122,8 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 
 ### P0 — Angefangenes zu Ende bringen
 
-- [ ] `bit-byte` — Neustartprüfung abschließen (Aufgabenabgleich, Restaudit) → Ziel `geprüft`
-- [ ] `prefixe` — Audit abschließen (teilgeprüft, Aufgabenabgleich offen) → Ziel `geprüft`
+- [x] `bit-byte` — Neustartprüfung abschließen (Aufgabenabgleich, Restaudit) → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Pruef-Pass ausstehend (Abschnitt 2b)
+- [x] `prefixe` — Audit abschließen → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Glossar-Bug gefixt (Umlaut→ASCII Term-IDs) + kompakter Selbstcheck ergänzt; Pruef-Pass ausstehend (Abschnitt 2b)
 - [ ] `zahlensysteme` — Audit abschließen (teilgeprüft, Aufgabenabgleich offen) → Ziel `geprüft`
 - [ ] Offener technischer Plan: `docs/PLAN_RECHENWEG.md` umsetzen (Rechenweg-/StepByStep-Komponenten entfernen, Inhalt 1:1 in MDX; betrifft ~40 Kapitel — vor breiter Kapitelarbeit erledigen)
 
@@ -192,6 +193,15 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 
 (Auffälligkeiten hier eintragen statt nebenbei fixen.)
 
+- **`bit-byte.mdx` (Z. 249/250): kaputte Umlaut-Term-IDs — ERLEDIGT 2026-07-03.**
+  `id="dezimalpräfix"`/`id="binärpräfix"` lösten sich nicht ins Glossar auf, weil
+  `normalisiereGlossarId` nur `toLowerCase()` macht (kein Umlaut→ASCII). Auf ASCII
+  `dezimalpraefix`/`binaerpraefix` korrigiert — wie `datenvolumen-berechnung.mdx`
+  und das ebenfalls am 2026-07-03 gefixte `prefixe.mdx`; der sichtbare Begriff
+  behält die Umlaute. Technische Checks grün, kein Statuswechsel. Der Prüf-Pass
+  (Abschnitt 2b) muss nur noch verifizieren, dass sich beide Terme ins Glossar
+  auflösen. Der Konsistenz-Wächter prüft Term-IDs nicht, daher fiel es nicht im
+  Build auf.
 - `pki-zertifikate` steht als `final`/reviewed im TOC, ist aber `ungeprüft` —
   Beispiel dafür, dass alte Statuswerte kein Beleg sind.
 - `verschluesselung-sicherheit` vs. `verschluesselung-hash-vpn`: Dublette,

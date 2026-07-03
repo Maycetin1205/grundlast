@@ -416,6 +416,97 @@ Bearbeiter: Codex
     weiter-auditieren. Fuer den Lernfortschritt ist `prefixe` der naechste
     fachliche Schritt.
 
+### Re-Audit 2026-07-03 (Restaudit: Quellenbank-Fix + Aufgabenabgleich)
+
+Bearbeiter: Claude (Arbeits-Chat, Erzeuger-Rolle). Unabhaengiger Pruef-Pass
+steht separat aus (siehe QUEUE.md Abschnitt 2b).
+
+Ausgangslage: `bit-byte` war oberster offener P0-Punkt in `QUEUE.md`,
+Vertrauen `teilgeprueft`; `nextAction` in `status.ts` verlangte, die offene
+ASCII-Quelle in der Quellenbank nachzuziehen und mit Aufgaben zu testen. Auf
+dem Branch `backup/lokal-altstand-2026-07-03` existierte eine Fassung von
+`bit-byte.mdx` mit RFC 20/3629 als Quellen; dieser Stand wurde nie in
+`design-redesign` gemerged. Als Rohstoff gesichtet, nicht blind uebernommen,
+sondern eigenstaendig gegen die Primaerquelle geprueft.
+
+**Quellen-Gate (Fix):** RFC 20 ("ASCII format for Network Interchange") am
+2026-07-03 abgerufen; woertliches Zitat verifiziert: "For concreteness, we
+suggest the use of standard 7-bit ASCII embedded in an 8 bit byte whose high
+order bit is always 0." Als `rfc-20-ascii` in `sourceBank.ts` ergaenzt, in
+`tagMappings.ts` (`lessonSourceIds.bit-byte`) und im `<Quellen>`-Block von
+`bit-byte.mdx` verlinkt. RFC 3629 (UTF-8) aus demselben Grund ergaenzt
+(`rfc-3629-utf8`). ANSI INCITS 4-1986 bleibt als Normhinweis bestehen, ist
+aber nicht mehr die einzige ASCII-Quelle. `review.ts` aktualisiert:
+`sourceIds` um beide neuen IDs ergaenzt, `checkedAt` auf 2026-07-03,
+`reviewer` um den Claude-Pass ergaenzt (Codex-Historie bleibt erhalten).
+
+**Didaktik-Gate — Widerspruch aufgeloest:** Diese Matrix (10.06.2026)
+behauptete, es gebe noch keinen externen Lernangebot-Vergleich; `REVIEW_LOG.md`
+(Re-Audit 2026-06-05) hatte aber bereits Khan Academy, Stanford CS101,
+Computer Science Field Guide und Teach Computing verglichen. Widerspruch nicht
+stillschweigend geglaettet, sondern frisch selbst nachgeprueft: 2026-07-03
+`web.stanford.edu/class/cs101/bits-bytes.html` erneut abgerufen. Ergebnis
+deckt sich mit der Lernleiter des Kapitels (Bit -> Byte -> Musterverdopplung
+-> Wertebereich 0-255 -> Zeichencodierung). Didaktik-Gate gilt als erfuellt;
+der 06-05-Vergleich war vollstaendiger als der 06-10-Audit angenommen hat.
+
+**Aufgaben-Gate:** Abgleich gegen `PRUEFUNGSINVENTAR_2021_2024.md` (7 echte
+AP1-Pruefungen 2021-2024; nur Aufgabentyp/Struktur verwendet, keine
+Aufgabentexte). Reale, abstrahierte Aufgabentypen, die `bit-byte` als
+Werkzeugwissen tragen:
+  - "Uebertragungszeit-Berechnung": AP1 2022 Fruehjahr Aufgabe 4e (4 P.,
+    Upload-Dauer aus Dateigroesse und Uebertragungsrate) und AP1 2024
+    Fruehjahr Aufgabe 4f (6 P., Uebertragungsdauer aus Datenmenge und Rate).
+  - "Speicherbedarf-Berechnung": AP1 2022 Herbst Aufgabe 2a/2b (2+6 P., u. a.
+    Tagesvolumen in TiB hochrechnen) und AP1 2024 Fruehjahr Aufgabe 3d (8 P.).
+  - Loesbarkeitsnachweis (selbst gebildetes, abstrahiertes Beispiel, kein
+    Original-Wortlaut): "Datei 45 MB, Verbindung 6 Mbit/s – wie lange dauert
+    die Uebertragung?" Loesung ausschliesslich mit Abschnitt 4+5 aus
+    `bit-byte.mdx`: `6 Mbit/s ÷ 8 = 0,75 MB/s`, `45 MB ÷ 0,75 MB/s = 60 s`.
+    Vollstaendig aus dem Kapitel herleitbar.
+  - Fuer den domaenenspezifischen Teil von "Speicherbedarf-Berechnung" (z. B.
+    dpi/Farbtiefe bei Scans) bleibt `bit-byte` bewusst nur die
+    Einheiten-Grundlage; der Rest gehoert laut bestehender Abgrenzungstabelle
+    im Kapitel zu `scan-bilddaten`/`datenvolumen-berechnung` (Abgrenzung war
+    bereits korrekt, keine Aenderung noetig).
+
+**Fakten-Gate (eigenstaendig nachgerechnet):** `2^8 = 256`, unsigned Bereich
+0-255; `100/50/64/80 Mbit/s ÷ 8` = `12,5/6,25/8/10 MB/s`; daraus
+`600 MB ÷ 6,25 MB/s = 96 s`, `200 MB ÷ 12,5 MB/s = 16 s`,
+`400 MB ÷ 10 MB/s = 40 s`; `1 TB ÷ 1 GiB = 1.000.000.000.000 ÷ 1.073.741.824
+≈ 931,32`. Alle Werte stimmen, keine Abweichung zu den 10 Kernaussagen aus dem
+Audit vom 10.06.2026.
+
+**Umfangs-Gate:** Pflicht/Kann/Extra-Einteilung aus dem Audit vom 10.06.2026
+geprueft und bestaetigt, keine Aenderung.
+
+**Technik-Gate:** `npm run lint` (0 Fehler), `npm run test` (56/56 gruen),
+`npm run build` inkl. `check:consistency` ("Ergebnis: konsistent"),
+`npm run emit:status` (AP1_STATUS.md zeigt `bit-byte` als `geprueft`).
+
+**Entscheidung:** Vertrauen angehoben auf `geprueft`. Alle sieben Audit-Gates
+aus PROJEKT.md Abschnitt 5 sind mit konkreten Belegen erfuellt, nicht nur
+"klingt plausibel". Einschraenkung: `bit-byte` ist ein Rechen-Kapitel und
+damit laut QUEUE.md Abschnitt 2b **pflichtig** fuer den unabhaengigen
+Pruef-Pass. Kapitel wurde in die Pruef-Warteschlange eingetragen; faellt der
+Pruef-Pass durch, ist der Status hier zurueckzunehmen.
+
+**Nachtrag 2026-07-03 (bit-byte-Vorgang, Vorbereitung Pruef-Pass):** Der in der
+`prefixe`-Notiz vermerkte "Fund am Rande" ist behoben. In `bit-byte.mdx`
+(Z. 249/250) sind die kaputten Umlaut-Term-IDs `id="dezimalpräfix"`/
+`id="binärpräfix"` auf die vorhandenen ASCII-Glossar-IDs `dezimalpraefix`
+(`glossar/a-d.ts:1002`) und `binaerpraefix` (`glossar/a-d.ts:469`) korrigiert;
+der sichtbare Begriff behaelt die Umlaute (PROJEKT.md Abschnitt 5: ASCII nur in
+Slugs/IDs). Ursache: `normalisiereGlossarId` (`lib/glossar/store.ts`) macht nur
+`trim().toLowerCase()`, kein Umlaut->ASCII, daher lief die Aufloesung ins Leere
+und `<Term>` zeigte nur `title="Glossar-Eintrag fehlt"`. Jetzt konsistent mit
+`datenvolumen-berechnung.mdx` und dem gefixten `prefixe.mdx`. Der
+Konsistenz-Waechter prueft Term-IDs nicht — der Fund war daher build-unauffaellig.
+Technik-Gate erneut gruen: `npm run lint` (0 Fehler), `npm run test` (56/56),
+`npm run build` inkl. `check:consistency` ("Ergebnis: konsistent"). Kein
+Statuswechsel: bleibt `geprueft`, weiterhin pflichtig fuer den unabhaengigen
+Pruef-Pass.
+
 ## Detailaudit: prefixe
 
 Datum: 10.06.2026
@@ -534,6 +625,111 @@ Bearbeiter: Codex
     testen.
 - Naechste Aktion:
   - `zahlensysteme` auditieren.
+
+### Re-Audit 2026-07-03 (Restaudit: Glossar-Fix + Selbstcheck + Aufgabenabgleich)
+
+Bearbeiter: Claude (Arbeits-Chat, Erzeuger-Rolle). Unabhaengiger Pruef-Pass
+steht separat aus (siehe QUEUE.md Abschnitt 2b; `prefixe` ist ein Rechen-Kapitel).
+
+Ausgangslage: `prefixe` war oberster offener P0-Punkt in `QUEUE.md`, Vertrauen
+`teilgeprueft`; laut `status.ts` fehlten ein kurzer Selbstcheck und der
+Aufgabenabgleich.
+
+**Scope-Gate:** `INHALTSVERZEICHNIS_JAHR_1_2.md` fuehrt `Praefixe` mit Bezug
+`Grundlage/Pruefung` und Form `Kapitel` (k/M/G/T vs Ki/Mi/Gi/Ti, Umrechnung,
+Herstellerangaben, typische Fallen); `CURRICULUM_MAPPING.md` fuehrt `prefixe`
+als LF2/LF3; TOC-Status `final`. Kapitel bleibt bestehen, eng begrenzt. Keine
+neue Kategorie erfunden.
+
+**Quellen-Gate (frisch verifiziert am 2026-07-03):**
+  - BIPM "SI prefixes": kilo=k=10^3, mega=M=10^6, giga=G=10^9, tera=T=10^12;
+    Symbol fuer kilo ist klein `k`; das SI definiert keine Binaerpraefixe.
+    https://www.bipm.org/en/measurement-units/si-prefixes
+  - NIST "Prefixes for Binary Multiples": 1 KiB=2^10=1.024 B, 1 MiB=2^20=
+    1.048.576 B, 1 GiB=2^30=1.073.741.824 B, 1 TiB=2^40=1.099.511.627.776 B;
+    ausdruecklich "not part of the International System of Units (SI)"; von der
+    IEC im Dezember 1998 beschlossen.
+    https://physics.nist.gov/cuu/Units/binary.html
+  - IEC 80000-13 (Recherchebestaetigung): kibi/mebi/gibi/tebi als Potenzen von
+    1024, jeder Dezimalpraefix mit binaerem Gegenstueck; aktuelle Fassung
+    ISO/IEC 80000-13:2025. Deckt sich mit der Kapiteltabelle.
+Alle drei Kernquellen sind in `sourceBank.ts`/`tagMappings.ts`
+(`lessonSourceIds.prefixe`) verlinkt, dazu JEDEC 100B.01, IBM Storage Units und
+GNU Coreutils `df` als Kontext/Vergleich. `review.ts` erhaelt einen
+`prefixe`-Eintrag (reviewed, 2026-07-03).
+
+**Didaktik-Gate — Widerspruch aufgeloest:** Diese Matrix (10.06.2026) nannte
+"externer Didaktikbenchmark fehlt". `REVIEW_LOG.md` (Freigabe 2026-06-05)
+dokumentierte aber bereits einen Vergleich gegen CS61C (IEC/Base-10 Prefixes),
+IBM Storage Units, TechTarget Mebibyte/Megabyte und Khan Academy. Widerspruch
+nicht stillschweigend geglaettet: Der 06-05-Benchmark ist real und deckt die
+Lernleiter des Kapitels (zwei Reihen -> Tabelle -> Drift -> Byte-Zwischenschritt
+-> Beispiele -> Fehlerfallen). Didaktik-Gate gilt als erfuellt. Der bis dahin
+fehlende kompakte Selbstcheck mit Loesungen wurde ergaenzt ("Kann ich es
+wirklich?", drei Zeilen mit Loesung, kein Aufgaben-/Pruefungsmodus).
+
+**Aufgaben-Gate:** Abgleich gegen abstrahierte AP1-Aufgabentypen aus
+`_material_index/exam_tasks.json` (nur Aufgabentyp/Struktur, keine
+Aufgabentexte). Praefixe sind wie `bit-byte` Werkzeugwissen und tragen
+Rechen-Aufgaben zu Datenmenge/Speicher/Scan:
+  - "Speichermenge in TiB": reale AP1-Aufgabe (Pruefung 5, Aufgabe 2a) verlangt
+    ausdruecklich die Umrechnung Bit -> Byte -> KiB -> MiB -> GiB -> TiB ueber
+    die 1024er-Kette ("Umrechnungszahl von Bit auf TiB = 8 x 1.024 x 1.024 x
+    1.024 x 1.024"). Genau der Rechenweg dieses Kapitels.
+  - Datenmengen-/Scan-Rechnungen (Pruefung 4 Aufgabe 3, Pruefung 5 Aufgabe 1;
+    lesson `datenvolumen-berechnung`) brauchen die MB/MiB- bzw. GB/GiB-
+    Unterscheidung als Zwischenschritt.
+  - `material/AP1_Lernplan.md` (Community-Checkliste): "Bei Speichergroessen
+    (RAM, HDD) rechnet die IHK fast immer binaer (Faktor 1024)" — stuetzt die
+    Pruefungsrelevanz der 1024er-Reihe; gegen die Primaerquellen bestaetigt und
+    um die Hersteller-dezimal-Nuance des Kapitels ergaenzt.
+  - Loesbarkeitsnachweis (selbst gebildetes, abstrahiertes Beispiel): "Ein
+    Dokument belegt 4.194.304 Byte – wie viel MiB und wie viel MB sind das?"
+    Loesung nur mit diesem Kapitel: 4.194.304 / 2^20 = 4 MiB; 4.194.304 / 10^6
+    = ca. 4,19 MB. Vollstaendig aus Tabelle + Byte-Zwischenschritt herleitbar.
+  - Abgrenzung: dpi/Farbtiefe/Pixel-Anteil der Scan-Aufgaben gehoert zu
+    `scan-bilddaten`/`datenvolumen-berechnung`; `prefixe` liefert nur die
+    Einheiten-Umrechnung (bewusste, bereits korrekte Abgrenzung).
+
+**Fakten-Gate (eigenstaendig nachgerechnet):**
+  - SI-/IEC-Faktoren wie im Quellen-Gate; Symbol `k` klein, `Ki/Mi/Gi/Ti` gross
+    mit `i`.
+  - 500 GB -> GiB: 500.000.000.000 / 1.073.741.824 = 465,66.
+  - 2.048.000 bit -> KiB: /8 = 256.000 B; /1.024 = 250 KiB.
+  - 1 GiB bei 16 Mbit/s: 16.000.000 / 8 = 2.000.000 B/s; 1.073.741.824 /
+    2.000.000 = 536,87 s (rund 8:57 min).
+  - 4 MiB -> Byte: 4 x 1.048.576 = 4.194.304 B.
+  - 1 TB -> GiB: 10^12 / 2^30 = 931,32 (rund 931 GiB).
+  - Drift: 1024/1000=1,024 (+2,4 %); MiB/MB=1,048576 (+4,9 %); GiB/GB=
+    1,073741824 (+7,4 %); TiB/TB=1,099511627776 (+10,0 %).
+  - "~93 GiB verloren" bei 1 TB ist korrekt und bewusst: Bezugspunkt ist die
+    Erwartung 1 TiB=1.024 GiB; 1.024 - 931,32 = 92,68, also rund 93 GiB. Kein
+    Fehler, aber subtil — fuer den Pruef-Pass hier festgehalten.
+  Alle Werte stimmen, keine Abweichung.
+
+**Umfangs-Gate:** Pflicht/Kann/Extra-Einteilung aus dem Audit vom 10.06.2026
+geprueft und bestaetigt; der ergaenzte Selbstcheck bleibt im Pflicht-/
+Kann-Rahmen (MiB vs MB, GiB in Byte, 1-TB-Anzeige) und blaeht den Umfang nicht auf.
+
+**Technik-Gate:** `npm run lint` (0 Fehler), `npm run test` (56/56 gruen),
+`npm run build` inkl. `check:consistency` ("Ergebnis: konsistent"),
+`npm run emit:status` (AP1_STATUS.md zeigt `prefixe` als `geprueft`).
+
+**Fund am Rande (nicht in diesem Chat gefixt):** `bit-byte.mdx` (Z. 249/250)
+nutzt dieselben kaputten Umlaut-Term-IDs `dezimalpräfix`/`binärpräfix`, die sich
+nicht ins Glossar aufloesen (`normalisiereGlossarId` macht nur `toLowerCase`,
+kein Umlaut->ASCII); nur `datenvolumen-berechnung.mdx` ist korrekt auf ASCII.
+`bit-byte` wurde am 2026-07-03 auf `geprueft` gehoben und steht im Pruef-Pass
+aus — Befund in QUEUE.md Abschnitt 5 notiert; Fix gehoert in den
+bit-byte-Vorgang, nicht hierher (Regel: ein Eintrag pro Chat). Update
+2026-07-03: inzwischen im bit-byte-Vorgang gefixt (siehe Nachtrag im
+bit-byte-Detailaudit oben).
+
+**Entscheidung:** Vertrauen angehoben auf `geprueft`. Alle sieben Audit-Gates
+aus PROJEKT.md Abschnitt 5 sind mit konkreten Belegen erfuellt, nicht nur
+"klingt plausibel". Einschraenkung: `prefixe` ist ein Rechen-Kapitel und damit
+laut QUEUE.md Abschnitt 2b pflichtig fuer den unabhaengigen Pruef-Pass; faellt
+dieser durch, ist der Status hier zurueckzunehmen.
 
 ## Detailaudit: zahlensysteme
 

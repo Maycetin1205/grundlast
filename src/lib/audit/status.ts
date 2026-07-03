@@ -9,16 +9,16 @@ export interface LessonAudit {
 
 const lessonAudits: Record<string, LessonAudit> = {
   'bit-byte': {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'Kernfakten und Didaktik sind auditiert. Echte AP1-/U-Form-Aufgaben fehlen noch.',
-    nextAction: 'Offene ASCII-Quelle in der Quellenbank nachziehen und mit legalen Aufgaben testen.',
+    status: 'geprueft',
+    title: 'Geprueft',
+    summary: 'Scope, Quellen, Fakten, Didaktik, Aufgabenabgleich und Umfang sind auditiert und dokumentiert (AP1_AUDIT_MATRIX.md, Restaudit 2026-07-03).',
+    nextAction: 'Unabhaengiger Pruef-Pass steht aus (Rechen-Kapitel, Pflicht laut QUEUE.md Abschnitt 2b) – Kapitel steht in der Pruef-Warteschlange.',
   },
   prefixe: {
-    status: 'teilgeprueft',
-    title: 'Teilweise geprueft',
-    summary: 'SI-/IEC-Fakten und Rechenwege sind auditiert. Aufgabenabgleich fehlt noch.',
-    nextAction: 'Kurzen Selbstcheck ergaenzen und mit legalen Aufgaben testen.',
+    status: 'geprueft',
+    title: 'Geprueft',
+    summary: 'Scope, Quellen, Fakten, Didaktik, Aufgabenabgleich und Umfang sind auditiert und dokumentiert (AP1_AUDIT_MATRIX.md, Restaudit 2026-07-03).',
+    nextAction: 'Unabhaengiger Pruef-Pass steht aus (Rechen-Kapitel, Pflicht laut QUEUE.md Abschnitt 2b) – Kapitel steht in der Pruef-Warteschlange.',
   },
   zahlensysteme: {
     status: 'teilgeprueft',

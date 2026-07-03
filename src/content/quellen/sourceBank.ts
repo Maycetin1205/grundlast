@@ -1143,6 +1143,13 @@ export const sourceBank: SourceEntry[] = [
     tags: ['ordnung', 'bit', 'byte', 'binaer', 'iec', 'praefix', 'binaerpraefix', 'datenmenge'],
   },
   {
+    id: 'rfc-20-ascii',
+    label: 'RFC 20 - ASCII format for Network Interchange',
+    href: 'https://www.rfc-editor.org/rfc/rfc20.html',
+    detail: 'Frei zugängliche Primärquelle zum 7-Bit-ASCII-Code: "standard 7-bit ASCII embedded in an 8 bit byte whose high order bit is always 0" – belegt die Einbettung von ASCII in ein 8-Bit-Byte.',
+    tags: ['ordnung', 'ascii', 'zeichen', 'zeichenkodierung', 'bit', 'byte'],
+  },
+  {
     id: 'ansi-x3-4-ascii',
     label: 'ANSI INCITS 4-1986 (R2017) - 7-Bit ASCII',
     href: 'https://webstore.ansi.org/standards/incits/ansiincits41986r2017',
@@ -1154,6 +1161,13 @@ export const sourceBank: SourceEntry[] = [
     label: 'Unicode Standard - UTF-8',
     href: 'https://www.unicode.org/versions/latest/core-spec/chapter-3/',
     detail: 'Unicode-Standard zur UTF-8-Codierung: ASCII-Codepunkte werden mit einem Byte dargestellt, weitere Codepunkte mit mehreren Bytes.',
+    tags: ['ordnung', 'unicode', 'utf-8', 'zeichen', 'zeichenkodierung', 'bit', 'byte'],
+  },
+  {
+    id: 'rfc-3629-utf8',
+    label: 'RFC 3629 - UTF-8, a transformation format of ISO 10646',
+    href: 'https://www.rfc-editor.org/rfc/rfc3629.html',
+    detail: 'Frei zugängliche Primärquelle zu UTF-8: US-ASCII-Zeichen (0x00-0x7F) werden unverändert mit einem Oktett codiert, weitere Zeichen mit bis zu vier Oktetten.',
     tags: ['ordnung', 'unicode', 'utf-8', 'zeichen', 'zeichenkodierung', 'bit', 'byte'],
   },
   {
