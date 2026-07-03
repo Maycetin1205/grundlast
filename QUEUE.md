@@ -196,6 +196,11 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
   Beispiel dafür, dass alte Statuswerte kein Beleg sind.
 - `verschluesselung-sicherheit` vs. `verschluesselung-hash-vpn`: Dublette,
   Entscheid in P2.
+- Auf dem Branch `backup/lokal-altstand-2026-07-03` liegt gesicherter alter
+  Arbeitsstand mit Kapitel-Audits (u. a. `usv-systeme` deutlich ausführlicher,
+  `bit-byte`, `linux-chmod`, `datenrate`, `datenvolumen`, `von-neumann`,
+  `raid-systeme`). Beim Bearbeiten dieser Kapitel den Altstand als Rohstoff
+  sichten — gilt aber wie alles als ungeprüft.
 
 ## 6. Quellen des Audits
 
