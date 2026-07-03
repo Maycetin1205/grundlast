@@ -27,8 +27,8 @@ Lies zuerst PROJEKT.md (verbindliche Regeln) und QUEUE.md (Arbeitsstand,
 Warteschlange) vollständig. Alles im Projekt kann KI-generiert sein und gilt
 als ungeprüft, bis es die Gates aus PROJEKT.md bestanden hat.
 
-Bearbeite genau diesen Queue-Eintrag:
-[EINTRAG AUS ABSCHNITT 1 BZW. OBERSTER OFFENER HAKEN]
+Bearbeite genau einen Eintrag: den Queue-Eintrag aus QUEUE.md Abschnitt 1
+bzw. den obersten offenen Haken der Warteschlange.
 
 Verbindlich: Erst Quellen-/Benchmark-Matrix, dann Abschnitts-Audit, erst
 dann Text (PROJEKT.md Abschnitt 5). Web-Recherche mit mindestens 3 Quellen,
