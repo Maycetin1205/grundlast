@@ -5,6 +5,20 @@
   prüfungsrelevanz="PFLICHT · 5/5"
 />
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Halte die drei Ebenen sauber getrennt: *Schutzziel* (was), *Schutzbedarf* (wie
+streng), *Maßnahme* (womit). Je nach Aufgabe springst du zur Schutzbedarfs-Tabelle,
+zur Risikomatrix, zum PDCA-Zyklus oder zur Maßnahmen-Zuordnung.
+</Tipp>
+
+| Wenn die Aufgabe fragt nach ... | Denk zuerst an ... | Typische Falle |
+|---|---|---|
+| System einordnen | Schutzziel + Stufe je Ziel getrennt | einen einzigen Schutzbedarf vergeben |
+| Maßnahme zuordnen | primär geschütztes Schutzziel (CIA) | Verschlüsselung mit Integrität mischen |
+| Risiko bewerten | Eintritt × Schaden → Klasse → Reaktion | Restrisiko nicht dokumentieren |
+| ISMS beschreiben | Leitlinie, Rollen, PDCA-Kreislauf | ISMS mit Firewall gleichsetzen |
+| Standards nennen | BSI 200-1/-2/-3, ISO/IEC 27001 | Standards durcheinanderbringen |
+
 ## 01 · Warum existiert das überhaupt?
 
 Bevor du in einem Unternehmen etwas absicherst, musst du wissen, **was** geschützt werden
@@ -24,7 +38,7 @@ Stell dir Informationssicherheit wie den Bau eines Hauses vor. Die *Schutzziele*
 die Anforderungen an das Haus: dicht, einbruchssicher, jederzeit betretbar. Der
 *Schutzbedarf* ist die Bauklasse: ein Geräteschuppen braucht weniger als ein Wohnhaus,
 ein Banktresor mehr als beides. Das *ISMS* ist die Baufirma plus Bauleitung: sie plant
-Mauer, Schloss und Versicherung, prüft regelmässig, ob noch alles dicht ist, und bessert
+Mauer, Schloss und Versicherung, prüft regelmäßig, ob noch alles dicht ist, und bessert
 nach. Der *IT-Grundschutz* ist der Bau-Bausteinkatalog: für jede Hausart gibt es eine
 Liste bewährter Maßnahmen, an denen du dich entlanghangeln kannst.
 </Analogie>
@@ -45,7 +59,7 @@ In deutschen Aufgaben heißen sie:
 - *<Term id="verfügbarkeit">Verfügbarkeit</Term>* — Systeme und Daten sind erreichbar,
   wenn sie gebraucht werden.
 
-Jede Schutzmassnahme zahlt auf eines dieser Ziele ein — manche auf mehrere. Die zentrale
+Jede Schutzmaßnahme zahlt auf eines dieser Ziele ein — manche auf mehrere. Die zentrale
 Frage in der Prüfung lautet immer: *Welches Ziel ist hier verletzt? Welches Ziel schützt
 diese Maßnahme?*
 
@@ -98,7 +112,7 @@ methodische Schritt im IT-Grundschutz. Sie verläuft nach einem festen Muster:
   items={[
     { titel: 'Geschäftsprozesse erfassen', text: 'Welche Prozesse sind für das Unternehmen wesentlich? Lohnabrechnung, Kundenbetreuung, Webshop, Patientenversorgung. Pro Prozess festhalten, welche Informationen verarbeitet werden.' },
     { titel: 'Anwendungen und Systeme zuordnen', text: 'Welche Software, welche Server, welche Netzbereiche tragen den Prozess? Hier entsteht die Strukturanalyse, die jede weitere Bewertung trägt.' },
-    { titel: 'Schadensszenarien bewerten', text: 'Je Schutzziel überlegen: Welcher Schaden entsteht bei einer Verletzung? Verstoss gegen Gesetze, finanzieller Schaden, Beeinträchtigung der Aufgabenerfüllung, negative Aussenwirkung, persönliche Beeinträchtigung.' },
+    { titel: 'Schadensszenarien bewerten', text: 'Je Schutzziel überlegen: Welcher Schaden entsteht bei einer Verletzung? Verstoß gegen Gesetze, finanzieller Schaden, Beeinträchtigung der Aufgabenerfüllung, negative Außenwirkung, persönliche Beeinträchtigung.' },
     { titel: 'Stufe vergeben — normal, hoch, sehr hoch', text: 'Die Folgen werden den drei Stufen zugeordnet. Das BSI gibt im Standard 200-2 typische Schadenshöhen je Stufe vor.' },
     { titel: 'Vererbung prüfen', text: 'Maximumprinzip: Ein System übernimmt den höchsten Schutzbedarf der Prozesse oder Daten, die es trägt. Davon nur abweichen, wenn Kumulations- oder Verteilungseffekt das Bild begründet ändern.' },
   ]}
@@ -143,7 +157,7 @@ Management-System. Es beruht auf dem
 | **Act** | Korrekturen, Maßnahmen anpassen, Leitlinie nachschärfen |
 
 Wichtig: Ein ISMS kennt kein "fertig". Bedrohungen, Technologien und Geschäftsprozesse
-ändern sich, also muss auch das ISMS regelmässig laufen — typischerweise im Jahresrhythmus
+ändern sich, also muss auch das ISMS regelmäßig laufen — typischerweise im Jahresrhythmus
 plus anlassbezogen.
 
 ### 03.4 · BSI-Standards und ISO/IEC 27001
@@ -188,7 +202,7 @@ Eine Klinik betreibt drei IT-Systeme, für die der Schutzbedarf neu bewertet wer
 - **Patientenakte (PVS):** elektronische Akte mit Diagnosen, Medikation und Befunden,
   Zugriff durch Ärzte und Pflege rund um die Uhr.
 - **Lohnbuchhaltung:** monatliche Abrechnung von 320 Mitarbeitenden, einmal pro Monat
-  Lohnlauf, ausserhalb dieser Tage geringe Last.
+  Lohnlauf, außerhalb dieser Tage geringe Last.
 - **Speiseplan im Intranet:** wöchentlicher Speiseplan, Zugriff für Mitarbeitende und
   Patienten, keine sensiblen Daten.
 
@@ -199,7 +213,7 @@ Wie sind die drei Systeme je Schutzziel einzuordnen, und warum?
 <StepByStep titel="Schutzbedarf je System feststellen">
   <Schritt nr={1} titel="Patientenakte — Schadensszenarien">
     Vertraulichkeit: Diagnosen und Medikation sind Gesundheitsdaten nach DSGVO Art. 9 —
-    eine Verletzung führt zu hohen Bussgeldern und Reputationsschaden.
+    eine Verletzung führt zu hohen Bußgeldern und Reputationsschaden.
     Integrität: Eine veränderte Medikation kann Patienten gefährden — direkter Schaden für
     Leib und Leben.
     Verfügbarkeit: Bei einem Ausfall ist die Versorgung beeinträchtigt — kritisch in
@@ -248,7 +262,7 @@ Du sollst für einen Webshop drei Bedrohungen einstufen und den Umgang vorschlag
   wahrscheinlich (mehrmals pro Jahr Spannungsschwankungen), Schaden: mittel (Webshop
   kurz nicht erreichbar).
 - **Bedrohung 3:** Insider entwendet Kundendatenbank vor Kündigung. Eintritt: selten,
-  Schaden: sehr hoch (DSGVO-Bussgeld, Klagen, Vertrauensverlust).
+  Schaden: sehr hoch (DSGVO-Bußgeld, Klagen, Vertrauensverlust).
 
 Welche Risikoklasse ergibt sich, und welcher Umgang ist vertretbar?
 
@@ -301,7 +315,7 @@ Niveau "hoch"?
 
 </Beispiel>
 
-<StepByStep titel="Verfügbarkeitsdefizit schliessen">
+<StepByStep titel="Verfügbarkeitsdefizit schließen">
   <Schritt nr={1} titel="Defizit benennen">
     RAID 1 schützt vor Plattenausfall, **nicht** vor versehentlichem Löschen, Ransomware,
     Hardwaredefekt am Controller oder Brand im Serverraum. Die Verfügbarkeit ist also
@@ -329,7 +343,7 @@ Niveau "hoch"?
   </Schritt>
   <Ergebnis>
     Erst die Kombination aus organisatorischer Verantwortung, technischer Sicherung,
-    räumlicher Trennung und regelmässigem Test hebt die Verfügbarkeit von "normal" auf
+    räumlicher Trennung und regelmäßigem Test hebt die Verfügbarkeit von "normal" auf
     "hoch". Eine einzelne Maßnahme — und sei sie noch so teuer — reicht nicht.
   </Ergebnis>
 </StepByStep>
@@ -364,12 +378,12 @@ In der Prüfung musst du beide Effekte erkennen und benennen können, ohne sie �
 | Merkmal | BSI IT-Grundschutz | ISO/IEC 27001 |
 |---|---|---|
 | Herkunft | Bundesamt für Sicherheit in der Informationstechnik (DE) | International Organization for Standardization (CH) |
-| Vorgehen | konkret, mit Bausteinkatalog und Standardmassnahmen | abstrakter, fordert systematische Risikobewertung |
-| Zielgruppe | Behörden, KRITIS, Mittelstand | weltweit, jede Organisationsgrösse |
+| Vorgehen | konkret, mit Bausteinkatalog und Standardmaßnahmen | abstrakter, fordert systematische Risikobewertung |
+| Zielgruppe | Behörden, KRITIS, Mittelstand | weltweit, jede Organisationsgröße |
 | Zertifikat | ISO/IEC 27001 auf Basis von IT-Grundschutz möglich | ISO/IEC 27001 direkt |
 | Aufwand | hoch in der Vorbereitung, dann handfest | abstrakter, dafür offener für eigene Lösungen |
 
-Beide Wege schliessen sich nicht aus. Wer im deutschen Raum mit Behörden zu tun hat,
+Beide Wege schließen sich nicht aus. Wer im deutschen Raum mit Behörden zu tun hat,
 fährt mit dem IT-Grundschutz oft besser; international ist die ISO/IEC 27001 die
 Eintrittskarte.
 
@@ -391,7 +405,26 @@ sogar ausdrücklich genannt.
 
 ---
 
-## 06 · Typische Fehler
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- die drei klassischen Schutzziele (Vertraulichkeit, Integrität, Verfügbarkeit) und
+  die erweiterten Ziele (Authentizität, Nicht-Abstreitbarkeit) sicher abgrenzen.
+- für ein System den Schutzbedarf je Schutzziel getrennt einordnen und jede Stufe
+  (normal, hoch, sehr hoch) in einem Satz begründen.
+- Maximumprinzip, Kumulations- und Verteilungseffekt an einem Virtualisierungs- oder
+  Vererbungsbeispiel erkennen und benennen.
+- eine Risikomatrix aus Eintrittswahrscheinlichkeit und Schadenshöhe aufstellen und die
+  passende Reaktion (vermeiden, vermindern, übertragen, akzeptieren) wählen.
+- ein ISMS über Leitlinie, Rollen und den PDCA-Zyklus beschreiben und BSI-Standards
+  200-1/-2/-3 sowie ISO/IEC 27001 richtig zuordnen.
+- Maßnahmen den vier Kategorien (organisatorisch, personell, technisch,
+  infrastrukturell) zuordnen und das Restrisiko als Pflichtteil der Antwort erkennen.
+
+---
+
+## Typische Fehler
 
 - **CIA durcheinanderbringen.** Verschlüsselung schützt primär die Vertraulichkeit, nicht
   die Integrität oder Verfügbarkeit. Hashwert schützt die Integrität, nicht die
@@ -424,41 +457,45 @@ sogar ausdrücklich genannt.
 
 ---
 
-## 07 · So fragt die IHK das
+## Übungsblock
 
-**Aufgabe 1 — Schutzbedarf einordnen (8 Punkte).**
+Die Aufgaben trainieren Einordnung, Maßnahmen-Zuordnung, Risikobewertung und den
+ISMS-Rahmen. Trenne in jeder Antwort sauber zwischen Schutzziel, Schutzbedarf und
+Maßnahme und begründe jede Stufe in einem Satz.
+
+### Aufgabe 1 · Schutzbedarf einordnen
 Eine Steuerberatungskanzlei betreibt drei IT-Systeme: (a) das DATEV-Buchhaltungssystem
 mit Mandantendaten, (b) das interne Lernportal für Mitarbeiterschulungen, (c) das
 Webportal, über das Mandanten ihre Belege hochladen. Bewerte für jedes System den
 Schutzbedarf je Schutzziel (normal, hoch, sehr hoch) und begründe je Bewertung in einem
 Satz. Erläutere, welcher Schutzbedarf der Datenbank-Server übernimmt, falls alle drei
-Systeme dort liegen.
+Systeme dort liegen. **8 Punkte.**
 
-**Aufgabe 2 — Maßnahmen einem Schutzziel zuordnen (6 Punkte).**
+### Aufgabe 2 · Maßnahmen einem Schutzziel zuordnen
 Ordne folgende Maßnahmen dem primär geschützten Schutzziel zu (Vertraulichkeit,
 Integrität, Verfügbarkeit oder Authentizität) und begründe in je einem Halbsatz: digitale
 Signatur, USV, Vollverschlüsselung der Festplatte, Hashwert nach Datentransfer,
-Multi-Faktor-Authentifizierung, redundante Internetanbindung.
+Multi-Faktor-Authentifizierung, redundante Internetanbindung. **6 Punkte.**
 
-**Aufgabe 3 — Risikobewertung mit Reaktion (7 Punkte).**
+### Aufgabe 3 · Risikobewertung mit Reaktion
 Stelle für die folgenden zwei Bedrohungen je eine Risikoklasse fest (Kombination aus
 Eintrittswahrscheinlichkeit und Schadenshöhe) und schlage je zwei konkrete Maßnahmen
 vor (organisatorisch, technisch oder beides):
-(a) Diebstahl eines unverschlüsselten Notebooks aus einem Hotelzimmer eines Aussendienst-
+(a) Diebstahl eines unverschlüsselten Notebooks aus einem Hotelzimmer eines Außendienst-
 mitarbeiters,
 (b) Ausfall der Internetverbindung im Hauptstandort eines Online-Shops für drei Stunden
-während der Kernzeit.
+während der Kernzeit. **7 Punkte.**
 
-**Aufgabe 4 — ISMS und PDCA (6 Punkte).**
+### Aufgabe 4 · ISMS und PDCA
 Beschreibe in eigenen Worten den Aufbau eines ISMS nach BSI-Standard 200-1 und ordne den
 vier Phasen Plan, Do, Check, Act jeweils zwei beispielhafte Tätigkeiten zu. Begründe
-abschliessend in zwei Sätzen, warum ein ISMS nie als "fertig" gilt.
+abschließend in zwei Sätzen, warum ein ISMS nie als "fertig" gilt. **6 Punkte.**
 
-**Aufgabe 5 — BSI-Grundschutz vs. ISO/IEC 27001 (5 Punkte).**
+### Aufgabe 5 · BSI-Grundschutz vs. ISO/IEC 27001
 Erläutere kurz die Beziehung zwischen BSI IT-Grundschutz und ISO/IEC 27001. Nenne zwei
 Gemeinsamkeiten und zwei Unterschiede. Erläutere, in welcher Situation eine Organisation
 sich primär für den IT-Grundschutz und in welcher Situation primär für ISO/IEC 27001
-entscheiden würde.
+entscheiden würde. **5 Punkte.**
 
 <Tipp titel="Lösungsansatz zu Aufgabe 2 (Kurzform)">
 - Digitale Signatur: Authentizität und Integrität (echter Absender, unveränderter Inhalt).
@@ -471,6 +508,13 @@ entscheiden würde.
 </Tipp>
 
 ---
+
+## Merkbilder
+
+Zwei Skizzen halten den Kern fest: Die CIA-Triade zeigt, welche Maßnahme auf welches
+Schutzziel einzahlt; das Stufenbild zeigt, dass jedes Schutzziel getrennt bewertet wird
+und mit steigender Stufe strengere Maßnahmen und eine dokumentierte Risikoakzeptanz
+verlangt.
 
 <svg
   viewBox="0 0 760 360"

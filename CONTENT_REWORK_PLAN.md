@@ -1,6 +1,6 @@
 # Content-Rework-Plan
 
-Stand: 19.05.2026
+Stand: 05.07.2026
 
 Ziel dieses Plans: Kapitel nicht nur fachlich korrekt, sondern gut lesbar,
 übersichtlich und einheitlich nutzbar machen. Der Plan ergänzt
@@ -109,19 +109,25 @@ Ein überarbeitetes Kapitel soll diese Struktur möglichst erfüllen:
   - sichtbare Schreibglättungen umgesetzt.
   - gezielter Strict-Check: 0 Fehler, 0 Warnungen.
 
+- `schutzziele`
+  - Orientierung am Anfang ergänzt (`So benutzt du dieses Kapitel` + Aufgabentyp-Tabelle).
+  - `Was du danach kannst` ergänzt.
+  - `Typische Fehler` validator-konform benannt (Zählpräfix entfernt).
+  - `07 · So fragt die IHK das` in `Übungsblock` mit `Aufgabe N ·`-Struktur überführt.
+  - lose Diagramme in einen `Merkbilder`-Abschnitt mit Kontext gefasst.
+  - sichtbare Schreibglättungen (ß-Vereinheitlichung: außerhalb, regelmäßig, Bußgeld,
+    Maßnahme, Verstoß, Größe).
+  - gezielter Strict-Check: 0 Fehler, 0 Warnungen.
+
 ## Nächste Kapitel
 
 Priorität nach Leserisiko, Größe und AP1-Relevanz:
 
-1. `schutzziele`
-   - starkes Sicherheitsthema
-   - viele Begriffe und Abgrenzungen
-   - Diagramme und Risikologik brauchen klare Führung
-
-2. `verschluesselung-hash-vpn`
+1. `verschluesselung-hash-vpn`
    - komplexes Thema
    - viele Abgrenzungen
    - Diagramme und Verfahren müssen didaktisch sauber getrennt sein
+   - offene Warnungen: `Was du danach kannst`, `Typische Fehler`
 
 ## Prüfungen nach jedem Rework
 
