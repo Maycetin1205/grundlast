@@ -7,6 +7,20 @@
 
 In Aufgaben werden *<Term id="verschluesselung">Verschlüsselung</Term>*, *<Term id="hashfunktion">Hashing</Term>*, *<Term id="zertifikat">Zertifikate</Term>*, *<Term id="digitale-signatur">digitale Signaturen</Term>* und *<Term id="vpn">VPN</Term>* selten isoliert abgefragt. Meist sollst du unterscheiden, welches Werkzeug welches Schutzziel bedient und wie die Verfahren in HTTPS, Passwortspeicherung, Software-Updates oder Standortkopplung zusammenspielen.
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Lies jede Aufgabe zuerst über das Schutzziel, dann wähle das Werkzeug. Je nach Fall
+springst du zur Werkzeugkarte (Grundprinzip), zur Passwort-Mechanik, zur
+Zertifikatsprüfung oder zum VPN-Abschnitt.
+</Tipp>
+
+| Wenn die Aufgabe fragt nach ... | Denk zuerst an ... | Typische Falle |
+|---|---|---|
+| Inhalt geheim halten | Verschlüsselung (symmetrisch/asymmetrisch/hybrid) | Passwort „verschlüsseln" statt hashen |
+| Veränderung erkennen | Hashwert oder digitale Signatur | Hash für Geheimhaltung halten |
+| Absender/Website echt | Zertifikat, Signatur, PKI | Zertifikat als Verschlüsselung deuten |
+| Passwörter speichern | Salt + langsames Verfahren (Argon2id/bcrypt) | schneller Hash ohne Salt |
+| Standort/Client anbinden | Site-to-Site- oder Remote-Access-VPN | VPN als Rechte-/Zugriffsersatz |
+
 ---
 
 ## 01 · Warum existiert das überhaupt?
@@ -18,10 +32,6 @@ Die Prüfung fragt genau diese Trennung ab: Eine Datei verschlüsseln ist etwas 
 <Analogie>
 Stell dir Kryptographie wie ein Büro mit mehreren Werkzeugen vor. Ein verschlossener Aktenschrank schützt Vertraulichkeit: Nur wer den Schlüssel hat, liest den Inhalt. Ein nummeriertes Siegel zeigt Integrität: Wenn jemand den Umschlag öffnet, ist die Veränderung sichtbar. Eine handschriftliche Unterschrift schafft Authentizität und Verbindlichkeit. Ein Dienstausweis bestätigt, dass die Unterschrift zu einer echten Person gehört. Ein gesicherter Kurierweg entspricht dem VPN-Tunnel. Kein Werkzeug ersetzt alle anderen; du musst das passende zum Ziel wählen.
 </Analogie>
-
-<Tipp titel="Prüfungsperspektive">
-Lies jede Sicherheitsaufgabe zuerst über das Schutzziel: Vertraulichkeit, Integrität, Authentizität, Nicht-Abstreitbarkeit oder sichere Standortverbindung. Danach wähle das Werkzeug: Verschlüsselung, Hash, Signatur, Zertifikat oder VPN.
-</Tipp>
 
 ---
 
@@ -368,7 +378,24 @@ Ein VPN erzeugt einen geschützten Weg, aber oft auch eine gefährliche Annahme:
 
 ---
 
-## 06 · Typische Fehler
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- symmetrische, asymmetrische und hybride Verschlüsselung sicher abgrenzen und je Fall
+  das passende Verfahren begründen.
+- erklären, warum Passwörter gehasht statt verschlüsselt werden, und Salt, Pepper und
+  langsames Hashverfahren korrekt einordnen.
+- Hash, HMAC und digitale Signatur nach Schutzziel unterscheiden.
+- die Prüfschritte einer Zertifikats- und Signaturprüfung benennen (Name, Gültigkeit,
+  Kette, CA-Signatur, Widerruf, Verwendungszweck).
+- HTTPS/TLS als hybrides Verfahren beschreiben und die Rolle des Zertifikats erklären.
+- Site-to-Site- und Remote-Access-VPN unterscheiden und benennen, welche
+  Zusatzmaßnahmen ein VPN nicht ersetzt (Rechte, MFA, Patchstand, Logging).
+
+---
+
+## Typische Fehler
 
 ### Verschlüsseln vs. Hashen vs. Signieren
 
@@ -397,7 +424,11 @@ Ein VPN erzeugt einen geschützten Weg, aber oft auch eine gefährliche Annahme:
 
 ---
 
-## 07 · So fragt die IHK das
+## Übungsblock
+
+Die Aufgaben trainieren Verfahrenswahl, TLS-Verständnis, Signaturprüfung, VPN-Einordnung
+und Passwortspeicherung. Nenne zu jeder Antwort das Schutzziel und begründe die Wahl in
+einem Satz. Der Lösungsansatz steht jeweils direkt darunter — erst selbst versuchen.
 
 ### Aufgabe 1 · Verfahren zuordnen
 

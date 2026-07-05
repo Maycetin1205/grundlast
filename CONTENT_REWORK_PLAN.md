@@ -119,15 +119,30 @@ Ein überarbeitetes Kapitel soll diese Struktur möglichst erfüllen:
     Maßnahme, Verstoß, Größe).
   - gezielter Strict-Check: 0 Fehler, 0 Warnungen.
 
+- `verschluesselung-hash-vpn`
+  - Orientierung am Anfang ergänzt (`So benutzt du dieses Kapitel` + Aufgabentyp-Tabelle),
+    redundanten `Prüfungsperspektive`-Tipp entfernt.
+  - `Was du danach kannst` ergänzt.
+  - `Typische Fehler` validator-konform benannt (Zählpräfix entfernt).
+  - `07 · So fragt die IHK das` in `Übungsblock` überführt (Aufgaben-Struktur lag bereits vor).
+  - Diagramme lagen bereits mit Kontext inline — kein separater `Merkbilder`-Abschnitt nötig.
+  - gezielter Strict-Check: 0 Fehler, 0 Warnungen.
+
 ## Nächste Kapitel
 
-Priorität nach Leserisiko, Größe und AP1-Relevanz:
+Die zwei ursprünglichen Sicherheits-Kapitel sind durch. Nächste Priorität weiter im
+Sicherheits-/LF-4-Umfeld, dann breit die 4-Warnungen-Kapitel abarbeiten. Diese Kapitel
+haben je vier offene Warnungen (slugTags, Glossar-Terms im Text, Schritt-für-Schritt,
+`Typische Fehler`) — also mehr Substanz als nur zwei fehlende Überschriften:
 
-1. `verschluesselung-hash-vpn`
-   - komplexes Thema
-   - viele Abgrenzungen
-   - Diagramme und Verfahren müssen didaktisch sauber getrennt sein
-   - offene Warnungen: `Was du danach kannst`, `Typische Fehler`
+1. `malware-grundlagen`
+   - Sicherheitsthema, schließt thematisch an Schutzziele/Verschlüsselung an
+   - braucht Glossar-Terms im Fließtext, Schritt-für-Schritt, `Typische Fehler`, slugTags
+
+2. `endpoint-security`
+   - gleiches Warnungsprofil, gleiches Lernfeld
+   - danach: `imap-pop3-smtp`, `ipv6-grundlagen`, `lizenzmodelle`, `homeoffice-ergonomie`,
+     `ki-grundlagen`, `website-statisch-dynamisch`, `gantt-diagramm` (je vier Warnungen)
 
 ## Prüfungen nach jedem Rework
 
