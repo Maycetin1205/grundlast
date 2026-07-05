@@ -1,6 +1,6 @@
 # Content-Rework-Plan
 
-Stand: 05.07.2026
+Stand: 05.07.2026 (schutzziele + verschluesselung-hash-vpn strict-clean)
 
 Ziel dieses Plans: Kapitel nicht nur fachlich korrekt, sondern gut lesbar,
 übersichtlich und einheitlich nutzbar machen. Der Plan ergänzt
@@ -117,14 +117,36 @@ Ein überarbeitetes Kapitel soll diese Struktur möglichst erfüllen:
   - `Merkbilder`-Abschnitt vor den beiden losen SVGs ergänzt, jedes Diagramm eingeordnet.
   - gezielter Strict-Check: 0 Fehler, 0 Warnungen; Lint und Build erfolgreich.
 
+- `verschluesselung-hash-vpn`
+  - `Was du danach kannst` ergänzt (sechs konkrete Lernziele).
+  - `Typische Fehler` validator-konform benannt (Nummernpräfix entfernt).
+  - Prüfungsteil von `So fragt die IHK` in strukturierten `Übungsblock` umbenannt,
+    mit Hinweis auf eigenständig formulierte Aufgaben.
+  - Kapitel enthält keine losen SVGs, daher kein `Merkbilder`-Abschnitt nötig.
+  - gezielter Strict-Check: 0 Fehler, 0 Warnungen; Lint und Build erfolgreich.
+
 ## Nächste Kapitel
 
-Priorität nach Leserisiko, Größe und AP1-Relevanz:
+Priorität nach Leserisiko, Größe und AP1-Relevanz. Der Sicherheits-Cluster wird
+weitergeführt, danach folgen die Kapitel mit den meisten offenen Struktur-Warnungen:
 
-1. `verschluesselung-hash-vpn`
-   - komplexes Thema
-   - viele Abgrenzungen
-   - Diagramme und Verfahren müssen didaktisch sauber getrennt sein
+1. `malware-grundlagen`
+   - Sicherheits-Cluster, AP1-relevant
+   - vier offene Struktur-Warnungen (u. a. `Was du danach kannst`, `Typische Fehler`)
+
+2. `endpoint-security`
+   - Sicherheits-Cluster, AP1-relevant
+   - vier offene Struktur-Warnungen, spezifische slugTags-Zuordnung prüfen
+
+Danach in einer Sammelrunde die übrigen `ready`-Kapitel mit vier Warnungen
+(`ipv6-grundlagen`, `imap-pop3-smtp`, `lizenzmodelle`, `ki-grundlagen`,
+`gantt-diagramm`, `maengelruege`, `vertragsstoerungen`, `schulz-von-thun`,
+`website-statisch-dynamisch`, `homeoffice-ergonomie`), meist derselbe Fix aus
+`Was du danach kannst` und validator-konformer `Typische Fehler`-Überschrift.
+
+Hinweis: `datenvolumen-berechnung` und `pseudocode-einstieg` sind frühe Reworks von
+vor dem Strict-Clean-Standard und tragen noch Restwarnungen — bei Gelegenheit
+nachziehen.
 
 ## Prüfungen nach jedem Rework
 
