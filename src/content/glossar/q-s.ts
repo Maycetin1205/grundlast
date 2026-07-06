@@ -586,4 +586,43 @@ export const qBisS: GlossarEintrag[] = [
         href: '/lernen/sicherheit/dsgvo-krypto/verschluesselung-hash-vpn',
       },
     },
+  {
+      id: 'ransomware',
+      begriff: 'Ransomware',
+      kurzdefinition: 'Schadsoftware, die Daten verschlüsselt und für die Freigabe Lösegeld erpresst.',
+      definition: [
+        'Ransomware verschlüsselt Dateien auf dem befallenen System und verlangt Lösegeld für den Schlüssel. Eingebracht wird sie meist über Trojaner oder Würmer.',
+        'Bei der doppelten Erpressung (Double Extortion) werden Daten vor der Verschlüsselung zusätzlich abgezogen; der Angreifer droht mit Veröffentlichung, selbst wenn ein Backup existiert. Empfohlen wird einhellig: nicht zahlen, sondern aus einem Offline-Backup wiederherstellen.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'rootkit',
+      begriff: 'Rootkit',
+      kurzdefinition: 'Tarnsoftware, die anderen Schadcode vor Betriebssystem und Virenscanner versteckt.',
+      definition: [
+        'Ein Rootkit verbirgt Dateien, Prozesse und Netzwerkverbindungen, damit anderer Schadcode unentdeckt bleibt. Besonders tückisch sind Kernel-Mode-Rootkits, die direkt im Betriebssystemkern laufen.',
+        'Rootkits werden meist über Trojaner installiert. Sie sind schwer zu erkennen und zu entfernen – oft hilft nur eine Neuinstallation des Systems.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'spyware',
+      begriff: 'Spyware',
+      kurzdefinition: 'Schadsoftware, die heimlich Informationen über Nutzer und System sammelt.',
+      definition: [
+        'Spyware sammelt ohne Wissen des Nutzers Daten wie besuchte Websites, Konfigurationen oder Kontaktbücher und leitet sie an Dritte weiter.',
+        'Verbreitung erfolgt typischerweise über Trojaner oder Browser-Erweiterungen. Der Keylogger ist eine Spezialform, die gezielt Tastatureingaben mitschneidet.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
 ]

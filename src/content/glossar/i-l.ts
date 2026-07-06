@@ -482,4 +482,30 @@ export const iBisL: GlossarEintrag[] = [
         href: '/lernen/wirtschaft/entscheidung/angebotsvergleich',
       },
     },
+  {
+      id: 'keylogger',
+      begriff: 'Keylogger',
+      kurzdefinition: 'Schadsoftware, die jede Tastatureingabe mitschneidet, um Passwörter und Daten zu stehlen.',
+      definition: [
+        'Ein Keylogger ist eine Spezialform der Spyware. Er protokolliert Tastatureingaben – inklusive Passwörtern, Kreditkartennummern und Chat-Nachrichten – und leitet sie an den Angreifer weiter.',
+        'Verbreitung erfolgt typischerweise über Trojaner oder manipulierte Browser-Erweiterungen. Es gibt auch Hardware-Keylogger, die zwischen Tastatur und Rechner gesteckt werden.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'least-privilege',
+      begriff: 'Prinzip der geringsten Rechte (Least Privilege)',
+      kurzdefinition: 'Jeder Nutzer und jedes Programm erhält nur die Rechte, die für die Aufgabe nötig sind – nicht mehr.',
+      definition: [
+        'Auf dem Endgerät heißt das: tägliches Arbeiten als Standardbenutzer, administrative Aktionen nur über ein separates Admin-Konto oder eine UAC-Abfrage, Dienste mit eigenen, eingeschränkten Konten.',
+        'Der Nutzen: Fängt sich ein Standardbenutzer Malware ein, erhält diese nur Nutzerrechte statt Systemrechte. Das erschwert tiefe Eingriffe, Persistenz und Spurenverwischung erheblich.',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
 ]

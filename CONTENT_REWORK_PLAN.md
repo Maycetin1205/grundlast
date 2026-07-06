@@ -136,16 +136,39 @@ Ein überarbeitetes Kapitel soll diese Struktur möglichst erfüllen:
   - `pseudocode-einstieg`: `Was du danach kannst` ergänzt, `Typische Fehler`
     validator-konform benannt.
 
+- `malware-grundlagen`
+  - `prüfungsrelevanz` in MetaBar ergänzt.
+  - Orientierung am Anfang (`So benutzt du dieses Kapitel` + Router-Tabelle
+    Beschreibungssignal → Typ → Merkmal).
+  - Kern-Vokabular als `Term` verlinkt und zentrale Glossar-Einträge in
+    `src/content/glossar/*.ts` neu angelegt (virus, wurm, trojaner, ransomware, spyware,
+    keylogger, backdoor, rootkit, adware, dropper, malware, phishing) plus
+    kapitel-eigene `Glossar`-Box.
+  - Ransomware-Vorfall von Prosa-Liste in `StepByStep` mit `Ergebnis` umgebaut
+    (Schritt-für-Schritt-Check erfüllt).
+  - `Fehlerfallen` → `Typische Fehler` (validator-konform).
+  - spezifische slugTags-Zuordnung ergänzt.
+  - gezielter Validator-Check: 0 Fehler, 0 Warnungen für das Kapitel.
+
+- `endpoint-security`
+  - `prüfungsrelevanz` in MetaBar ergänzt.
+  - Orientierung am Anfang (`So benutzt du dieses Kapitel` + Router-Tabelle
+    Aufgabensignal → Konzept).
+  - Kern-Vokabular als `Term` verlinkt und neue Glossar-Einträge angelegt
+    (endpoint-security, patch-management, least-privilege, edr, haertung,
+    festplattenverschluesselung, application-whitelisting, mdm) plus `Glossar`-Box.
+  - Patch-Prozess von `Schritte` in `StepByStep` mit `Ergebnis` umgebaut.
+  - `Fehlerfallen` → `Typische Fehler` (validator-konform).
+  - spezifische slugTags-Zuordnung ergänzt.
+  - gezielter Validator-Check: 0 Fehler, 0 Warnungen für das Kapitel.
+
 ## Nächste Kapitel
 
 Priorität nach Leserisiko, Größe und AP1-Relevanz:
 
-1. `malware-grundlagen` und `endpoint-security`
-   - starke Sicherheitsthemen (LF 4) mit je 4 Validator-Warnungen
-   - viele Begriffe, Abgrenzungen und Fehlerfallen
-2. `ipv6-grundlagen` und `imap-pop3-smtp`
+1. `ipv6-grundlagen` und `imap-pop3-smtp`
    - AP1-nahe Netzthemen mit je 4 Warnungen
-3. Weitere Kapitel mit je 4 Warnungen abarbeiten: `website-statisch-dynamisch`,
+2. Weitere Kapitel mit je 4 Warnungen abarbeiten: `website-statisch-dynamisch`,
    `gantt-diagramm`, `ki-grundlagen`, `lizenzmodelle`, `homeoffice-ergonomie`,
    `schulz-von-thun`, `maengelruege`, `vertragsstoerungen`.
 

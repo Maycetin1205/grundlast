@@ -495,4 +495,56 @@ export const eBisH: GlossarEintrag[] = [
         href: '/lernen/projekt/service-management/mitarbeitermotivation-teamphasen-change',
       },
     },
+  {
+      id: 'endpoint-security',
+      begriff: 'Endpoint-Security',
+      kurzdefinition: 'Absicherung der Endgeräte (Notebook, Desktop, Smartphone) als eigenständige Sicherheitsebene.',
+      definition: [
+        'Endpoint-Security härtet jedes einzelne Endgerät, statt nur auf die Netzgrenze (Firewall) zu vertrauen. Endgeräte sind besonders gefährdet, weil sie das geschützte Netz verlassen und wieder betreten.',
+        'Typische Bausteine sind aktuelle Updates, Host-Firewall, Virenschutz bzw. EDR, das Prinzip der geringsten Rechte, Festplattenverschlüsselung und zentrale Verwaltung mobiler Geräte (MDM).',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
+  {
+      id: 'edr',
+      begriff: 'EDR (Endpoint Detection and Response)',
+      kurzdefinition: 'Schutzlösung, die Endgeräte über Verhaltensanalyse überwacht und auf Vorfälle reagieren kann.',
+      definition: [
+        'Ein klassischer Virenscanner vergleicht Dateien mit Signaturen bekannter Malware. EDR analysiert zusätzlich das Verhalten von Programmen und erkennt so auch unbekannte Schadsoftware.',
+        'EDR kann Prozesse stoppen, ein Gerät isolieren und Alarme an ein zentrales Dashboard bzw. ein Security Operations Center (SOC) melden. Es ist heute Standard in mittleren und großen Unternehmen.',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
+  {
+      id: 'festplattenverschluesselung',
+      begriff: 'Festplattenverschlüsselung',
+      kurzdefinition: 'Verschlüsselung des gesamten Datenträgers, die Daten bei Verlust oder Diebstahl schützt.',
+      definition: [
+        'Werkzeuge wie BitLocker (Windows), FileVault (macOS) oder LUKS (Linux) verschlüsseln den kompletten Datenträger. Ohne Schlüssel bzw. Anmeldung bleiben die Daten unlesbar.',
+        'Sie schützt vor allem bei physischem Verlust eines Geräts. Läuft das System entsperrt, hilft sie nicht gegen Malware – sie ist eine Vertraulichkeitsmaßnahme, kein Ersatz für Backup oder Virenschutz.',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
+  {
+      id: 'haertung',
+      begriff: 'Härtung (Hardening)',
+      kurzdefinition: 'Konfiguration eines Systems mit dem Ziel, die Angriffsfläche zu minimieren.',
+      definition: [
+        'Härtung bedeutet, alles Nicht-Benötigte abzuschalten: unnötige Dienste und Ports deaktivieren, Standardkonten entfernen, Auto-Run und Office-Makros abschalten, Secure Boot und starke Passwörter erzwingen, Logging aktivieren.',
+        'Konkrete Vorgaben liefern etwa die CIS Benchmarks, das Microsoft Security Compliance Toolkit oder die BSI-Technische-Richtlinie zur Windows-Härtung.',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
 ]

@@ -2,11 +2,29 @@
 
 <MetaBar
   lernfeld="LF 4 — Schutzbedarfsanalyse und IT-Sicherheit"
+  prüfungsrelevanz="PFLICHT · 5/5"
 />
 
 ## Was du danach kannst
 
-Nach diesem Kapitel kannst du den Begriff **Endpoint-Security** definieren, kennst die wichtigsten **Härtungs- und Schutzmaßnahmen** für Clients (Notebooks, Desktops, Smartphones) — Updates, Firewall, Virenschutz, Berechtigungen, Datenträgerverschlüsselung. Du verstehst das **Prinzip der geringsten Rechte** und die Bedeutung von **Patch-Management**. Du kannst typische Klausurfragen wie *„Welche Risiken entstehen, wenn ein Nutzer dauerhaft mit Administratorrechten arbeitet?"* sicher beantworten.
+Nach diesem Kapitel kannst du den Begriff *<Term id="endpoint-security">Endpoint-Security</Term>* definieren, kennst die wichtigsten Härtungs- und Schutzmaßnahmen für Clients (Notebooks, Desktops, Smartphones) — Updates, Firewall, Virenschutz, Berechtigungen, *<Term id="festplattenverschluesselung">Festplattenverschlüsselung</Term>*. Du verstehst das *<Term id="least-privilege">Prinzip der geringsten Rechte</Term>* und die Bedeutung von *<Term id="patch-management">Patch-Management</Term>*. Du kannst typische Klausurfragen wie *„Welche Risiken entstehen, wenn ein Nutzer dauerhaft mit Administratorrechten arbeitet?"* sicher beantworten.
+
+<Tipp titel="So benutzt du dieses Kapitel">
+Merke dir Endpoint-Security als **Schichtmodell**: Kein Einzelmittel schützt, erst die
+Kombination aus Technik, Organisation und Mensch. Lerne zuerst die zehn Maßnahmen
+(Abschnitt 02), dann die zwei tragenden Prinzipien — *geringste Rechte* und
+*Patch-Management* — und übertrage beides auf die Klausur-Standardfrage nach den Folgen
+dauerhafter Admin-Rechte.
+</Tipp>
+
+| Wenn die Aufgabe fragt ... | Denk zuerst an ... |
+|---|---|
+| „Arbeitsplatz absichern, nenne Maßnahmen" | die 10 Maßnahmen aus Abschnitt 02 |
+| „Folgen dauerhafter Admin-Rechte" | Prinzip der geringsten Rechte (Least Privilege) |
+| „warum reicht ein Virenscanner nicht?" | Defense in Depth + EDR/Verhaltensanalyse |
+| „Schutz bei Laptop-Diebstahl" | Festplattenverschlüsselung + MDM/Remote-Wipe |
+| „bekannte Lücke wird ausgenutzt" | Patch-Management-Prozess + Patch-Geschwindigkeit |
+| „System sicher konfigurieren" | Härtung (Dienste/Ports/Konten/Boot) |
 
 ## 01 · Warum existiert das überhaupt?
 
@@ -33,9 +51,9 @@ Stell dir das Firmennetz wie eine Burg mit Außenmauer und Wassergraben vor. Die
 | 5 | **Standardbenutzer-Konten** (Prinzip der geringsten Rechte) | Schadsoftware bekommt nur Nutzerrechte, nicht Admin |
 | 6 | **Festplattenverschlüsselung** (BitLocker, FileVault, LUKS) | Datenschutz bei Diebstahl |
 | 7 | **Automatische Bildschirmsperre** + sicheres Passwort | unautorisierter physischer Zugriff |
-| 8 | **Application Whitelisting** (AppLocker, SRP) | nur freigegebene Programme dürfen laufen |
+| 8 | *<Term id="application-whitelisting">Application Whitelisting</Term>* (AppLocker, SRP) | nur freigegebene Programme dürfen laufen |
 | 9 | **Mail- und Web-Filter** | Phishing, Malware-Downloads im Vorfeld abfangen |
-| 10 | **Mobile Device Management (MDM)** | zentrale Verwaltung mobiler Geräte, Remote-Wipe möglich |
+| 10 | *<Term id="mdm">Mobile Device Management (MDM)</Term>* | zentrale Verwaltung mobiler Geräte, Remote-Wipe möglich |
 
 ---
 
@@ -45,16 +63,29 @@ Stell dir das Firmennetz wie eine Burg mit Außenmauer und Wassergraben vor. Die
 
 ### Patch-Prozess
 
-<Schritte
-  items={[
-    { titel: '1. Inventarisierung', text: 'Welche Systeme und Anwendungen sind im Einsatz? Pflicht für jeden Patch-Prozess.' },
-    { titel: '2. Monitoring auf neue Patches', text: 'Hersteller-Meldungen abonnieren (Microsoft Patch Tuesday, Linux-Distributions-Listen).' },
-    { titel: '3. Risikobewertung', text: 'Wie kritisch ist der Patch? CVSS-Score, Auswirkungs-Abschätzung.' },
-    { titel: '4. Test in Pilotgruppe', text: 'Patch zuerst auf wenigen Systemen einspielen, beobachten, ob nichts bricht.' },
-    { titel: '5. Rollout', text: 'Patch auf alle Systeme verteilen, idealerweise per zentraler Software (WSUS, Intune, Ansible).' },
-    { titel: '6. Verifikation', text: 'Prüfen, dass alle Systeme den Patch erhalten haben — Bericht über fehlgeschlagene Updates.' },
-  ]}
-/>
+<StepByStep titel="Der Patch-Prozess Schritt für Schritt">
+  <Schritt nr={1} titel="Inventarisierung">
+    Welche Systeme und Anwendungen sind im Einsatz? Ohne aktuelle Übersicht kann kein Patch-Prozess vollständig sein.
+  </Schritt>
+  <Schritt nr={2} titel="Monitoring auf neue Patches">
+    Hersteller-Meldungen abonnieren (Microsoft Patch Tuesday, Listen der Linux-Distributionen, CERT-Warnungen).
+  </Schritt>
+  <Schritt nr={3} titel="Risikobewertung">
+    Wie kritisch ist der Patch? Einordnung über CVSS-Score und Abschätzung der Auswirkung auf die eigenen Systeme.
+  </Schritt>
+  <Schritt nr={4} titel="Test in Pilotgruppe">
+    Patch zuerst auf wenigen Systemen einspielen und beobachten, ob nichts bricht.
+  </Schritt>
+  <Schritt nr={5} titel="Rollout">
+    Patch auf alle Systeme verteilen, idealerweise per zentraler Software (WSUS, Intune, Ansible).
+  </Schritt>
+  <Schritt nr={6} titel="Verifikation">
+    Prüfen, dass alle Systeme den Patch erhalten haben — inklusive Bericht über fehlgeschlagene Updates.
+  </Schritt>
+  <Ergebnis>
+    Patch-Management ist ein wiederkehrender Kreislauf, kein Einmal-Projekt. Die meisten großen Vorfälle nutzten eine bekannte, längst gepatchte Lücke — Geschwindigkeit zählt mehr als Perfektion.
+  </Ergebnis>
+</StepByStep>
 
 <Tipp titel="Faustregel für Patch-Geschwindigkeit">
 - **Kritisch (Remote Code Execution, in freier Wildbahn ausgenutzt)**: innerhalb von 24–72 Stunden
@@ -89,7 +120,7 @@ Genau diese Punkte werden in der Klausur als „Folgen" gefragt.
 
 ## 05 · System-Härtung
 
-**Härtung** (Hardening) bedeutet, ein System so zu konfigurieren, dass die Angriffsfläche minimiert wird. Typische Maßnahmen:
+*<Term id="haertung">Härtung</Term>* (Hardening) bedeutet, ein System so zu konfigurieren, dass die Angriffsfläche minimiert wird. Typische Maßnahmen:
 
 | Bereich | Härtungsmaßnahme |
 |---|---|
@@ -110,7 +141,7 @@ Genau diese Punkte werden in der Klausur als „Folgen" gefragt.
 
 ## 06 · EDR vs. klassischer Virenschutz
 
-Klassischer **Virenscanner** vergleicht Dateien mit einer Datenbank bekannter Schadsignaturen. **EDR** (Endpoint Detection and Response) analysiert zusätzlich **Verhalten**: was tut ein Programm gerade? Greift es auf viele Dateien zu? Verschlüsselt es etwas?
+Klassischer **Virenscanner** vergleicht Dateien mit einer Datenbank bekannter Schadsignaturen. *<Term id="edr">EDR</Term>* (Endpoint Detection and Response) analysiert zusätzlich **Verhalten**: was tut ein Programm gerade? Greift es auf viele Dateien zu? Verschlüsselt es etwas?
 
 | | Virenscanner | EDR |
 |---|---|---|
@@ -149,7 +180,7 @@ Ein IT-Dienstleister mit 30 Mitarbeitern hat folgendes Konzept:
 
 ---
 
-## 08 · Fehlerfallen
+## Typische Fehler
 
 <Warnung titel="Die fünf häufigsten Klausurfehler">
 1. **„Virenscanner reicht."** Ein Virenscanner ist eine Schicht von vielen. Ohne Patches, Berechtigungskonzept und Verschlüsselung bleibt das Endgerät unsicher.
@@ -180,6 +211,43 @@ Ein IT-Dienstleister mit 30 Mitarbeitern hat folgendes Konzept:
 2. **Unkontrollierte Software-Installation** durch den Nutzer — führt zu Compliance-Verstößen (Lizenzen), erhöht Angriffsfläche und kann Schadsoftware unbeabsichtigt installieren.
 
 ---
+
+<Glossar
+  einträge={[
+    {
+      term: 'Endpoint-Security',
+      definition: 'Absicherung der Endgeräte (Notebook, Desktop, Smartphone) als eigenständige Sicherheitsebene, statt nur auf die Netzgrenze zu vertrauen.'
+    },
+    {
+      term: 'Patch-Management',
+      definition: 'Geregelter Prozess, um Sicherheitsupdates zu erfassen, zu bewerten, zu testen und zeitnah auszurollen.'
+    },
+    {
+      term: 'Prinzip der geringsten Rechte (Least Privilege)',
+      definition: 'Jeder Nutzer und jedes Programm erhält nur die Rechte, die für die Aufgabe nötig sind. Malware bekommt so nur Nutzer- statt Systemrechte.'
+    },
+    {
+      term: 'EDR (Endpoint Detection and Response)',
+      definition: 'Schutzlösung, die Endgeräte per Verhaltensanalyse überwacht, auch unbekannte Malware erkennt und Prozesse stoppen oder Geräte isolieren kann.'
+    },
+    {
+      term: 'Härtung (Hardening)',
+      definition: 'Konfiguration eines Systems mit dem Ziel, die Angriffsfläche zu minimieren: unnötige Dienste/Ports/Konten aus, Auto-Run und Makros aus, Secure Boot an.'
+    },
+    {
+      term: 'Festplattenverschlüsselung',
+      definition: 'Verschlüsselung des gesamten Datenträgers (BitLocker, FileVault, LUKS), die Daten bei Verlust oder Diebstahl schützt.'
+    },
+    {
+      term: 'Application Whitelisting',
+      definition: 'Härtungsmaßnahme, bei der nur ausdrücklich freigegebene Programme ausgeführt werden dürfen (AppLocker, SRP).'
+    },
+    {
+      term: 'Mobile Device Management (MDM)',
+      definition: 'Zentrale Verwaltung mobiler Endgeräte inklusive Richtlinien und Remote-Wipe bei Verlust oder Diebstahl.'
+    },
+  ]}
+/>
 
 <Quellen
   quellen={[

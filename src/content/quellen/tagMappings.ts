@@ -48,6 +48,8 @@ export const slugTags: Record<string, string[]> = {
   'verschluesselung-sicherheit': ['krypto', 'sicherheit'],
   'passwoerter-hashing': ['passwort', 'hashing', 'krypto'],
   schutzziele: ['sicherheit'],
+  'malware-grundlagen': ['sicherheit', 'malware', 'virus', 'wurm', 'trojaner', 'ransomware', 'spyware', 'keylogger', 'backdoor', 'rootkit', 'adware', 'dropper', 'phishing', 'schadsoftware'],
+  'endpoint-security': ['sicherheit', 'endpoint', 'haertung', 'hardening', 'patch', 'patch-management', 'least-privilege', 'edr', 'virenschutz', 'festplattenverschluesselung', 'mdm', 'application-whitelisting', 'client'],
   'backup-strategien': ['backup', 'sicherheit'],
   'mtbf-mttf': ['verfuegbarkeit', 'sicherheit'],
   'kaufmaennische-rechenaufgaben': ['wirtschaft', 'kosten'],

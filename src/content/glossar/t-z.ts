@@ -586,4 +586,43 @@ export const tBisZ: GlossarEintrag[] = [
         href: '/lernen/projekt/service-management/mitarbeitermotivation-teamphasen-change',
       },
     },
+  {
+      id: 'trojaner',
+      begriff: 'Trojaner',
+      kurzdefinition: 'Schadsoftware, die sich als nützliches Programm tarnt und vom Nutzer selbst installiert wird.',
+      definition: [
+        'Ein Trojaner (nach dem Trojanischen Pferd) gibt sich als gratis Tool, Spiel oder Update aus. Der Nutzer installiert ihn freiwillig, im Hintergrund läuft der Schadcode mit.',
+        'Trojaner sind oft die Erstinfektion und öffnen die Tür für nachgeladene Komponenten wie Ransomware, Backdoor oder Spyware. Trojaner ist ein Tarnmechanismus, kein klassischer Virus.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'virus',
+      begriff: 'Virus',
+      kurzdefinition: 'Schadcode, der sich an eine Wirtsdatei bindet und nur mit deren Ausführung aktiv wird.',
+      definition: [
+        'Ein Virus bettet sich in eine vorhandene Wirtsdatei ein (Programm, Dokument, Bootsektor). Er verbreitet sich nur mit dem Wirt – etwa per USB-Stick, E-Mail-Anhang oder geteilter Datei – und braucht einen Nutzer, der den Wirt ausführt.',
+        'Klassische Dateiviren sind heute seltener, weil moderne Betriebssysteme Code-Injection erschweren. Makroviren in Office-Dokumenten bleiben aber relevant.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'wurm',
+      begriff: 'Wurm',
+      kurzdefinition: 'Eigenständige Schadsoftware, die sich ohne Wirt und ohne Nutzer selbst über Netzwerke verbreitet.',
+      definition: [
+        'Anders als ein Virus braucht ein Wurm keinen Wirt. Er ist ein eigenständiges Programm, das aktiv Sicherheitslücken im Netzwerk ausnutzt, um sich von System zu System zu kopieren.',
+        'Beispiel ist WannaCry (2017), das sich über die Windows-SMB-Lücke EternalBlue verbreitete. Würmer sind oft schon durch ihre Verbreitungsgeschwindigkeit destruktiv (Netzlast, Ausfälle).',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
 ]
