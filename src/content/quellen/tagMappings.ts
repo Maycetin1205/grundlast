@@ -24,6 +24,7 @@ export const slugTags: Record<string, string[]> = {
   'tcp-udp': ['tcp', 'udp', 'netzwerk', 'port', 'dienst', 'http', 'tls'],
   'ipv4-subnetting': ['ipv4', 'subnetting', 'netzwerk'],
   'datenrate-berechnung': ['netzwerk', 'datenrate', 'bandbreite', 'durchsatz', 'bit', 'byte', 'backup', 'wlan'],
+  'datenvolumen-berechnung': ['datenmenge', 'datenrate', 'bandbreite', 'durchsatz', 'bit', 'byte', 'praefix', 'iec', 'si', 'kompression', 'bitrate', 'latenz', 'netzwerk'],
   netzwerkkonfiguration: ['netzwerk', 'ipv4', 'dhcp', 'dns', 'arp', 'apipa', 'subnetting'],
   'firewall-dmz': ['firewall', 'dmz', 'sicherheit', 'netzsegmentierung', 'allowlist', 'paketfilter', 'application-layer-gateway'],
   'er-grundlagen': ['datenbank', 'er'],

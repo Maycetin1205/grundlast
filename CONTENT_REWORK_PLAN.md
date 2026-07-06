@@ -119,14 +119,35 @@ Ein überarbeitetes Kapitel soll diese Struktur möglichst erfüllen:
   - Merkbilder-Abschnitt (`08 · Merkbilder`) vor den beiden Diagrammen ergänzt.
   - gezielter Validator-Check: 0 Fehler, 0 Warnungen für das Kapitel.
 
+- `verschluesselung-hash-vpn`
+  - Orientierung am Anfang ergänzt (`So benutzt du dieses Kapitel` plus Router-Tabelle
+    Aufgabensignal → Werkzeug → Schutzziel).
+  - `Was du danach kannst` ergänzt.
+  - `Typische Fehler` validator-konform benannt (Nummerierung entfernt).
+  - `So fragt die IHK das` in `Übungsblock` umbenannt, Punktzahlen ergänzt, Lösungsansätze
+    je Aufgabe in eigene `Tipp`-Boxen gekapselt.
+  - Diagramme lagen bereits inline mit Kontext (Krypto-Werkzeugkarte, VPN-/CA-Kette),
+    kein separater Merkbilder-Abschnitt nötig.
+  - gezielter Validator-Check: 0 Fehler, 0 Warnungen für das Kapitel.
+
+- Konsistenz-Nachzug an früher überarbeiteten Kapiteln (auf neuen Rework-Standard gehoben):
+  - `datenvolumen-berechnung`: `Was du danach kannst` ergänzt, `Typische Fehler`
+    validator-konform benannt, spezifische slugTags-Zuordnung in `tagMappings.ts` ergänzt.
+  - `pseudocode-einstieg`: `Was du danach kannst` ergänzt, `Typische Fehler`
+    validator-konform benannt.
+
 ## Nächste Kapitel
 
 Priorität nach Leserisiko, Größe und AP1-Relevanz:
 
-1. `verschluesselung-hash-vpn`
-   - komplexes Thema
-   - viele Abgrenzungen
-   - Diagramme und Verfahren müssen didaktisch sauber getrennt sein
+1. `malware-grundlagen` und `endpoint-security`
+   - starke Sicherheitsthemen (LF 4) mit je 4 Validator-Warnungen
+   - viele Begriffe, Abgrenzungen und Fehlerfallen
+2. `ipv6-grundlagen` und `imap-pop3-smtp`
+   - AP1-nahe Netzthemen mit je 4 Warnungen
+3. Weitere Kapitel mit je 4 Warnungen abarbeiten: `website-statisch-dynamisch`,
+   `gantt-diagramm`, `ki-grundlagen`, `lizenzmodelle`, `homeoffice-ergonomie`,
+   `schulz-von-thun`, `maengelruege`, `vertragsstoerungen`.
 
 ## Prüfungen nach jedem Rework
 
