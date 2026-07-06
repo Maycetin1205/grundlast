@@ -7,6 +7,10 @@ deutschlandweit referenzfaehigen Fachinformatiker-Kompendium auszubauen.
 
 ## Aktueller Stand
 
+**Zuerst `HANDOFF.md` lesen**: Dort stehen priorisierte Architektur-Auftraege
+aus dem Review vom 06.07.2026. Solange dort Auftraege offen sind, gehen sie
+vor neuen Inhalts-Aufgaben.
+
 Bewusst ohne Zeit- oder Lese-Schaetzungen. Nur Reifegrad gegen Plan-Pflichten:
 
 - **0.1 (Kompass sauber)** erreicht. AUSBILDUNGS_KOMPASS, MASTER_ROADMAP,

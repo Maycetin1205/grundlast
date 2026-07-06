@@ -16,6 +16,8 @@ HashRouter. AP1 ist **ein** Anwendungsfall, nicht der Anker.
 
 Lies in dieser Reihenfolge:
 
+0. `HANDOFF.md` — offene Architektur-Auftraege mit Prioritaet. Solange dort
+   Auftraege auf "offen" stehen, gehen sie vor neuen Inhalts-Aufgaben.
 1. `MASTER_ROADMAP.md` — Plan, Versionsstufen, aktueller Stand,
    "Naechster konkreter Schritt".
 2. `CONTENT_GUIDELINES.md` — wenn die Aufgabe Inhalt betrifft.
