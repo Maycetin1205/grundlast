@@ -77,7 +77,7 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 |---|---|---|---|---|---|
 | `von-neumann` | ja | ready | ungeprueft | P2 | Quellen- und Umfangsaudit |
 | `bit-byte` | ja | final | teilgeprueft | P1 | Quellenbank um offene ASCII-Quelle pruefen, dann Aufgabenabgleich |
-| `zahlensysteme` | ja | final | teilgeprueft | P1 | Aufgabenabgleich fehlt, CSS-Praezisierung erledigt |
+| `zahlensysteme` | ja | final | geprueft | P1 | Restaudit 2026-07-03 abgeschlossen; Pruef-Pass ausstehend |
 | `prefixe` | ja | final | teilgeprueft | P1 | Aufgabenabgleich fehlt, Textpraezisierung erledigt |
 
 ### Netzwerke
@@ -87,13 +87,13 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 | `osi-modell` | ja | ready | teilgeprueft | P2 | Aufgabenabgleich fehlt, ARP/TLS/Diagnose-Praezisierung erledigt |
 | `tcp-udp` | ja | ready | teilgeprueft | P1 | Aufgabenabgleich fehlt, Quellen/Text nachgezogen |
 | `imap-pop3-smtp` | ja | ready | ungeprueft | P3 | Tiefe begrenzen |
-| `ipv4-subnetting` | ja | ready | teilgeprueft | P1 | Aufgabenabgleich fehlt, Quellenblock nachgezogen |
+| `ipv4-subnetting` | ja | ready | geprueft | P1 | Restaudit 2026-07-03 abgeschlossen; Pruef-Pass ausstehend |
 | `netzwerkkonfiguration` | ja | ready | teilgeprueft | P1 | Aufgabenabgleich fehlt, DHCP/DNS-Praezisierung erledigt |
 | `ipv6-grundlagen` | ja | ready | teilgeprueft | P2 | Aufgabenabgleich fehlt, RFC-/SLAAC-/Kuerzungscheck erledigt |
 | `firewall-dmz` | ja | ready | teilgeprueft | P1 | Aufgabenabgleich fehlt, BSI-/Regelcheck erledigt |
 | `port-forwarding` | ja | ready | teilgeprueft | P2 | Aufgabenabgleich fehlt, NAT/CGNAT/DS-Lite/Sicherheit nachgezogen |
 | `wlan-standards` | ja | ready | teilgeprueft | P1 | Aufgabenabgleich fehlt, Standards/Sicherheit/Kanalplanung nachgezogen |
-| `datenrate-berechnung` | ja | ready | teilgeprueft | P1 | Aufgabenabgleich fehlt, Quellenzuordnung nachgezogen |
+| `datenrate-berechnung` | ja | ready | geprueft | P1 | Restaudit 2026-07-03 abgeschlossen; Pruef-Pass ausstehend |
 | `datenvolumen-berechnung` | ja | ready | teilgeprueft | P1 | Aufgabenabgleich unter Zeit fehlt; Rechenwege/Quellen/Text nachgezogen |
 
 ### Hardware und Arbeitsplatz
@@ -507,6 +507,46 @@ Technik-Gate erneut gruen: `npm run lint` (0 Fehler), `npm run test` (56/56),
 Statuswechsel: bleibt `geprueft`, weiterhin pflichtig fuer den unabhaengigen
 Pruef-Pass.
 
+### Unabhaengiger Pruef-Pass 2026-07-03: bit-byte
+
+Pruefer: Codex (unabhaengige Pruefer-Rolle; Kapitel nicht geschrieben).
+Ergebnis: **BESTANDEN**.
+
+- Scope-Gate: bestanden. `bit-byte` ist als LF2/LF3-Grundlagenkapitel fuer
+  Datenmengen-, Datenraten-, Speicher- und Zeichenkodierungsaufgaben relevant;
+  KMK bestaetigt LF1-LF6 vor AP Teil 1 und fuehrt LF2 "Arbeitsplaetze nach
+  Kundenwunsch ausstatten" sowie LF3 "Clients in Netzwerke einbinden".
+- Quellen-Gate: bestanden. Primaerquellen frisch gegengeprueft:
+  NIST IR 8354 (acht-Bit-Byte, 0-255, Bitstrings brauchen Interpretation),
+  NIST Binary Prefixes (1 B = 8 bit, Ki/Mi/Gi, MB/GB), BIPM SI Prefixes
+  (k/M/G/T als 10^3/10^6/10^9/10^12), RFC 20 (7-bit ASCII im 8-bit Byte),
+  RFC 3629 (UTF-8 bewahrt US-ASCII; weitere Zeichen variable Oktettzahl).
+- Fakten-Gate: bestanden. Selbst nachgerechnet:
+  `2^8 = 256`, unsigned Bereich `0..255`; `100 Mbit/s / 8 = 12,5 MB/s`;
+  `50 Mbit/s / 8 = 6,25 MB/s`; `600 MB / 6,25 MB/s = 96 s`;
+  `200 MB / 12,5 MB/s = 16 s`; `64 Mbit/s / 8 = 8 MB/s`;
+  `80 Mbit/s / 8 = 10 MB/s`; `400 MB / 10 MB/s = 40 s`;
+  `10^12 B / 2^30 B = 931,3225746 GiB`. Keine Rechenabweichung gefunden.
+- Glossar-/Quellen-Tags: bestanden. `dezimalpraefix` und `binaerpraefix`
+  stehen in `bit-byte.mdx` als ASCII-Term-IDs und existieren im Glossar
+  (`src/content/glossar/a-d.ts`); kein verbleibender Umlaut-ID-Treffer in den
+  beiden Rechenkapiteln.
+- Didaktik-Gate: bestanden. Reihenfolge fuer Null-Ahnung-Lernende logisch:
+  Bit -> Byte -> Wertebereich -> b/B -> Menge/Rate -> Praefixe -> Zeichen.
+  Off-by-one, b/B, KB/KiB und ASCII/UTF-8-Fallen stehen direkt am passenden Ort.
+- Aufgaben-Gate: bestanden. Das Kapitel traegt reale AP1-nahe Aufgabentypen zu
+  Uebertragungsdauer, Dateigroesse/Speicher und 8-Bit-Wertebereich; der
+  dokumentierte abstrahierte Aufgabenabgleich ist ohne geschuetzte
+  Aufgabentexte plausibel und aus dem Kapitel loesbar.
+- Umfangs-Gate: bestanden. Zeichenkodierung, signed/unsigned und Praefixe
+  bleiben bewusst Grundlagen/Transfer und wachsen nicht zum Spezialkapitel.
+- Technik-Gate: unveraendert plausibel. Fuer diesen Pruef-Pass wurden nur
+  Audit-/Queue-Dokumentation geaendert; die im Restaudit dokumentierten Checks
+  waren gruen. Nach Dokumentationsaenderung wurde `npm run emit:status`
+  ausgefuehrt.
+
+Entscheidung: `bit-byte` bleibt `geprueft`; Pruef-Warteschlange abgehakt.
+
 ## Detailaudit: prefixe
 
 Datum: 10.06.2026
@@ -731,6 +771,48 @@ aus PROJEKT.md Abschnitt 5 sind mit konkreten Belegen erfuellt, nicht nur
 laut QUEUE.md Abschnitt 2b pflichtig fuer den unabhaengigen Pruef-Pass; faellt
 dieser durch, ist der Status hier zurueckzunehmen.
 
+### Unabhaengiger Pruef-Pass 2026-07-03: prefixe
+
+Pruefer: Codex (unabhaengige Pruefer-Rolle; Kapitel nicht geschrieben).
+Ergebnis: **BESTANDEN**.
+
+- Scope-Gate: bestanden. `prefixe` ist als enges Grundlagen-/Pruefungskapitel
+  fuer Speicher-, Datenmengen- und Datenratenrechnung relevant; KMK LF2/LF3
+  stuetzen die Einordnung als Werkzeugwissen vor AP Teil 1.
+- Quellen-Gate: bestanden. Primaerquellen frisch gegengeprueft:
+  BIPM SI Prefixes bestaetigt k/M/G/T mit `10^3/10^6/10^9/10^12` und kleinem
+  `k`; NIST Binary Prefixes bestaetigt Ki/Mi/Gi/Ti mit `2^10/2^20/2^30/2^40`,
+  1 B = 8 bit, die Abgrenzung zum SI und die IEC-Einfuehrung 1998; GNU
+  Coreutils `df` bestaetigt `--si` mit 1000er-Potenzen und `-h`/human-readable
+  mit 1024er-Potenzen.
+- Fakten-Gate: bestanden. Selbst nachgerechnet:
+  `500 GB = 500.000.000.000 B`; `/ 2^30 = 465,6612873 GiB`;
+  `2.048.000 bit / 8 = 256.000 B`; `/ 1024 = 250 KiB`;
+  `16 Mbit/s = 16.000.000 bit/s = 2.000.000 B/s`;
+  `1 GiB / 2.000.000 B/s = 536,870912 s`, also rund 8:57 min;
+  `4 MiB = 4 * 2^20 = 4.194.304 B`;
+  `1 TB / 2^30 = 931,3225746 GiB`;
+  Bezugspunkt der Queue-Notiz: `1024 GiB - 931,3225746 GiB = 92,6774254 GiB`,
+  also rund 93 GiB Differenz gegen eine echte `1 TiB`-Erwartung. Keine
+  Rechenabweichung gefunden.
+- Glossar-/Quellen-Tags: bestanden. `dezimalpraefix` und `binaerpraefix` stehen
+  in `prefixe.mdx` als ASCII-Term-IDs und existieren im Glossar.
+- Didaktik-Gate: bestanden. Reihenfolge ist logisch: zwei Reihen -> Tabelle ->
+  Drift -> Byte-Zwischenschritt -> Beispiele -> Fehlerfallen -> Selbstcheck.
+  Der Byte-Zwischenschritt macht das Kapitel fuer Lernende ohne Vorwissen
+  nachvollziehbar.
+- Aufgaben-Gate: bestanden. Der dokumentierte Abgleich mit abstrahierten
+  AP1-Aufgabentypen zu Speicher-/Datenmengenrechnung ist fachlich passend;
+  `prefixe` liefert genau die Einheitenumrechnung, nicht Scan-/DPI-Speziallogik.
+- Umfangs-Gate: bestanden. Pi/Ei und JEDEC/OS-Historie bleiben Randhinweise;
+  der Kern bleibt kB/MB/GB/TB vs. KiB/MiB/GiB/TiB und Rechnen ueber Byte.
+- Technik-Gate: unveraendert plausibel. Fuer diesen Pruef-Pass wurden nur
+  Audit-/Queue-Dokumentation geaendert; die im Restaudit dokumentierten Checks
+  waren gruen. Nach Dokumentationsaenderung wurde `npm run emit:status`
+  ausgefuehrt.
+
+Entscheidung: `prefixe` bleibt `geprueft`; Pruef-Warteschlange abgehakt.
+
 ## Detailaudit: zahlensysteme
 
 Datum: 10.06.2026
@@ -860,6 +942,93 @@ Bearbeiter: Codex
 - Naechste Aktion:
   - Kein weiteres MD-Audit als nächster Schritt. Jetzt App-Umbau:
     Audit-/Vertrauensstatus technisch abbilden und in der UI sichtbar machen.
+
+### Re-Audit 2026-07-03 (Restaudit: Benchmark + Aufgabenabgleich)
+
+Bearbeiter: Codex (Arbeits-Chat, Erzeuger-Rolle). Unabhaengiger Pruef-Pass
+steht separat aus (siehe QUEUE.md Abschnitt 2b; `zahlensysteme` ist ein
+Rechen-Kapitel).
+
+Ausgangslage: `zahlensysteme` war oberster offener P0-Punkt in `QUEUE.md`,
+Vertrauen `teilgeprueft`; laut `status.ts` waren Stellenwerte, Umrechnungen
+und Anwendungen bereits auditiert, offen waren Aufgabenabgleich und externer
+Benchmark. Material-Checkliste `material/AP1_Lernplan.md`: Dezimal<->Binaer
+bei IPv4/Subnetting sowie Hexadezimal bei IPv6 bestaetigen die
+Pruefungsnaehe; das Material wurde nicht als Faktenanker verwendet.
+
+#### Quellen-/Benchmark-Matrix
+
+| Bereich | Quellen/Links | Was fachlich folgt | Was unser Kapitel daraus machen muss |
+|---|---|---|---|
+| Offizielle Ausbildungsquellen | FIAusbV §§ 8-9; KMK-Rahmenlehrplan Fachinformatiker/-in; BIBB-Umsetzungshilfe | AP1 prueft das Einrichten eines IT-gestuetzten Arbeitsplatzes in 90 Minuten; LF2/LF3/LF5 tragen Arbeitsplatz-, Client-/Netzwerk- und Softwaregrundlagen. Zahlensysteme sind Werkzeugwissen, kein Selbstzweck. | Als Grundlagen-/Pruefungskapitel behalten; Umfang auf Stellenwert, Umrechnung, Hex/Oktal und Anschluss an IPv4/Linux/Programmierung begrenzen. |
+| Fachliche Primaerquellen | NIST IR 8354; POSIX/GNU `chmod`; RFC 9542; W3C CSS Color 4; RFC 4632; IEEE 754-2019 | NIST stuetzt Stellenwertnotation, 8-Bit-Byte, zwei Hex-Ziffern pro Byte und Kontextabhaengigkeit von Bitstrings; `chmod` nutzt oktale Mode-Bits mit 4/2/1; RFC 9542 stuetzt 48-Bit-MAC/EUI-48; W3C definiert Hex-Farben als sRGB-Komponenten; RFC 4632 stuetzt CIDR-Praefixlaengen; IEEE 754 bleibt Kontext fuer Gleitkomma. | Alle harten Zahlen/Regeln beibehalten; CSS-Quelle intern auf 8-Bit-Komponenten statt "Bytes" praezisieren; IEEE 754 und signed/unsigned nur als Ausblick fuehren. |
+| Serioese Vergleichsangebote | Khan Academy "Binary numbers" (`https://www.khanacademy.org/computing/computer-science/cryptography/comp-number-theory/a/binary-numbers`); Python Language Reference "Integer literals" (`https://docs.python.org/3/reference/lexical_analysis.html#integer-literals`); GNU/Linux-Manpage `chmod(1)` (`https://man7.org/linux/man-pages/man1/chmod.1.html`) | Gute Benchmarks starten mit Stellenwerten, rechnen binaer<->dezimal ueber Potenzen/Reste und behandeln Praefixe wie `0b`/`0o`/`0x` als Lesekonvention. Die chmod-Manpage bestaetigt den Praxisblick auf oktale Rechtebits. | Lernleiter passt: Stellenwert -> Dezimal/Binaer -> Hex/Nibble -> Anwendungen. Programmierliterale bleiben kurzer Anschluss, nicht eigenes Unterkapitel; chmod bleibt Anwendung, nicht Linux-Rechte-Kapitel. |
+| Pruefungs-/Kataloghinweise | QUEUE.md Luecken-Audit; `material/AP1_Lernplan.md` als Themen-Checkliste; interne Themenlandkarte `Grundlage/Pruefung`, Form `Kapitel` | AP1-nahe Aufgabentypen sind Umrechnung Dezimal/Binaer, IPv4-Oktette/CIDR-Verstaendnis, Hex-Lesen und Linux-Rechte; Material nennt besonders IPv4/Subnetting und IPv6-Hex. | Aufgabenabgleich ueber abstrahierte, legale Aufgabentypen dokumentieren; keine kopierten Pruefungsaufgaben oder Aufgabenbloecke in den Lerntext setzen. |
+| Eigene Schlussfolgerung | Abgleich aus Scope, Kapiteltext, Quellenbank, Glossar, Review-Log und Web-Recherche 2026-07-03 | Kapitel deckt den Pflichtkern fachlich korrekt und didaktisch in richtiger Reihenfolge ab. Es braucht keine sichtbare Textausweitung; nur Dokumentation, Status und Quellenbank-Praezisierung. | Vertrauen auf `geprueft` anheben, Pruef-Warteschlange befuellen und unabhaengigen Pruef-Pass abwarten. |
+
+#### Abschnitts-Audit
+
+| Abschnitt | Faktisch belegt? | Ohne Vorwissen verstaendlich? | Reihenfolge/Umfang passend? | Aenderung |
+|---|---|---|---|---|
+| Einstieg/Ziele/Lernleiter | ja, Scope durch Themenlandkarte und Ausbildungsrahmen getragen | ja, Kernidee "verschiedene Schreibweisen fuer dieselbe Zahl" steht zuerst | ja, Lernleiter macht Pflichtkern sichtbar | keine |
+| Stellenwertsystem und Systemueberblick | ja, NIST stuetzt Stellenwertnotation und Basis 2/8/16 | ja, Dezimalbeispiel `305` vor fremden Systemen | ja, Pflichtkern | keine |
+| Umrechnungen Binaer/Dezimal/Hex | ja, Rechnungen selbst geprueft | ja, je Richtung mit Tabelle, Probe und Mini-Selbstcheck | ja, AP1-naher Kern | keine |
+| Hex/Nibble/Byte | ja, NIST stuetzt 8-Bit-Byte und zwei Hex-Ziffern pro Byte | ja, Vierergruppen-Tabelle vorhanden | ja, wichtig fuer MAC/Farbe/IPv4 | keine |
+| Anwendungen MAC/CSS/chmod/IPv4 | ja, RFC 9542, W3C CSS Color 4, `chmod`, RFC 4632 | ja, Anwendungen kommen nach Rechenbasis | ja, Transfer ohne Spezialdetails | Quellenbank-CSS-Detail intern praezisiert |
+| Selbstcheck/Fehlerfallen/Transfer | ja, alle Loesungen nachgerechnet | ja, Loesungen erklaerend statt Aufgabenmodus | ja, kurz genug fuer Kompendium | keine |
+| Ausblick signed/unsigned/Gleitkomma | ja, NIST/IEEE 754 stuetzen Kontextidee | ja, als Ausblick markiert | ja, keine Detailcodierung | keine |
+| Quellen/Glossar | ja, Quellen-IDs und Tags vorhanden | ja, Term-Markierungen am ersten sinnvollen Ort | ja, nicht inflationaer | keine fehlenden Glossareintraege gefunden |
+
+#### Aufgabenabgleich
+
+Legaler Abgleich ohne geschuetzte Aufgabentexte: Der Kapitelstoff loest die
+AP1-nahen Aufgabentypen
+
+- Dezimalzahl in Binaer/Hex umformen (`46_10 = 101110_2`, `192_10 = C0_16`).
+- Binaer/Hex in Dezimal lesen (`11000000_2 = 192_10`, `FF_16 = 255_10`).
+- Hex in Binaer ueber Vierergruppen uebersetzen (`C0_16 = 1100 0000_2`).
+- Linux-Rechte aus oktalen Ziffern lesen (`755 = rwxr-xr-x`, `644 = rw-r--r--`).
+- IPv4-Oktett/CIDR-Bruecke verstehen (`192 = 11000000`, `/24` = 24 Netzbits).
+- Kontextfrage beantworten: Bitmuster erhalten ihre Bedeutung erst durch den
+  Datentyp bzw. Anwendungskontext.
+
+Damit ist der zuvor offene Aufgabenabgleich erfuellt. Das Kapitel bleibt
+Kompendium: keine neuen Aufgabenbloecke, keine kopierten Pruefungsaufgaben.
+
+#### Fakten-Gate (Nachrechnung 2026-07-03)
+
+- `46_10`: Restmethode ergibt Reste `0,1,1,1,0,1`; rueckwaerts `101110_2`.
+  Probe: `32 + 8 + 4 + 2 = 46`.
+- `13_10 = 1101_2`; als 8-Bit-Oktett `00001101_2`.
+- `11000000_2 = 128 + 64 = 192`.
+- `192_10 / 16 = 12 Rest 0`, `12 = C`; also `C0_16`.
+- `FF_16 = 15 * 16 + 15 = 255`.
+- `C0_16 = 1100 0000_2 = 192_10`.
+- `#FF8000`: `FF=255`, `80=128`, `00=0`; drei sRGB-8-Bit-Komponenten.
+- `chmod 755`: `7=4+2+1=rwx`, `5=4+1=r-x`, `5=r-x`.
+- `chmod 644`: `6=4+2=rw-`, `4=r--`, `4=r--`.
+- IPv4 `/24`: 24 Netzbits entsprechen drei vollen 8-Bit-Oktetten;
+  Maske `11111111.11111111.11111111.00000000 = 255.255.255.0`.
+
+#### Gate-Entscheidung
+
+- Scope-Gate: bestanden. Themenlandkarte fuehrt `Zahlensysteme` als
+  `Grundlage/Pruefung`, Form `Kapitel`.
+- Quellen-Gate: bestanden. Ausbildungsquellen, fachliche Primaerquellen,
+  Vergleichsangebote und Pruefungs-/Themenhinweise sind dokumentiert.
+- Fakten-Gate: bestanden. Harte Aussagen und Rechnungen wurden vollstaendig
+  nachgerechnet und gegen Primaerquellen plausibilisiert.
+- Didaktik-Gate: bestanden. Einstieg, Reihenfolge, Beispiele, Fehlerfallen und
+  Transfer funktionieren fuer Lernende ohne Vorwissen.
+- Aufgaben-Gate: bestanden. Die dokumentierten AP1-nahen Umrechnungs-,
+  chmod- und IPv4/CIDR-Aufgabentypen sind aus dem Kapitel loesbar.
+- Umfangs-Gate: bestanden. Zweierkomplement, IEEE-754-Detailcodierung,
+  MAC-Vergabedetails und komplettes Subnetting bleiben bewusst ausserhalb.
+- Technik-Gate: siehe technische Checks im Abschluss dieses Arbeits-Chats.
+
+Statuswechsel: `zahlensysteme` von `teilgeprueft` auf `geprueft`. Weil es ein
+Rechen-Kapitel ist, wurde es in QUEUE.md Abschnitt 2b fuer den unabhaengigen
+Pruef-Pass eingetragen.
 
 ## Detailaudit: datenrate-berechnung
 
@@ -2275,11 +2444,317 @@ Bearbeiter: Codex
   - `datenrate-berechnung` als nächstes Kapitel nachziehen, weil es direkt auf
     dem hier geprüften Rechenfundament aufbaut.
 
+## Detailaudit: docs/PLAN_RECHENWEG.md
+
+Datum: 03.07.2026
+Bearbeiter: Codex
+
+### Scope
+
+- Thema: Technischer Plan zur Entfernung der alten Rechenweg-Komponenten:
+  `<Rechenweg>`, `<StepByStep>`, `<Schritt>` und `<Ergebnis>`.
+- AP1-Relevanz: kein Fachkapitel, aber P0-Blocker vor weiterer breiter
+  Kapitelarbeit. Die Inhalte der Rechenwege mussten ohne Inhaltsverlust in
+  normales MDX überführt werden, damit die Kompendiumstexte unabhängig von
+  zwei konkurrierenden Komponenten-APIs funktionieren.
+- Form: technischer Plan, kein neues Kapitel und kein Vertrauensstatus.
+
+### Quellen-/Benchmark-Matrix
+
+| Bereich | Quellen/Links | Was fachlich folgt | Was unser Kapitel daraus machen muss |
+|---|---|---|---|
+| Offizielle Ausbildungsquellen | Projektregel `PROJEKT.md`, besonders Arbeitsablauf und Technik-Gates; Queue-P0-Eintrag in `QUEUE.md`. | Der Queue-Eintrag ist bindend; genau dieser technische Plan wird bearbeitet, ohne neue Kapitel oder Roadmaps zu erfinden. | Nur `docs/PLAN_RECHENWEG.md` umsetzen; keine fachliche Neubewertung der 40 betroffenen Kapitel. |
+| Fachliche Primärquellen | MDX Docs: `https://mdxjs.com/docs/using-mdx/`; React Docs: `https://react.dev/learn/passing-props-to-a-component`; Vite Build Docs: `https://vite.dev/guide/build`. | MDX wird zu Komponenten/JSX kompiliert; Custom Components werden über die Component Map bereitgestellt. React-Komponenten erhalten Props und `children`; wenn die Komponenten nicht mehr registriert/importiert sind, dürfen ihre JSX-Tags nicht mehr im MDX stehen. Vite/Build ist der technische Endnachweis. | Alle alten Custom-Component-Tags im Lesson-MDX entfernen, Inhalte als Markdown/MDX erhalten, Provider-Registry entkoppeln und Build grün halten. |
+| Seriöse Vergleichsangebote | Interner Benchmark `docs/PLAN_RECHENWEG.md`, Abschnitt 4 Transformations-Vorlagen; lokale Code-Realität in `src/components/mdx/MDXProvider.tsx` und Komponenten-Dateien. | Die alte Props-API und Children-API sind unterschiedliche Oberflächen für denselben Zweck. Plain MDX ist als Zwischenstand ausdrücklich vorgesehen. | Props-API in fett gesetzte Überschrift, nummerierte Teilschritte, Codeblock für `formula` und Erklärung überführen; Children-API-Hüllen entfernen und Kinder deindented als normales MDX stehen lassen. |
+| Prüfungs-/Kataloghinweise | Nicht anwendbar: technischer Refactor ohne neue Lerninhalte. | Kein unabhängiger Fach-Prüfpass aus Abschnitt 2b nötig, weil kein Kapitel inhaltlich auditiert oder auf `geprüft` gehoben wurde. | In der Queue dokumentieren, dass kein neues Fachkapitel in die Prüf-Warteschlange kommt. |
+| Eigene Schlussfolgerung | Code-Greps, Lint, Test, Build. | Sicheres Ergebnis ist: keine alten Tags in `src/content/lessons`, keine Registrierung/Komponentendateien mehr, App baut. | 40 MDX-Dateien mechanisch migrieren, 3 Komponenten löschen, Provider bereinigen, technische Gates ausführen. |
+
+### Abschnitts-Audit
+
+- Inventar: `rg -l "<(Rechenweg|StepByStep|Schritt|Ergebnis)\b"
+  src/content/lessons` bestätigte 40 betroffene Lesson-Dateien; `rg -l
+  "<Rechenweg\b"` bestätigte 12 Props-API-Dateien wie im Plan.
+- Props-API: Alle `title`-, `formula`- und `explanation`-Werte wurden in
+  normales MDX überführt. `formula` steht als Codeblock; `\n` in Formeln wurde
+  zu echten Zeilenumbrüchen.
+- Children-API: `<StepByStep titel="...">` wurde zu `**Rechenweg: ...**`,
+  `<Schritt nr={N} titel="...">` zu `**Schritt N — ...**`, `<Ergebnis>` zu
+  `**Ergebnis**`. Die Kinder wurden deindented, damit Markdown sie nicht als
+  eingerückte Codeblöcke interpretiert.
+- Provider/Code: `src/components/mdx/MDXProvider.tsx` importiert und
+  registriert die vier alten Komponentennamen nicht mehr. Gelöscht wurden
+  `src/components/mdx/Rechenweg.tsx`,
+  `src/components/content/StepByStep.tsx` und
+  `src/components/content/Schritt.tsx`.
+- Nicht verändert: Quellenbank, Glossar, Auditstatus und fachliche Aussagen
+  der Kapitel wurden nicht neu bewertet. Der sichtbare Lerntext erhielt nur die
+  technische Hüllen-zu-MDX-Migration.
+
+### Fakten-/Technikcheck
+
+1. `rg -n "<(Rechenweg|StepByStep|Schritt|Ergebnis)\b" src/content/lessons`
+   liefert 0 Treffer.
+2. `rg -n "^  \*\*(Schritt|Ergebnis|Rechenweg:)" src/content/lessons`
+   liefert 0 Treffer; gehobene Überschriften sind nicht mehr eingerückt.
+3. `npm.cmd run lint` läuft mit Exit 0.
+4. `npm.cmd run test` läuft mit Exit 0: 4 Testdateien, 56 Tests bestanden.
+5. `npm.cmd run build` läuft mit Exit 0; der Prebuild-Konsistenzwächter meldet
+   "Ergebnis: konsistent", danach `tsc -b && vite build` erfolgreich.
+
+### Entscheidung
+
+- Vertrauen: n/a, technischer Plan.
+- Grund: Der P0-Plan wurde vollständig umgesetzt; es gibt keine alten
+  Rechenweg-/StepByStep-MDX-Tags und keine zugehörigen Komponenten mehr.
+- Noetige Aenderungen:
+  - Erledigt: 40 betroffene Lesson-MDX-Dateien auf plain MDX migriert.
+  - Erledigt: Provider-Registry bereinigt.
+  - Erledigt: drei alte Komponentendateien gelöscht.
+  - Erledigt: technische Gates grün.
+- Naechste Aktion:
+  - `datenrate-berechnung` als nächster Queue-Eintrag auditieren.
+
+## Restaudit: datenrate-berechnung
+
+Datum: 03.07.2026
+Bearbeiter: Codex
+
+### Scope-Gate
+
+- Themenlandkarte: `INHALTSVERZEICHNIS_JAHR_1_2.md` führt "Datenrate und
+  Datenvolumen" in der Grundlagenkette. `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md`
+  setzt das Thema auf D3/P1: Datenmenge, Datenrate, Zeit, Brutto/Netto mit
+  gegebenem Wirkungsgrad.
+- Entscheidung: behalten. Bezug `Grundlage/Pruefung`, Form `Kapitel`, Mapping
+  in `CURRICULUM_MAPPING.md` ist bereits passend.
+- Abgrenzung: `datenvolumen-berechnung` ist das breite Sammelkapitel inklusive
+  Scan/Bild/Video; `datenrate-berechnung` bleibt der kurze Rechenanker fuer
+  Uebertragungszeit, Backupfenster und Brutto/Netto.
+
+### Quellen-/Benchmark-Matrix
+
+| Bereich | Quellen/Links | Was fachlich folgt | Was unser Kapitel daraus machen muss |
+|---|---|---|---|
+| Offizielle Ausbildungsquellen | FIAusbV §§ 8-9; KMK-Rahmenlehrplan Fachinformatiker/-in; BIBB-Umsetzungshilfe; `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md` | AP1 prueft den IT-gestuetzten Arbeitsplatz in 90 Minuten; LF2/LF3 decken Hardwareauswahl, Datenmengen und Clients in Netzwerken ab. | Als Pflicht-Grundlagenkapitel behalten, aber eng auf AP1-nahe Rechen- und Bewertungsfaelle begrenzen. |
+| Fachliche Primärquellen | BIPM SI Prefixes; NIST Binary Prefixes; IEC 80000-13; RFC 9293 TCP | k/M/G/T sind dezimal; Ki/Mi/Gi sind binaer; 1 Byte = 8 Bit; TCP trennt Header/Optionen/Nutzdaten, daher ist Nutzdatenrate nicht die physische Bruttorate. | Bit/Byte, 1000/1024 und Brutto/Netto belegen; keine unbewiesenen festen Netto-Prozentwerte lehren. |
+| Seriöse Vergleichsangebote | BSI WLAN/LAN-Grundlagen; IT-Berufe-/Berufsschulvergleich intern ueber vorhandene Kapitel `bit-byte`, `prefixe`, `datenvolumen-berechnung` | Lernende brauchen zuerst Einheiten, dann Formelkreis, dann Beispiele mit Interpretation. WLAN/Internet sind Praxisfaelle, aber ohne feste Norm-Prozentwerte. | Reihenfolge beibehalten; Netto-Spannen durch klare Regel ersetzen: nur genannte Wirkungsgrade rechnen, sonst ideal rechnen und Realitaetsvorbehalt nennen. |
+| Prüfungs-/Kataloghinweise | `material/AP1_Lernplan.md` nur als Themen-Checkliste; `QUEUE.md` Luecken-Audit; interne Dichte-Matrix | Dateigroessen/Speicherrechnen sind hohe Prioritaet; Uebertragungsraten werden typischerweise dezimal behandelt; Rechenweg bringt Teilpunkte. | Aufgaben-Gate ueber abstrakte AP1-nahe Typen: Downloadzeit, benoetigte Datenrate, maximale Datenmenge, Backupfenster, Brutto/Netto. |
+| Eigene Schlussfolgerung | Abschnitts-Audit und Nachrechnung 03.07.2026 | Der alte Blocker waren unbelegte Netto-Daumenregeln, nicht die Kernformeln. | Kapitel auf `geprueft` anheben, weil Blocker entfernt, alle Zahlen nachgerechnet und Pruef-Pass in Abschnitt 2b eingetragen wird. |
+
+### Abschnitts-Audit
+
+| Abschnitt | Befund | Aktion |
+|---|---|---|
+| Einstieg und Ziele | Ohne Vorwissen verstaendlich; Projektlabels nur in `MetaBar`, kein Verwaltungs-Vorspann. | Beibehalten. |
+| Berufskontext/Analogie | Traegt: Datenmenge, Bandbreite, Durchsatz, Latenz werden sauber getrennt. | Umlaute/Schreibung korrigiert. |
+| Einheiten | Bit/Byte, b/B, dezimal/binaer sind quellenbasiert und in richtiger Reihenfolge. | Beibehalten; sichtbare `ss`-Ersatzstellen korrigiert. |
+| Grundformeln | Dimensionslogisch korrekt und reproduzierbar. | Beibehalten. |
+| Standardweg | Inhalt richtig, aber alter `<Schritte>`-Block passte nicht zum abgeschlossenen P0-Plan "plain MDX". | In plain MDX als nummerierte Liste umgebaut. |
+| Brutto/Netto | Formel korrekt; alte Prozent-Spannen waren nur weiche Orientierung und nicht belastbar genug fuer `geprueft`. | Prozent-Tabelle entfernt; klare Regel ergaenzt: nur genannten Wirkungsgrad rechnen, sonst ideal rechnen und Realitaetsvorbehalt nennen. |
+| Beispiele A-E | Alle Rechnungen stimmen; Beispiele decken Zeit, Rate, Menge und Brutto/Netto ab. | Beibehalten. |
+| Fehlerfallen/Strategie/Mini-Check | AP1-nah, keine verbotene Pruefungssimulation; Mini-Check direkt geloest. | Beibehalten; `binaer` -> `binär`. |
+| Planungsszenario | Nützlich als durchgerechnetes Beispiel; alter Titel "Pruefungsaufgabe" war didaktisch unnoetig nah am Aufgabenmodus. | In "komplettes Planungsszenario" umbenannt. |
+| Quellen/Glossar | Quellenliste enthielt fachliche Anker, aber NIST fehlte sichtbar und RFC 9110 war fuer diesen Fokus weniger passend als RFC 9293. | Quellenliste auf IEC, BIPM, KMK, NIST und RFC 9293 angepasst. |
+
+### Fakten-Gate
+
+1. `1 Byte = 8 Bit`: NIST Binary Prefixes bestaetigt `1 B = 2^3 bit = 8 bit`.
+2. `100 Mbit/s / 8 = 12,5 MB/s`: korrekt, weil `Mbit` und `MB` beide dezimal
+   mit `10^6` gerechnet werden und nur Bit/Byte durch 8 umgerechnet wird.
+3. `2 GB = 2000 MB`; `2000 MB / 12,5 MB/s = 160 s`: korrekt.
+4. `200 Mbit/s * 0,80 = 160 Mbit/s`; `160 / 8 = 20 MB/s`;
+   `600.000 MB / 20 MB/s = 30.000 s = 8 h 20 min`: korrekt.
+5. `45 GB / 30 min = 25 MB/s = 200 Mbit/s`; bei 80 Prozent Wirkungsgrad
+   `200 / 0,80 = 250 Mbit/s` brutto: korrekt.
+6. `95 MB/s * 7200 s = 684.000 MB = 684 GB`: korrekt.
+7. `866 Mbit/s * 0,55 = 476,3 Mbit/s`; `476,3 / 8 = 59,5375 MB/s`;
+   `12.000 / 59,5375 = 201,55 s`, also ca. 3 min 22 s: korrekt.
+8. Planungsszenario: `100 * 0,70 = 70 Mbit/s`; `70 / 8 = 8,75 MB/s`;
+   `180.000 / 8,75 = 20.571,43 s`; `/ 3600 = 5,714 h`, also ca. 5 h 43 min:
+   korrekt.
+9. BIPM bestaetigt `k=10^3`, `M=10^6`, `G=10^9`, `T=10^12`; NIST bestaetigt
+   `Ki=2^10`, `Mi=2^20`, `Gi=2^30`.
+10. Brutto ungleich Netto ist fachlich gestuetzt: RFC 9293 trennt TCP-Header,
+    Optionen und variable Nutzdaten. Das Kapitel leitet daraus keine festen
+    Prozentwerte mehr ab.
+
+### Didaktik-Gate
+
+- Ohne Vorwissen verstaendlich: ja. Die Lernleiter ist Datenmenge/Zeit/Rate,
+  dann Einheiten, dann Formelkreis, dann Praxisbeispiele.
+- Richtige Reihenfolge: ja. Bit/Byte und dezimal/binaer stehen vor den
+  Umstellungen; Brutto/Netto kommt vor Backup- und WLAN-Beispielen.
+- Fehlerfallen: ja. b/B, 1000/1024, Brutto/Netto, Minuten/Sekunden, Rundung,
+  asymmetrischer Upload/Download und Latenz sind direkt adressiert.
+- Keine verbotenen Aufgabenmodi: ja. Der Mini-Check ist direkt geloest; das
+  grosse Beispiel ist ein erklaertes Planungsszenario, keine Simulation.
+
+### Aufgaben-Gate
+
+- Loesbare AP1-nahe Aufgabentypen nach dem Kapitel:
+  - Download-/Uploadzeit aus Datenmenge und Datenrate berechnen.
+  - benoetigte Datenrate fuer ein Zeitfenster berechnen.
+  - maximal uebertragbare Datenmenge in einem Wartungsfenster berechnen.
+  - Brutto-/Nettodatenrate mit gegebenem Wirkungsgrad anwenden.
+  - Backupfenster knapp bewerten und Reserve/Schwankungen nennen.
+- Materialabgleich: `material/AP1_Lernplan.md` wurde nur als Checkliste genutzt
+  und nennt Dateigroessen/Speicher berechnen sowie Uebertragungsraten als
+  relevante Rechenfalle; keine Fakten wurden daraus uebernommen.
+
+### Umfangs-Gate
+
+- Pflicht: Bit/Byte, Faktor 8, SI-/IEC-Praefixe, Formelkreis, Zeitumrechnung,
+  Brutto/Netto mit gegebenem Wirkungsgrad, Ergebnisinterpretation.
+- Kann: Backupfenster bewerten, WLAN-Bruttorate als nicht garantierte
+  Dateiuebertragung einordnen, Reserve nennen.
+- Extra/Raus: TCP-MSS/MTU-Detailrechnung, TCP-Fenster, Shannon-Theorem,
+  echte WLAN-Durchsatzmodellierung, feste Netto-Prozenttabellen.
+
+### Technik-Gate
+
+- `npm run lint`: nach Abschluss auszufuehren.
+- `npm run test`: nach Abschluss auszufuehren.
+- `npm run build`: nach Abschluss auszufuehren.
+- `npm run emit:status`: nach Statusaenderung auszufuehren.
+
+### Entscheidung
+
+- Vertrauen: `geprueft`.
+- Grund: Scope, Quellen, Fakten, Didaktik, Aufgaben- und Umfangs-Gate sind
+  dokumentiert; der bisherige Blocker der unbelegten Netto-Daumenregeln wurde
+  entfernt; alle Rechnungen wurden nachgerechnet.
+- Noetige Aenderungen:
+  - Erledigt: Netto-Prozenttabelle entfernt und durch belastbare Rechenregel
+    ersetzt.
+  - Erledigt: alter `<Schritte>`-Block in plain MDX umgebaut.
+  - Erledigt: Quellenliste sichtbar um NIST Binary Prefixes und RFC 9293
+    geschaerft.
+  - Erledigt: `src/lib/audit/status.ts` auf `geprueft` angehoben.
+- Naechste Aktion:
+  - Unabhaengiger Pruef-Pass fuer `datenrate-berechnung` (Rechen-Kapitel)
+    laut `QUEUE.md` Abschnitt 2b.
+
+## Restaudit: ipv4-subnetting
+
+Datum: 03.07.2026
+Bearbeiter: Codex
+
+### Scope-Gate
+
+- Themenlandkarte: `INHALTSVERZEICHNIS_JAHR_1_2.md` fuehrt IPv4-Grundlagen
+  und Subnetting in LF3 als `Lehrplan/Pruefung`, Form `Kapitel`.
+- Dichte-Matrix: `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md` setzt
+  IPv4-Grundlagen und Subnetting auf D3-D4/P1; raus bleiben historische Klassen
+  tief, VLSM und Route-Summarization.
+- Entscheidung: behalten. Das Kapitel ist Pflichtgrundlage fuer
+  Client-Konfiguration, Gateway-Pruefung, DHCP/DNS-Diagnose und einfache
+  Netzplanung.
+
+### Quellen-/Benchmark-Matrix
+
+| Bereich | Quellen/Links | Was fachlich folgt | Was unser Kapitel daraus machen muss |
+|---|---|---|---|
+| Offizielle Ausbildungsquellen | FIAusbV §§ 8-9; KMK-Rahmenlehrplan Fachinformatiker/-in, LF3 "Clients in Netzwerke einbinden"; BIBB-Umsetzungshilfe | AP1 prueft das Einrichten eines IT-gestuetzten Arbeitsplatzes; LF3 fordert das Einbinden von Clients in Netzwerke. IPv4/Subnetting ist Werkzeugwissen fuer Konfiguration und Fehlersuche, kein Routing-Spezialkurs. | Kapitel behalten, Umfang auf Adresse, Maske, CIDR, Netz/Broadcast/Hostbereich und Gateway-Plausibilitaet begrenzen. |
+| Fachliche Primaerquellen | RFC 791; RFC 4632; RFC 1918; RFC 3021; IANA IPv4 Special-Purpose Address Registry | IPv4 nutzt 32-Bit-Adressen; CIDR beschreibt Praefixlaengen 0-32, Adressen pro Block als Zweierpotenzen und `/31` als p2p-Sonderfall; RFC 1918/IANA stuetzen private Bereiche. | Harte Fakten, Tabellen und Sonderfaelle beibehalten; `-2`-Regel klar auf normale LAN-/Client-Subnetze begrenzen. |
+| Serioese Vergleichsangebote | Interner Benchmark gegen `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md`; bestehende Kapitel `zahlensysteme`, `netzwerkkonfiguration`, `port-forwarding`; Subnetting-Didaktik aus RFC 4632-Tabelle der Blockgroessen | Gute Lernleiter: erst 32 Bit/Oktette, dann Praefix und Hostbits, dann Blockgroesse, dann Netz/Broadcast/Hosts, danach Gateway und Sonderfaelle. | Reihenfolge bleibt; Mini-Selbstcheck direkt geloest ergaenzt; keine tiefe Enterprise-Adressplanung. |
+| Pruefungs-/Kataloghinweise | QUEUE.md Luecken-Audit; `material/AP1_Lernplan.md` nur als Themen-Checkliste | Material nennt CIDR, Netzadresse, Broadcast, ersten/letzten Host und Dezimal/Binaer-Umrechnung; Subnetting ist als hoher AP1-Frequenzbereich notiert. | Aufgaben-Gate ueber legale, abstrahierte Aufgabentypen dokumentieren; keine Originalaufgaben und keine Pruefungssimulation in den Lerntext setzen. |
+| Eigene Schlussfolgerung | Abgleich aus Scope, Kapitel, Glossar, Quellenbank, Web-Recherche und Nachrechnung 2026-07-03 | Der fachliche Kern ist stabil; der alte Blocker "Aufgabenabgleich fehlt" ist durch abstrahierte Aufgabentypen plus Rechenproben geschlossen. | Vertrauen auf `geprueft` anheben und als Rechen-Kapitel in die unabhaengige Pruef-Warteschlange eintragen. |
+
+### Abschnitts-Audit
+
+| Abschnitt | Belegt? | Ohne Vorwissen? | Umfang passend? | Aenderung |
+|---|---|---|---|---|
+| Einstieg/Kernidee | ja, RFC 4632 stuetzt Netz-/Hostbits und Praefixdenken | ja, konkretes Fehlbeispiel `192.168.10.130/26` | ja | keine |
+| Grundlagen | ja, RFC 791/RFC 4632 | ja, 32 Bit, Oktett, CIDR, Netz-/Hostanteil vor Rechnung | ja | Quellen-Tags um Ausbildungsquellen ergaenzt |
+| Schritt-fuer-Schritt-Rechnung `/26` | ja, nachgerechnet | ja, Hostbits -> Blockgroesse -> Maske -> bitweises UND | ja | keine |
+| Methode/Referenz | ja, RFC 4632 Blockgroessen | ja, reproduzierbare Schrittfolge und Tabelle | ja, `/24`-`/30` als AP1-Kern | keine |
+| Beispiele/Gateway | ja, rechnerisch geprueft | ja, Blockfinden, Netzgroesse, Gatewayfehler | ja | direkt geloester Mini-Check ergaenzt |
+| Fehlerfallen/Erweitert | ja, RFC 1918/RFC 3021/IANA | ja, Sonderfaelle erst nach Kernverfahren | ja | keine |
+| Quellen/Glossar | ja, Term-IDs vorhanden und Quellenbank-Tags gepflegt | ja | ja | Mapping `CURRICULUM_MAPPING.md` fuer das vorhandene Kapitel ergaenzt |
+
+### Fakten-Gate
+
+1. IPv4-Quell- und Zieladresse sind je 32 Bit: RFC 791.
+2. CIDR-Praefixnotation nutzt Slash plus Dezimalwert 0 bis 32: RFC 4632.
+3. `/26` hat `32 - 26 = 6` Hostbits und `2^6 = 64` Adressen: RFC 4632-Logik,
+   eigene Nachrechnung.
+4. `192.168.10.130/26` liegt im Block `.128-.191`: 64er-Bloecke im letzten
+   Oktett; `130 AND 192 = 128`.
+5. `/26` entspricht `255.255.255.192`: `11000000_2 = 192`.
+6. Fuer normale LAN-Subnetze sind Netzadresse und Broadcast nicht normale
+   Hostadressen; bei `/26` bleiben `64 - 2 = 62` nutzbare Hosts.
+7. `10.5.8.77/27`: 5 Hostbits, Blockgroesse 32, Block `.64-.95`, erster Host
+   `.65`, letzter Host `.94`, Broadcast `.95`: nachgerechnet.
+8. 30 Clients brauchen mindestens 5 Hostbits: `2^4 - 2 = 14`, `2^5 - 2 = 30`,
+   also kleinstes Praefix `/27`.
+9. Gateway-Beispiel `172.16.4.200/25` mit Gateway `.1` ist falsch:
+   Client liegt in `.128-.255`, Gateway in `.0-.127`.
+10. Private IPv4-Bereiche sind `10.0.0.0/8`, `172.16.0.0/12`,
+    `192.168.0.0/16`: RFC 1918/IANA.
+11. `/31` ist fuer Punkt-zu-Punkt-Links ein Sonderfall mit zwei Hostadressen:
+    RFC 3021; fuer normale Client-/LAN-Netze bleibt die `-2`-Regel.
+12. Neuer Mini-Check `192.168.20.78/28`: 4 Hostbits, 16 Adressen, Block
+    `.64-.79`, Hosts `.65-.78`, Broadcast `.79`, 14 nutzbare Hosts: korrekt.
+
+### Didaktik-Gate
+
+- Ohne Vorwissen verstaendlich: ja. Das Kapitel startet mit einem konkreten
+  Adressierungsproblem und fuehrt Begriffe vor der Rechnung ein.
+- Richtige Reihenfolge: ja. Oktett/CIDR/Hostbits kommen vor Maske, UND,
+  Blockgroesse, Hostbereich und Gateway.
+- Fehlerfallen: ja. Gesamtadressen vs. nutzbare Hosts, Broadcast als Host,
+  Netzadresse als Client, falsches Gateway, Klassen-Denken und Magic Number
+  ohne Logik sind direkt am Stoff platziert.
+- Keine verbotenen Aufgabenmodi: ja. Der neue Selbstcheck ist direkt geloest
+  und erklaerend; keine kopierten Pruefungsaufgaben, kein Quizblock.
+
+### Aufgaben-Gate
+
+Loesbare AP1-nahe Aufgabentypen nach dem Kapitel:
+
+- CIDR-Praefix in Hostbits, Blockgroesse und Subnetzmaske uebersetzen.
+- Netzadresse, ersten Host, letzten Host, Broadcast und nutzbare Hostzahl
+  berechnen.
+- Kleinstes passendes Subnetz fuer eine gegebene Hostanzahl waehlen.
+- Gateway-Plausibilitaet pruefen: gleicher oder anderer IPv4-Block.
+- Private IPv4-Bereiche erkennen und `/31`/`/32` als Sonderfaelle abgrenzen.
+
+Materialabgleich: `material/AP1_Lernplan.md` wurde nur als Checkliste genutzt
+und nennt Dezimal/Binaer, CIDR, Netzadresse, Broadcast und ersten/letzten Host
+als relevante Punkte; keine Fakten wurden daraus uebernommen.
+
+### Umfangs-Gate
+
+- Pflicht: IPv4 32 Bit/vier Oktette, CIDR, Subnetzmaske, Hostbits,
+  Blockgroesse, Netzadresse, Broadcast, Hostbereich, Gateway im selben Subnetz,
+  private IPv4-Bereiche.
+- Kann: bitweises UND, `/31` und `/32`, VLAN-Abgrenzung als Transfer.
+- Extra/Raus: VLSM-/Summarization-Tiefe, historische Klassen als Lernschwerpunkt,
+  Routing-Protokolle, Enterprise-Adressplanung.
+
+### Technik-Gate
+
+- `npm run lint`: nach Abschluss auszufuehren.
+- `npm run test`: nach Abschluss auszufuehren.
+- `npm run build`: nach Abschluss auszufuehren.
+- `npm run emit:status`: nach Statusaenderung auszufuehren.
+
+### Entscheidung
+
+- Vertrauen: `geprueft`.
+- Grund: Scope, Quellen, Fakten, Didaktik, Aufgaben- und Umfangs-Gate sind
+  dokumentiert; alle Rechnungen im Kapitel wurden nachgerechnet.
+- Noetige Aenderungen:
+  - Erledigt: direkt geloester Mini-Selbstcheck ergaenzt.
+  - Erledigt: Quellen-Tags um FIAusbV/KMK/BIBB ergaenzt.
+  - Erledigt: `CURRICULUM_MAPPING.md` um das vorhandene Kapitel ergaenzt.
+  - Erledigt: `src/lib/audit/status.ts` auf `geprueft` angehoben.
+- Naechste Aktion:
+  - Unabhaengiger Pruef-Pass fuer `ipv4-subnetting` (Rechen-Kapitel) laut
+    `QUEUE.md` Abschnitt 2b.
+
 ## Nächster Schritt
 
-Nächstes Queue-Kapitel: `datenrate-berechnung` als Rechen-/Netzkapitel.
-Alternativ, wenn legale AP1-/U-Form-Aufgaben vorliegen: Aufgabenabgleich für
-`ipv6-grundlagen`, `port-forwarding`, `firewall-dmz`, `wlan-standards`,
-`homeoffice-ergonomie`/Barrierefreiheit, `osi-modell` oder `tcp-udp`
-durchführen. Die Kapitel werden weiter nach Matrix abgearbeitet: P1 vor P2,
-danach P3/Parken.
+Nächstes Queue-Kapitel: `netzwerkkonfiguration` als P1-Netzwerkkapitel.
+Die Kapitel werden weiter nach Matrix abgearbeitet: P1 vor P2, danach
+P3/Parken.

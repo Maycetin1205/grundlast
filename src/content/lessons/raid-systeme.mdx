@@ -58,58 +58,75 @@ Bränden oder Hackerangriffen. Ein separates Backup bleibt zwingend erforderlich
 
 ## Beispiele – Schritt für Schritt
 
-<Rechenweg
-  title="Nutzbare Kapazität: RAID 1 mit 2 × 2 TB"
-  steps={[
-    {
-      title: "RAID-Level verstehen",
-      formula: "RAID 1 = Mirroring\nJede Platte ist eine vollständige Kopie der anderen.",
-      explanation: "Bei RAID 1 liegen auf beiden Platten exakt dieselben Daten. Fällt eine aus, läuft das System ohne Datenverlust weiter."
-    },
-    {
-      title: "Formel anwenden",
-      formula: "Nutzbar = Größe EINER Platte\nNutzbar = 2 TB",
-      explanation: "Die zweite Platte ist der Spiegel — sie stellt keinen zusätzlichen Speicher bereit. Von 4 TB Rohkapazität sind 2 TB nutzbar."
-    }
-  ]}
-/>
+**Nutzbare Kapazität: RAID 1 mit 2 × 2 TB**
 
-<Rechenweg
-  title="Nutzbare Kapazität: RAID 5 mit 4 × 2 TB"
-  steps={[
-    {
-      title: "Formel merken",
-      formula: "Nutzbar = (n − 1) × Plattengröße",
-      explanation: "Bei RAID 5 wird das Äquivalent einer Platte für Paritätsdaten verwendet. Diese Parität ist verteilt — nicht auf einer festen Platte, aber die Gesamtkapazität entspricht n−1 Platten."
-    },
-    {
-      title: "Einsetzen",
-      formula: "n = 4 Platten, Plattengröße = 2 TB\nNutzbar = (4 − 1) × 2 TB\nNutzbar = 3 × 2 TB = 6 TB",
-      explanation: "Von 8 TB Rohkapazität sind 6 TB nutzbar. 2 TB gehen für die Parität weg."
-    },
-    {
-      title: "Ergebnis prüfen",
-      formula: "Rohkapazität: 4 × 2 TB = 8 TB\nNutzbar:      6 TB\nOverhead:     2 TB (25 %)",
-      explanation: "25 % Overhead für Sicherheit — deutlich besser als RAID 1 mit 50 % Overhead. Dafür darf nur 1 Platte ausfallen, nicht 2."
-    }
-  ]}
-/>
+**1. RAID-Level verstehen**
 
-<Rechenweg
-  title="Nutzbare Kapazität: RAID 6 mit 6 × 4 TB"
-  steps={[
-    {
-      title: "Formel für RAID 6",
-      formula: "Nutzbar = (n − 2) × Plattengröße",
-      explanation: "RAID 6 speichert doppelte Parität. Zwei Platten dürfen gleichzeitig ausfallen — deshalb gehen zwei Plattenäquivalente für Parität weg."
-    },
-    {
-      title: "Einsetzen",
-      formula: "n = 6, Plattengröße = 4 TB\nNutzbar = (6 − 2) × 4 TB\nNutzbar = 4 × 4 TB = 16 TB",
-      explanation: "Von 24 TB Rohkapazität sind 16 TB nutzbar. 8 TB (2 Platten) gehen für doppelte Parität weg."
-    }
-  ]}
-/>
+```
+RAID 1 = Mirroring
+Jede Platte ist eine vollständige Kopie der anderen.
+```
+
+Bei RAID 1 liegen auf beiden Platten exakt dieselben Daten. Fällt eine aus, läuft das System ohne Datenverlust weiter.
+
+**2. Formel anwenden**
+
+```
+Nutzbar = Größe EINER Platte
+Nutzbar = 2 TB
+```
+
+Die zweite Platte ist der Spiegel — sie stellt keinen zusätzlichen Speicher bereit. Von 4 TB Rohkapazität sind 2 TB nutzbar.
+
+**Nutzbare Kapazität: RAID 5 mit 4 × 2 TB**
+
+**1. Formel merken**
+
+```
+Nutzbar = (n − 1) × Plattengröße
+```
+
+Bei RAID 5 wird das Äquivalent einer Platte für Paritätsdaten verwendet. Diese Parität ist verteilt — nicht auf einer festen Platte, aber die Gesamtkapazität entspricht n−1 Platten.
+
+**2. Einsetzen**
+
+```
+n = 4 Platten, Plattengröße = 2 TB
+Nutzbar = (4 − 1) × 2 TB
+Nutzbar = 3 × 2 TB = 6 TB
+```
+
+Von 8 TB Rohkapazität sind 6 TB nutzbar. 2 TB gehen für die Parität weg.
+
+**3. Ergebnis prüfen**
+
+```
+Rohkapazität: 4 × 2 TB = 8 TB
+Nutzbar:      6 TB
+Overhead:     2 TB (25 %)
+```
+
+25 % Overhead für Sicherheit — deutlich besser als RAID 1 mit 50 % Overhead. Dafür darf nur 1 Platte ausfallen, nicht 2.
+
+**Nutzbare Kapazität: RAID 6 mit 6 × 4 TB**
+
+**1. Formel für RAID 6**
+
+```
+Nutzbar = (n − 2) × Plattengröße
+```
+
+RAID 6 speichert doppelte Parität. Zwei Platten dürfen gleichzeitig ausfallen — deshalb gehen zwei Plattenäquivalente für Parität weg.
+
+**2. Einsetzen**
+
+```
+n = 6, Plattengröße = 4 TB
+Nutzbar = (6 − 2) × 4 TB
+Nutzbar = 4 × 4 TB = 16 TB
+```
+
+Von 24 TB Rohkapazität sind 16 TB nutzbar. 8 TB (2 Platten) gehen für doppelte Parität weg.
 
 ---
 

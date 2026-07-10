@@ -1,5 +1,4 @@
 import { MDXProvider } from '@mdx-js/react'
-import Rechenweg from './Rechenweg'
 import Term from '../content/Term'
 import Analogie from '../content/Analogie'
 import Tipp from '../content/Tipp'
@@ -12,8 +11,6 @@ import Glossar from '../content/Glossar'
 import Quellen from '../content/Quellen'
 import MetaBar from '../content/MetaBar'
 import ChapterFooter from '../content/ChapterFooter'
-import StepByStep, { Ergebnis } from '../content/StepByStep'
-import Schritt from '../content/Schritt'
 import Breadcrumb from '../content/Breadcrumb'
 import Section from '../content/Section'
 import Divider from '../content/Divider'
@@ -48,7 +45,6 @@ const components = {
   table: LessonTable,
   svg: LessonSvg,
   Term,
-  Rechenweg,
   Analogie,
   Tipp,
   Warnung,
@@ -60,9 +56,6 @@ const components = {
   Quellen,
   MetaBar,
   ChapterFooter,
-  StepByStep,
-  Schritt,
-  Ergebnis,
   Breadcrumb,
   Section,
   Divider,

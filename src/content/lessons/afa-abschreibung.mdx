@@ -31,26 +31,31 @@ der Wert sinkt jedes Jahr um denselben Betrag. Das ist lineare Abschreibung.
 
 ### Die Formeln
 
-<Rechenweg
-  title="AfA-Formeln auf einen Blick"
-  steps={[
-    {
-      title: "Jährliche AfA (ohne Restwert)",
-      formula: "AfA = Anschaffungskosten / Nutzungsdauer",
-      explanation: "Wenn kein Restwert angegeben ist, wird er als 0 € angenommen. Das ist der Standardfall in Aufgaben."
-    },
-    {
-      title: "Jährliche AfA (mit Restwert)",
-      formula: "AfA = (Anschaffungskosten − Restwert) / Nutzungsdauer",
-      explanation: "Steht in der Aufgabe ein Restwert (z. B. 500 €), zieht man ihn ab bevor man dividiert. Restwert = was das Gut am Ende noch wert ist (z. B. Schrottwert)."
-    },
-    {
-      title: "Buchwert nach n Jahren",
-      formula: "Buchwert = Anschaffungskosten − (AfA × n)",
-      explanation: "n = Anzahl der abgeschlossenen Jahre. Nach der vollen Nutzungsdauer ist der Buchwert 0 €."
-    }
-  ]}
-/>
+**AfA-Formeln auf einen Blick**
+
+**1. Jährliche AfA (ohne Restwert)**
+
+```
+AfA = Anschaffungskosten / Nutzungsdauer
+```
+
+Wenn kein Restwert angegeben ist, wird er als 0 € angenommen. Das ist der Standardfall in Aufgaben.
+
+**2. Jährliche AfA (mit Restwert)**
+
+```
+AfA = (Anschaffungskosten − Restwert) / Nutzungsdauer
+```
+
+Steht in der Aufgabe ein Restwert (z. B. 500 €), zieht man ihn ab bevor man dividiert. Restwert = was das Gut am Ende noch wert ist (z. B. Schrottwert).
+
+**3. Buchwert nach n Jahren**
+
+```
+Buchwert = Anschaffungskosten − (AfA × n)
+```
+
+n = Anzahl der abgeschlossenen Jahre. Nach der vollen Nutzungsdauer ist der Buchwert 0 €.
 
 ### Typische Nutzungsdauern (prüfungsrelevant)
 
@@ -70,62 +75,89 @@ der Wert sinkt jedes Jahr um denselben Betrag. Das ist lineare Abschreibung.
 
 ## Beispiele – Schritt für Schritt
 
-<Rechenweg
-  title="Beispiel 1: 5 Server, 4 Jahre Nutzungsdauer"
-  steps={[
-    {
-      title: "Gegebenes festhalten",
-      formula: "Anzahl Server: 5 Stück\nPreis pro Server: 4.000 €\nNutzungsdauer: 4 Jahre\nRestwert: 0 € (nicht angegeben → Standard)",
-      explanation: "Immer zuerst alle Größen aus der Aufgabe sammeln, bevor man rechnet. Der häufigste Fehler: man vergisst, alle Geräte zu addieren und rechnet nur mit einem."
-    },
-    {
-      title: "Schritt 1: Gesamte Anschaffungskosten",
-      formula: "Anschaffungskosten = 5 × 4.000 € = 20.000 €",
-      explanation: "ERST alle Geräte addieren! Wenn man direkt mit 4.000 € rechnet, bekommt man die AfA für nur 1 Server — ein klassischer Prüfungsfehler."
-    },
-    {
-      title: "Schritt 2: Jährliche AfA berechnen",
-      formula: "AfA = 20.000 € / 4 Jahre = 5.000 € pro Jahr",
-      explanation: "20.000 € verteilt auf 4 Jahre ergibt 5.000 € pro Jahr. Jedes Jahr verlieren die Server gemeinsam 5.000 € an Buchwert."
-    },
-    {
-      title: "Schritt 3: Buchwert nach 2 Jahren",
-      formula: "Buchwert = 20.000 € − (5.000 € × 2) = 20.000 € − 10.000 € = 10.000 €",
-      explanation: "Nach 2 Jahren sind 10.000 € abgeschrieben. Der Buchwert in der Buchhaltung beträgt noch 10.000 €."
-    },
-    {
-      title: "Schritt 4: Buchwert nach 4 Jahren (Ende der Nutzungsdauer)",
-      formula: "Buchwert = 20.000 € − (5.000 € × 4) = 20.000 € − 20.000 € = 0 €",
-      explanation: "Nach der vollen Nutzungsdauer ist der Buchwert 0 €. Das Gut ist vollständig abgeschrieben — es steht noch im Unternehmen, hat aber bilanziell keinen Wert mehr."
-    }
-  ]}
-/>
+**Beispiel 1: 5 Server, 4 Jahre Nutzungsdauer**
 
-<Rechenweg
-  title="Beispiel 2: PC mit Restwert (200 €), 3 Jahre Nutzungsdauer"
-  steps={[
-    {
-      title: "Gegebenes festhalten",
-      formula: "Anschaffungskosten: 1.800 €\nNutzungsdauer: 3 Jahre\nRestwert: 200 € (angegeben!)",
-      explanation: "Wenn ein Restwert angegeben ist, muss er abgezogen werden. Das vergessen viele in der Aufgabe."
-    },
-    {
-      title: "Schritt 1: Abschreibbare Basis berechnen",
-      formula: "Abschreibbare Basis = 1.800 € − 200 € = 1.600 €",
-      explanation: "Der Restwert (was das Gut am Ende noch wert ist, z. B. als Altgerät) wird nicht abgeschrieben. Nur der Wertverlust von 1.600 € wird auf 3 Jahre verteilt."
-    },
-    {
-      title: "Schritt 2: Jährliche AfA",
-      formula: "AfA = 1.600 € / 3 Jahre ≈ 533,33 € pro Jahr",
-      explanation: "Ergebnis auf 2 Dezimalstellen runden. In Aufgaben ist meistens eine glatte Zahl gewählt — wenn nicht, runde auf Cent."
-    },
-    {
-      title: "AfA-Tabelle für alle 3 Jahre",
-      formula: "Jahr 0 (Kauf):  Buchwert = 1.800 €\nJahr 1:         Buchwert = 1.800 − 533,33 = 1.266,67 €\nJahr 2:         Buchwert = 1.266,67 − 533,33 = 733,34 €\nJahr 3:         Buchwert = 733,34 − 533,33 = 200,01 € ≈ 200 € (Restwert)",
-      explanation: "Am Ende der Nutzungsdauer entspricht der Buchwert dem Restwert. Kleine Rundungsabweichungen sind in der Aufgabe akzeptabel."
-    }
-  ]}
-/>
+**1. Gegebenes festhalten**
+
+```
+Anzahl Server: 5 Stück
+Preis pro Server: 4.000 €
+Nutzungsdauer: 4 Jahre
+Restwert: 0 € (nicht angegeben → Standard)
+```
+
+Immer zuerst alle Größen aus der Aufgabe sammeln, bevor man rechnet. Der häufigste Fehler: man vergisst, alle Geräte zu addieren und rechnet nur mit einem.
+
+**2. Gesamte Anschaffungskosten**
+
+```
+Anschaffungskosten = 5 × 4.000 € = 20.000 €
+```
+
+ERST alle Geräte addieren! Wenn man direkt mit 4.000 € rechnet, bekommt man die AfA für nur 1 Server — ein klassischer Prüfungsfehler.
+
+**3. Jährliche AfA berechnen**
+
+```
+AfA = 20.000 € / 4 Jahre = 5.000 € pro Jahr
+```
+
+20.000 € verteilt auf 4 Jahre ergibt 5.000 € pro Jahr. Jedes Jahr verlieren die Server gemeinsam 5.000 € an Buchwert.
+
+**4. Buchwert nach 2 Jahren**
+
+```
+Buchwert = 20.000 € − (5.000 € × 2) = 20.000 € − 10.000 € = 10.000 €
+```
+
+Nach 2 Jahren sind 10.000 € abgeschrieben. Der Buchwert in der Buchhaltung beträgt noch 10.000 €.
+
+**5. Buchwert nach 4 Jahren (Ende der Nutzungsdauer)**
+
+```
+Buchwert = 20.000 € − (5.000 € × 4) = 20.000 € − 20.000 € = 0 €
+```
+
+Nach der vollen Nutzungsdauer ist der Buchwert 0 €. Das Gut ist vollständig abgeschrieben — es steht noch im Unternehmen, hat aber bilanziell keinen Wert mehr.
+
+**Beispiel 2: PC mit Restwert (200 €), 3 Jahre Nutzungsdauer**
+
+**1. Gegebenes festhalten**
+
+```
+Anschaffungskosten: 1.800 €
+Nutzungsdauer: 3 Jahre
+Restwert: 200 € (angegeben!)
+```
+
+Wenn ein Restwert angegeben ist, muss er abgezogen werden. Das vergessen viele in der Aufgabe.
+
+**2. Abschreibbare Basis berechnen**
+
+```
+Abschreibbare Basis = 1.800 € − 200 € = 1.600 €
+```
+
+Der Restwert (was das Gut am Ende noch wert ist, z. B. als Altgerät) wird nicht abgeschrieben. Nur der Wertverlust von 1.600 € wird auf 3 Jahre verteilt.
+
+**3. Jährliche AfA**
+
+```
+AfA = 1.600 € / 3 Jahre ≈ 533,33 € pro Jahr
+```
+
+Ergebnis auf 2 Dezimalstellen runden. In Aufgaben ist meistens eine glatte Zahl gewählt — wenn nicht, runde auf Cent.
+
+**4. AfA-Tabelle für alle 3 Jahre**
+
+```
+Jahr 0 (Kauf):  Buchwert = 1.800 €
+Jahr 1:         Buchwert = 1.800 − 533,33 = 1.266,67 €
+Jahr 2:         Buchwert = 1.266,67 − 533,33 = 733,34 €
+Jahr 3:         Buchwert = 733,34 − 533,33 = 200,01 € ≈ 200 € (Restwert)
+```
+
+Am Ende der Nutzungsdauer entspricht der Buchwert dem Restwert. Kleine Rundungsabweichungen sind in der Aufgabe akzeptabel.
 
 ---
 

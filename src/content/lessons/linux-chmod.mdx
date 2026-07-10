@@ -105,35 +105,38 @@ Typische Muster:
 
 ## Schritt Für Schritt: chmod 755 Lesen
 
-<StepByStep titel="Was bedeutet chmod 755?">
-  <Schritt nr={1} titel="Stellen trennen">
-    `755` wird von links nach rechts gelesen: User = `7`, Group = `5`, Other = `5`.
-  </Schritt>
-  <Schritt nr={2} titel="Jede Ziffer zerlegen">
-    `7 = 4 + 2 + 1 = rwx`. `5 = 4 + 1 = r-x`. Die `2` fehlt bei `5`, also fehlt Schreibrecht.
-  </Schritt>
-  <Schritt nr={3} titel="Rechtestring bilden">
-    User bekommt `rwx`, Group bekommt `r-x`, Other bekommt `r-x`. Zusammengesetzt: `rwxr-xr-x`.
-  </Schritt>
-  <Ergebnis>
-    `chmod 755 datei` bedeutet: Der Eigentümer darf lesen, schreiben und ausführen. Gruppe und andere dürfen lesen und ausführen, aber nicht schreiben.
-  </Ergebnis>
-</StepByStep>
 
-<StepByStep titel="-rwxr-x--- in eine chmod-Zahl umwandeln">
-  <Schritt nr={1} titel="Dateityp wegnehmen">
-    Das erste Zeichen `-` beschreibt nur den Dateityp. Für die Rechte bleiben `rwxr-x---`.
-  </Schritt>
-  <Schritt nr={2} titel="In Dreiergruppen schneiden">
-    `rwx r-x ---` ergibt User = `rwx`, Group = `r-x`, Other = `---`.
-  </Schritt>
-  <Schritt nr={3} titel="Werte addieren">
-    User: `rwx = 4 + 2 + 1 = 7`. Group: `r-x = 4 + 1 = 5`. Other: `--- = 0`.
-  </Schritt>
-  <Ergebnis>
-    `-rwxr-x---` entspricht `chmod 750`.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Was bedeutet chmod 755?**
+
+**Schritt 1 — Stellen trennen**
+`755` wird von links nach rechts gelesen: User = `7`, Group = `5`, Other = `5`.
+
+**Schritt 2 — Jede Ziffer zerlegen**
+`7 = 4 + 2 + 1 = rwx`. `5 = 4 + 1 = r-x`. Die `2` fehlt bei `5`, also fehlt Schreibrecht.
+
+**Schritt 3 — Rechtestring bilden**
+User bekommt `rwx`, Group bekommt `r-x`, Other bekommt `r-x`. Zusammengesetzt: `rwxr-xr-x`.
+
+**Ergebnis**
+`chmod 755 datei` bedeutet: Der Eigentümer darf lesen, schreiben und ausführen. Gruppe und andere dürfen lesen und ausführen, aber nicht schreiben.
+
+
+
+**Rechenweg: -rwxr-x--- in eine chmod-Zahl umwandeln**
+
+**Schritt 1 — Dateityp wegnehmen**
+Das erste Zeichen `-` beschreibt nur den Dateityp. Für die Rechte bleiben `rwxr-x---`.
+
+**Schritt 2 — In Dreiergruppen schneiden**
+`rwx r-x ---` ergibt User = `rwx`, Group = `r-x`, Other = `---`.
+
+**Schritt 3 — Werte addieren**
+User: `rwx = 4 + 2 + 1 = 7`. Group: `r-x = 4 + 1 = 5`. Other: `--- = 0`.
+
+**Ergebnis**
+`-rwxr-x---` entspricht `chmod 750`.
+
+
 
 ---
 

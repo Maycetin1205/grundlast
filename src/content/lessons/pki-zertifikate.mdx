@@ -110,33 +110,34 @@ von diesem Zertifikat bis zu einer vertrauten Root-CA. Dieser Pfad heißt
 Zertifikatsprüfung ist kein einzelner Haken, sondern eine kleine Kette von
 Prüfschritten.
 
-<StepByStep titel="Serverzertifikat bei HTTPS prüfen">
-  <Schritt nr={1} titel="Name prüfen">
-    Der aufgerufene Hostname muss zum Zertifikat passen, zum Beispiel über den
-    Subject Alternative Name `www.example.org`.
-  </Schritt>
-  <Schritt nr={2} titel="Gültigkeit prüfen">
-    Das aktuelle Datum muss zwischen `not before` und `not after` liegen.
-    Ein abgelaufenes Zertifikat wird nicht einfach dadurch sicher, dass die
-    Verschlüsselung technisch noch funktioniert.
-  </Schritt>
-  <Schritt nr={3} titel="Kette prüfen">
-    Jede Stufe der Zertifikatskette muss die nächste Stufe korrekt signieren,
-    bis ein vertrauter Root-Anker erreicht ist.
-  </Schritt>
-  <Schritt nr={4} titel="Zweck prüfen">
-    Das Zertifikat muss für den geplanten Zweck geeignet sein, etwa
-    Serverauthentifizierung bei TLS.
-  </Schritt>
-  <Schritt nr={5} titel="Widerruf prüfen">
-    Das Zertifikat darf nicht widerrufen sein. Dafür gibt es
-    <Term id="crl">CRL</Term> und <Term id="ocsp">OCSP</Term>.
-  </Schritt>
-  <Ergebnis>
-    Erst wenn Name, Zeit, Kette, Signaturen, Zweck und Widerruf passen, ist der
-    Public Key als vertrauenswürdig zur angegebenen Identität einzuordnen.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Serverzertifikat bei HTTPS prüfen**
+
+**Schritt 1 — Name prüfen**
+Der aufgerufene Hostname muss zum Zertifikat passen, zum Beispiel über den
+Subject Alternative Name `www.example.org`.
+
+**Schritt 2 — Gültigkeit prüfen**
+Das aktuelle Datum muss zwischen `not before` und `not after` liegen.
+Ein abgelaufenes Zertifikat wird nicht einfach dadurch sicher, dass die
+Verschlüsselung technisch noch funktioniert.
+
+**Schritt 3 — Kette prüfen**
+Jede Stufe der Zertifikatskette muss die nächste Stufe korrekt signieren,
+bis ein vertrauter Root-Anker erreicht ist.
+
+**Schritt 4 — Zweck prüfen**
+Das Zertifikat muss für den geplanten Zweck geeignet sein, etwa
+Serverauthentifizierung bei TLS.
+
+**Schritt 5 — Widerruf prüfen**
+Das Zertifikat darf nicht widerrufen sein. Dafür gibt es
+<Term id="crl">CRL</Term> und <Term id="ocsp">OCSP</Term>.
+
+**Ergebnis**
+Erst wenn Name, Zeit, Kette, Signaturen, Zweck und Widerruf passen, ist der
+Public Key als vertrauenswürdig zur angegebenen Identität einzuordnen.
+
+
 
 ---
 

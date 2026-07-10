@@ -213,20 +213,21 @@ Schreibe nicht nur "Firewall freigeben". Besser: Quelle, Ziel, Protokoll, Port, 
 Ein Unternehmen betreibt einen Webserver für Kunden. Der Webserver steht bisher im gleichen LAN wie Clients, Dateiserver und Datenbank. Besser ist eine Trennung in Internet/Außenanbindung, DMZ und internes LAN.
 </Beispiel>
 
-<StepByStep titel="Begründete Struktur">
-  <Schritt nr={1} titel="Zonen trennen">
-    Der Webserver oder Reverse Proxy steht in der DMZ. Clients, Dateiserver und Datenbank bleiben im internen LAN oder in eigenen Serversegmenten.
-  </Schritt>
-  <Schritt nr={2} titel="Regeln eng formulieren">
-    Erlaube `Internet -> Webserver-DMZ, TCP 443` für HTTPS. Blockiere `Internet -> LAN`. Blockiere `DMZ -> LAN` grundsätzlich. Erlaube `Webserver-DMZ -> Datenbank` nur auf dem benötigten Datenbankport, falls diese Verbindung wirklich nötig ist.
-  </Schritt>
-  <Schritt nr={3} titel="Administration absichern">
-    Adminzugriff erfolgt nur aus Admin-VPN oder Managementnetz, nicht direkt aus dem Internet. Am Ende steht eine Default-Deny-Regel.
-  </Schritt>
-  <Ergebnis>
-    Die Struktur ist sicherer, weil ein Angriff auf den öffentlichen Webserver nicht automatisch freien Zugriff auf Clients und interne Server bedeutet.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Begründete Struktur**
+
+**Schritt 1 — Zonen trennen**
+Der Webserver oder Reverse Proxy steht in der DMZ. Clients, Dateiserver und Datenbank bleiben im internen LAN oder in eigenen Serversegmenten.
+
+**Schritt 2 — Regeln eng formulieren**
+Erlaube `Internet -> Webserver-DMZ, TCP 443` für HTTPS. Blockiere `Internet -> LAN`. Blockiere `DMZ -> LAN` grundsätzlich. Erlaube `Webserver-DMZ -> Datenbank` nur auf dem benötigten Datenbankport, falls diese Verbindung wirklich nötig ist.
+
+**Schritt 3 — Administration absichern**
+Adminzugriff erfolgt nur aus Admin-VPN oder Managementnetz, nicht direkt aus dem Internet. Am Ende steht eine Default-Deny-Regel.
+
+**Ergebnis**
+Die Struktur ist sicherer, weil ein Angriff auf den öffentlichen Webserver nicht automatisch freien Zugriff auf Clients und interne Server bedeutet.
+
+
 
 ---
 

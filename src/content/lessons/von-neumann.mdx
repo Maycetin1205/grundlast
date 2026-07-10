@@ -91,30 +91,32 @@ sich.
 Die CPU arbeitet nicht "magisch", sondern wiederholt einen Befehlszyklus. Moderne CPUs
 sind intern viel komplizierter, aber für AP1 reicht dieses Modell:
 
-<StepByStep titel="Der Von-Neumann-Zyklus">
-  <Schritt nr={1} titel="Fetch - Befehl holen">
-    Das Steuerwerk liest über den Bus den nächsten Maschinenbefehl aus dem RAM.
-    Der Program Counter zeigt dabei auf die Adresse des nächsten Befehls.
-  </Schritt>
-  <Schritt nr={2} titel="Decode - Befehl verstehen">
-    Die CPU dekodiert das Bitmuster: Ist es eine Addition, ein Vergleich, ein Sprung
-    oder ein Speicherzugriff? Daraus entstehen Steuersignale für die beteiligten
-    Bausteine.
-  </Schritt>
-  <Schritt nr={3} titel="Execute - ausführen">
-    Das Rechenwerk führt die Operation aus. Bei `ADD` addiert die ALU Werte, bei
-    `COMPARE` vergleicht sie, bei einem Sprung ändert das Steuerwerk den Program
-    Counter.
-  </Schritt>
-  <Schritt nr={4} titel="Memory/Writeback - Ergebnis sichern">
-    Das Ergebnis landet in einem Register oder im RAM. Danach zeigt der Program
-    Counter auf den nächsten Befehl und der Zyklus beginnt von vorn.
-  </Schritt>
-  <Ergebnis>
-    Der einfache Merksatz lautet: **holen, dekodieren, ausführen, Ergebnis sichern**.
-    Genau dieses Muster steckt hinter jedem laufenden Programm.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Der Von-Neumann-Zyklus**
+
+**Schritt 1 — Fetch - Befehl holen**
+Das Steuerwerk liest über den Bus den nächsten Maschinenbefehl aus dem RAM.
+Der Program Counter zeigt dabei auf die Adresse des nächsten Befehls.
+
+**Schritt 2 — Decode - Befehl verstehen**
+Die CPU dekodiert das Bitmuster: Ist es eine Addition, ein Vergleich, ein Sprung
+oder ein Speicherzugriff? Daraus entstehen Steuersignale für die beteiligten
+Bausteine.
+
+**Schritt 3 — Execute - ausführen**
+Das Rechenwerk führt die Operation aus. Bei `ADD` addiert die ALU Werte, bei
+`COMPARE` vergleicht sie, bei einem Sprung ändert das Steuerwerk den Program
+Counter.
+
+**Schritt 4 — Memory/Writeback - Ergebnis sichern**
+Das Ergebnis landet in einem Register oder im RAM. Danach zeigt der Program
+Counter auf den nächsten Befehl und der Zyklus beginnt von vorn.
+
+**Ergebnis**
+Der einfache Merksatz lautet: **holen, dekodieren, ausführen, Ergebnis sichern**.
+Genau dieses Muster steckt hinter jedem laufenden Programm.
+
+
 
 ---
 

@@ -68,47 +68,71 @@ Die wichtigste Faustformel für sichere Datensicherung:
 
 ## Beispiele – Schritt für Schritt
 
-<Rechenweg
-  title="Backup-Plan einer Woche (differenziell)"
-  steps={[
-    {
-      title: "Szenario festlegen",
-      formula: "Sonntag 00:00: VOLLBACKUP\n→ 100 GB Firmendaten gesichert\n→ Dauer: ca. 2 Stunden",
-      explanation: "Das Vollbackup ist die Basis jeder Backup-Strategie. Alle anderen Backups der Woche beziehen sich auf diesen Stand."
-    },
-    {
-      title: "Tägliche differenzielle Backups",
-      formula: "Montag:   5 GB neu seit Sonntag → Diff-Backup: 5 GB\nDienstag: 7 GB neu → Diff-Backup: 12 GB (5+7 seit Sonntag)\nMittwoch: 8 GB neu → Diff-Backup: 20 GB (5+7+8 seit Sonntag)",
-      explanation: "Das differenzielle Backup zählt immer ab dem letzten Vollbackup — deshalb wird es täglich größer. Am Mittwoch sind 20 GB neue Daten seit Sonntag vorhanden."
-    },
-    {
-      title: "Wiederherstellung am Donnerstag",
-      formula: "Benötigte Dateien:\n① Sonntag Vollbackup (100 GB)\n② Mittwoch Differenz-Backup (20 GB)\n→ Gesamt: 2 Dateien",
-      explanation: "Das ist der große Vorteil des differenziellen Backups: Zur Wiederherstellung brauche ich nur das Vollbackup + das letzte Differenz-Backup. Immer genau 2 Dateien."
-    }
-  ]}
-/>
+**Backup-Plan einer Woche (differenziell)**
 
-<Rechenweg
-  title="Backup-Plan einer Woche (inkrementell) — Vergleich"
-  steps={[
-    {
-      title: "Gleicher Start: Vollbackup Sonntag",
-      formula: "Sonntag: VOLLBACKUP (100 GB)",
-      explanation: "Der Start ist identisch. Der Unterschied zeigt sich bei den täglichen Backups."
-    },
-    {
-      title: "Tägliche inkrementelle Backups",
-      formula: "Montag:   5 GB neu seit Sonntag → Inkrement: 5 GB\nDienstag: 7 GB neu seit MONTAG → Inkrement: 7 GB\nMittwoch: 8 GB neu seit DIENSTAG → Inkrement: 8 GB",
-      explanation: "Das inkrementelle Backup zählt immer ab dem letzten Backup (egal welcher Art). Deshalb ist jedes Inkrement nur der neueste 'Happen' — klein und schnell."
-    },
-    {
-      title: "Wiederherstellung am Donnerstag",
-      formula: "Benötigte Dateien:\n① Sonntag Vollbackup\n② Montag Inkrement (5 GB)\n③ Dienstag Inkrement (7 GB)\n④ Mittwoch Inkrement (8 GB)\n→ Gesamt: 4 Dateien",
-      explanation: "Das ist der Nachteil: Ich brauche das Vollbackup + ALLE Inkremente seitdem. Fehlt ein Inkrement in der Kette, ist die Wiederherstellung unvollständig. Je mehr Tage, desto mehr Dateien."
-    }
-  ]}
-/>
+**1. Szenario festlegen**
+
+```
+Sonntag 00:00: VOLLBACKUP
+→ 100 GB Firmendaten gesichert
+→ Dauer: ca. 2 Stunden
+```
+
+Das Vollbackup ist die Basis jeder Backup-Strategie. Alle anderen Backups der Woche beziehen sich auf diesen Stand.
+
+**2. Tägliche differenzielle Backups**
+
+```
+Montag:   5 GB neu seit Sonntag → Diff-Backup: 5 GB
+Dienstag: 7 GB neu → Diff-Backup: 12 GB (5+7 seit Sonntag)
+Mittwoch: 8 GB neu → Diff-Backup: 20 GB (5+7+8 seit Sonntag)
+```
+
+Das differenzielle Backup zählt immer ab dem letzten Vollbackup — deshalb wird es täglich größer. Am Mittwoch sind 20 GB neue Daten seit Sonntag vorhanden.
+
+**3. Wiederherstellung am Donnerstag**
+
+```
+Benötigte Dateien:
+① Sonntag Vollbackup (100 GB)
+② Mittwoch Differenz-Backup (20 GB)
+→ Gesamt: 2 Dateien
+```
+
+Das ist der große Vorteil des differenziellen Backups: Zur Wiederherstellung brauche ich nur das Vollbackup + das letzte Differenz-Backup. Immer genau 2 Dateien.
+
+**Backup-Plan einer Woche (inkrementell) — Vergleich**
+
+**1. Gleicher Start: Vollbackup Sonntag**
+
+```
+Sonntag: VOLLBACKUP (100 GB)
+```
+
+Der Start ist identisch. Der Unterschied zeigt sich bei den täglichen Backups.
+
+**2. Tägliche inkrementelle Backups**
+
+```
+Montag:   5 GB neu seit Sonntag → Inkrement: 5 GB
+Dienstag: 7 GB neu seit MONTAG → Inkrement: 7 GB
+Mittwoch: 8 GB neu seit DIENSTAG → Inkrement: 8 GB
+```
+
+Das inkrementelle Backup zählt immer ab dem letzten Backup (egal welcher Art). Deshalb ist jedes Inkrement nur der neueste 'Happen' — klein und schnell.
+
+**3. Wiederherstellung am Donnerstag**
+
+```
+Benötigte Dateien:
+① Sonntag Vollbackup
+② Montag Inkrement (5 GB)
+③ Dienstag Inkrement (7 GB)
+④ Mittwoch Inkrement (8 GB)
+→ Gesamt: 4 Dateien
+```
+
+Das ist der Nachteil: Ich brauche das Vollbackup + ALLE Inkremente seitdem. Fehlt ein Inkrement in der Kette, ist die Wiederherstellung unvollständig. Je mehr Tage, desto mehr Dateien.
 
 ---
 

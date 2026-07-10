@@ -186,45 +186,47 @@ Welche Komponenten passen jeweils — und warum?
 
 </Beispiel>
 
-<StepByStep titel="Komponenten je Arbeitsplatz auswählen">
-  <Schritt nr={1} titel="Anforderungen sortieren">
-    CAD: hohe Singlethread-Leistung, dedizierte GPU, viel RAM, schnelle SSD.
-    Office: solide Mehrkern-CPU der Mittelklasse, integrierte Grafik genügt, 16 GB RAM.
-    Server: viele Kerne, ECC-RAM, redundante Speicher, robustes Netzteil.
-  </Schritt>
-  <Schritt nr={2} titel="CPU und Mainboard wählen">
-    CAD: aktuelle Desktop-CPU mit hoher Boost-Frequenz, 8 oder mehr Kerne, Sockel passend
-    zum Mainboard, Mainboard mit PCIe x16 für die Grafikkarte und einem M.2-NVMe-Slot.
-    Office: sparsame Mittelklasse-CPU mit integrierter Grafik (iGPU), reicht für zwei
-    Full-HD-Monitore, Mainboard mit zwei Display-Ausgängen.
-    Server: Server-CPU (Xeon oder EPYC) mit vielen Kernen, Server-Mainboard mit
-    ECC-Unterstützung, IPMI für Fernzugriff.
-  </Schritt>
-  <Schritt nr={3} titel="RAM dimensionieren">
-    CAD: 32 GB DDR5 als 2 × 16 GB im Dual-Channel — Reserve für große Modelle.
-    Office: 16 GB DDR5 als 2 × 8 GB, Dual-Channel der iGPU spürbar zugutekommt.
-    Server: 64 GB ECC, Aufrüstung auf 128 GB möglich; ECC ist Pflicht, ein gekipptes
-    Bit in einer ERP-Tabelle ist ein stiller Datenverlust.
-  </Schritt>
-  <Schritt nr={4} titel="Massenspeicher festlegen">
-    CAD: 1 TB NVMe-SSD (System und Projekte), zusätzlich 4 TB SATA-HDD als
-    Archiv für ältere Konstruktionsdaten.
-    Office: 500 GB NVMe-SSD reicht für System und alle Office-Daten, kein zweites
-    Laufwerk nötig.
-    Server: 2 × NVMe-SSD im RAID 1 für die Datenbank, 4 × SATA-HDD im RAID 5 oder 10
-    für Backups; Backup separat, weil RAID kein Backup ersetzt.
-  </Schritt>
-  <Schritt nr={5} titel="Schnittstellen und Peripherie zuordnen">
-    CAD: Grafikkarte mit 2 × DisplayPort 1.4 für 4K@60 plus Reserve.
-    Office: zwei DP- oder HDMI-Anschlüsse vom Mainboard, 4-Port-USB-Hub am Monitor.
-    Server: redundantes Netzteil, ans Rack-KVM angeschlossen, eigener Management-Port.
-  </Schritt>
-  <Ergebnis>
-    Drei Konfigurationen mit klarer Begründung: CAD für Singlethread plus GPU, Office
-    für sparsame Effizienz, Server für Verfügbarkeit und Datenintegrität. Die
-    technische Trennung schlägt sich direkt in der Beschaffungsempfehlung nieder.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Komponenten je Arbeitsplatz auswählen**
+
+**Schritt 1 — Anforderungen sortieren**
+CAD: hohe Singlethread-Leistung, dedizierte GPU, viel RAM, schnelle SSD.
+Office: solide Mehrkern-CPU der Mittelklasse, integrierte Grafik genügt, 16 GB RAM.
+Server: viele Kerne, ECC-RAM, redundante Speicher, robustes Netzteil.
+
+**Schritt 2 — CPU und Mainboard wählen**
+CAD: aktuelle Desktop-CPU mit hoher Boost-Frequenz, 8 oder mehr Kerne, Sockel passend
+zum Mainboard, Mainboard mit PCIe x16 für die Grafikkarte und einem M.2-NVMe-Slot.
+Office: sparsame Mittelklasse-CPU mit integrierter Grafik (iGPU), reicht für zwei
+Full-HD-Monitore, Mainboard mit zwei Display-Ausgängen.
+Server: Server-CPU (Xeon oder EPYC) mit vielen Kernen, Server-Mainboard mit
+ECC-Unterstützung, IPMI für Fernzugriff.
+
+**Schritt 3 — RAM dimensionieren**
+CAD: 32 GB DDR5 als 2 × 16 GB im Dual-Channel — Reserve für große Modelle.
+Office: 16 GB DDR5 als 2 × 8 GB, Dual-Channel der iGPU spürbar zugutekommt.
+Server: 64 GB ECC, Aufrüstung auf 128 GB möglich; ECC ist Pflicht, ein gekipptes
+Bit in einer ERP-Tabelle ist ein stiller Datenverlust.
+
+**Schritt 4 — Massenspeicher festlegen**
+CAD: 1 TB NVMe-SSD (System und Projekte), zusätzlich 4 TB SATA-HDD als
+Archiv für ältere Konstruktionsdaten.
+Office: 500 GB NVMe-SSD reicht für System und alle Office-Daten, kein zweites
+Laufwerk nötig.
+Server: 2 × NVMe-SSD im RAID 1 für die Datenbank, 4 × SATA-HDD im RAID 5 oder 10
+für Backups; Backup separat, weil RAID kein Backup ersetzt.
+
+**Schritt 5 — Schnittstellen und Peripherie zuordnen**
+CAD: Grafikkarte mit 2 × DisplayPort 1.4 für 4K@60 plus Reserve.
+Office: zwei DP- oder HDMI-Anschlüsse vom Mainboard, 4-Port-USB-Hub am Monitor.
+Server: redundantes Netzteil, ans Rack-KVM angeschlossen, eigener Management-Port.
+
+**Ergebnis**
+Drei Konfigurationen mit klarer Begründung: CAD für Singlethread plus GPU, Office
+für sparsame Effizienz, Server für Verfügbarkeit und Datenintegrität. Die
+technische Trennung schlägt sich direkt in der Beschaffungsempfehlung nieder.
+
+
 
 <Beispiel titel="Notebook plus Dock — drei Monitore, Webcam, Drucker, externe SSD">
 
@@ -242,41 +244,43 @@ Welche Schnittstellen-Topologie funktioniert ohne Engpass?
 
 </Beispiel>
 
-<StepByStep titel="Schnittstellen-Mapping ans Notebook">
-  <Schritt nr={1} titel="Limitierungen sammeln">
-    Das Notebook hat genau einen Thunderbolt-4-Port (40 Gbit/s, DP, PD) und einen
-    USB-C-Port (10 Gbit/s, kein PD). Insgesamt sollen sieben Geräte und drei Displays
-    bedient werden — das geht nur über ein Dock.
-  </Schritt>
-  <Schritt nr={2} titel="Dock auswählen">
-    Ein Thunderbolt-4-Dock liefert über das eine TB4-Kabel: 90 W Power Delivery, zwei
-    DisplayPort-Ausgänge, mehrere USB-A/C-Ports und einen Ethernet-Port. Damit wandern
-    Stromversorgung, zwei Monitore, Webcam, Headset und LAN über genau ein Kabel ins
-    Notebook.
-  </Schritt>
-  <Schritt nr={3} titel="Dritten Monitor anbinden">
-    Der dritte Monitor (HDMI) wird entweder per zweitem DP-Ausgang plus DP-zu-HDMI-Adapter
-    angesteuert oder via DisplayPort-Daisy-Chain (MST), wenn alle Monitore MST können.
-    Alternativ: HDMI-Ausgang am Dock nutzen, falls vorhanden.
-  </Schritt>
-  <Schritt nr={4} titel="Externe NVMe-SSD positionieren">
-    Die externe SSD braucht volle 10 Gbit/s. Sie geht an einen USB-3.2-Gen-2-Port am
-    Dock — oder direkt an den zweiten USB-C-Port am Notebook, wenn sicher feststeht,
-    dass dieser 10 Gbit/s liefert. Ein gemeinsamer USB-Hub mit niedrigem Tempo würde
-    sie ausbremsen.
-  </Schritt>
-  <Schritt nr={5} titel="Bandbreite gegenrechnen">
-    Thunderbolt 4 hat 40 Gbit/s. Davon belegen 4K@60 ca. 12 Gbit/s, zwei Full-HD@60
-    je ca. 3 Gbit/s, USB-Geräte plus Ethernet zusammen unter 5 Gbit/s. Reserve für
-    die externe SSD bleibt — solange beide Monitore nicht gleichzeitig 4K@120 laufen.
-  </Schritt>
-  <Ergebnis>
-    Ein Thunderbolt-4-Dock plus ein direkter USB-C-Port am Notebook decken alle sieben
-    Geräte ab. Wichtig: TB4-zertifiziertes Kabel verwenden, sonst fällt das Dock
-    automatisch auf USB-C-Niveau zurück und die Bandbreite für drei Monitore reicht
-    nicht.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Schnittstellen-Mapping ans Notebook**
+
+**Schritt 1 — Limitierungen sammeln**
+Das Notebook hat genau einen Thunderbolt-4-Port (40 Gbit/s, DP, PD) und einen
+USB-C-Port (10 Gbit/s, kein PD). Insgesamt sollen sieben Geräte und drei Displays
+bedient werden — das geht nur über ein Dock.
+
+**Schritt 2 — Dock auswählen**
+Ein Thunderbolt-4-Dock liefert über das eine TB4-Kabel: 90 W Power Delivery, zwei
+DisplayPort-Ausgänge, mehrere USB-A/C-Ports und einen Ethernet-Port. Damit wandern
+Stromversorgung, zwei Monitore, Webcam, Headset und LAN über genau ein Kabel ins
+Notebook.
+
+**Schritt 3 — Dritten Monitor anbinden**
+Der dritte Monitor (HDMI) wird entweder per zweitem DP-Ausgang plus DP-zu-HDMI-Adapter
+angesteuert oder via DisplayPort-Daisy-Chain (MST), wenn alle Monitore MST können.
+Alternativ: HDMI-Ausgang am Dock nutzen, falls vorhanden.
+
+**Schritt 4 — Externe NVMe-SSD positionieren**
+Die externe SSD braucht volle 10 Gbit/s. Sie geht an einen USB-3.2-Gen-2-Port am
+Dock — oder direkt an den zweiten USB-C-Port am Notebook, wenn sicher feststeht,
+dass dieser 10 Gbit/s liefert. Ein gemeinsamer USB-Hub mit niedrigem Tempo würde
+sie ausbremsen.
+
+**Schritt 5 — Bandbreite gegenrechnen**
+Thunderbolt 4 hat 40 Gbit/s. Davon belegen 4K@60 ca. 12 Gbit/s, zwei Full-HD@60
+je ca. 3 Gbit/s, USB-Geräte plus Ethernet zusammen unter 5 Gbit/s. Reserve für
+die externe SSD bleibt — solange beide Monitore nicht gleichzeitig 4K@120 laufen.
+
+**Ergebnis**
+Ein Thunderbolt-4-Dock plus ein direkter USB-C-Port am Notebook decken alle sieben
+Geräte ab. Wichtig: TB4-zertifiziertes Kabel verwenden, sonst fällt das Dock
+automatisch auf USB-C-Niveau zurück und die Bandbreite für drei Monitore reicht
+nicht.
+
+
 
 <Beispiel titel="Multifunktionsgerät beschaffen — Druckleistung, Verbrauch, Netzwerk">
 
@@ -295,47 +299,49 @@ Welches Gerät ist über drei Jahre günstiger — und reicht es überhaupt?
 
 </Beispiel>
 
-<StepByStep titel="Multifunktionsgerät kalkulieren">
-  <Schritt nr={1} titel="Mengen aufteilen">
-    Pro Jahr 45.000 Seiten. Davon 90 % SW = 40.500 SW-Seiten und 10 % Farbe = 4.500
-    Farbseiten. Über drei Jahre macht das **121.500 SW-Seiten** und **13.500 Farbseiten**.
-  </Schritt>
-  <Schritt nr={2} titel="Toner-Bedarf je Modell">
-    Modell A: SW 121.500 / 4.000 ≈ 31 Tonereinheiten, Farbe 13.500 / 2.500 ≈ 6 je
-    Farbe (CMY) = 18 Farbtonereinheiten.
-    Modell B: SW 121.500 / 1.500 = 81 Tonereinheiten, Farbe 13.500 / 900 = 15 je
-    Farbe (CMY) = 45 Farbtonereinheiten.
-  </Schritt>
-  <Schritt nr={3} titel="Verbrauchsmaterial in Euro">
-    Modell A: 31 × 95 € + 18 × 130 € = 2.945 € + 2.340 € = **5.285 €**.
-    Modell B: 81 × 65 € + 45 × 95 € = 5.265 € + 4.275 € = **9.540 €**.
-  </Schritt>
-  <Schritt nr={4} titel="Anschaffung und Netzwerk addieren">
-    Modell A: 1.800 € + 5.285 € = **7.085 €**.
-    Modell B: 950 € + 120 € (Netzwerkmodul) + 9.540 € = **10.610 €**.
-  </Schritt>
-  <Schritt nr={5} titel="Energiekosten überschlagen">
-    Annahme: 3 h Druckbetrieb pro Tag, 220 Arbeitstage, sonst Standby (24 / 7 abzüglich
-    Druckzeit ≈ 8.000 h Standby pro Jahr).
-    Modell A: 0,6 kW × 660 h + 0,018 kW × 8.100 h ≈ 396 + 146 = **542 kWh/Jahr**, drei
-    Jahre rund 1.625 kWh.
-    Modell B: 0,4 kW × 660 h + 0,004 kW × 8.100 h ≈ 264 + 32 = **296 kWh/Jahr**, drei
-    Jahre rund 890 kWh.
-    Bei 0,30 €/kWh: A ca. 488 €, B ca. 267 € über drei Jahre.
-  </Schritt>
-  <Schritt nr={6} titel="Empfehlung formulieren">
-    Gesamtkosten über drei Jahre: A ≈ 7.573 €, B ≈ 10.877 €. Modell A ist trotz
-    höherer Anschaffung deutlich günstiger, weil Toner und Energie pro Seite günstiger
-    sind. Die Druckleistung beider Geräte deckt den Bedarf, die Netzwerk- und
-    Duplex-Funktionen sind bei A bereits enthalten.
-  </Schritt>
-  <Ergebnis>
-    Empfehlung: **Modell A**. Vorteil über drei Jahre rund 3.300 €, plus deutlich
-    geringere Service-Reibung durch enthaltene Netzwerk- und Duplex-Funktionen.
-    Bei stark schwankendem Druckaufkommen wäre zusätzlich ein Klick-Vertrag
-    (Pauschale je gedruckter Seite) zu prüfen.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Multifunktionsgerät kalkulieren**
+
+**Schritt 1 — Mengen aufteilen**
+Pro Jahr 45.000 Seiten. Davon 90 % SW = 40.500 SW-Seiten und 10 % Farbe = 4.500
+Farbseiten. Über drei Jahre macht das **121.500 SW-Seiten** und **13.500 Farbseiten**.
+
+**Schritt 2 — Toner-Bedarf je Modell**
+Modell A: SW 121.500 / 4.000 ≈ 31 Tonereinheiten, Farbe 13.500 / 2.500 ≈ 6 je
+Farbe (CMY) = 18 Farbtonereinheiten.
+Modell B: SW 121.500 / 1.500 = 81 Tonereinheiten, Farbe 13.500 / 900 = 15 je
+Farbe (CMY) = 45 Farbtonereinheiten.
+
+**Schritt 3 — Verbrauchsmaterial in Euro**
+Modell A: 31 × 95 € + 18 × 130 € = 2.945 € + 2.340 € = **5.285 €**.
+Modell B: 81 × 65 € + 45 × 95 € = 5.265 € + 4.275 € = **9.540 €**.
+
+**Schritt 4 — Anschaffung und Netzwerk addieren**
+Modell A: 1.800 € + 5.285 € = **7.085 €**.
+Modell B: 950 € + 120 € (Netzwerkmodul) + 9.540 € = **10.610 €**.
+
+**Schritt 5 — Energiekosten überschlagen**
+Annahme: 3 h Druckbetrieb pro Tag, 220 Arbeitstage, sonst Standby (24 / 7 abzüglich
+Druckzeit ≈ 8.000 h Standby pro Jahr).
+Modell A: 0,6 kW × 660 h + 0,018 kW × 8.100 h ≈ 396 + 146 = **542 kWh/Jahr**, drei
+Jahre rund 1.625 kWh.
+Modell B: 0,4 kW × 660 h + 0,004 kW × 8.100 h ≈ 264 + 32 = **296 kWh/Jahr**, drei
+Jahre rund 890 kWh.
+Bei 0,30 €/kWh: A ca. 488 €, B ca. 267 € über drei Jahre.
+
+**Schritt 6 — Empfehlung formulieren**
+Gesamtkosten über drei Jahre: A ≈ 7.573 €, B ≈ 10.877 €. Modell A ist trotz
+höherer Anschaffung deutlich günstiger, weil Toner und Energie pro Seite günstiger
+sind. Die Druckleistung beider Geräte deckt den Bedarf, die Netzwerk- und
+Duplex-Funktionen sind bei A bereits enthalten.
+
+**Ergebnis**
+Empfehlung: **Modell A**. Vorteil über drei Jahre rund 3.300 €, plus deutlich
+geringere Service-Reibung durch enthaltene Netzwerk- und Duplex-Funktionen.
+Bei stark schwankendem Druckaufkommen wäre zusätzlich ein Klick-Vertrag
+(Pauschale je gedruckter Seite) zu prüfen.
+
+
 
 ---
 

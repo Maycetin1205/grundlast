@@ -70,62 +70,87 @@ oder durch Ersparnis in €/**Jahr** — nicht mischen.
 
 ## Beispiele
 
-<Rechenweg
-  title="Beispiel 1: Jährliche Serverkosten + Einsparung"
-  steps={[
-    {
-      title: "Leistung in kW umrechnen",
-      formula: "P_alt = 500 W ÷ 1000 = 0,5 kW\nP_neu = 300 W ÷ 1000 = 0,3 kW",
-      explanation: "Immer zuerst Watt in Kilowatt umrechnen, bevor du mit der Zeit multiplizierst."
-    },
-    {
-      title: "Jährlichen Energieverbrauch berechnen (24/7 = 8760 h/Jahr)",
-      formula: "E_alt = 0,5 kW × 8760 h = 4380 kWh/Jahr\nE_neu = 0,3 kW × 8760 h = 2628 kWh/Jahr",
-      explanation: "24h × 365 Tage = 8760 Betriebsstunden pro Jahr bei Dauerbetrieb."
-    },
-    {
-      title: "Energieeinsparung berechnen",
-      formula: "Ersparnis = 4380 − 2628 = 1752 kWh/Jahr",
-      explanation: "Der neue Server spart 1752 kWh pro Jahr ein."
-    },
-    {
-      title: "Kosteneinsparung berechnen (Strompreis 0,30 €/kWh)",
-      formula: "Kostenersparnis = 1752 kWh × 0,30 € = 525,60 €/Jahr",
-      explanation: "Jährliche Einsparung durch den effizienteren Server: 525,60 €."
-    }
-  ]}
-/>
+**Beispiel 1: Jährliche Serverkosten + Einsparung**
 
-<Rechenweg
-  title="Beispiel 2: Wirkungsgrad + Amortisation (450 PCs)"
-  steps={[
-    {
-      title: "Monatliche Betriebsstunden berechnen",
-      formula: "t = 8 h/Tag × 22 Tage/Monat = 176 h/Monat",
-      explanation: "Wenn die Aufgabe Arbeitstage nennt, nicht 30 Tage nehmen — nur die genannten Arbeitstage zählen."
-    },
-    {
-      title: "Aufnahmeleistung mit Wirkungsgrad berechnen",
-      formula: "P_out = 450 W (IT-Last)\nη_alt = 0,85 → P_in,alt = 450 / 0,85 = 529,41 W\nη_neu = 0,94 → P_in,neu = 450 / 0,94 = 478,72 W",
-      explanation: "Formel: P_in = P_out ÷ η. Ein schlechteres Netzteil (η=0,85) muss mehr Strom ziehen als ein gutes (η=0,94) — obwohl beide dieselbe IT-Last versorgen."
-    },
-    {
-      title: "Ersparnis pro PC berechnen",
-      formula: "ΔP = 529,41 − 478,72 = 50,69 W = 0,05069 kW\nΔE_PC = 0,05069 kW × 176 h = 8,92 kWh/Monat",
-      explanation: "Jeder PC spart monatlich 8,92 kWh ein."
-    },
-    {
-      title: "Gesamtersparnis für 450 PCs",
-      formula: "ΔE_gesamt = 8,92 × 450 = 4014 kWh/Monat\nΔK = 4014 × 0,45 €/kWh = 1806,30 €/Monat",
-      explanation: "Die 450 PCs zusammen sparen monatlich 1806,30 € an Stromkosten."
-    },
-    {
-      title: "Amortisationsdauer berechnen",
-      formula: "Amortisation = 52.000 € / 1806,30 €/Monat ≈ 28,8 Monate → 3 Jahre (auf volle Jahre runden)",
-      explanation: "Amortisation = Investition ÷ Ersparnis pro Monat. In Jahren: 28,8 ÷ 12 = 2,4 Jahre. Da Aufgaben oft 'volle Jahre' verlangen, auf 3 aufrunden."
-    }
-  ]}
-/>
+**1. Leistung in kW umrechnen**
+
+```
+P_alt = 500 W ÷ 1000 = 0,5 kW
+P_neu = 300 W ÷ 1000 = 0,3 kW
+```
+
+Immer zuerst Watt in Kilowatt umrechnen, bevor du mit der Zeit multiplizierst.
+
+**2. Jährlichen Energieverbrauch berechnen (24/7 = 8760 h/Jahr)**
+
+```
+E_alt = 0,5 kW × 8760 h = 4380 kWh/Jahr
+E_neu = 0,3 kW × 8760 h = 2628 kWh/Jahr
+```
+
+24h × 365 Tage = 8760 Betriebsstunden pro Jahr bei Dauerbetrieb.
+
+**3. Energieeinsparung berechnen**
+
+```
+Ersparnis = 4380 − 2628 = 1752 kWh/Jahr
+```
+
+Der neue Server spart 1752 kWh pro Jahr ein.
+
+**4. Kosteneinsparung berechnen (Strompreis 0,30 €/kWh)**
+
+```
+Kostenersparnis = 1752 kWh × 0,30 € = 525,60 €/Jahr
+```
+
+Jährliche Einsparung durch den effizienteren Server: 525,60 €.
+
+**Beispiel 2: Wirkungsgrad + Amortisation (450 PCs)**
+
+**1. Monatliche Betriebsstunden berechnen**
+
+```
+t = 8 h/Tag × 22 Tage/Monat = 176 h/Monat
+```
+
+Wenn die Aufgabe Arbeitstage nennt, nicht 30 Tage nehmen — nur die genannten Arbeitstage zählen.
+
+**2. Aufnahmeleistung mit Wirkungsgrad berechnen**
+
+```
+P_out = 450 W (IT-Last)
+η_alt = 0,85 → P_in,alt = 450 / 0,85 = 529,41 W
+η_neu = 0,94 → P_in,neu = 450 / 0,94 = 478,72 W
+```
+
+Formel: P_in = P_out ÷ η. Ein schlechteres Netzteil (η=0,85) muss mehr Strom ziehen als ein gutes (η=0,94) — obwohl beide dieselbe IT-Last versorgen.
+
+**3. Ersparnis pro PC berechnen**
+
+```
+ΔP = 529,41 − 478,72 = 50,69 W = 0,05069 kW
+ΔE_PC = 0,05069 kW × 176 h = 8,92 kWh/Monat
+```
+
+Jeder PC spart monatlich 8,92 kWh ein.
+
+**4. Gesamtersparnis für 450 PCs**
+
+```
+ΔE_gesamt = 8,92 × 450 = 4014 kWh/Monat
+ΔK = 4014 × 0,45 €/kWh = 1806,30 €/Monat
+```
+
+Die 450 PCs zusammen sparen monatlich 1806,30 € an Stromkosten.
+
+**5. Amortisationsdauer berechnen**
+
+```
+Amortisation = 52.000 € / 1806,30 €/Monat ≈ 28,8 Monate → 3 Jahre (auf volle Jahre runden)
+```
+
+Amortisation = Investition ÷ Ersparnis pro Monat. In Jahren: 28,8 ÷ 12 = 2,4 Jahre. Da Aufgaben oft 'volle Jahre' verlangen, auf 3 aufrunden.
 
 ---
 

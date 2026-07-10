@@ -77,82 +77,141 @@ Barverkaufspreis   × (1 − Skonto%) = ...                 [÷ (1 − Skonto%)]
 
 ## Beispiele – Schritt für Schritt
 
-<Rechenweg
-  title="Vorwärtskalkulation: Laptop, Listenpreis 800 €"
-  steps={[
-    {
-      title: "Ausgangsposition",
-      formula: "Listeneinkaufspreis (LEP) = 800,00 €",
-      explanation: "Das ist der Preis im Katalog des Lieferanten, bevor irgendwelche Abzüge greifen."
-    },
-    {
-      title: "Liefererrabatt abziehen (10 %)",
-      formula: "LEP               = 800,00 €\n− Rabatt (10 %)   =  80,00 €\n= Zieleinkaufspreis = 720,00 €",
-      explanation: "Rabatt = 800 × 0,10 = 80 €. Der Zieleinkaufspreis (ZEP) ist der Preis nach Liefererrabatt."
-    },
-    {
-      title: "Liefererskonto abziehen (2 %)",
-      formula: "ZEP               = 720,00 €\n− Skonto (2 %)    =  14,40 €\n= Bareinkaufspreis  = 705,60 €",
-      explanation: "Skonto = 720 × 0,02 = 14,40 €. Skonto wird auf den ZEP (nach Rabatt) berechnet, nicht auf den LEP!"
-    },
-    {
-      title: "Bezugskosten addieren (30 €)",
-      formula: "Bareinkaufspreis  = 705,60 €\n+ Bezugskosten    =  30,00 €\n= Bezugspreis       = 735,60 €",
-      explanation: "Fracht, Zoll, Verpackung werden addiert. Das ist jetzt der echte Einstandspreis — was der Laptop den Händler kostet, wenn er im Lager steht."
-    },
-    {
-      title: "Handlungskosten aufschlagen (15 %)",
-      formula: "Bezugspreis       = 735,60 €\n+ HK (15 %)       = 110,34 €\n= Selbstkosten      = 845,94 €",
-      explanation: "Handlungskosten = 735,60 × 0,15 = 110,34 €. Jetzt sind alle Kosten des Händlers drin. Verkauft er zum Selbstkostenpreis, macht er keinen Verlust — aber auch keinen Gewinn."
-    },
-    {
-      title: "Gewinn aufschlagen (20 %)",
-      formula: "Selbstkosten      = 845,94 €\n+ Gewinn (20 %)   = 169,19 €\n= Barverkaufspreis  = 1.015,13 €",
-      explanation: "Gewinn = 845,94 × 0,20 = 169,19 €. Der Barverkaufspreis ist der Preis für Barzahlung ohne weitere Rabatte."
-    },
-    {
-      title: "Kundenskonto und Kundenrabatt aufschlagen",
-      formula: "Barverkaufspreis  = 1.015,13 €\n÷ (1 − 0,02)      = 1.035,85 €  (Skonto-Aufschlag = 20,72 €)\n÷ (1 − 0,05)      = 1.090,39 €  (Rabatt-Aufschlag = 54,54 €)\n= Netto-VK          = 1.090,39 €",
-      explanation: "Skonto und Rabatt werden dem Kunden als Abzug gewährt — sie müssen also im Verkaufspreis schon einkalkuliert sein. Saubere Methode: den Barverkaufspreis zweimal hintereinander durch (1 − Satz) teilen. Kurz: 1.015,13 ÷ 0,98 ÷ 0,95 = 1.090,39 €. Die Zwischendifferenzen ergeben Skonto- bzw. Rabatt-Aufschlag."
-    },
-    {
-      title: "Mehrwertsteuer (19 %) aufschlagen",
-      formula: "Netto-VK          = 1.090,39 €\n+ USt (19 %)       =   207,17 €\n= Brutto-VK         = 1.297,56 €",
-      explanation: "USt = 1.090,39 × 0,19 = 207,17 €. Das ist der finale Bruttopreis, den der Endkunde zahlt."
-    }
-  ]}
-/>
+**Vorwärtskalkulation: Laptop, Listenpreis 800 €**
 
-<Rechenweg
-  title="Rückwärtskalkulation: Brutto-VK gegeben, Bezugspreis gesucht"
-  steps={[
-    {
-      title: "Szenario",
-      formula: "Brutto-VK = 595,00 €\nUSt = 19 %\nKundenrabatt = 5 %\nHandlungskosten = 20 %\nGewinn = 10 %",
-      explanation: "Bei der Rückwärtskalkulation kennen wir den Endpreis und rechnen rückwärts bis zum Bezugspreis."
-    },
-    {
-      title: "Schritt 1: USt herausrechnen",
-      formula: "Netto-VK = 595,00 ÷ 1,19\nNetto-VK = 500,00 €",
-      explanation: "Brutto ÷ 1,19 ergibt den Netto-VK. Nie 19 % abziehen (= 595 × 0,81), das wäre falsch!"
-    },
-    {
-      title: "Schritt 2: Kundenrabatt herausrechnen",
-      formula: "Netto-VK = 500,00 €\nBarverkaufspreis = 500,00 × (1 − 0,05)\n= 500,00 × 0,95 = 475,00 €",
-      explanation: "Der Netto-VK enthält den Rabatt bereits als Aufschlag. Durch Multiplizieren mit (1 − Rabattsatz) kommen wir auf den Barverkaufspreis."
-    },
-    {
-      title: "Schritt 3: Selbstkosten bestimmen (Gewinn heraus)",
-      formula: "Barverkaufspreis = Selbstkosten × (1 + Gewinnaufschlag)\n475,00 = Selbstkosten × 1,10\nSelbstkosten = 475,00 ÷ 1,10\nSelbstkosten = 431,82 €",
-      explanation: "Der Gewinn ist ein Aufschlag auf die Selbstkosten. Umgekehrt: Barverkaufspreis ÷ (1 + Gewinnprozent) = Selbstkosten."
-    },
-    {
-      title: "Schritt 4: Bezugspreis bestimmen (Handlungskosten heraus)",
-      formula: "Selbstkosten = Bezugspreis × (1 + HK-Satz)\n431,82 = Bezugspreis × 1,20\nBezugspreis = 431,82 ÷ 1,20\nBezugspreis = 359,85 €",
-      explanation: "Analog: Die Handlungskosten sind ein Aufschlag auf den Bezugspreis. Rückwärts: Selbstkosten ÷ (1 + HK-Satz) = Bezugspreis."
-    }
-  ]}
-/>
+**1. Ausgangsposition**
+
+```
+Listeneinkaufspreis (LEP) = 800,00 €
+```
+
+Das ist der Preis im Katalog des Lieferanten, bevor irgendwelche Abzüge greifen.
+
+**2. Liefererrabatt abziehen (10 %)**
+
+```
+LEP               = 800,00 €
+− Rabatt (10 %)   =  80,00 €
+= Zieleinkaufspreis = 720,00 €
+```
+
+Rabatt = 800 × 0,10 = 80 €. Der Zieleinkaufspreis (ZEP) ist der Preis nach Liefererrabatt.
+
+**3. Liefererskonto abziehen (2 %)**
+
+```
+ZEP               = 720,00 €
+− Skonto (2 %)    =  14,40 €
+= Bareinkaufspreis  = 705,60 €
+```
+
+Skonto = 720 × 0,02 = 14,40 €. Skonto wird auf den ZEP (nach Rabatt) berechnet, nicht auf den LEP!
+
+**4. Bezugskosten addieren (30 €)**
+
+```
+Bareinkaufspreis  = 705,60 €
++ Bezugskosten    =  30,00 €
+= Bezugspreis       = 735,60 €
+```
+
+Fracht, Zoll, Verpackung werden addiert. Das ist jetzt der echte Einstandspreis — was der Laptop den Händler kostet, wenn er im Lager steht.
+
+**5. Handlungskosten aufschlagen (15 %)**
+
+```
+Bezugspreis       = 735,60 €
++ HK (15 %)       = 110,34 €
+= Selbstkosten      = 845,94 €
+```
+
+Handlungskosten = 735,60 × 0,15 = 110,34 €. Jetzt sind alle Kosten des Händlers drin. Verkauft er zum Selbstkostenpreis, macht er keinen Verlust — aber auch keinen Gewinn.
+
+**6. Gewinn aufschlagen (20 %)**
+
+```
+Selbstkosten      = 845,94 €
++ Gewinn (20 %)   = 169,19 €
+= Barverkaufspreis  = 1.015,13 €
+```
+
+Gewinn = 845,94 × 0,20 = 169,19 €. Der Barverkaufspreis ist der Preis für Barzahlung ohne weitere Rabatte.
+
+**7. Kundenskonto und Kundenrabatt aufschlagen**
+
+```
+Barverkaufspreis  = 1.015,13 €
+÷ (1 − 0,02)      = 1.035,85 €  (Skonto-Aufschlag = 20,72 €)
+÷ (1 − 0,05)      = 1.090,39 €  (Rabatt-Aufschlag = 54,54 €)
+= Netto-VK          = 1.090,39 €
+```
+
+Skonto und Rabatt werden dem Kunden als Abzug gewährt — sie müssen also im Verkaufspreis schon einkalkuliert sein. Saubere Methode: den Barverkaufspreis zweimal hintereinander durch (1 − Satz) teilen. Kurz: 1.015,13 ÷ 0,98 ÷ 0,95 = 1.090,39 €. Die Zwischendifferenzen ergeben Skonto- bzw. Rabatt-Aufschlag.
+
+**8. Mehrwertsteuer (19 %) aufschlagen**
+
+```
+Netto-VK          = 1.090,39 €
++ USt (19 %)       =   207,17 €
+= Brutto-VK         = 1.297,56 €
+```
+
+USt = 1.090,39 × 0,19 = 207,17 €. Das ist der finale Bruttopreis, den der Endkunde zahlt.
+
+**Rückwärtskalkulation: Brutto-VK gegeben, Bezugspreis gesucht**
+
+**1. Szenario**
+
+```
+Brutto-VK = 595,00 €
+USt = 19 %
+Kundenrabatt = 5 %
+Handlungskosten = 20 %
+Gewinn = 10 %
+```
+
+Bei der Rückwärtskalkulation kennen wir den Endpreis und rechnen rückwärts bis zum Bezugspreis.
+
+**2. USt herausrechnen**
+
+```
+Netto-VK = 595,00 ÷ 1,19
+Netto-VK = 500,00 €
+```
+
+Brutto ÷ 1,19 ergibt den Netto-VK. Nie 19 % abziehen (= 595 × 0,81), das wäre falsch!
+
+**3. Kundenrabatt herausrechnen**
+
+```
+Netto-VK = 500,00 €
+Barverkaufspreis = 500,00 × (1 − 0,05)
+= 500,00 × 0,95 = 475,00 €
+```
+
+Der Netto-VK enthält den Rabatt bereits als Aufschlag. Durch Multiplizieren mit (1 − Rabattsatz) kommen wir auf den Barverkaufspreis.
+
+**4. Selbstkosten bestimmen (Gewinn heraus)**
+
+```
+Barverkaufspreis = Selbstkosten × (1 + Gewinnaufschlag)
+475,00 = Selbstkosten × 1,10
+Selbstkosten = 475,00 ÷ 1,10
+Selbstkosten = 431,82 €
+```
+
+Der Gewinn ist ein Aufschlag auf die Selbstkosten. Umgekehrt: Barverkaufspreis ÷ (1 + Gewinnprozent) = Selbstkosten.
+
+**5. Bezugspreis bestimmen (Handlungskosten heraus)**
+
+```
+Selbstkosten = Bezugspreis × (1 + HK-Satz)
+431,82 = Bezugspreis × 1,20
+Bezugspreis = 431,82 ÷ 1,20
+Bezugspreis = 359,85 €
+```
+
+Analog: Die Handlungskosten sind ein Aufschlag auf den Bezugspreis. Rückwärts: Selbstkosten ÷ (1 + HK-Satz) = Bezugspreis.
 
 ---
 

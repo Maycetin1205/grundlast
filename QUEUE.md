@@ -4,17 +4,17 @@ Stand: 03.07.2026 · Regeln: `PROJEKT.md`. Diese Datei beantwortet nur:
 **wo stehen wir, was kommt als Nächstes und warum.**
 
 Bestand (aus `AP1_STATUS.md`, generiert): 100 Kapitel im TOC (80 mit Inhalt,
-20 Stubs). Vertrauen: **2 geprüft, 12 teilgeprüft, 86 ungeprüft.**
+20 Stubs). Vertrauen: **5 geprüft, 9 teilgeprüft, 86 ungeprüft.**
 
 ## 1. Aktueller Arbeitsstand
 
 | Feld | Wert |
 |---|---|
-| Aktueller Queue-Eintrag | `zahlensysteme` (Audit abschließen) |
-| Kapiteldatei | `src/content/lessons/zahlensysteme.mdx` |
+| Aktueller Queue-Eintrag | `netzwerkkonfiguration` → Ziel `geprüft` |
+| Kapiteldatei | `src/content/lessons/netzwerkkonfiguration.mdx` |
 | Vertrauen | `teilgeprüft` |
-| Aktuelle Phase | Aufgabenabgleich offen (Stellenwerte/Umrechnungen/Anwendungen laut `status.ts` bereits auditiert) |
-| Nächster Eintrag | `docs/PLAN_RECHENWEG.md` umsetzen (nächster offener P0-Haken) |
+| Aktuelle Phase | `ipv4-subnetting` am 03.07.2026 auf `geprüft` angehoben; unabhängiger Prüf-Pass offen |
+| Nächster Eintrag | `datenvolumen-berechnung` → Ziel `geprüft` |
 
 **Jeder Chat aktualisiert diese Tabelle und hakt seinen Eintrag unten ab.**
 
@@ -74,8 +74,12 @@ in der Prüf-Warteschlange abhaken.
 
 ### Prüf-Warteschlange (vom Arbeits-Chat befüllen, vom Prüf-Chat abhaken)
 
-- [ ] `bit-byte` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht vor endgueltiger Bestaetigung. Umlaut-Term-IDs `dezimalpräfix`/`binärpräfix` (Z. 249/250) am 2026-07-03 auf ASCII `dezimalpraefix`/`binaerpraefix` gefixt — beim Pruef-Pass nur noch verifizieren, dass sich beide Terme ins Glossar aufloesen (siehe Notiz Abschnitt 5).
-- [ ] `prefixe` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht vor endgueltiger Bestaetigung. Mitpruefen: der ~93-GiB-Bezugspunkt (1024−931 GiB) und die auf ASCII gefixten Glossar-Term-IDs.
+- [x] `bit-byte` — unabhängiger Prüf-Pass 2026-07-03 BESTANDEN, siehe `AP1_AUDIT_MATRIX.md`; Term-IDs `dezimalpraefix`/`binaerpraefix` lösen sich ins Glossar auf.
+- [x] `prefixe` — unabhängiger Prüf-Pass 2026-07-03 BESTANDEN, siehe `AP1_AUDIT_MATRIX.md`; ~93-GiB-Bezugspunkt und ASCII-Glossar-Term-IDs verifiziert.
+- [ ] `zahlensysteme` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht. Mitpruefen: Restmethode, Hex/Nibble, chmod 755/644, IPv4-/24-Bruecke und CSS-8-Bit-Komponenten.
+- [x] `docs/PLAN_RECHENWEG.md` — technischer P0-Plan 2026-07-03 umgesetzt (Details: `AP1_AUDIT_MATRIX.md`); kein Fachkapitel, kein Vertrauensstatus und kein unabhängiger Rechen-Prüfpass nötig.
+- [ ] `datenrate-berechnung` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht. Mitpruefen: Bit/Byte-Faktor, SI/IEC-Abgrenzung, Brutto/Netto-Regel ohne feste Prozent-Daumenwerte, Backupfenster-Beispiele.
+- [ ] `ipv4-subnetting` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht. Mitpruefen: /26-Beispiel, /28-Mini-Check, Gateway-Plausibilitaet, private IPv4-Bereiche und /31-Sonderfall.
 
 ## 3. Lücken-Audit gegen den offiziellen AP1-Rahmen
 
@@ -99,8 +103,8 @@ Schreibtischtest/Code-Analyse (bisher kein klarer Ort).
 | Netzplan & Projektmanagement | 9/9 | `netzplan` draft/ungeprüft, `gantt-diagramm` ready/ungeprüft |
 | Schreibtischtest & Code-Analyse | 9/9 | **kein klarer Ort** — Scope-Entscheid nötig (zu `pseudocode-einstieg`?) |
 | SQL (einfache SELECTs) & ER-Modell | hoch | `sql-grundlagen`, `er-grundlagen` draft/ungeprüft |
-| IPv6 & Subnetting | hoch | `ipv6-grundlagen`, `ipv4-subnetting` teilgeprüft ✓ |
-| Dateigrößen & Speicher rechnen | hoch | `datenvolumen-berechnung`, `datenrate-berechnung` teilgeprüft ✓ |
+| IPv6 & Subnetting | hoch | `ipv6-grundlagen` teilgeprüft; `ipv4-subnetting` geprüft ✓ |
+| Dateigrößen & Speicher rechnen | hoch | `datenrate-berechnung` geprüft ✓; `datenvolumen-berechnung` teilgeprüft ✓ |
 | KI, Barrierefreiheit, Englisch | neu 2025 | `ki-grundlagen` ungeprüft; Barrierefreiheit **Stub**; Englisch ohne Ort |
 
 ### Katalog-2025-Deltas (Arbeitsannahme, beim Aufgabenabgleich bestätigen)
@@ -124,13 +128,13 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 
 - [x] `bit-byte` — Neustartprüfung abschließen (Aufgabenabgleich, Restaudit) → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Pruef-Pass ausstehend (Abschnitt 2b)
 - [x] `prefixe` — Audit abschließen → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Glossar-Bug gefixt (Umlaut→ASCII Term-IDs) + kompakter Selbstcheck ergänzt; Pruef-Pass ausstehend (Abschnitt 2b)
-- [ ] `zahlensysteme` — Audit abschließen (teilgeprüft, Aufgabenabgleich offen) → Ziel `geprüft`
-- [ ] Offener technischer Plan: `docs/PLAN_RECHENWEG.md` umsetzen (Rechenweg-/StepByStep-Komponenten entfernen, Inhalt 1:1 in MDX; betrifft ~40 Kapitel — vor breiter Kapitelarbeit erledigen)
+- [x] `zahlensysteme` — Audit abschließen (teilgeprüft, Aufgabenabgleich offen) → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Pruef-Pass ausstehend (Abschnitt 2b)
+- [x] Offener technischer Plan: `docs/PLAN_RECHENWEG.md` umsetzen (Rechenweg-/StepByStep-Komponenten entfernen, Inhalt 1:1 in MDX; betrifft ~40 Kapitel — vor breiter Kapitelarbeit erledigen) — erledigt 2026-07-03; alte Tags 0 Treffer, drei Komponenten gelöscht, Lint/Test/Build grün; kein Fachkapitel-Prüfpass nötig.
 
 ### P1 — Grundlagenkette fertig auditieren (Basis für alles Rechnen)
 
-- [ ] `datenrate-berechnung` → Ziel `geprüft`
-- [ ] `ipv4-subnetting` → Ziel `geprüft` (Dauerbrenner Netzwerkplanung)
+- [x] `datenrate-berechnung` → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Netto-Prozent-Daumenwerte entfernt, Rechenwege nachgerechnet, Pruef-Pass ausstehend (Abschnitt 2b)
+- [x] `ipv4-subnetting` → Ziel `geprüft` (Dauerbrenner Netzwerkplanung) — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Mini-Selbstcheck ergänzt, Rechenwege nachgerechnet, Pruef-Pass ausstehend (Abschnitt 2b)
 - [ ] `netzwerkkonfiguration` → Ziel `geprüft` (DHCP/DORA, DNS, Diagnosebefehle, Englisch-Fehlermeldungen einbauen)
 - [ ] `datenvolumen-berechnung` → Ziel `geprüft` (binär 1024 vs. dezimal 1000 sauber!)
 

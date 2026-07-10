@@ -233,40 +233,42 @@ und wie viel Speicher belegen 200 Scans pro Tag in einer Woche (5 Arbeitstage)?
 
 </Beispiel>
 
-<StepByStep titel="Speicherbedarf für hochauflösende A4-Scans">
-  <Schritt nr={1} titel="Format in Inch umrechnen">
-    Breite: 21,0 cm ÷ 2,54 ≈ **8,2677 Inch**.
-    Höhe: 29,7 cm ÷ 2,54 ≈ **11,6929 Inch**.
-    Inch ist die Einheit, auf die sich DPI bezieht. Ohne diesen Schritt wären die
-    Pixelzahlen falsch um Faktor 2,54.
-  </Schritt>
-  <Schritt nr={2} titel="Pixelanzahl bestimmen">
-    Breite_px = 8,2677 × 600 ≈ **4960 px**.
-    Höhe_px  = 11,6929 × 600 ≈ **7016 px**.
-    Pixelanzahl = 4960 × 7016 = **34 799 360 px**.
-  </Schritt>
-  <Schritt nr={3} titel="Bits und Bytes je Datei">
-    Bits = 34 799 360 × **24 Bit** = **835 184 640 Bit**.
-    Bytes = 835 184 640 ÷ 8 = **104 398 080 Byte**.
-    Die Farbtiefe steht in Bit pro Pixel — wer hier 24 Byte rechnet, hat eine Datei, die
-    achtmal zu groß ist.
-  </Schritt>
-  <Schritt nr={4} titel="In MiB umrechnen">
-    MiB = 104 398 080 ÷ 1 048 576 ≈ **99,56 MiB** je Scan.
-    Eine einzige Seite belegt rund 100 MiB — typischer Wert für unkomprimiertes 600-dpi-TIFF.
-  </Schritt>
-  <Schritt nr={5} titel="Wochenmenge hochrechnen">
-    Scans/Woche = 200 × 5 = **1000 Scans**.
-    Gesamtbytes = 1000 × 104 398 080 ≈ **104 398 080 000 Byte**.
-    GiB = 104 398 080 000 ÷ 1 073 741 824 ≈ **97,23 GiB** für die ganze Woche.
-  </Schritt>
-  <Ergebnis>
-    Eine A4-Seite bei 600 dpi und 24 Bit belegt rund **100 MiB unkomprimiert**. Bei 200
-    Scans pro Tag fallen pro Woche knapp **97 GiB** an — pro Jahr (250 Arbeitstage) wären
-    das **rund 4,75 TiB**. In der Praxis senkt JPEG- oder PDF-Kompression das auf rund
-    ein Zehntel; ohne Kompression wird selbst eine 8-TB-Platte in unter zwei Jahren voll.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Speicherbedarf für hochauflösende A4-Scans**
+
+**Schritt 1 — Format in Inch umrechnen**
+Breite: 21,0 cm ÷ 2,54 ≈ **8,2677 Inch**.
+Höhe: 29,7 cm ÷ 2,54 ≈ **11,6929 Inch**.
+Inch ist die Einheit, auf die sich DPI bezieht. Ohne diesen Schritt wären die
+Pixelzahlen falsch um Faktor 2,54.
+
+**Schritt 2 — Pixelanzahl bestimmen**
+Breite_px = 8,2677 × 600 ≈ **4960 px**.
+Höhe_px  = 11,6929 × 600 ≈ **7016 px**.
+Pixelanzahl = 4960 × 7016 = **34 799 360 px**.
+
+**Schritt 3 — Bits und Bytes je Datei**
+Bits = 34 799 360 × **24 Bit** = **835 184 640 Bit**.
+Bytes = 835 184 640 ÷ 8 = **104 398 080 Byte**.
+Die Farbtiefe steht in Bit pro Pixel — wer hier 24 Byte rechnet, hat eine Datei, die
+achtmal zu groß ist.
+
+**Schritt 4 — In MiB umrechnen**
+MiB = 104 398 080 ÷ 1 048 576 ≈ **99,56 MiB** je Scan.
+Eine einzige Seite belegt rund 100 MiB — typischer Wert für unkomprimiertes 600-dpi-TIFF.
+
+**Schritt 5 — Wochenmenge hochrechnen**
+Scans/Woche = 200 × 5 = **1000 Scans**.
+Gesamtbytes = 1000 × 104 398 080 ≈ **104 398 080 000 Byte**.
+GiB = 104 398 080 000 ÷ 1 073 741 824 ≈ **97,23 GiB** für die ganze Woche.
+
+**Ergebnis**
+Eine A4-Seite bei 600 dpi und 24 Bit belegt rund **100 MiB unkomprimiert**. Bei 200
+Scans pro Tag fallen pro Woche knapp **97 GiB** an — pro Jahr (250 Arbeitstage) wären
+das **rund 4,75 TiB**. In der Praxis senkt JPEG- oder PDF-Kompression das auf rund
+ein Zehntel; ohne Kompression wird selbst eine 8-TB-Platte in unter zwei Jahren voll.
+
+
 
 <Beispiel titel="8-GB-Backup über VDSL gegen LAN — Brutto und Netto">
 
@@ -277,40 +279,42 @@ lange dauert die Übertragung in jedem Fall, in Sekunden und in Minuten?
 
 </Beispiel>
 
-<StepByStep titel="Übertragungsdauer im Vergleich VDSL gegen LAN">
-  <Schritt nr={1} titel="Datenmenge in eine konsistente Einheit">
-    8 GB sind dezimal gemeint (Backup-Tools rechnen so): 8 × 10⁹ Byte = **8 000 000 000 Byte**.
-    In Bit: 8 000 000 000 × 8 = **64 000 000 000 Bit**, also **64 Gbit**.
-  </Schritt>
-  <Schritt nr={2} titel="Effektive Datenraten ausrechnen">
-    VDSL: 50 Mbit/s × 0,80 = **40 Mbit/s netto**.
-    LAN:  100 Mbit/s × 0,95 = **95 Mbit/s netto**.
-    Der Wirkungsgrad ist vorgegeben — also einfach multiplizieren, kein Schätzen nötig.
-  </Schritt>
-  <Schritt nr={3} titel="VDSL — Zeit berechnen">
-    Zeit = 64 000 Mbit ÷ 40 Mbit/s = **1600 Sekunden**.
-    1600 s ÷ 60 ≈ **26 Minuten 40 Sekunden**.
-    Damit ist die VDSL-Leitung für die Backup-Zeitfenster grenzwertig — wenn parallel
-    noch Telefonate oder Webdienste laufen, wird sie nicht reichen.
-  </Schritt>
-  <Schritt nr={4} titel="LAN — Zeit berechnen">
-    Zeit = 64 000 Mbit ÷ 95 Mbit/s ≈ **673,7 Sekunden**.
-    673,7 s ÷ 60 ≈ **11 Minuten 14 Sekunden**.
-    Das ist deutlich entspannter — und zeigt: ein interner Backup-Pfad ist fast immer der
-    bessere Plan, schon bevor man über Bandbreite nachdenkt.
-  </Schritt>
-  <Schritt nr={5} titel="Konsistenz-Check">
-    Wenn beide Leitungen 100 Prozent Wirkungsgrad hätten: VDSL = 1280 s, LAN = 640 s. Mit
-    Wirkungsgrad werden beide Werte größer — VDSL um Faktor 1/0,8 = 1,25, LAN um 1/0,95
-    ≈ 1,053. Genau das sehen wir oben (1280 × 1,25 = 1600; 640 × 1,053 ≈ 673,7).
-  </Schritt>
-  <Ergebnis>
-    VDSL: **rund 27 Minuten**, LAN: **rund 11 Minuten**. Die nominal doppelte Bandbreite
-    des LAN führt zu mehr als doppelter Geschwindigkeit, weil zusätzlich der Wirkungsgrad
-    besser ist. Wer Brutto- und Netto-Werte verwechselt, landet bei den
-    1280 s — und liegt damit in beiden Fällen 20 bis 25 Prozent daneben.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Übertragungsdauer im Vergleich VDSL gegen LAN**
+
+**Schritt 1 — Datenmenge in eine konsistente Einheit**
+8 GB sind dezimal gemeint (Backup-Tools rechnen so): 8 × 10⁹ Byte = **8 000 000 000 Byte**.
+In Bit: 8 000 000 000 × 8 = **64 000 000 000 Bit**, also **64 Gbit**.
+
+**Schritt 2 — Effektive Datenraten ausrechnen**
+VDSL: 50 Mbit/s × 0,80 = **40 Mbit/s netto**.
+LAN:  100 Mbit/s × 0,95 = **95 Mbit/s netto**.
+Der Wirkungsgrad ist vorgegeben — also einfach multiplizieren, kein Schätzen nötig.
+
+**Schritt 3 — VDSL — Zeit berechnen**
+Zeit = 64 000 Mbit ÷ 40 Mbit/s = **1600 Sekunden**.
+1600 s ÷ 60 ≈ **26 Minuten 40 Sekunden**.
+Damit ist die VDSL-Leitung für die Backup-Zeitfenster grenzwertig — wenn parallel
+noch Telefonate oder Webdienste laufen, wird sie nicht reichen.
+
+**Schritt 4 — LAN — Zeit berechnen**
+Zeit = 64 000 Mbit ÷ 95 Mbit/s ≈ **673,7 Sekunden**.
+673,7 s ÷ 60 ≈ **11 Minuten 14 Sekunden**.
+Das ist deutlich entspannter — und zeigt: ein interner Backup-Pfad ist fast immer der
+bessere Plan, schon bevor man über Bandbreite nachdenkt.
+
+**Schritt 5 — Konsistenz-Check**
+Wenn beide Leitungen 100 Prozent Wirkungsgrad hätten: VDSL = 1280 s, LAN = 640 s. Mit
+Wirkungsgrad werden beide Werte größer — VDSL um Faktor 1/0,8 = 1,25, LAN um 1/0,95
+≈ 1,053. Genau das sehen wir oben (1280 × 1,25 = 1600; 640 × 1,053 ≈ 673,7).
+
+**Ergebnis**
+VDSL: **rund 27 Minuten**, LAN: **rund 11 Minuten**. Die nominal doppelte Bandbreite
+des LAN führt zu mehr als doppelter Geschwindigkeit, weil zusätzlich der Wirkungsgrad
+besser ist. Wer Brutto- und Netto-Werte verwechselt, landet bei den
+1280 s — und liegt damit in beiden Fällen 20 bis 25 Prozent daneben.
+
+
 
 <Beispiel titel="Videoaufnahme — Roh-Bitrate gegen H.264">
 
@@ -321,41 +325,43 @@ ist die Aufnahme **unkomprimiert** in GiB? Und wie viel bleibt nach Kompression 
 
 </Beispiel>
 
-<StepByStep titel="Speicher und Bitrate für eine Stunde FullHD">
-  <Schritt nr={1} titel="Pixel je Frame und Roh-Bitrate">
-    Pixel je Frame = 1920 × 1080 = **2 073 600 px**.
-    Bits je Frame = 2 073 600 × 24 = **49 766 400 Bit**.
-    Roh-Bitrate = 49 766 400 × 30 = **1 492 992 000 Bit/s** ≈ **1,49 Gbit/s**.
-  </Schritt>
-  <Schritt nr={2} titel="Bytes pro Sekunde und Stunde — unkomprimiert">
-    Byte/s = 1 492 992 000 ÷ 8 = **186 624 000 Byte/s** ≈ **177,98 MiB/s**.
-    Byte/h = 186 624 000 × 3600 = **671 846 400 000 Byte**.
-    GiB/h = 671 846 400 000 ÷ 1 073 741 824 ≈ **625,71 GiB**.
-  </Schritt>
-  <Schritt nr={3} titel="H.264 — die komprimierte Variante">
-    Vorgegeben sind 8 Mbit/s. Byte/s = 8 000 000 ÷ 8 = **1 000 000 Byte/s** = **1 MB/s**.
-    Byte/h = 1 000 000 × 3600 = **3 600 000 000 Byte** = **3,6 GB**.
-    Damit liegt der komprimierte Wert bei rund **3,35 GiB** für eine Stunde.
-  </Schritt>
-  <Schritt nr={4} titel="Kompressions-Verhältnis">
-    Verhältnis = 671 846 400 000 ÷ 3 600 000 000 ≈ **186,6 : 1**.
-    H.264 schluckt also über 99 Prozent der Roh-Daten. Das ist möglich, weil der Codec
-    Ähnlichkeiten zwischen Frames (Bewegungsschätzung) und innerhalb eines Frames
-    (Blocktransformation) nutzt.
-  </Schritt>
-  <Schritt nr={5} titel="Speicher-Hochrechnung für 30 Tage Daueraufnahme">
-    Unkomprimiert: 625,71 GiB × 24 × 30 ≈ **450 508 GiB** ≈ **439,95 TiB** — praktisch
-    unbezahlbar.
-    H.264: 3,35 GiB × 24 × 30 ≈ **2412 GiB** ≈ **2,36 TiB** — eine Sache für eine handelsübliche
-    Festplattenanlage mit RAID 5.
-  </Schritt>
-  <Ergebnis>
-    Roh-Daten würden **rund 626 GiB** für eine Stunde FullHD verbrauchen. H.264 bei 8 Mbit/s
-    senkt das auf **etwa 3,35 GiB** — Faktor **~ 187**. Genau dieses Verhältnis macht
-    Video-Archivierung erst praxisreif: ohne Codec ist eine 30-Tage-Aufzeichnung
-    unbezahlbar, mit Codec handhabbar.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Speicher und Bitrate für eine Stunde FullHD**
+
+**Schritt 1 — Pixel je Frame und Roh-Bitrate**
+Pixel je Frame = 1920 × 1080 = **2 073 600 px**.
+Bits je Frame = 2 073 600 × 24 = **49 766 400 Bit**.
+Roh-Bitrate = 49 766 400 × 30 = **1 492 992 000 Bit/s** ≈ **1,49 Gbit/s**.
+
+**Schritt 2 — Bytes pro Sekunde und Stunde — unkomprimiert**
+Byte/s = 1 492 992 000 ÷ 8 = **186 624 000 Byte/s** ≈ **177,98 MiB/s**.
+Byte/h = 186 624 000 × 3600 = **671 846 400 000 Byte**.
+GiB/h = 671 846 400 000 ÷ 1 073 741 824 ≈ **625,71 GiB**.
+
+**Schritt 3 — H.264 — die komprimierte Variante**
+Vorgegeben sind 8 Mbit/s. Byte/s = 8 000 000 ÷ 8 = **1 000 000 Byte/s** = **1 MB/s**.
+Byte/h = 1 000 000 × 3600 = **3 600 000 000 Byte** = **3,6 GB**.
+Damit liegt der komprimierte Wert bei rund **3,35 GiB** für eine Stunde.
+
+**Schritt 4 — Kompressions-Verhältnis**
+Verhältnis = 671 846 400 000 ÷ 3 600 000 000 ≈ **186,6 : 1**.
+H.264 schluckt also über 99 Prozent der Roh-Daten. Das ist möglich, weil der Codec
+Ähnlichkeiten zwischen Frames (Bewegungsschätzung) und innerhalb eines Frames
+(Blocktransformation) nutzt.
+
+**Schritt 5 — Speicher-Hochrechnung für 30 Tage Daueraufnahme**
+Unkomprimiert: 625,71 GiB × 24 × 30 ≈ **450 508 GiB** ≈ **439,95 TiB** — praktisch
+unbezahlbar.
+H.264: 3,35 GiB × 24 × 30 ≈ **2412 GiB** ≈ **2,36 TiB** — eine Sache für eine handelsübliche
+Festplattenanlage mit RAID 5.
+
+**Ergebnis**
+Roh-Daten würden **rund 626 GiB** für eine Stunde FullHD verbrauchen. H.264 bei 8 Mbit/s
+senkt das auf **etwa 3,35 GiB** — Faktor **~ 187**. Genau dieses Verhältnis macht
+Video-Archivierung erst praxisreif: ohne Codec ist eine 30-Tage-Aufzeichnung
+unbezahlbar, mit Codec handhabbar.
+
+
 
 ---
 

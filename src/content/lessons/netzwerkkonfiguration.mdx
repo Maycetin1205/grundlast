@@ -1,18 +1,13 @@
 # Netzwerkkonfiguration, DHCP, DNS & Diagnose
 
-<MetaBar
-  lernfeld="LF 3 / LF 9 — Netzwerkkonfiguration und Betrieb"
-  prüfungsrelevanz="PFLICHT · 5/5"
-/>
-
-Das vorhandene Kapitel zum reinen Subnetting-Rechnen bleibt bestehen. Dieses neue
-Kapitel ist die zentrale Drehscheibe für den praktischen Teil: IPv4-Konfiguration im
-Betriebssystem prüfen, DHCP- und DNS-Mechanik verstehen, ARP als Layer-2-Bindeglied
-einordnen, APIPA als Notfall-Default lesen und im Fehlerfall die richtige
-Diagnose-Reihenfolge — Link, IP, Gateway, DNS, Anwendung — sauber durchgehen.
+Dieses Kapitel zeigt dir, wie du eine IPv4-Konfiguration liest und eine Störung
+systematisch eingrenzt: Link, IP-Adresse, Gateway, externe Erreichbarkeit,
+Namensauflösung und Anwendung. Du verstehst außerdem, wie DHCP und DNS die
+Konfiguration liefern und warum ARP dabei die Verbindung zur lokalen Netzwerkkarte
+herstellt.
 
 <Tipp titel="So benutzt du dieses Kapitel">
-Lerne zuerst die vier Pflichtwerte einer IPv4-Konfiguration und danach die Diagnosekette.
+Lerne zuerst die vier Kernwerte einer IPv4-Konfiguration und danach die Diagnosekette.
 DHCP, DNS und ARP erklären dann nur noch, **warum** die einzelnen Prüfungen funktionieren.
 </Tipp>
 
@@ -25,14 +20,12 @@ DHCP, DNS und ARP erklären dann nur noch, **warum** die einzelnen Prüfungen fu
 
 ## 01 · Warum existiert das überhaupt?
 
-Prüfungsnah taucht dieses Thema oft als Fehlersuche auf:
-Ein Anwender meldet „Internet geht nicht", auf dem Schirm steht eine *<Term id="apipa">APIPA</Term>*-Adresse,
-und du sollst in einer geordneten Reihenfolge erklären, was du prüfst und warum. Daneben
-können Aufgaben stehen, in denen die *<Term id="dhcp">DHCP</Term>*-Schritte
-in die richtige Reihenfolge gebracht werden müssen, oder ein Konfigurations-Screenshot,
-aus dem du Subnetz, *<Term id="gateway">Standardgateway</Term>* und Nameserver
-herausziehen musst. Beides verlangt nicht mehr Wissen, sondern strukturiertes Vorgehen
-— die Diagnose-Reihenfolge ist die Kernkompetenz der Aufgabe.
+Ein häufiges Fehlerbild ist: „Internet geht nicht", und im Betriebssystem steht eine
+*<Term id="apipa">APIPA</Term>*-Adresse. Mit einer festen Reihenfolge kannst du dann
+prüfen, ob der Fehler am Link, an der IP-Konfiguration, am
+*<Term id="gateway">Standardgateway</Term>* oder bei DNS liegt. Auch einen
+Konfigurations-Screenshot kannst du so sicher lesen: Subnetz, Gateway und Nameserver
+ergeben erst zusammen ein vollständiges Bild.
 
 Im Betrieb spart die saubere Reihenfolge Zeit. Wer ohne System Tools und Vermutungen
 durchprobiert, repariert oft Symptome statt Ursachen — der defekte Patchkabel-Pin wird
@@ -68,8 +61,7 @@ erwartet:
 | Standardgateway | `10.0.20.1` | Router für Pakete außerhalb des Subnetzes |
 | Nameserver (DNS) | `10.0.20.5` | Übersetzt Domainnamen in IP-Adressen |
 
-Fehlt einer der vier, gibt es typische Symptome, die in Aufgaben oft genau so abgefragt
-werden:
+Fehlt einer der vier, gibt es typische Symptome:
 
 - IP fehlt oder im falschen Subnetz: gar keine Verbindung, auch nicht lokal.
 - Subnetzmaske falsch: Geräte im selben Netz scheinen plötzlich „außen" zu sein.
@@ -81,8 +73,8 @@ werden:
 
 Bei statischer Vergabe trägst du jeden Wert per Hand ein. Das ist sinnvoll für Server,
 Drucker, Switches, Storage — kurz: alles, was eine feste Adresse braucht. Bei
-dynamischer Vergabe übernimmt das *<Term id="dhcp">DHCP</Term>*-Protokoll die Zuteilung
-über den *<Term id="dora">DORA-Handshake</Term>*. Vorteil: Du musst keine Adress-Liste
+dynamischer Vergabe übernimmt das *<Term id="dhcp">DHCP</Term>*-Protokoll die Zuteilung;
+bei einer neuen Adresse beginnt es mit dem *<Term id="dora">DORA-Handshake</Term>*. Vorteil: Du musst keine Adress-Liste
 pflegen, Geräte können wandern, Konflikte sind unwahrscheinlicher. Nachteil: Wenn der
 DHCP-Server fällt, fallen mit ihm alle neuen Clients.
 
@@ -114,16 +106,15 @@ Standardgateways — alles weitere übernimmt der Router.
 
 Erhält ein Client per DHCP keine Antwort und ist IPv4-Link-Local-Autokonfiguration
 aktiv, kann er sich selbst eine Adresse aus dem Bereich `169.254.0.0/16` geben.
-Diese *<Term id="apipa">APIPA</Term>*-Adresse
-ist nicht routbar — sie funktioniert nur im lokalen Segment und nur für andere
-APIPA-Hosts. In der Diagnose ist sie deshalb ein klares Signal: wenn du `169.254.x.x`
-siehst, ist der DHCP-Server entweder nicht erreichbar, der Pool leer, oder der Client
-hängt im falschen VLAN.
+Diese *<Term id="apipa">APIPA</Term>*-Adresse ist nur auf dem lokalen Link gültig und
+wird nicht über Router weitergeleitet. Bei aktivem DHCP ist `169.254.x.x` deshalb ein
+starker Hinweis: Der DHCP-Server ist nicht erreichbar, der Pool ist erschöpft oder der
+Client hängt im falschen VLAN.
 
 <Tipp titel="Lese-Eselsbrücke">
 Vier Werte, vier Wirkungen: ohne IP keine Verbindung, ohne Maske keine Nachbarn, ohne
-Gateway kein Außenkontakt, ohne DNS keine Namen. Wer in der Aufgabe eine Symptom-
-Aufgabe sieht, listet erst die fehlende Wirkung — dann ist der fehlende Wert klar.
+Gateway kein Außenkontakt, ohne DNS keine Namen. Wenn du ein Symptom siehst, benenne
+zuerst die fehlende Wirkung — dann wird der fehlende Wert oft schnell klar.
 </Tipp>
 
 ---
@@ -132,8 +123,8 @@ Aufgabe sieht, listet erst die fehlende Wirkung — dann ist der fehlende Wert k
 
 ### 03.1 · DHCP — der DORA-Handshake
 
-Der *<Term id="dora">DORA</Term>*-Handshake ist in RFC 2131 definiert und besteht aus
-genau vier Schritten zwischen Client und Server. Beide nutzen UDP, der Server lauscht
+Der *<Term id="dora">DORA</Term>*-Handshake beschreibt die vier Nachrichten bei einer
+neuen DHCP-Zuteilung. Beide nutzen UDP, der Server lauscht
 auf Port 67, der Client auf Port 68.
 
 <Schritte
@@ -142,61 +133,61 @@ auf Port 67, der Client auf Port 68.
     { titel: 'Offer (Server → Client)', text: 'Jeder erreichbare DHCP-Server antwortet mit einem Adress-Vorschlag: freie Adresse aus dem Pool, plus Subnetzmaske, Gateway, DNS und vorgeschlagener Lease-Dauer. Je nach Clientzustand kann die Antwort passend adressiert oder als Broadcast gesendet werden. Antworten mehrere Server, kommen mehrere Offers an — der Client wählt eines.' },
     { titel: 'Request (Client → Broadcast)', text: 'Der Client schickt erneut einen Broadcast: „Ich hätte gern das Angebot von Server X, Adresse Y." Der Broadcast informiert auch alle anderen Server, dass ihre Angebote nicht angenommen werden — sie geben ihre vorgemerkten Adressen wieder frei.' },
     { titel: 'Acknowledge (Server → Client)', text: 'Der gewählte Server bestätigt mit einem ACK. Die zugewiesene Adresse steht im DHCP-Paket; wichtige Optionen sind Subnetzmaske (1), Gateway/Router (3), DNS (6), Domain-Suffix (15) und Lease-Dauer (51). Erst nach dem ACK übernimmt der Client die Konfiguration und beginnt zu kommunizieren.' },
-    { titel: 'Renew (T1, halbe Lease-Zeit)', text: 'Sobald die Hälfte der Lease-Zeit verstrichen ist, schickt der Client einen DHCP-Request direkt (unicast) an seinen Server, um die Lease zu verlängern. Antwortet der Server, läuft das Lease einfach weiter — kein neuer DORA nötig.' },
-    { titel: 'Rebind (T2, 87,5 Prozent der Lease)', text: 'Antwortet der ursprüngliche Server nicht, versucht der Client ab T2 (typisch 87,5 Prozent der Lease-Dauer) per Broadcast einen beliebigen DHCP-Server zu erreichen. Klappt das nicht, läuft die Lease ab — der Client verliert die Konfiguration und beginnt mit Discover von vorn.' },
+    { titel: 'Renew (T1)', text: 'Sobald T1 erreicht ist, schickt der Client einen DHCP-Request direkt (unicast) an seinen Server, um die Lease zu verlängern. Antwortet der Server, läuft die Lease weiter — kein neuer DORA nötig. Falls der Server keine Zeiten vorgibt, liegt T1 standardmäßig bei der halben Lease-Dauer.' },
+    { titel: 'Rebind (T2)', text: 'Antwortet der ursprüngliche Server nicht, versucht der Client ab T2 per Broadcast einen erreichbaren DHCP-Server zu finden. Falls der Server keine Zeiten vorgibt, liegt T2 standardmäßig bei 87,5 Prozent der Lease-Dauer. Klappt es nicht, läuft die Lease ab und der Client beginnt wieder mit Discover.' },
   ]}
 />
 
 ### 03.2 · DNS — vom Namen zur IP
 
-Eine Domain wie `heise.de` ist für Menschen lesbar, für Pakete nicht. Das DNS löst den
-Namen vor jedem Verbindungsaufbau in eine IP-Adresse auf. Der typische Ablauf:
+Eine Domain wie `heise.de` ist für Menschen lesbar, für Pakete nicht. Wenn eine
+Anwendung einen Namen verwendet, löst DNS ihn in eine IP-Adresse auf. Der typische
+Ablauf:
 
 <Schritte
   items={[
-    { titel: 'Cache prüfen', text: 'Der Client schaut zuerst in seinen lokalen DNS-Cache. Auf Windows mit "ipconfig /displaydns", auf Linux mit "resolvectl statistics". Ist der Eintrag noch frisch (TTL nicht abgelaufen), wird er ohne Netzwerkverkehr verwendet.' },
-    { titel: 'hosts-Datei lesen', text: 'Vor jedem DNS-Lookup wird die hosts-Datei konsultiert (Windows: C:\\Windows\\System32\\drivers\\etc\\hosts, Linux: /etc/hosts). Steht der Name dort, antwortet das Betriebssystem aus der Datei — kein Server gefragt. Klassische Falle: Ein verbotener Eintrag in hosts blockiert eine Domain weltweit auf diesem Gerät.' },
-    { titel: 'Rekursiver Resolver fragen', text: 'Der Client schickt eine UDP-Anfrage an den im OS eingetragenen Nameserver, meist den Gateway-Router oder einen ISP-Resolver. Dieser Resolver übernimmt die ganze Auflösungs-Arbeit für den Client.' },
+    { titel: 'Lokale Namensquellen prüfen', text: 'Der Resolver kann zunächst einen lokalen DNS-Cache nutzen, etwa sichtbar mit "ipconfig /displaydns" unter Windows. Auch eine hosts-Datei kann einen Namen direkt zuordnen. Ihre Reihenfolge ist Teil der Systemkonfiguration; unter Linux legt sie /etc/nsswitch.conf fest. Ein ungewollter hosts-Eintrag kann daher eine Domain auf diesem Gerät umleiten.' },
+    { titel: 'Rekursiven Resolver fragen', text: 'Fehlt eine lokale Antwort, fragt der Client den im Betriebssystem eingetragenen Nameserver. Im klassischen DNS geschieht das meist per UDP; DNS kann jedoch auch TCP verwenden. Der rekursive Resolver übernimmt die Auflösungs-Arbeit für den Client.' },
     { titel: 'Root-Server anfragen', text: 'Hat der Resolver den Eintrag nicht im Cache, fragt er eine Root-Server-Instanz: „Wer ist für .de zuständig?" Antwort: die Liste der TLD-Server für .de.' },
     { titel: 'TLD-Server fragen', text: 'Der Resolver fragt einen .de-TLD-Server: „Wer ist für heise.de zuständig?" Antwort: die autoritativen Nameserver der Zone heise.de.' },
-    { titel: 'Autoritativen Server fragen', text: 'Der Resolver fragt den autoritativen Server: „Was ist die IPv4-Adresse von heise.de?" Antwort: der A-Record (z. B. 193.99.144.80) plus eine TTL — etwa 3600 Sekunden.' },
+    { titel: 'Autoritativen Server fragen', text: 'Der Resolver fragt den autoritativen Server: „Welche IPv4-Adresse gehört zu heise.de?" Antwort: ein A-Record mit einer TTL. Die konkrete Adresse und die TTL gehören zur Zone und können sich ändern.' },
     { titel: 'Antwort an Client und Cache füllen', text: 'Der Resolver liefert die IP an den Client und merkt sich den Eintrag bis zum Ablauf der TTL. Erst dann wird der Datensatz erneut aus der Hierarchie geholt — jeder Cache-Treffer spart die Arbeit.' },
   ]}
 />
 
-TTL-Werte werden so gewählt, dass Resolver nicht bei jeder Anfrage durch die komplette
-Hierarchie laufen müssen. Bei einem geplanten Server-Wechsel wird die
-*<Term id="ttl-dns">TTL</Term>* einige Stunden vorher gesenkt (z. B. auf 300 Sekunden),
-damit Caches nach der Umstellung schnell auffrischen.
+TTL-Werte sorgen dafür, dass Resolver nicht bei jeder Anfrage durch die komplette
+Hierarchie laufen müssen. Bei einem geplanten Server-Wechsel kann die
+*<Term id="ttl-dns">TTL</Term>* vorab gesenkt werden, zum Beispiel auf 300 Sekunden.
+Das muss früh genug geschehen, damit bereits gespeicherte Antworten mit der alten TTL
+abgelaufen sind.
 
 ### 03.3 · Die Diagnose-Kette — Layer 1 bis 7 in fester Reihenfolge
 
-Jede Fehlersuche beginnt unten und arbeitet sich nach oben. Wer die Reihenfolge bricht,
-verliert Zeit. Dies ist die feste Reihenfolge, die du in Aufgaben zitieren kannst:
+Eine erste Fehlersuche beginnt unten und arbeitet sich nach oben. Die Reihenfolge
+verhindert, dass du Symptome überdeckst, bevor die Basis geprüft ist:
 
 <Schritte
   items={[
-    { titel: 'Layer 1 — physikalische Verbindung', text: 'Steckt das Patchkabel? Leuchtet die Link-LED am Switch und am Endgerät? Ein „aus" hier macht jede weitere Diagnose sinnlos. Kabel tauschen, Port wechseln, am Switch nachsehen.' },
-    { titel: 'Layer 2 — Switching, ARP, MAC', text: 'Ist die MAC-Adresse korrekt? Wird sie am Switch gelernt? Bei VLANs: hängt der Port im richtigen VLAN? "arp -a" zeigt, ob ARP-Antworten ankommen. Doppelte MAC-Adressen sind selten, aber bei Klon-Images möglich.' },
-    { titel: 'Layer 3 — IP-Konfiguration', text: 'Mit ipconfig /all (Windows) oder "ip a" + "ip r" (Linux) prüfen: hat der Host eine IP? Stimmt die Subnetzmaske? Ist das Gateway gesetzt und im selben Subnetz? Eine 169.254.x.x ist ein Symptom — DHCP fragen.' },
-    { titel: 'Lokales Netz testen', text: 'Ping auf das eigene Standardgateway: kommt eine Antwort, ist das lokale Netz technisch in Ordnung. Kommt keine Antwort, liegt der Fehler vor dem Gateway: Layer 1, Layer 2 oder die Konfiguration.' },
-    { titel: 'Externes Netz testen', text: 'Ping auf eine bekannte öffentliche IP wie 8.8.8.8 (Google) oder 1.1.1.1 (Cloudflare). Kommt eine Antwort, sind Routing und Internet-Verbindung in Ordnung — kommt keine, ist das Gateway, der Provider oder die Firewall verdächtig.' },
-    { titel: 'Layer 7 — Namensauflösung', text: 'nslookup heise.de oder ping heise.de prüft DNS. Erhält 8.8.8.8 eine Antwort, der Domainname aber nicht, ist der Nameserver das Problem. „ipconfig /flushdns" leert den Cache, falls falsche Werte hängen geblieben sind.' },
-    { titel: 'Routing nachverfolgen', text: 'tracert (Windows) bzw. traceroute (Linux) zeigt, an welchem Hop die Pakete steckenbleiben. Springt der erste Hop bereits ins Leere, ist das eigene Gateway aus — bricht die Spur erst weiter draußen ab, liegt das Problem beim ISP.' },
+    { titel: 'Layer 1 — physikalische Verbindung', text: 'Bei einer Kabelverbindung: Steckt das Patchkabel? Leuchtet die Link-LED am Switch und am Endgerät? Fehlt der Link, prüfst du Kabel, Port und Switch, bevor du an IP-Einstellungen gehst. Bei WLAN entspricht das dem verbundenen Funknetz.' },
+    { titel: 'Layer 2 — Switching, ARP, MAC', text: 'Wird die Schnittstelle am Switch gelernt? Hängt der Port im richtigen VLAN? "arp -a" zeigt bereits gelernte ARP-Zuordnungen; ein fehlender Eintrag ist ein Hinweis, aber noch kein Beweis für die Ursache.' },
+    { titel: 'Layer 3 — IP-Konfiguration', text: 'Mit ipconfig /all (Windows) oder "ip a" + "ip r" (Linux) prüfen: hat der Host eine IP? Stimmt die Subnetzmaske? Ist das Gateway gesetzt und im selben Subnetz? Bei aktivem DHCP ist 169.254.x.x ein Hinweis auf ein DHCP-Problem.' },
+    { titel: 'Lokales Netz testen', text: 'Ping auf das eigene Standardgateway: Eine Antwort zeigt, dass der Host dieses Gateway per IP und ICMP erreicht. Bleibt sie aus, prüfst du Link, VLAN, IP-Konfiguration, Gateway und mögliche ICMP-Filter weiter.' },
+    { titel: 'Externes Netz testen', text: 'Ping auf eine bekannte öffentliche IP wie 8.8.8.8 (Google) oder 1.1.1.1 (Cloudflare). Eine Antwort zeigt einen funktionierenden Pfad zu diesem Ziel; sie beweist nicht jede Internet-Anwendung. Bleibt sie aus, sind Routing, Provider, Ziel oder ICMP-Filter mögliche Ursachen.' },
+    { titel: 'Layer 7 — Namensauflösung', text: 'nslookup heise.de prüft die Namensauflösung gezielter als ein Browser. Ist ein öffentlicher IP-Test erfolgreich, die Auflösung aber nicht, prüfst du den eingetragenen Nameserver und lokale Namensquellen. „ipconfig /flushdns" leert den Windows-DNS-Cache erst nach der Befundaufnahme.' },
+    { titel: 'Routing nachverfolgen', text: 'tracert (Windows) bzw. traceroute (Linux) zeigt Hops, die auf die gewählten Pakete antworten. Ausbleibende Antworten sind nicht automatisch ein Defekt, weil Router solche Antworten filtern können. Die Spur grenzt dennoch ein, ab welchem Bereich du weiter prüfst.' },
   ]}
 />
 
 <Tipp titel="Reihenfolge merken">
 Link → IP → Gateway → Internet → Namen. Wer in dieser Reihenfolge bleibt, findet jeden
-Fehler in unter zehn Minuten — und kann in der Aufgabe jeden Diagnose-Schritt einzeln
-begründen. Wer die Reihenfolge bricht, repariert oft Symptome statt Ursachen.
+Fehler nachvollziehbar ein und vermeidet Eingriffe auf Verdacht.
 </Tipp>
 
 ---
 
 ## 04 · Konkrete Anwendungsfälle
 
-Die Beispiele bilden die drei Kernprüfungen ab: Konfiguration lesen, Subnetz im
+Die Beispiele bilden drei Kernprüfungen ab: Konfiguration lesen, Subnetz im
 Betrieb bewerten und eine Störung in sauberer Reihenfolge eingrenzen.
 
 <Beispiel titel="IPv4-Konfiguration prüfen — was ipconfig /all wirklich zeigt">
@@ -220,49 +211,51 @@ Ethernet-Adapter Ethernet:
                                       10.0.20.6
 ```
 
-Die Sollwerte aus der Aufgabenstellung lauten: IP `10.0.20.42/24`, Gateway `10.0.20.1`,
+Die erwarteten Werte lauten: IP `10.0.20.42/24`, Gateway `10.0.20.1`,
 DNS `10.0.20.5`. Stimmt die Konfiguration?
 
 </Beispiel>
 
-<StepByStep titel="ipconfig-Ausgabe gegen Sollwerte prüfen">
-  <Schritt nr={1} titel="IPv4-Adresse abgleichen">
-    Soll: `10.0.20.42`. Ist: `10.0.20.42 (Bevorzugt)`. Stimmt überein. Der Zusatz „Bevorzugt"
-    heißt: Windows hat die Adresse bekommen, sie kollidiert nicht mit anderen Hosts und
-    ist die aktive Adresse des Adapters.
-  </Schritt>
-  <Schritt nr={2} titel="Subnetzmaske und Präfix">
-    Soll: `/24` = `255.255.255.0`. Ist: `255.255.255.0`. Passt. Damit gehört der Host
-    zum Subnetz `10.0.20.0/24`, nutzbar von `.1` bis `.254`, Broadcast `.255`.
-  </Schritt>
-  <Schritt nr={3} titel="Gateway prüfen — vor allem auf Subnetz-Zugehörigkeit">
-    Soll: `10.0.20.1`. Ist: `10.0.20.1`. Stimmt. Wichtig: das Gateway muss im gleichen
-    Subnetz wie die IP liegen. Ein Gateway `10.0.30.1` wäre formal eingetragen — aber
-    nicht erreichbar. Der Host würde dann gar nicht versuchen, ARP anzufragen.
-  </Schritt>
-  <Schritt nr={4} titel="Nameserver prüfen">
-    Soll: `10.0.20.5`. Ist: `10.0.20.5` plus `10.0.20.6` als Fallback. Stimmt. Zwei
-    Nameserver sind die saubere Lösung — fällt einer aus, fragt der Client den zweiten.
-    Beide liegen im gleichen Subnetz und sind ohne Gateway-Hop erreichbar.
-  </Schritt>
-  <Schritt nr={5} titel="DHCP-Quelle und Lease-Zeitraum">
-    DHCP aktiviert: Ja. DHCP-Server: `10.0.20.1` — also der Router selbst übernimmt
-    DHCP. Lease 24 Stunden, ab `08:13` heute. Fällt der DHCP-Dienst zwischendurch aus,
-    behält der Client die Adresse bis morgen früh und versucht in der Renew-Phase ab
-    20:13 die Verlängerung.
-  </Schritt>
-  <Schritt nr={6} titel="MAC-Adresse als Querbezug">
-    Physische Adresse `90-2B-34-AA-BB-CC` — die ersten drei Oktette sind der
-    Herstellerkennungsteil (OUI). Bei Konflikt-Suche im Switch ist das die Zeichenfolge, nach der
-    du im MAC-Address-Table greifst.
-  </Schritt>
-  <Ergebnis>
-    Alle vier Pflichtwerte stimmen mit den Sollwerten überein. Der Client ist sauber
-    konfiguriert, hat eine gültige Lease bis morgen früh und nutzt zwei Nameserver. Bei
-    einem Diagnose-Fall an diesem Host würde Layer 3 entfallen — die Suche müsste auf
-    Layer 1, 2 oder weiter oben (Firewall, Anwendung) ansetzen.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: ipconfig-Ausgabe gegen Sollwerte prüfen**
+
+**Schritt 1 — IPv4-Adresse abgleichen**
+Soll: `10.0.20.42`. Ist: `10.0.20.42 (Bevorzugt)`. Stimmt überein. „Bevorzugt"
+bezeichnet unter Windows den aktuell bevorzugten Adresszustand. Das ist kein eigener
+Nachweis dafür, dass die Adresse per DHCP kam oder kein Konflikt vorliegt.
+
+**Schritt 2 — Subnetzmaske und Präfix**
+Soll: `/24` = `255.255.255.0`. Ist: `255.255.255.0`. Passt. Damit gehört der Host
+zum Subnetz `10.0.20.0/24`, nutzbar von `.1` bis `.254`, Broadcast `.255`.
+
+**Schritt 3 — Gateway prüfen — vor allem auf Subnetz-Zugehörigkeit**
+Soll: `10.0.20.1`. Ist: `10.0.20.1`. Stimmt. Wichtig: das Gateway muss im gleichen
+Subnetz wie die IP liegen. Ein Gateway `10.0.30.1` wäre formal eingetragen — aber
+in einer üblichen Client-Konfiguration nicht als direkter nächster Hop erreichbar.
+
+**Schritt 4 — Nameserver prüfen**
+Soll: `10.0.20.5`. Ist: `10.0.20.5` plus `10.0.20.6` als weiterer Nameserver. Stimmt.
+Der zweite Server schafft einen alternativen Auflösungsweg. In diesem Beispiel liegen
+beide im selben Subnetz; grundsätzlich können Nameserver auch über das Gateway erreicht
+werden.
+
+**Schritt 5 — DHCP-Quelle und Lease-Zeitraum**
+DHCP aktiviert: Ja. DHCP-Server: `10.0.20.1` — also der Router selbst übernimmt
+DHCP. Lease 24 Stunden, ab `08:13` heute. Fällt der DHCP-Dienst zwischendurch aus,
+behält der Client die Adresse bis morgen früh und versucht in der Renew-Phase ab
+20:13 die Verlängerung.
+
+**Schritt 6 — MAC-Adresse als Querbezug**
+Physische Adresse `90-2B-34-AA-BB-CC` — bei einer Störung ist das die Zeichenfolge,
+nach der du im MAC-Address-Table eines Switches suchst. Sie zeigt, an welchem Port die
+Schnittstelle gelernt wurde.
+
+**Ergebnis**
+Alle vier Kernwerte stimmen mit den erwarteten Werten überein. Der Client ist sauber
+konfiguriert, hat eine gültige Lease bis morgen früh und nutzt zwei Nameserver. Bei
+einem Diagnose-Fall an diesem Host würde Layer 3 entfallen — die Suche müsste auf
+Layer 1, 2 oder weiter oben (Firewall, Anwendung) ansetzen.
+
+
 
 <Beispiel titel="Subnetting im praktischen Kontext — Netzadresse und Hostbereich für /27">
 
@@ -272,41 +265,42 @@ müsste das Standardgateway haben, damit es im selben Subnetz liegt?
 
 </Beispiel>
 
-<StepByStep titel="Netzadresse, Broadcast und Hostbereich für /27 berechnen">
-  <Schritt nr={1} titel="Hostbits und Adressanzahl bestimmen">
-    `/27` heißt 27 Bit Netzanteil, also `32 − 27 = 5` Hostbits. `2⁵ = 32` Adressen je
-    Subnetz. Davon sind 2 nicht vergebbar (Netz und Broadcast), bleiben **30 nutzbare Hosts**.
-  </Schritt>
-  <Schritt nr={2} titel="Magic Number ermitteln">
-    Subnetzmaske bei `/27` ist `255.255.255.224`. Magic Number = `256 − 224 = 32`.
-    Die Subnetze springen also in 32er-Schritten: `0–31`, `32–63`, `64–95`, `96–127`,
-    `128–159`, `160–191`, `192–223`, `224–255`.
-  </Schritt>
-  <Schritt nr={3} titel="Block für 137 finden">
-    Welcher Block enthält `.137`? `128 + 32 = 160` — also liegt 137 im Block `128–159`.
-    Damit steht das Subnetz fest.
-  </Schritt>
-  <Schritt nr={4} titel="Netzadresse, erster und letzter Host, Broadcast">
-    Netzadresse: `192.168.45.128`. Broadcast: `192.168.45.159`. Erster Host: `.129`.
-    Letzter Host: `.158`. Der Host `.137` liegt mittendrin — passt.
-  </Schritt>
-  <Schritt nr={5} titel="Gateway-Forderung formulieren">
-    Damit ein Standardgateway funktioniert, muss es zwischen `192.168.45.129` und
-    `192.168.45.158` liegen — typisch wäre `192.168.45.129` (erster Host) oder
-    `192.168.45.158` (letzter Host). Eine `192.168.45.1` ist hingegen im Subnetz
-    `0–31`, also unerreichbar.
-  </Schritt>
-  <Schritt nr={6} titel="Gegenprüfung mit Binär-Methode">
-    `137` binär ist `10001001`. Maske letztes Oktett `224` ist `11100000`. AND = `10000000`
-    = `128`. Bestätigt die Netzadresse `192.168.45.128`. Stimmt mit Magic-Number-Methode überein.
-  </Schritt>
-  <Ergebnis>
-    Subnetz `192.168.45.128/27` mit Broadcast `.159` und nutzbarem Hostbereich `.129`
-    bis `.158` — 30 Hosts. Ein Gateway muss in diesem Bereich liegen, sonst wirkt
-    die Konfiguration „statisch korrekt eingetragen", aber der Verkehr scheitert beim
-    ersten Sprung nach außen.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Netzadresse, Broadcast und Hostbereich für /27 berechnen**
+
+**Schritt 1 — Hostbits und Adressanzahl bestimmen**
+`/27` heißt 27 Bit Netzanteil, also `32 − 27 = 5` Hostbits. `2⁵ = 32` Adressen je
+Subnetz. Davon sind 2 nicht vergebbar (Netz und Broadcast), bleiben **30 nutzbare Hosts**.
+
+**Schritt 2 — Magic Number ermitteln**
+Subnetzmaske bei `/27` ist `255.255.255.224`. Magic Number = `256 − 224 = 32`.
+Die Subnetze springen also in 32er-Schritten: `0–31`, `32–63`, `64–95`, `96–127`,
+`128–159`, `160–191`, `192–223`, `224–255`.
+
+**Schritt 3 — Block für 137 finden**
+Welcher Block enthält `.137`? `128 + 32 = 160` — also liegt 137 im Block `128–159`.
+Damit steht das Subnetz fest.
+
+**Schritt 4 — Netzadresse, erster und letzter Host, Broadcast**
+Netzadresse: `192.168.45.128`. Broadcast: `192.168.45.159`. Erster Host: `.129`.
+Letzter Host: `.158`. Der Host `.137` liegt mittendrin — passt.
+
+**Schritt 5 — Gateway-Forderung formulieren**
+Damit ein Standardgateway funktioniert, muss es zwischen `192.168.45.129` und
+`192.168.45.158` liegen — typisch wäre `192.168.45.129` (erster Host) oder
+`192.168.45.158` (letzter Host). Eine `192.168.45.1` ist hingegen im Subnetz
+`0–31`, also unerreichbar.
+
+**Schritt 6 — Gegenprüfung mit Binär-Methode**
+`137` binär ist `10001001`. Maske letztes Oktett `224` ist `11100000`. AND = `10000000`
+= `128`. Bestätigt die Netzadresse `192.168.45.128`. Stimmt mit Magic-Number-Methode überein.
+
+**Ergebnis**
+Subnetz `192.168.45.128/27` mit Broadcast `.159` und nutzbarem Hostbereich `.129`
+bis `.158` — 30 Hosts. Ein Gateway muss in diesem Bereich liegen, sonst wirkt
+die Konfiguration „statisch korrekt eingetragen", aber der Verkehr scheitert beim
+ersten Sprung nach außen.
+
+
 
 <Beispiel titel='Diagnose-Kette — Anwender meldet „Internet geht nicht“'>
 
@@ -317,53 +311,54 @@ Layer?
 
 </Beispiel>
 
-<StepByStep titel="Strukturierte Fern-Diagnose — vom Kabel bis zum Browser">
-  <Schritt nr={1} titel="Layer 1 — leuchtet die Verbindungs-LED?">
-    „Schau bitte am Notebook auf die kleine Lampe neben dem Netzwerkstecker — leuchtet
-    sie grün oder orange?" Leuchtet keine LED, ist Layer 1 unten: Kabel raus/rein, anderes
-    Kabel, anderer Switch-Port. Bei WLAN: ist das WLAN-Symbol aktiv?
-  </Schritt>
-  <Schritt nr={2} titel="Layer 3 — was zeigt ipconfig?">
-    „Öffne bitte die Eingabeaufforderung und tippe `ipconfig /all`. Was steht bei IPv4-Adresse?"
-    Eine `169.254.x.x` ist APIPA — also DHCP nicht erreicht. Eine `0.0.0.0` heißt:
-    gar keine IP. Eine plausible IP wie `10.0.20.42` heißt: Layer 3 ist okay, weiter
-    unten suchen.
-  </Schritt>
-  <Schritt nr={3} titel="Lokales Netz — Ping ans Gateway">
-    „Tippe bitte `ping 10.0.20.1`." Antworten kommen zurück → Subnetz und Gateway sind
-    erreichbar, das Problem liegt außen. Keine Antwort → entweder ist das Gateway aus,
-    oder die Konfiguration ist falsch (Subnetzmaske, falsches VLAN), oder die Firewall
-    auf dem Host blockt ICMP. Letzteres ist seltener, aber möglich.
-  </Schritt>
-  <Schritt nr={4} titel="Externes Netz — Ping auf 8.8.8.8">
-    „Tippe bitte `ping 8.8.8.8`." Antworten kommen → Routing und Internet sind okay,
-    Problem liegt nur noch in DNS oder in der Anwendung. Keine Antworten → Gateway
-    erreicht, aber Router hat kein Internet. Provider-Status prüfen.
-  </Schritt>
-  <Schritt nr={5} titel="DNS — nslookup auf eine bekannte Domain">
-    „Tippe bitte `nslookup heise.de`." Liefert eine IP → DNS arbeitet. Liefert „Server
-    konnte den Namen nicht auflösen" → DNS-Server fehlt oder ist nicht erreichbar. Test
-    mit `nslookup heise.de 8.8.8.8` umgeht den eingestellten Server: kommt eine
-    Antwort, liegt das Problem am eingetragenen Nameserver, nicht im DNS allgemein.
-  </Schritt>
-  <Schritt nr={6} titel="Tracert für die Routing-Spur">
-    „Tippe bitte `tracert heise.de`." Bricht die Spur am ersten Hop ab → eigenes Gateway
-    weg. Bricht sie nach mehreren Hops ab → Provider- oder Backbone-Problem. Kommt sie
-    bis zum Ziel, ist Routing in Ordnung — dann ist die Anwendung selbst dran (Browser-
-    Cache, falsche URL, Firewall-Regel).
-  </Schritt>
-  <Schritt nr={7} titel="Befund formulieren — was wo blockiert">
-    Die Diagnose liefert eine knappe Zuordnung: ipconfig zeigt 169.254 → DHCP-Problem.
-    Ping Gateway scheitert → Layer 1/2 oder Konfiguration. Ping 8.8.8.8 scheitert →
-    Routing oder Provider. nslookup scheitert → DNS. Wer in dieser Reihenfolge bleibt,
-    landet sicher beim verursachenden Layer.
-  </Schritt>
-  <Ergebnis>
-    Eine saubere Diagnose dauert mit Erfahrung unter fünf Minuten. Wichtig: nicht
-    parallel an mehreren Layern schrauben — sonst weißt du am Ende nicht, was
-    wirklich geholfen hat. Erst der Befund, dann der Eingriff.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Strukturierte Fern-Diagnose — vom Kabel bis zum Browser**
+
+**Schritt 1 — Layer 1 — leuchtet die Verbindungs-LED?**
+„Schau bitte am Notebook auf die kleine Lampe neben dem Netzwerkstecker — leuchtet
+sie grün oder orange?" Leuchtet keine LED, ist Layer 1 unten: Kabel raus/rein, anderes
+Kabel, anderer Switch-Port. Bei WLAN: ist das WLAN-Symbol aktiv?
+
+**Schritt 2 — Layer 3 — was zeigt ipconfig?**
+„Öffne bitte die Eingabeaufforderung und tippe `ipconfig /all`. Was steht bei IPv4-Adresse?"
+Eine `169.254.x.x` ist APIPA — also DHCP nicht erreicht. Eine `0.0.0.0` heißt:
+gar keine IP. Eine plausible IP wie `10.0.20.42` heißt: Layer 3 ist okay, weiter
+unten suchen.
+
+**Schritt 3 — Lokales Netz — Ping ans Gateway**
+„Tippe bitte `ping 10.0.20.1`." Antworten kommen zurück → Subnetz und Gateway sind
+erreichbar, das Problem liegt außen. Keine Antwort → entweder ist das Gateway aus,
+oder die Konfiguration ist falsch (Subnetzmaske, falsches VLAN), oder die Firewall
+auf dem Host blockt ICMP. Letzteres ist seltener, aber möglich.
+
+**Schritt 4 — Externes Netz — Ping auf 8.8.8.8**
+„Tippe bitte `ping 8.8.8.8`." Antworten kommen → Routing und Internet sind okay,
+Problem liegt nur noch in DNS oder in der Anwendung. Keine Antworten → Gateway
+erreicht, aber Router hat kein Internet. Provider-Status prüfen.
+
+**Schritt 5 — DNS — nslookup auf eine bekannte Domain**
+„Tippe bitte `nslookup heise.de`." Liefert eine IP → DNS arbeitet. Liefert „Server
+konnte den Namen nicht auflösen" → DNS-Server fehlt oder ist nicht erreichbar. Test
+mit `nslookup heise.de 8.8.8.8` umgeht den eingestellten Server: kommt eine
+Antwort, liegt das Problem am eingetragenen Nameserver, nicht im DNS allgemein.
+
+**Schritt 6 — Tracert für die Routing-Spur**
+„Tippe bitte `tracert heise.de`." Bricht die Spur am ersten Hop ab → eigenes Gateway
+weg. Bricht sie nach mehreren Hops ab → Provider- oder Backbone-Problem. Kommt sie
+bis zum Ziel, ist Routing in Ordnung — dann ist die Anwendung selbst dran (Browser-
+Cache, falsche URL, Firewall-Regel).
+
+**Schritt 7 — Befund formulieren — was wo blockiert**
+Die Diagnose liefert eine knappe Zuordnung: ipconfig zeigt 169.254 → DHCP-Problem.
+Ping Gateway scheitert → Layer 1/2 oder Konfiguration. Ping 8.8.8.8 scheitert →
+Routing oder Provider. nslookup scheitert → DNS. Wer in dieser Reihenfolge bleibt,
+landet sicher beim verursachenden Layer.
+
+**Ergebnis**
+Eine saubere Diagnose dauert mit Erfahrung unter fünf Minuten. Wichtig: nicht
+parallel an mehreren Layern schrauben — sonst weißt du am Ende nicht, was
+wirklich geholfen hat. Erst der Befund, dann der Eingriff.
+
+
 
 ---
 
@@ -371,8 +366,7 @@ Layer?
 
 ### Wichtige DHCP-Optionen
 
-DHCP überträgt mehr als nur die Adresse. Die wichtigsten Optionen, die du in der
-Aufgabe kennen solltest:
+DHCP kann mehr als nur eine Adresse übertragen. Häufig verwendete Optionen sind:
 
 | Option | Inhalt | Beispielwert |
 |---|---|---|
@@ -384,9 +378,11 @@ Aufgabe kennen solltest:
 | 66 | TFTP-Server-Name (für Boot-Images) | `10.0.20.7` |
 | 67 | Bootfile-Name | `pxelinux.0` |
 
-Option 1 und 3 sind zwingend, sonst startet die Konfiguration nicht. Option 6 ist in
-der Praxis ebenfalls Pflicht — ohne DNS keine Domain-Auflösung. Option 66 und 67 sind
-für PXE-Boot relevant (Workstations, die ihr Image über das Netz laden).
+Welche Optionen ein Client erhält, bestimmt die Netzkonfiguration. Die Subnetzmaske
+(Option 1) beschreibt das lokale Netz. Ein Router (Option 3) wird erst für Ziele
+außerhalb dieses Netzes benötigt, und DNS-Server (Option 6) nur für Namensauflösung.
+Option 66 und 67 sind für PXE-Boot relevant, also für Geräte, die ihr Start-Image über
+das Netz laden.
 
 ### DHCP-Relay — über Subnetz-Grenzen hinweg
 
@@ -405,17 +401,17 @@ Client (VLAN 20) ─Discover (Broadcast)─→ Router/Relay
                   ←──────Offer/ACK über Relay zurück──────
 ```
 
-In Cisco-Konfigurationen erscheint das als `ip helper-address 10.0.10.5` am
-VLAN-Interface. Prüfungsklassiker: „DHCP funktioniert in VLAN 10, in VLAN 20 nicht
-— was fehlt?" Antwort: Relay-Agent oder zweiter DHCP-Server im Ziel-VLAN.
+In vielen Router-Konfigurationen wird dafür ein DHCP-Relay pro Client-VLAN eingerichtet.
+Wenn DHCP in einem VLAN funktioniert und in einem anderen nicht, prüfst du neben dem
+Relay auch VLAN-Zuordnung, DHCP-Scope und Firewall-Regeln.
 
 ### DNS-Cache, TTL und hosts-Datei
 
-Drei Quellen werden in Reihenfolge konsultiert: hosts-Datei, lokaler DNS-Cache,
-Resolver. Alle drei können falsche Werte liefern. Der hosts-Eintrag ist permanent
-gültig und kann gegen Verteilung wirken (Schadsoftware schreibt Banking-Domains auf
-falsche IPs). Der lokale Cache hängt an der TTL: ein A-Record mit TTL 3600 bleibt eine
-Stunde gespeichert, auch wenn er falsch wurde. „ipconfig /flushdns" leert ihn manuell.
+Die Konfiguration des Betriebssystems legt fest, in welcher Reihenfolge hosts-Datei,
+lokale Caches und DNS-Resolver genutzt werden. Jede dieser Quellen kann einen falschen
+oder veralteten Wert liefern. Ein hosts-Eintrag übersteuert oft die Serverantwort. Ein
+lokal zwischengespeicherter A-Record mit TTL 3600 darf bis zu einer Stunde verwendet
+werden. „ipconfig /flushdns" leert den Windows-Cache manuell.
 
 ### Statische Reservierung gegen Pool
 
@@ -427,11 +423,10 @@ das gleiche Ziel mit unterschiedlicher Verwaltung.
 
 ### IP-Konflikt-Erkennung
 
-Vor der ersten Verwendung einer per DHCP zugewiesenen Adresse sendet der Client einen
-ARP-Request für die eigene neue IP („Wer hat 10.0.20.42?"). Antwortet jemand anderes,
-ist die Adresse schon belegt — der Client schickt ein DHCP-DECLINE, der Server merkt
-sich die Adresse als ungültig und vergibt eine andere. Klassisch ist der Konflikt, wenn
-ein statisch konfigurierter Server in den Bereich des DHCP-Pools fällt.
+Ein DHCP-Client soll eine neu zugewiesene Adresse vor der Nutzung auf Konflikte prüfen;
+je nach Betriebssystem geschieht das zum Beispiel mit ARP. Antwortet bereits ein anderer
+Host auf die Adresse, kann der Client ein DHCP-DECLINE senden. Ein klassischer Auslöser
+ist eine statisch konfigurierte Adresse innerhalb des DHCP-Pools.
 
 ### Link-Local IPv6 als Querbezug
 
@@ -458,8 +453,8 @@ DHCP-Server.
 | `ipconfig /flushdns` | DNS-Cache leeren | Windows |
 | `resolvectl flush-caches` | DNS-Cache leeren | Linux (systemd) |
 
-In der Prüfung reicht es, die Befehle dem richtigen Zweck zuordnen zu können — der genaue
-Schalter wird selten gefragt.
+Wichtiger als jeden Schalter auswendig zu kennen: Wähle den Befehl passend zur Frage und
+interpretiere sein Ergebnis vorsichtig.
 
 ---
 
@@ -489,16 +484,16 @@ Nach diesem Kapitel kannst du:
   obwohl Layer 1 bis 4 fehlerfrei sind. Prüfen mit `nslookup` oder `ping 8.8.8.8` gegen
   `ping heise.de`.
 - **APIPA-Adresse `169.254.x.x` als „IP gefunden" gelesen.** Im ipconfig sieht eine
-  APIPA-Adresse aus wie eine reguläre IP. Sie ist es nicht — sie ist das Symptom für
-  fehlenden DHCP. Wer sie als „okay" interpretiert, übersieht den eigentlichen Defekt.
+  APIPA-Adresse aus wie eine reguläre IP. Bei aktiviertem DHCP ist sie aber ein Hinweis,
+  dass die automatische Konfiguration nicht wie erwartet geklappt hat.
 - **Statische IP innerhalb des DHCP-Pools.** Trägt ein Admin manuell eine `10.0.20.42`
   in einen Server ein, während der DHCP-Pool von `.20` bis `.200` reicht, vergibt der
-  DHCP-Server irgendwann genau diese Adresse an einen Client — IP-Konflikt. Lösung:
+  DHCP-Server diese Adresse an einen Client vergeben — IP-Konflikt. Lösung:
   statische Adressen außerhalb des Pools, oder per Reservierung im DHCP eintragen.
 - **Falsches Default-Gateway außerhalb des eigenen Subnetzes.** Ein Gateway
-  `192.168.20.1` für eine Host-IP `192.168.10.42/24` ist syntaktisch erlaubt, aber
-  unbenutzbar — der Host versucht ARP für `.20.1` und scheitert, weil das Ziel nicht
-  im Subnetz liegt.
+  `192.168.20.1` für eine Host-IP `192.168.10.42/24` ist syntaktisch erlaubt, aber in
+  einer normalen Client-Konfiguration unbenutzbar, weil der nächste Hop nicht im lokalen
+  Subnetz liegt.
 - **„Lokales Netz funktioniert nur ohne Gateway" als Schein-Erfolg.** Innerhalb eines
   Subnetzes braucht es überhaupt kein Gateway. Wer das als Diagnose-Erfolg interpretiert,
   übersieht, dass alle Verbindungen nach außen scheitern werden — der Test war einfach
@@ -508,12 +503,11 @@ Nach diesem Kapitel kannst du:
   Route greift nur, wenn keine spezifischere Route passt — Standard-Verhalten, in
   Multihoming-Szenarien aber gerne übersehen.
 - **Ping ohne Antwort heißt nicht zwingend offline.** Viele Hosts und Firewalls
-  blockieren ICMP-Echo-Antworten. Eine TCP-Verbindung über Port 80 oder 443 ist oft
-  ein besserer Erreichbarkeits-Test. In der Aufgabe den Hinweis geben: „Antwortet ICMP
-  nicht, mit `tracert` oder einem TCP-Werkzeug nachprüfen."
-- **DHCP-Relay vergessen.** „DHCP geht im Server-VLAN, im Client-VLAN nicht" — fast
-  immer das Relay. Ein zweiter Server wäre Symptombekämpfung; der Relay-Agent ist die
-  saubere Lösung.
+  blockieren ICMP-Echo-Antworten. Prüfe bei Bedarf mit einem Werkzeug für den konkreten
+  Dienst, etwa einer TCP-Verbindung zum erwarteten Port.
+- **DHCP-Relay vergessen.** „DHCP geht im Server-VLAN, im Client-VLAN nicht" kann auf
+  ein fehlendes Relay hindeuten. Prüfe zusätzlich VLAN-Zuordnung, DHCP-Scope und
+  Firewall-Regeln, bevor du einen weiteren Server aufsetzt.
 - **TTL im DNS mit TTL im IP-Header verwechselt.** In DNS bezieht sich TTL auf die
   Cache-Lebensdauer eines Eintrags. Im IP-Header begrenzt TTL die Hop-Zahl (sichtbar
   in tracert). Beide haben denselben Namen — ganz unterschiedliche Bedeutungen.

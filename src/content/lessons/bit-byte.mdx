@@ -171,21 +171,23 @@ Internetanschlüsse und Netzwerkgeschwindigkeiten werden meistens in Bit pro
 Sekunde angegeben, zum Beispiel `100 Mbit/s`. Dateigrößen stehen meistens in
 Byte, zum Beispiel `250 MB`.
 
-<StepByStep titel="100 Mbit/s in MB/s umrechnen">
-  <Schritt nr={1} titel="Einheit lesen">
-    `Mbit/s` ist eine Datenrate in Bit pro Sekunde.
-  </Schritt>
-  <Schritt nr={2} titel="Von Bit zu Byte">
-    Durch 8 teilen: `100 Mbit/s ÷ 8 = 12,5 MB/s`.
-  </Schritt>
-  <Schritt nr={3} titel="Bedeutung">
-    Unter idealen Bedingungen könnten pro Sekunde etwa `12,5 MB` Nutzdaten
-    übertragen werden. Praktisch ist es wegen Overhead meist weniger.
-  </Schritt>
-  <Ergebnis>
-    `100 Mbit/s` sind nicht `100 MB/s`, sondern `12,5 MB/s`.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: 100 Mbit/s in MB/s umrechnen**
+
+**Schritt 1 — Einheit lesen**
+`Mbit/s` ist eine Datenrate in Bit pro Sekunde.
+
+**Schritt 2 — Von Bit zu Byte**
+Durch 8 teilen: `100 Mbit/s ÷ 8 = 12,5 MB/s`.
+
+**Schritt 3 — Bedeutung**
+Unter idealen Bedingungen könnten pro Sekunde etwa `12,5 MB` Nutzdaten
+übertragen werden. Praktisch ist es wegen Overhead meist weniger.
+
+**Ergebnis**
+`100 Mbit/s` sind nicht `100 MB/s`, sondern `12,5 MB/s`.
+
+
 
 <Warnung titel="Einheitenfalle">
   Wenn `Mbit/s` steht und eine Datei in `MB` angegeben ist,
@@ -263,21 +265,23 @@ Für einfache Rechenbeispiele ist die Regel pragmatisch:
   `1000`.
 - Wenn ein Hinweis ausdrücklich "binär gerechnet" sagt, folge ihm.
 
-<StepByStep titel="Warum 1 TB im System ungefähr 931 GiB sind">
-  <Schritt nr={1} titel="Herstellerangabe">
-    `1 TB = 1.000.000.000.000 Byte`.
-  </Schritt>
-  <Schritt nr={2} titel="Binäre Anzeige">
-    `1 GiB = 1.073.741.824 Byte`.
-  </Schritt>
-  <Schritt nr={3} titel="Umrechnung">
-    `1.000.000.000.000 ÷ 1.073.741.824 ≈ 931,32 GiB`.
-  </Schritt>
-  <Ergebnis>
-    Die Platte ist nicht defekt. Es werden unterschiedliche Maßstäbe benutzt:
-    dezimales TB gegen binäres GiB.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Warum 1 TB im System ungefähr 931 GiB sind**
+
+**Schritt 1 — Herstellerangabe**
+`1 TB = 1.000.000.000.000 Byte`.
+
+**Schritt 2 — Binäre Anzeige**
+`1 GiB = 1.073.741.824 Byte`.
+
+**Schritt 3 — Umrechnung**
+`1.000.000.000.000 ÷ 1.073.741.824 ≈ 931,32 GiB`.
+
+**Ergebnis**
+Die Platte ist nicht defekt. Es werden unterschiedliche Maßstäbe benutzt:
+dezimales TB gegen binäres GiB.
+
+
 
 ---
 

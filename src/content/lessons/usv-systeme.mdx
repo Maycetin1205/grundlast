@@ -79,78 +79,101 @@ Ergebnis als Dezimalzahl (z.B. 0,9977) oder in Prozent (99,77 %).
 
 ## Beispiele
 
-<Rechenweg
-  title="Beispiel 1: Akkus + Restladung → Überbrückungszeit in Minuten"
-  steps={[
-    {
-      title: "Gesamtlast der angeschlossenen Geräte bestimmen",
-      formula: "2 Disk-Arrays à 400 W → Last = 2 × 400 = 800 W",
-      explanation: "Alle angeschlossenen Geräte addieren."
-    },
-    {
-      title: "Energie pro Akku berechnen",
-      formula: "Wh_Akku = 12 V × 4,5 Ah = 54 Wh",
-      explanation: "Wattstunden = Volt mal Amperestunden. Das ist die Kapazität eines einzelnen Akkus."
-    },
-    {
-      title: "Gesamt-Kapazität aller 20 Akkus",
-      formula: "Gesamt = 54 Wh × 20 = 1080 Wh",
-      explanation: "Alle 20 Akkus zusammen liefern 1080 Wh."
-    },
-    {
-      title: "Nutzbare Energie (Restladung 30 % → 70 % nutzbar)",
-      formula: "Nutzbar = 1080 Wh × 0,70 = 756 Wh",
-      explanation: "30 % Restladung bedeutet: nur 70 % der Kapazität darf verwendet werden."
-    },
-    {
-      title: "Überbrückungszeit berechnen",
-      formula: "t = 756 Wh / 800 W = 0,945 h\nt (min) = 0,945 × 60 = 56,7 min → 56 Minuten",
-      explanation: "Auf volle Minuten abrunden. Die USV überbrückt 56 Minuten."
-    }
-  ]}
-/>
+**Beispiel 1: Akkus + Restladung → Überbrückungszeit in Minuten**
 
-<Rechenweg
-  title="Beispiel 2: kWh-Angabe + Laständerung"
-  steps={[
-    {
-      title: "Gesamtlast: 4 Racks à 2,75 kW",
-      formula: "P_gesamt = 4 × 2,75 kW = 11,0 kW",
-      explanation: "Alle Racks addieren."
-    },
-    {
-      title: "Überbrückungszeit bei voller Last",
-      formula: "t = 6 kWh / 11,0 kW = 0,545 h = 32,7 min",
-      explanation: "Einheiten passen: kWh ÷ kW = h. 0,545 × 60 = 32,7 Minuten."
-    },
-    {
-      title: "Überbrückungszeit wenn 1 Rack abgeschaltet wird",
-      formula: "P_neu = 3 × 2,75 kW = 8,25 kW\nt_neu = 6 kWh / 8,25 kW = 0,727 h = 43,6 min",
-      explanation: "Weniger Last → längere Überbrückungszeit. Das macht Sinn: mit weniger Verbrauch hält der Akku länger."
-    }
-  ]}
-/>
+**1. Gesamtlast der angeschlossenen Geräte bestimmen**
 
-<Rechenweg
-  title="Beispiel 3: Verfügbarkeit berechnen"
-  steps={[
-    {
-      title: "Gesamtbetriebszeit des Jahres berechnen",
-      formula: "Gesamtzeit = 365 Tage × 24 h = 8760 h",
-      explanation: "Ein Jahr bei 24/7-Betrieb = 8760 Stunden."
-    },
-    {
-      title: "Gesamte Ausfallzeit addieren",
-      formula: "Ausfallzeit = 2 h + 4 h + 6 h + 8 h = 20 h",
-      explanation: "Alle gemeldeten Ausfälle summieren."
-    },
-    {
-      title: "Verfügbarkeit berechnen",
-      formula: "A = (8760 − 20) / 8760 = 8740 / 8760 ≈ 0,9977 = 99,77 %",
-      explanation: "Verfügbarkeit ist fast immer nahe 100 % bei gut gewarteter Hardware. 99,77 % ist realistisch für Unternehmens-IT."
-    }
-  ]}
-/>
+```
+2 Disk-Arrays à 400 W → Last = 2 × 400 = 800 W
+```
+
+Alle angeschlossenen Geräte addieren.
+
+**2. Energie pro Akku berechnen**
+
+```
+Wh_Akku = 12 V × 4,5 Ah = 54 Wh
+```
+
+Wattstunden = Volt mal Amperestunden. Das ist die Kapazität eines einzelnen Akkus.
+
+**3. Gesamt-Kapazität aller 20 Akkus**
+
+```
+Gesamt = 54 Wh × 20 = 1080 Wh
+```
+
+Alle 20 Akkus zusammen liefern 1080 Wh.
+
+**4. Nutzbare Energie (Restladung 30 % → 70 % nutzbar)**
+
+```
+Nutzbar = 1080 Wh × 0,70 = 756 Wh
+```
+
+30 % Restladung bedeutet: nur 70 % der Kapazität darf verwendet werden.
+
+**5. Überbrückungszeit berechnen**
+
+```
+t = 756 Wh / 800 W = 0,945 h
+t (min) = 0,945 × 60 = 56,7 min → 56 Minuten
+```
+
+Auf volle Minuten abrunden. Die USV überbrückt 56 Minuten.
+
+**Beispiel 2: kWh-Angabe + Laständerung**
+
+**1. Gesamtlast: 4 Racks à 2,75 kW**
+
+```
+P_gesamt = 4 × 2,75 kW = 11,0 kW
+```
+
+Alle Racks addieren.
+
+**2. Überbrückungszeit bei voller Last**
+
+```
+t = 6 kWh / 11,0 kW = 0,545 h = 32,7 min
+```
+
+Einheiten passen: kWh ÷ kW = h. 0,545 × 60 = 32,7 Minuten.
+
+**3. Überbrückungszeit wenn 1 Rack abgeschaltet wird**
+
+```
+P_neu = 3 × 2,75 kW = 8,25 kW
+t_neu = 6 kWh / 8,25 kW = 0,727 h = 43,6 min
+```
+
+Weniger Last → längere Überbrückungszeit. Das macht Sinn: mit weniger Verbrauch hält der Akku länger.
+
+**Beispiel 3: Verfügbarkeit berechnen**
+
+**1. Gesamtbetriebszeit des Jahres berechnen**
+
+```
+Gesamtzeit = 365 Tage × 24 h = 8760 h
+```
+
+Ein Jahr bei 24/7-Betrieb = 8760 Stunden.
+
+**2. Gesamte Ausfallzeit addieren**
+
+```
+Ausfallzeit = 2 h + 4 h + 6 h + 8 h = 20 h
+```
+
+Alle gemeldeten Ausfälle summieren.
+
+**3. Verfügbarkeit berechnen**
+
+```
+A = (8760 − 20) / 8760 = 8740 / 8760 ≈ 0,9977 = 99,77 %
+```
+
+Verfügbarkeit ist fast immer nahe 100 % bei gut gewarteter Hardware. 99,77 % ist realistisch für Unternehmens-IT.
 
 ---
 

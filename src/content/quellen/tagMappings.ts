@@ -148,6 +148,9 @@ export const lessonSourceIds: Record<string, string[]> = {
     'openstax-boolean-operations',
   ],
   'ipv4-subnetting': [
+    'kmk-rahmenlehrplan',
+    'fiausbv',
+    'bibb-fachinformatiker',
     'rfc-791',
     'rfc-4632',
     'rfc-1918',

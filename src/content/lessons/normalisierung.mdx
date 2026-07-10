@@ -44,63 +44,148 @@ anderen Nicht-Schlüssel-Feld abhängen.
 
 ## Beispiele – Schritt für Schritt
 
-<Rechenweg
-  title="1. Normalform herstellen"
-  steps={[
-    {
-      title: "Ausgangstabelle prüfen (verletzt 1NF)",
-      formula: "Tabelle: Mitarbeiter\n┌──────────────┬──────────────────────┐\n│ Mitarbeiter  │ Skills               │\n├──────────────┼──────────────────────┤\n│ Max Müller   │ Java, C++, Python    │\n│ Sara Koch    │ SQL, Excel           │\n└──────────────┴──────────────────────┘",
-      explanation: "Problem: Die Spalte 'Skills' enthält mehrere Werte in einer Zelle (Liste). Das verletzt die 1NF — jede Zelle muss atomar (= unteilbar) sein."
-    },
-    {
-      title: "1NF herstellen: Jeder Wert in eine eigene Zeile",
-      formula: "Tabelle: Mitarbeiter_Skills\n┌──────────────┬────────┐\n│ Mitarbeiter  │ Skill  │\n├──────────────┼────────┤\n│ Max Müller   │ Java   │\n│ Max Müller   │ C++    │\n│ Max Müller   │ Python │\n│ Sara Koch    │ SQL    │\n│ Sara Koch    │ Excel  │\n└──────────────┴────────┘",
-      explanation: "Jetzt steht jeder Skill in einer eigenen Zeile. Die Tabelle ist in 1NF. Primärschlüssel wäre die Kombination (Mitarbeiter, Skill) — da beides zusammen eindeutig ist."
-    }
-  ]}
-/>
+**1. Normalform herstellen**
 
-<Rechenweg
-  title="2. Normalform herstellen"
-  steps={[
-    {
-      title: "Ausgangstabelle prüfen (verletzt 2NF)",
-      formula: "Tabelle: Bestellung\nPrimärschlüssel: (BestellNr, ProduktNr) — zusammengesetzt!\n┌──────────┬──────────┬───────────────┬──────────────┐\n│BestellNr │ProduktNr │ ProduktName   │ KundenName   │\n├──────────┼──────────┼───────────────┼──────────────┤\n│ 1001     │ P01      │ Laptop        │ Max Müller   │\n│ 1001     │ P02      │ Maus          │ Max Müller   │\n│ 1002     │ P01      │ Laptop        │ Sara Koch    │\n└──────────┴──────────┴───────────────┴──────────────┘",
-      explanation: "Problem: 'ProduktName' hängt nur von ProduktNr ab (nicht von BestellNr). 'KundenName' hängt nur von BestellNr ab (nicht von ProduktNr). Beide Spalten hängen nur von einem Teil des zusammengesetzten Schlüssels ab — 2NF verletzt!"
-    },
-    {
-      title: "Abhängigkeiten analysieren",
-      formula: "BestellNr → KundenName (KundenName hängt NUR von BestellNr ab)\nProduktNr → ProduktName (ProduktName hängt NUR von ProduktNr ab)\n(BestellNr, ProduktNr) → Menge (Menge hängt von BEIDEN ab ✓)",
-      explanation: "Wir prüfen für jede Spalte: Von welchem Teil des Schlüssels hängt sie ab? Spalten die nur von einem Teil abhängen, müssen ausgelagert werden."
-    },
-    {
-      title: "2NF herstellen: Aufteilen in mehrere Tabellen",
-      formula: "Tabelle: Produkt\n┌──────────┬───────────────┐\n│ProduktNr │ ProduktName   │\n├──────────┼───────────────┤\n│ P01      │ Laptop        │\n│ P02      │ Maus          │\n└──────────┴───────────────┘\n\nTabelle: Bestellung\n┌──────────┬──────────────┐\n│BestellNr │ KundenName   │\n├──────────┼──────────────┤\n│ 1001     │ Max Müller   │\n│ 1002     │ Sara Koch    │\n└──────────┴──────────────┘\n\nTabelle: BestellPosition\n┌──────────┬──────────┬───────┐\n│BestellNr │ProduktNr │Menge  │\n├──────────┼──────────┼───────┤\n│ 1001     │ P01      │ 1     │\n│ 1001     │ P02      │ 2     │\n│ 1002     │ P01      │ 1     │\n└──────────┴──────────┴───────┘",
-      explanation: "Jetzt hängt jede Spalte vom vollständigen Schlüssel ihrer Tabelle ab. Keine partielle Abhängigkeit mehr — 2NF erfüllt."
-    }
-  ]}
-/>
+**1. Ausgangstabelle prüfen (verletzt 1NF)**
 
-<Rechenweg
-  title="3. Normalform herstellen"
-  steps={[
-    {
-      title: "Ausgangstabelle prüfen (verletzt 3NF)",
-      formula: "Tabelle: Kunde\nPrimärschlüssel: KundenNr\n┌──────────┬──────────────┬───────┬──────────────┐\n│KundenNr  │ KundenName   │ PLZ   │ Ort          │\n├──────────┼──────────────┼───────┼──────────────┤\n│ K01      │ Max Müller   │ 80331 │ München      │\n│ K02      │ Sara Koch    │ 80331 │ München      │\n│ K03      │ Tom Braun    │ 10115 │ Berlin       │\n└──────────┴──────────────┴───────┴──────────────┘",
-      explanation: "Problem: 'Ort' hängt von 'PLZ' ab — nicht direkt von 'KundenNr'. Das ist eine transitive Abhängigkeit: KundenNr → PLZ → Ort. Ändert sich der Ort einer PLZ, müssten alle Zeilen mit dieser PLZ geändert werden."
-    },
-    {
-      title: "Transitive Abhängigkeit erkennen",
-      formula: "KundenNr → PLZ (direkt ✓)\nKundenNr → Ort (nur über PLZ, transitiv ✗)\nPLZ → Ort (das ist das Problem)",
-      explanation: "Die Spalte 'Ort' hängt nicht direkt vom Primärschlüssel KundenNr ab, sondern vom Nicht-Schlüsselfeld PLZ. Diese transitive Kette muss aufgebrochen werden."
-    },
-    {
-      title: "3NF herstellen: PLZ und Ort auslagern",
-      formula: "Tabelle: PLZ_Ort\n┌───────┬──────────────┐\n│ PLZ   │ Ort          │\n├───────┼──────────────┤\n│ 80331 │ München      │\n│ 10115 │ Berlin       │\n└───────┴──────────────┘\n\nTabelle: Kunde (bereinigt)\n┌──────────┬──────────────┬───────┐\n│KundenNr  │ KundenName   │ PLZ   │\n├──────────┼──────────────┼───────┤\n│ K01      │ Max Müller   │ 80331 │\n│ K02      │ Sara Koch    │ 80331 │\n│ K03      │ Tom Braun    │ 10115 │\n└──────────┴──────────────┴───────┘",
-      explanation: "Jetzt hängt jede Spalte direkt vom Primärschlüssel ihrer Tabelle ab. Ändert sich der Ort der PLZ 80331, muss nur noch eine Zeile geändert werden. 3NF erfüllt."
-    }
-  ]}
-/>
+```
+Tabelle: Mitarbeiter
+┌──────────────┬──────────────────────┐
+│ Mitarbeiter  │ Skills               │
+├──────────────┼──────────────────────┤
+│ Max Müller   │ Java, C++, Python    │
+│ Sara Koch    │ SQL, Excel           │
+└──────────────┴──────────────────────┘
+```
+
+Problem: Die Spalte 'Skills' enthält mehrere Werte in einer Zelle (Liste). Das verletzt die 1NF — jede Zelle muss atomar (= unteilbar) sein.
+
+**2. 1NF herstellen: Jeder Wert in eine eigene Zeile**
+
+```
+Tabelle: Mitarbeiter_Skills
+┌──────────────┬────────┐
+│ Mitarbeiter  │ Skill  │
+├──────────────┼────────┤
+│ Max Müller   │ Java   │
+│ Max Müller   │ C++    │
+│ Max Müller   │ Python │
+│ Sara Koch    │ SQL    │
+│ Sara Koch    │ Excel  │
+└──────────────┴────────┘
+```
+
+Jetzt steht jeder Skill in einer eigenen Zeile. Die Tabelle ist in 1NF. Primärschlüssel wäre die Kombination (Mitarbeiter, Skill) — da beides zusammen eindeutig ist.
+
+**2. Normalform herstellen**
+
+**1. Ausgangstabelle prüfen (verletzt 2NF)**
+
+```
+Tabelle: Bestellung
+Primärschlüssel: (BestellNr, ProduktNr) — zusammengesetzt!
+┌──────────┬──────────┬───────────────┬──────────────┐
+│BestellNr │ProduktNr │ ProduktName   │ KundenName   │
+├──────────┼──────────┼───────────────┼──────────────┤
+│ 1001     │ P01      │ Laptop        │ Max Müller   │
+│ 1001     │ P02      │ Maus          │ Max Müller   │
+│ 1002     │ P01      │ Laptop        │ Sara Koch    │
+└──────────┴──────────┴───────────────┴──────────────┘
+```
+
+Problem: 'ProduktName' hängt nur von ProduktNr ab (nicht von BestellNr). 'KundenName' hängt nur von BestellNr ab (nicht von ProduktNr). Beide Spalten hängen nur von einem Teil des zusammengesetzten Schlüssels ab — 2NF verletzt!
+
+**2. Abhängigkeiten analysieren**
+
+```
+BestellNr → KundenName (KundenName hängt NUR von BestellNr ab)
+ProduktNr → ProduktName (ProduktName hängt NUR von ProduktNr ab)
+(BestellNr, ProduktNr) → Menge (Menge hängt von BEIDEN ab ✓)
+```
+
+Wir prüfen für jede Spalte: Von welchem Teil des Schlüssels hängt sie ab? Spalten die nur von einem Teil abhängen, müssen ausgelagert werden.
+
+**3. 2NF herstellen: Aufteilen in mehrere Tabellen**
+
+```
+Tabelle: Produkt
+┌──────────┬───────────────┐
+│ProduktNr │ ProduktName   │
+├──────────┼───────────────┤
+│ P01      │ Laptop        │
+│ P02      │ Maus          │
+└──────────┴───────────────┘
+
+Tabelle: Bestellung
+┌──────────┬──────────────┐
+│BestellNr │ KundenName   │
+├──────────┼──────────────┤
+│ 1001     │ Max Müller   │
+│ 1002     │ Sara Koch    │
+└──────────┴──────────────┘
+
+Tabelle: BestellPosition
+┌──────────┬──────────┬───────┐
+│BestellNr │ProduktNr │Menge  │
+├──────────┼──────────┼───────┤
+│ 1001     │ P01      │ 1     │
+│ 1001     │ P02      │ 2     │
+│ 1002     │ P01      │ 1     │
+└──────────┴──────────┴───────┘
+```
+
+Jetzt hängt jede Spalte vom vollständigen Schlüssel ihrer Tabelle ab. Keine partielle Abhängigkeit mehr — 2NF erfüllt.
+
+**3. Normalform herstellen**
+
+**1. Ausgangstabelle prüfen (verletzt 3NF)**
+
+```
+Tabelle: Kunde
+Primärschlüssel: KundenNr
+┌──────────┬──────────────┬───────┬──────────────┐
+│KundenNr  │ KundenName   │ PLZ   │ Ort          │
+├──────────┼──────────────┼───────┼──────────────┤
+│ K01      │ Max Müller   │ 80331 │ München      │
+│ K02      │ Sara Koch    │ 80331 │ München      │
+│ K03      │ Tom Braun    │ 10115 │ Berlin       │
+└──────────┴──────────────┴───────┴──────────────┘
+```
+
+Problem: 'Ort' hängt von 'PLZ' ab — nicht direkt von 'KundenNr'. Das ist eine transitive Abhängigkeit: KundenNr → PLZ → Ort. Ändert sich der Ort einer PLZ, müssten alle Zeilen mit dieser PLZ geändert werden.
+
+**2. Transitive Abhängigkeit erkennen**
+
+```
+KundenNr → PLZ (direkt ✓)
+KundenNr → Ort (nur über PLZ, transitiv ✗)
+PLZ → Ort (das ist das Problem)
+```
+
+Die Spalte 'Ort' hängt nicht direkt vom Primärschlüssel KundenNr ab, sondern vom Nicht-Schlüsselfeld PLZ. Diese transitive Kette muss aufgebrochen werden.
+
+**3. 3NF herstellen: PLZ und Ort auslagern**
+
+```
+Tabelle: PLZ_Ort
+┌───────┬──────────────┐
+│ PLZ   │ Ort          │
+├───────┼──────────────┤
+│ 80331 │ München      │
+│ 10115 │ Berlin       │
+└───────┴──────────────┘
+
+Tabelle: Kunde (bereinigt)
+┌──────────┬──────────────┬───────┐
+│KundenNr  │ KundenName   │ PLZ   │
+├──────────┼──────────────┼───────┤
+│ K01      │ Max Müller   │ 80331 │
+│ K02      │ Sara Koch    │ 80331 │
+│ K03      │ Tom Braun    │ 10115 │
+└──────────┴──────────────┴───────┘
+```
+
+Jetzt hängt jede Spalte direkt vom Primärschlüssel ihrer Tabelle ab. Ändert sich der Ort der PLZ 80331, muss nur noch eine Zeile geändert werden. 3NF erfüllt.
 
 ---
 

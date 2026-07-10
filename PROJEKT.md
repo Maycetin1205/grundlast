@@ -1,6 +1,6 @@
 # PROJEKT.md — Das Regelwerk (eine Quelle der Wahrheit)
 
-Stand: 02.07.2026
+Stand: 10.07.2026
 
 Diese Datei ist die **einzige verbindliche Regel-Datei** des Projekts. Sie
 konsolidiert die früheren Steuerdokumente (AP1_NEUSTART, AP1_KONTROLLZENTRUM_2026,
@@ -22,6 +22,7 @@ gerade dran?) steht in `QUEUE.md`.
 | `CURRICULUM_MAPPING.md` | Mapping-Matrix vorhandener Kapitel (wird von `scripts/add_lf.py` genutzt) |
 | `REVIEW_LOG.md` | Freigabeakte (wird von der App referenziert) |
 | `material/` | externe Zusammenfassungen (Lernzettel, Lernplan) — Rohstoff, siehe Abschnitt 9 |
+| `../Lerndateien/Informationen/` | lokales Quellenarchiv außerhalb der App — klassifizieren, nicht direkt veröffentlichen, siehe Abschnitt 9 |
 | `docs/` | offene Pläne (z. B. `PLAN_RECHENWEG.md`) und `docs/archiv/` |
 
 ## 1. Oberste Regel: KI-Inhalte erst nach Audit vertrauen
@@ -40,20 +41,29 @@ Der gesamte fachliche Bestand kann KI-generiert sein. Deshalb gilt:
 
 ## 2. Ziel und Zielgruppe
 
-Grundlast soll ein belastbares Lernsystem für die Fachinformatiker-Ausbildung
-(Jahr 1/2) werden — AP1-fest **und** klausurtauglich, keine bloße KI-Textmasse:
+Grundlast soll eine durchgehende, quellengeprüfte Lernreise für die
+Fachinformatiker-Ausbildung im 1. und 2. Lehrjahr werden — von null Vorwissen
+bis zu Berufspraxis und Prüfung. Es ist keine AP1-App mit nachträglich
+angehängten Themen und keine bloße KI-Textmasse.
 
-1. **Kompendium**: verstehen (das ist der aktuelle Fokus).
-2. **Prüfungstraining**: anwenden unter Zeitdruck (getrennte Schicht, später).
-3. **Fehlerliste**: persönliche Lücken schließen (später).
+Die drei verbundenen Schichten sind:
 
-Zielperson: Auszubildende/r im 1./2. Lehrjahr **ohne Vorwissen**, mit hohem
-AP1-Ziel. Jedes Kapitel muss ohne Vorwissen funktionieren („Null-Ahnung-
-tauglich"), ohne Präzision zu opfern.
+1. **Lernweg/Kompendium**: Begriffe und mentale Modelle in einer festen,
+   aufbauenden Reihenfolge verstehen.
+2. **Üben**: Wissen abrufen, anwenden, Fehler verstehen und wiederholen.
+3. **Prüfungssichten**: AP1 (später ggf. weitere Prüfungsbezüge) filtert und
+   trainiert denselben Lernbestand; es ist kein separater Grundlagenweg.
+
+Zielperson: Auszubildende/r im 1./2. Lehrjahr **ohne vorausgesetztes
+Vorwissen**. Grundlagen werden im passenden Kapitel eingeführt, nicht in einen
+separaten Vorkurs ausgelagert. Jedes Kapitel muss ohne unnötige Wiederholung
+früherer Kapitel verständlich sein: neue Begriffe werden beim ersten Auftreten
+erklärt, später kurz erinnert und verlinkt.
 
 ## 3. Offizieller Rahmen
 
-- **AP1** „Einrichten eines IT-gestützten Arbeitsplatzes" (§§ 7–9 FIAusbV):
+- **AP1** „Einrichten eines IT-gestützten Arbeitsplatzes" (§§ 7–9 FIAusbV) ist
+  eine Prüfungs- und Prioritätssicht auf den Gesamtlernweg:
   geprüft im 4. Ausbildungshalbjahr, Inhalt der **ersten 18 Monate** plus
   Berufsschulstoff (im Kern LF1–LF6). 90 Minuten, schriftlich, **ungebundene
   Aufgaben** (ca. 4 Blöcke, 100 Punkte), 20 % der Gesamtnote, keine Wiederholung.
@@ -64,6 +74,10 @@ tauglich"), ohne Präzision zu opfern.
   LTE/5G-Tiefe) stehen mit Quellen im Lücken-Audit in `QUEUE.md`.
 - Lernfelder LF1–LF9 (KMK) sind der Rahmen für Jahr 1/2; interne App-Bereiche
   wie „Grundlagen & Rechnen" sind Werkzeugbereiche, keine offiziellen Lernfelder.
+- AP2-Inhalte sind derzeit kein aktiver Scope. Material mit AP2-FISI-Spezialtiefe
+  wird geparkt und darf den Lernweg für Jahr 1/2 nicht aufblasen. Gemeinsame
+  Grundlagen dürfen als Vergleichshinweis dienen, wenn sie bereits im Scope
+  liegen; daraus werden jetzt keine AP2-Kapitel gebaut.
 
 ## 4. Quellenhierarchie
 

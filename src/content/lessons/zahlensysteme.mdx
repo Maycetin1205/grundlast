@@ -447,27 +447,29 @@ Eine CSS-Farbe wie `#FF8000` funktioniert nach demselben Prinzip: drei
 Stellen — eine pro Rolle. Hinter den Stellen stecken jeweils drei Bit:
 `r` (lesen, Wert 4), `w` (schreiben, Wert 2), `x` (ausführen, Wert 1).
 
-<StepByStep titel="Was bedeutet chmod 755?">
-  <Schritt nr={1} titel="Drei Stellen, drei Rollen">
-    Die drei Oktalziffern stehen — von links nach rechts — für
-    **U**ser (Eigentümer), **G**roup (Gruppe), **O**ther (alle anderen).
-    Also: U=7, G=5, O=5.
-  </Schritt>
-  <Schritt nr={2} titel="Jede Ziffer in 3 Bits zerlegen">
-    Jede Stelle steht für drei Bit. Wertigkeiten: `r=4, w=2, x=1`.
-    Aufaddieren ergibt die Oktalziffer.
-  </Schritt>
-  <Schritt nr={3} titel="Ziffern aufschlüsseln">
-    `7 = 4 + 2 + 1 = rwx` (alles erlaubt).
-    `5 = 4 + 0 + 1 = r-x` (lesen und ausführen, kein schreiben).
-  </Schritt>
-  <Ergebnis>
-    `chmod 755` setzt die Rechte `rwxr-xr-x`: Eigentümer darf alles
-    (lesen, schreiben, ausführen), Gruppe und alle anderen dürfen lesen
-    und ausführen, aber nicht schreiben. Genau dieses Muster nutzen die
-    meisten ausführbaren Skripte.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Was bedeutet chmod 755?**
+
+**Schritt 1 — Drei Stellen, drei Rollen**
+Die drei Oktalziffern stehen — von links nach rechts — für
+**U**ser (Eigentümer), **G**roup (Gruppe), **O**ther (alle anderen).
+Also: U=7, G=5, O=5.
+
+**Schritt 2 — Jede Ziffer in 3 Bits zerlegen**
+Jede Stelle steht für drei Bit. Wertigkeiten: `r=4, w=2, x=1`.
+Aufaddieren ergibt die Oktalziffer.
+
+**Schritt 3 — Ziffern aufschlüsseln**
+`7 = 4 + 2 + 1 = rwx` (alles erlaubt).
+`5 = 4 + 0 + 1 = r-x` (lesen und ausführen, kein schreiben).
+
+**Ergebnis**
+`chmod 755` setzt die Rechte `rwxr-xr-x`: Eigentümer darf alles
+(lesen, schreiben, ausführen), Gruppe und alle anderen dürfen lesen
+und ausführen, aber nicht schreiben. Genau dieses Muster nutzen die
+meisten ausführbaren Skripte.
+
+
 
 **Schnellcheck** (nützlich zum Auswendiglernen):
 

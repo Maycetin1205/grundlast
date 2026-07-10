@@ -87,26 +87,28 @@ Ohne Commitment ist ein Artefakt nur eine Liste. Mit Commitment trägt es Transp
 
 ## Ein Sprint von Anfang bis Ende
 
-<StepByStep titel="Wie läuft ein Sprint konkret ab?">
-  <Schritt nr={1} titel="Sprint Planning — Warum, Was, Wie">
-    Das Scrum Team trifft sich. Der Product Owner schlägt vor, welche Backlog-Items zum Product Goal passen. Gemeinsam wird ein **Sprint Goal** formuliert (das **Warum**). Die Developers wählen die Items aus, die sie für umsetzbar halten (das **Was**), und erstellen einen ersten Plan (das **Wie**). Ergebnis: Sprint Goal und initialer Sprint Backlog stehen.
-  </Schritt>
-  <Schritt nr={2} titel="Sprint läuft — Developers arbeiten selbstorganisiert">
-    Der Sprint hat einen festen Endtermin (z.B. 2 Wochen später). Die Developers bauen das Increment. Die Definition of Done gilt während der gesamten Arbeit, nicht erst am Ende. Backlog Refinement läuft parallel: der Product Owner schärft die Items für kommende Sprints.
-  </Schritt>
-  <Schritt nr={3} titel="Daily Scrum — 15 Minuten täglich">
-    Die Developers prüfen den Fortschritt gegen das Sprint Goal und passen ihren Plan an. Kein Statusbericht an Vorgesetzte, keine Arbeitszuweisung — Synchronisation der Developers untereinander.
-  </Schritt>
-  <Schritt nr={4} titel="Sprint Review — Increment mit Stakeholdern inspizieren">
-    Am Sprint-Ende zeigt das Scrum Team das Increment den Stakeholdern. Es geht um Inhalt, nicht um Folien: was funktioniert, was nicht, was kommt als Nächstes? Das Product Backlog wird auf Basis des Feedbacks angepasst.
-  </Schritt>
-  <Schritt nr={5} titel="Sprint Retrospective — Prozess verbessern">
-    Direkt nach dem Review reflektiert das Scrum Team die Zusammenarbeit, Werkzeuge und die Definition of Done. Mindestens eine konkrete Verbesserung wird in den nächsten Sprint übernommen.
-  </Schritt>
-  <Ergebnis>
-    Direkt im Anschluss beginnt der nächste Sprint mit Sprint Planning. Das Increment vom Ende des letzten Sprints fließt in das Produkt ein, das Product Backlog ist aktualisiert, und das nächste Sprint Goal kann auf das Product Goal hinarbeiten.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Wie läuft ein Sprint konkret ab?**
+
+**Schritt 1 — Sprint Planning — Warum, Was, Wie**
+Das Scrum Team trifft sich. Der Product Owner schlägt vor, welche Backlog-Items zum Product Goal passen. Gemeinsam wird ein **Sprint Goal** formuliert (das **Warum**). Die Developers wählen die Items aus, die sie für umsetzbar halten (das **Was**), und erstellen einen ersten Plan (das **Wie**). Ergebnis: Sprint Goal und initialer Sprint Backlog stehen.
+
+**Schritt 2 — Sprint läuft — Developers arbeiten selbstorganisiert**
+Der Sprint hat einen festen Endtermin (z.B. 2 Wochen später). Die Developers bauen das Increment. Die Definition of Done gilt während der gesamten Arbeit, nicht erst am Ende. Backlog Refinement läuft parallel: der Product Owner schärft die Items für kommende Sprints.
+
+**Schritt 3 — Daily Scrum — 15 Minuten täglich**
+Die Developers prüfen den Fortschritt gegen das Sprint Goal und passen ihren Plan an. Kein Statusbericht an Vorgesetzte, keine Arbeitszuweisung — Synchronisation der Developers untereinander.
+
+**Schritt 4 — Sprint Review — Increment mit Stakeholdern inspizieren**
+Am Sprint-Ende zeigt das Scrum Team das Increment den Stakeholdern. Es geht um Inhalt, nicht um Folien: was funktioniert, was nicht, was kommt als Nächstes? Das Product Backlog wird auf Basis des Feedbacks angepasst.
+
+**Schritt 5 — Sprint Retrospective — Prozess verbessern**
+Direkt nach dem Review reflektiert das Scrum Team die Zusammenarbeit, Werkzeuge und die Definition of Done. Mindestens eine konkrete Verbesserung wird in den nächsten Sprint übernommen.
+
+**Ergebnis**
+Direkt im Anschluss beginnt der nächste Sprint mit Sprint Planning. Das Increment vom Ende des letzten Sprints fließt in das Produkt ein, das Product Backlog ist aktualisiert, und das nächste Sprint Goal kann auf das Product Goal hinarbeiten.
+
+
 
 <Beispiel>
 **Sprint-Goal-Beispiel aus dem AP1-Umfeld.** Ein Kundenportal soll sicherer werden. Das **Product Goal** lautet: *„Sichere Anmeldung am Kundenportal für alle Nutzergruppen bis Q3."* Im aktuellen 2-Wochen-Sprint einigt sich das Team auf das **Sprint Goal**: *„Admin-Konten sind nur noch mit zweitem Faktor anmeldbar."* Das **Sprint Backlog** enthält Items wie *TOTP-Server einrichten*, *Login-Flow um 2FA-Schritt erweitern*, *Recovery-Code-Druck*, *Doku*. Am Sprint-Ende steht das **Increment**: Admin-Login funktioniert mit TOTP, Recovery-Pfad ist dokumentiert. Die **Definition of Done** wurde erfüllt: Code-Review, Tests, Doku, Deployment auf Staging — sonst wäre das Feature kein Increment.

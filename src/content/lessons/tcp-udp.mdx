@@ -189,31 +189,31 @@ Bei NAT und Port Forwarding ist TCP/UDP ebenfalls entscheidend. Eine Weiterleitu
 
 ## Schritt für Schritt: Dienstregel richtig ableiten
 
-<StepByStep titel="Aus einer Anforderung eine Firewall-Regel machen">
-  <Schritt nr={1} titel="Anwendung benennen">
-    <p>Beispiel: Mitarbeitende sollen die interne Wiki-Webseite per HTTPS erreichen.</p>
-  </Schritt>
-  <Schritt nr={2} titel="Transportprotokoll bestimmen">
-    <p>HTTPS nutzt in der klassischen Variante TCP. Also nicht nur "Port 443", sondern TCP 443.</p>
-  </Schritt>
-  <Schritt nr={3} titel="Quelle und Ziel festlegen">
-    <p>Quelle: Client-Netz `192.168.10.0/24`. Ziel: Webserver `10.20.0.15`.</p>
-  </Schritt>
-  <Schritt nr={4} titel="Richtung formulieren">
-    <p>Clients starten die Verbindung zum Server. Die Regel lautet also Client-Netz -> Webserver, nicht umgekehrt.</p>
-  </Schritt>
-  <Schritt nr={5} titel="Regel prüfbar notieren">
-    <pre><code>{`Quelle: 192.168.10.0/24
+**Rechenweg: Aus einer Anforderung eine Firewall-Regel machen**
+
+**Schritt 1 — Anwendung benennen**
+<p>Beispiel: Mitarbeitende sollen die interne Wiki-Webseite per HTTPS erreichen.</p>
+
+**Schritt 2 — Transportprotokoll bestimmen**
+<p>HTTPS nutzt in der klassischen Variante TCP. Also nicht nur "Port 443", sondern TCP 443.</p>
+
+**Schritt 3 — Quelle und Ziel festlegen**
+<p>Quelle: Client-Netz `192.168.10.0/24`. Ziel: Webserver `10.20.0.15`.</p>
+
+**Schritt 4 — Richtung formulieren**
+<p>Clients starten die Verbindung zum Server. Die Regel lautet also Client-Netz -> Webserver, nicht umgekehrt.</p>
+
+**Schritt 5 — Regel prüfbar notieren**
+<pre><code>{`Quelle: 192.168.10.0/24
 Ziel:   10.20.0.15
 Proto:  TCP
 Port:   443
 Aktion: ALLOW
 Zweck:  HTTPS zum internen Wiki`}</code></pre>
-  </Schritt>
-  <Ergebnis>
-    <p>Die Regel ist fachlich prüfbar, weil Quelle, Ziel, Protokoll, Port, Richtung und Zweck klar sind.</p>
-  </Ergebnis>
-</StepByStep>
+
+**Ergebnis**
+<p>Die Regel ist fachlich prüfbar, weil Quelle, Ziel, Protokoll, Port, Richtung und Zweck klar sind.</p>
+
 
 ---
 

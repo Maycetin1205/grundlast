@@ -182,6 +182,7 @@ Dieses Log dokumentiert Kapitel, die nach dem neuen Goldstandard formal als
 - Quellen: 10 Quellen-IDs geprueft, 0 fehlende Eintraege in `sourceBank.ts`; Quellenbasis umfasst KMK, FIAusbV, BIBB, NIST, IEC, POSIX, RFC 9542, W3C CSS Color 4, RFC 4632 und IEEE 754.
 - Technik: `npm.cmd run lint` und `npm.cmd run build` erfolgreich.
 - Re-Audit 2026-06-05: Scope, Quellen-/Benchmark-Matrix und Abschnitts-Audit erneut geprueft. Kleine Bereinigung im Lerntext: sichtbare Labels `Pflicht`, `Vertiefung` und `Muss sitzen` entfernt; Fakten, Rechenwege, Quellen und Glossar unveraendert stimmig. `npm.cmd run lint` und `npm.cmd run build` erfolgreich.
+- Re-Audit 2026-07-03: Externer Benchmark und Aufgabenabgleich nach PROJEKT.md-Gates abgeschlossen. Vertrauen in `src/lib/audit/status.ts` auf `geprueft` angehoben; Details in `AP1_AUDIT_MATRIX.md`. Quellenbank-Detail zu CSS-Farben auf 8-Bit-Komponenten praezisiert. Unabhaengiger Pruef-Pass bleibt wegen Rechenkapitel in QUEUE.md Abschnitt 2b offen.
 
 ## Historische Freigaben
 

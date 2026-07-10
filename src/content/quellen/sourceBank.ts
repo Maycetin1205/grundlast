@@ -1258,7 +1258,7 @@ export const sourceBank: SourceEntry[] = [
     id: 'w3c-css-color-4',
     label: 'W3C - CSS Color Module Level 4',
     href: 'https://www.w3.org/TR/css-color-4/',
-    detail: 'W3C-Spezifikation der Hex-Notation #RRGGBB[AA] für sRGB-Farben: drei (oder vier) Bytes Rot/Grün/Blau (Alpha) als jeweils zwei Hex-Ziffern, 0x00 bis 0xFF pro Kanal.',
+    detail: 'W3C-Spezifikation der Hex-Notation #RRGGBB[AA] für sRGB-Farben: drei (oder vier) 8-Bit-Komponenten Rot/Grün/Blau (Alpha) als jeweils zwei Hex-Ziffern, 0x00 bis 0xFF pro Kanal.',
     tags: ['ordnung', 'web', 'css', 'farbe', 'hex', 'hexadezimal', 'rgb'],
   },
   {

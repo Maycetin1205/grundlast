@@ -17,7 +17,7 @@ Rechenmechanik mit anderen Kleidern.
 - Downloadzeit, Uploadzeit, Datenrate und Datenmenge mit einer Formel berechnen.
 - Brutto- und Nettodatenrate mit Wirkungsgrad rechnen.
 - Aufgaben in Sekunden, Minuten, Stunden und Tagen vernünftig ausgeben.
-- typische Prüfungsfallen erkennen: kleines `b`, grosses `B`, 1000 gegen 1024, Overhead.
+- typische Prüfungsfallen erkennen: kleines `b`, großes `B`, 1000 gegen 1024, Overhead.
 
 <Tipp titel="Der Kern">
 Erst Einheiten sauber machen, dann Formel einsetzen. Fast alle Fehler entstehen vor der
@@ -35,7 +35,7 @@ WLAN-Bruttorate, tatsächlichem *<Term id="durchsatz">Durchsatz</Term>* und
 *<Term id="latenz">Latenz</Term>* unterscheiden.
 
 <Analogie>
-Stell dir eine Datenübertragung wie eine Lieferstrasse vor. Die Datenmenge ist die
+Stell dir eine Datenübertragung wie eine Lieferstraße vor. Die Datenmenge ist die
 Anzahl Pakete. Die Bandbreite ist, wie viele Pakete theoretisch pro Minute auf die Straße
 passen. Der Durchsatz ist, wie viele wirklich ankommen, nachdem Ampeln, Umwege und
 Verpackung Platz kosten. Die Latenz ist, wie lange das erste Paket überhaupt bis zum Ziel
@@ -64,7 +64,7 @@ Internetanschlüsse und Netzwerktechnik werden meist in bit/s angegeben:
 1 Gbit/s
 ```
 
-Dateigrössen, Datenträger und viele Betriebssystemanzeigen werden meist in Byte angegeben:
+Dateigrößen, Datenträger und viele Betriebssystemanzeigen werden meist in Byte angegeben:
 
 ```text
 500 MB
@@ -95,7 +95,7 @@ Bei Betriebssystemanzeigen tauchen oft Binärpräfixe auf: KiB, MiB, GiB sind 10
 | 1 Mbit | 1.000.000 bit | Internetanschluss |
 | 1 Gbit | 1.000.000.000 bit | Ethernet, Glasfaser |
 | 1 KB | 1.000 Byte | Herstellerangaben |
-| 1 MB | 1.000.000 Byte | Dateigrösse in Aufgaben |
+| 1 MB | 1.000.000 Byte | Dateigröße in Aufgaben |
 | 1 GB | 1.000.000.000 Byte | Datenträger, Downloads |
 | 1 KiB | 1.024 Byte | Betriebssysteme |
 | 1 MiB | 1.048.576 Byte | Speicheranzeigen |
@@ -133,16 +133,18 @@ vermischst.
 
 ## 05 - Standardweg für jede Aufgabe
 
-<Schritte
-  items={[
-    { titel: 'Gesuchte Größe markieren', text: 'Zeit, Datenrate oder Datenmenge? Bevor du rechnest, muss klar sein, welche der drei Grundformeln gebraucht wird.' },
-    { titel: 'Einheiten lesen', text: 'Steht dort Mbit/s, MB/s, GB, GiB, Minuten oder Stunden? Schreibe die Einheit an jede Zahl. Nackte Zahlen sind eine Einladung zum Fehler.' },
-    { titel: 'Alles in eine gemeinsame Basis bringen', text: 'Entweder alles in bit/Mbit oder alles in Byte/MB. Bei Mbit/s zu MB/s immer durch 8 teilen.' },
-    { titel: 'Brutto/Netto prüfen', text: 'Wenn ein Wirkungsgrad genannt wird, erst die effektive Datenrate berechnen: netto = brutto * Wirkungsgrad.' },
-    { titel: 'Formel einsetzen', text: 'Zeit = Datenmenge / Datenrate, Datenrate = Datenmenge / Zeit oder Datenmenge = Datenrate * Zeit.' },
-    { titel: 'Zeit lesbar umwandeln', text: 'Sekunden in Minuten, Stunden oder Tage umrechnen. Erst am Ende sinnvoll runden.' },
-  ]}
-/>
+1. **Gesuchte Größe markieren:** Zeit, Datenrate oder Datenmenge? Bevor du rechnest,
+   muss klar sein, welche der drei Grundformeln gebraucht wird.
+2. **Einheiten lesen:** Steht dort Mbit/s, MB/s, GB, GiB, Minuten oder Stunden?
+   Schreibe die Einheit an jede Zahl. Nackte Zahlen sind eine Einladung zum Fehler.
+3. **Alles in eine gemeinsame Basis bringen:** Entweder alles in bit/Mbit oder alles in
+   Byte/MB. Bei Mbit/s zu MB/s immer durch 8 teilen.
+4. **Brutto/Netto prüfen:** Wenn ein Wirkungsgrad genannt wird, erst die effektive
+   Datenrate berechnen: `netto = brutto * Wirkungsgrad`.
+5. **Formel einsetzen:** `Zeit = Datenmenge / Datenrate`, `Datenrate = Datenmenge / Zeit`
+   oder `Datenmenge = Datenrate * Zeit`.
+6. **Zeit lesbar umwandeln:** Sekunden in Minuten, Stunden oder Tage umrechnen. Erst am
+   Ende sinnvoll runden.
 
 ---
 
@@ -166,16 +168,11 @@ Wirkungsgrad: 80 %
 Netto:        100 Mbit/s * 0,80 = 80 Mbit/s
 ```
 
-Typische Orientierung, wenn eine Aufgabe diskutiert statt exakt rechnet:
-
-| Übertragungsweg | Grobe Netto-Orientierung |
-|---|---:|
-| Fast/Gigabit Ethernet im LAN | etwa 90 bis 95 % |
-| TCP über Internet/VDSL | etwa 75 bis 90 % |
-| WLAN in guter Umgebung | etwa 40 bis 75 % |
-| WLAN in gestörter Umgebung | deutlich darunter |
-
-In Rechenaufgaben gilt aber immer: Wenn ein Wirkungsgrad im Text steht, diesen Wert nehmen.
+Für Rechenaufgaben gilt: Wenn ein Wirkungsgrad im Text steht, nimm genau diesen Wert.
+Wenn kein Wirkungsgrad genannt wird, darfst du keine feste Prozentzahl erfinden. Dann rechnest
+du entweder ideal ohne Overhead oder du schreibst als Bewertung dazu, dass reale Übertragungen
+wegen Protokoll-Overhead, WLAN-Störungen, Wiederholungen, Verschlüsselung, Gerätegrenzen und
+parallelem Verkehr langsamer sein können.
 
 ---
 
@@ -188,20 +185,22 @@ Eine 2-GB-Datei soll über eine Leitung mit 100 Mbit/s geladen werden. Wie lange
 der Download ohne weiteren Overhead?
 </Beispiel>
 
-<StepByStep titel="Downloadzeit berechnen">
-  <Schritt nr={1} titel="Datenrate in MB/s umrechnen">
-    100 Mbit/s / 8 = **12,5 MB/s**.
-  </Schritt>
-  <Schritt nr={2} titel="Datenmenge in MB umrechnen">
-    2 GB = 2 * 1000 MB = **2000 MB**.
-  </Schritt>
-  <Schritt nr={3} titel="Zeit berechnen">
-    Zeit = 2000 MB / 12,5 MB/s = **160 s**.
-  </Schritt>
-  <Ergebnis>
-    Der Download dauert **160 Sekunden**, also **2 Minuten 40 Sekunden**.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Downloadzeit berechnen**
+
+**Schritt 1 — Datenrate in MB/s umrechnen**
+100 Mbit/s / 8 = **12,5 MB/s**.
+
+**Schritt 2 — Datenmenge in MB umrechnen**
+2 GB = 2 * 1000 MB = **2000 MB**.
+
+**Schritt 3 — Zeit berechnen**
+Zeit = 2000 MB / 12,5 MB/s = **160 s**.
+
+**Ergebnis**
+Der Download dauert **160 Sekunden**, also **2 Minuten 40 Sekunden**.
+
+
 
 ### Szenario B: Backupfenster prüfen
 
@@ -211,28 +210,30 @@ Leitung liefert 200 Mbit/s brutto, nutzbar sind laut Messung 80 Prozent. Das Bac
 ist 8 Stunden lang. Reicht das?
 </Beispiel>
 
-<StepByStep titel="Backupfenster bewerten">
-  <Schritt nr={1} titel="Nettodatenrate berechnen">
-    200 Mbit/s * 0,80 = **160 Mbit/s** netto.
-  </Schritt>
-  <Schritt nr={2} titel="In MB/s umrechnen">
-    160 Mbit/s / 8 = **20 MB/s**.
-  </Schritt>
-  <Schritt nr={3} titel="Datenmenge umrechnen">
-    600 GB = **600.000 MB**.
-  </Schritt>
-  <Schritt nr={4} titel="Zeit berechnen">
-    600.000 MB / 20 MB/s = **30.000 s**.
-  </Schritt>
-  <Schritt nr={5} titel="Sekunden in Stunden">
-    30.000 s / 3600 = **8,33 h**, also etwa **8 h 20 min**.
-  </Schritt>
-  <Ergebnis>
-    Das Backupfenster reicht **nicht sicher**. Es fehlen etwa **20 Minuten**, und reale
-    Schwankungen sind noch nicht eingerechnet. Saubere Maßnahmen wären inkrementelle
-    Backups, Deduplizierung, ein größeres Zeitfenster oder mehr Netto-Durchsatz.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Backupfenster bewerten**
+
+**Schritt 1 — Nettodatenrate berechnen**
+200 Mbit/s * 0,80 = **160 Mbit/s** netto.
+
+**Schritt 2 — In MB/s umrechnen**
+160 Mbit/s / 8 = **20 MB/s**.
+
+**Schritt 3 — Datenmenge umrechnen**
+600 GB = **600.000 MB**.
+
+**Schritt 4 — Zeit berechnen**
+600.000 MB / 20 MB/s = **30.000 s**.
+
+**Schritt 5 — Sekunden in Stunden**
+30.000 s / 3600 = **8,33 h**, also etwa **8 h 20 min**.
+
+**Ergebnis**
+Das Backupfenster reicht **nicht sicher**. Es fehlen etwa **20 Minuten**, und reale
+Schwankungen sind noch nicht eingerechnet. Saubere Maßnahmen wären inkrementelle
+Backups, Deduplizierung, ein größeres Zeitfenster oder mehr Netto-Durchsatz.
+
+
 
 ### Szenario C: benötigte Datenrate berechnen
 
@@ -342,7 +343,7 @@ Wenn du eine Aufgabe mit Datenrate siehst, arbeite immer in dieser Reihenfolge:
 2. Welche Datenmenge?
 3. Welche Datenrate?
 4. bit oder Byte?
-5. dezimal oder binaer?
+5. dezimal oder binär?
 6. brutto oder netto?
 7. Welche Zeiteinheit soll die Antwort haben?
 ```
@@ -385,7 +386,7 @@ Die richtige Denkkette ist:
 
 ---
 
-## 12 - Eine komplette Prüfungsaufgabe
+## 12 - Ein komplettes Planungsszenario
 
 <Beispiel titel="Standortbackup planen">
 Ein Betrieb hat zwei Standorte. Standort A soll jede Nacht ein inkrementelles Backup von
@@ -401,29 +402,31 @@ Berechne:
 4. ob das Backupfenster reicht.
 </Beispiel>
 
-<StepByStep titel="Musterlösung">
-  <Schritt nr={1} titel="Nettodatenrate">
-    100 Mbit/s * 0,70 = **70 Mbit/s**.
-  </Schritt>
-  <Schritt nr={2} titel="In MB/s">
-    70 Mbit/s / 8 = **8,75 MB/s**.
-  </Schritt>
-  <Schritt nr={3} titel="Datenmenge">
-    180 GB = **180.000 MB**.
-  </Schritt>
-  <Schritt nr={4} titel="Zeit">
-    180.000 MB / 8,75 MB/s = **20.571,43 s**.
-  </Schritt>
-  <Schritt nr={5} titel="In Stunden">
-    20.571,43 s / 3600 = **5,71 h**, also etwa **5 h 43 min**.
-  </Schritt>
-  <Ergebnis>
-    Das Backupfenster von 6 Stunden reicht rechnerisch knapp. In einer professionellen
-    Antwort würdest du eine Reserve empfehlen, weil reale Schwankungen, viele kleine
-    Dateien, Verschlüsselung und paralleler Standortverkehr die Übertragung verlängern
-    können.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Musterlösung**
+
+**Schritt 1 — Nettodatenrate**
+100 Mbit/s * 0,70 = **70 Mbit/s**.
+
+**Schritt 2 — In MB/s**
+70 Mbit/s / 8 = **8,75 MB/s**.
+
+**Schritt 3 — Datenmenge**
+180 GB = **180.000 MB**.
+
+**Schritt 4 — Zeit**
+180.000 MB / 8,75 MB/s = **20.571,43 s**.
+
+**Schritt 5 — In Stunden**
+20.571,43 s / 3600 = **5,71 h**, also etwa **5 h 43 min**.
+
+**Ergebnis**
+Das Backupfenster von 6 Stunden reicht rechnerisch knapp. In einer professionellen
+Antwort würdest du eine Reserve empfehlen, weil reale Schwankungen, viele kleine
+Dateien, Verschlüsselung und paralleler Standortverkehr die Übertragung verlängern
+können.
+
+
 
 ---
 
@@ -442,7 +445,7 @@ Datenmenge = Datenrate * Zeit
 Netto = Brutto * Wirkungsgrad
 
 GB/MB  = dezimal, 1000er-Schritte
-GiB/MiB = binaer, 1024er-Schritte
+GiB/MiB = binär, 1024er-Schritte
 ```
 
 <Glossar
@@ -481,24 +484,29 @@ GiB/MiB = binaer, 1024er-Schritte
 <Quellen
   quellen={[
     {
-      label: 'IEC 80000-13:2008 - Quantities and units, Part 13: Information science and technology',
-      href: 'https://webstore.iec.ch/publication/31898',
-      detail: 'Internationale Norm für Informationsgrössen und Binärpräfixe wie KiB, MiB, GiB und TiB.'
+      label: 'IEC 80000-13 - Quantities and units, Part 13: Information science and technology',
+      href: 'https://webstore.iec.ch/publication/80483',
+      detail: 'Internationale Norm für Informationsgrößen und Binärpräfixe wie KiB, MiB, GiB und TiB.'
     },
     {
-      label: 'BIPM - SI Brochure',
-      href: 'https://www.bipm.org/en/publications/si-brochure',
+      label: 'BIPM - SI prefixes',
+      href: 'https://www.bipm.org/en/measurement-units/si-prefixes',
       detail: 'Offizielle Grundlage für SI-Präfixe wie kilo, mega, giga und tera als 1000er-Schritte.'
     },
     {
-      label: 'BIBB - Fachinformatiker/-in Ausbildungsordnung und Rahmenplan',
-      href: 'https://www.bibb.de/de/berufeinfo.php',
-      detail: 'Offizielle Berufsprofil- und Ordnungsmaterialien für die IT-Berufe und die Lernfelder der Ausbildung.'
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/-in',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Offizieller Lernfeldrahmen; LF2 und LF3 stützen Datenmengen-, Hardware- und Netzwerkrechnungen.'
     },
     {
-      label: 'IETF RFC 9110 - HTTP Semantics',
-      href: 'https://www.rfc-editor.org/rfc/rfc9110',
-      detail: 'Technischer Kontext für Übertragungen über HTTP; relevant, weil Nutzdatenübertragung immer Protokoll-Overhead einschliesst.'
+      label: 'NIST - Prefixes for Binary Multiples',
+      href: 'https://physics.nist.gov/cuu/Units/binary.html',
+      detail: 'Offizielle Definition von KiB, MiB und GiB sowie Beispiele: 1 B = 8 bit, 1 MB = 10^6 B, 1 MiB = 2^20 B.'
+    },
+    {
+      label: 'RFC 9293 - Transmission Control Protocol (TCP)',
+      href: 'https://www.rfc-editor.org/rfc/rfc9293',
+      detail: 'Primärquelle zum TCP-Segment: Header, Optionen und Nutzdaten zeigen, warum Nutzdatenrate nicht identisch mit physischer Bruttorate ist.'
     },
   ]}
 />

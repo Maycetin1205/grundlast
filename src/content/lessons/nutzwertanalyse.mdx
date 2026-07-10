@@ -46,57 +46,104 @@ Das Sigma-Zeichen (Σ) bedeutet: alle Teilprodukte addieren.
 
 ## Beispiele
 
-<Rechenweg
-  title="Beispiel 1: Laptop-Vergleich (3 Alternativen)"
-  steps={[
-    {
-      title: "Schritt 1+2: Kriterien und Gewichtungen festlegen",
-      formula: "Preis:        40 %\nLeistung:     30 %\nAkkulaufzeit: 20 %\nDesign:       10 %\n─────────────────\nSumme:       100 %  ✓",
-      explanation: "Die Gewichtungen zeigen, was wichtiger ist. Preis (40 %) ist hier das wichtigste Kriterium. Kontrolle: Alle Gewichtungen müssen genau 100 % ergeben."
-    },
-    {
-      title: "Schritt 3: Bewertungen vergeben (1–10 Punkte)",
-      formula: "              Laptop A  Laptop B  Laptop C\nPreis (40 %):    8        9         7\nLeistung (30 %): 9        7        10\nAkku (20 %):     7        8         6\nDesign (10 %):   6        7         9",
-      explanation: "Jede Alternative bekommt pro Kriterium eine Note. Hohe Zahl = gut. Laptop B hat beim Preis die beste Note (9), Laptop C bei der Leistung (10)."
-    },
-    {
-      title: "Schritt 4+5: Nutzwert für Laptop A berechnen",
-      formula: "= (0,40 × 8) + (0,30 × 9) + (0,20 × 7) + (0,10 × 6)\n= 3,20 + 2,70 + 1,40 + 0,60\n= 7,90 Punkte",
-      explanation: "Gewichtung als Dezimalzahl schreiben (40 % = 0,40). Dann jede Gewichtung mit der Bewertung multiplizieren und alles addieren."
-    },
-    {
-      title: "Nutzwert für Laptop B berechnen",
-      formula: "= (0,40 × 9) + (0,30 × 7) + (0,20 × 8) + (0,10 × 7)\n= 3,60 + 2,10 + 1,60 + 0,70\n= 8,00 Punkte",
-      explanation: "Laptop B hat bei Preis und Akku bessere Noten als A — das zeigt sich im Ergebnis."
-    },
-    {
-      title: "Nutzwert für Laptop C berechnen",
-      formula: "= (0,40 × 7) + (0,30 × 10) + (0,20 × 6) + (0,10 × 9)\n= 2,80 + 3,00 + 1,20 + 0,90\n= 7,90 Punkte",
-      explanation: "Laptop C hat die beste Leistung (10), aber beim wichtigsten Kriterium Preis nur 7 — das kostet Punkte."
-    },
-    {
-      title: "Ergebnis auswerten",
-      formula: "Laptop A: 7,90 Punkte\nLaptop B: 8,00 Punkte  ← Gewinner!\nLaptop C: 7,90 Punkte",
-      explanation: "Laptop B gewinnt mit 8,00 Punkten. A und C sind gleichauf — obwohl A bei Preis schlechter ist, holt C den Vorsprung beim Design nicht auf."
-    }
-  ]}
-/>
+**Beispiel 1: Laptop-Vergleich (3 Alternativen)**
 
-<Rechenweg
-  title="Beispiel 2: Server-Angebote vergleichen (IHK-Szenario)"
-  steps={[
-    {
-      title: "Aufgabe und Gewichtungen",
-      formula: "Kriterien:\nAnschaffungskosten: 50 %\nSupport-Reaktionszeit: 30 %\nErweiterbarkeit: 20 %\n────────────────────────\nSumme: 100 % ✓",
-      explanation: "Typisches IHK-Szenario: IT-Abteilung soll einen neuen Server beschaffen. Kosten sind hier mit 50 % am wichtigsten."
-    },
-    {
-      title: "Bewertungen und Berechnung",
-      formula: "           Anbieter X  Anbieter Y\nKosten:        9          6\nSupport:       6          9\nErweiterb.:    7          8\n\nAnbieter X: (0,5×9)+(0,3×6)+(0,2×7)\n          = 4,50 + 1,80 + 1,40 = 7,70\n\nAnbieter Y: (0,5×6)+(0,3×9)+(0,2×8)\n          = 3,00 + 2,70 + 1,60 = 7,30",
-      explanation: "Anbieter X gewinnt (7,70 vs. 7,30) — obwohl Y beim Support besser ist, ziehen die höheren Kosten ihn herunter."
-    }
-  ]}
-/>
+**1. Schritt 1+2: Kriterien und Gewichtungen festlegen**
+
+```
+Preis:        40 %
+Leistung:     30 %
+Akkulaufzeit: 20 %
+Design:       10 %
+─────────────────
+Summe:       100 %  ✓
+```
+
+Die Gewichtungen zeigen, was wichtiger ist. Preis (40 %) ist hier das wichtigste Kriterium. Kontrolle: Alle Gewichtungen müssen genau 100 % ergeben.
+
+**2. Bewertungen vergeben (1–10 Punkte)**
+
+```
+              Laptop A  Laptop B  Laptop C
+Preis (40 %):    8        9         7
+Leistung (30 %): 9        7        10
+Akku (20 %):     7        8         6
+Design (10 %):   6        7         9
+```
+
+Jede Alternative bekommt pro Kriterium eine Note. Hohe Zahl = gut. Laptop B hat beim Preis die beste Note (9), Laptop C bei der Leistung (10).
+
+**3. Schritt 4+5: Nutzwert für Laptop A berechnen**
+
+```
+= (0,40 × 8) + (0,30 × 9) + (0,20 × 7) + (0,10 × 6)
+= 3,20 + 2,70 + 1,40 + 0,60
+= 7,90 Punkte
+```
+
+Gewichtung als Dezimalzahl schreiben (40 % = 0,40). Dann jede Gewichtung mit der Bewertung multiplizieren und alles addieren.
+
+**4. Nutzwert für Laptop B berechnen**
+
+```
+= (0,40 × 9) + (0,30 × 7) + (0,20 × 8) + (0,10 × 7)
+= 3,60 + 2,10 + 1,60 + 0,70
+= 8,00 Punkte
+```
+
+Laptop B hat bei Preis und Akku bessere Noten als A — das zeigt sich im Ergebnis.
+
+**5. Nutzwert für Laptop C berechnen**
+
+```
+= (0,40 × 7) + (0,30 × 10) + (0,20 × 6) + (0,10 × 9)
+= 2,80 + 3,00 + 1,20 + 0,90
+= 7,90 Punkte
+```
+
+Laptop C hat die beste Leistung (10), aber beim wichtigsten Kriterium Preis nur 7 — das kostet Punkte.
+
+**6. Ergebnis auswerten**
+
+```
+Laptop A: 7,90 Punkte
+Laptop B: 8,00 Punkte  ← Gewinner!
+Laptop C: 7,90 Punkte
+```
+
+Laptop B gewinnt mit 8,00 Punkten. A und C sind gleichauf — obwohl A bei Preis schlechter ist, holt C den Vorsprung beim Design nicht auf.
+
+**Beispiel 2: Server-Angebote vergleichen (IHK-Szenario)**
+
+**1. Aufgabe und Gewichtungen**
+
+```
+Kriterien:
+Anschaffungskosten: 50 %
+Support-Reaktionszeit: 30 %
+Erweiterbarkeit: 20 %
+────────────────────────
+Summe: 100 % ✓
+```
+
+Typisches IHK-Szenario: IT-Abteilung soll einen neuen Server beschaffen. Kosten sind hier mit 50 % am wichtigsten.
+
+**2. Bewertungen und Berechnung**
+
+```
+           Anbieter X  Anbieter Y
+Kosten:        9          6
+Support:       6          9
+Erweiterb.:    7          8
+
+Anbieter X: (0,5×9)+(0,3×6)+(0,2×7)
+          = 4,50 + 1,80 + 1,40 = 7,70
+
+Anbieter Y: (0,5×6)+(0,3×9)+(0,2×8)
+          = 3,00 + 2,70 + 1,60 = 7,30
+```
+
+Anbieter X gewinnt (7,70 vs. 7,30) — obwohl Y beim Support besser ist, ziehen die höheren Kosten ihn herunter.
 
 ---
 

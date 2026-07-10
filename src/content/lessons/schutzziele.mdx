@@ -196,47 +196,48 @@ Wie sind die drei Systeme je Schutzziel einzuordnen, und warum?
 
 </Beispiel>
 
-<StepByStep titel="Schutzbedarf je System feststellen">
-  <Schritt nr={1} titel="Patientenakte — Schadensszenarien">
-    Vertraulichkeit: Diagnosen und Medikation sind Gesundheitsdaten nach DSGVO Art. 9 —
-    eine Verletzung führt zu hohen Bussgeldern und Reputationsschaden.
-    Integrität: Eine veränderte Medikation kann Patienten gefährden — direkter Schaden für
-    Leib und Leben.
-    Verfügbarkeit: Bei einem Ausfall ist die Versorgung beeinträchtigt — kritisch in
-    Notfallsituationen.
-  </Schritt>
-  <Schritt nr={2} titel="Patientenakte — Stufen vergeben">
-    Vertraulichkeit: **sehr hoch** (Gesundheitsdaten, gesetzlicher Schweigepflicht).
-    Integrität: **sehr hoch** (Patientensicherheit).
-    Verfügbarkeit: **hoch** (Ausweichprozesse mit Papierdokumentation existieren, aber
-    nur kurzfristig tragfähig).
-  </Schritt>
-  <Schritt nr={3} titel="Lohnbuchhaltung — Schadensszenarien und Stufen">
-    Vertraulichkeit: Lohndaten sind personenbezogen, aber begrenzter Personenkreis —
-    **hoch**.
-    Integrität: Falsche Lohnzahlungen sind unangenehm, aber korrigierbar — **hoch**.
-    Verfügbarkeit: Monatlich kritisch zum Lohnlauf, sonst tolerierbar — **normal** mit
-    Hinweis auf den Stichtag.
-  </Schritt>
-  <Schritt nr={4} titel="Speiseplan — Schadensszenarien und Stufen">
-    Vertraulichkeit: Keine schützenswerten Daten — **normal**.
-    Integrität: Falscher Speiseplan ist ärgerlich, kein ernsthafter Schaden — **normal**.
-    Verfügbarkeit: Ausfall ist verkraftbar — **normal**.
-  </Schritt>
-  <Schritt nr={5} titel="Maximumprinzip auf gemeinsame Server anwenden">
-    Laufen alle drei Anwendungen auf demselben virtualisierten Host, übernimmt der Host
-    den Schutzbedarf der **Patientenakte** — also sehr hoch in Vertraulichkeit und
-    Integrität, hoch in Verfügbarkeit. Das Speiseplan-System "erbt" damit Anforderungen,
-    die für sich allein nicht nötig wären — ein typischer Effekt, den die Aufgabenstellung
-    gern aufgreift.
-  </Schritt>
-  <Ergebnis>
-    Drei Systeme, drei Profile. Die Patientenakte zieht den gesamten Host hoch, weil das
-    Maximumprinzip greift. Erst wenn man die Patientenakte auf einen separaten,
-    abgeschotteten Host verlagert, sinken die Anforderungen am Lohnsystem und am
-    Speiseplan auf ihren tatsächlichen Schutzbedarf zurück.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Schutzbedarf je System feststellen**
+
+**Schritt 1 — Patientenakte — Schadensszenarien**
+Vertraulichkeit: Diagnosen und Medikation sind Gesundheitsdaten nach DSGVO Art. 9 —
+eine Verletzung führt zu hohen Bussgeldern und Reputationsschaden.
+Integrität: Eine veränderte Medikation kann Patienten gefährden — direkter Schaden für
+Leib und Leben.
+Verfügbarkeit: Bei einem Ausfall ist die Versorgung beeinträchtigt — kritisch in
+Notfallsituationen.
+
+**Schritt 2 — Patientenakte — Stufen vergeben**
+Vertraulichkeit: **sehr hoch** (Gesundheitsdaten, gesetzlicher Schweigepflicht).
+Integrität: **sehr hoch** (Patientensicherheit).
+Verfügbarkeit: **hoch** (Ausweichprozesse mit Papierdokumentation existieren, aber
+nur kurzfristig tragfähig).
+
+**Schritt 3 — Lohnbuchhaltung — Schadensszenarien und Stufen**
+Vertraulichkeit: Lohndaten sind personenbezogen, aber begrenzter Personenkreis —
+**hoch**.
+Integrität: Falsche Lohnzahlungen sind unangenehm, aber korrigierbar — **hoch**.
+Verfügbarkeit: Monatlich kritisch zum Lohnlauf, sonst tolerierbar — **normal** mit
+Hinweis auf den Stichtag.
+
+**Schritt 4 — Speiseplan — Schadensszenarien und Stufen**
+Vertraulichkeit: Keine schützenswerten Daten — **normal**.
+Integrität: Falscher Speiseplan ist ärgerlich, kein ernsthafter Schaden — **normal**.
+Verfügbarkeit: Ausfall ist verkraftbar — **normal**.
+
+**Schritt 5 — Maximumprinzip auf gemeinsame Server anwenden**
+Laufen alle drei Anwendungen auf demselben virtualisierten Host, übernimmt der Host
+den Schutzbedarf der **Patientenakte** — also sehr hoch in Vertraulichkeit und
+Integrität, hoch in Verfügbarkeit. Das Speiseplan-System "erbt" damit Anforderungen,
+die für sich allein nicht nötig wären — ein typischer Effekt, den die Aufgabenstellung
+gern aufgreift.
+
+**Ergebnis**
+Drei Systeme, drei Profile. Die Patientenakte zieht den gesamten Host hoch, weil das
+Maximumprinzip greift. Erst wenn man die Patientenakte auf einen separaten,
+abgeschotteten Host verlagert, sinken die Anforderungen am Lohnsystem und am
+Speiseplan auf ihren tatsächlichen Schutzbedarf zurück.
+
+
 
 <Beispiel titel="Risikomatrix für drei Bedrohungsszenarien">
 
@@ -254,42 +255,43 @@ Welche Risikoklasse ergibt sich, und welcher Umgang ist vertretbar?
 
 </Beispiel>
 
-<StepByStep titel="Risiken bewerten und Reaktion wählen">
-  <Schritt nr={1} titel="Faktoren multiplizieren">
-    Phishing: möglich × hoch ⇒ Klasse **mittel**.
-    Stromausfall: wahrscheinlich × mittel ⇒ Klasse **mittel**.
-    Insider-Diebstahl: selten × sehr hoch ⇒ Klasse **hoch**.
-  </Schritt>
-  <Schritt nr={2} titel="Phishing — vermindern">
-    Maßnahmen: Mitarbeiterschulung (organisatorisch), Multi-Faktor-Authentifizierung
-    (technisch), simulierte Phishing-Tests (organisatorisch). Ziel: Eintritt senken und
-    Schaden begrenzen, falls eine Mail durchkommt.
-  </Schritt>
-  <Schritt nr={3} titel="Stromausfall — vermindern oder übertragen">
-    Maßnahmen: USV plus Netzersatzanlage (infrastrukturell) für die kritischen Systeme,
-    Service Level mit dem Energieversorger schriftlich festhalten (organisatorisch). Eine
-    zweite Einspeisung kann den Eintritt deutlich senken, wenn das Budget reicht. Eine
-    Versicherung deckt finanzielle Folgen, aber keine Verfügbarkeit.
-  </Schritt>
-  <Schritt nr={4} titel="Insider-Diebstahl — vermindern und kontrollieren">
-    Maßnahmen: Berechtigungskonzept mit Need-to-Know (organisatorisch), Log-Auswertung
-    auf ungewöhnliche Datenexporte (technisch), DLP-Lösung für USB- und Cloud-Uploads
-    (technisch), strukturiertes Offboarding mit sofortigem Entzug aller Rechte
-    (organisatorisch). Eine Versicherung gegen Cyber-Vorfälle kann den finanziellen
-    Schaden teilweise abfedern.
-  </Schritt>
-  <Schritt nr={5} titel="Restrisiko dokumentieren">
-    Nach Umsetzung bleibt für jeden Fall ein Restrisiko. Die Geschäftsleitung
-    unterschreibt eine Liste der akzeptierten Restrisiken — ohne diese formelle Annahme
-    ist das ISMS unvollständig.
-  </Schritt>
-  <Ergebnis>
-    Drei Risiken, drei unterschiedliche Reaktionsstrategien. Das hohe Insider-Risiko
-    bekommt mehrere Maßnahmen zugleich, weil eine einzelne nicht reicht. Das mittlere
-    Stromrisiko wird primär infrastrukturell behandelt. Phishing wird über den Faktor
-    Mensch und über den zweiten Faktor adressiert.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Risiken bewerten und Reaktion wählen**
+
+**Schritt 1 — Faktoren multiplizieren**
+Phishing: möglich × hoch ⇒ Klasse **mittel**.
+Stromausfall: wahrscheinlich × mittel ⇒ Klasse **mittel**.
+Insider-Diebstahl: selten × sehr hoch ⇒ Klasse **hoch**.
+
+**Schritt 2 — Phishing — vermindern**
+Maßnahmen: Mitarbeiterschulung (organisatorisch), Multi-Faktor-Authentifizierung
+(technisch), simulierte Phishing-Tests (organisatorisch). Ziel: Eintritt senken und
+Schaden begrenzen, falls eine Mail durchkommt.
+
+**Schritt 3 — Stromausfall — vermindern oder übertragen**
+Maßnahmen: USV plus Netzersatzanlage (infrastrukturell) für die kritischen Systeme,
+Service Level mit dem Energieversorger schriftlich festhalten (organisatorisch). Eine
+zweite Einspeisung kann den Eintritt deutlich senken, wenn das Budget reicht. Eine
+Versicherung deckt finanzielle Folgen, aber keine Verfügbarkeit.
+
+**Schritt 4 — Insider-Diebstahl — vermindern und kontrollieren**
+Maßnahmen: Berechtigungskonzept mit Need-to-Know (organisatorisch), Log-Auswertung
+auf ungewöhnliche Datenexporte (technisch), DLP-Lösung für USB- und Cloud-Uploads
+(technisch), strukturiertes Offboarding mit sofortigem Entzug aller Rechte
+(organisatorisch). Eine Versicherung gegen Cyber-Vorfälle kann den finanziellen
+Schaden teilweise abfedern.
+
+**Schritt 5 — Restrisiko dokumentieren**
+Nach Umsetzung bleibt für jeden Fall ein Restrisiko. Die Geschäftsleitung
+unterschreibt eine Liste der akzeptierten Restrisiken — ohne diese formelle Annahme
+ist das ISMS unvollständig.
+
+**Ergebnis**
+Drei Risiken, drei unterschiedliche Reaktionsstrategien. Das hohe Insider-Risiko
+bekommt mehrere Maßnahmen zugleich, weil eine einzelne nicht reicht. Das mittlere
+Stromrisiko wird primär infrastrukturell behandelt. Phishing wird über den Faktor
+Mensch und über den zweiten Faktor adressiert.
+
+
 
 <Beispiel titel="Schutzziel-Defizit beheben — HR-System ohne Backup">
 
@@ -301,38 +303,39 @@ Niveau "hoch"?
 
 </Beispiel>
 
-<StepByStep titel="Verfügbarkeitsdefizit schließen">
-  <Schritt nr={1} titel="Defizit benennen">
-    RAID 1 schützt vor Plattenausfall, **nicht** vor versehentlichem Löschen, Ransomware,
-    Hardwaredefekt am Controller oder Brand im Serverraum. Die Verfügbarkeit ist also
-    nicht abgesichert.
-  </Schritt>
-  <Schritt nr={2} titel="Organisatorische Maßnahmen">
-    Sicherungskonzept dokumentieren: was wird gesichert, wie oft, wie lange aufbewahrt
-    (Aufbewahrungsfristen aus Personalakten beachten). Verantwortliche benennen, Restore
-    mindestens halbjährlich testen, Ergebnisse protokollieren.
-  </Schritt>
-  <Schritt nr={3} titel="Technische Maßnahmen">
-    Tägliche inkrementelle und wöchentliche Vollsicherung auf einen separaten
-    Backup-Server. Kopie der Sicherung an einen zweiten Standort (3-2-1-Regel: drei
-    Kopien, zwei Medien, eine ausser Haus). Sicherungsmedien gegen Schreibzugriff
-    schützen, um Ransomware-Verschlüsselung zu erschweren.
-  </Schritt>
-  <Schritt nr={4} titel="Infrastrukturelle Maßnahmen">
-    USV im Serverraum, getrennter Brandabschnitt für die Kopie, Zutrittskontrolle für
-    Sicherungsmedien.
-  </Schritt>
-  <Schritt nr={5} titel="Wirksamkeit prüfen">
-    Erfolgreich getesteter Restore innerhalb der definierten Wiederanlaufzeit (RTO) und
-    Datenverlust unter dem zulässigen Wert (RPO). Ohne erfolgreichen Test gilt die
-    Maßnahme nicht als wirksam — das ist ein häufiger Prüfungspunkt.
-  </Schritt>
-  <Ergebnis>
-    Erst die Kombination aus organisatorischer Verantwortung, technischer Sicherung,
-    räumlicher Trennung und regelmässigem Test hebt die Verfügbarkeit von "normal" auf
-    "hoch". Eine einzelne Maßnahme — und sei sie noch so teuer — reicht nicht.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Verfügbarkeitsdefizit schließen**
+
+**Schritt 1 — Defizit benennen**
+RAID 1 schützt vor Plattenausfall, **nicht** vor versehentlichem Löschen, Ransomware,
+Hardwaredefekt am Controller oder Brand im Serverraum. Die Verfügbarkeit ist also
+nicht abgesichert.
+
+**Schritt 2 — Organisatorische Maßnahmen**
+Sicherungskonzept dokumentieren: was wird gesichert, wie oft, wie lange aufbewahrt
+(Aufbewahrungsfristen aus Personalakten beachten). Verantwortliche benennen, Restore
+mindestens halbjährlich testen, Ergebnisse protokollieren.
+
+**Schritt 3 — Technische Maßnahmen**
+Tägliche inkrementelle und wöchentliche Vollsicherung auf einen separaten
+Backup-Server. Kopie der Sicherung an einen zweiten Standort (3-2-1-Regel: drei
+Kopien, zwei Medien, eine ausser Haus). Sicherungsmedien gegen Schreibzugriff
+schützen, um Ransomware-Verschlüsselung zu erschweren.
+
+**Schritt 4 — Infrastrukturelle Maßnahmen**
+USV im Serverraum, getrennter Brandabschnitt für die Kopie, Zutrittskontrolle für
+Sicherungsmedien.
+
+**Schritt 5 — Wirksamkeit prüfen**
+Erfolgreich getesteter Restore innerhalb der definierten Wiederanlaufzeit (RTO) und
+Datenverlust unter dem zulässigen Wert (RPO). Ohne erfolgreichen Test gilt die
+Maßnahme nicht als wirksam — das ist ein häufiger Prüfungspunkt.
+
+**Ergebnis**
+Erst die Kombination aus organisatorischer Verantwortung, technischer Sicherung,
+räumlicher Trennung und regelmässigem Test hebt die Verfügbarkeit von "normal" auf
+"hoch". Eine einzelne Maßnahme — und sei sie noch so teuer — reicht nicht.
+
+
 
 ---
 

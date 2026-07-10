@@ -78,72 +78,113 @@ z. B. auf 50 % → × 0,5
 
 ## Beispiele
 
-<Rechenweg
-  title="Beispiel 1: DIN-A4-Scan – Jahresspeicherbedarf"
-  steps={[
-    {
-      title: "Aufgabe und gegebene Werte",
-      formula: "Format: DIN A4 = 29,7 cm × 21,0 cm\nAuflösung: 200 DPI\nFarbtiefe: 24 Bit\nKomprimierung: auf 50 %\nDokumente/Tag: 1.800\nArbeitstage/Jahr: 250",
-      explanation: "Typische IHK-Aufgabe: Ein Unternehmen scannt täglich Dokumente. Wie viel Speicher braucht es pro Jahr?"
-    },
-    {
-      title: "Schritt 1: cm → Inch umrechnen",
-      formula: "Breite: 29,7 cm / 2,54 ≈ 11,69 Inch\nHöhe:  21,0 cm / 2,54 ≈  8,27 Inch",
-      explanation: "DPI-Angaben beziehen sich auf Inch. Zürst müssen die Maße von Zentimetern in Inch umgerechnet werden."
-    },
-    {
-      title: "Schritt 2: Pixel berechnen",
-      formula: "Breite: 11,69 × 200 ≈ 2.338 px\nHöhe:   8,27 × 200 ≈ 1.654 px\n\nPixelanzahl = 2.338 × 1.654 = 3.867.052 px",
-      explanation: "Inch × DPI ergibt die Pixel in einer Richtung. Breite × Höhe ergibt die Gesamtpixelzahl."
-    },
-    {
-      title: "Schritt 3: Bits berechnen",
-      formula: "Bits = 3.867.052 × 24 = 92.809.248 Bit",
-      explanation: "Jeder Pixel braucht 24 Bit (RGB-Farbe). Pixelanzahl × Farbtiefe = Bits gesamt."
-    },
-    {
-      title: "Schritt 4: Bytes berechnen",
-      formula: "Bytes = 92.809.248 / 8 = 11.601.156 Bytes",
-      explanation: "1 Byte = 8 Bit. Division durch 8 ergibt die Größe in Bytes."
-    },
-    {
-      title: "Schritt 5: Komprimierung anwenden",
-      formula: "Komprimiert = 11.601.156 × 0,5 = 5.800.578 Bytes",
-      explanation: "Auf 50 % komprimiert bedeutet: die Hälfte der Originalgröße bleibt übrig. Deshalb × 0,5."
-    },
-    {
-      title: "Schritt 6: Scans pro Jahr",
-      formula: "Scans/Jahr = 1.800 × 250 = 450.000 Scans",
-      explanation: "Tägliche Menge × Arbeitstage ergibt die Jahresanzahl."
-    },
-    {
-      title: "Schritt 7: Gesamtspeicher in TiB",
-      formula: "Gesamt = 5.800.578 × 450.000 = 2.610.260.100.000 Bytes\n\nTiB = 2.610.260.100.000 / 1.099.511.627.776\n    ≈ 2,37 TiB",
-      explanation: "Bytes pro Scan × Anzahl Scans = Gesamtbytes. Dann durch 2^40 (= 1.099.511.627.776) für TiB. Ergebnis: ca. 2,37 TiB pro Jahr."
-    }
-  ]}
-/>
+**Beispiel 1: DIN-A4-Scan – Jahresspeicherbedarf**
 
-<Rechenweg
-  title="Beispiel 2: Einzelbild – Dateigröße in MiB"
-  steps={[
-    {
-      title: "Aufgabe",
-      formula: "Bild: 1.000 × 1.000 Pixel\nFarbtiefe: 24 Bit\nGesucht: Dateigröße in MiB (unkomprimiert)",
-      explanation: "Einfachere Variante: Pixelzahl ist direkt gegeben, kein Inch-Umrechnen nötig."
-    },
-    {
-      title: "Bits berechnen",
-      formula: "Pixelanzahl = 1.000 × 1.000 = 1.000.000 px\nBits = 1.000.000 × 24 = 24.000.000 Bit",
-      explanation: "Breite × Höhe = Pixelanzahl. Dann × Farbtiefe."
-    },
-    {
-      title: "Bytes → MiB",
-      formula: "Bytes = 24.000.000 / 8 = 3.000.000 Bytes\nMiB = 3.000.000 / 1.048.576 ≈ 2,86 MiB",
-      explanation: "3 Millionen Bytes durch 2^20 (= 1.048.576) ergibt ca. 2,86 MiB."
-    }
-  ]}
-/>
+**1. Aufgabe und gegebene Werte**
+
+```
+Format: DIN A4 = 29,7 cm × 21,0 cm
+Auflösung: 200 DPI
+Farbtiefe: 24 Bit
+Komprimierung: auf 50 %
+Dokumente/Tag: 1.800
+Arbeitstage/Jahr: 250
+```
+
+Typische IHK-Aufgabe: Ein Unternehmen scannt täglich Dokumente. Wie viel Speicher braucht es pro Jahr?
+
+**2. cm → Inch umrechnen**
+
+```
+Breite: 29,7 cm / 2,54 ≈ 11,69 Inch
+Höhe:  21,0 cm / 2,54 ≈  8,27 Inch
+```
+
+DPI-Angaben beziehen sich auf Inch. Zürst müssen die Maße von Zentimetern in Inch umgerechnet werden.
+
+**3. Pixel berechnen**
+
+```
+Breite: 11,69 × 200 ≈ 2.338 px
+Höhe:   8,27 × 200 ≈ 1.654 px
+
+Pixelanzahl = 2.338 × 1.654 = 3.867.052 px
+```
+
+Inch × DPI ergibt die Pixel in einer Richtung. Breite × Höhe ergibt die Gesamtpixelzahl.
+
+**4. Bits berechnen**
+
+```
+Bits = 3.867.052 × 24 = 92.809.248 Bit
+```
+
+Jeder Pixel braucht 24 Bit (RGB-Farbe). Pixelanzahl × Farbtiefe = Bits gesamt.
+
+**5. Bytes berechnen**
+
+```
+Bytes = 92.809.248 / 8 = 11.601.156 Bytes
+```
+
+1 Byte = 8 Bit. Division durch 8 ergibt die Größe in Bytes.
+
+**6. Komprimierung anwenden**
+
+```
+Komprimiert = 11.601.156 × 0,5 = 5.800.578 Bytes
+```
+
+Auf 50 % komprimiert bedeutet: die Hälfte der Originalgröße bleibt übrig. Deshalb × 0,5.
+
+**7. Scans pro Jahr**
+
+```
+Scans/Jahr = 1.800 × 250 = 450.000 Scans
+```
+
+Tägliche Menge × Arbeitstage ergibt die Jahresanzahl.
+
+**8. Gesamtspeicher in TiB**
+
+```
+Gesamt = 5.800.578 × 450.000 = 2.610.260.100.000 Bytes
+
+TiB = 2.610.260.100.000 / 1.099.511.627.776
+    ≈ 2,37 TiB
+```
+
+Bytes pro Scan × Anzahl Scans = Gesamtbytes. Dann durch 2^40 (= 1.099.511.627.776) für TiB. Ergebnis: ca. 2,37 TiB pro Jahr.
+
+**Beispiel 2: Einzelbild – Dateigröße in MiB**
+
+**1. Aufgabe**
+
+```
+Bild: 1.000 × 1.000 Pixel
+Farbtiefe: 24 Bit
+Gesucht: Dateigröße in MiB (unkomprimiert)
+```
+
+Einfachere Variante: Pixelzahl ist direkt gegeben, kein Inch-Umrechnen nötig.
+
+**2. Bits berechnen**
+
+```
+Pixelanzahl = 1.000 × 1.000 = 1.000.000 px
+Bits = 1.000.000 × 24 = 24.000.000 Bit
+```
+
+Breite × Höhe = Pixelanzahl. Dann × Farbtiefe.
+
+**3. Bytes → MiB**
+
+```
+Bytes = 24.000.000 / 8 = 3.000.000 Bytes
+MiB = 3.000.000 / 1.048.576 ≈ 2,86 MiB
+```
+
+3 Millionen Bytes durch 2^20 (= 1.048.576) ergibt ca. 2,86 MiB.
 
 ---
 

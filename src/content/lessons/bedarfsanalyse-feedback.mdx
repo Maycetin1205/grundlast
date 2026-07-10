@@ -251,60 +251,61 @@ Auftrag, in zwei Wochen eine fundierte Empfehlung vorzulegen. Wie gehst du vor?
 
 </Beispiel>
 
-<StepByStep titel="Bedarfsanalyse — von der Anfrage bis zum Pflichtenheft">
-  <Schritt nr={1} titel="Auftrag und Stakeholder klären">
-    Erstes Gespräch mit der Geschäftsleitung: Was ist der genaue Auftrag, wer trifft die
-    Entscheidung, wer ist Auftraggeber, wer Sponsor, wer ist betroffen? Termin, Budget
-    und Erwartung schriftlich festhalten — sonst kämpft man später mit beweglichen
-    Zielen. Hier: Auftrag „Empfehlung pro/contra neues Ticketsystem", Budget bis 25.000
-    Euro, Entscheidung in 14 Tagen.
-  </Schritt>
-  <Schritt nr={2} titel="Ist-Zustand erheben — Ticketdaten und Logs">
-    Bevor Mitarbeitende befragt werden, kommen die harten Zahlen auf den Tisch.
-    Auswertung des bestehenden Ticketsystems: Wie viele Tickets pro Woche? Wie hoch ist
-    die durchschnittliche Bearbeitungszeit? Welche Kategorien dominieren? Welche
-    SLA-Verletzungen gab es? Hier: 380 Tickets/Woche, durchschnittlich 26 Minuten
-    Bearbeitungszeit, SLA-Quote 78 Prozent.
-  </Schritt>
-  <Schritt nr={3} titel="Kurzes Interview mit Key Usern">
-    Vier bis sechs halbstrukturierte Interviews à 30 Minuten mit First-Level, Second-Level
-    und einem typischen Anwender. Leitfragen: Was funktioniert gut? Wo verlieren wir Zeit?
-    Welche drei Veränderungen würden den Alltag spürbar verbessern? Aktives Zuhören,
-    Antworten paraphrasieren, Hypothesen sofort gegenchecken.
-  </Schritt>
-  <Schritt nr={4} titel="Breitenfeedback per Fragebogen">
-    Online-Fragebogen an alle 60 internen Anwender, drei Frageblöcke: Zufriedenheit
-    (Likert-Skala), Häufigkeit konkreter Probleme (geschlossene Fragen) und Wünsche
-    (eine offene Freitextfrage). Suggestivfragen vermeiden: nicht „Sind Sie unzufrieden
-    mit dem aktuellen System?", sondern „Wie zufrieden sind Sie mit dem aktuellen System
-    auf einer Skala von 1 bis 5?".
-  </Schritt>
-  <Schritt nr={5} titel="Auswertung — quantitativ und qualitativ kombinieren">
-    Zahlen aus Ticketsystem und Fragebogen zusammenführen. Hier zeigt sich: 62 Prozent
-    der Anwender bewerten die Suchfunktion mit 1–2 von 5, in den Interviews wurde sie
-    nicht von allen, aber sehr explizit kritisiert. Quantitatives Bild bestätigt
-    qualitatives — die Suche ist ein Hauptproblem, nicht nur eine Einzelmeinung.
-  </Schritt>
-  <Schritt nr={6} titel="Anforderungen formulieren und priorisieren">
-    Aus den Befunden werden konkrete Anforderungen abgeleitet und nach Muss/Soll/Kann
-    sortiert. Muss: bessere Volltextsuche, REST-API zum CRM, DSGVO-konforme
-    Rollenrechte. Soll: automatische Eskalation nach SLA-Schwelle, Self-Service-Portal.
-    Kann: dunkles Farbschema, Mobile-App. Jede Muss-Anforderung wird begründet und mit
-    Datenquelle belegt.
-  </Schritt>
-  <Schritt nr={7} titel="Empfehlung mit Lasten- und Pflichtenheft übergeben">
-    Die Empfehlung enthält: Befund, Anforderungsliste mit Priorisierung, drei
-    Lösungsoptionen (System X, System Y, Eigenausbau), Kosten-Nutzen-Vergleich, Risiken
-    und einen klaren nächsten Schritt. Das Lastenheft formuliert die Anforderungen aus
-    Sicht des Auftraggebers, das Pflichtenheft (vom Anbieter) konkretisiert die Umsetzung.
-  </Schritt>
-  <Ergebnis>
-    Die Empfehlung ist belastbar, weil sie auf zwei Datenquellen (Zahlen und Aussagen)
-    beruht und jede Muss-Anforderung mit einem konkreten Befund verknüpft. Damit ist sie
-    in der Prüfung eine Antwort, die mehrere Aufgabentypen gleichzeitig bedient: Methodenwahl,
-    quantitativ-qualitativ-Trennung, Priorisierung, Pflichtenheft-Übergabe.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Bedarfsanalyse — von der Anfrage bis zum Pflichtenheft**
+
+**Schritt 1 — Auftrag und Stakeholder klären**
+Erstes Gespräch mit der Geschäftsleitung: Was ist der genaue Auftrag, wer trifft die
+Entscheidung, wer ist Auftraggeber, wer Sponsor, wer ist betroffen? Termin, Budget
+und Erwartung schriftlich festhalten — sonst kämpft man später mit beweglichen
+Zielen. Hier: Auftrag „Empfehlung pro/contra neues Ticketsystem", Budget bis 25.000
+Euro, Entscheidung in 14 Tagen.
+
+**Schritt 2 — Ist-Zustand erheben — Ticketdaten und Logs**
+Bevor Mitarbeitende befragt werden, kommen die harten Zahlen auf den Tisch.
+Auswertung des bestehenden Ticketsystems: Wie viele Tickets pro Woche? Wie hoch ist
+die durchschnittliche Bearbeitungszeit? Welche Kategorien dominieren? Welche
+SLA-Verletzungen gab es? Hier: 380 Tickets/Woche, durchschnittlich 26 Minuten
+Bearbeitungszeit, SLA-Quote 78 Prozent.
+
+**Schritt 3 — Kurzes Interview mit Key Usern**
+Vier bis sechs halbstrukturierte Interviews à 30 Minuten mit First-Level, Second-Level
+und einem typischen Anwender. Leitfragen: Was funktioniert gut? Wo verlieren wir Zeit?
+Welche drei Veränderungen würden den Alltag spürbar verbessern? Aktives Zuhören,
+Antworten paraphrasieren, Hypothesen sofort gegenchecken.
+
+**Schritt 4 — Breitenfeedback per Fragebogen**
+Online-Fragebogen an alle 60 internen Anwender, drei Frageblöcke: Zufriedenheit
+(Likert-Skala), Häufigkeit konkreter Probleme (geschlossene Fragen) und Wünsche
+(eine offene Freitextfrage). Suggestivfragen vermeiden: nicht „Sind Sie unzufrieden
+mit dem aktuellen System?", sondern „Wie zufrieden sind Sie mit dem aktuellen System
+auf einer Skala von 1 bis 5?".
+
+**Schritt 5 — Auswertung — quantitativ und qualitativ kombinieren**
+Zahlen aus Ticketsystem und Fragebogen zusammenführen. Hier zeigt sich: 62 Prozent
+der Anwender bewerten die Suchfunktion mit 1–2 von 5, in den Interviews wurde sie
+nicht von allen, aber sehr explizit kritisiert. Quantitatives Bild bestätigt
+qualitatives — die Suche ist ein Hauptproblem, nicht nur eine Einzelmeinung.
+
+**Schritt 6 — Anforderungen formulieren und priorisieren**
+Aus den Befunden werden konkrete Anforderungen abgeleitet und nach Muss/Soll/Kann
+sortiert. Muss: bessere Volltextsuche, REST-API zum CRM, DSGVO-konforme
+Rollenrechte. Soll: automatische Eskalation nach SLA-Schwelle, Self-Service-Portal.
+Kann: dunkles Farbschema, Mobile-App. Jede Muss-Anforderung wird begründet und mit
+Datenquelle belegt.
+
+**Schritt 7 — Empfehlung mit Lasten- und Pflichtenheft übergeben**
+Die Empfehlung enthält: Befund, Anforderungsliste mit Priorisierung, drei
+Lösungsoptionen (System X, System Y, Eigenausbau), Kosten-Nutzen-Vergleich, Risiken
+und einen klaren nächsten Schritt. Das Lastenheft formuliert die Anforderungen aus
+Sicht des Auftraggebers, das Pflichtenheft (vom Anbieter) konkretisiert die Umsetzung.
+
+**Ergebnis**
+Die Empfehlung ist belastbar, weil sie auf zwei Datenquellen (Zahlen und Aussagen)
+beruht und jede Muss-Anforderung mit einem konkreten Befund verknüpft. Damit ist sie
+in der Prüfung eine Antwort, die mehrere Aufgabentypen gleichzeitig bedient: Methodenwahl,
+quantitativ-qualitativ-Trennung, Priorisierung, Pflichtenheft-Übergabe.
+
+
 
 <Beispiel titel="Vier-Ohren-Modell — eine missverständliche Aussage zerlegen">
 
@@ -314,50 +315,51 @@ Wie hörst du diese Aussage auf den vier Ohren — und was antwortest du?
 
 </Beispiel>
 
-<StepByStep titel="Vier-Ohren — eine reale Aussage auf allen Ebenen lesen">
-  <Schritt nr={1} titel="Sach-Ohr: was ist die nüchterne Information?">
-    Sachinhalt: „Die Antwortzeiten der Anwendung sind heute spürbar höher als üblich."
-    Das ist die rein technische Beobachtung — ohne Wertung. Wer nur das Sach-Ohr
-    benutzt, antwortet mit „dann mache ich gleich einen Blick auf die Auslastung" und
-    übersieht die anderen drei Schichten.
-  </Schritt>
-  <Schritt nr={2} titel="Selbstoffenbarungs-Ohr: was sagt der Sender über sich?">
-    Selbstoffenbarung: „Ich bin frustriert. Ich habe gerade Druck. Ich kann meine
-    Aufgabe nicht in der gewohnten Zeit erledigen, und das ärgert mich." Diese Ebene
-    erklärt den Tonfall — nicht das System ist das Hauptthema, der Frust ist es.
-  </Schritt>
-  <Schritt nr={3} titel="Beziehungs-Ohr: wie sieht der Sender mich?">
-    Beziehung: „Du bist die IT, du bist verantwortlich, du hast das schon wieder nicht
-    im Griff." Das „wieder mal" ist hier der Schlüsselindikator — die Aussage transportiert
-    Erfahrung mit ähnlichen Situationen. Eine rein sachliche Antwort kommt deshalb oft
-    nicht durch.
-  </Schritt>
-  <Schritt nr={4} titel="Appell-Ohr: was soll ich tun?">
-    Appell: „Mach es jetzt schneller. Kümmere dich. Nimm mein Anliegen ernst." Der
-    Appell ist die eigentliche Handlungsaufforderung — und sie hat nicht nur eine
-    technische, sondern eine soziale Komponente: ich will gehört werden.
-  </Schritt>
-  <Schritt nr={5} titel="Antwort wählen — die richtige Ebene zuerst">
-    Eine gute Antwort bedient mehrere Ohren in der richtigen Reihenfolge. Beispiel:
-    „Verstehe, das blockiert dich gerade — das ist ärgerlich" (Beziehung anerkannt),
-    „Ich schaue jetzt sofort, ob die Server unter Last stehen, und melde mich in 15
-    Minuten" (Sachinhalt + Appell). Der Frust wird ernstgenommen, der Sachinhalt wird
-    bedient, der Appell wird beantwortet.
-  </Schritt>
-  <Schritt nr={6} titel="Reflexion — was wäre die typische Falle?">
-    Falle 1: nur Sach-Ohr — „Das System läuft normal, ich sehe keine Auffälligkeiten"
-    klingt korrekt, ignoriert aber Frust und Beziehung. Falle 2: nur Beziehungs-Ohr —
-    Defensive („Wir geben uns Mühe!") überhört den eigentlichen Bedarf. Falle 3: nur
-    Appell-Ohr — sofortiger Aktionismus ohne Diagnose verschwendet Zeit. Die saubere
-    Lösung ist die bewusste Kombination.
-  </Schritt>
-  <Ergebnis>
-    Das Vier-Ohren-Modell ist kein Selbstzweck, sondern eine Werkzeug-Box: Erst alle
-    vier Schichten lesen, dann gezielt antworten. In Aufgaben wird genau diese
-    Zerlegung mit eigenen Worten verlangt — die Beispielsätze variieren, das Schema
-    bleibt gleich.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Vier-Ohren — eine reale Aussage auf allen Ebenen lesen**
+
+**Schritt 1 — Sach-Ohr: was ist die nüchterne Information?**
+Sachinhalt: „Die Antwortzeiten der Anwendung sind heute spürbar höher als üblich."
+Das ist die rein technische Beobachtung — ohne Wertung. Wer nur das Sach-Ohr
+benutzt, antwortet mit „dann mache ich gleich einen Blick auf die Auslastung" und
+übersieht die anderen drei Schichten.
+
+**Schritt 2 — Selbstoffenbarungs-Ohr: was sagt der Sender über sich?**
+Selbstoffenbarung: „Ich bin frustriert. Ich habe gerade Druck. Ich kann meine
+Aufgabe nicht in der gewohnten Zeit erledigen, und das ärgert mich." Diese Ebene
+erklärt den Tonfall — nicht das System ist das Hauptthema, der Frust ist es.
+
+**Schritt 3 — Beziehungs-Ohr: wie sieht der Sender mich?**
+Beziehung: „Du bist die IT, du bist verantwortlich, du hast das schon wieder nicht
+im Griff." Das „wieder mal" ist hier der Schlüsselindikator — die Aussage transportiert
+Erfahrung mit ähnlichen Situationen. Eine rein sachliche Antwort kommt deshalb oft
+nicht durch.
+
+**Schritt 4 — Appell-Ohr: was soll ich tun?**
+Appell: „Mach es jetzt schneller. Kümmere dich. Nimm mein Anliegen ernst." Der
+Appell ist die eigentliche Handlungsaufforderung — und sie hat nicht nur eine
+technische, sondern eine soziale Komponente: ich will gehört werden.
+
+**Schritt 5 — Antwort wählen — die richtige Ebene zuerst**
+Eine gute Antwort bedient mehrere Ohren in der richtigen Reihenfolge. Beispiel:
+„Verstehe, das blockiert dich gerade — das ist ärgerlich" (Beziehung anerkannt),
+„Ich schaue jetzt sofort, ob die Server unter Last stehen, und melde mich in 15
+Minuten" (Sachinhalt + Appell). Der Frust wird ernstgenommen, der Sachinhalt wird
+bedient, der Appell wird beantwortet.
+
+**Schritt 6 — Reflexion — was wäre die typische Falle?**
+Falle 1: nur Sach-Ohr — „Das System läuft normal, ich sehe keine Auffälligkeiten"
+klingt korrekt, ignoriert aber Frust und Beziehung. Falle 2: nur Beziehungs-Ohr —
+Defensive („Wir geben uns Mühe!") überhört den eigentlichen Bedarf. Falle 3: nur
+Appell-Ohr — sofortiger Aktionismus ohne Diagnose verschwendet Zeit. Die saubere
+Lösung ist die bewusste Kombination.
+
+**Ergebnis**
+Das Vier-Ohren-Modell ist kein Selbstzweck, sondern eine Werkzeug-Box: Erst alle
+vier Schichten lesen, dann gezielt antworten. In Aufgaben wird genau diese
+Zerlegung mit eigenen Worten verlangt — die Beispielsätze variieren, das Schema
+bleibt gleich.
+
+
 
 <Beispiel titel="Feedback nach SBI — eine echte Situation strukturieren">
 
@@ -368,48 +370,49 @@ das Feedback?
 
 </Beispiel>
 
-<StepByStep titel="SBI-Feedback — Situation, Verhalten, Auswirkung sauber trennen">
-  <Schritt nr={1} titel="Termin und Setting wählen">
-    „Hast du nach dem Mittag zehn Minuten? Ich möchte dir zu unserem Daily heute
-    Morgen kurzes Feedback geben." Vier Augen, ruhiger Raum, kein Slack-Chat. Das
-    Setting signalisiert: das ist mir wichtig genug, um Zeit dafür zu nehmen.
-  </Schritt>
-  <Schritt nr={2} titel="Situation konkret benennen">
-    „Heute im Daily um neun Uhr, als wir die Liefertermine für die KW 18 besprochen
-    haben…" Datum, Uhrzeit, Anlass — kein „neulich", kein „du machst das immer". Nur
-    die eine konkrete Situation, an die ihr beide euch erinnert.
-  </Schritt>
-  <Schritt nr={3} titel="Behavior — was hast du beobachtet?">
-    „…habe ich dich gefragt, ob der Termin am 6. Mai für Kunde Müller realistisch ist.
-    Du bist auf die Frage nicht eingegangen, sondern bist direkt zum nächsten
-    Tagesordnungspunkt übergegangen." Beobachtung, kein Urteil. Kein „du hast mich
-    abgewürgt" oder „du warst desinteressiert" — diese Worte sind Interpretationen.
-  </Schritt>
-  <Schritt nr={4} titel="Impact — Ich-Botschaft, nicht Du-Botschaft">
-    „Mir ist dadurch unklar geblieben, was ich Müller heute zusagen kann. Ich habe
-    nach dem Daily extra noch mit Anna gesprochen, das hat mich 20 Minuten gekostet.
-    Und ich war kurz unsicher, ob ich die Frage in einer falschen Form gestellt habe."
-    Ich-Botschaft, konkrete Auswirkung, ehrlich auch zur eigenen Unsicherheit.
-  </Schritt>
-  <Schritt nr={5} titel="Pause — und aktiv zuhören">
-    Hier kommt der Empfänger zu Wort. Vielleicht hatte er einen Grund (Zeitdruck,
-    fehlende Info, andere Priorität), den du nicht kanntest. Aktives Zuhören:
-    Paraphrasieren („Du sagst also, dass du den Termin selbst noch nicht prüfen
-    konntest"), nicht sofort verteidigen oder weiter argumentieren.
-  </Schritt>
-  <Schritt nr={6} titel="Vereinbarung treffen und Folge-Check">
-    Konkrete Absprache: „Können wir abmachen, dass du Fragen, die du nicht sofort
-    beantworten kannst, zumindest mit ‚schaue ich nach und melde mich heute noch‘
-    quittierst?" Verbindlich, knapp, mit nächstem Termin („Wir schauen in zwei Wochen
-    nochmal kurz"). Ohne diesen letzten Schritt verpufft das Feedback.
-  </Schritt>
-  <Ergebnis>
-    SBI macht aus einer Beschwerde ein Gespräch. Die Beschreibung bleibt konkret,
-    das Verhalten wird beobachtbar genannt, die Auswirkung ist eigene Wahrnehmung —
-    kein Vorwurf. In Aufgaben werden Schüler oft gebeten, eine vorgegebene
-    Du-Botschaft in eine SBI-Form umzuformulieren. Genau dieses Schema ist gemeint.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: SBI-Feedback — Situation, Verhalten, Auswirkung sauber trennen**
+
+**Schritt 1 — Termin und Setting wählen**
+„Hast du nach dem Mittag zehn Minuten? Ich möchte dir zu unserem Daily heute
+Morgen kurzes Feedback geben." Vier Augen, ruhiger Raum, kein Slack-Chat. Das
+Setting signalisiert: das ist mir wichtig genug, um Zeit dafür zu nehmen.
+
+**Schritt 2 — Situation konkret benennen**
+„Heute im Daily um neun Uhr, als wir die Liefertermine für die KW 18 besprochen
+haben…" Datum, Uhrzeit, Anlass — kein „neulich", kein „du machst das immer". Nur
+die eine konkrete Situation, an die ihr beide euch erinnert.
+
+**Schritt 3 — Behavior — was hast du beobachtet?**
+„…habe ich dich gefragt, ob der Termin am 6. Mai für Kunde Müller realistisch ist.
+Du bist auf die Frage nicht eingegangen, sondern bist direkt zum nächsten
+Tagesordnungspunkt übergegangen." Beobachtung, kein Urteil. Kein „du hast mich
+abgewürgt" oder „du warst desinteressiert" — diese Worte sind Interpretationen.
+
+**Schritt 4 — Impact — Ich-Botschaft, nicht Du-Botschaft**
+„Mir ist dadurch unklar geblieben, was ich Müller heute zusagen kann. Ich habe
+nach dem Daily extra noch mit Anna gesprochen, das hat mich 20 Minuten gekostet.
+Und ich war kurz unsicher, ob ich die Frage in einer falschen Form gestellt habe."
+Ich-Botschaft, konkrete Auswirkung, ehrlich auch zur eigenen Unsicherheit.
+
+**Schritt 5 — Pause — und aktiv zuhören**
+Hier kommt der Empfänger zu Wort. Vielleicht hatte er einen Grund (Zeitdruck,
+fehlende Info, andere Priorität), den du nicht kanntest. Aktives Zuhören:
+Paraphrasieren („Du sagst also, dass du den Termin selbst noch nicht prüfen
+konntest"), nicht sofort verteidigen oder weiter argumentieren.
+
+**Schritt 6 — Vereinbarung treffen und Folge-Check**
+Konkrete Absprache: „Können wir abmachen, dass du Fragen, die du nicht sofort
+beantworten kannst, zumindest mit ‚schaue ich nach und melde mich heute noch‘
+quittierst?" Verbindlich, knapp, mit nächstem Termin („Wir schauen in zwei Wochen
+nochmal kurz"). Ohne diesen letzten Schritt verpufft das Feedback.
+
+**Ergebnis**
+SBI macht aus einer Beschwerde ein Gespräch. Die Beschreibung bleibt konkret,
+das Verhalten wird beobachtbar genannt, die Auswirkung ist eigene Wahrnehmung —
+kein Vorwurf. In Aufgaben werden Schüler oft gebeten, eine vorgegebene
+Du-Botschaft in eine SBI-Form umzuformulieren. Genau dieses Schema ist gemeint.
+
+
 
 ---
 

@@ -150,6 +150,24 @@ es im letzten Oktett zwei Blöcke: `0-127` und `128-255`.
 Die Adresse `.200` liegt im Block `128-255`. Das Gateway `.1` liegt im Block
 `0-127`. Es ist also nicht im selben Subnetz und passt nicht.
 
+## Kurz prüfen
+
+Wenn du `192.168.20.78/28` siehst, bleiben 4 Host-Bits. Der Block hat
+`2^4 = 16` Adressen. Im letzten Oktett laufen die Blöcke also bei `0`, `16`,
+`32`, `48`, `64`, `80` und so weiter los.
+
+Die `78` liegt im Block `64-79`. Damit gilt:
+
+| Wert | Ergebnis |
+|---|---|
+| Netzadresse | `192.168.20.64/28` |
+| erster Host | `192.168.20.65` |
+| letzter Host | `192.168.20.78` |
+| Broadcast | `192.168.20.79` |
+| nutzbare Hosts | 14 |
+
+Wichtig: `.78` ist hier noch ein Host. Erst `.79` ist Broadcast.
+
 ## Typische Fehler
 
 - Gesamtadressen mit nutzbaren Hosts verwechseln: Du erkennst den Fehler, wenn

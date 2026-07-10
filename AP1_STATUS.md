@@ -8,7 +8,7 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **2** | teilgeprueft **12** | ungeprueft **86**
+- Vertrauen: geprueft **5** | teilgeprueft **9** | ungeprueft **86**
 - Review dokumentiert: **4**
 - Mit Quellen-Tags: **67**
 
@@ -56,7 +56,7 @@
 |---|---|---|---|---|---|
 | `von-neumann` | ready | ungeprueft | - | ja | ja |
 | `bit-byte` | final | geprueft | reviewed | ja | ja |
-| `zahlensysteme` | final | teilgeprueft | reviewed | ja | ja |
+| `zahlensysteme` | final | geprueft | reviewed | ja | ja |
 | `prefixe` | final | geprueft | reviewed | ja | ja |
 
 ### hardware
@@ -77,13 +77,13 @@
 | `osi-modell` | ready | teilgeprueft | - | ja | ja |
 | `tcp-udp` | ready | teilgeprueft | - | ja | ja |
 | `imap-pop3-smtp` | ready | ungeprueft | - | ja | - |
-| `ipv4-subnetting` | ready | teilgeprueft | - | ja | ja |
+| `ipv4-subnetting` | ready | geprueft | - | ja | ja |
 | `netzwerkkonfiguration` | ready | teilgeprueft | - | ja | ja |
 | `ipv6-grundlagen` | ready | teilgeprueft | - | ja | ja |
 | `firewall-dmz` | ready | teilgeprueft | - | ja | ja |
 | `port-forwarding` | ready | teilgeprueft | - | ja | ja |
 | `wlan-standards` | ready | teilgeprueft | - | ja | ja |
-| `datenrate-berechnung` | ready | teilgeprueft | - | ja | ja |
+| `datenrate-berechnung` | ready | geprueft | - | ja | ja |
 | `datenvolumen-berechnung` | ready | teilgeprueft | - | ja | ja |
 
 ### projekt

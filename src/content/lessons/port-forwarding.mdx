@@ -73,25 +73,25 @@ LAN: 192.168.178.0/24
 
 Beim normalen Surfen startet der Client im privaten Netz die Verbindung. Der NAT-Router ersetzt die interne Quelladresse durch seine öffentliche Adresse und merkt sich in einer Tabelle, welcher interne Client zu welcher Verbindung gehört.
 
-<StepByStep titel="Client ruft eine Website auf">
-  <Schritt nr={1} titel="Client startet Verbindung">
-    <p>Das Notebook `192.168.178.20` verbindet sich per TCP zu `198.51.100.10:443`.</p>
-  </Schritt>
-  <Schritt nr={2} titel="Router übersetzt nach außen">
-    <p>Der Router ersetzt die private Quelladresse durch seine öffentliche Adresse. Bei NAPT/PAT wird zusätzlich ein Quellport verwendet, damit viele Clients unterscheidbar bleiben.</p>
-    <pre><code>{`Vor NAT:  192.168.178.20:51544 -> 198.51.100.10:443
+**Rechenweg: Client ruft eine Website auf**
+
+**Schritt 1 — Client startet Verbindung**
+<p>Das Notebook `192.168.178.20` verbindet sich per TCP zu `198.51.100.10:443`.</p>
+
+**Schritt 2 — Router übersetzt nach außen**
+<p>Der Router ersetzt die private Quelladresse durch seine öffentliche Adresse. Bei NAPT/PAT wird zusätzlich ein Quellport verwendet, damit viele Clients unterscheidbar bleiben.</p>
+<pre><code>{`Vor NAT:  192.168.178.20:51544 -> 198.51.100.10:443
 Nach NAT: 203.0.113.25:62001   -> 198.51.100.10:443`}</code></pre>
-  </Schritt>
-  <Schritt nr={3} titel="Antwort kommt zurück">
-    <p>Die Website antwortet an `203.0.113.25:62001`. Der Router findet den passenden Tabelleneintrag.</p>
-  </Schritt>
-  <Schritt nr={4} titel="Router übersetzt nach innen">
-    <p>Der Router ersetzt das Ziel wieder durch `192.168.178.20:51544` und leitet das Paket ins LAN.</p>
-  </Schritt>
-  <Ergebnis>
-    <p>Der Client kann ins Internet, obwohl seine private Adresse dort nicht geroutet wird.</p>
-  </Ergebnis>
-</StepByStep>
+
+**Schritt 3 — Antwort kommt zurück**
+<p>Die Website antwortet an `203.0.113.25:62001`. Der Router findet den passenden Tabelleneintrag.</p>
+
+**Schritt 4 — Router übersetzt nach innen**
+<p>Der Router ersetzt das Ziel wieder durch `192.168.178.20:51544` und leitet das Paket ins LAN.</p>
+
+**Ergebnis**
+<p>Der Client kann ins Internet, obwohl seine private Adresse dort nicht geroutet wird.</p>
+
 
 Die wichtigste Idee: Normales NAT für ausgehende Verbindungen ist zustandsbehaftet. Der Router merkt sich gestartete Verbindungen. Eine zufällige neue Verbindung aus dem Internet hat aber keinen passenden Eintrag und wird verworfen, sofern keine Portweiterleitung oder passende Regel existiert.
 
@@ -229,20 +229,21 @@ Wichtig: IPv6 braucht normalerweise kein NAT für Adressknappheit. Das bedeutet 
 Ein Kleinunternehmen betreibt einen Webserver intern unter `192.168.10.20`. Der Router hat die öffentliche IPv4 `198.51.100.44`. Die Website soll per HTTPS aus dem Internet erreichbar sein.
 </Beispiel>
 
-<StepByStep titel="Sichere Portweiterleitung begründen">
-  <Schritt nr={1} titel="Weiterleitung formulieren">
-    Leite am WAN `198.51.100.44`, TCP-Port `443`, auf das interne Ziel `192.168.10.20`, TCP-Port `443`, weiter.
-  </Schritt>
-  <Schritt nr={2} titel="Erlaubnis prüfen">
-    Router-Firewall und Server-Firewall müssen eingehenden HTTPS-Verkehr erlauben. Der Webserver muss auf TCP 443 lauschen.
-  </Schritt>
-  <Schritt nr={3} titel="Schutz ergänzen">
-    Der Server gehört in eine DMZ oder ein getrenntes Servernetz. Nur notwendige Ports werden freigegeben; TLS, Updates, starke Authentifizierung, Logging und kein direkter Adminzugang aus dem Internet gehören dazu.
-  </Schritt>
-  <Ergebnis>
-    `192.168.10.20` ist eine private RFC-1918-Adresse und wird im Internet nicht global geroutet. Der Zugriff von außen funktioniert deshalb über die öffentliche Adresse des Routers und eine passende Portweiterleitung.
-  </Ergebnis>
-</StepByStep>
+**Rechenweg: Sichere Portweiterleitung begründen**
+
+**Schritt 1 — Weiterleitung formulieren**
+Leite am WAN `198.51.100.44`, TCP-Port `443`, auf das interne Ziel `192.168.10.20`, TCP-Port `443`, weiter.
+
+**Schritt 2 — Erlaubnis prüfen**
+Router-Firewall und Server-Firewall müssen eingehenden HTTPS-Verkehr erlauben. Der Webserver muss auf TCP 443 lauschen.
+
+**Schritt 3 — Schutz ergänzen**
+Der Server gehört in eine DMZ oder ein getrenntes Servernetz. Nur notwendige Ports werden freigegeben; TLS, Updates, starke Authentifizierung, Logging und kein direkter Adminzugang aus dem Internet gehören dazu.
+
+**Ergebnis**
+`192.168.10.20` ist eine private RFC-1918-Adresse und wird im Internet nicht global geroutet. Der Zugriff von außen funktioniert deshalb über die öffentliche Adresse des Routers und eine passende Portweiterleitung.
+
+
 
 ---
 

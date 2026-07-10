@@ -254,83 +254,91 @@ Du bekommst vier Situationen: eine HTTPS-Verbindung zum Kundenportal, eine Passw
 
 ### 04.1 · HTTPS / TLS als hybrides Verfahren lesen
 
-<StepByStep titel="HTTPS-Verbindung mit TLS einordnen">
-  <Schritt nr={1} titel="Server legt Zertifikat vor">
-    Der Browser erhält das Serverzertifikat. Es enthält unter anderem Domainname, Public Key, Gültigkeitszeitraum, Aussteller und erlaubte Verwendungen.
-  </Schritt>
-  <Schritt nr={2} titel="Browser prüft Vertrauen">
-    Der Browser prüft Domainname, Datum, Zertifikatskette, CA-Signaturen und Widerrufsinformationen. Scheitert diese Aufgabe, darf der Nutzer der Verbindung nicht blind vertrauen.
-  </Schritt>
-  <Schritt nr={3} titel="Session Key aushandeln">
-    Client und Server einigen sich über asymmetrische Kryptographie oder Schlüsselaustauschverfahren auf gemeinsame Geheimnisse. Daraus entstehen Sitzungsschlüssel.
-  </Schritt>
-  <Schritt nr={4} titel="Nutzdaten symmetrisch schützen">
-    Die eigentlichen HTTP-Daten laufen danach schnell symmetrisch verschlüsselt und authentifiziert. Genau deshalb ist HTTPS ein hybrides Verfahren.
-  </Schritt>
-  <Ergebnis>
-    HTTPS nutzt Zertifikate für Authentizität, asymmetrische Verfahren für den Start und symmetrische Verschlüsselung für die Daten. Es schützt vor Mitlesen, Manipulation und vielen Formen von Identitätstäuschung.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: HTTPS-Verbindung mit TLS einordnen**
+
+**Schritt 1 — Server legt Zertifikat vor**
+Der Browser erhält das Serverzertifikat. Es enthält unter anderem Domainname, Public Key, Gültigkeitszeitraum, Aussteller und erlaubte Verwendungen.
+
+**Schritt 2 — Browser prüft Vertrauen**
+Der Browser prüft Domainname, Datum, Zertifikatskette, CA-Signaturen und Widerrufsinformationen. Scheitert diese Aufgabe, darf der Nutzer der Verbindung nicht blind vertrauen.
+
+**Schritt 3 — Session Key aushandeln**
+Client und Server einigen sich über asymmetrische Kryptographie oder Schlüsselaustauschverfahren auf gemeinsame Geheimnisse. Daraus entstehen Sitzungsschlüssel.
+
+**Schritt 4 — Nutzdaten symmetrisch schützen**
+Die eigentlichen HTTP-Daten laufen danach schnell symmetrisch verschlüsselt und authentifiziert. Genau deshalb ist HTTPS ein hybrides Verfahren.
+
+**Ergebnis**
+HTTPS nutzt Zertifikate für Authentizität, asymmetrische Verfahren für den Start und symmetrische Verschlüsselung für die Daten. Es schützt vor Mitlesen, Manipulation und vielen Formen von Identitätstäuschung.
+
+
 
 ### 04.2 · Passwort sicher speichern
 
-<StepByStep titel="Passwortregistrierung und Login mit Salt">
-  <Schritt nr={1} titel="Registrierung: Salt erzeugen">
-    Das System erzeugt für genau diesen Nutzer einen zufälligen Salt. Der Salt ist nicht geheim und wird später mit dem Hash gespeichert.
-  </Schritt>
-  <Schritt nr={2} titel="Registrierung: Passwort-Hash berechnen">
-    Aus Passwort, Salt und optionalem Pepper wird mit Argon2id, bcrypt oder scrypt ein Passwort-Hash berechnet. Das Klartextpasswort wird nicht gespeichert.
-  </Schritt>
-  <Schritt nr={3} titel="Login: Salt aus Datenbank lesen">
-    Beim Login holt das System den gespeicherten Salt und berechnet aus der Eingabe erneut den Passwort-Hash.
-  </Schritt>
-  <Schritt nr={4} titel="Vergleich: Hash gegen Hash">
-    Stimmen berechneter und gespeicherter Hash überein, ist das eingegebene Passwort korrekt. Das System muss dafür das echte Passwort nie kennen.
-  </Schritt>
-  <Ergebnis>
-    Passwörter werden gehasht, nicht verschlüsselt. Ein Salt macht gleiche Passwörter unterscheidbar, ein langsames Verfahren erschwert Brute-Force, und ein Pepper hilft zusätzlich, falls nur die Datenbank entwendet wird.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Passwortregistrierung und Login mit Salt**
+
+**Schritt 1 — Registrierung: Salt erzeugen**
+Das System erzeugt für genau diesen Nutzer einen zufälligen Salt. Der Salt ist nicht geheim und wird später mit dem Hash gespeichert.
+
+**Schritt 2 — Registrierung: Passwort-Hash berechnen**
+Aus Passwort, Salt und optionalem Pepper wird mit Argon2id, bcrypt oder scrypt ein Passwort-Hash berechnet. Das Klartextpasswort wird nicht gespeichert.
+
+**Schritt 3 — Login: Salt aus Datenbank lesen**
+Beim Login holt das System den gespeicherten Salt und berechnet aus der Eingabe erneut den Passwort-Hash.
+
+**Schritt 4 — Vergleich: Hash gegen Hash**
+Stimmen berechneter und gespeicherter Hash überein, ist das eingegebene Passwort korrekt. Das System muss dafür das echte Passwort nie kennen.
+
+**Ergebnis**
+Passwörter werden gehasht, nicht verschlüsselt. Ein Salt macht gleiche Passwörter unterscheidbar, ein langsames Verfahren erschwert Brute-Force, und ein Pepper hilft zusätzlich, falls nur die Datenbank entwendet wird.
+
+
 
 ### 04.3 · Digitale Signatur eines Updates prüfen
 
-<StepByStep titel="Signiertes Software-Update prüfen">
-  <Schritt nr={1} titel="Hersteller bildet Hash">
-    Vom Update-Paket wird ein Hashwert berechnet. Dieser Hash ist der kompakte Fingerabdruck der Datei.
-  </Schritt>
-  <Schritt nr={2} titel="Hersteller signiert den Hash">
-    Der Hersteller signiert den Hash mit seinem Private Key. Die Signatur wird zusammen mit dem Update ausgeliefert.
-  </Schritt>
-  <Schritt nr={3} titel="Client bildet eigenen Hash">
-    Der Client berechnet nach dem Download erneut den Hash der erhaltenen Datei.
-  </Schritt>
-  <Schritt nr={4} titel="Client prüft Signatur und Zertifikat">
-    Mit dem Public Key des Herstellers wird geprüft, ob die Signatur zum Hash passt. Das Zertifikat bestätigt, dass dieser Public Key wirklich zum Hersteller gehört.
-  </Schritt>
-  <Ergebnis>
-    Die Signatur zeigt: Das Update wurde seit der Signatur nicht verändert und stammt vom Inhaber des passenden Private Keys. Sie macht den Inhalt aber nicht geheim.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: Signiertes Software-Update prüfen**
+
+**Schritt 1 — Hersteller bildet Hash**
+Vom Update-Paket wird ein Hashwert berechnet. Dieser Hash ist der kompakte Fingerabdruck der Datei.
+
+**Schritt 2 — Hersteller signiert den Hash**
+Der Hersteller signiert den Hash mit seinem Private Key. Die Signatur wird zusammen mit dem Update ausgeliefert.
+
+**Schritt 3 — Client bildet eigenen Hash**
+Der Client berechnet nach dem Download erneut den Hash der erhaltenen Datei.
+
+**Schritt 4 — Client prüft Signatur und Zertifikat**
+Mit dem Public Key des Herstellers wird geprüft, ob die Signatur zum Hash passt. Das Zertifikat bestätigt, dass dieser Public Key wirklich zum Hersteller gehört.
+
+**Ergebnis**
+Die Signatur zeigt: Das Update wurde seit der Signatur nicht verändert und stammt vom Inhaber des passenden Private Keys. Sie macht den Inhalt aber nicht geheim.
+
+
 
 ### 04.4 · VPN für Außendienst oder Standortkopplung wählen
 
-<StepByStep titel="VPN-Fall in der Prüfung lösen">
-  <Schritt nr={1} titel="Anwendungsfall erkennen">
-    Ein einzelner Mitarbeiter im Homeoffice oder Außendienst braucht Remote-Access-VPN. Zwei Niederlassungen brauchen Site-to-Site-VPN.
-  </Schritt>
-  <Schritt nr={2} titel="Authentifizierung festlegen">
-    Nutzer oder Gateways müssen sich authentisieren, zum Beispiel mit Zertifikat, Benutzerkonto, MFA oder Pre-Shared Key. Pre-Shared Keys sind nur sauber, wenn sie stark und gut verwaltet sind.
-  </Schritt>
-  <Schritt nr={3} titel="Tunnel und Routen planen">
-    Definiere, welche Netze durch den Tunnel gehen. Split-Tunneling leitet nur Firmenverkehr durch das VPN, Full-Tunnel leitet allen Clientverkehr durch das Firmennetz.
-  </Schritt>
-  <Schritt nr={4} titel="Rechte und Schutzmaßnahmen ergänzen">
-    VPN ersetzt keine Zugriffskontrolle. Nach dem Tunnel braucht es Rollen, Firewall-Regeln, Patchstand, Logging und bei hohem Schutzbedarf MFA.
-  </Schritt>
-  <Ergebnis>
-    VPN ist die Transportabsicherung für entfernte Verbindungen. Die eigentliche Berechtigung im Zielsystem bleibt eine separate Sicherheitsaufgabe.
-  </Ergebnis>
-</StepByStep>
+
+**Rechenweg: VPN-Fall in der Prüfung lösen**
+
+**Schritt 1 — Anwendungsfall erkennen**
+Ein einzelner Mitarbeiter im Homeoffice oder Außendienst braucht Remote-Access-VPN. Zwei Niederlassungen brauchen Site-to-Site-VPN.
+
+**Schritt 2 — Authentifizierung festlegen**
+Nutzer oder Gateways müssen sich authentisieren, zum Beispiel mit Zertifikat, Benutzerkonto, MFA oder Pre-Shared Key. Pre-Shared Keys sind nur sauber, wenn sie stark und gut verwaltet sind.
+
+**Schritt 3 — Tunnel und Routen planen**
+Definiere, welche Netze durch den Tunnel gehen. Split-Tunneling leitet nur Firmenverkehr durch das VPN, Full-Tunnel leitet allen Clientverkehr durch das Firmennetz.
+
+**Schritt 4 — Rechte und Schutzmaßnahmen ergänzen**
+VPN ersetzt keine Zugriffskontrolle. Nach dem Tunnel braucht es Rollen, Firewall-Regeln, Patchstand, Logging und bei hohem Schutzbedarf MFA.
+
+**Ergebnis**
+VPN ist die Transportabsicherung für entfernte Verbindungen. Die eigentliche Berechtigung im Zielsystem bleibt eine separate Sicherheitsaufgabe.
+
+
 
 ---
 
