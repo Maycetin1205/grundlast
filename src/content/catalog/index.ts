@@ -1,0 +1,18 @@
+import { lf1 } from './chapters/lf1'
+import { lf2 } from './chapters/lf2'
+import { lf3 } from './chapters/lf3'
+import { lf4 } from './chapters/lf4'
+import { lf5 } from './chapters/lf5'
+import { lf6 } from './chapters/lf6'
+import { lf7 } from './chapters/lf7'
+import { lf8 } from './chapters/lf8'
+import { lf9 } from './chapters/lf9'
+import type { Chapter } from './types'
+
+export const chapters: Chapter[] = [...lf1, ...lf2, ...lf3, ...lf4, ...lf5, ...lf6, ...lf7, ...lf8, ...lf9]
+export { ap1Competencies } from './competencies'
+export { learningFields } from './learningFields'
+export { topics } from './topics'
+export type { Ap1Competency } from './competencies'
+export type { LearningField } from './learningFields'
+export type { Chapter } from './types'

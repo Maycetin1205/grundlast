@@ -3,7 +3,8 @@ export {
   auditStatusShortLabel,
   auditWeight,
   getLessonAudit,
-  isTrustedForExam,
+  hasAuditProgress,
+  isFullyAudited,
 } from './status'
 
 export type {

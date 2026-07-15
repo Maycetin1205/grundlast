@@ -2,6 +2,84 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const aBisD: GlossarEintrag[] = [
   {
+    id: 'aussenverhaeltnis',
+    begriff: 'Außenverhältnis',
+    kurzdefinition: 'Rechtliche Beziehung des Unternehmens zu außenstehenden Geschäftspartnern.',
+    definition: [
+      'Das Außenverhältnis beantwortet bei einer Vertretung, welche Geschäfte eine bevollmächtigte Person gegenüber Dritten wirksam für das Unternehmen abschließen kann.',
+      'Interne Weisungen und die nach außen wirkende Vertretungsmacht können unterschiedlich weit reichen. Diese Trennung ist besonders bei der Prokura wichtig.',
+    ],
+    kapitel: {
+      titel: 'Vollmachten im Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/vollmachten-im-betrieb',
+    },
+  },
+  {
+    id: 'ausbildungsverhaeltnis',
+    begriff: 'Ausbildungsverhältnis',
+    kurzdefinition: 'Rechtliche Beziehung zur Berufsausbildung zwischen Ausbildenden und Auszubildenden.',
+    definition: [
+      'Das Ausbildungsverhältnis hat das Ziel, berufliche Handlungsfähigkeit zu vermitteln. Es ist auf Lernen und die planmäßige Vermittlung der Ausbildungsinhalte ausgerichtet.',
+      'Es ist vom gewöhnlichen Arbeitsverhältnis abzugrenzen: Mitarbeit gehört dazu, darf aber den Ausbildungszweck nicht verdrängen.',
+    ],
+    kapitel: {
+      titel: 'Ausbildung, Rolle und Arbeitswelt',
+      href: '/lernen/arbeitsrecht/ausbildung/bbig-ausbildungsvertrag',
+    },
+  },
+  {
+    id: 'ausbildungsnachweis',
+    begriff: 'Ausbildungsnachweis',
+    kurzdefinition: 'Dokumentation der in der Ausbildung vermittelten und ausgeführten Tätigkeiten und Inhalte.',
+    definition: [
+      'Der Ausbildungsnachweis hält fest, was gelernt und bearbeitet wurde. Er macht den Ausbildungsfortschritt nachvollziehbar.',
+      'Vertrauliche Informationen wie Zugangsdaten gehören nur nach den betrieblichen Regeln in eine Dokumentation.',
+    ],
+    kapitel: {
+      titel: 'Ausbildung, Rolle und Arbeitswelt',
+      href: '/lernen/arbeitsrecht/ausbildung/bbig-ausbildungsvertrag',
+    },
+  },
+  {
+    id: 'arbeitsschutz',
+    begriff: 'Arbeitsschutz',
+    kurzdefinition: 'Maßnahmen zum Schutz von Sicherheit und Gesundheit bei der Arbeit.',
+    definition: [
+      'Arbeitsschutz umfasst das Erkennen von Gefährdungen, passende Schutzmaßnahmen und Unterweisung. Er gilt auch bei Bildschirmarbeit und elektrischen Arbeitsmitteln.',
+      'Auszubildende beachten Unterweisungen, benutzen Arbeitsmittel sicher und melden erkennbare Gefahren.',
+    ],
+    kapitel: {
+      titel: 'Ausbildung, Rolle und Arbeitswelt',
+      href: '/lernen/arbeitsrecht/ausbildung/bbig-ausbildungsvertrag',
+    },
+  },
+  {
+    id: 'berufsausbildungsvertrag',
+    begriff: 'Berufsausbildungsvertrag',
+    kurzdefinition: 'Vertrag mit den wesentlichen Bedingungen eines Ausbildungsverhältnisses.',
+    definition: [
+      'Der Berufsausbildungsvertrag hält zum Beispiel Ausbildungsziel, Dauer, Arbeitszeit, Probezeit, Vergütung, Urlaub und die Form des Ausbildungsnachweises fest.',
+      'Bei einer konkreten Frage sind Vertrag, Gesetz und zuständige Beratungsstelle maßgeblich.',
+    ],
+    kapitel: {
+      titel: 'Ausbildung, Rolle und Arbeitswelt',
+      href: '/lernen/arbeitsrecht/ausbildung/bbig-ausbildungsvertrag',
+    },
+  },
+  {
+    id: 'gefaehrdungsbeurteilung',
+    begriff: 'Gefährdungsbeurteilung',
+    kurzdefinition: 'Ermittlung arbeitsbedingter Gefährdungen als Grundlage für Schutzmaßnahmen.',
+    definition: [
+      'Bei einer Gefährdungsbeurteilung werden mögliche Gefahren einer Tätigkeit ermittelt und bewertet. Daraus leitet der Arbeitgeber passende Maßnahmen und Unterweisungen ab.',
+      'Sie kann zum Beispiel elektrische Arbeitsmittel, Arbeitsumgebung, Arbeitsorganisation oder Bildschirmarbeit betreffen.',
+    ],
+    kapitel: {
+      titel: 'Ausbildung, Rolle und Arbeitswelt',
+      href: '/lernen/arbeitsrecht/ausbildung/bbig-ausbildungsvertrag',
+    },
+  },
+  {
       id: 'boolesche-algebra',
       begriff: 'Boolesche Algebra',
       kurzdefinition: 'Rechenlogik mit genau zwei Wahrheitswerten: wahr und falsch beziehungsweise 1 und 0.',
@@ -123,8 +201,8 @@ export const aBisD: GlossarEintrag[] = [
         'Prüfungsrelevant sind breite Kapitalbeschaffung, Gesellschaftsvermögen als Haftungsmasse und Organe wie Vorstand, Aufsichtsrat und Hauptversammlung.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
       },
     },
   {
@@ -208,10 +286,10 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'apipa',
       begriff: 'APIPA',
-      kurzdefinition: 'APIPA ist eine Notfall-Selbstkonfiguration aus dem Bereich 169.254.0.0/16, die ein Client vergibt, wenn kein DHCP-Server antwortet.',
+      kurzdefinition: 'APIPA bezeichnet die automatische IPv4-Link-Local-Konfiguration im Präfix 169.254.0.0/16.',
       definition: [
-        'APIPA steht für Automatic Private IP Addressing (RFC 3927). Erhält ein Windows- oder Linux-Client per DHCP keine Antwort, würfelt er selbst eine Adresse aus 169.254.1.0 - 169.254.254.255 und prüft per ARP, ob sie noch frei ist. Diese Adresse ist nicht routbar - das Gerät kommt nur noch mit anderen APIPA-Hosts im selben Segment in Kontakt.',
-        'Diagnose-Wert: Sieht ein Host eine 169.254.x.x-Adresse, ist das fast immer ein Hinweis darauf, dass der DHCP-Server nicht erreicht wurde. Mögliche Ursachen sind defektes Kabel, falsches VLAN, ausgeschalteter DHCP-Dienst oder ein DHCP-Relay, das den Broadcast nicht weitergibt.',
+        'APIPA steht für Automatic Private IP Addressing. Das in RFC 3927 beschriebene Auswahlverfahren verwendet 169.254.1.0 bis 169.254.254.255 und prüft die gewählte Adresse per ARP auf Konflikte.',
+        'IPv4-Link-Local-Pakete werden nicht durch Router weitergeleitet. Bei einem Client, der DHCP verwenden soll, ist eine 169.254.x.x-Adresse ein Befund für eine fehlende nutzbare Lease; Kabel, WLAN, VLAN, Relay, Pool, Server und lokale Einstellungen bleiben mögliche Ursachen.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -234,10 +312,10 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'arp',
       begriff: 'ARP',
-      kurzdefinition: 'ARP löst IPv4-Adressen in MAC-Adressen auf und ist das Bindeglied zwischen Layer 3 und Layer 2.',
+      kurzdefinition: 'ARP ermittelt im lokalen IPv4-Netz die Hardwareadresse des nächsten Hops.',
       definition: [
-        'ARP steht für Address Resolution Protocol (RFC 826). Bevor ein Host ein IP-Paket im lokalen Subnetz versenden kann, muss er die MAC-Adresse des Empfängers kennen. Per ARP-Request fragt er per Broadcast "Wer hat 192.168.10.7?" und erhält die Antwort als ARP-Reply mit der MAC des Zielhosts.',
-        'Die Antworten landen im ARP-Cache und gelten dort einige Minuten. Mit dem Befehl "arp -a" siehst du den aktuellen Cache. Wichtig: ARP funktioniert nur im lokalen Subnetz - für Pakete über das Gateway wird die MAC des Gateways aufgelöst, nicht die des Endziels.',
+        'ARP steht für Address Resolution Protocol (RFC 826). Per Broadcast-Request fragt ein Host nach der Hardwareadresse einer IPv4-Adresse; der zuständige Host antwortet mit einem ARP-Reply.',
+        'Liegt das IP-Ziel im eigenen Subnetz, wird dessen MAC-Adresse ermittelt. Liegt es außerhalb, ermittelt der Host die MAC-Adresse des Gateways. "arp -a" zeigt unter Windows bereits gelernte Zuordnungen, deren Lebensdauer von der Implementierung abhängt.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -288,12 +366,25 @@ export const aBisD: GlossarEintrag[] = [
       begriff: 'Aufbauorganisation',
       kurzdefinition: 'Ordnet Stellen, Abteilungen, Aufgaben, Verantwortlichkeiten und Weisungswege.',
       definition: [
-        'Die Aufbauorganisation beschreibt, wie ein Unternehmen strukturell aufgebaut ist: Stellen, Abteilungen, Leitungsebenen, Verantwortlichkeiten und Weisungsbeziehungen.',
-        'Für AP1 musst du vor allem erkennen, ob eine klare Linie, eine Stabsstelle oder eine Matrixstruktur vorliegt und welche Vor- und Nachteile daraus entstehen.',
+        'Die Aufbauorganisation beschreibt die dauerhafte Struktur eines Betriebs: Stellen, Abteilungen, Leitungsebenen, Verantwortlichkeiten und Weisungsbeziehungen.',
+        'Sie beantwortet vor allem: Wer gehört wohin, wer entscheidet und wer darf anweisen? Die zeitliche Reihenfolge der Arbeit beschreibt dagegen die Ablauforganisation.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Aufbau- und Ablauforganisation',
+        href: '/lernen/wirtschaft/unternehmen/aufbauorganisation',
+      },
+    },
+  {
+      id: 'ablauforganisation',
+      begriff: 'Ablauforganisation',
+      kurzdefinition: 'Zeitliche und sachliche Ordnung von Tätigkeiten, Übergaben und Verantwortlichkeiten in einem Prozess.',
+      definition: [
+        'Die Ablauforganisation beschreibt, welche Arbeitsschritte in welcher Reihenfolge erfolgen und wie sie zeitlich, räumlich und personell aufeinander abgestimmt sind.',
+        'Sie ergänzt die Aufbauorganisation: Diese verteilt Verantwortung, während die Ablauforganisation den Weg vom Auslöser bis zum Ergebnis festlegt.',
+      ],
+      kapitel: {
+        titel: 'Aufbau- und Ablauforganisation',
+        href: '/lernen/wirtschaft/unternehmen/aufbauorganisation',
       },
     },
   {
@@ -800,7 +891,7 @@ export const aBisD: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -956,7 +1047,7 @@ export const aBisD: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -982,7 +1073,7 @@ export const aBisD: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -1040,14 +1131,14 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'dhcp',
       begriff: 'DHCP',
-      kurzdefinition: 'DHCP weist Netzwerkkonfigurationen automatisch zu.',
+      kurzdefinition: 'DHCP weist Clients zeitlich begrenzte Netzwerkkonfigurationen automatisch zu.',
       definition: [
-        'DHCP steht für Dynamic Host Configuration Protocol. Es kann Geräten automatisch IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server zuweisen.',
-        'Dadurch müssen Clients in vielen Netzen nicht manuell konfiguriert werden.',
+        'DHCP steht für Dynamic Host Configuration Protocol. Es kann unter anderem IPv4-Adresse, Subnetzmaske, Standardgateway, DNS-Server und Lease-Dauer liefern.',
+        'Die automatische Verwaltung vermeidet viele manuelle Einträge; Reservierungen und vom Pool ausgeschlossene statische Adressen müssen zur Betriebsrichtlinie passen.',
       ],
       kapitel: {
-        titel: 'IPv4 & Subnetting',
-        href: '/lernen/netzwerke/adressierung/ipv4-subnetting',
+        titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
+        href: '/lernen/netzwerke/adressierung/netzwerkkonfiguration',
       },
     },
   {
@@ -1118,23 +1209,23 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'dns',
       begriff: 'DNS',
-      kurzdefinition: 'DNS löst Domainnamen in IP-Adressen auf.',
+      kurzdefinition: 'DNS liefert Resource Records zu Namen, darunter IP-Adressen für Hostnamen.',
       definition: [
-        'DNS steht für Domain Name System. Es übersetzt menschenlesbare Namen wie example.org in IP-Adressen, mit denen Rechner kommunizieren.',
-        'Ohne DNS müsstest du dir für viele Dienste numerische IP-Adressen merken.',
+        'DNS steht für Domain Name System. Ein Client fragt gewöhnlich einen rekursiven Resolver; dieser kann bei einem Cache-Miss Root-, TLD- und autoritative Nameserver befragen.',
+        'DNS verwendet Port 53 über UDP und TCP. Eine erfolgreiche DNS-Antwort beweist noch nicht, dass der zugehörige Anwendungsdienst erreichbar ist.',
       ],
       kapitel: {
-        titel: 'IPv4 & Subnetting',
-        href: '/lernen/netzwerke/adressierung/ipv4-subnetting',
+        titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
+        href: '/lernen/netzwerke/adressierung/netzwerkkonfiguration',
       },
     },
   {
       id: 'dora',
       begriff: 'DORA-Handshake',
-      kurzdefinition: 'DORA (Discover, Offer, Request, Acknowledge) ist der vierstufige Handshake, mit dem ein DHCP-Server einem Client eine IP-Konfiguration zuteilt.',
+      kurzdefinition: 'DORA fasst den typischen DHCP-Start als Discover, Offer, Request und Acknowledge zusammen.',
       definition: [
-        'Schritt 1: Discover - der Client schickt einen Broadcast (Quelle 0.0.0.0, Ziel 255.255.255.255), weil er noch keine IP hat. Schritt 2: Offer - jeder erreichbare DHCP-Server antwortet mit einem Adressvorschlag inklusive Lease-Dauer. Schritt 3: Request - der Client wählt das erste Angebot per Broadcast und teilt allen Servern mit, welches Angebot er akzeptiert. Schritt 4: Acknowledge - der gewählte Server bestätigt und schickt die finalen DHCP-Optionen mit.',
-        'Wichtig: Genau diese vier Schritte werden gern abgefragt - oft als Reihenfolge-Aufgabe oder als Einzelschritt-Erklärung. Jeder Schritt nutzt UDP, Port 67 (Server) und 68 (Client). Das Protokoll ist in RFC 2131 definiert.',
+        'Discover sucht Server, Offer bietet eine Adresse an, Request kennzeichnet im SELECTING-Zustand das gewählte Angebot und Acknowledge bestätigt die Parameter. Der Client wählt nicht zwingend das zuerst eingetroffene Angebot.',
+        'DHCP verwendet UDP-Port 67 auf der Serverseite und Port 68 auf der Clientseite. Broadcast oder Unicast hängen von Nachricht, Clientzustand und Broadcast-Flag ab; RFC 2131 beschreibt die Einzelheiten.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -1204,6 +1295,32 @@ export const aBisD: GlossarEintrag[] = [
       kapitel: {
         titel: 'Datenmengen, Scan & Übertragung - komplett rechnen',
         href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
+      },
+    },
+  {
+      id: 'anspruchsgruppe',
+      begriff: 'Anspruchsgruppe',
+      kurzdefinition: 'Person oder Gruppe, die ein Unternehmen beeinflussen kann oder von dessen Handeln betroffen ist.',
+      definition: [
+        'Anspruchsgruppen werden auch Stakeholder genannt. Dazu können zum Beispiel Kunden, Mitarbeitende, Lieferanten, Eigentümer, Behörden oder die Öffentlichkeit gehören.',
+        'Ihre Erwartungen können sich widersprechen. Deshalb müssen Unternehmen Entscheidungen nicht nur technisch, sondern auch mit Blick auf Betroffenheit, Nutzen und Folgen begründen.',
+      ],
+      kapitel: {
+        titel: 'Unternehmen, Ziele und Wertschöpfung',
+        href: '/lernen/wirtschaft/unternehmen/unternehmen-ziele-wertschoepfung',
+      },
+    },
+  {
+      id: 'betrieb',
+      begriff: 'Betrieb',
+      kurzdefinition: 'Konkrete organisatorische Einheit, in der Menschen und Mittel Leistungen erstellen.',
+      definition: [
+        'In einem Betrieb arbeiten Menschen, Arbeitsmittel und Prozesse zusammen, um Produkte oder Dienstleistungen zu erstellen. Ein kleines Unternehmen besteht oft aus nur einem Betrieb.',
+        'Ein Unternehmen kann aber mehrere Betriebe oder Standorte haben. Betrieb beschreibt daher vor allem die praktische Leistungserstellung, nicht die Rechtsform.',
+      ],
+      kapitel: {
+        titel: 'Unternehmen, Ziele und Wertschöpfung',
+        href: '/lernen/wirtschaft/unternehmen/unternehmen-ziele-wertschoepfung',
       },
     },
 ]

@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const iBisL: GlossarEintrag[] = [
   {
+    id: 'innenverhaeltnis',
+    begriff: 'Innenverhältnis',
+    kurzdefinition: 'Interne Beziehung zwischen Unternehmen und bevollmächtigter Person.',
+    definition: [
+      'Das Innenverhältnis legt durch Arbeitsvertrag, Vollmachtsurkunde oder Weisung fest, was eine bevollmächtigte Person im Betrieb tatsächlich tun soll.',
+      'Ein Verstoß kann interne Folgen haben, obwohl das Geschäft im Außenverhältnis trotzdem wirksam ist.',
+    ],
+    kapitel: {
+      titel: 'Vollmachten im Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/vollmachten-im-betrieb',
+    },
+  },
+  {
       id: 'kombinatorische-logik',
       begriff: 'Kombinatorische Logik',
       kurzdefinition: 'Digitale Logik, deren Ausgang nur von den aktuellen Eingaben abhängt.',
@@ -29,7 +42,7 @@ export const iBisL: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -198,7 +211,7 @@ export const iBisL: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'IPv6 - Aufbau, Adressierung, Präfixe',
-        href: '/lernen/netzwerke/adressierung/ipv6-grundlagen',
+        href: '/lernen/netzwerke/ipv6/ipv6-grundlagen',
       },
     },
   {
@@ -332,16 +345,68 @@ export const iBisL: GlossarEintrag[] = [
       },
     },
   {
+      id: 'juristische-person',
+      begriff: 'Juristische Person',
+      kurzdefinition: 'Rechtlich anerkannte Organisation, die selbst Rechte und Pflichten haben kann.',
+      definition: [
+        'Eine juristische Person handelt durch ihre Organe und ist rechtlich von den beteiligten Menschen getrennt. Sie kann zum Beispiel Verträge schließen, Eigentum halten sowie klagen und verklagt werden.',
+        'GmbH und Aktiengesellschaft sind juristische Personen. Die eigene Rechtspersönlichkeit ist von der Frage zu trennen, welcher Mensch die Gesellschaft leitet oder vertritt.',
+      ],
+      kapitel: {
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
+      },
+    },
+  {
+      id: 'kapitalgesellschaft',
+      begriff: 'Kapitalgesellschaft',
+      kurzdefinition: 'Juristische Person mit eigenem Gesellschaftsvermögen und Beteiligung über Kapitalanteile.',
+      definition: [
+        'Bei einer Kapitalgesellschaft ist die Gesellschaft selbst Trägerin von Rechten und Pflichten. Ihre Eigentümer sind über Geschäftsanteile oder Aktien beteiligt.',
+        'GmbH und Aktiengesellschaft sind Kapitalgesellschaften. Für Gesellschaftsverbindlichkeiten haftet Gläubigern im Grundsatz das Gesellschaftsvermögen.',
+      ],
+      kapitel: {
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
+      },
+    },
+  {
+      id: 'komplementaer',
+      begriff: 'Komplementär',
+      kurzdefinition: 'Persönlich haftender Gesellschafter einer Kommanditgesellschaft.',
+      definition: [
+        'Der Komplementär ist die unbeschränkt haftende Gesellschafterrolle der KG. Für ihn gelten grundsätzlich die Regeln der offenen Handelsgesellschaft.',
+        'Im gesetzlichen Grundmodell führt und vertritt der Komplementär die KG, während der Kommanditist als solcher davon ausgeschlossen ist.',
+      ],
+      kapitel: {
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
+      },
+    },
+  {
+      id: 'kommanditist',
+      begriff: 'Kommanditist',
+      kurzdefinition: 'Gesellschafter einer KG mit einer auf die Haftsumme begrenzten Außenhaftung.',
+      definition: [
+        'Der Kommanditist haftet Gläubigern bis zur eingetragenen Haftsumme unmittelbar. Diese unmittelbare Haftung ist ausgeschlossen, soweit seine vereinbarte Einlage geleistet ist.',
+        'Als Kommanditist ist er im gesetzlichen Grundmodell von Geschäftsführung und Vertretung ausgeschlossen, besitzt aber gesetzliche Informationsrechte.',
+      ],
+      kapitel: {
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
+      },
+    },
+  {
       id: 'kg',
       begriff: 'KG',
       kurzdefinition: 'Kommanditgesellschaft mit Komplementär und beschränkt haftendem Kommanditisten.',
       definition: [
         'KG steht für Kommanditgesellschaft. Sie verbindet mindestens einen persönlich haftenden Gesellschafter mit mindestens einem beschränkt haftenden Kommanditisten.',
-        'In Aufgaben ist die Rollenunterscheidung wichtig: Komplementäre tragen die persönliche Haftung und führen typischerweise, Kommanditisten beteiligen sich mit einer Haftsumme.',
+        'In Aufgaben ist die Rollenunterscheidung wichtig: Komplementäre tragen die persönliche Haftung und führen typischerweise. Beim Kommanditisten begrenzt die Haftsumme die unmittelbare Außenhaftung.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
       },
     },
   {
@@ -425,10 +490,10 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'lease',
       begriff: 'DHCP-Lease',
-      kurzdefinition: 'Ein Lease ist die zeitlich begrenzte Reservierung einer IP-Adresse, die ein DHCP-Server an einen Client vergibt.',
+      kurzdefinition: 'Eine DHCP-Lease erlaubt einem Client, eine zugeteilte Adresse für eine begrenzte Zeit zu verwenden.',
       definition: [
-        'Beim DORA-Handshake (Discover, Offer, Request, Acknowledge) erhält der Client eine IP-Konfiguration auf Zeit - die Lease-Dauer steht in der Acknowledge-Nachricht (DHCP-Option 51). Ist die Hälfte der Zeit abgelaufen, fragt der Client per DHCP-Request beim selben Server eine Verlängerung an (Renew). Antwortet er nicht, wird ab 87,5 Prozent der Lease-Zeit ein Broadcast versucht (Rebind).',
-        'Wird ein Gerät ausgeschaltet oder das Netzwerk gewechselt, kann es per DHCP-Release seine Adresse zurückgeben. Wichtig: Eine zu kurze Lease (z. B. 2 Stunden in einem Hotel-WLAN) entlastet den Pool, eine zu lange Lease (z. B. 8 Tage im Heimnetz) reduziert die DHCP-Last.',
+        'Die Lease-Dauer wird mit DHCP-Option 51 übermittelt. Der Server kann T1 und T2 vorgeben; fehlen diese Werte, liegen die Standardwerte bei 50 Prozent beziehungsweise 87,5 Prozent der Lease-Dauer.',
+        'Ab T1 versucht der Client beim bisherigen Server zu verlängern, ab T2 per Broadcast bei einem erreichbaren Server. Nach Ablauf darf er die Adresse ohne neue Bestätigung nicht weiterverwenden.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',

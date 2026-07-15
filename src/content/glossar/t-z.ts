@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const tBisZ: GlossarEintrag[] = [
   {
+    id: 'vollmacht',
+    begriff: 'Vollmacht',
+    kurzdefinition: 'Durch Rechtsgeschäft erteilte Befugnis, für eine andere Person oder Organisation rechtlich zu handeln.',
+    definition: [
+      'Mit einer Vollmacht darf eine Person innerhalb der erteilten Vertretungsmacht Erklärungen im Namen des Vollmachtgebers abgeben oder entgegennehmen.',
+      'Prokura und Handlungsvollmacht sind besondere Vollmachten für den Handelsverkehr.',
+    ],
+    kapitel: {
+      titel: 'Vollmachten im Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/vollmachten-im-betrieb',
+    },
+  },
+  {
       id: 'und-gatter',
       begriff: 'UND-Gatter',
       kurzdefinition: 'Logikgatter, dessen Ausgang nur dann 1 wird, wenn alle Eingänge 1 sind.',
@@ -230,10 +243,10 @@ export const tBisZ: GlossarEintrag[] = [
   {
       id: 'ttl-dns',
       begriff: 'TTL (DNS)',
-      kurzdefinition: 'Die TTL eines DNS-Eintrags gibt an, wie lange ein Resolver oder Client den Datensatz zwischenspeichern darf.',
+      kurzdefinition: 'Die DNS-TTL begrenzt, wie lange ein Resource Record im Cache bleiben darf.',
       definition: [
-        'TTL steht für Time to Live und ist ein Wert in Sekunden. Ein A-Record mit TTL 3600 darf eine Stunde im Cache liegen. Erst danach holt der Resolver den Datensatz erneut beim autoritativen Server. Hohe TTLs entlasten die Server, niedrige TTLs erlauben schnellere Umzüge - bei einem Server-Wechsel wird die TTL einige Stunden vorher gesenkt, damit Änderungen schnell sichtbar werden.',
-        'Wichtig: Die TTL im DNS hat nichts mit der TTL im IP-Header zu tun (dort begrenzt sie die Hop-Anzahl, sichtbar in tracert/traceroute). In DNS bezieht sich TTL ausschliesslich auf die Cache-Zeit eines Resource Records.',
+        'TTL steht für Time to Live und wird in Sekunden angegeben. Bei einer geplanten Änderung muss sie früh genug gesenkt werden, damit bereits gespeicherte Datensätze mit der alten TTL auslaufen können.',
+        'Die DNS-TTL betrifft die Cachezeit eines Resource Records. Die gleichnamige TTL im IP-Header begrenzt dagegen die Zahl der Weiterleitungen und wird von tracert beziehungsweise traceroute ausgenutzt.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -732,6 +745,32 @@ export const tBisZ: GlossarEintrag[] = [
       kapitel: {
         titel: 'Mitarbeitermotivation, Teamphasen und Change',
         href: '/lernen/projekt/service-management/mitarbeitermotivation-teamphasen-change',
+      },
+    },
+  {
+      id: 'unternehmen',
+      begriff: 'Unternehmen',
+      kurzdefinition: 'Organisation, die Ressourcen bündelt, um Produkte oder Dienstleistungen für einen Markt anzubieten.',
+      definition: [
+        'Ein Unternehmen verbindet zum Beispiel Mitarbeitende, Wissen, Kapital, Technik und Lieferbeziehungen zu einem Angebot. Es kann Produkte, Dienstleistungen oder eine Mischung aus beidem anbieten.',
+        'Der Begriff ist von Betrieb zu unterscheiden: Der Betrieb ist die konkrete Einheit, in der die Leistung entsteht; ein Unternehmen kann mehrere Betriebe umfassen.',
+      ],
+      kapitel: {
+        titel: 'Unternehmen, Ziele und Wertschöpfung',
+        href: '/lernen/wirtschaft/unternehmen/unternehmen-ziele-wertschoepfung',
+      },
+    },
+  {
+      id: 'wertschoepfung',
+      begriff: 'Wertschöpfung',
+      kurzdefinition: 'Im Produktionsprozess geschaffener Mehrwert; vereinfacht Produktionswert minus Vorleistungen.',
+      definition: [
+        'Wertschöpfung entsteht, wenn aus zugekauften oder vorhandenen Mitteln eine Leistung mit zusätzlichem Nutzen entsteht. In der volkswirtschaftlichen Rechnung werden dafür Vorleistungen vom Produktionswert abgezogen.',
+        'Wertschöpfung ist nicht gleich Umsatz und nicht gleich Gewinn. Umsatz ist ein Erlös; für den Gewinn müssen weitere Kosten und Erträge berücksichtigt werden.',
+      ],
+      kapitel: {
+        titel: 'Unternehmen, Ziele und Wertschöpfung',
+        href: '/lernen/wirtschaft/unternehmen/unternehmen-ziele-wertschoepfung',
       },
     },
 ]

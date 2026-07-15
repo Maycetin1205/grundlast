@@ -183,6 +183,7 @@ Dieses Log dokumentiert Kapitel, die nach dem neuen Goldstandard formal als
 - Technik: `npm.cmd run lint` und `npm.cmd run build` erfolgreich.
 - Re-Audit 2026-06-05: Scope, Quellen-/Benchmark-Matrix und Abschnitts-Audit erneut geprueft. Kleine Bereinigung im Lerntext: sichtbare Labels `Pflicht`, `Vertiefung` und `Muss sitzen` entfernt; Fakten, Rechenwege, Quellen und Glossar unveraendert stimmig. `npm.cmd run lint` und `npm.cmd run build` erfolgreich.
 - Re-Audit 2026-07-03: Externer Benchmark und Aufgabenabgleich nach PROJEKT.md-Gates abgeschlossen. Vertrauen in `src/lib/audit/status.ts` auf `geprueft` angehoben; Details in `AP1_AUDIT_MATRIX.md`. Quellenbank-Detail zu CSS-Farben auf 8-Bit-Komponenten praezisiert. Unabhaengiger Pruef-Pass bleibt wegen Rechenkapitel in QUEUE.md Abschnitt 2b offen.
+- P0-Korrektur 2026-07-13 nach unabhängigem Prüf-Pass: fünf nicht auflösbare Umlaut-Term-ID-Vorkommen auf `binaersystem`, `binaerzahl` und `fuehrende-null` korrigiert; unbelegte Mehrheitsbehauptung zu `chmod 755` entfernt; LF2-Manifest und Review-Metadaten synchronisiert; kapitelbezogener Glossar-ID-Test ergänzt. Erneuter unabhängiger Prüf-Pass bleibt in `QUEUE.md` Abschnitt 2b offen.
 
 ## Historische Freigaben
 

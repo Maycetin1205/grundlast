@@ -2,7 +2,7 @@
 
 ## Worum geht's
 
-Die wichtigste Idee zuerst, sie macht alles andere leicht: **<Term id="binärsystem">Binär</Term>** (Dual),
+Die wichtigste Idee zuerst, sie macht alles andere leicht: **<Term id="binaersystem">Binär</Term>** (Dual),
 **<Term id="dezimalsystem">Dezimal</Term>**, **<Term id="hexadezimal">Hexadezimal</Term>** und **<Term id="oktalsystem">Oktal</Term>** sind nur **verschiedene
 Schreibweisen für dieselbe Zahl**. Der einzige Unterschied zwischen ihnen ist
 die <Term id="basis">Basis</Term>. Wenn du dieses eine Prinzip verstanden hast,
@@ -69,7 +69,7 @@ einer Zahl hat einen **<Term id="stellenwert">Stellenwert</Term>**, der sich aus
 | <Term id="stellenwert">Stellenwert</Term> | `Basis^Position`, also die Wertigkeit dieser Stelle. |
 
 Die **<Term id="basis">Basis</Term>** sagt, wie viele verschiedene Ziffern ein System hat:
-<Term id="dezimalsystem">Dezimal</Term> hat 10 Ziffern (`0` bis `9`), <Term id="binärsystem">Binär</Term> hat 2 Ziffern (`0` und `1`),
+<Term id="dezimalsystem">Dezimal</Term> hat 10 Ziffern (`0` bis `9`), <Term id="binaersystem">Binär</Term> hat 2 Ziffern (`0` und `1`),
 <Term id="hexadezimal">Hexadezimal</Term> hat 16 Ziffern (`0` bis `9`, dann `A` bis `F`).
 
 Position 0 ist ganz rechts, nach links steigt der Exponent jeweils um eins.
@@ -196,7 +196,7 @@ Kurzschreibweisen für Bitmuster:
 
 - **Dezimal** ist für Menschen bequem: Wir zählen im Alltag mit `0` bis `9`.
 
-- Das **<Term id="binärsystem">Binärsystem</Term>** ist die Sprache der Hardware. Ein <Term id="bit">Bit</Term> hat
+- Das **<Term id="binaersystem">Binärsystem</Term>** ist die Sprache der Hardware. Ein <Term id="bit">Bit</Term> hat
   nur zwei Zustände (an/aus), und genau das lässt sich elektronisch
   zuverlässig speichern: ein Transistor leitet oder leitet nicht, eine
   Spannung liegt an oder nicht. Zehn klar unterscheidbare Pegel wären
@@ -221,7 +221,7 @@ Wir fangen mit der **leichteren** Richtung an: eine Binärzahl *lesen*. Das ist
 einfacher, als selbst eine zu erzeugen — und es trainiert genau das
 Stellenwert-Denken, das du danach umkehrst.
 
-**Ziel:** Du kannst eine <Term id="binärzahl">Binärzahl</Term> lesen und ihren
+**Ziel:** Du kannst eine <Term id="binaerzahl">Binärzahl</Term> lesen und ihren
 <Term id="dezimalwert">Dezimalwert</Term> berechnen.
 
 **Warum wichtig?** Ein <Term id="oktett">IPv4-Oktett</Term> besteht aus 8
@@ -236,7 +236,7 @@ Bei einer Binärzahl zählt nur, an welchen <Term id="stelle">Stellen</Term> ein
 ```
 
 Kürzere Binärzahlen werden für die 8-Bit-Ansicht links mit
-<Term id="führende-null">führenden Nullen</Term> aufgefüllt. `101101₂` wird
+<Term id="fuehrende-null">führenden Nullen</Term> aufgefüllt. `101101₂` wird
 also als `00101101₂` gelesen. Der Wert bleibt gleich; die Nullen zeigen nur die
 vollen 8 Stellen. Ein solcher 8-Bit-Wert passt genau in ein
 <Term id="byte">Byte</Term>.
@@ -466,8 +466,8 @@ Aufaddieren ergibt die Oktalziffer.
 **Ergebnis**
 `chmod 755` setzt die Rechte `rwxr-xr-x`: Eigentümer darf alles
 (lesen, schreiben, ausführen), Gruppe und alle anderen dürfen lesen
-und ausführen, aber nicht schreiben. Genau dieses Muster nutzen die
-meisten ausführbaren Skripte.
+und ausführen, aber nicht schreiben. Ob `755` im Einzelfall passend ist,
+hängt davon ab, wer die Datei lesen, verändern und ausführen können soll.
 
 
 

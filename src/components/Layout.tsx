@@ -49,9 +49,9 @@ export default function Layout() {
   }
 
   return (
-    <div className="min-h-full bg-paper text-ink">
+    <div className="v2-layout">
       <div
-        className="fixed right-0 top-0 z-[60] h-[2px] origin-left bg-accent left-0 min-[900px]:left-[344px]"
+        className="v2-progress fixed right-0 top-0 z-[60] h-[2px] origin-left"
         style={{ transform: `scaleX(${scrollProgress})` }}
         aria-hidden="true"
       />
@@ -65,14 +65,14 @@ export default function Layout() {
         <Menu size={20} aria-hidden="true" />
       </button>
 
-      <div className="fixed inset-y-0 left-0 z-40 hidden min-[900px]:block">
+      <div className="v2-desktop-side fixed inset-y-0 left-0 z-40 hidden min-[900px]:block">
         <Sidebar onSearchOpen={openSearch} />
       </div>
 
       <Dialog.Root open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-[55] bg-ink/25 min-[900px]:hidden" />
-          <Dialog.Content className="fixed inset-y-0 left-0 z-[65] w-[344px] max-w-[calc(100vw-32px)] bg-paper-deep outline-none min-[900px]:hidden">
+          <Dialog.Content className="fixed inset-y-0 left-0 z-[65] w-[248px] max-w-[calc(100vw-32px)] bg-paper-deep outline-none min-[900px]:hidden">
             <Dialog.Title className="sr-only">Navigation</Dialog.Title>
             <Sidebar
               onNavigate={() => setMobileNavOpen(false)}
@@ -87,9 +87,9 @@ export default function Layout() {
 
       <main
         ref={mainRef}
-        className="h-screen overflow-y-auto bg-paper min-[900px]:ml-[344px]"
+        className="v2-main"
       >
-        <div className="mx-auto w-full max-w-[1680px] px-5 pb-16 pt-20 sm:px-8 min-[900px]:px-12 min-[1400px]:px-16 min-[900px]:pb-24 min-[900px]:pt-14">
+        <div className="v2-content">
           <Outlet />
         </div>
       </main>

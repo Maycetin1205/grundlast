@@ -140,8 +140,8 @@ export const qBisS: GlossarEintrag[] = [
         'In AP1-Aufgaben erkennst du Rechtsformen oft an Signalwörtern wie persönliche Haftung, Gesellschaftsvermögen, Gesellschafter, Aktien, Kommanditist oder Einzelunternehmer.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
       },
     },
   {
@@ -401,7 +401,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -414,7 +414,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -544,7 +544,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -557,7 +557,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -570,7 +570,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -623,6 +623,19 @@ export const qBisS: GlossarEintrag[] = [
       kapitel: {
         titel: 'Firewall und DMZ',
         href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+      },
+    },
+  {
+      id: 'stabsstelle',
+      begriff: 'Stabsstelle',
+      kurzdefinition: 'Beratende Stelle, die eine Leitung mit Spezialwissen unterstützt und nicht automatisch weisungsbefugt ist.',
+      definition: [
+        'Eine Stabsstelle bereitet Entscheidungen vor, analysiert Fachfragen oder berät eine Leitung, zum Beispiel zu Datenschutz, Qualität oder Arbeitsschutz.',
+        'Sie ist von einer Linienstelle zu unterscheiden: Eine Stabsstelle kann nur dann verbindlich anweisen, wenn ihr dafür ausdrücklich eine Weisungsbefugnis übertragen wurde.',
+      ],
+      kapitel: {
+        titel: 'Aufbau- und Ablauforganisation',
+        href: '/lernen/wirtschaft/unternehmen/aufbauorganisation',
       },
     },
   {

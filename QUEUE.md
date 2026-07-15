@@ -1,20 +1,20 @@
 # QUEUE.md — Arbeitsstand und Warteschlange
 
-Stand: 03.07.2026 · Regeln: `PROJEKT.md`. Diese Datei beantwortet nur:
+Stand: 14.07.2026 · Regeln: `PROJEKT.md`. Diese Datei beantwortet nur:
 **wo stehen wir, was kommt als Nächstes und warum.**
 
 Bestand (aus `AP1_STATUS.md`, generiert): 100 Kapitel im TOC (80 mit Inhalt,
-20 Stubs). Vertrauen: **5 geprüft, 9 teilgeprüft, 86 ungeprüft.**
+20 Stubs). Inhaltsaudit: **6 geprüft, 8 teilgeprüft, 86 ungeprüft.**
 
 ## 1. Aktueller Arbeitsstand
 
 | Feld | Wert |
 |---|---|
-| Aktueller Queue-Eintrag | `netzwerkkonfiguration` → Ziel `geprüft` |
-| Kapiteldatei | `src/content/lessons/netzwerkkonfiguration.mdx` |
-| Vertrauen | `teilgeprüft` |
-| Aktuelle Phase | `ipv4-subnetting` am 03.07.2026 auf `geprüft` angehoben; unabhängiger Prüf-Pass offen |
-| Nächster Eintrag | `datenvolumen-berechnung` → Ziel `geprüft` |
+| Aktueller Queue-Eintrag | UI/UX-Redesign durch Claude Code |
+| Auftragsdatei | `docs/DESIGN_BRIEF_CLAUDE_CODE.md` |
+| Inhaltsaudit | pausiert; bestehende Statuswerte bleiben unverändert |
+| Aktuelle Phase | Design implementieren und visuell auf Desktop/Mobil sowie Light/Dark prüfen |
+| Danach | gemeinsame Sichtprüfung und Richtungsentscheidung mit dem Nutzer |
 
 **Jeder Chat aktualisiert diese Tabelle und hakt seinen Eintrag unten ab.**
 
@@ -76,10 +76,11 @@ in der Prüf-Warteschlange abhaken.
 
 - [x] `bit-byte` — unabhängiger Prüf-Pass 2026-07-03 BESTANDEN, siehe `AP1_AUDIT_MATRIX.md`; Term-IDs `dezimalpraefix`/`binaerpraefix` lösen sich ins Glossar auf.
 - [x] `prefixe` — unabhängiger Prüf-Pass 2026-07-03 BESTANDEN, siehe `AP1_AUDIT_MATRIX.md`; ~93-GiB-Bezugspunkt und ASCII-Glossar-Term-IDs verifiziert.
-- [ ] `zahlensysteme` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht. Mitpruefen: Restmethode, Hex/Nibble, chmod 755/644, IPv4-/24-Bruecke und CSS-8-Bit-Komponenten.
+- [ ] `zahlensysteme` — erneuter Prüf-Pass 2026-07-14 **DURCHGEFALLEN**: Lerntext, Rechnungen, Term-IDs, `chmod`-Aussage und Werkzeugkorrektur bestanden; `src/content/manifest/lf2.ts` führt das Kapitel entgegen der Korrekturdokumentation weiterhin als `teilgeprueft`, während `src/lib/audit/status.ts` `geprueft` führt. P0-Metadatenkorrektur und erneuter unabhängiger Technik-Pass offen; Lerntext nicht ändern.
 - [x] `docs/PLAN_RECHENWEG.md` — technischer P0-Plan 2026-07-03 umgesetzt (Details: `AP1_AUDIT_MATRIX.md`); kein Fachkapitel, kein Vertrauensstatus und kein unabhängiger Rechen-Prüfpass nötig.
 - [ ] `datenrate-berechnung` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht. Mitpruefen: Bit/Byte-Faktor, SI/IEC-Abgrenzung, Brutto/Netto-Regel ohne feste Prozent-Daumenwerte, Backupfenster-Beispiele.
 - [ ] `ipv4-subnetting` — Restaudit 2026-07-03 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); Rechen-Kapitel, Pruef-Pass Pflicht. Mitpruefen: /26-Beispiel, /28-Mini-Check, Gateway-Plausibilitaet, private IPv4-Bereiche und /31-Sonderfall.
+- [ ] `netzwerkkonfiguration` — Restaudit 2026-07-13 abgeschlossen, Vertrauen auf `geprueft` angehoben (Details: `AP1_AUDIT_MATRIX.md`); gesammelt mit den offenen P1-Kapiteln unabhängig prüfen: DORA/Ports, APIPA-Aussagegrenzen, DNS-Resolver, Diagnosebefunde und englische Fehlermeldungen.
 
 ## 3. Lücken-Audit gegen den offiziellen AP1-Rahmen
 
@@ -90,10 +91,10 @@ um die Prüfungshäufigkeit 2021–2025 aus `material/AP1_Lernplan.md`
 
 ### Befund in einem Satz
 
-**Kein Prüfungsthema fehlt komplett in der Themenlandkarte** — das Risiko
-liegt in ungeprüften/unfertigen Kapiteln bei prüfungszentralen Themen und in
-drei dünnen Stellen: Barrierefreiheit (Stub), Cloud-Modelle (Stub),
-Schreibtischtest/Code-Analyse (bisher kein klarer Ort).
+Die Themenlandkarte deckt den offiziellen AP1-Katalog grundsätzlich ab, aber
+mehrere prüfungszentrale Bereiche sind nur Stubs oder nicht sauber zugeschnitten:
+Machbarkeit, QM/PDCA, Testprotokoll, Projektübergabe, Klassendiagramm/OOP-Basics
+sowie Schreibtischtest/Code-Analyse. Genau diese Lücken haben Vorrang.
 
 ### Prüfungs-Dauerbrenner (Häufigkeit in 9 Prüfungen 2021–2025, Community-Analyse)
 
@@ -102,7 +103,7 @@ Schreibtischtest/Code-Analyse (bisher kein klarer Ort).
 | Nutzwertanalyse & Angebote | 9/9 | `nutzwertanalyse` draft/ungeprüft, `angebotsvergleich` ready/ungeprüft |
 | Netzplan & Projektmanagement | 9/9 | `netzplan` draft/ungeprüft, `gantt-diagramm` ready/ungeprüft |
 | Schreibtischtest & Code-Analyse | 9/9 | **kein klarer Ort** — Scope-Entscheid nötig (zu `pseudocode-einstieg`?) |
-| SQL (einfache SELECTs) & ER-Modell | hoch | `sql-grundlagen`, `er-grundlagen` draft/ungeprüft |
+| Einfaches ER-Modell | hoch | `er-grundlagen` draft/ungeprüft; SQL ist laut aktuellem Katalog AP2 |
 | IPv6 & Subnetting | hoch | `ipv6-grundlagen` teilgeprüft; `ipv4-subnetting` geprüft ✓ |
 | Dateigrößen & Speicher rechnen | hoch | `datenrate-berechnung` geprüft ✓; `datenvolumen-berechnung` teilgeprüft ✓ |
 | KI, Barrierefreiheit, Englisch | neu 2025 | `ki-grundlagen` ungeprüft; Barrierefreiheit **Stub**; Englisch ohne Ort |
@@ -113,7 +114,7 @@ Schreibtischtest/Code-Analyse (bisher kein klarer Ort).
   Fehlermeldungen/Handbuch-Auszüge, Projektmanagement, DSGVO-Betroffenenrechte,
   Anonymisierung vs. Pseudonymisierung, 2FA, BSI-Grundschutz-Auszüge.
 - **Raus/geparkt:** RAID-Konfiguration (Verfügbarkeits-Konzept bleibt!), SAN,
-  komplexes SQL (JOIN/GROUP BY — einfache SELECTs bleiben gefordert),
+  SQL und Normalisierung (laut ZPA-Katalog ausschließlich AP2),
   Struktogramm/PAP (→ UML-Aktivität), ISO 2700x (→ BSI), NoSQL,
   OOP-Vererbung (Klassen/Attribute/Methoden/Sichtbarkeit bleiben), LTE/5G.
 - **Warnung:** „AP1 ist 95 % Multiple Choice" (kursiert im Netz) ist falsch —
@@ -126,6 +127,9 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 
 ### P0 — Angefangenes zu Ende bringen
 
+- [ ] **UI/UX-Redesign** — aktueller Nutzerauftrag vom 2026-07-14. Claude Code setzt `docs/DESIGN_BRIEF_CLAUDE_CODE.md` um: lernorientierte statt auditlastige Oberfläche, konsistentes Designsystem, starke Kapitel-Lesefläche, responsive Navigation sowie Browser-QA in Light/Dark. Inhaltsaudits sind bis zur gemeinsamen Sichtprüfung geparkt.
+- [ ] `zahlensysteme` — P0-Metadatenkorrektur nach erneutem Prüf-Pass 2026-07-14: `src/content/manifest/lf2.ts` beim Eintrag `zahlensysteme` von `teilgeprueft` auf den kanonischen Auditstatus `geprueft` synchronisieren und einen gezielten Wächter/Test für Audit↔Manifest-Drift ergänzen. Lerntext, Rechnungen und Werkzeuge nicht ändern. Danach erneuter unabhängiger Technik-Pass.
+- [x] `zahlensysteme` — P0-Korrektur nach Prüf-Pass 2026-07-13 abgeschlossen: fünf MDX-Vorkommen auf `binaersystem`/`binaerzahl`/`fuehrende-null` umgestellt und kapitelbezogenen Integritätstest ergänzt; unbelegte „meisten ausführbaren Skripte“-Aussage entfernt; Manifest/Review synchronisiert; Werkzeug-Tippfehler korrigiert. Technische Checks stehen in `AP1_AUDIT_MATRIX.md`; erneuter Prüf-Pass siehe Abschnitt 2b.
 - [x] `bit-byte` — Neustartprüfung abschließen (Aufgabenabgleich, Restaudit) → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Pruef-Pass ausstehend (Abschnitt 2b)
 - [x] `prefixe` — Audit abschließen → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Glossar-Bug gefixt (Umlaut→ASCII Term-IDs) + kompakter Selbstcheck ergänzt; Pruef-Pass ausstehend (Abschnitt 2b)
 - [x] `zahlensysteme` — Audit abschließen (teilgeprüft, Aufgabenabgleich offen) → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Pruef-Pass ausstehend (Abschnitt 2b)
@@ -135,7 +139,7 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 
 - [x] `datenrate-berechnung` → Ziel `geprüft` — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Netto-Prozent-Daumenwerte entfernt, Rechenwege nachgerechnet, Pruef-Pass ausstehend (Abschnitt 2b)
 - [x] `ipv4-subnetting` → Ziel `geprüft` (Dauerbrenner Netzwerkplanung) — erreicht 2026-07-03, siehe `AP1_AUDIT_MATRIX.md`; Mini-Selbstcheck ergänzt, Rechenwege nachgerechnet, Pruef-Pass ausstehend (Abschnitt 2b)
-- [ ] `netzwerkkonfiguration` → Ziel `geprüft` (DHCP/DORA, DNS, Diagnosebefehle, Englisch-Fehlermeldungen einbauen)
+- [x] `netzwerkkonfiguration` → Ziel `geprüft` — erreicht 2026-07-13, siehe `AP1_AUDIT_MATRIX.md`; Lint, 59 Tests und Produktions-Build grün, unabhängiger Prüf-Pass ausstehend (Abschnitt 2b)
 - [ ] `datenvolumen-berechnung` → Ziel `geprüft` (binär 1024 vs. dezimal 1000 sauber!)
 
 ### P2 — Prüfungs-Dauerbrenner (9/9 und hohe Frequenz)
@@ -147,7 +151,11 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 - [ ] Scope-Entscheid + Umsetzung: **Schreibtischtest/Trace Table & Code-Analyse** (Erweiterung von `pseudocode-einstieg` oder eigenes Kapitel — nach Themenlandkarte entscheiden, nicht raten)
 - [ ] `uml-aktivitaet` — auditieren + heben (Struktogramm-Nachfolger)
 - [ ] `er-grundlagen` — auditieren + heben (Chen-Notation)
-- [ ] `sql-grundlagen` — auditieren + heben (nur einfache SELECT/WHERE/ORDER BY, Operatoren; kein JOIN)
+- [ ] `uml-beziehungen` — als AP1-Klassendiagramm ausarbeiten (Klassen, Attribute, Methoden, Sichtbarkeit, einfache Beziehungen)
+- [ ] `oop-basics` — Klassen, Objekte und Methoden ohne Vererbungstiefe
+- [ ] `machbarkeitsanalyse` — technische, wirtschaftliche, organisatorische und rechtliche Machbarkeit
+- [ ] `pdca-zyklus` + `teststrategien` — QM-Ziele, PDCA, einfache Testfälle und Testprotokoll
+- [ ] `projektubergabe` — Übergabe, Einweisung, Abnahme und Abnahmeprotokoll
 - [ ] `handelskalkulation` — auditieren + heben (Vorwärts-/Rückwärtsschema)
 - [ ] `kaufmaennische-rechenaufgaben` — auditieren (Skonto, Leasing, Amortisation)
 - [ ] `dsgvo-basics` — auditieren + heben (Betroffenenrechte, Anonymisierung vs. Pseudonymisierung — 2025 verstärkt)
@@ -165,7 +173,7 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 - [ ] `energiekosten` — auditieren + heben (kW-Formel, Wirkungsgrad, Amortisation)
 - [ ] `scan-bilddaten` — auditieren + heben (DPI, Farbtiefe)
 - [ ] `homeoffice-ergonomie` — Audit abschließen
-- [ ] **Barrierefreiheit**: Stub `softwareergonomie` per Scope-Entscheid ausarbeiten (neu 2025: Braillezeile, Screenreader, WCAG: Kontrast ≥ 4,5:1, Alt-Texte, Tastaturnavigation, Labels)
+- [ ] **Barrierefreiheit**: vorhandenes Kapitel `homeoffice-ergonomie` abschließen und Software-Ergonomie dort oder als klar verlinkten Anschluss ergänzen (Screenreader, Kontrast, Alt-Texte, Tastaturnavigation, Labels)
 - [ ] `cloud-konzepte` — Stub per Scope-Entscheid ausarbeiten (IaaS/PaaS/SaaS, VDI) — Lernplan: Prüfungsthema
 - [ ] `virtualisierung` — auditieren + heben (Hypervisor-Typen)
 - [ ] `backup-strategien` — auditieren + heben (Voll/Inkrementell/Differenziell, NAS als „Sicherung der Verfügbarkeit"; RAID nur als Verfügbarkeits-Konzept)
@@ -176,24 +184,52 @@ Grundsatz aus PROJEKT.md: Audit vor Neuschreiben; Stubs erst ab P3.
 - [ ] `kauf-leasing-miete`, `eigenfremdfinanzierung`, `make-or-buy` — auditieren
 - [ ] `vertragsarten`, `vertragsstoerungen`, `gewaehrleistung`, `maengelruege`, `rechnung-zahlungsziel-aufbewahrungsfristen` — Vertragsrechts-Block auditieren (Fallunterscheidungen 2025 verstärkt)
 - [ ] `lastenheft-pflichtenheft`, `vorgehensmodelle`, `scrum`, `bpmn` — Projekt-Block auditieren (SMART ergänzen?)
-- [ ] `use-case-diagramm` — auditieren; **Klassendiagramm-Lücke** klären (Stub `uml-beziehungen`: Kardinalitäten, Sichtbarkeit — laut Lernplan gefordert)
+- [ ] `use-case-diagramm` — auditieren
 - [ ] `dateisysteme`, `linux-chmod`, `prozess-thread`, `zentral-dezentral` — OS-Block auditieren (BIOS/UEFI-Lücke prüfen)
 - [ ] `tcp-udp`, `firewall-dmz`, `port-forwarding`, `wlan-standards`, `imap-pop3-smtp` — Netzwerk-Block-Audits abschließen
-- [ ] `normalisierung` — auditieren (1NF–3NF)
 - [ ] LF1/Kommunikations-Block auditieren: `bedarfsanalyse-feedback`, `schulz-von-thun`, `schulung-einweisung-key-user`, `serviceanfragen-support-level`, `fehlermanagement-stoerungsannahme`, `organisationsformen-leitbild-nachhaltigkeit-esg`, `aufbauorganisation`, `crm-erp-dms` (je 1 Chat)
 - [ ] `mtbf-mttf`, `raid-systeme` — als Verfügbarkeits-Hintergrund knapp halten (RAID: AP2)
 - [ ] `von-neumann`, `marktformen`, `aida-formel`, `stamm-bewegungsdaten`, `website-statisch-dynamisch`, `pseudocode-einstieg` (falls nicht in P2 erledigt) — Rest-Audits
 
-### P4 — Vollständigkeit Ausbildung/Klausur (Stubs, nicht AP1-zentral)
+### P4 — Ausbildungsbreite und AP2-Parkplatz (nicht AP1-zentral)
 
-- [ ] Qualitäts-Block: `pdca-zyklus`, `iso-9000`, `iso-25010`, `efqm-modell` (Scope-Entscheid: ggf. ein Sammelkapitel statt vier)
-- [ ] `machbarkeitsanalyse`, `projektubergabe` (§ 9: Abnahme/Leistungskontrolle)
+- [ ] Vertiefungsstandards: `iso-9000`, `iso-25010`, `efqm-modell` — nicht als eigene AP1-Kernkapitel ausbauen
+- [ ] AP2-Parkplatz: `sql-grundlagen`, `normalisierung`, `raid-systeme`; nur Querverweise aus gemeinsamen Grundlagen
 - [ ] `ssh-telnet`, `pki-zertifikate` (final-Markierung ist unbelegt → auditieren)
 - [ ] `zweiseitiger-handelskauf`, `logikgatter`, `responsive-webdesign`, `mockup-wireframe`, `audio-kompression`
-- [ ] Software-Anschluss: `oop-basics` (ohne Vererbungstiefe), `programmierparadigmen`, `git-versionsverwaltung`, `libraries-frameworks`, `teststrategien`, `uml-beziehungen` (falls nicht in P3)
+- [ ] Software-Anschluss: `programmierparadigmen`, `git-versionsverwaltung`, `libraries-frameworks`
 - [ ] `bbig-ausbildungsvertrag`, `arbeitnehmerrechte`
 
 ## 5. Notizen aus Arbeits-Chats
+
+- **Prioritätswechsel auf UI/UX-Redesign (2026-07-14).**
+  Der Nutzer hat die wiederholte `zahlensysteme`-Audit-Schleife gestoppt und
+  die sichtbar schwache Oberfläche priorisiert. Der ausführbare Auftrag für
+  Claude Code liegt in `docs/DESIGN_BRIEF_CLAUDE_CODE.md`; `CLAUDE.md` weist
+  beim Einstieg automatisch darauf hin. Inhaltsaudits bleiben bis zur
+  gemeinsamen visuellen Sichtprüfung geparkt.
+
+- **`zahlensysteme` – erneuter Prüf-Pass DURCHGEFALLEN (2026-07-14, nur Technik-Gate).**
+  Alle sichtbaren Zahlen, Tabellen und Rechenwege wurden erneut nachgerechnet;
+  Primärquellen, die 30 Term-IDs, die korrigierte `chmod`-Aussage und der
+  Werkzeugtext sind stimmig. Der dokumentierte P0-Fix hat jedoch den
+  `zahlensysteme`-Eintrag in `src/content/manifest/lf2.ts` nicht geändert:
+  dort steht weiter `teilgeprueft`, kanonisch in `src/lib/audit/status.ts`
+  steht `geprueft`. Der nächste Chat behebt nur diese Metadaten-Drift und
+  ergänzt einen gezielten Wächter; Details: `AP1_AUDIT_MATRIX.md`.
+
+- **`zahlensysteme` – Prüf-Pass durchgefallen, P0-Korrektur abgeschlossen (2026-07-13).**
+  Alle Tabellen und Rechnungen waren korrekt. Die fünf nicht auflösbaren
+  Umlaut-Term-ID-Vorkommen, die unbelegte `chmod 755`-Mehrheitsbehauptung,
+  der Manifest-Widerspruch und der Werkzeug-Tippfehler sind behoben. Ein neuer
+  kapitelbezogener Test prüft alle 30 Term-IDs gegen das zentrale Glossar.
+  Erneuter unabhängiger Prüf-Pass offen; Details: `AP1_AUDIT_MATRIX.md`.
+
+- **`netzwerkkonfiguration` – Restaudit abgeschlossen (2026-07-13).**
+  Kapitel auf 358 Zeilen verdichtet, Übungsblock/Subnetting-Dublette entfernt,
+  englische Fehlermeldungen, Quellen und Glossar korrigiert. Technik-Gate mit
+  Lint, 59 Tests und Produktions-Build bestanden; Vertrauen auf `geprueft`
+  angehoben und unabhängiger Prüf-Pass vorgemerkt.
 
 (Auffälligkeiten hier eintragen statt nebenbei fixen.)
 

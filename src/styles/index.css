@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
+@import "./fonts.css";
 @import "tailwindcss";
 
 @import "./tokens.css";
@@ -21,3 +21,4 @@
 @import "./components/topic-mastery.css";
 @import "./components/learning-path.css";
 @import "./components/sources.css";
+@import "./redesign.css";

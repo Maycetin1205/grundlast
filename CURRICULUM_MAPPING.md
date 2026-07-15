@@ -44,6 +44,7 @@ aus dem Lernplan raus muss.
 | stamm-bewegungsdaten | Stamm- und Bewegungsdaten | LF5/LF8 | 1-2 | hoch | mittel | uebergreifend | Lehrplan/Pruefung | Abschnitt | ready | spezifisch | offen |
 | tcp-udp | TCP vs. UDP | LF3/LF9 | 1 | hoch | hoch | uebergreifend | Lehrplan/Pruefung | Kapitel | ready | spezifisch | offen |
 | ipv4-subnetting | IPv4 & Subnetting | LF3 | 1 | hoch | mittel | uebergreifend | Lehrplan/Pruefung | Kapitel | ready | geprueft | final |
+| netzwerkkonfiguration | Netzwerkkonfiguration, DHCP, DNS & Diagnose | LF3 | 1 | hoch | mittel | uebergreifend | Lehrplan/Pruefung | Kapitel | ready | spezifisch | teilgeprueft |
 | datenrate-berechnung | Datenrate und Downloadzeit berechnen | LF2/LF3 | 1 | hoch | hoch | uebergreifend | Grundlage/Pruefung | Kapitel | ready | spezifisch | offen |
 | wlan-standards | WLAN-Standards und WLAN-Sicherheit | LF3/LF9 | 1-2 | hoch | hoch | SI | Lehrplan/Pruefung | Kapitel | ready | spezifisch | offen |
 | firewall-dmz | Firewall und DMZ | LF3/LF4/LF9 | 1-2 | hoch | hoch | SI | Lehrplan/Pruefung | Kapitel | ready | spezifisch | offen |

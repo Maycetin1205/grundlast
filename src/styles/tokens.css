@@ -5,10 +5,10 @@
    ============================================================= */
 
 @theme {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-body: "Fraunces", ui-serif, Georgia, serif;
-  --font-ui: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Public Sans", system-ui, sans-serif;
+  --font-ui: "Public Sans", system-ui, sans-serif;
+  --font-sans: "Public Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --color-ink: oklch(22% 0.012 60);
@@ -81,6 +81,41 @@
   --color-accent-700: oklch(35% 0.10 145);
   --color-accent-800: oklch(28% 0.09 145);
   --color-accent-900: oklch(22% 0.08 145);
+}
+
+/* Redesign v2 — finale semantische Tokens. */
+:root {
+  --bg:#FBF9F4;--side:#F5F1E9;--card:#FFFFFF;--sunken:#F4F0E8;
+  --ink:#25211A;--ink2:#514B40;--ink3:#857D6E;--ink4:#B3AA99;
+  --line:rgba(62,53,38,.12);--line2:rgba(62,53,38,.2);
+  --acc:#0E756A;--acc-deep:#0A5C54;--acc-text:#0B6055;--acc-tint:rgba(14,117,106,.09);
+  --hero:#0E453D;--hero-ink:#F7F1E4;--ok:#3E8E63;--part:#C0912C;
+  --warn:#C14E2A;--warn-tint:rgba(193,78,42,.08);--code-bg:rgba(62,53,38,.07);
+  --shadow:0 1px 2px rgba(56,46,30,.05);--shadow-lg:0 20px 44px -22px rgba(16,60,52,.42);
+  --r-sm:7px;--r-md:9px;--r-lg:12px;--r-xl:16px;
+  --shadow-1:var(--shadow);--shadow-2:var(--shadow-lg);
+}
+[data-theme="dark"],.dark {
+  --bg:#161310;--side:#1C1914;--card:#211D17;--sunken:#2B251C;
+  --ink:#F1EBDF;--ink2:#CDC5B5;--ink3:#948B7A;--ink4:#665F52;
+  --line:rgba(241,235,223,.1);--line2:rgba(241,235,223,.18);
+  --acc:#43BAA8;--acc-deep:#5ECCBB;--acc-text:#5ECCBB;--acc-tint:rgba(67,186,168,.13);
+  --hero:#124E45;--hero-ink:#F7F1E4;--ok:#61B385;--part:#D8B055;
+  --warn:#DF7950;--warn-tint:rgba(223,121,80,.12);--code-bg:rgba(241,235,223,.09);
+  --shadow:0 1px 2px rgba(0,0,0,.25);--shadow-lg:0 20px 44px -20px rgba(0,0,0,.55);
+}
+
+@theme {
+  --font-display:"Source Serif 4",Georgia,serif;
+  --font-body:"Public Sans",system-ui,sans-serif;
+  --font-ui:"Public Sans",system-ui,sans-serif;
+  --font-sans:"Public Sans",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --color-ink:var(--ink);--color-ink-2:var(--ink2);--color-ink-3:var(--ink3);--color-ink-4:var(--ink4);
+  --color-paper:var(--card);--color-paper-deep:var(--side);--color-bg:var(--bg);--color-bg-2:var(--sunken);--color-bg-3:var(--line2);
+  --color-rule:var(--line);--color-rule-2:var(--line2);--color-muted:var(--ink3);
+  --color-accent:var(--acc);--color-accent-soft:var(--acc-tint);--color-accent-2:var(--warn);--color-accent-2-soft:var(--warn-tint);
+  --color-tipp-bg:var(--acc-tint);--color-tipp-border:var(--acc);--color-warn-bg:var(--warn-tint);--color-analogy-bg:var(--sunken);--color-term:var(--acc-text);
 }
 
 :root {

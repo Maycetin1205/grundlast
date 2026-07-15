@@ -1,3 +1,4 @@
+import { getChapter } from './learning'
 export type ReviewStatus = 'unchecked' | 'reviewed'
 
 export interface LessonReview {
@@ -9,11 +10,10 @@ export interface LessonReview {
   notes?: string[]
 }
 
-const reviewLog: Record<string, LessonReview> = {
+const reviewLog: Record<string, Omit<LessonReview, 'status'>> = {
   'pki-zertifikate': {
     lessonSlug: 'pki-zertifikate',
-    status: 'reviewed',
-    checkedAt: '2026-06-03',
+    checkedAt: '2026-07-13',
     reviewer: 'Codex',
     sourceIds: [
       'rfc-5280',
@@ -30,7 +30,6 @@ const reviewLog: Record<string, LessonReview> = {
   },
   'bit-byte': {
     lessonSlug: 'bit-byte',
-    status: 'reviewed',
     checkedAt: '2026-07-03',
     reviewer: 'Codex (2026-06-03/2026-06-10), Claude (2026-07-03)',
     sourceIds: [
@@ -54,7 +53,6 @@ const reviewLog: Record<string, LessonReview> = {
   },
   zahlensysteme: {
     lessonSlug: 'zahlensysteme',
-    status: 'reviewed',
     checkedAt: '2026-06-03',
     reviewer: 'Codex',
     sourceIds: [
@@ -72,11 +70,11 @@ const reviewLog: Record<string, LessonReview> = {
     notes: [
       'Neuer Goldstandard-Review abgeschlossen: Glossar-IDs und Quellen-IDs vollständig vorhanden.',
       'Aufgaben-/Trainer-Elemente auf dezente Selbstchecks und erklärende Werkzeuge reduziert; kein Prüfungsmodus im Lernkapitel.',
+      'P0-Korrektur 2026-07-13: fünf Umlaut-Term-ID-Vorkommen auf die vorhandenen ASCII-Glossar-IDs umgestellt, unbelegte Mehrheitsbehauptung zu chmod 755 entfernt, LF2-Manifest mit dem Auditstatus synchronisiert und kapitelbezogenen Glossar-ID-Test ergänzt.',
     ],
   },
   prefixe: {
     lessonSlug: 'prefixe',
-    status: 'reviewed',
     checkedAt: '2026-07-03',
     reviewer: 'Codex (2026-06-05/2026-06-10), Claude (2026-07-03)',
     sourceIds: [
@@ -98,15 +96,9 @@ const reviewLog: Record<string, LessonReview> = {
 }
 
 export function getLessonReview(lessonSlug: string): LessonReview {
-  return (
-    reviewLog[lessonSlug] ?? {
-      lessonSlug,
-      status: 'unchecked',
-      notes: [
-        'Inhalt ausgearbeitet, aber noch nicht formal für Lehrer-/IHK-Weitergabe freigegeben.',
-      ],
-    }
-  )
+  const entry = reviewLog[lessonSlug]
+  const status: ReviewStatus = getChapter(lessonSlug)?.inhaltsstatus === 'geprueft' ? 'reviewed' : 'unchecked'
+  return entry ? { ...entry, status } : { lessonSlug, status, notes: ['Inhalt ausgearbeitet, aber noch nicht formal fuer Lehrer-/IHK-Weitergabe freigegeben.'] }
 }
 
 export function reviewStatusLabel(status: ReviewStatus) {

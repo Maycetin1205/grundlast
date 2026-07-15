@@ -126,10 +126,8 @@ export default function Sources() {
           style={{ borderRadius: 'var(--r-md)', color: 'var(--color-ink-2)' }}
         >
           <p className="m-0">
-            <b>Ausgearbeitet</b> bedeutet: Das Kapitel ist als Lerninhalt nutzbar.
-            <b className="ml-1">Formal geprüft</b> bedeutet: Fachcheck, Quellencheck,
-            Glossar, Build/Lint und Freigabe sind im <code>REVIEW_LOG.md</code>
-            dokumentiert. Geplante Stubs werden nicht als Lernkapitel angeboten.
+            Die Quellenbasis ordnet offizielle Rahmenquellen, technische Primärquellen
+            und didaktische Vergleichsangebote den jeweiligen Kapiteln zu.
           </p>
         </div>
       </section>

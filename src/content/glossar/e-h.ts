@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const eBisH: GlossarEintrag[] = [
   {
+    id: 'handlungsvollmacht',
+    begriff: 'Handlungsvollmacht',
+    kurzdefinition: 'Betriebliche Vollmacht für die gewöhnlichen Geschäfte eines übertragenen Handelsbereichs.',
+    definition: [
+      'Die Handlungsvollmacht nach Paragraf 54 HGB kann den Betrieb eines Handelsgewerbes, eine Geschäftsart oder ein einzelnes Geschäft betreffen.',
+      'Grundstücksgeschäfte, Wechselverbindlichkeiten, Darlehensaufnahme und Prozessführung erfordern eine besondere zusätzliche Befugnis.',
+    ],
+    kapitel: {
+      titel: 'Vollmachten im Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/vollmachten-im-betrieb',
+    },
+  },
+  {
       id: 'garantie',
       begriff: 'Garantie',
       kurzdefinition: 'Zusätzliche Zusage eines Garantiegebers neben den gesetzlichen Mängelrechten.',
@@ -153,8 +166,8 @@ export const eBisH: GlossarEintrag[] = [
         'Der zentrale Prüfungspunkt ist die Haftung: Der Inhaber trägt grundsätzlich das persönliche wirtschaftliche Risiko. Das unterscheidet das Einzelunternehmen von haftungsbeschränkten Kapitalgesellschaften.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
       },
     },
   {
@@ -394,10 +407,10 @@ export const eBisH: GlossarEintrag[] = [
   {
       id: 'gateway',
       begriff: 'Standardgateway',
-      kurzdefinition: 'Das Standardgateway ist die Router-Adresse, an die ein Host alle Pakete schickt, deren Ziel außerhalb des eigenen Subnetzes liegt.',
+      kurzdefinition: 'Das Standardgateway ist der Router für Ziele, zu denen keine passendere Route existiert.',
       definition: [
-        'Das Standardgateway (englisch Default Gateway) ist die IP-Adresse des Routers im eigenen Subnetz. Liegt das Ziel im selben Subnetz, schickt der Host das Paket direkt an die Ziel-MAC. Liegt das Ziel außerhalb, schickt er es an die MAC des Gateways - dieses entscheidet dann, wohin es weitergeht.',
-        'Prüfungsfalle: Das Gateway muss zwingend im gleichen Subnetz liegen wie der Host. Eine /24-IP 192.168.10.50 mit Gateway 192.168.20.1 funktioniert nicht. Ist das Gateway falsch oder leer, klappt der lokale Verkehr trotzdem - aber Internet und alle anderen Subnetze sind nicht erreichbar.',
+        'Liegt ein Ziel im eigenen Subnetz, sendet der Host den Ethernet-Frame direkt an die Ziel-MAC. Für ein externes Ziel verwendet er gewöhnlich die MAC-Adresse des Standardgateways als nächsten Hop.',
+        'In einer üblichen Ethernet-Clientkonfiguration muss das Gateway direkt erreichbar und damit im eigenen Subnetz liegen. Fehlt eine passende Route, kann lokaler Verkehr funktionieren, während andere Netze nicht erreichbar sind.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -413,8 +426,8 @@ export const eBisH: GlossarEintrag[] = [
         'Für Verbindlichkeiten haftet gegenüber Gläubigern grundsätzlich nur das Gesellschaftsvermögen. In AP1-Aufgaben ist das der wichtigste Unterschied zu persönlich haftenden Rechtsformen.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
       },
     },
   {

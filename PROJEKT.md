@@ -31,7 +31,7 @@ Der gesamte fachliche Bestand kann KI-generiert sein. Deshalb gilt:
 
 - **Kein alter Status** (`ready`, `final`, `reviewed`, Quellenliste vorhanden)
   ist ein Beweis für fachliche Richtigkeit.
-- Maßgeblich ist das **Vertrauen** je Kapitel:
+- Maßgeblich ist der **Inhaltsaudit-Status** je Kapitel:
   `ungeprüft → teilgeprüft → geprüft` (sowie `gesperrt`), gepflegt in
   `src/lib/audit/status.ts`, sichtbar in `AP1_STATUS.md`.
 - Nichts als wahr behandeln, nur weil es im Projekt steht. Bei Unsicherheit
@@ -72,6 +72,10 @@ erklärt, später kurz erinnert und verlinkt.
   mehr Projektmanagement und Datenschutz; raus/geparkt: RAID-Konfiguration,
   SAN, komplexes SQL, Struktogramm/PAP, ISO 2700x, NoSQL, OOP-Vererbung,
   LTE/5G-Tiefe) stehen mit Quellen im Lücken-Audit in `QUEUE.md`.
+- Kanonischer lokaler Scope-Beleg ist
+  `../Lerndateien/Informationen/Prüfungen_AP2/Fachinformatiker für Systemintegration.pdf`.
+  Für AP1 gelten 90 Minuten, vier ungebundene Aufgaben und 100 Punkte; SQL und
+  RAID sind dort ausdrücklich AP2 zugeordnet.
 - Lernfelder LF1–LF9 (KMK) sind der Rahmen für Jahr 1/2; interne App-Bereiche
   wie „Grundlagen & Rechnen" sind Werkzeugbereiche, keine offiziellen Lernfelder.
 - AP2-Inhalte sind derzeit kein aktiver Scope. Material mit AP2-FISI-Spezialtiefe
@@ -171,7 +175,7 @@ Schreibregeln:
 | `REVIEW_LOG.md` aktualisiert | bei `final` |
 | Arbeitsstand + Haken in `QUEUE.md` aktualisiert | ja |
 
-### Audit-Gates (für den Vertrauensstatus)
+### Audit-Gates (für den Inhaltsaudit-Status)
 
 Ein Kapitel wird erst `geprüft`, wenn dokumentiert sind: **Scope-Gate**
 (warum relevant), **Quellen-Gate**, **Fakten-Gate** (5–10 harte Aussagen gegen
@@ -206,7 +210,7 @@ Glossar-Pflege. Prüfungs-/Klausurbezug steuert Umfang und Reihenfolge
 ```text
 Kapitel: [slug]
 Entscheidung: [behalten/zusammenlegen/Abschnitt/entfernen]
-Vertrauen: [ungeprüft/teilgeprüft/geprüft]
+Inhaltsaudit: [ungeprüft/teilgeprüft/geprüft]
 Geändert: [Dateien]
 Belegt: [zentrale Quellen]
 Checks: [Lint, Tests, Build]
@@ -245,12 +249,15 @@ npm run emit:status     # AP1_STATUS.md neu generieren (nach Statusänderungen)
 ## 10. Architektur-Kurzkarte
 
 - App: React 19 + Vite + MDX; Inhalte `src/content/lessons/*.mdx`; Navigation
-  und technischer Status `src/lib/toc/data/*.ts`; Vertrauen
+  und technischer Status `src/lib/toc/data/*.ts`; Inhaltsaudit
   `src/lib/audit/status.ts`; Faktencheck-Historie `src/lib/review.ts`;
   Quellen `src/content/quellen/`; Glossar `src/content/glossar/`;
   LF-Manifest `src/content/manifest/` (bisher nur von Tests genutzt).
 - Bekannter Strukturfehler: vier Statuswelten (TOC, Audit, Review, REVIEW_LOG).
-  Bis zur Konsolidierung gilt: **`Vertrauen` ist maßgeblich**, `AP1_STATUS.md`
-  zeigt alle Welten nebeneinander. Kein großer Status-/TOC-/Manifest-Umbau
-  nebenbei.
-- Keine neuen Übungs-/Prüfungs-Features, bevor das Kompendium auditiert ist.
+  Bis zur Konsolidierung gilt: Nur Auditstatus `geprueft` darf in der UI als
+  **voll geprüft** zählen; `teilgeprueft` wird separat ausgewiesen.
+  Inhaltsaudit ist niemals Lernenden-Beherrschung. `AP1_STATUS.md` zeigt die
+  Statuswelten nebeneinander. Kein großer Status-/TOC-/Manifest-Umbau nebenbei.
+- Keine breite Übungs-/Prüfungsplattform vor dem Inhaltsaudit. Ein kleiner
+  Diagnose-, Fehlerbuch- oder Aufgaben-MVP ist zulässig, sobald er echte
+  Lernleistung misst und die Inhaltsarbeit nicht verdrängt.

@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const mBisP: GlossarEintrag[] = [
   {
+    id: 'prokura',
+    begriff: 'Prokura',
+    kurzdefinition: 'Ausdrücklich erteilte handelsrechtliche Vollmacht mit gesetzlich festgelegtem, besonders weitem Umfang.',
+    definition: [
+      'Die Prokura ermächtigt grundsätzlich zu allen gerichtlichen und außergerichtlichen Geschäften, die der Betrieb eines Handelsgewerbes mit sich bringt.',
+      'Ihr Umfang kann gegenüber Dritten grundsätzlich nicht durch interne Weisungen beschränkt werden. Veräußerung und Belastung von Grundstücken benötigen eine besondere Befugnis.',
+    ],
+    kapitel: {
+      titel: 'Vollmachten im Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/vollmachten-im-betrieb',
+    },
+  },
+  {
       id: 'nicht-gatter',
       begriff: 'NICHT-Gatter',
       kurzdefinition: 'Logikgatter mit einem Eingang, das den Wahrheitswert umkehrt.',
@@ -163,6 +176,19 @@ export const mBisP: GlossarEintrag[] = [
       },
     },
   {
+      id: 'organigramm',
+      begriff: 'Organigramm',
+      kurzdefinition: 'Grafische Darstellung der Aufbauorganisation mit Stellen, Organisationseinheiten und ihren Beziehungen.',
+      definition: [
+        'Ein Organigramm zeigt die Struktur eines Betriebs, zum Beispiel Geschäftsführung, Abteilungen, Stellen und Berichtslinien.',
+        'Es zeigt nicht automatisch die zeitliche Reihenfolge einer Arbeit. Dafür braucht es zusätzlich eine Prozess- oder Ablaufdarstellung.',
+      ],
+      kapitel: {
+        titel: 'Aufbau- und Ablauforganisation',
+        href: '/lernen/wirtschaft/unternehmen/aufbauorganisation',
+      },
+    },
+  {
       id: 'maximumprinzip',
       begriff: 'Maximumprinzip',
       kurzdefinition: 'BSI-Grundregel: ein System übernimmt den höchsten Schutzbedarf der Prozesse oder Daten, die es verarbeitet.',
@@ -321,10 +347,10 @@ export const mBisP: GlossarEintrag[] = [
   {
       id: 'nameserver',
       begriff: 'Nameserver',
-      kurzdefinition: 'Ein Nameserver ist ein DNS-Server, der Anfragen zu Domainnamen beantwortet - rekursiv auflösend oder autoritativ für eine Zone.',
+      kurzdefinition: 'Ein Nameserver beantwortet DNS-Anfragen rekursiv für Clients oder autoritativ für eine Zone.',
       definition: [
-        'Ein rekursiver Nameserver (Resolver) nimmt die Anfrage eines Clients an und durchläuft die DNS-Hierarchie - Root-Server, dann TLD-Server (.de, .com), dann den autoritativen Server der Zone - bis er eine Antwort hat. Ein autoritativer Nameserver ist für eine bestimmte Zone (z. B. example.org) verantwortlich und liefert die offiziellen Datensätze.',
-        'In den Netzwerkeinstellungen siehst du meist zwei oder drei Nameserver - der Client fragt sie der Reihe nach. Prüfungsfalle: Ohne erreichbaren Nameserver funktionieren Domain-Aufrufe nicht, aber ein Ping auf eine IP-Adresse geht weiterhin. Genau diese Trennung ist die Standard-Diagnose-Frage.',
+        'Ein rekursiver Resolver übernimmt die Auflösungsarbeit für den Client und verwendet Caches. Bei Bedarf fragt er Root-, TLD- und autoritative Nameserver. Ein autoritativer Nameserver liefert die maßgeblichen Daten seiner Zone.',
+        'Welche von mehreren konfigurierten Resolveradressen ein Client wann verwendet, hängt von der Implementierung ab. Für die Diagnose werden Erreichbarkeit, Antwortcode und zurückgelieferter Datensatz getrennt geprüft.',
       ],
       kapitel: {
         titel: 'Netzwerkkonfiguration, DHCP, DNS & Diagnose',
@@ -522,8 +548,21 @@ export const mBisP: GlossarEintrag[] = [
         'Der AP1-Kern: Bei keinem Gesellschafter ist die Haftung gegenüber Gesellschaftsgläubigern beschränkt. Das unterscheidet sie besonders von GmbH und KG.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
+      },
+    },
+  {
+      id: 'personengesellschaft',
+      begriff: 'Personengesellschaft',
+      kurzdefinition: 'Gesellschaft, deren Struktur durch die persönliche Verbindung ihrer Gesellschafter geprägt ist.',
+      definition: [
+        'Personengesellschaften verbinden mindestens zwei Personen für einen gemeinsamen Zweck. Geschäftsführung und persönliche Mitwirkung der Gesellschafter haben typischerweise ein größeres Gewicht als bei Kapitalgesellschaften.',
+        'OHG und KG sind Personengesellschaften. Bei der OHG haften alle Gesellschafter persönlich; bei der KG unterscheiden sich Komplementär und Kommanditist.',
+      ],
+      kapitel: {
+        titel: 'Rechtsformen sicher unterscheiden',
+        href: '/lernen/wirtschaft/unternehmen/rechtsformen',
       },
     },
   {
@@ -809,7 +848,7 @@ export const mBisP: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -822,7 +861,7 @@ export const mBisP: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -835,7 +874,7 @@ export const mBisP: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {

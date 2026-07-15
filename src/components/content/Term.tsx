@@ -2,9 +2,10 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import { BookOpen, X } from 'lucide-react'
 import { useState, type ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { cn } from '../../lib/cn'
 import { normalisiereGlossarId, useGlossarStore } from '../../lib/glossar'
+import { chapterUrl, getChapter } from '../../lib/learning'
 
 interface TermProps {
   id: string
@@ -14,7 +15,21 @@ interface TermProps {
 
 export default function Term({ id, children, className }: TermProps) {
   const [dialogOffen, setDialogOffen] = useState(false)
+  const navigate = useNavigate()
   const eintrag = useGlossarStore((state) => state.einträge[normalisiereGlossarId(id)])
+
+  function geheZu(ziel: string) {
+    setDialogOffen(false)
+    navigate(ziel)
+    window.requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>('.v2-main')?.scrollTo({ top: 0 })
+    })
+  }
+
+  const gespeicherterKapitelpfad = eintrag?.kapitel?.href
+  const kapitelSlug = gespeicherterKapitelpfad?.split('/').filter(Boolean).at(-1)
+  const katalogKapitel = getChapter(kapitelSlug)
+  const kapitelpfad = katalogKapitel ? chapterUrl(katalogKapitel) : gespeicherterKapitelpfad
 
   const termClassName = cn(
     'inline cursor-help appearance-none border-0 bg-transparent p-0 align-baseline font-[inherit] leading-[inherit]',
@@ -108,25 +123,25 @@ export default function Term({ id, children, className }: TermProps) {
               <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-rule pt-4 font-ui text-sm text-muted">
                 <BookOpen className="h-4 w-4 text-accent" aria-hidden="true" />
                 <span>Links:</span>
-                {eintrag.kapitel && (
+                {eintrag.kapitel && kapitelpfad && (
                   <>
-                    <Link
-                      to={eintrag.kapitel.href}
-                      onClick={() => setDialogOffen(false)}
-                      className="font-medium text-accent no-underline hover:underline"
+                    <button
+                      type="button"
+                      onClick={() => geheZu(kapitelpfad)}
+                      className="cursor-pointer border-0 bg-transparent p-0 font-[inherit] font-medium text-accent no-underline hover:underline"
                     >
                       {eintrag.kapitel.titel}
-                    </Link>
+                    </button>
                     <span aria-hidden="true">·</span>
                   </>
                 )}
-                <Link
-                  to={`/glossar#${eintrag.id}`}
-                  onClick={() => setDialogOffen(false)}
-                  className="font-medium text-accent no-underline hover:underline"
+                <button
+                  type="button"
+                  onClick={() => geheZu(`/glossar#${eintrag.id}`)}
+                  className="cursor-pointer border-0 bg-transparent p-0 font-[inherit] font-medium text-accent no-underline hover:underline"
                 >
                   Zum Glossar
-                </Link>
+                </button>
               </div>
             </div>
           </Dialog.Description>

@@ -8,7 +8,7 @@
 
 - Lektionen im TOC: **100** (sichtbar 80, stub 20)
 - MDX vorhanden: **80**
-- Vertrauen: geprueft **5** | teilgeprueft **9** | ungeprueft **86**
+- Vertrauen: geprueft **6** | teilgeprueft **8** | ungeprueft **86**
 - Review dokumentiert: **4**
 - Mit Quellen-Tags: **67**
 
@@ -78,7 +78,7 @@
 | `tcp-udp` | ready | teilgeprueft | - | ja | ja |
 | `imap-pop3-smtp` | ready | ungeprueft | - | ja | - |
 | `ipv4-subnetting` | ready | geprueft | - | ja | ja |
-| `netzwerkkonfiguration` | ready | teilgeprueft | - | ja | ja |
+| `netzwerkkonfiguration` | ready | geprueft | - | ja | ja |
 | `ipv6-grundlagen` | ready | teilgeprueft | - | ja | ja |
 | `firewall-dmz` | ready | teilgeprueft | - | ja | ja |
 | `port-forwarding` | ready | teilgeprueft | - | ja | ja |
