@@ -19,9 +19,9 @@ normale notwendige Integrationsschritte.
   Integrationsdateien. Kein Design, allgemeiner Refactor, Dependency-Update
   oder zweites Kapitel.
 - Fehlt die Lektion, erstelle sie mit einem passenden Slug nach vorhandenem
-  Muster und integriere sie minimal in Manifest/Inhaltsregistrierung und den
-  passenden Eintrag unter `src/lib/toc/*`. Das ist ausdruecklich autorisiert
-  und Pflicht. Frage dafuer nicht erneut nach.
+  Muster und integriere sie in `src/content/catalog/chapters/lfX.ts`. Dieser
+  Katalog ist die einzige Quelle für Navigation, Status, Lernfeld, AP1-Mapping
+  und Quellenzuordnung. Frage dafür nicht erneut nach.
 - Aendere keine Routing-, Navigations- oder Designarchitektur.
 
 3. QUELLEN VOR TEXT
@@ -46,14 +46,15 @@ normale notwendige Integrationsschritte.
   typische Fehler oder Gegenfaelle, einen anwendungsorientierten Selbstcheck,
   Transfer, Zusammenfassung und konkrete Quellen.
 - Verwende echte deutsche Umlaute und `ß` im sichtbaren Text.
-- Pflege Glossar, `<Term>`-IDs, `sourceBank.ts` und `tagMappings.ts` im
-  bestehenden Format ohne Dubletten.
+- Pflege Glossar, `<Term>`-IDs und `sourceBank.ts` ohne Dubletten. Trage alle
+  verwendeten Quellen-IDs rollengetrennt im Katalogfeld `quellen` ein.
 
 5. ABSCHLUSS UND HAKEN
 - Fuehre die sieben Schlussdurchgaenge aus: Scope, Fakten, Rechnen/Logik,
   Nullwissen, Didaktik, Dichte und Integration. Behebe jeden Fund.
-- Fuehre `npm.cmd run lint` und `npm.cmd run build` aus; beide muessen Exitcode
-  0 haben. Kontrolliere den Diff auf unbeabsichtigte Aenderungen.
+- Führe `npm run check`, `npm run build:single` und `npm run emit:status` aus.
+  Alle technischen Befehle müssen Exitcode 0 haben. Kontrolliere danach den
+  Diff auf unbeabsichtigte Änderungen und Statusdrift.
 - Erst wenn Inhalt, Quellen, Glossar, App-Integration und alle Checks komplett
   sind, aendere genau den gewaehlten Eintrag in `KAPITELPLAN_LF1_LF9.md` von
   `[ ]` auf `[x]`. Aendere keinen zweiten Haken.
@@ -61,6 +62,6 @@ normale notwendige Integrationsschritte.
   ausserhalb dieser ausdruecklichen Berechtigungen notwendig ist.
 
 Antworte knapp mit: Kapitel und Ergebnis; geaenderte Dateien; zentrale Quellen;
-lokale PDFs mit Seiten; sieben Schlussdurchgaenge; Lint/Build mit Exitcodes;
+lokale PDFs mit Seiten; sieben Schlussdurchgänge; Checks mit Exitcodes;
 Haken ja/nein; offene Punkte; naechster offener Eintrag.
 ```

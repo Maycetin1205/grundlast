@@ -167,7 +167,11 @@ export const lf3 = [
     ],
     "inhaltsstatus": "teilgeprueft",
     "quellen": {
-      "q1_scope": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan",
+        "fiausbv",
+        "bibb-fachinformatiker"
+      ],
       "q2_fachquelle": [
         "rfc-791",
         "rfc-4632",

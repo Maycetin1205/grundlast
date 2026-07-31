@@ -1,5 +1,9 @@
 # PLAN: Rechenweg-Komponenten komplett entfernen
 
+> **Historisch und abgeschlossen.** Dieses Dokument beschreibt den damaligen
+> Umbauzustand. Die genannten Pfade und Prüfbefehle sind keine aktuellen
+> Arbeitsanweisungen. Maßgeblich sind `README.md`, `PROJEKT.md` und `QUEUE.md`.
+
 > **Handoff-Dokument für die nächste Bearbeitung (z. B. codex).**
 > Erstellt am 2026-06-19. Inventar unten ist **am Code verifiziert** (nicht aus Doku abgeschrieben).
 > Diese Datei ist ein Plan, kein Code. Sie folgt dem Hausgesetz: *„Docs sind KI-generiert, Code ist Wahrheit"* — **vor dem Handeln alle Zahlen/Listen erneut gegen den Code prüfen** (Greps stehen dabei).

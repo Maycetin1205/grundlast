@@ -1,6 +1,6 @@
 # PROJEKT.md — Das Regelwerk (eine Quelle der Wahrheit)
 
-Stand: 10.07.2026
+Stand: 31.07.2026
 
 Diese Datei ist die **einzige verbindliche Regel-Datei** des Projekts. Sie
 konsolidiert die früheren Steuerdokumente (AP1_NEUSTART, AP1_KONTROLLZENTRUM_2026,
@@ -16,11 +16,12 @@ gerade dran?) steht in `QUEUE.md`.
 | `PROJEKT.md` | Regeln, Qualitätsstandard, Arbeitsablauf (diese Datei) |
 | `QUEUE.md` | Arbeitsstand, Warteschlange, Lücken-Audit, Start-Prompt |
 | `AP1_STATUS.md` | **generiert** (`npm run emit:status`) — nicht von Hand editieren |
+| `KAPITELPLAN_LF1_LF9.md` | verbindliche Kapitelpakete und Reihenfolge für LF1–LF9 |
 | `AP1_AUDIT_MATRIX.md` | Beleg-Archiv der Audits (Begründungen, Fakten, Quellen je Kapitel) |
 | `INHALTSVERZEICHNIS_JAHR_1_2.md` | Themenlandkarte Jahr 1/2 (Bezug/Form je Thema) |
 | `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md` | AP1-Scope mit Inhaltstiefe D1–D5 |
-| `CURRICULUM_MAPPING.md` | Mapping-Matrix vorhandener Kapitel (wird von `scripts/add_lf.py` genutzt) |
-| `REVIEW_LOG.md` | Freigabeakte (wird von der App referenziert) |
+| `CURRICULUM_MAPPING.md` | historische Mapping-Matrix; wird schrittweise durch den Katalog ersetzt |
+| `REVIEW_LOG.md` | historische Freigabeakte; kein Laufzeitstatus |
 | `material/` | externe Zusammenfassungen (Lernzettel, Lernplan) — Rohstoff, siehe Abschnitt 9 |
 | `../Lerndateien/Informationen/` | lokales Quellenarchiv außerhalb der App — klassifizieren, nicht direkt veröffentlichen, siehe Abschnitt 9 |
 | `docs/` | offene Pläne (z. B. `PLAN_RECHENWEG.md`) und `docs/archiv/` |
@@ -31,9 +32,11 @@ Der gesamte fachliche Bestand kann KI-generiert sein. Deshalb gilt:
 
 - **Kein alter Status** (`ready`, `final`, `reviewed`, Quellenliste vorhanden)
   ist ein Beweis für fachliche Richtigkeit.
-- Maßgeblich ist der **Inhaltsaudit-Status** je Kapitel:
-  `ungeprüft → teilgeprüft → geprüft` (sowie `gesperrt`), gepflegt in
-  `src/lib/audit/status.ts`, sichtbar in `AP1_STATUS.md`.
+- Maßgeblich ist ausschließlich `inhaltsstatus` im zentralen Kapitelkatalog
+  unter `src/content/catalog/chapters/`. Die Reihenfolge lautet
+  `ausgearbeitet/ungeprüft → teilgeprüft → geprüft` (sowie `geplant` und
+  `gesperrt`). `AP1_STATUS.md` wird daraus erzeugt; die App liest denselben
+  Wert. Persönlicher Lernstatus ist davon strikt getrennt.
 - Nichts als wahr behandeln, nur weil es im Projekt steht. Bei Unsicherheit
   `unklar` notieren statt raten. Widersprüche zwischen Quellen dokumentieren,
   nicht glätten.
@@ -156,7 +159,9 @@ Schreibregeln:
 - Glossar: wichtige Begriffe beim ersten sinnvollen Auftreten mit
   `<Term id="...">` markieren; Einträge in `src/content/glossar/*.ts` pflegen;
   nicht inflationär markieren.
-- Quellen: `src/content/quellen/sourceBank.ts` und `tagMappings.ts` pflegen.
+- Quellen: neue Quellen in `src/content/quellen/sourceBank.ts` anlegen und ihre
+  IDs im Feld `quellen` des Kapitelkatalogs eintragen. Automatische Tag-Treffer
+  oder pauschale Fallbackquellen zählen nicht als Beleg.
 - Mapping: Lernfeld/Jahr/AP1/Bezug/Form in `CURRICULUM_MAPPING.md` pflegen.
 
 ### Schritt 4 — Freigabecheck
@@ -223,16 +228,21 @@ Nächster Queue-Eintrag: [aus QUEUE.md]
 ```text
 npm run lint            # ESLint
 npm run test            # Vitest
-npm run build           # tsc + vite (führt vorher check:consistency aus)
+npm run validate:catalog # Strukturprüfung + sichtbare Qualitätsbefunde
+npm run build           # tsc + vite
+npm run check           # Katalog + Tests + Lint + Produktions-Build
+npm run build:single    # lokale Offline-Ausgabe
 npm run emit:status     # AP1_STATUS.md neu generieren (nach Statusänderungen)
+npm run validate:release # strenges Gesamtfreigabe-Gate
 ```
 
-- Der Konsistenz-Wächter (`scripts/check_consistency.py`) prüft, dass MDX,
-  TOC, Audit-Status, Review und Quellen-Tags pro Slug zusammenpassen.
-- Windows: `npm.cmd run …`, Python über `py`. Linux/CI: `python3
-  scripts/check_consistency.py`; falls `npm run build` nur am fehlenden
-  `py`-Launcher scheitert, `npx tsc -b && npx vite build` ausführen und den
-  Umgebungsfehler dokumentieren — nie als bestandenen Gesamtbuild ausgeben.
+- `scripts/validate-catalog.mjs` prüft Schema, Slugs, URLs, Voraussetzungen,
+  MDX-Zuordnung, Quellen-IDs, Audit-Mindestquellen und LF-Mindestabdeckung.
+- Normale Entwicklungschecks dürfen bekannte, ausdrücklich ausgegebene
+  Qualitätslücken enthalten. Eine Gesamtfreigabe ist nur mit erfolgreichem
+  `npm run validate:release` zulässig.
+- Die GitHub-Actions-Pipeline führt Katalogprüfung, Tests, Lint, beide Builds
+  und einen Driftcheck für `AP1_STATUS.md` aus.
 
 ## 9. Material-Regeln (Lernzettel, Probeprüfungen)
 
@@ -248,16 +258,16 @@ npm run emit:status     # AP1_STATUS.md neu generieren (nach Statusänderungen)
 
 ## 10. Architektur-Kurzkarte
 
-- App: React 19 + Vite + MDX; Inhalte `src/content/lessons/*.mdx`; Navigation
-  und technischer Status `src/lib/toc/data/*.ts`; Inhaltsaudit
-  `src/lib/audit/status.ts`; Faktencheck-Historie `src/lib/review.ts`;
-  Quellen `src/content/quellen/`; Glossar `src/content/glossar/`;
-  LF-Manifest `src/content/manifest/` (bisher nur von Tests genutzt).
-- Bekannter Strukturfehler: vier Statuswelten (TOC, Audit, Review, REVIEW_LOG).
-  Bis zur Konsolidierung gilt: Nur Auditstatus `geprueft` darf in der UI als
-  **voll geprüft** zählen; `teilgeprueft` wird separat ausgewiesen.
-  Inhaltsaudit ist niemals Lernenden-Beherrschung. `AP1_STATUS.md` zeigt die
-  Statuswelten nebeneinander. Kein großer Status-/TOC-/Manifest-Umbau nebenbei.
+- App: React 19 + Vite + MDX; Inhalte `src/content/lessons/*.mdx`; Kapitel,
+  Navigation, AP1-Mapping, Quellenzuordnung und Inhaltsstatus ausschließlich
+  in `src/content/catalog/`; Quellenbank `src/content/quellen/sourceBank.ts`;
+  Glossar `src/content/glossar/`; Lernlogik `src/lib/learning/`.
+- `src/lib/audit/` ist nur noch eine Kompatibilitätsschicht, die den Katalog
+  liest. `src/lib/review.ts`, `REVIEW_LOG.md` und alte Auditmatrizen dürfen
+  Belege enthalten, aber keinen abweichenden Laufzeitstatus festlegen.
+- Nur `geprueft` darf in der UI als fachlich geprüft erscheinen.
+  `ausgearbeitet` bleibt sichtbar, trägt aber einen deutlichen Warnhinweis.
+  Inhaltsaudit ist niemals Lernenden-Beherrschung.
 - Keine breite Übungs-/Prüfungsplattform vor dem Inhaltsaudit. Ein kleiner
   Diagnose-, Fehlerbuch- oder Aufgaben-MVP ist zulässig, sobald er echte
   Lernleistung misst und die Inhaltsarbeit nicht verdrängt.

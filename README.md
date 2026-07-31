@@ -1,115 +1,73 @@
-# Grundlast: Projektstatus und Aufräumkarte
+# Grundlast
 
-Stand: 24.06.2026
+Grundlast ist eine lokale React-Lernanwendung für die gemeinsamen Lernfelder
+LF1 bis LF9 der Fachinformatiker-Ausbildung und für die AP1-Vorbereitung. Die
+Zielgruppe startet ohne Vorwissen. Lerntexte, Nachschlagewerk, Lernpfad und
+Prüfungssichten verwenden denselben Kapitelbestand.
 
-## Wichtig
+## Vertrauensmodell
 
-Der gesamte fachliche Bestand kann KI-generiert sein. Vorhandensein, Umfang,
-TOC-Status, Review-Eintrag oder Quellenliste sind deshalb **kein Beleg für
-fachliche Richtigkeit**.
+Vorhandener Text ist nicht automatisch fachlich freigegeben. Der zentrale
+Kapitelkatalog unterscheidet:
 
-Bis zum Abschluss des Aufräumens gilt:
+- `geplant`: noch kein freigegebener Lerntext,
+- `ausgearbeitet`: Text vorhanden, Audit offen,
+- `teilgeprueft`: mindestens ein Audit-Gate offen,
+- `geprueft`: alle dokumentierten Freigabe-Gates bestanden,
+- `gesperrt`: bekannter kritischer Befund.
 
-- Keine Lektion wird als vollständig geprüft oder freigegeben bezeichnet.
-- Nichts wird allein wegen eines alten Statuswerts weiterverwendet.
-- Dateien werden erst gelöscht, nachdem Abhängigkeiten und möglicher Nutzen
-  geprüft wurden.
-- Bestehende, nicht eingecheckte Änderungen bleiben unangetastet.
+Die Anwendung zeigt diesen Status sichtbar an. Persönliche Selbsteinschätzung
+und fachlicher Inhaltsstatus sind getrennte Werte.
 
-## Was die laufende App tatsächlich verwendet
+Der aktuelle, aus dem Katalog erzeugte Stand steht in `AP1_STATUS.md`.
 
-| Bereich | Aktive Quelle | Einordnung |
-|---|---|---|
-| Navigation und sichtbare Lektionen | `src/lib/toc/` | aktiv, aber fachlich unbestätigt |
-| Lektionsinhalt | `src/content/lessons/` | aktiv, vollständig unbestätigter Bestand |
-| Vertrauensanzeige und AP1-Freigabe | `src/lib/audit/status.ts` | aktiv, handgepflegt |
-| zusätzlicher Faktencheck-Status | `src/lib/review.ts` | aktiv, überschneidet sich mit Audit |
-| Quellenanzeige | `src/content/quellen/` | aktiv, Quellen und Zuordnungen unbestätigt |
-| Glossar | `src/content/glossar/` | aktiv, Begriffe unbestätigt |
-| LF1-LF9-Manifest | `src/content/manifest/` | derzeit nur durch Tests verwendet |
-| lesbarer Gesamtstatus | `AP1_STATUS.md` | generiert aus TOC, Audit, Review und Quellen |
+## Aktive Architektur
 
-## Bekannter Strukturfehler
+| Bereich | Kanonische Quelle |
+|---|---|
+| Kapitel, Reihenfolge, Lernfelder, AP1-Zuordnung, Quellen und Status | `src/content/catalog/` |
+| Lerntexte | `src/content/lessons/*.mdx` |
+| zentrale Quellenbank | `src/content/quellen/sourceBank.ts` |
+| Glossar | `src/content/glossar/` |
+| Katalogvalidierung und Lernlogik | `src/lib/learning/` |
+| React-Oberfläche | `src/routes/`, `src/components/`, `src/styles/` |
+| verbindlicher Inhaltsplan | `KAPITELPLAN_LF1_LF9.md` |
+| Qualitätsregeln | `PROJEKT.md` |
+| aktueller Arbeitsschritt | `QUEUE.md` |
 
-Es existieren vier konkurrierende Statuswelten:
+Navigation, Lernpfad, Themenansicht und AP1-Sicht werden aus dem zentralen
+Katalog abgeleitet. Alte TOC- und Manifestverzeichnisse sind keine
+Laufzeitquellen mehr.
 
-1. technischer Lektionsstatus in `src/lib/toc/`
-2. Vertrauensstatus in `src/lib/audit/status.ts`
-3. Reviewstatus in `src/lib/review.ts`
-4. Freigabeaussagen in `REVIEW_LOG.md`
+## Entwicklung
 
-Das neue Manifest bezeichnet sich zwar als „Single Source of Truth“, ist aber
-noch nicht an die App angebunden. Daher konnten gleichzeitig vier, drei oder
-null Kapitel als fertig erscheinen.
+```bash
+npm ci
+npm run dev
+```
 
-## Vorläufige Einordnung des Bestands
+Vollständiger technischer Check:
 
-### Behalten: technische Basis
+```bash
+npm run check
+npm run build:single
+npm run emit:status
+```
 
-- `src/App.tsx`, `src/main.tsx`
-- `src/routes/`, `src/components/`, `src/styles/`
-- `src/lib/` als Laufzeitcode, jedoch noch zu konsolidieren
-- `package.json`, Lockdatei, TypeScript-, Vite-, Vitest- und ESLint-Konfiguration
-- `public/`
+`npm run validate:catalog` prüft die strukturelle Integrität und meldet
+bekannte Qualitätslücken. `npm run validate:release` ist das strenge
+Vollständigkeits-Gate und muss erst vor einer echten Gesamtfreigabe grün sein.
 
-„Behalten“ bedeutet hier nur: technisch Teil der App. Es ist keine Aussage
-über Codequalität oder fachliche Richtigkeit.
+## Inhaltsarbeit
 
-### Quarantäne: fachlicher Bestand
+Für jedes Kapitel gelten `AGENTS.md`, `UNIVERSALPROMPT.md`, `PROJEKT.md` und
+der erste offene Eintrag in `KAPITELPLAN_LF1_LF9.md`. Pro Arbeitsschritt wird
+genau ein Kapitel vollständig bearbeitet. Erzeuger und unabhängiger Prüfer sind
+getrennt; geschützte Prüfungsaufgaben werden nicht kopiert.
 
-- alle 80 Dateien in `src/content/lessons/`
-- `src/content/glossar/`
-- `src/content/quellen/`
-- fachliche Metadaten in TOC, Audit, Review und Manifest
+## Geschütztes Material
 
-Diese Dateien bleiben verfügbar, gelten aber bis zu einer echten Prüfung als
-Rohmaterial.
-
-### Projektsteuerung (konsolidiert am 02.07.2026)
-
-Das frühere Ziel „kleine, nachvollziehbare Dokumentation statt vieler
-konkurrierender Anweisungen" ist umgesetzt:
-
-- `PROJEKT.md` — das einzige verbindliche Regelwerk
-- `QUEUE.md` — Arbeitsstand, Warteschlange, Lücken-Audit, Start-Prompt
-- Daten-/Belegdateien bleiben: `AP1_STATUS.md` (generiert),
-  `AP1_AUDIT_MATRIX.md`, `INHALTSVERZEICHNIS_JAHR_1_2.md`,
-  `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md`, `CURRICULUM_MAPPING.md`,
-  `REVIEW_LOG.md`
-- offene Pläne: `docs/` (z. B. `docs/PLAN_RECHENWEG.md`)
-- alte Steuerdokumente: `docs/archiv/` (nur Historie, nicht mehr verbindlich)
-- externes Lernmaterial: `material/`
-
-### Generiert oder lokal
-
-- `AP1_STATUS.md`: generierte Übersicht, nicht von Hand pflegen
-- `dist/`: Build-Ausgabe, jederzeit neu erzeugbar
-- `node_modules/`: installierte Abhängigkeiten
-- `*.log`: lokale Laufzeitprotokolle
-- `_ocr_out/`: lokale OCR-Ausgabe
-- `_material_index/`: lokaler Materialindex
-- `lernzettel/`, `probepruefungen/`: lokale, nicht versionierte Materialien
-
-## Beschlossene Arbeitsweise
-
-Es gibt vorerst keinen großen Manifest-, TOC- oder Statusumbau. Die vorhandenen
-80 Kapitel werden einzeln nach einem festen, sehr hohen Qualitätsstandard
-bearbeitet. Die 20 TOC-Platzhalter ohne Kapiteldatei bleiben zunächst außen
-vor.
-
-Der verbindliche Einstieg für jeden neuen Chat steht in `QUEUE.md`
-(Arbeitsstand + Start-Prompt); die Regeln stehen in `PROJEKT.md`. Dort werden
-das aktuelle Kapitel, die aktuelle Phase und das nächste zulässige Vorgehen
-gepflegt.
-
-Pro Kapitel wird entschieden:
-
-1. Gehört das Thema überhaupt in die App?
-2. Ist ein eigenes Kapitel die richtige Form?
-3. Sind Inhalt und jede zentrale Aussage fachlich belastbar?
-4. Ist das Kapitel ohne Vorwissen verständlich und didaktisch stark?
-5. Sind Quellen, Glossar, Verknüpfungen und technische Checks vollständig?
-
-Erst nach einem vollständig dokumentierten Abschluss beginnt das nächste
-Kapitel. Strukturelle Dubletten werden nur dann bereinigt, wenn sie beim
-jeweiligen Kapitel konkret stören.
+Community-Lernzettel und legal erworbene Prüfungsunterlagen dienen nur als
+Themen- und Aufgabenform-Abgleich. Sachbehauptungen werden gegen aktuelle
+Primärquellen geprüft. Solange fremdes Material im Repository liegt, muss das
+Repository privat bleiben.

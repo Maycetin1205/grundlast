@@ -1,41 +1,26 @@
 /**
- * Grundlast · Quellen — Lookup-Logik
- *
- * Tag-basierter Filter: jede Lesson und jedes Lernfeld haben Tag-Listen.
- * getSourcesForLesson kombiniert sie und filtert sourceBank.
+ * Die Quellen-IDs im Kapitelkatalog sind die einzige Laufzeitquelle.
+ * Automatische Tag-Treffer und pauschale Fallbacks wirkten vertrauenswürdig,
+ * obwohl sie eine konkrete Aussage nicht zwingend belegten.
  */
 
-import { lernfeldTags, lessonSourceIds, slugTags, sourceBank } from "../../content/quellen"
+import { chapters } from '../../content/catalog'
+import { sourceBank } from '../../content/quellen'
 
-const fallbackSourceIds = ['bibb-fachinformatiker', 'fiausbv', 'kmk-rahmenlehrplan']
+const chaptersBySlug = new Map(chapters.map((chapter) => [chapter.slug, chapter]))
+const sourcesById = new Map(sourceBank.map((source) => [source.id, source]))
 
-export function getSourcesForLesson(lessonSlug: string, lernfeldSlug?: string) {
-  const lessonTagSet = new Set(slugTags[lessonSlug] ?? [])
-  const lernfeldTagSet = new Set(lernfeldSlug ? lernfeldTags[lernfeldSlug] ?? [] : [])
-  const preferred = (lessonSourceIds[lessonSlug] ?? [])
-    .map((sourceId) => sourceBank.find((source) => source.id === sourceId))
+export function getSourcesForLesson(lessonSlug: string) {
+  const chapter = chaptersBySlug.get(lessonSlug)
+  if (!chapter) return []
+
+  const ids = [
+    ...chapter.quellen.q1_scope,
+    ...chapter.quellen.q2_fachquelle,
+    ...chapter.quellen.q3_pruefungsrealitaet,
+  ]
+
+  return Array.from(new Set(ids))
+    .map((id) => sourcesById.get(id))
     .filter((source) => source !== undefined)
-
-  const exact = sourceBank
-    .map((source, index) => {
-      const score = source.tags.reduce((sum, tag) => {
-        if (lessonTagSet.has(tag)) return sum + 4
-        if (lernfeldTagSet.has(tag)) return sum + 2
-        if (tag === 'ordnung') return sum
-        return sum
-      }, 0)
-
-      return { source, score, index }
-    })
-    .filter((entry) => entry.score > 0)
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .map((entry) => entry.source)
-
-  const fallback = sourceBank.filter((source) =>
-    fallbackSourceIds.includes(source.id),
-  )
-
-  return Array.from(
-    new Map([...preferred, ...exact, ...fallback].map((source) => [source.id, source])).values(),
-  ).slice(0, 6)
 }

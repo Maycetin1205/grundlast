@@ -13,7 +13,7 @@ export const lf8 = [
       "betriebssysteme"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "hoch",
+    "ap1Relevanz": "unklar",
     "voraussetzungen": [],
     "lernzeit": 18,
     "aufgabenfamilien": [
@@ -40,7 +40,7 @@ export const lf8 = [
       "aktuell"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "hoch",
+    "ap1Relevanz": "unklar",
     "voraussetzungen": [
       "crm-erp-dms"
     ],

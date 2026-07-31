@@ -312,8 +312,8 @@ Ein Kapitelpaket ist erst fertig, wenn alle folgenden Punkte erfuellt sind:
 ### Quellen in der App
 
 - Neue Quellen werden zentral in `src/content/quellen/sourceBank.ts` gepflegt.
-- Das Kapitel erhaelt die passenden Zuordnungen in
-  `src/content/quellen/tagMappings.ts`.
+- Das Kapitel erhält die passenden Quellen-IDs rollengetrennt in seinem
+  Eintrag unter `src/content/catalog/chapters/lfX.ts`.
 - Verlinkt wird die konkrete Unterseite, Norm, RFC-Seite oder Dokumentation,
   nicht eine Suchergebnisseite.
 - Quellenangaben sagen erkennbar, welche Aussage oder welcher Abschnitt darauf
@@ -324,15 +324,14 @@ Ein Kapitelpaket ist erst fertig, wenn alle folgenden Punkte erfuellt sind:
 
 - Nur fachlich notwendige Inhalts-, Glossar-, Quellen- und Integrationsdateien
   wurden veraendert.
-- Fehlt das Kapitel in der App, ist seine minimale Integration ausdruecklich
-  autorisiert und Pflicht. Dazu duerfen nach dem bestehenden Muster MDX,
-  Glossar, Quellen, Manifest, Inhaltsregistrierung sowie der passende Eintrag in
-  `src/lib/toc/*` angepasst werden. Dafuer wird nicht erneut um Erlaubnis
-  gefragt.
+- Fehlt das Kapitel in der App, ist seine minimale Integration ausdrücklich
+  autorisiert und Pflicht. Dazu dürfen MDX, Glossar, Quellenbank und der
+  passende Eintrag in `src/content/catalog/chapters/lfX.ts` angepasst werden.
+  Dafür wird nicht erneut um Erlaubnis gefragt.
 - Layout, Design-Tokens und allgemeine Routing- oder Navigationsarchitektur
   bleiben unveraendert. Es findet kein themenfremder Umbau statt.
-- `npm.cmd run lint` endet mit Exitcode 0.
-- `npm.cmd run build` endet mit Exitcode 0.
+- `npm run check` endet mit Exitcode 0.
+- `npm run build:single` und `npm run emit:status` enden mit Exitcode 0.
 - Der Chat nennt geaenderte Dateien, zentrale Quellen, verwendete PDF-Seiten,
   ausgefuehrte Checks und den naechsten offenen Eintrag.
 

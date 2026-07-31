@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { AUFGABENFAMILIEN } from './types'
+import { AUFGABENFAMILIEN } from './types.ts'
 
 const lernfeld = z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5), z.literal(6), z.literal(7), z.literal(8), z.literal(9)])
 const sources = z.strictObject({ q1_scope: z.array(z.string()), q2_fachquelle: z.array(z.string()), q3_pruefungsrealitaet: z.array(z.string()) })

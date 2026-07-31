@@ -11,7 +11,7 @@ export const lf9 = [
       "netzwerke"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "hoch",
+    "ap1Relevanz": "unklar",
     "voraussetzungen": [],
     "lernzeit": 12,
     "aufgabenfamilien": [
@@ -38,7 +38,7 @@ export const lf9 = [
       "betriebssysteme"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "hoch",
+    "ap1Relevanz": "unklar",
     "voraussetzungen": [
       "imap-pop3-smtp"
     ],
@@ -71,7 +71,7 @@ export const lf9 = [
       "sicherheit"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "hoch",
+    "ap1Relevanz": "unklar",
     "voraussetzungen": [
       "linux-chmod"
     ],
@@ -100,7 +100,7 @@ export const lf9 = [
       "sicherheit"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "hoch",
+    "ap1Relevanz": "unklar",
     "voraussetzungen": [
       "ssh-telnet"
     ],

@@ -1,12 +1,12 @@
-# AP1-Audit-Matrix
+# AP1-Audit-Matrix (historisches Belegarchiv)
 
 Stand: 17.06.2026
 
-> **Status-Uebersicht ist jetzt generiert:** Die massgebliche Status-/Vertrauenstabelle
-> steht in `AP1_STATUS.md` (erzeugt aus dem Code via `npm run emit:status`). Diese Datei
-> ist das **Audit-Beleg-Archiv** (Begruendungen, gepruefte Fakten, Quellen pro Kapitel).
-> Die Status-Spalten weiter unten koennen veraltet sein — Quelle der Wahrheit ist der Code
-> (`src/lib/audit/status.ts`, `src/lib/toc/data/`), gesichert vom Konsistenz-Waechter.
+> **Nicht als aktuellen Arbeitsstand verwenden.** Die maßgebliche
+> Status-/Vertrauenstabelle steht in `AP1_STATUS.md` und wird mit
+> `npm run emit:status` aus `src/content/catalog/` erzeugt. Diese Datei bleibt
+> ausschließlich als historisches Audit-Belegarchiv erhalten. Pfade, Statuswerte
+> und Arbeitsanweisungen weiter unten können veraltet sein.
 
 Diese Datei ist das Kontrollzentrum fuer den Neustart aus `AP1_NEUSTART.md`.
 Sie ersetzt kein Kapitel und keine Quelle. Sie sagt nur, welchen Inhalten wir

@@ -407,7 +407,7 @@ def target_files() -> list[Path]:
     files = sorted((ROOT / "src/content/lessons").glob("*.mdx"))
     files += sorted((ROOT / "src/content/glossar").glob("*.ts"))
     files += sorted((ROOT / "src/content/quellen").glob("*.ts"))
-    files += sorted((ROOT / "src/lib/toc/data").glob("*.ts"))
+    files += sorted((ROOT / "src/content/catalog/chapters").glob("*.ts"))
     files.append(ROOT / "src/lib/review.ts")
     files += sorted((ROOT / "src/styles").rglob("*.css"))
     files += sorted((ROOT / "src").rglob("*.tsx"))
@@ -425,8 +425,8 @@ def process_file(path: Path) -> tuple[str, int]:
         return text, c1 + c2
     if rel == "src/content/quellen/sourceBank.ts":
         return process_named_string_fields(text, {"detail", "label"})
-    if rel.startswith("src/lib/toc/data/") and path.suffix == ".ts":
-        return process_named_string_fields(text, {"description", "title"})
+    if rel.startswith("src/content/catalog/chapters/") and path.suffix == ".ts":
+        return process_named_string_fields(text, {"titel"})
     if rel == "src/lib/review.ts":
         return process_review_notes(text)
     if path.suffix == ".css":
