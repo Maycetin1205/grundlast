@@ -6,7 +6,7 @@ Diese Datei enthält nur den aktuellen Arbeitsschritt und die nächsten
 freigegebenen Schritte. Fachliche Belege stehen im Audit, nicht in dieser
 Warteschlange.
 
-## Aktueller Schritt: 0 — Vertrauensbasis
+## Abgeschlossener Schritt 0 — Vertrauensbasis
 
 Ziel: Bevor weitere KI-Inhalte entstehen, müssen App, Katalog und
 Qualitätssicherung dieselbe Wahrheit verwenden.
@@ -19,10 +19,8 @@ Qualitätssicherung dieselbe Wahrheit verwenden.
 - [x] verlorene Tests für Zahlensysteme und Subnetting wiederherstellen.
 - [x] Katalogtests und GitHub-Actions-Pipeline ergänzen.
 - [x] Statusgenerator auf den neuen Katalog umstellen.
-- [ ] vollständigen Diff prüfen, alle Checks erneut ausführen und Draft-PR
+- [x] vollständigen Diff prüfen, alle Checks erneut ausführen und Draft-PR
       gegen `design-redesign` veröffentlichen.
-- [ ] Repository privat stellen, solange fremdes Community-Material enthalten
-      ist. Dies ist eine GitHub-Einstellung, keine Codeänderung.
 
 Bekannte, nun automatisch sichtbare Befunde:
 
@@ -34,7 +32,11 @@ Bekannte, nun automatisch sichtbare Befunde:
 - drei als geprüft markierte Kapitel ohne dokumentierten Q3-Prüfungsabgleich
 - sechs Kapitel in LF8/LF9 mit noch ungeklärter AP1-Relevanz
 
-## Schritt 1 — Atomare Scope-Matrix
+Offener Sicherheitsblocker: Das Repository muss privat gestellt werden,
+solange fremdes Community-Material enthalten ist. Dies ist eine
+GitHub-Kontoeinstellung und keine Codeänderung.
+
+## Aktueller Schritt: 1 — Atomare Scope-Matrix
 
 - [ ] KMK-Kompetenzen LF1–LF9 in eindeutige Scope-IDs zerlegen.
 - [ ] FIAusbV/BIBB-Kompetenzen der ersten 18 Monate ergänzen.
