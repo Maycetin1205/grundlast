@@ -14,7 +14,7 @@
 - Gesperrt: **0**
 - Quellenabdeckung: Q1 **51**, Q2 **30**, Q3 **4**
 - Scope-Pakete mit allen Lerntexten: **47/107**
-- Scope-Pakete vollständig über geprüfte Kapitel belegt: **1/107**
+- Scope-Pakete vollständig über geprüfte Kapitel belegt: **2/107**
 - Release-Gate: **nicht bestanden**
 
 ## Offene Qualitätsbefunde
@@ -23,7 +23,7 @@
 - Geprüftes Kapitel ohne dokumentierten Prüfungsabgleich: bit-byte
 - Geprüftes Kapitel ohne dokumentierten Prüfungsabgleich: datenrate-berechnung
 - Pflichtatome ohne verfügbaren Lerntext: 60/107
-- Pflichtatome ohne fachlich geprüftes Kapitel: 106/107
+- Pflichtatome ohne fachlich geprüftes Kapitel: 105/107
 - Vollständiger Prüfungskatalog 2025 fehlt; derzeit ist nur das öffentliche IHK/ZPA-Delta modelliert.
 
 ## LF1
