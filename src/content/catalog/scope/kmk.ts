@@ -49,10 +49,10 @@ export const kmkScopeItems: readonly ScopeItem[] = [
     'bbig-ausbildungsvertrag', 'arbeitnehmerrechte',
   ]),
   kmk(1, 7, 'kommunizieren', 'Eine adressatengerechte multimediale Unternehmensdarstellung im Team planen, erstellen und präsentieren.', [
-    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun', 'marktformen',
+    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun', 'marktformen', 'praesentation-dokumentation',
   ]),
   kmk(1, 8, 'reflektieren', 'Qualität eines Arbeitsergebnisses kriteriengeleitet prüfen, Verbesserungen ableiten und das eigene Handeln reflektieren.', [
-    'schulz-von-thun', 'aufbauorganisation',
+    'schulz-von-thun', 'aufbauorganisation', 'praesentation-dokumentation',
   ]),
 
   // LF2

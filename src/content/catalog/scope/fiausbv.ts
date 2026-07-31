@@ -55,13 +55,13 @@ export const fiausbvFirst18MonthScopeItems: readonly ScopeItem[] = [
     'bedarfsanalyse-feedback', 'schulz-von-thun', 'hardware-schnittstellen', 'marktformen',
   ]),
   fia('2.c', [1, 6], 'kommunizieren', 'Sachverhalte regelgerecht präsentieren und deutsche wie englische Fachbegriffe adressatengerecht verwenden.', [
-    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun',
+    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun', 'praesentation-dokumentation',
   ]),
   fia('2.d', [1], 'umsetzen', 'Marketing- und Vertriebsmaßnahmen im eigenen Aufgabenbereich unterstützen.', [
     'marktformen',
   ]),
   fia('2.e', [1, 2, 3], 'analysieren', 'Aufgabenbezogene Informationsquellen auch in englischer Sprache auswerten und für Kundeninformationen nutzen.', [
-    'hardware-schnittstellen', 'cpu-ram-speicher', 'osi-modell',
+    'hardware-schnittstellen', 'cpu-ram-speicher', 'osi-modell', 'praesentation-dokumentation',
   ]),
 
   fia('3.a', [2], 'bewerten', 'Marktgängige IT-Systeme nach Leistungsfähigkeit, Wirtschaftlichkeit und Barrierefreiheit beurteilen.', [
@@ -91,6 +91,7 @@ export const fiausbvFirst18MonthScopeItems: readonly ScopeItem[] = [
 
   fia('7.a', [2, 6], 'dokumentieren', 'Leistungen nach betrieblichen und vertraglichen Vorgaben dokumentieren.', [
     'serviceanfragen-support-level', 'projektubergabe', 'rechnung-zahlungsziel-aufbewahrungsfristen',
+    'praesentation-dokumentation',
   ]),
   fia('7.b', [2, 6], 'pruefen', 'Leistungserbringung organisatorisch und terminlich mit Kunden abstimmen und kontrollieren.', [
     'serviceanfragen-support-level', 'gantt-diagramm', 'projektubergabe',

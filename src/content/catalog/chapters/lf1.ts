@@ -353,6 +353,55 @@ export const lf1 = [
     }
   },
   {
+    "slug": "praesentation-dokumentation",
+    "titel": "Präsentation & nachvollziehbare Dokumentation",
+    "primaryLf": 1,
+    "relatedLfs": [
+      2,
+      6
+    ],
+    "lfReihenfolge": 8,
+    "themen": [
+      "projekt"
+    ],
+    "ap1Kompetenzen": [
+      "ap1-einweisung",
+      "ap1-kontrolle-protokoll"
+    ],
+    "ap1Relevanz": "hoch",
+    "voraussetzungen": [
+      "schulz-von-thun"
+    ],
+    "lernzeit": 70,
+    "aufgabenfamilien": [
+      "zuordnen",
+      "anwenden",
+      "diagnostizieren",
+      "begruenden"
+    ],
+    "inhaltsstatus": "teilgeprueft",
+    "quellen": {
+      "q1_scope": [
+        "kmk-rahmenlehrplan",
+        "fiausbv",
+        "bibb-fachinformatiker"
+      ],
+      "q2_fachquelle": [
+        "w3c-accessible-presentations",
+        "w3c-wcag",
+        "microsoft-powerpoint-accessibility",
+        "urhg-51-zitate",
+        "urhg-63-quellenangabe",
+        "creative-commons-attribution"
+      ],
+      "q3_pruefungsrealitaet": []
+    },
+    "route": {
+      "bereich": "projekt",
+      "modul": "service-management"
+    }
+  },
+  {
     "slug": "arbeitnehmerrechte",
     "titel": "Arbeitnehmerrechte & Kündigungsschutz",
     "primaryLf": 1,

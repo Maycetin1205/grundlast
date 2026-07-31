@@ -32,9 +32,10 @@ export const ap1ScopeItems: readonly ScopeItem[] = [
     'firewall-dmz', 'teststrategien',
   ]),
   ap1('ap1-einweisung', 4, 'kommunizieren', 'Kundinnen und Kunden verständlich in die Nutzung des Arbeitsplatzes einweisen.', [
-    'schulung-einweisung-key-user', 'projektubergabe', 'schulz-von-thun',
+    'schulung-einweisung-key-user', 'projektubergabe', 'schulz-von-thun', 'praesentation-dokumentation',
   ]),
   ap1('ap1-kontrolle-protokoll', 5, 'dokumentieren', 'Die Leistungserbringung kontrollieren und nachvollziehbar protokollieren.', [
     'teststrategien', 'netzwerkdiagnose', 'serviceanfragen-support-level', 'projektubergabe',
+    'praesentation-dokumentation',
   ]),
 ] as const

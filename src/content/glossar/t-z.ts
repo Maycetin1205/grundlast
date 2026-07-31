@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const tBisZ: GlossarEintrag[] = [
   {
+    id: 'visualisierung',
+    begriff: 'Visualisierung',
+    kurzdefinition: 'Sichtbare Darstellung einer relevanten Beziehung, etwa als Vergleich, Verlauf, Ablauf oder Struktur.',
+    definition: [
+      'Die Form folgt der Informationsfrage: Tabellen vergleichen mehrere Merkmale, Balken Kategorien, Linien zeitliche Entwicklungen und Prozessbilder Abfolgen oder Abhängigkeiten.',
+      'Eine belastbare Visualisierung nennt erforderliche Einheiten, Zeitraum, Bezugsgröße, Datenstand und Quelle und nutzt Farbe nicht als einziges Bedeutungsmerkmal.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
     id: 'wettbewerb',
     begriff: 'Wettbewerb',
     kurzdefinition: 'Konkurrenz von Marktteilnehmern um Geschäftsabschlüsse oder knappe Angebote.',

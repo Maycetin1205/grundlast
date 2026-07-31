@@ -151,6 +151,7 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 | `mitarbeitermotivation-teamphasen-change` | ja | ready | ungeprueft | P3 | AP1-Tiefe kritisch pruefen |
 | `schulung-einweisung-key-user` | ja | ready | ungeprueft | P2 | Einweisung/Doku-Aufgabentyp |
 | `schulz-von-thun` | ja | ready | teilgeprueft | P1 | Lernpaket LF1-07 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
+| `praesentation-dokumentation` | ja | neu | teilgeprueft | P1 | Lernpaket LF1-08 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
 | `netzplan` | ja | draft | ungeprueft | P2 | Rechenaufgaben pruefen |
 | `gantt-diagramm` | ja | ready | ungeprueft | P2 | Darstellungsaufgaben pruefen |
 | `vorgehensmodelle` | ja | ready | ungeprueft | P2 | Wasserfall/V/agil sauber trennen |
@@ -3263,3 +3264,126 @@ Bearbeiter: Codex
 - `bedarfsanalyse-feedback` bleibt trotz der notwendigen Entflechtung
   `ausgearbeitet`; der eigene Vollaudit erfolgt geordnet bei LF2-01. Die Haken
   für LF1-07 und LF2-01 bleiben bis zu ihren Abschlussgates offen.
+
+## Inhaltsaudit: praesentation-dokumentation / LF1-08 (2026-07-31)
+
+Bearbeiter: Codex
+
+### Scope-Gate und Eigentumsentscheidung
+
+- Das neue Lernpaket trägt `kmk-lf1-07` und `kmk-lf1-08`. Die fachliche
+  Unternehmensbeschreibung aus `kmk-lf1-03` bleibt bewusst bei den Kapiteln zu
+  Unternehmen und eigener Rolle. Aus den ersten 18 Ausbildungsmonaten
+  unterstützt LF1-08 die
+  FIAusbV-Positionen 2.c, 2.e und 7.a. Im gesetzlichen AP1-Modell überträgt es
+  verständliche Darstellung auf Einweisung sowie nachvollziehbare
+  Dokumentation auf Kontrolle und Protokoll.
+- LF1-08 ist der alleinige Eigentümer für Auftrags-/Adressatenanalyse einer
+  Darstellung, Kernbotschaft, roten Faden, Visualisierungswahl,
+  Präsentationsbarrierefreiheit, Quellen- und Mediennachweis, Vortrag sowie den
+  gemeinsamen Kern dauerhafter Dokumentation. AIDA bleibt LF1-06;
+  Gesprächsmodelle bleiben LF1-07; spezialisierte Test-, Ticket-, Einweisungs-
+  und Projektdokumente bleiben in ihren späteren Kapiteln.
+- Entscheidung: **als geplantes Kapitel neu erstellen**, Bezug
+  `Lehrplan/Prüfungsgrundlage`, Form `Kapitel`. Rhetorikstudium,
+  Marketingpsychologie, PowerPoint-Menükunde, Animationseffekte und
+  Spezialnormen für einzelne Dokumentarten gehören nicht in den Pflichtkern.
+
+### Quellen- und Benchmark-Matrix
+
+| Bereich | Quellen | Was fachlich folgt | Konsequenz fürs Kapitel |
+|---|---|---|---|
+| Offizieller Ausbildungsrahmen | KMK-Rahmenlehrplan LF1; FIAusbV Anlage erste 18 Monate; BIBB-Umsetzungshilfe | Eine adressatengerechte multimediale Unternehmensdarstellung im Team planen, erstellen und präsentieren; Sachverhalte regelgerecht mit deutschen und englischen Fachbegriffen darstellen; Informationsquellen auswerten und Leistungen dokumentieren. | Nicht nur Folienregeln lehren, sondern die vollständige Handlung von Auftrag und Recherche bis Vortrag, Dokumentation, Übergabe und Reflexion. |
+| Zugängliche Durchführung | W3C WAI, „Making Events and Presentations Accessible“ | Relevante sichtbare Information mündlich abdecken, klar sprechen, Fachsprache erklären, Verarbeitungszeit geben und Fragen für alle hörbar machen. | Dateigestaltung und tatsächlichen Vortrag getrennt, aber verbunden erklären. |
+| Zugängliche Medien | WCAG 2.2; Microsoft Support zu barrierefreien PowerPoint-Präsentationen | Textalternativen, Farbe nicht als einziges Merkmal, Mindestkontraste, eindeutige Titel, logische Lesereihenfolge, zugängliche Links, Untertitel und Prüfung mit assistiver Technik. | Messbare Werte exakt und mit Geltungsgrenze nennen; Herstellerempfehlung von 18 Punkt nicht als raumunabhängiges Gesetz ausgeben. |
+| Zitat und Quellenangabe | UrhG §§ 51 und 63 | Zitatnutzung braucht veröffentlichtes Werk, Zitatzweck und zweckgerechten Umfang; die Quelle ist bei dieser gesetzlichen Nutzung grundsätzlich deutlich anzugeben. | Quelle nicht mit Nutzungsrecht verwechseln; dekorative Fremdbilder nicht als „Bildzitat“ tarnen; bei Unklarheit Freigabe einholen. |
+| Offene Lizenzen | Creative Commons, empfohlene Namensnennung | TASL steht für Title, Author, Source, License; Änderungen und konkrete Lizenzbedingungen sind zu beachten. | Vollständiges, direkt anwendbares Quellenmuster statt „Quelle: Internet“. |
+| Lokales Community-Material | `material/AP1_Lernzettel.pdf`, Metadatenstand 01.03.2025, Seite 1 | Präsentation und Medienkompetenz, situationsgerechte Kundenkommunikation und englische Textauswertung werden ausdrücklich als nicht enthalten genannt. | Nur als dokumentierter Lückenhinweis verwendet. Es gab keinen Lerntext, keine Visualisierungsregel und keine Aufgabe zu übernehmen oder fachlich zu retten. |
+
+### Bestands- und Abgrenzungsbefund
+
+| Bestand | Befund | Änderung |
+|---|---|---|
+| Laufzeitkatalog | LF1 hatte trotz verbindlichem Paket LF1-08 kein Kapitel mit Reihenfolge 8. | `praesentation-dokumentation` als eindeutiges LF1-Paket mit Quellen-, Scope- und Vertrauensstatus ergänzt. |
+| `unternehmen-ziele-wertschoepfung` | Liefert die fachliche Unternehmensbeschreibung, aber keine Medienplanung, Quellenpraxis oder Vortragsmethode. | Bleibt Voraussetzung und Stofflieferant; keine doppelte Präsentationslehre. |
+| `marktformen` | Enthält Zielgruppe, Kundennutzen und AIDA als begrenzte Werbecheckliste. | Zielgruppe wird verlinkt; AIDA nur abgegrenzt und nicht erneut erklärt. |
+| `schulz-von-thun` | Eigentümer für Gespräch, Zuhören, Fragen und Feedback. | Nur Rückkopplung und verständliche Sprache vorausgesetzt; keine Kommunikationsmodell-Dublette. |
+| `bedarfsanalyse-feedback` | Alte Sammelfassung hatte Präsentationsregeln ohne eigenen Scope. | Bereits in LF1-07 entfernt; LF1-08 baut den Stoff neu und belegt auf. |
+| Glossar | Zentrale Begriffe für Präsentation, Kernbotschaft, Visualisierung, Lesereihenfolge, Alternativtext, Quelle und Dokumentation fehlten. | Acht eindeutige, verlinkte Definitionen ergänzt; bestehende Zielgruppen- und Barrierefreiheitsbegriffe wiederverwendet. |
+
+### Fakten-Gate
+
+1. Der KMK-Rahmenlehrplan verlangt in LF1 eine adressatengerechte
+   multimediale Unternehmensdarstellung, die im Team geplant, erstellt und
+   präsentiert wird.
+2. Die FIAusbV fordert in den ersten 18 Monaten regelgerechtes Präsentieren,
+   adressatengerechte deutsche und englische Fachbegriffe, Auswertung auch
+   englischer Informationsquellen sowie Dokumentation betrieblicher Leistungen.
+3. W3C WAI nennt das mündliche Abdecken relevanter visueller Information,
+   klare Sprache, Erklärung von Fachsprache und ausreichende
+   Verarbeitungspausen als Maßnahmen zugänglicher Präsentationen.
+4. Microsoft dokumentiert eindeutige Folientitel, Alternativtexte, logische
+   Lesereihenfolge, ausreichenden Kontrast, zusätzliche Kennzeichnung neben
+   Farbe, aussagekräftige Links und Untertitel als PowerPoint-Maßnahmen.
+5. WCAG 2.2 nennt für normalen Text mindestens 4,5 : 1 und für großen Text
+   mindestens 3 : 1 Kontrast; groß bedeutet dort mindestens 18 Punkt normal
+   oder 14 Punkt fett beziehungsweise eine gleichwertige Größe.
+6. WCAG 2.2 verlangt 3 : 1 Nichttextkontrast für die zum Verständnis nötigen
+   Teile grafischer Objekte zu angrenzenden Farben. Das Kapitel grenzt den
+   Webstandard ausdrücklich von einer pauschalen Rechtsvorgabe für jede
+   Schulfolie ab.
+7. Microsoft empfiehlt 18 Punkt oder größer als allgemeine
+   PowerPoint-Mindestgröße. Das Kapitel kennzeichnet dies als
+   Herstellerempfehlung und verlangt zusätzlich den Praxistest am Zielgerät.
+8. § 51 UrhG bindet ein Zitat an ein veröffentlichtes Werk, einen Zitatzweck
+   und einen durch diesen Zweck gerechtfertigten Umfang; reine Dekoration ist
+   damit nicht begründet.
+9. § 63 UrhG verlangt für Nutzungen nach § 51 grundsätzlich die deutliche
+   Angabe der Quelle. Eine Quellenangabe schafft allein keine darüber
+   hinausgehende Nutzungserlaubnis.
+10. Creative Commons empfiehlt für die Namensnennung TASL: Title, Author,
+    Source und License. Die konkrete Lizenz und eine Bearbeitung werden
+    ausgewiesen.
+11. Die achtminütige Beispielplanung ist unabhängig nachgerechnet:
+    45 + 75 + 90 + 90 + 90 + 90 = 480 Sekunden = 8 Minuten.
+
+### Didaktik-, Aufgaben- und Umfangs-Gate
+
+- Didaktik: Ein durchgehendes Erstgespräch für zehn betreute Praxisarbeitsplätze
+  verbindet Auftrag, drei Adressatenrollen, Quellenprüfung, Kernbotschaft,
+  Storyboard, Darstellungswahl, Zugänglichkeit, Rechteklärung, Vortrag und
+  Begleitdokumentation. Ein zugängliches Drei-Ebenen-Schaubild, Tabellen, ein
+  Neun-Schritte-Verfahren, vollständiges Zeitbeispiel, Fehlervarianten und
+  gelöster Selbstcheck tragen den Lernweg ohne Werkzeugvorwissen.
+- Aufgaben: Unvollständigen Präsentationsauftrag diagnostizieren,
+  adressatengerechte Kernbotschaft formulieren, Darstellungsform auswählen,
+  irreführende oder unzugängliche Grafik verbessern, englische Fachquelle
+  kontrolliert auswerten, Quellen- von Rechtenachweis trennen, Vortrag auf Zeit
+  planen und Ergebnisprotokoll entwerfen. Keine Originalprüfungsaufgabe oder
+  Punktebehauptung.
+- Pflicht: Auftrag/Zweck/Adressaten, Informations- und Quellenprüfung,
+  Kernbotschaft/roter Faden, Visualisierungswahl, zugängliche Datei und
+  Durchführung, Quellen-/Mediennachweis, Probe, Teamübergabe sowie
+  nachvollziehbarer Dokumentationskern. Kann: WCAG-Kontrastwerte, TASL,
+  englischer Quellenworkflow und Diagrammabgrenzungen. Extra/Raus:
+  Rhetoriktheorie, universelle Folienformeln, Animationskunde,
+  PowerPoint-Menüschulung, Marketingpsychologie und Detailnormen für jede
+  spätere Dokumentart.
+
+### Technik-Gate und Entscheidung
+
+- `npm run emit:status`: bestanden; 121 Kapitel und sechs ehrliche
+  Qualitätsbefunde ausgegeben (2026-07-31).
+- `npm run emit:scope`: bestanden; 107 Pflichtatome, davon 47 mit vollständigem
+  Lerntextpaket und zwei vollständig geprüft (2026-07-31).
+- `npm run test`: bestanden (3 Testdateien, 31 Tests, 2026-07-31). Der neue
+  Regressionstest sichert Katalog-, Quellen- und Glossarzuordnung von LF1-08.
+- `npm run check`: bestanden; Katalogvalidator, Tests, ESLint, TypeScript und
+  Vite-Produktions-Build erfolgreich (2026-07-31).
+- `npm run build:single`: bestanden; Offline-Einzeldatei erzeugt
+  (2026-07-31).
+- `git diff --check`: bestanden.
+- Vertrauen `teilgeprueft`. Fachtext, Quellen-, Fakten-, Didaktik-, Aufgaben-,
+  Umfangs- und Technik-Gate sind abgeschlossen. Für `geprueft` fehlen der
+  unabhängige Fachprüfpass, ein belastbarer Q3-Abgleich und die Vollkataloge
+  6392/6393. Der Haken für LF1-08 bleibt deshalb offen.

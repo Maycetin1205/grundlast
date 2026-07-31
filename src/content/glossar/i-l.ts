@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const iBisL: GlossarEintrag[] = [
   {
+    id: 'kernbotschaft',
+    begriff: 'Kernbotschaft',
+    kurzdefinition: 'Zentrale vollständige Aussage, die Adressaten nach einer Darstellung verstanden haben sollen.',
+    definition: [
+      'Eine Kernbotschaft verbindet Thema und Kommunikationszweck. Sie ist konkreter als ein Schlagwort und darf nur eine Wirkung oder Eigenschaft behaupten, die durch die vorhandenen Belege gedeckt ist.',
+      'Unterstützende Aussagen, Visualisierungen und Beispiele werden danach ausgewählt, ob sie diese Kernbotschaft für die konkreten Adressaten verständlich und prüfbar machen.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
+    id: 'lesereihenfolge',
+    begriff: 'Lesereihenfolge',
+    kurzdefinition: 'Logische Reihenfolge, in der Inhalte visuell und durch assistive Technik erfasst werden sollen.',
+    definition: [
+      'Auf einer Folie oder in einem Dokument kann die technisch gespeicherte Reihenfolge von der sichtbaren Anordnung abweichen. Bildschirmleseprogramme folgen häufig dieser technischen Struktur.',
+      'Eindeutige Titel, integrierte Layouts und eine manuelle Prüfung helfen, Überschrift, Aussage, Beschriftung und Quelle in sinnvoller Reihenfolge zugänglich zu machen.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
     id: 'ich-botschaft',
     begriff: 'Ich-Botschaft',
     kurzdefinition: 'Aussage, die eine eigene Wahrnehmung, Wirkung oder ein Bedürfnis kenntlich macht, statt dem Gegenüber pauschal Eigenschaften zuzuschreiben.',

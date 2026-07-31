@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const aBisD: GlossarEintrag[] = [
   {
+    id: 'alternativtext',
+    begriff: 'Alternativtext',
+    kurzdefinition: 'Textliche Alternative, die Zweck und relevante Aussage eines nichttextlichen Inhalts vermittelt.',
+    definition: [
+      'Ein Alternativtext macht die Informationsfunktion eines Bildes, Diagramms oder Bedienelements zugänglich, wenn der visuelle Inhalt nicht wahrgenommen werden kann.',
+      'Er beschreibt nicht automatisch jedes Detail. Maßgeblich sind Kontext, Zweck und die Information, die sonst verloren ginge; rein dekorative Elemente werden im Autorensystem als dekorativ gekennzeichnet.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
+    id: 'dokumentation',
+    begriff: 'Dokumentation',
+    kurzdefinition: 'Auffindbare und prüfbare Aufzeichnung von Kontext, Ergebnis, Belegen, Grenzen, Zuständigkeiten und Stand.',
+    definition: [
+      'Eine Dokumentation ermöglicht berechtigten Personen, ein Arbeitsergebnis später zu verstehen, zu prüfen oder fortzuführen. Form und Detailtiefe richten sich nach dem Zweck.',
+      'Titel, verantwortliche Person, Datum, Version, Geltungsbereich, Ergebnis, Quellen, offene Punkte und nächste Schritte bilden einen häufig benötigten Grundstock; technische Spezialdokumente ergänzen zweckbezogene Angaben.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
     id: 'angebot',
     begriff: 'Angebot',
     kurzdefinition: 'Menge, die Anbieter bei einem bestimmten Preis in einem bestimmten Zeitraum verkaufen wollen und können.',

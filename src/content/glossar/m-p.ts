@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const mBisP: GlossarEintrag[] = [
   {
+    id: 'praesentation',
+    begriff: 'Präsentation',
+    kurzdefinition: 'Geführte Darstellung, die Inhalt, Medium und Vortrag für bestimmte Adressaten und einen bestimmten Zweck verbindet.',
+    definition: [
+      'Eine Präsentation ist mehr als eine Foliendatei. Der Vortrag ordnet und erklärt, während ein Medium Beziehungen sichtbar macht und Rückfragen die Verständigung prüfen.',
+      'Planung beginnt mit Anlass, Adressaten, gewünschtem Ergebnis, Umfang, Zeit und Übergabeformat. Erst daraus folgen Kernbotschaft, Storyboard und Gestaltung.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
     id: 'offene-frage',
     begriff: 'Offene Frage',
     kurzdefinition: 'Frage ohne vorgegebenen engen Antwortbereich, die eine Beschreibung in eigenen Worten ermöglicht.',

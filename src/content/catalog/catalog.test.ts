@@ -128,4 +128,21 @@ describe('zentraler Kapitelkatalog', () => {
     expect(lesson).not.toContain('<Term id="aida">')
     expectKnownLessonTerms('bedarfsanalyse-feedback')
   })
+
+  it('führt LF1-08 als eigenes belegtes Präsentations- und Dokumentationspaket', () => {
+    const chapter = chapters.find((item) => item.slug === 'praesentation-dokumentation')
+    expect(chapter?.titel).toBe('Präsentation & nachvollziehbare Dokumentation')
+    expect(chapter?.primaryLf).toBe(1)
+    expect(chapter?.lfReihenfolge).toBe(8)
+    expect(chapter?.inhaltsstatus).toBe('teilgeprueft')
+    expect(chapter?.quellen.q2_fachquelle).toEqual(expect.arrayContaining([
+      'w3c-accessible-presentations',
+      'w3c-wcag',
+      'microsoft-powerpoint-accessibility',
+      'urhg-51-zitate',
+      'urhg-63-quellenangabe',
+      'creative-commons-attribution',
+    ]))
+    expectKnownLessonTerms('praesentation-dokumentation')
+  })
 })

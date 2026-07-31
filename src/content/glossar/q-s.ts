@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const qBisS: GlossarEintrag[] = [
   {
+    id: 'quellenangabe',
+    begriff: 'Quellenangabe',
+    kurzdefinition: 'Angabe, mit der Herkunft und genaue Fundstelle einer Information oder eines übernommenen Werks auffindbar werden.',
+    definition: [
+      'Je nach Quellenart gehören verantwortliche Person oder Organisation, Titel, Datum oder Version, genaue Fundstelle und bei veränderlichen Onlineinhalten ein Abrufdatum dazu.',
+      'Bei übernommenen Medien müssen zusätzlich Nutzungsgrundlage, konkrete Lizenz und gegebenenfalls Bearbeitungen dokumentiert werden. Die bloße Nennung einer Quelle erteilt keine Nutzungserlaubnis.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
+    id: 'roter-faden',
+    begriff: 'Roter Faden',
+    kurzdefinition: 'Nachvollziehbare Beziehung zwischen Ausgangsfrage, Belegen, Ergebnis und nächster Handlung.',
+    definition: [
+      'Ein roter Faden ist mehr als eine Agenda. Jeder Abschnitt beantwortet eine erkennbare Frage, stützt die Kernbotschaft und bereitet den nächsten Gedankenschritt vor.',
+      'Ein Storyboard aus Frage, Aussage, Beleg, Medium und Zeit hilft, Sprünge, Wiederholungen und unbelegte Schlussfolgerungen vor der Gestaltung zu erkennen.',
+    ],
+    kapitel: {
+      titel: 'Präsentation & nachvollziehbare Dokumentation',
+      href: '/lernen/projekt/service-management/praesentation-dokumentation',
+    },
+  },
+  {
       id: 'ruecktritt',
       begriff: 'Rücktritt',
       kurzdefinition: 'Rückabwicklung eines Vertrags, typischerweise nach gescheiterter Nacherfuellung.',

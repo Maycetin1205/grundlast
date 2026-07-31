@@ -5,16 +5,16 @@
 
 ## Gesamtstand
 
-- Kapitel im Katalog: **120**
-- MDX-Lerntexte: **83**
+- Kapitel im Katalog: **121**
+- MDX-Lerntexte: **84**
 - Geprüft: **6**
-- Teilgeprüft: **14**
+- Teilgeprüft: **15**
 - Ungeprüft ausgearbeitet: **63**
 - Geplant: **37**
 - Gesperrt: **0**
-- Quellenabdeckung: Q1 **50**, Q2 **29**, Q3 **4**
+- Quellenabdeckung: Q1 **51**, Q2 **30**, Q3 **4**
 - Scope-Pakete mit allen Lerntexten: **47/107**
-- Scope-Pakete vollständig über geprüfte Kapitel belegt: **2/107**
+- Scope-Pakete vollständig über geprüfte Kapitel belegt: **1/107**
 - Release-Gate: **nicht bestanden**
 
 ## Offene Qualitätsbefunde
@@ -23,12 +23,12 @@
 - Geprüftes Kapitel ohne dokumentierten Prüfungsabgleich: bit-byte
 - Geprüftes Kapitel ohne dokumentierten Prüfungsabgleich: datenrate-berechnung
 - Pflichtatome ohne verfügbaren Lerntext: 60/107
-- Pflichtatome ohne fachlich geprüftes Kapitel: 105/107
+- Pflichtatome ohne fachlich geprüftes Kapitel: 106/107
 - Vollständiger Prüfungskatalog 2025 fehlt; derzeit ist nur das öffentliche IHK/ZPA-Delta modelliert.
 
 ## LF1
 
-Katalog: **9** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
+Katalog: **10** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
@@ -39,6 +39,7 @@ Katalog: **9** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
 | 5 | Vollmachten im Betrieb | geprüft | pflicht | ✓ | ✓ | ✓ | ✓ |
 | 6 | Markt, Wettbewerb & Kundennutzen | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
 | 7 | Kommunikation, aktives Zuhören & Feedback | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 8 | Präsentation & nachvollziehbare Dokumentation | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
 | 9 | Organisationsformen, Leitbild, Nachhaltigkeit & ESG | ungeprüft | hoch | – | – | – | ✓ |
 | 10 | Arbeitnehmerrechte & Kündigungsschutz | geplant | mittel | – | – | – | – |
 
