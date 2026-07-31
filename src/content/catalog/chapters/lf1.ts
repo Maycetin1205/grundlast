@@ -227,29 +227,47 @@ export const lf1 = [
   },
   {
     "slug": "organisationsformen-leitbild-nachhaltigkeit-esg",
-    "titel": "Organisationsformen, Leitbild, Nachhaltigkeit & ESG",
+    "titel": "Nachhaltigkeit im IT-Betrieb",
     "primaryLf": 1,
-    "relatedLfs": [],
+    "relatedLfs": [
+      2
+    ],
     "lfReihenfolge": 9,
     "themen": [
       "wirtschaft"
     ],
     "ap1Kompetenzen": [
-      "ap1-kundenbedarf",
       "ap1-auswahl-beschaffung"
     ],
     "ap1Relevanz": "hoch",
     "voraussetzungen": [
-      "vollmachten-im-betrieb"
+      "praesentation-dokumentation"
     ],
-    "lernzeit": 22,
+    "lernzeit": 70,
     "aufgabenfamilien": [
-      "zuordnen"
+      "zuordnen",
+      "rechnen",
+      "anwenden",
+      "diagnostizieren",
+      "begruenden"
     ],
-    "inhaltsstatus": "ausgearbeitet",
+    "inhaltsstatus": "teilgeprueft",
     "quellen": {
-      "q1_scope": [],
-      "q2_fachquelle": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan",
+        "fiausbv",
+        "bibb-fachinformatiker"
+      ],
+      "q2_fachquelle": [
+        "bundesregierung-nachhaltigkeitsstrategie-2025",
+        "eu-environmental-footprint-2021-2279",
+        "eu-public-procurement-lifecycle-costing",
+        "eu-espr-2024-1781",
+        "eu-waste-hierarchy",
+        "eu-weee",
+        "blauer-engel-computer-de-uz-78",
+        "ec-corporate-sustainability-reporting"
+      ],
       "q3_pruefungsrealitaet": []
     },
     "route": {

@@ -8,11 +8,11 @@
 - Kapitel im Katalog: **121**
 - MDX-Lerntexte: **84**
 - Geprüft: **6**
-- Teilgeprüft: **15**
-- Ungeprüft ausgearbeitet: **63**
+- Teilgeprüft: **16**
+- Ungeprüft ausgearbeitet: **62**
 - Geplant: **37**
 - Gesperrt: **0**
-- Quellenabdeckung: Q1 **51**, Q2 **30**, Q3 **4**
+- Quellenabdeckung: Q1 **52**, Q2 **31**, Q3 **4**
 - Scope-Pakete mit allen Lerntexten: **47/107**
 - Scope-Pakete vollständig über geprüfte Kapitel belegt: **2/107**
 - Release-Gate: **nicht bestanden**
@@ -40,7 +40,7 @@ Katalog: **10** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
 | 6 | Markt, Wettbewerb & Kundennutzen | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
 | 7 | Kommunikation, aktives Zuhören & Feedback | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
 | 8 | Präsentation & nachvollziehbare Dokumentation | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 9 | Organisationsformen, Leitbild, Nachhaltigkeit & ESG | ungeprüft | hoch | – | – | – | ✓ |
+| 9 | Nachhaltigkeit im IT-Betrieb | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
 | 10 | Arbeitnehmerrechte & Kündigungsschutz | geplant | mittel | – | – | – | – |
 
 ## LF2

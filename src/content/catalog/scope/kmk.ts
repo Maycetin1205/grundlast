@@ -40,7 +40,7 @@ export const kmkScopeItems: readonly ScopeItem[] = [
     'unternehmen-ziele-wertschoepfung', 'bbig-ausbildungsvertrag',
   ]),
   kmk(1, 4, 'analysieren', 'Aufbauorganisation und Rechtsform eines Unternehmens unterscheiden und auf den Betrieb beziehen.', [
-    'aufbauorganisation', 'rechtsformen', 'organisationsformen-leitbild-nachhaltigkeit-esg',
+    'aufbauorganisation', 'rechtsformen',
   ]),
   kmk(1, 5, 'bewerten', 'Eigenen Handlungs- und Entscheidungsspielraum sowie Vollmachten im Betrieb einordnen.', [
     'vollmachten-im-betrieb', 'bbig-ausbildungsvertrag',
@@ -72,7 +72,7 @@ export const kmkScopeItems: readonly ScopeItem[] = [
   ]),
   kmk(2, 5, 'bewerten', 'Produkte anhand technischer, wirtschaftlicher, ergonomischer und nachhaltiger Kriterien begründet auswählen.', [
     'nutzwertanalyse', 'homeoffice-ergonomie', 'energiekosten', 'kauf-leasing-miete',
-    'make-or-buy', 'raid-systeme', 'usv-systeme',
+    'make-or-buy', 'raid-systeme', 'usv-systeme', 'organisationsformen-leitbild-nachhaltigkeit-esg',
   ]),
   kmk(2, 6, 'analysieren', 'Aufgabenbezogen recherchieren und auch fremdsprachliche Produktinformationen auswerten.', [
     'cpu-ram-speicher', 'hardware-schnittstellen', 'lizenzmodelle',

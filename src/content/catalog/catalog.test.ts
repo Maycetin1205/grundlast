@@ -145,4 +145,37 @@ describe('zentraler Kapitelkatalog', () => {
     ]))
     expectKnownLessonTerms('praesentation-dokumentation')
   })
+
+  it('fokussiert LF1-09 auf belastbare nachhaltige IT-Entscheidungen', () => {
+    const slug = 'organisationsformen-leitbild-nachhaltigkeit-esg'
+    const chapter = chapters.find((item) => item.slug === slug)
+    expect(chapter?.titel).toBe('Nachhaltigkeit im IT-Betrieb')
+    expect(chapter?.primaryLf).toBe(1)
+    expect(chapter?.relatedLfs).toContain(2)
+    expect(chapter?.lfReihenfolge).toBe(9)
+    expect(chapter?.inhaltsstatus).toBe('teilgeprueft')
+    expect(chapter?.quellen.q2_fachquelle).toEqual(expect.arrayContaining([
+      'bundesregierung-nachhaltigkeitsstrategie-2025',
+      'eu-environmental-footprint-2021-2279',
+      'eu-public-procurement-lifecycle-costing',
+      'eu-espr-2024-1781',
+      'eu-waste-hierarchy',
+      'eu-weee',
+      'blauer-engel-computer-de-uz-78',
+      'ec-corporate-sustainability-reporting',
+    ]))
+
+    const lesson = fs.readFileSync(new URL(`../lessons/${slug}.mdx`, import.meta.url), 'utf8')
+    expect(lesson).not.toContain('## Rechtsformen im Vergleich')
+    expect(lesson).not.toContain('## Aufbauorganisation: Wer entscheidet?')
+
+    const organizationScope = scopeItems.find((item) => item.id === 'kmk-lf1-04')
+    const sustainableSelectionScope = scopeItems.find((item) => item.id === 'kmk-lf2-05')
+    const ap1SelectionScope = scopeItems.find((item) => item.id === 'ap1-auswahl-beschaffung')
+    expect(organizationScope?.chapterSlugs).not.toContain(slug)
+    expect(sustainableSelectionScope?.chapterSlugs).toContain(slug)
+    expect(ap1SelectionScope?.chapterSlugs).toContain(slug)
+
+    expectKnownLessonTerms(slug)
+  })
 })

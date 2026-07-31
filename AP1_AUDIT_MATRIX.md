@@ -179,7 +179,7 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 | `marktformen` | ja | draft | teilgeprueft | P1 | Lernpaket LF1-06 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
 | `eigenfremdfinanzierung` | ja | ready | ungeprueft | P3 | AP1-Tiefe pruefen |
 | `aida-formel` | ja | ready | gesperrt | Parken | in `marktformen` konsolidiert; kein separates Laufzeitkapitel mehr |
-| `organisationsformen-leitbild-nachhaltigkeit-esg` | ja | ready | ungeprueft | P3 | zu breites Kapitel pruefen |
+| `organisationsformen-leitbild-nachhaltigkeit-esg` | ja | ready | teilgeprueft | P1 | Lernpaket LF1-09 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
 | `aufbauorganisation` | ja | ready | ungeprueft | P2 | Vollmachten/Prokura pruefen |
 | `vertragsarten` | ja | ready | ungeprueft | P2 | Rechtsquellen und Beispiele |
 | `rechnung-zahlungsziel-aufbewahrungsfristen` | ja | ready | ungeprueft | P2 | Fristenquellen pruefen |
@@ -3387,3 +3387,136 @@ Bearbeiter: Codex
   Umfangs- und Technik-Gate sind abgeschlossen. Für `geprueft` fehlen der
   unabhängige Fachprüfpass, ein belastbarer Q3-Abgleich und die Vollkataloge
   6392/6393. Der Haken für LF1-08 bleibt deshalb offen.
+
+## Inhaltsaudit: organisationsformen-leitbild-nachhaltigkeit-esg / LF1-09 (2026-07-31)
+
+Bearbeiter: Codex
+
+### Scope-Gate und Eigentumsentscheidung
+
+- Das Lernpaket trägt `kmk-lf1-01` für die Einordnung wirtschaftlicher,
+  ökologischer und sozialer Ziele anhand des Leitbildes. Für LF2 unterstützt es
+  `kmk-lf2-05`, die begründete Produktauswahl anhand technischer,
+  wirtschaftlicher, ergonomischer und nachhaltiger Kriterien. In den ersten 18
+  Monaten trägt es FIAusbV-Position 1.f zum ressourcen-, budget-,
+  wirtschaftlich und ökologisch angemessenen Einsatz von Arbeitsmitteln. Im
+  gesetzlichen AP1-Modell unterstützt es Auswahl und Beschaffung.
+- Das alte Sammelkapitel war zu Unrecht auch `kmk-lf1-04` zugeordnet. Diese
+  Zuordnung wurde entfernt: Rechtsformen bleiben ausschließlich im Kapitel
+  `rechtsformen`, Aufbau- und Leitungssysteme bei `aufbauorganisation`.
+- LF1-09 ist Eigentümer für Leitbild-zu-Kriterium, funktionale Einheit,
+  Systemgrenze, IT-Lebenszyklus, nachhaltige Beschaffungsnachweise,
+  Kreislaufentscheidungen und belastbare ESG-Einordnung. Die reine
+  Energiekosten-/Wirkungsgradrechnung bleibt in `energiekosten`; Kauf-,
+  Leasing- und Mietformen bleiben in `kauf-leasing-miete`; Nutzwertmethodik
+  bleibt in `nutzwertanalyse`.
+- Entscheidung: **bestehenden Slug für stabile Links behalten, Inhalt und Titel
+  vollständig auf Nachhaltigkeit im IT-Betrieb fokussieren**. Detail-LCA,
+  Treibhausgasbilanzierung, aktuelle CSRD-Schwellen, Taxonomieprüfung,
+  Rechtsberatung und produktspezifische Ökodesign-Spezialregeln gehören nicht
+  in den Pflichtkern.
+
+### Quellen- und Benchmark-Matrix
+
+| Bereich | Quellen | Was fachlich folgt | Konsequenz fürs Kapitel |
+|---|---|---|---|
+| Offizieller Ausbildungsrahmen | KMK-Rahmenlehrplan LF1/LF2; FIAusbV Anlage erste 18 Monate; BIBB-Umsetzungshilfe | Unternehmensziele wirtschaftlich, ökologisch und sozial einordnen; Produkte nachhaltig auswählen; Arbeitsmittel ressourcen-, budget-, wirtschaftlich und ökologisch angemessen einsetzen. | Unternehmensziel, Beschaffung, Rechnen und Entscheidung als vollständige Handlung verbinden; keine isolierte ESG-Vokabelliste. |
+| Nachhaltigkeitsdimensionen | Deutsche Nachhaltigkeitsstrategie 2025 | Wirtschaftliche, soziale und ökologische Dimensionen sind integriert und systemisch in Einklang zu bringen. | Drei Dimensionen erklären, Zielkonflikte sichtbar machen und von ESG-Governance abgrenzen. |
+| Vergleichseinheit und Systemgrenze | Empfehlung (EU) 2021/2279 zu Environmental-Footprint-Methoden | Vergleichbare Funktion umfasst was, wie viel, wie gut und wie lange; Systemgrenzen müssen enthaltene und ausgeschlossene Lebenszyklusphasen benennen. | Funktionale Einheit und fünfteilige Vergleichsnotiz vor jede Mengen- oder Kostenbewertung stellen. |
+| Lebenszykluskosten und Nachweise | Richtlinie 2014/24/EU, Artikel 67 und 68 | Lebenszykluskosten können Anschaffung, Nutzung einschließlich Energie/Ressourcen, Wartung, Lebensende sowie überprüfbar monetarisierte Umweltfolgen umfassen; Kriterien und Anbieterdaten müssen überprüfbar sein. | Kaufpreis, TCO, Lebenszykluskosten und Nutzwert sauber trennen; keine erfundenen Umweltkosten. |
+| Produkt- und Reparaturrahmen | Verordnung (EU) 2024/1781; Blauer Engel DE-UZ 78 | Der EU-Rahmen adressiert unter anderem Haltbarkeit, Reparierbarkeit, Aufrüstung, Wiederverwendung, Recycling und Effizienz; der aktuelle Blaue-Engel-Kriterienkatalog für Computer konkretisiert unter anderem Garantie, Ersatzteile, Zerlegung, Energie, sichere Datenlöschung und soziale Fertigungskriterien. | Beschaffung als Dreischritt aus Muss-Kriterium, Bewertung und produktbezogenem Nachweis lehren; Umweltzeichen nicht als Pauschalurteil darstellen. |
+| Kreislauf und Elektroaltgeräte | Richtlinie 2008/98/EG in konsolidierter Fassung; EU-Kommission zu WEEE | Grundrangfolge: Vermeidung, Vorbereitung zur Wiederverwendung, Recycling, sonstige Verwertung, Beseitigung; bei Elektrogeräten haben Abfallvermeidung, Wiederverwendung und Ressourcengewinnung Vorrangziele. | Bedarf und Erhaltung vor Ausmusterung prüfen; Recycling nicht mit Weiterverwendung gleichsetzen; sichere Funktion und Datenlöschung ergänzen. |
+| ESG und dynamischer Rechtsstand | EU-Kommission, fortgeschriebene Übersicht zu CSRD/ESRS, Stand 31.07.2026 | Umwelt-, Sozial- und Governance-Themen werden in Berichtsstandards strukturiert; der Rechtsrahmen und die Standards wurden 2025/2026 verändert und vereinfacht. | ESG als Ordnungsraster lehren, keine Schwellenwerte memorieren oder aus Übungsfällen reale Berichtspflichten ableiten. |
+| Lokales Community-Material | `material/AP1_Lernzettel.pdf`, Seiten 34–35; `material/AP1_Lernplan.md`, Abschnitt Hardware und Energie | Der Lernzettel nennt nur funktionale, ökonomische und ökologische Auswahlaspekte; sozialer Blick, ESG, Nachweiskette, gleiche Funktion und vollständiger Lebenszyklus fehlen. Der Lernplan enthält nur Stromkosten, Wirkungsgrad und Hardwarestichworte. | Nur als Lücken- und Tiefenhinweis verwendet. Keine Definition, Zahl oder Formulierung wurde daraus übernommen. |
+
+### Bestands- und Abgrenzungsbefund
+
+| Bestand | Befund | Änderung |
+|---|---|---|
+| Altes MDX-Sammelkapitel | 453 Zeilen mit erneuten Rechtsformtabellen, Leitungssystemen, Leitbild, dünnem Nachhaltigkeitsabschnitt und veränderlichen Rechtsbehauptungen. Teilweise ASCII-Umlaute, doppelte Aufgabenzeile und manuelle Quellenliste. | Vollständig als 70-Minuten-Lernpaket mit 801 Zeilen neu geschrieben; Rechts- und Organisationsdublette entfernt, automatische Quellenzuordnung verwendet. |
+| `rechtsformen` und `aufbauorganisation` | Bereits eindeutige Eigentümer mit eigenem Scope und Fachquellen. | Scope-Dublette `kmk-lf1-04` entfernt; Glossarlinks für Linie und Matrix auf `aufbauorganisation` korrigiert. |
+| `energiekosten` | Enthält Formel, Wirkungsgrad und Amortisation, ist aber noch ungeprüft. | In LF1-09 nur die für den Lebenszyklusvergleich notwendige kWh-/Kostenrechnung vollständig erklärt und zur Vertiefung verlinkt. |
+| `kauf-leasing-miete` und `nutzwertanalyse` | Eigentümer für Finanzierungs-/Nutzungsform und gewichtete Entscheidungsmethode. | TCO/Lebenszykluskosten werden abgegrenzt; keine zweite Leasing- oder Punktwertlehre. |
+| Glossar | ESG, Leitbild und Nachhaltigkeit verwiesen auf den alten Titel; funktionale Einheit, Greenwashing, Kreislaufwirtschaft, Lebenszyklus und Lebenszykluskosten fehlten. | Definitionen präzisiert, fünf neue Begriffe ergänzt, Eigentümerlinks für Linie und Matrix repariert. |
+
+### Fakten- und Rechen-Gate
+
+1. Die Deutsche Nachhaltigkeitsstrategie 2025 beschreibt wirtschaftliche,
+   soziale und ökologische Nachhaltigkeit als drei in Einklang zu bringende
+   Dimensionen. Das Kapitel setzt Governance ausdrücklich nicht mit der
+   wirtschaftlichen Dimension gleich.
+2. Die EU-Environmental-Footprint-Methode verlangt bei der funktionalen Einheit
+   die Funktion, Menge, Qualität und Dauer; eine Systemgrenze nennt enthaltene
+   und ausgeschlossene Prozesse beziehungsweise Lebenszyklusphasen.
+3. Artikel 68 der Richtlinie 2014/24/EU nennt Anschaffung, Nutzung
+   einschließlich Energie und Ressourcen, Wartung und Kosten am Lebensende;
+   Umweltfolgekosten benötigen einen bestimmbaren und überprüfbaren Geldwert.
+4. Artikel 67 verlangt verknüpfte und überprüfbare Kriterien statt
+   unbeschränkter Auswahlfreiheit. Das Kapitel trennt deshalb Muss-Kriterium,
+   Bewertungskriterium und Nachweis.
+5. Die Verordnung (EU) 2024/1781 ist ein Rahmen für produktbezogene
+   Ökodesignanforderungen; das Kapitel behauptet nicht, jedes Merkmal gelte
+   bereits pauschal für jedes Notebook.
+6. DE-UZ 78, Ausgabe Juli 2024, nennt unter anderem Garantie,
+   Erweiterbarkeit, Reparierbarkeit, Ersatzteile, Energie, sichere
+   Datenlöschung und soziale Anforderungen. Das Kapitel begrenzt ein Zeichen
+   auf konkretes Produkt, gültige Kriterien und Zertifizierungsumfang.
+7. Die europäische Abfallhierarchie ordnet Vermeidung vor Vorbereitung zur
+   Wiederverwendung, Recycling, sonstiger Verwertung und Beseitigung ein und
+   lässt begründete Abweichungen für das beste Gesamtergebnis zu.
+8. Die aktuelle EU-Kommissionsseite dokumentiert Änderungen am
+   Nachhaltigkeitsberichtsrahmen bis Juli 2026. Das Kapitel nennt deshalb keine
+   volatile Unternehmensschwelle.
+9. Die Grundrechnung wurde unabhängig mit Einheiten geprüft: A benötigt je
+   Gerät `0,045 kW × 8.000 h = 360 kWh`, B `0,030 kW × 8.000 h = 240 kWh`;
+   für 40 Geräte beträgt die Differenz `4.800 kWh`.
+10. Bei 0,35 €/kWh ergeben sich 126 € beziehungsweise 84 € Energie je Gerät.
+    Die vereinfachten TCO sind 986 € und 964 € je Gerät beziehungsweise
+    39.440 € und 38.560 € für die Flotte; die Differenz von 880 € stimmt.
+11. Der Empfindlichkeitswert ist korrekt: Die 20 € höheren Nichtenergiekosten
+    von B geteilt durch 120 kWh Einsparung ergeben 0,1667 €/kWh. Das Kapitel
+    formuliert das Ergebnis ausdrücklich nur für unveränderte Annahmen.
+12. Ohne passenden Emissionsfaktor und Herstellungsdaten wird weder eine
+    CO₂-Menge noch ein vollständiger Umweltvorteil behauptet.
+
+### Didaktik-, Aufgaben- und Umfangs-Gate
+
+- Didaktik: Ein durchgehender Beschaffungsfall für 40 Notebooks verbindet
+  Leitbild, drei Dimensionen, funktionale Einheit, Systemgrenze,
+  Lebenszyklus, Energie, TCO, Nachweise, ESG und bedingte Empfehlung. Ein
+  zugängliches Lebenszyklus-Schaubild, Vergleichstabellen, ein
+  Acht-Schritte-Verfahren, vollständige Rechnung samt Empfindlichkeit,
+  Transfer für FIAE/FISI, Fehlerdiagnosen und gelöster Selbstcheck führen ohne
+  Vorwissen durch das Thema.
+- Aufgabenfamilien: Kriterien zuordnen, Energie/TCO rechnen, unvollständige
+  Umweltbehauptung diagnostizieren, Beschaffungsnachweis anwenden und eine
+  Entscheidung mit Grenzen begründen. Keine Originalprüfungsaufgabe,
+  CO₂-Schätzung oder Punktebehauptung.
+- Pflicht: drei Dimensionen, Leitbildableitung, gleiche Funktion/Zeitraum,
+  Lebenszyklus, Energie-/Kostenbasis, TCO/LCC-Abgrenzung, nachhaltige
+  Beschaffung, Reparatur/Wiederverwendung, sozialer Blick, ESG mit
+  Datenqualität und vollständige Entscheidung. Kann: Abfallhierarchie,
+  Umweltzeichenbeispiel, Empfindlichkeitsrechnung, Refurbished- und
+  Softwaretransfer. Extra/Raus: vollständige LCA/PEF-Berechnung, Scope-1-bis-3-
+  Bilanz, CSRD-/ESRS-Detailkurs, EU-Taxonomieprüfung, Lieferkettenrechtsberatung
+  und produktspezifische Delegated Acts.
+
+### Technik-Gate und Entscheidung
+
+- `npm run emit:status`: bestanden; 121 Kapitel und sechs ehrliche
+  Qualitätsbefunde ausgegeben (2026-07-31).
+- `npm run emit:scope`: bestanden; 107 Pflichtatome, davon 47 mit vollständigem
+  Lerntextpaket und zwei vollständig geprüft (2026-07-31).
+- `npm run test`: bestanden (3 Testdateien, 32 Tests, 2026-07-31). Der neue
+  Regressionstest sichert Fokus, Quellen, Scope-Abgrenzung und Glossar-Terme
+  von LF1-09.
+- `npm run lint`: bestanden (2026-07-31).
+- `npm run build`: bestanden; TypeScript und Vite-Produktions-Build
+  einschließlich MDX/SVG erfolgreich (2026-07-31).
+- `npm run build:single`: bestanden; Offline-Einzeldatei erzeugt
+  (2026-07-31).
+- `git diff --check`: bestanden.
+- Vertrauen `teilgeprueft`. Quellen-, Fakten-, Rechen-, Didaktik-, Aufgaben-,
+  Umfangs- und Technikpass sind abgeschlossen. Für `geprueft` fehlen ein
+  unabhängiger Fachprüfpass, ein belastbarer Q3-Abgleich und die Vollkataloge
+  6392/6393. Der Haken für LF1-09 bleibt deshalb offen.

@@ -25,6 +25,7 @@ export const ap1ScopeItems: readonly ScopeItem[] = [
   ap1('ap1-auswahl-beschaffung', 2, 'auswaehlen', 'Geeignete Hard- und Software auswählen und die Beschaffung einleiten.', [
     'cpu-ram-speicher', 'hardware-schnittstellen', 'lizenzmodelle', 'angebotsvergleich',
     'nutzwertanalyse', 'kaufmaennische-rechenaufgaben', 'vertragsarten', 'maengelruege',
+    'organisationsformen-leitbild-nachhaltigkeit-esg',
   ]),
   ap1('ap1-konfiguration-test', 3, 'umsetzen', 'Einen IT-Arbeitsplatz konfigurieren und testen und dabei Datenschutz, IT-Sicherheit und Qualitätssicherung einhalten.', [
     'dateisysteme', 'virtualisierung', 'zentral-dezentral', 'netzwerkkonfiguration',

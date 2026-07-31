@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const eBisH: GlossarEintrag[] = [
   {
+    id: 'funktionale-einheit',
+    begriff: 'Funktionale Einheit',
+    kurzdefinition: 'Gemeinsame, eindeutig beschriebene Leistung, auf die ein Vergleich bezogen wird.',
+    definition: [
+      'Eine funktionale Einheit verbindet Menge, Qualitätsanforderungen und Zeitraum. Erst dadurch werden Alternativen verglichen, die tatsächlich denselben Bedarf erfüllen.',
+      'Für eine Arbeitsplatzbeschaffung kann sie beispielsweise 40 verwaltete mobile Arbeitsplätze mit festgelegter Leistung, Sicherheit und Zugänglichkeit über fünf Jahre beschreiben.',
+    ],
+    kapitel: {
+      titel: 'Nachhaltigkeit im IT-Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+    },
+  },
+  {
+    id: 'greenwashing',
+    begriff: 'Greenwashing',
+    kurzdefinition: 'Irreführende oder nicht hinreichend belegte Umwelt- oder Nachhaltigkeitskommunikation.',
+    definition: [
+      'Eine Aussage wird belastbar, wenn Produktbezug, Vergleichsbasis, Systemgrenze, Zeitraum, Messgröße, Methode, Quelle und relevante Ausschlüsse erkennbar sind.',
+      'Fehlen diese Angaben, wird die Aussage zunächst als offene Prüffrage behandelt. Eine sachliche Quellenprüfung ist stärker als eine unbelegte Beschuldigung.',
+    ],
+    kapitel: {
+      titel: 'Nachhaltigkeit im IT-Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+    },
+  },
+  {
     id: 'geschlossene-frage',
     begriff: 'Geschlossene Frage',
     kurzdefinition: 'Frage mit begrenztem Antwortbereich, etwa Ja/Nein, einem Wert oder einer vorgegebenen Auswahl.',
@@ -214,11 +240,11 @@ export const eBisH: GlossarEintrag[] = [
       begriff: 'ESG',
       kurzdefinition: 'Raster für Umwelt, Soziales und verantwortliche Unternehmensführung.',
       definition: [
-        'ESG steht für Environmental, Social und Governance. Es sortiert Verantwortung in Umweltaspekte, soziale Aspekte und Regeln der Unternehmensführung.',
-        'In AP1-Aufgaben ordnest du Kriterien zu: Stromverbrauch und E-Waste zu Environmental, Schulung und Barrierefreiheit zu Social, Compliance und Kontrollen zu Governance.',
+        'ESG steht für Environmental, Social und Governance. Es ordnet Umweltwirkungen, Auswirkungen auf Menschen sowie Führung, Regeln und Kontrollen.',
+        'ESG ist ein Analyseraster und kein pauschaler Nachhaltigkeitsbeweis. Es ersetzt weder die wirtschaftliche Rechnung noch eine klare Bezugsgröße, Datenquelle und Systemgrenze.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
+        titel: 'Nachhaltigkeit im IT-Betrieb',
         href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
       },
     },

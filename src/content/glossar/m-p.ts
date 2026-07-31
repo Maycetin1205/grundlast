@@ -319,7 +319,7 @@ export const mBisP: GlossarEintrag[] = [
       },
     },
   {
-      id: 'matrixorganisation',
+    id: 'matrixorganisation',
       begriff: 'Matrixorganisation',
       kurzdefinition: 'Organisationsform mit doppelter Zuordnung, etwa zu Fachabteilung und Projekt.',
       definition: [
@@ -327,8 +327,8 @@ export const mBisP: GlossarEintrag[] = [
         'Sie verbindet Fachwissen und Projektfokus, erzeugt aber Konfliktpotenzial bei Prioritäten, Ressourcen und Entscheidungsbefugnissen.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Aufbau- und Ablauforganisation',
+        href: '/lernen/wirtschaft/unternehmen/aufbauorganisation',
       },
     },
   {
@@ -492,11 +492,11 @@ export const mBisP: GlossarEintrag[] = [
       begriff: 'Nachhaltigkeit',
       kurzdefinition: 'Langfristig tragfähiges Handeln mit wirtschaftlicher, ökologischer und sozialer Perspektive.',
       definition: [
-        'Nachhaltigkeit bedeutet im Unternehmen, Entscheidungen nicht nur nach kurzfristigem Preis zu treffen, sondern langfristige wirtschaftliche, ökologische und soziale Folgen zu berücksichtigen.',
-        'In IT-Aufgaben betrifft das zum Beispiel Energieverbrauch, Lebensdauer, Reparierbarkeit, E-Waste, Lieferantenwahl, Ergonomie, Barrierefreiheit und Datenschutz.',
+        'Nachhaltigkeit bedeutet im Unternehmen, Entscheidungen langfristig tragfähig zu gestalten und wirtschaftliche, ökologische sowie soziale Auswirkungen gemeinsam zu betrachten.',
+        'Für IT werden gleiche Funktionen und Zeiträume verglichen. Energie, Lebensdauer, Reparatur, Weiterverwendung, Kosten, Zugänglichkeit und belastbare Nachweise können dabei relevant sein.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
+        titel: 'Nachhaltigkeit im IT-Betrieb',
         href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
       },
     },

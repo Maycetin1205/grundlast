@@ -2,6 +2,45 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const iBisL: GlossarEintrag[] = [
   {
+    id: 'kreislaufwirtschaft',
+    begriff: 'Kreislaufwirtschaft',
+    kurzdefinition: 'Wirtschaftsweise, die Produkte und Materialien möglichst lange in Nutzung hält.',
+    definition: [
+      'Kreislaufwirtschaft verringert Abfall und neue Ressourcennutzung durch Vermeidung, Erhaltung, Reparatur, Aufrüstung, Wiederverwendung und anschließend geeignete Verwertung.',
+      'Recycling ist ein wichtiger Teil, aber nicht dasselbe wie die Weiterverwendung eines noch funktionsfähigen Geräts.',
+    ],
+    kapitel: {
+      titel: 'Nachhaltigkeit im IT-Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+    },
+  },
+  {
+    id: 'lebenszyklus',
+    begriff: 'Lebenszyklus',
+    kurzdefinition: 'Abgegrenzter Weg einer Lösung von Bedarf und Beschaffung bis zu Weiterverwendung oder Entsorgung.',
+    definition: [
+      'Welche Phasen zum Lebenszyklusvergleich gehören, wird als Systemgrenze festgelegt. Bei IT können Herstellung, Transport, Einrichtung, Nutzung, Wartung, Reparatur, Zweitnutzung und Ausmusterung relevant sein.',
+      'Fehlen für eine Phase vergleichbare Daten, bleibt sie als Datenlücke sichtbar. Eine Nutzungsenergierechnung ist deshalb noch kein vollständiger Umweltfußabdruck.',
+    ],
+    kapitel: {
+      titel: 'Nachhaltigkeit im IT-Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+    },
+  },
+  {
+    id: 'lebenszykluskosten',
+    begriff: 'Lebenszykluskosten',
+    kurzdefinition: 'Kosten einer Leistung über die festgelegten Phasen ihres Lebenszyklus.',
+    definition: [
+      'Lebenszykluskosten können Anschaffung, Nutzung, Energie und Ressourcen, Wartung sowie Rückgabe, Sammlung oder Verwertung umfassen.',
+      'Nach einer klaren Methode können auch überprüfbar monetarisierte Umweltfolgekosten einbezogen werden. Nicht vorgegebene Werte werden nicht erfunden.',
+    ],
+    kapitel: {
+      titel: 'Nachhaltigkeit im IT-Betrieb',
+      href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+    },
+  },
+  {
     id: 'kernbotschaft',
     begriff: 'Kernbotschaft',
     kurzdefinition: 'Zentrale vollständige Aussage, die Adressaten nach einer Darstellung verstanden haben sollen.',
@@ -587,7 +626,7 @@ export const iBisL: GlossarEintrag[] = [
         'Prüfungsstark wird es, wenn du daraus konkrete Folgen ableitest, etwa für Service, Beschaffung, Datenschutz, Qualität, Schulung oder Nachhaltigkeit.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
+        titel: 'Nachhaltigkeit im IT-Betrieb',
         href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
       },
     },
@@ -613,8 +652,8 @@ export const iBisL: GlossarEintrag[] = [
         'Vorteil sind klare Verantwortung und einfache Orientierung. Nachteil können lange Entscheidungswege und starke Belastung der Leitung sein.',
       ],
       kapitel: {
-        titel: 'Organisationsformen, Leitbild, Nachhaltigkeit und ESG',
-        href: '/lernen/wirtschaft/unternehmen/organisationsformen-leitbild-nachhaltigkeit-esg',
+        titel: 'Aufbau- und Ablauforganisation',
+        href: '/lernen/wirtschaft/unternehmen/aufbauorganisation',
       },
     },
   {
