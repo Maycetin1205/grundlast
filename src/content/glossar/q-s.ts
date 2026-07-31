@@ -251,14 +251,14 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'sbi-feedback',
       begriff: 'SBI-Feedback',
-      kurzdefinition: 'Methode der gewaltfreien Rückmeldung: Situation - Behavior - Impact, also Situation, beobachtbares Verhalten, Auswirkung.',
+      kurzdefinition: 'Rückmeldestruktur aus Situation, beobachtbarem Verhalten und tatsächlicher Auswirkung.',
       definition: [
-        'Das SBI-Modell (Center for Creative Leadership) strukturiert ein Feedback-Gespräch in drei Schritten: Situation - wann/wo war es konkret, Behavior - was hat die Person beobachtbar getan (kein Urteil), Impact - welche Auswirkung hatte das Verhalten auf dich, das Team oder das Ergebnis.',
-        'Prüfungsrelevant: SBI ist die saubere Form, "Du-Botschaften" und Pauschalurteile zu vermeiden. Ich-Botschaft statt Schuldzuweisung. Verwandt: STAR-Methode (Situation, Task, Action, Result) wird eher für Bewerbungsgespräche und Leistungsbewertung verwendet.',
+        'Das Center for Creative Leadership strukturiert Feedback in drei Schritten: konkrete Situation, tatsächlich sicht- oder hörbares Verhalten und die entstandene Auswirkung. Motive oder Charaktereigenschaften werden nicht als Beobachtung ausgegeben.',
+        'Eine anschließende Frage nach der Absicht macht die einseitige Rückmeldung zum Dialog. Bitte oder Vereinbarung können danach den nächsten überprüfbaren Schritt festlegen; sie sind nicht Teil der drei Buchstaben SBI.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
-        href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+        titel: 'Kommunikation, aktives Zuhören & Feedback',
+        href: '/lernen/projekt/service-management/schulz-von-thun',
       },
     },
   {
@@ -446,16 +446,29 @@ export const qBisS: GlossarEintrag[] = [
   {
       id: 'sender-empfaenger',
       begriff: 'Sender-Empfänger-Modell',
-      kurzdefinition: 'Grundmodell der Kommunikation: ein Sender kodiert eine Nachricht, der Empfänger dekodiert sie - mit möglichen Störungen unterwegs.',
+      kurzdefinition: 'Vereinfachtes Schema aus Sender, kodierter Nachricht, Kanal, möglicher Störung, Empfänger und Rückkopplung.',
       definition: [
-        'Das Modell geht auf Shannon und Weaver (1948) zurück und beschreibt Kommunikation als Kette: Sender, Kodierung, Kanal, Dekodierung, Empfänger. Störungen können auf jeder Stufe auftreten - etwa Mehrdeutigkeit beim Kodieren, Hintergrundlärm im Kanal oder unterschiedliche Deutung beim Empfänger.',
-        'Prüfungsrelevant: Das Modell ist die Grundlage für alle weiteren Kommunikationsmodelle (Vier-Ohren, Watzlawick). Verstehe: Eine Nachricht ist nicht das, was der Sender meint, sondern das, was beim Empfänger ankommt.',
+        'Claude Shannons technische Nachrichtentheorie von 1948 unterscheidet Informationsquelle, Sender, Kanal, Störquelle, Empfänger und Ziel. Shannon schließt die Bedeutung einer Nachricht aus diesem technischen Problem ausdrücklich aus.',
+        'Für zwischenmenschliche Kommunikation wird das Schema didaktisch um Kontext, Deutung und Rückkopplung erweitert. Es zeigt mögliche Störstellen, beweist aber weder Absicht noch Bedeutung einer Äußerung.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
-        href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+        titel: 'Kommunikation, aktives Zuhören & Feedback',
+        href: '/lernen/projekt/service-management/schulz-von-thun',
       },
     },
+  {
+    id: 'suggestivfrage',
+    begriff: 'Suggestivfrage',
+    kurzdefinition: 'Frage, deren Formulierung eine gewünschte Antwort oder Bewertung nahelegt.',
+    definition: [
+      '"Das Update ist also schuld, richtig?" legt Ursache und Zustimmung bereits nahe. Dadurch kann eine neutrale Bedarfserhebung oder Fehleranalyse verzerrt werden.',
+      'Neutraler sind offene oder klar prüfende Fragen: "Seit wann tritt der Fehler auf?" und "Welche Änderungen gab es in diesem Zeitraum?"',
+    ],
+    kapitel: {
+      titel: 'Kommunikation, aktives Zuhören & Feedback',
+      href: '/lernen/projekt/service-management/schulz-von-thun',
+    },
+  },
   {
       id: 'sequenz',
       begriff: 'Sequenz',

@@ -1,858 +1,419 @@
-# Bedarfsanalyse, Kommunikation & Feedback
+# Bedarfsanalyse und Anforderungsklärung
 
-<MetaBar
-  lernfeld="LF 1 / LF 6 — Kommunikation, Bedarfsermittlung und Feedback"
-  prüfungsrelevanz="PFLICHT · 5/5"
-/>
+## Worum geht es?
 
-Dieses Kapitel bündelt drei Themenstränge, die in der Prüfung immer wieder zusammen abgefragt
-werden: strukturierte Bedarfsanalyse mit den klassischen Erhebungsmethoden, das
-Sender-Empfänger- und Vier-Ohren-Modell als Grundlage jeder Kundenkommunikation, sowie
-saubere Feedback- und Präsentationstechnik nach AIDA und SBI. Der bestehende Body zur
-reinen Bedarfsanalyse bleibt erhalten und wird um den vollständigen Kommunikations-Teil
-ergänzt — denn Bedarf und Feedback teilen denselben Methodenkanon: Fragen stellen,
-zuhören, ordnen, zurückspiegeln.
+Kunden nennen häufig bereits eine Lösung: „Wir brauchen neue Notebooks“, „Wir
+möchten ein anderes Ticketsystem“ oder „Das WLAN muss schneller werden“. Bevor
+Produkte ausgewählt oder Änderungen umgesetzt werden, muss geklärt werden,
+welches Problem besteht, welcher Zielzustand erreicht werden soll und welche
+Randbedingungen gelten. Nach diesem Kapitel kannst du Bedarfe systematisch
+ermitteln, geeignete Erhebungstechniken auswählen, Anforderungen verständlich
+dokumentieren, priorisieren und mit Beteiligten validieren.
 
-## 01 · Warum existiert das überhaupt?
+## Ausgangssituation
 
-In den letzten zehn Aufgaben kam fast jedes Mal eine Variante derselben Aufgabe:
-Ein Kunde meldet einen vagen Wunsch („wir brauchen neue Tablets"), eine Kollegin reagiert
-mit einer mehrdeutigen Aussage („das System ist wieder mal langsam"), oder eine
-Mitarbeiterin soll nach einer Software-Einführung Feedback geben. Du sollst die richtige
-Erhebungsmethode wählen, die Aussage auf der passenden Kommunikationsebene einordnen
-und eine konkrete Antwort oder Maßnahme formulieren. Die Aufgaben verlangen kein
-Spezialwissen, sondern strukturierte Gesprächsführung — und genau die wird aus vier
-Modellen aufgebaut: Sender-Empfänger, Vier-Ohren, SBI und AIDA.
+Eine Kanzlei fordert 25 neue Notebooks, weil „die alten Geräte zu langsam“
+seien. Das Budget beträgt höchstens 32.000 €. Noch ist unklar:
 
-Im Betrieb spart die Disziplin Zeit. Wer eine Lösung kauft, ohne den Bedarf erhoben zu
-haben, repariert das falsche Problem. Wer Feedback ohne Struktur gibt, eskaliert
-Konflikte statt sie zu klären. Wer eine Präsentation ohne dramaturgischen Bogen baut,
-wird nicht zugehört.
+- Welche Tätigkeiten sind tatsächlich zu langsam?
+- Liegt die Ursache an CPU, Arbeitsspeicher, Massenspeicher, Netzwerk,
+  Fachsoftware oder Prozess?
+- Welche Geräte und Benutzer sind betroffen?
+- Welche Sicherheits-, Datenschutz- und Supportvorgaben gelten?
+- Woran wird später geprüft, ob die Lösung den Bedarf erfüllt?
 
-<Analogie>
-Bedarfsanalyse ist wie eine ärztliche Anamnese. Ein guter Arzt verschreibt nicht sofort
-ein Medikament, weil jemand „mir geht es schlecht" sagt. Er fragt nach Symptomen,
-Dauer, Vorgeschichte, Belastung und bisherigen Versuchen. Erst aus den Antworten
-entsteht eine Diagnose. Eine *<Term id="bedarfsanalyse">Bedarfsanalyse</Term>*
-funktioniert genauso: erst der Befund (Ist-Zustand und Ziel), dann die Methode
-(*<Term id="interview">Interview</Term>*, *<Term id="fragebogen">Fragebogen</Term>* oder
-*<Term id="beobachtung">Beobachtung</Term>*), dann die Diagnose (Anforderung und
-Priorität), dann das Rezept (die Lösung). Wer die Reihenfolge umkehrt, behandelt
-Symptome statt Ursachen.
-</Analogie>
+Wer sofort ein Modell auswählt, verwechselt den genannten **Lösungswunsch** mit
+einer geprüften Anforderung.
 
-<Tipp titel="So benutzt du dieses Kapitel">
-Lies das Kapitel als Gesprächswerkzeugkasten: Erst klärst du den Bedarf, dann prüfst
-du, wie Aussagen verstanden werden können, danach formulierst du Feedback oder eine
-Präsentation. In Prüfungsaufgaben ist meistens nicht ein Modell allein gefragt,
-sondern die saubere Auswahl des passenden Modells.
-</Tipp>
+## Vorwissensbrücke
 
-| Wenn die Aufgabe verlangt ... | Nutze zuerst ... | Achte besonders auf ... |
+Die Gesprächswerkzeuge aus
+[Kommunikation, aktivem Zuhören und Feedback](/lernen/projekt/service-management/schulz-von-thun)
+helfen beim Erheben: offen fragen, paraphrasieren, präzisieren und das Ergebnis
+bestätigen lassen. Dieses Kapitel konzentriert sich auf den fachlichen
+Handlungsgang von der Ausgangslage bis zur abgestimmten Anforderung.
+
+## Wunsch, Problem, Bedarf, Anforderung und Lösung
+
+Diese Begriffe müssen getrennt bleiben:
+
+| Begriff | Leitfrage | Beispiel |
 |---|---|---|
-| Bedarf erheben | Ist-Soll-Vergleich und Erhebungsmethode | Wunsch nicht mit Bedarf verwechseln |
-| Aussage deuten | Vier-Ohren-Modell | Sach-, Selbstoffenbarungs-, Beziehungs- und Appellebene trennen |
-| Rückmeldung verbessern | SBI-Feedback | konkrete Situation statt Pauschalurteil |
-| Präsentation skizzieren | AIDA | klares Ziel und konkrete Handlung am Ende |
+| Wunsch | Was verlangt die Person spontan? | „Wir brauchen neue Notebooks.“ |
+| Problem | Welche unerwünschte Situation ist beobachtbar? | Der Start der Fachanwendung dauert auf 18 Geräten zwei bis vier Minuten. |
+| Ziel | Welcher Zustand soll erreicht werden? | Die Anwendung ist spätestens 30 Sekunden nach Anmeldung arbeitsbereit. |
+| Bedarf | Welche Lücke zwischen Ausgangs- und Zielzustand muss geschlossen werden? | Startzeit reduzieren und 18 Arbeitsplätze zuverlässig arbeitsfähig machen. |
+| Anforderung | Welche prüfbare Eigenschaft muss die Lösung besitzen oder welche Randbedingung einhalten? | „Auf jedem betroffenen Arbeitsplatz ist die Fachanwendung innerhalb von 30 Sekunden nach Anmeldung nutzbar.“ |
+| Lösung | Womit wird die Anforderung umgesetzt? | Aufrüstung, Neuanschaffung, Softwareoptimierung oder eine Kombination. |
 
----
+Ein <Term id="ist-soll-vergleich">Ist-Soll-Vergleich</Term> stellt den
+beobachteten Ausgangszustand dem gewünschten Zielzustand gegenüber. Die Lücke
+kann quantitativ sein, etwa 180 statt 30 Sekunden, aber auch qualitativ, etwa
+fehlende Barrierefreiheit oder unklare Zuständigkeit. „Bedarf = Soll minus Ist“
+ist deshalb ein **Denkbild**, keine universelle Rechenformel.
 
-## 02 · Das Grundprinzip
-
-### Bedarf = Soll minus Ist
-
-Eine Bedarfsanalyse klärt vier Begriffe, die im Alltag oft durcheinanderlaufen:
-
-| Begriff | Bedeutung | Beispiel |
-|---|---|---|
-| Wunsch | was der Kunde spontan verlangt | „Wir brauchen neue Tablets." |
-| Problem | was eigentlich nicht funktioniert | Lagerdaten lassen sich mobil nicht erfassen |
-| Anforderung | was die Lösung leisten muss | robust, WLAN-fähig, 8 Stunden Akkulaufzeit |
-| Lösung | konkretes Produkt oder Vorgehen | bestimmte Tablets plus MDM und WLAN-Ausbau |
-
-Die Differenz zwischen *Soll* (gewünschter Zustand) und *Ist* (aktueller Zustand) ergibt
-den Bedarf. Solange diese beiden Zahlen nicht messbar definiert sind, kann keine
-Anforderung priorisiert und keine Lösung verglichen werden. Das ist der Kern des
-*<Term id="ist-soll-vergleich">Ist-Soll-Vergleichs</Term>*.
-
-<Warnung titel="Wunsch ist nicht Bedarf">
-Wenn ein Kunde direkt eine Lösung nennt, ist die Analyse noch nicht abgeschlossen.
-Frage zuerst, welches Problem gelöst werden soll. Sonst kaufst du Tablets, obwohl
-eigentlich das WLAN, die Software oder der Prozess die eigentliche Schwachstelle ist.
+<Warnung titel="Eine genannte Lösung ist noch keine Anforderung">
+„Notebook Modell X kaufen“ schränkt die Lösung vor der Ursachen- und
+Bedarfsklärung ein. Eine solche Vorgabe kann berechtigt sein, muss dann aber als
+Randbedingung samt Entscheidungsgrund dokumentiert werden.
 </Warnung>
 
-### Kommunikation ist mehr als Information
+## Systemgrenze, Kontext und Beteiligte
 
-Jeder Bedarf wird in einem Gespräch erhoben — und jedes Gespräch folgt dem
-*<Term id="sender-empfänger">Sender-Empfänger-Modell</Term>*: Ein Sender kodiert eine
-Botschaft (Sprache, Tonfall, Mimik), schickt sie über einen Kanal (Telefon, E-Mail,
-persönliches Gespräch), der Empfänger dekodiert sie. Auf jeder Stufe können Störungen
-auftreten — Mehrdeutigkeit beim Kodieren, Hintergrundlärm im Kanal, andere Erwartungen
-beim Dekodieren.
+Eine <Term id="bedarfsanalyse">Bedarfsanalyse</Term> beginnt mit der Grenze des
+Auftrags. Ohne Grenze wächst die Untersuchung beliebig.
 
-```
-Sender → kodiert → Kanal → dekodiert → Empfänger
-                       ↑
-                  Störungen
-```
+Kläre mindestens:
 
-Eine Aussage ist deshalb nicht das, was der Sender meint, sondern das, was beim
-Empfänger ankommt. Genau hier setzt das *<Term id="vier-ohren">Vier-Ohren-Modell</Term>*
-von Friedemann Schulz von Thun an: jede Nachricht hat vier Schichten, und je nach
-Schicht versteht der Empfänger etwas anderes.
+- **Leistungsgegenstand:** Welche Arbeitsplätze, Anwendungen und Prozesse
+  gehören zum Auftrag?
+- **Nutzer und Betroffene:** Wer arbeitet mit der Lösung, wer wird indirekt
+  beeinflusst?
+- **Entscheidung und Freigabe:** Wer priorisiert, genehmigt Budget und nimmt das
+  Ergebnis ab?
+- **Schnittstellen:** Welche Systeme, Daten, Geräte und Dienstleister wirken
+  mit?
+- **Randbedingungen:** Budget, Termine, Recht, Sicherheit, Barrierefreiheit,
+  Nachhaltigkeit und betriebliche Standards.
+- **Ausnahmen:** Was gehört ausdrücklich nicht zum Auftrag?
 
-| Schicht | Beim Sender | Beim Empfänger |
+Anforderungsquellen sind nicht nur Menschen. Das IREB nennt auch Dokumente und
+bestehende Systeme. Für den Lernfall können das sein:
+
+| Quelle | Mögliche Information | Typische Grenze |
 |---|---|---|
-| Sachinhalt | Was ist die Sachinformation? | Was wird mir mitgeteilt? |
-| Selbstoffenbarung | Was sage ich über mich aus? | Was sagt mir das über den Sender? |
-| Beziehung | Wie stehe ich zum Empfänger? | Wie behandelt mich der Sender? |
-| Appell | Was möchte ich erreichen? | Was soll ich tun? |
+| Benutzer | Ablauf, Hindernisse, Nutzungssituation | beschreibt persönliche Perspektive, nicht automatisch alle Fälle |
+| Auftraggeber | Ziele, Budget und Priorität | kennt Detailabläufe möglicherweise nicht |
+| Administratoren und Support | technische Abhängigkeiten und häufige Fehler | sieht vor allem gemeldete oder messbare Fälle |
+| Dokumente und Verträge | Vorgaben, Lizenzen, SLA, Datenschutz, Prozesse | können veraltet oder widersprüchlich sein |
+| vorhandenes System und Protokolle | Konfiguration, Laufzeiten, Mengen und Ereignisse | Daten brauchen Kontext; Nicht-Gemeldetes bleibt unsichtbar |
+| Gesetze, Normen und Betriebsregeln | verbindliche oder vereinbarte Anforderungen | Geltungsbereich muss geprüft werden |
 
-Wer als Empfänger nur auf einer Ebene hört („Sach-Ohr"), verpasst die anderen drei und
-reagiert oft daneben. Wer als Sender alle vier Ebenen unbewusst füllt, wird leicht
-missverstanden.
+Fehlt eine relevante Quelle, kann die Anforderungsliste unvollständig werden.
+Stakeholder werden deshalb nicht einmalig, sondern während der Analyse erneut
+geprüft.
 
-### Feedback ist die kontrollierte Rückkopplung
+## Erhebungstechniken passend auswählen
 
-Feedback bedeutet, eine Beobachtung an den Sender zurückzugeben — strukturiert, ohne
-Pauschalurteil, mit konkretem Beispiel. Das Standardmuster heißt
-*<Term id="sbi-feedback">SBI</Term>* (Situation, Behavior, Impact): erst die Situation
-beschreiben, dann das beobachtbare Verhalten benennen, dann die Auswirkung erklären.
+Das IREB unterscheidet unter anderem Befragungs-, Beobachtungs-,
+Zusammenarbeits- und artefaktbasierte Techniken. Keine Methode ist in jeder
+Situation die beste.
 
-```
-Situation:    Im Kundengespräch heute Vormittag…
-Behavior:     …hast du die Frage zum Lieferdatum unbeantwortet gelassen.
-Impact:       Der Kunde war danach unsicher, ob wir den Termin halten können.
-```
-
-Wichtig: Feedback ist keine Diagnose des Charakters, sondern Beobachtung von Verhalten.
-Wer „du bist immer so unfreundlich" sagt, gibt kein Feedback, sondern fällt ein
-Pauschalurteil. SBI verhindert das systematisch.
-
-### Präsentation folgt einer Dramaturgie
-
-Eine Präsentation ist verkürzte Kommunikation. Sie hat wenig Zeit, viele Empfänger und
-einen klaren Auftrag: eine Botschaft soll ankommen und eine Handlung auslösen. Genau
-dafür wurde 1898 das *<Term id="aida">AIDA</Term>*-Modell formuliert. Vier Stufen,
-in fester Reihenfolge:
-
-```
-Attention → Interest → Desire → Action
-```
-
-Jede Stufe baut auf der vorherigen auf. Wer ohne Aufmerksamkeit beginnt, verliert das
-Publikum sofort. Wer ohne Interesse Details auflistet, langweilt. Wer ohne Wunsch zum
-Handeln auffordert, bekommt Schulterzucken.
-
-<Tipp titel="Vier Modelle, ein Auftrag">
-Sender-Empfänger erklärt den Kanal. Vier-Ohren erklärt die Mehrdeutigkeit jeder
-Nachricht. SBI strukturiert Feedback. AIDA strukturiert Präsentation. Wer in einer
-Aufgabe das passende Modell zuordnet und einen Beispieltext darauf anwendet,
-zeigt das volle Lernfeld 1/6 in einer einzigen Antwort.
-</Tipp>
-
----
-
-## 03 · Die Mechanik — Methoden, Modelle, Regeln
-
-### 03.1 · Die sechs Schritte einer Bedarfsanalyse
-
-<Schritte
-  items={[
-    { titel: 'Ausgangslage klären', text: 'Wer ist betroffen, welcher Prozess ist betroffen, und warum wird jetzt eine Änderung gewünscht? Diese drei Fragen sind die Eintrittskarte in jede Bedarfserhebung — ohne klare Antwort wird die Anforderungsliste später beliebig.' },
-    { titel: 'Ziele formulieren', text: 'Was soll nach der Maßnahme messbar besser sein? Beispiele: weniger Wartezeit (von 14 auf 8 Minuten), stabilere Verbindung (Verfügbarkeit von 95 auf 99 Prozent), weniger Tickets (Sinkrate 30 Prozent in 6 Monaten). Ziele ohne Messgrösse sind reine Absichtserklärungen.' },
-    { titel: 'Anforderungen sammeln', text: 'Funktionale, nichtfunktionale, organisatorische, technische, rechtliche und wirtschaftliche Anforderungen werden getrennt erfasst. Das verhindert, dass alles in einen Topf geworfen wird und die Priorisierung später unmöglich wird.' },
-    { titel: 'Daten erheben', text: 'Je nach Zielgruppe und Tiefe: Interview, Fragebogen, Beobachtung, Workshop, Ticketanalyse, Systemlogs, Dokumentenanalyse. Methoden lassen sich kombinieren — Zahlen für Umfang, Aussagen für Ursachen.' },
-    { titel: 'Bewerten und priorisieren', text: 'Muss-, Soll- und Kann-Anforderungen trennen. Konflikte zwischen Anforderungen sichtbar machen ("schnell" gegen "günstig") und mit dem Auftraggeber begründen, welche Seite gewinnt.' },
-    { titel: 'Maßnahme ableiten', text: 'Konkrete Empfehlung mit Nutzen, Aufwand, Risiken und nächstem Schritt formulieren. Die Empfehlung wird in einem Lasten- oder Pflichtenheft konsolidiert und vom Auftraggeber freigegeben — erst dann beginnt die Umsetzung.' },
-  ]}
-/>
-
-### 03.2 · Erhebungsmethoden — welche wann?
-
-| Methode | Stärke | Schwäche | Typischer Einsatz |
+| Technik | Gut geeignet für | Stärke | Grenze |
 |---|---|---|---|
-| Interview | tiefe Einblicke, Ursachen, Sonderfälle | zeitaufwendig, subjektiv | Key User, Fachabteilung, einzelne Power-User |
-| Fragebogen | viele Personen, Vergleichbarkeit | wenig Tiefe, Fragequalität entscheidet | Mitarbeiterbefragung, Kundenzufriedenheit |
-| Beobachtung | echte Arbeitsabläufe, unausgesprochene Probleme | verändert das Verhalten, Datenschutz | Usability-Tests, Workplace-Studien |
-| Workshop | gemeinsame Anforderungen, Konsens | dominante Stimmen verzerren | Anforderungsworkshop, Kick-off |
-| Ticketanalyse | reale Probleme, Häufigkeiten, Trends | zeigt nur gemeldete Fälle | Service-Auswertung, SLA-Reporting |
-| Systemlogs / Monitoring | objektive technische Daten | erklärt nicht das Nutzererlebnis | Performance-Diagnose, Sicherheits-Audit |
-| Dokumentenanalyse | bestehende Prozesse und Regeln | kann veraltet sein | Compliance, Prozess-Audit |
+| <Term id="interview">Interview</Term> | einzelne Rollen, Ursachen, Sonderfälle | Nachfragen und Tiefe | zeitaufwendig; Antworten sind perspektivisch |
+| <Term id="fragebogen">Fragebogen</Term> | viele Personen mit vergleichbaren Fragen | Reichweite und strukturierte Auswertung | Qualität hängt von Fragen und Rücklauf ab; wenig spontane Vertiefung |
+| <Term id="beobachtung">Beobachtung</Term> | tatsächliche Arbeitsabläufe und stilles Erfahrungswissen | macht Workarounds und Kontext sichtbar | Anwesenheit kann Verhalten beeinflussen; Datenschutz und Mitbestimmung beachten |
+| Workshop | mehrere Rollen, gemeinsames Verständnis, Konflikte | direkte Abstimmung und Kombination von Wissen | dominante Stimmen und Gruppendruck möglich |
+| Dokumentenanalyse | Regeln, Verträge, alte Anforderungen, Prozessbeschreibungen | vorhandene Belege werden genutzt | Dokument kann veraltet oder nur Soll-Zustand sein |
+| Systemanalyse | Logs, Konfiguration, Telemetrie, Tickets | messbare technische Befunde | Messung erklärt nicht automatisch Ursache oder Nutzerwirkung |
+| Prototyp oder Beispiel | unklare Oberfläche oder Ablaufidee | frühes gemeinsames Bild und Rückmeldung | kann zu früher Bindung an eine Lösung führen |
 
-Frageformen im Detail: *Geschlossene Fragen* haben vorgegebene Antworten („ja/nein",
-„trifft zu / trifft nicht zu") und sind gut zählbar. *Offene Fragen* lassen Freitext zu
-und liefern Tiefe. *Suggestivfragen* enthalten die gewünschte Antwort schon im Wortlaut
-(„Stimmen Sie zu, dass das alte System unzumutbar war?") und sind in einer sauberen
-Erhebung verboten — sie verzerren das Ergebnis und verlieren in der Prüfung Punkte.
+<Tipp titel="Methoden kombinieren statt Wahrheit versprechen">
+Logs können zeigen, **wie oft** ein Programm lange startet. Interviews und
+Beobachtung zeigen, **welche Arbeit** dadurch behindert wird. Erst der Abgleich
+mehrerer Quellen macht Widersprüche und Lücken sichtbar.
+</Tipp>
 
-Eine *<Term id="likert-skala">Likert-Skala</Term>* (typisch fünf Stufen: stimme gar
-nicht zu — stimme eher nicht zu — neutral — stimme eher zu — stimme voll zu) ist der
-Kompromiss zwischen Tiefe und Vergleichbarkeit. Sie wird in Mitarbeiterbefragungen,
-Kunden-NPS und Usability-Tests eingesetzt.
+### Fragen im Erhebungsgespräch
 
-### 03.3 · Vier-Ohren-Modell auf eine Aussage anwenden
+Beginne offen und werde schrittweise konkreter:
 
-Das Modell ist nur sinnvoll, wenn du es konkret anwenden kannst. Die Mechanik:
+1. „Wie läuft die Anmeldung an einem typischen Arbeitstag ab?“
+2. „An welcher Stelle entsteht die längste Wartezeit?“
+3. „Bitte zeigen Sie den letzten betroffenen Ablauf.“
+4. „Wie lange dauerte er, auf welchem Gerät und zu welcher Uhrzeit?“
+5. „Welche maximale Zeit wäre für Ihre Arbeit noch akzeptabel?“
+6. „Habe ich richtig erfasst: 18 Geräte, zwei bis vier Minuten Ist-Zeit und
+   höchstens 30 Sekunden als Ziel?“
+
+Offene, geschlossene und suggestive Fragen werden im Kommunikationskapitel
+ausführlich unterschieden.
+
+## Anforderungen klassifizieren
+
+Eine Anforderung kann mehreren Perspektiven dienen:
+
+| Art | Frage | Beispiel |
+|---|---|---|
+| funktional | Was soll das System oder der Prozess tun? | Benutzer meldet sich mit dem vorhandenen Unternehmenskonto an. |
+| Qualität | Wie gut muss die Funktion arbeiten? | Fachanwendung ist innerhalb von 30 Sekunden nutzbar. |
+| technisch | Welche technische Umgebung oder Schnittstelle ist einzuhalten? | Geräte unterstützen vorhandene USB-C-Docks und das verwaltete Betriebssystem. |
+| organisatorisch | Welche Rollen oder Abläufe gelten? | Support übernimmt Geräte innerhalb der vereinbarten Servicezeiten. |
+| rechtlich und sicherheitsbezogen | Welche verbindlichen Schutz- und Rechtsvorgaben gelten? | Datenträger werden nach betrieblicher Schutzbedarfsentscheidung verschlüsselt. |
+| wirtschaftlich | Welche Kosten- oder Nutzengrenze gilt? | Gesamtbudget einschließlich Garantie und Docking beträgt höchstens 32.000 €. |
+| ökologisch und sozial | Welche Lebenszyklus- oder Nutzungsanforderung gilt? | Ersatzteile und Sicherheitsupdates sind für den vorgesehenen Nutzungszeitraum verfügbar. |
+
+„Schnell“, „modern“, „benutzerfreundlich“ oder „sicher“ sind ohne Kontext nicht
+prüfbar. Eine gute Formulierung benennt Gegenstand, Bedingung und Kriterium:
+
+```text
+Unter [Bedingung]
+muss [System oder Prozess]
+[beobachtbares Ergebnis]
+innerhalb/von/mit [prüfbarem Kriterium] erreichen.
+```
+
+Beispiel:
+
+> Unter der freigegebenen Standardkonfiguration muss die Fachanwendung auf
+> jedem neuen Arbeitsplatz spätestens 30 Sekunden nach erfolgreicher
+> Windows-Anmeldung nutzbar sein. Gemessen wird bei fünf Neustarts mit dem
+> produktiven Standardprofil; mindestens vier Messungen je Gerät müssen den
+> Wert einhalten.
+
+Das Beispiel legt bereits ein Abnahmekriterium fest. Ob genau diese Messregel
+fachlich sinnvoll ist, muss mit Auftraggeber, Fachbereich und Technik abgestimmt
+werden.
+
+## Priorisieren und Konflikte sichtbar machen
+
+Nicht jede Anforderung besitzt dieselbe Bedeutung. Eine einfache
+Muss-Soll-Kann-Einteilung funktioniert nur mit gemeinsam vereinbarten Regeln:
+
+| Priorität | Bedeutung | Entscheidungsfrage |
+|---|---|---|
+| Muss | ohne Erfüllung ist die Lösung nicht akzeptabel oder nicht zulässig | Welche belegte Folge entsteht bei Nichterfüllung? |
+| Soll | hoher Nutzen, aber begründet verschieb- oder ersetzbar | Welche Auswirkung hat eine spätere Erfüllung? |
+| Kann | zusätzlicher Nutzen bei verbleibendem Budget und Zeit | Was wird wichtiger, wenn Ressourcen knapp werden? |
+
+„Alles ist Muss“ ist keine Priorisierung. Zu jeder Muss-Anforderung gehören
+Quelle, Begründung und Prüfmethode.
+
+Typische Konflikte sind:
+
+- maximale Leistung gegen begrenztes Budget,
+- hohe Sicherheit gegen einfache Bedienung,
+- schnelle Einführung gegen gründliche Migration und Schulung,
+- Standardisierung gegen Sonderbedarf einzelner Rollen,
+- detaillierte Überwachung gegen Datenschutz und Mitbestimmung.
+
+Konflikte werden nicht verdeckt. Betroffene Anforderungen, Beteiligte,
+Alternativen, Entscheidung und Begründung werden dokumentiert.
+
+## Wiederholbares Verfahren
 
 <Schritte
   items={[
-    { titel: 'Aussage isolieren', text: 'Welche Aussage soll analysiert werden? Beispiel: „Das System ist wieder mal langsam." Schreibe sie wörtlich auf — kein Paraphrasieren, sonst geht der Tonfall verloren.' },
-    { titel: 'Sachebene rekonstruieren', text: 'Welche reine Information transportiert die Aussage? Hier: „Die Reaktionszeit der Anwendung ist heute höher als üblich." Keine Wertung, keine Vermutung, nur die Beobachtung.' },
-    { titel: 'Selbstoffenbarung freilegen', text: 'Was verrät der Sender über sich selbst? Hier: „Ich bin frustriert, ich habe Druck, ich kann meine Aufgabe nicht in der gewohnten Zeit erledigen." Häufig ist genau das die eigentliche Botschaft.' },
-    { titel: 'Beziehungs-Ebene benennen', text: 'Wie sieht der Sender die Beziehung zum Empfänger? Hier (an die IT gerichtet): „Du bist verantwortlich, du hast das nicht im Griff." Diese Ebene erklärt, warum eine sachliche Antwort oft nicht beruhigt.' },
-    { titel: 'Appell extrahieren', text: 'Was soll der Empfänger tun? Hier: „Mach das System schneller, kümmere dich darum, nimm mein Anliegen ernst." Der Appell ist die Handlungsaufforderung, die hinter der scheinbaren Sachaussage liegt.' },
-    { titel: 'Antwort wählen', text: 'Wer alle vier Ebenen erkannt hat, kann gezielt antworten — auf der Ebene, die der Sender wirklich gemeint hat. Beispiel: erst die Beziehung anerkennen („Verstehe, das hält dich auf"), dann den Sachinhalt beantworten („Ich messe gerade die Antwortzeiten und melde mich in 30 Minuten").' },
+    {
+      titel: 'Auftrag und Systemgrenze klären',
+      text: 'Ziel, Ergebnis, Termin, Budget, einbezogene Systeme und ausdrückliche Ausschlüsse festhalten.',
+    },
+    {
+      titel: 'Beteiligte und Quellen bestimmen',
+      text: 'Nutzer, Entscheider, Betrieb, Support, Dokumente, Systeme und verbindliche Vorgaben erfassen.',
+    },
+    {
+      titel: 'Ist-Zustand belegen',
+      text: 'Ablauf, Mengen, Zeiten, Fehler, Workarounds und bestehende Randbedingungen aus passenden Quellen erheben.',
+    },
+    {
+      titel: 'Ziel und Nutzen klären',
+      text: 'Beschreiben, was für wen besser sein soll und woran die Verbesserung erkannt wird.',
+    },
+    {
+      titel: 'Techniken kombinieren',
+      text: 'Interviews, Beobachtung, Workshop, Fragebogen, Dokumente oder Systemdaten passend zu Quelle und Fragestellung wählen.',
+    },
+    {
+      titel: 'Anforderungen dokumentieren',
+      text: 'Eindeutige Kennung, Quelle, Formulierung, Priorität, Begründung, Abhängigkeit und Prüfkriterium festhalten.',
+    },
+    {
+      titel: 'Konflikte lösen und priorisieren',
+      text: 'Widersprüche sichtbar machen, Alternativen bewerten und Entscheidungen mit Zuständigkeit dokumentieren.',
+    },
+    {
+      titel: 'Validieren und freigeben',
+      text: 'Beteiligte prüfen Richtigkeit, Vollständigkeit, Verständlichkeit, Konsistenz und Prüfbarkeit; Änderungen bleiben nachvollziehbar.',
+    },
   ]}
 />
 
-### 03.4 · Feedback-Regeln nach SBI
-
-<Schritte
-  items={[
-    { titel: 'Zeitnah und unter vier Augen', text: 'Feedback wirkt am besten kurz nach dem Ereignis und im Vier-Augen-Gespräch. Lob in der Gruppe ist okay, Kritik nie. Plane einen ruhigen Termin und kein Tür-und-Angel-Gespräch.' },
-    { titel: 'Situation konkret beschreiben', text: 'Wann war es, wo war es, wer war beteiligt? Beispiel: „Im Daily heute um 9 Uhr, im Slack-Channel #projekt-alpha." Pauschales „neulich" oder „immer wieder" ist kein Feedback, sondern Vorwurf.' },
-    { titel: 'Verhalten benennen — beobachtbar, nicht bewertend', text: 'Was hat die Person konkret gesagt oder getan? Beispiel: „Du hast die Frage zum Liefertermin nicht beantwortet, sondern bist zum nächsten Punkt gesprungen." Keine Interpretation, keine Charakter-Zuschreibung.' },
-    { titel: 'Auswirkung schildern — Ich-Botschaft', text: 'Welche Auswirkung hatte das Verhalten? Beispiel: „Mir ist dadurch unklar geblieben, was ich dem Kunden zusagen kann, und ich habe das Meeting verlassen, ohne eine Antwort zu haben." Ich-Botschaft statt Du-Botschaft.' },
-    { titel: 'Pause machen, dann Lösung gemeinsam suchen', text: 'Nach den drei SBI-Schritten kommt der Empfänger zu Wort. Höre aktiv zu — paraphrasiere, frage nach. Erst danach: gemeinsam einen konkreten nächsten Schritt vereinbaren („Wie können wir das beim nächsten Daily anders machen?").' },
-    { titel: 'Verbindlich abschließen', text: 'Halte fest, was vereinbart ist und wann ein Folge-Check stattfindet. Ohne Wirksamkeitskontrolle bleibt Feedback eine Episode statt einer Veränderung.' },
-  ]}
-/>
-
-### 03.5 · AIDA-Stufen einer Präsentation
-
-| Stufe | Aufgabe | Werkzeuge in einer Präsentation |
-|---|---|---|
-| Attention | Aufmerksamkeit gewinnen | provokante Zahl, kurze Geschichte, ungewöhnliches Bild, offene Frage ans Publikum |
-| Interest | Interesse halten | Relevanz für die Zuhörer benennen, das Problem in ihrer Sprache zeigen |
-| Desire | Wunsch erzeugen | Vorteile konkret, mit Beispiel und Zahl. Vorher/Nachher, Gewinn statt Feature |
-| Action | zur Handlung bewegen | klare nächste Aktion: Termin, Unterschrift, Pilotprojekt — nie offen lassen |
-
-In der Praxis hilft die Faustregel: ein Foliendeck sollte sich in genau diese vier Blöcke
-gliedern. Wer im Action-Block aufhört, ohne eine konkrete nächste Aktion zu nennen, hat
-die Präsentation gefühlt komplett — die Zuhörer aber nicht.
-
-<Tipp titel="AIDA gegen die übliche Folien-Wand">
-Eine 40-Folien-Tabellenwüste verletzt jedes Stück AIDA. Reduziere die Folien auf vier
-Blöcke: ein Aufmacher, drei bis fünf Interest-Folien, drei bis fünf Desire-Folien
-(idealerweise mit konkretem Beispiel), eine Action-Folie. Mehr braucht keine
-Prüfungs-Präsentation und kein internes Pitch-Meeting.
-</Tipp>
-
----
-
-## 04 · Konkrete Anwendungsfälle
-
-<Beispiel titel="Bedarfsanalyse für ein neues Ticketsystem strukturieren">
-
-Die Geschäftsführung der Münchhaus IT will wissen, ob ein neues Ticketsystem nötig ist.
-Mitarbeitende beklagen lange Wartezeiten und unklare Rückmeldungen. Du bekommst den
-Auftrag, in zwei Wochen eine fundierte Empfehlung vorzulegen. Wie gehst du vor?
-
-</Beispiel>
-
-**Rechenweg: Bedarfsanalyse — von der Anfrage bis zum Pflichtenheft**
-
-**Schritt 1 — Auftrag und Stakeholder klären**
-Erstes Gespräch mit der Geschäftsleitung: Was ist der genaue Auftrag, wer trifft die
-Entscheidung, wer ist Auftraggeber, wer Sponsor, wer ist betroffen? Termin, Budget
-und Erwartung schriftlich festhalten — sonst kämpft man später mit beweglichen
-Zielen. Hier: Auftrag „Empfehlung pro/contra neues Ticketsystem", Budget bis 25.000
-Euro, Entscheidung in 14 Tagen.
-
-**Schritt 2 — Ist-Zustand erheben — Ticketdaten und Logs**
-Bevor Mitarbeitende befragt werden, kommen die harten Zahlen auf den Tisch.
-Auswertung des bestehenden Ticketsystems: Wie viele Tickets pro Woche? Wie hoch ist
-die durchschnittliche Bearbeitungszeit? Welche Kategorien dominieren? Welche
-SLA-Verletzungen gab es? Hier: 380 Tickets/Woche, durchschnittlich 26 Minuten
-Bearbeitungszeit, SLA-Quote 78 Prozent.
-
-**Schritt 3 — Kurzes Interview mit Key Usern**
-Vier bis sechs halbstrukturierte Interviews à 30 Minuten mit First-Level, Second-Level
-und einem typischen Anwender. Leitfragen: Was funktioniert gut? Wo verlieren wir Zeit?
-Welche drei Veränderungen würden den Alltag spürbar verbessern? Aktives Zuhören,
-Antworten paraphrasieren, Hypothesen sofort gegenchecken.
-
-**Schritt 4 — Breitenfeedback per Fragebogen**
-Online-Fragebogen an alle 60 internen Anwender, drei Frageblöcke: Zufriedenheit
-(Likert-Skala), Häufigkeit konkreter Probleme (geschlossene Fragen) und Wünsche
-(eine offene Freitextfrage). Suggestivfragen vermeiden: nicht „Sind Sie unzufrieden
-mit dem aktuellen System?", sondern „Wie zufrieden sind Sie mit dem aktuellen System
-auf einer Skala von 1 bis 5?".
-
-**Schritt 5 — Auswertung — quantitativ und qualitativ kombinieren**
-Zahlen aus Ticketsystem und Fragebogen zusammenführen. Hier zeigt sich: 62 Prozent
-der Anwender bewerten die Suchfunktion mit 1–2 von 5, in den Interviews wurde sie
-nicht von allen, aber sehr explizit kritisiert. Quantitatives Bild bestätigt
-qualitatives — die Suche ist ein Hauptproblem, nicht nur eine Einzelmeinung.
-
-**Schritt 6 — Anforderungen formulieren und priorisieren**
-Aus den Befunden werden konkrete Anforderungen abgeleitet und nach Muss/Soll/Kann
-sortiert. Muss: bessere Volltextsuche, REST-API zum CRM, DSGVO-konforme
-Rollenrechte. Soll: automatische Eskalation nach SLA-Schwelle, Self-Service-Portal.
-Kann: dunkles Farbschema, Mobile-App. Jede Muss-Anforderung wird begründet und mit
-Datenquelle belegt.
-
-**Schritt 7 — Empfehlung mit Lasten- und Pflichtenheft übergeben**
-Die Empfehlung enthält: Befund, Anforderungsliste mit Priorisierung, drei
-Lösungsoptionen (System X, System Y, Eigenausbau), Kosten-Nutzen-Vergleich, Risiken
-und einen klaren nächsten Schritt. Das Lastenheft formuliert die Anforderungen aus
-Sicht des Auftraggebers, das Pflichtenheft (vom Anbieter) konkretisiert die Umsetzung.
-
-**Ergebnis**
-Die Empfehlung ist belastbar, weil sie auf zwei Datenquellen (Zahlen und Aussagen)
-beruht und jede Muss-Anforderung mit einem konkreten Befund verknüpft. Damit ist sie
-in der Prüfung eine Antwort, die mehrere Aufgabentypen gleichzeitig bedient: Methodenwahl,
-quantitativ-qualitativ-Trennung, Priorisierung, Pflichtenheft-Übergabe.
-
-
-
-<Beispiel titel="Vier-Ohren-Modell — eine missverständliche Aussage zerlegen">
-
-Eine Mitarbeiterin sagt am Telefon zur IT-Hotline: „Das System ist wieder mal langsam."
-Der Tonfall ist genervt, sie spricht laut, sie wiederholt den Satz beim Verabschieden.
-Wie hörst du diese Aussage auf den vier Ohren — und was antwortest du?
-
-</Beispiel>
+## Vollständig ausgearbeitetes Beispiel
 
-**Rechenweg: Vier-Ohren — eine reale Aussage auf allen Ebenen lesen**
+### 1. Auftrag und Ist-Zustand
 
-**Schritt 1 — Sach-Ohr: was ist die nüchterne Information?**
-Sachinhalt: „Die Antwortzeiten der Anwendung sind heute spürbar höher als üblich."
-Das ist die rein technische Beobachtung — ohne Wertung. Wer nur das Sach-Ohr
-benutzt, antwortet mit „dann mache ich gleich einen Blick auf die Auslastung" und
-übersieht die anderen drei Schichten.
+Die Kanzlei möchte 25 neue Notebooks. Interviews mit Geschäftsführung,
+Sachbearbeitung und IT-Dienstleister sowie Messungen an den Geräten ergeben:
 
-**Schritt 2 — Selbstoffenbarungs-Ohr: was sagt der Sender über sich?**
-Selbstoffenbarung: „Ich bin frustriert. Ich habe gerade Druck. Ich kann meine
-Aufgabe nicht in der gewohnten Zeit erledigen, und das ärgert mich." Diese Ebene
-erklärt den Tonfall — nicht das System ist das Hauptthema, der Frust ist es.
+- 18 von 25 Geräten starten die Fachanwendung in 120 bis 240 Sekunden.
+- Auf sieben neueren Geräten dauert derselbe Ablauf 22 bis 35 Sekunden.
+- Die 18 betroffenen Geräte besitzen 8 GB RAM und langsame SATA-SSDs; während
+  des Starts ist der Arbeitsspeicher nahezu ausgelastet.
+- Zwei Spezialarbeitsplätze benötigen zusätzlich lokale Signaturkarten.
+- Vorhandene USB-C-Docks und zwei Monitore pro Platz sollen weiterverwendet
+  werden.
+- Betriebssystem, Geräteverwaltung, Datenträgerverschlüsselung und
+  Supportprozess müssen den betrieblichen Standards entsprechen.
 
-**Schritt 3 — Beziehungs-Ohr: wie sieht der Sender mich?**
-Beziehung: „Du bist die IT, du bist verantwortlich, du hast das schon wieder nicht
-im Griff." Das „wieder mal" ist hier der Schlüsselindikator — die Aussage transportiert
-Erfahrung mit ähnlichen Situationen. Eine rein sachliche Antwort kommt deshalb oft
-nicht durch.
+Diese Befunde beweisen noch nicht, dass Neuanschaffung die einzige Lösung ist.
+Deshalb werden Aufrüstung, Austausch und gestaffelte Kombination verglichen.
 
-**Schritt 4 — Appell-Ohr: was soll ich tun?**
-Appell: „Mach es jetzt schneller. Kümmere dich. Nimm mein Anliegen ernst." Der
-Appell ist die eigentliche Handlungsaufforderung — und sie hat nicht nur eine
-technische, sondern eine soziale Komponente: ich will gehört werden.
+### 2. Ziel und Anforderungen
 
-**Schritt 5 — Antwort wählen — die richtige Ebene zuerst**
-Eine gute Antwort bedient mehrere Ohren in der richtigen Reihenfolge. Beispiel:
-„Verstehe, das blockiert dich gerade — das ist ärgerlich" (Beziehung anerkannt),
-„Ich schaue jetzt sofort, ob die Server unter Last stehen, und melde mich in 15
-Minuten" (Sachinhalt + Appell). Der Frust wird ernstgenommen, der Sachinhalt wird
-bedient, der Appell wird beantwortet.
-
-**Schritt 6 — Reflexion — was wäre die typische Falle?**
-Falle 1: nur Sach-Ohr — „Das System läuft normal, ich sehe keine Auffälligkeiten"
-klingt korrekt, ignoriert aber Frust und Beziehung. Falle 2: nur Beziehungs-Ohr —
-Defensive („Wir geben uns Mühe!") überhört den eigentlichen Bedarf. Falle 3: nur
-Appell-Ohr — sofortiger Aktionismus ohne Diagnose verschwendet Zeit. Die saubere
-Lösung ist die bewusste Kombination.
-
-**Ergebnis**
-Das Vier-Ohren-Modell ist kein Selbstzweck, sondern eine Werkzeug-Box: Erst alle
-vier Schichten lesen, dann gezielt antworten. In Aufgaben wird genau diese
-Zerlegung mit eigenen Worten verlangt — die Beispielsätze variieren, das Schema
-bleibt gleich.
-
-
-
-<Beispiel titel="Feedback nach SBI — eine echte Situation strukturieren">
-
-Im Daily heute Morgen hat ein Teamkollege deine Frage zum Liefertermin nicht
-beantwortet, sondern ist sofort zum nächsten Tagesordnungspunkt gesprungen. Du willst
-ihm das im Vier-Augen-Gespräch zurückmelden, ohne anzugreifen — wie strukturierst du
-das Feedback?
-
-</Beispiel>
-
-**Rechenweg: SBI-Feedback — Situation, Verhalten, Auswirkung sauber trennen**
-
-**Schritt 1 — Termin und Setting wählen**
-„Hast du nach dem Mittag zehn Minuten? Ich möchte dir zu unserem Daily heute
-Morgen kurzes Feedback geben." Vier Augen, ruhiger Raum, kein Slack-Chat. Das
-Setting signalisiert: das ist mir wichtig genug, um Zeit dafür zu nehmen.
-
-**Schritt 2 — Situation konkret benennen**
-„Heute im Daily um neun Uhr, als wir die Liefertermine für die KW 18 besprochen
-haben…" Datum, Uhrzeit, Anlass — kein „neulich", kein „du machst das immer". Nur
-die eine konkrete Situation, an die ihr beide euch erinnert.
-
-**Schritt 3 — Behavior — was hast du beobachtet?**
-„…habe ich dich gefragt, ob der Termin am 6. Mai für Kunde Müller realistisch ist.
-Du bist auf die Frage nicht eingegangen, sondern bist direkt zum nächsten
-Tagesordnungspunkt übergegangen." Beobachtung, kein Urteil. Kein „du hast mich
-abgewürgt" oder „du warst desinteressiert" — diese Worte sind Interpretationen.
-
-**Schritt 4 — Impact — Ich-Botschaft, nicht Du-Botschaft**
-„Mir ist dadurch unklar geblieben, was ich Müller heute zusagen kann. Ich habe
-nach dem Daily extra noch mit Anna gesprochen, das hat mich 20 Minuten gekostet.
-Und ich war kurz unsicher, ob ich die Frage in einer falschen Form gestellt habe."
-Ich-Botschaft, konkrete Auswirkung, ehrlich auch zur eigenen Unsicherheit.
-
-**Schritt 5 — Pause — und aktiv zuhören**
-Hier kommt der Empfänger zu Wort. Vielleicht hatte er einen Grund (Zeitdruck,
-fehlende Info, andere Priorität), den du nicht kanntest. Aktives Zuhören:
-Paraphrasieren („Du sagst also, dass du den Termin selbst noch nicht prüfen
-konntest"), nicht sofort verteidigen oder weiter argumentieren.
-
-**Schritt 6 — Vereinbarung treffen und Folge-Check**
-Konkrete Absprache: „Können wir abmachen, dass du Fragen, die du nicht sofort
-beantworten kannst, zumindest mit ‚schaue ich nach und melde mich heute noch‘
-quittierst?" Verbindlich, knapp, mit nächstem Termin („Wir schauen in zwei Wochen
-nochmal kurz"). Ohne diesen letzten Schritt verpufft das Feedback.
-
-**Ergebnis**
-SBI macht aus einer Beschwerde ein Gespräch. Die Beschreibung bleibt konkret,
-das Verhalten wird beobachtbar genannt, die Auswirkung ist eigene Wahrnehmung —
-kein Vorwurf. In Aufgaben werden Schüler oft gebeten, eine vorgegebene
-Du-Botschaft in eine SBI-Form umzuformulieren. Genau dieses Schema ist gemeint.
-
-
-
----
-
-## 05 · Vertiefung — was darüber hinaus wichtig ist
-
-### Offene gegen geschlossene Fragen
-
-Geschlossene Fragen liefern zählbare Antworten („ja/nein", „A/B/C", Likert 1–5). Sie
-sind die Grundlage jeder quantitativen Auswertung. Offene Fragen liefern Texte —
-Beobachtungen, Beispiele, Anekdoten — und sind die Grundlage qualitativer Auswertung.
-Eine gute Erhebung kombiniert beide: 80 Prozent geschlossen, 20 Prozent offen. Wer nur
-geschlossen fragt, verpasst die Ursachen. Wer nur offen fragt, kann nicht zählen.
-
-Eine Sonderform sind *halbgeschlossene Fragen* — feste Antworten plus „sonstige, und
-zwar:". Sie sind der Notausgang, wenn der Fragesteller nicht alle möglichen Antworten
-kennt.
-
-### Storytelling in Präsentationen
-
-AIDA gibt die Struktur, *Storytelling* füllt sie mit Substanz. Eine Geschichte hat
-einen Helden (idealerweise: der Zuhörer oder ein anonymisierter Anwender), einen
-Konflikt (das Problem), eine Wendung (die Lösung) und ein Ergebnis (Vorher/Nachher).
-Wer eine 10-Minuten-Präsentation in eine kurze Story verpackt, erhöht die
-Erinnerbarkeit drastisch — ohne den Inhalt aufzuweichen.
-
-Beispiel: Statt „Unser neues Ticketsystem hat eine Volltextsuche" sagt man „Anna aus
-dem Second Level hat letzte Woche 40 Minuten gesucht, bis sie das passende alte Ticket
-gefunden hatte. Mit dem neuen System wäre das ein Suchvorgang von acht Sekunden
-gewesen." Gleicher Inhalt, andere Wirkung.
-
-### AIDA-Erweiterungen — AIDCAS und AIDA(L)
-
-AIDA wurde mehrfach erweitert. Die zwei verbreitetsten Varianten:
-
-| Modell | Stufen | Wann sinnvoll |
-|---|---|---|
-| AIDA | Attention, Interest, Desire, Action | klassische Werbung, kurze Präsentation |
-| AIDCAS | …Conviction, Action, Satisfaction | längerer Verkaufsprozess, Bestandskundenpflege |
-| AIDA(L) | …Loyalty | Marken- und Community-Bindung |
-
-In der Prüfung wird fast immer das klassische AIDA gefragt. Die Erweiterungen sind als
-Hintergrundwissen wertvoll, sollten aber nur erwähnt werden, wenn ausdrücklich nach
-Erweiterungen gefragt wird — sonst entsteht ein vermeidbares Akronym-Wirrwarr.
-
-### Eskalation und Konfliktmanagement
-
-Nicht jedes Gespräch endet mit Konsens. Wenn ein Feedback-Gespräch in einen Konflikt
-kippt, gilt die Eskalations-Reihenfolge: 1) sachliche Wiederholung („Ich verstehe, dass
-du das anders siehst — mein Punkt war…"), 2) Time-out vorschlagen („Lass uns morgen
-nochmal sprechen"), 3) Vermittlung einbeziehen (Vorgesetzter, neutrale dritte Person),
-4) formaler Eskalationsweg (Konfliktklärung mit HR, betriebliche Mediation). Wichtig:
-in einem ruhigen Gespräch ist Schritt 1 oft schon ausreichend. Eskalation ist nicht
-Niederlage, sondern strukturierte Distanz.
-
-### Datenschutz bei Mitarbeiterbefragungen
-
-Mitarbeiterbefragungen unterliegen Datenschutz und Mitbestimmung. Die wichtigsten
-Regeln für die Praxis:
-
-- Anonymität ist nur dann gewährleistet, wenn die Auswertung keine Rückschlüsse auf
-  einzelne Personen erlaubt — bei kleinen Abteilungen ist das oft schwierig
-- Zweckbindung gilt: eine Befragung, die zur Bedarfsanalyse durchgeführt wurde, darf
-  nicht für Personalentscheidungen herangezogen werden
-- Beobachtungen am Arbeitsplatz benötigen in den meisten Fällen Zustimmung des
-  Betriebsrats (Mitbestimmung nach BetrVG bei technischen Einrichtungen, die Verhalten
-  oder Leistung überwachen)
-- Bei systematischer Datenerhebung ist eine *Auftragsverarbeitung* (Art. 28 DSGVO) zu
-  prüfen, falls externe Dienstleister beteiligt sind
-
-In der Prüfung reicht der Hinweis, dass Mitarbeiterbefragungen Datenschutz und
-Mitbestimmung berühren. Konkrete Paragraphen werden selten gefragt, der Mechanismus
-schon.
-
-### Kulturelle Unterschiede in Feedback-Konventionen
-
-Direktes Feedback („das war nicht gut, weil…") ist in deutscher und niederländischer
-Arbeitskultur erwartet, in vielen anderen Kulturen — südeuropäisch, asiatisch,
-lateinamerikanisch — gilt es als unhöflich, wenn es nicht in einen breiteren Kontext
-gebettet wird (zuerst etwas Positives, dann die Sache). Eine sogenannte
-*Sandwich-Kritik* ist in der deutschen Arbeitswelt umstritten (sie wirkt manipulativ,
-das Lob wird abgewertet), in vielen anderen Kontexten ist sie schlicht die Norm.
-
-Für die Prüfung reicht, dass du das Phänomen kennst und benennen kannst. In der Praxis
-bedeutet es, dass Feedback in heterogenen Teams besprochen werden muss: was wir als
-direkt empfinden, kann von Kollegen als rüde gelesen werden — und umgekehrt.
-
-### Kommunikation auf Distanz — Telefon, E-Mail, Videocall
-
-Je weniger Kanäle ein Gespräch nutzt, desto wichtiger werden Sender-Empfänger-Disziplin
-und das Vier-Ohren-Bewusstsein. Eine E-Mail überträgt nur Schrift — Tonfall fehlt,
-Beziehungs-Ebene wird missverstanden. Im Telefonat fehlt die Mimik, im Videocall die
-Raumstimmung. Praktische Folgen: Bei kritischen Themen aufsteigen — E-Mail eskaliert
-zum Anruf, Anruf zum persönlichen Gespräch. „Per E-Mail aussprechen" ist in 90 Prozent
-der Fälle eine schlechte Idee.
-
----
-
-## Was du danach kannst
-
-Nach diesem Kapitel kannst du vage Kundenwünsche in überprüfbare Anforderungen
-übersetzen, passende Erhebungsmethoden begründen und Kommunikationsaussagen mit dem
-Vier-Ohren-Modell sauber zerlegen. Du kannst außerdem Feedback nach SBI formulieren
-und eine kurze Präsentation nach AIDA so strukturieren, dass am Ende eine konkrete
-Handlung steht.
-
----
-
-## Typische Fehler
-
-- **Lösung vor Problem.** Der häufigste Fehler in der Bedarfsanalyse: ein Anwender
-  nennt eine Lösung („wir brauchen ein neues System"), und die Befragung beginnt mit
-  Detailfragen zu dieser Lösung. Erst Problem und Anforderungen klären, dann
-  Lösungsoptionen vergleichen.
-- **Suggestivfragen im Fragebogen.** Fragen wie „Stimmen Sie zu, dass das alte System
-  unzumutbar war?" verzerren das Ergebnis. In der Aufgabe wird häufig eine Frage
-  vorgelegt, die als suggestiv zu erkennen ist — wer das benennt und eine neutrale
-  Variante anbietet, bekommt volle Punkte.
-- **Mehrfachfragen.** „Finden Sie das System schnell und benutzerfreundlich?" — das
-  ist eine Frage, die zwei Dimensionen vermischt. Auswertung scheitert, weil
-  Antworten nicht eindeutig zuordenbar sind. Saubere Form: zwei separate Fragen.
-- **Pauschalurteile statt Beobachtung im Feedback.** „Du bist immer so unfreundlich"
-  ist kein Feedback, sondern ein Charakter-Urteil. SBI verlangt: konkrete Situation,
-  beobachtbares Verhalten, Auswirkung in Ich-Form.
-- **Du-Botschaften statt Ich-Botschaften.** „Du hast mich gestern blockiert" provoziert
-  Verteidigung. „Mir ist dadurch unklar geblieben…" beschreibt die eigene Wahrnehmung,
-  die nicht widerlegbar ist. Diese Umformulierung ist eine klassische Aufgabe.
-- **Folien-Wand statt Vortrag.** AIDA-Verletzung in Reinform: 40 Folien voller
-  Aufzählungspunkte, kein Aufmacher, keine Geschichte, kein Call to Action. In der
-  Aufgabe wird das oft als „verbessern Sie diese Präsentation"-Aufgabe gestellt —
-  Antwort: Aufmacher voranstellen, Folien auf zentrale Botschaften reduzieren,
-  konkretes Action-Item am Ende.
-- **Akronym-Verwirrung — AIDA gegen AIDCAS gegen Vier-Ohren.** Kommunikationsmodelle
-  haben ähnliche Stufenzahlen, aber unterschiedliche Bedeutungen. Vier-Ohren hat
-  Sachebene/Selbstoffenbarung/Beziehung/Appell — AIDA hat Attention/Interest/Desire
-  /Action. Wer das vermischt, verliert Punkte. Eselsbrücke: Vier-Ohren ist
-  Wahrnehmung, AIDA ist Werbewirkung.
-- **Quantitativ und qualitativ verwechseln.** „Durchschnittliche Bearbeitungszeit:
-  14 Minuten" ist quantitativ. „Anwender finden die Maske unübersichtlich" ist
-  qualitativ. Eine Mischung beider Datenarten ist in der Auswertung Pflicht — getrennt
-  einordnen, dann zusammenführen.
-- **„Alles ist Muss"-Priorisierung.** Wenn jede Anforderung als Muss eingeordnet wird,
-  ist keine Entscheidung mehr möglich. In der Prüfung gibt es Punkte für eine begründete
-  Trennung in Muss, Soll und Kann.
-- **Datenschutz bei Mitarbeiter-Befragungen übersehen.** Befragung ist nicht ohne
-  Weiteres erlaubt — Mitbestimmung des Betriebsrats und Anonymität müssen mitgedacht
-  werden, sobald systematisch ausgewertet wird.
-- **Maßnahme ohne Wirksamkeitskontrolle.** Nach jeder Veränderung folgt die Kontrolle:
-  Sind die Soll-Werte jetzt erreicht? Hat das Feedback die gewünschte Wirkung gezeigt?
-  Eine Bedarfsanalyse ohne Erfolgsmessung ist ein offener Kreis — der PDCA-Zyklus
-  schließt ihn.
-
----
-
-## Übungsblock
-
-**Aufgabe 1 — Methoden zuordnen (8 Punkte).**
-Ein mittelständisches Unternehmen führt ein neues CRM-System ein und möchte vorher den
-Bedarf der 80 Mitarbeiter erheben. Der Projektleiter denkt über vier Methoden nach:
-Interview, Fragebogen, Beobachtung, Workshop. Ordne jeder Methode eine konkrete Frage
-zu, die mit ihr besonders gut beantwortet werden kann. Nenne pro Methode eine Stärke
-und eine Schwäche. Schlage anschließend eine Kombination von zwei Methoden vor und
-begründe deine Wahl in zwei bis drei Sätzen.
-
-**Aufgabe 2 — Vier-Ohren-Anwendung (6 Punkte).**
-Eine Mitarbeiterin sagt zu ihrer IT-Kollegin: „Ich kann mit der neuen Software nicht
-arbeiten, das funktioniert nie auf Anhieb." Analysiere die Aussage mit dem
-Vier-Ohren-Modell nach Schulz von Thun. Formuliere für jede der vier Ebenen eine
-realistische Interpretation in einem Satz. Welche Antwort wäre in dieser Situation
-besonders ungeeignet, welche besonders geeignet? Begründe kurz.
-
-**Aufgabe 3 — Feedback-Formulierung (7 Punkte).**
-Im letzten Kunden-Workshop hat ein Kollege wiederholt die Antworten anderer Teilnehmer
-unterbrochen. Ein anderes Teammitglied sagt zu ihm: „Du warst gestern wie immer
-ziemlich rücksichtslos und hast alle abgewürgt." Bewerte diese Aussage anhand der
-SBI-Methode. Formuliere die Aussage in eine saubere SBI-Rückmeldung um (Situation,
-Behavior, Impact) und ergänze einen abschließenden Vereinbarungssatz. Warum ist die
-ursprüngliche Form als Feedback ungeeignet?
-
-**Aufgabe 4 — AIDA in einer Präsentation (5 Punkte).**
-Du sollst der Geschäftsleitung den Kauf einer neuen IT-Sicherheitslösung empfehlen. Die
-Präsentation hat 12 Minuten. Skizziere für jede der vier AIDA-Stufen eine konkrete
-Folie mit Inhalt: Was steht im Aufmacher (Attention)? Wie weckst du Interesse
-(Interest)? Wie erzeugst du den Wunsch (Desire)? Welche konkrete Handlung forderst du
-ab (Action)? Worin unterscheidet sich AIDA von AIDCAS?
-
-**Aufgabe 5 — Quantitativ und qualitativ kombinieren (4 Punkte).**
-Nach Einführung eines neuen Ticketsystems werden 60 Rückmeldungen gesammelt: 24-mal
-„ich finde meine alten Tickets nicht wieder", 18-mal „Benachrichtigungen kommen zu
-spät", 11-mal „Kategorien sind unklar", 7-mal „Design gefällt nicht". Welche dieser
-Rückmeldungen sind quantitativ, welche qualitativ? Welche zwei konkreten Maßnahmen
-ergeben sich aus den drei häufigsten Rückmeldungen? Warum ist „Design gefällt nicht"
-für die Priorisierung nachrangig?
-
-<Tipp titel="Lösungsansatz zu Aufgabe 2 (Kurzform)">
-Sachinhalt: „Die neue Software reagiert nicht zuverlässig auf meine Eingaben."
-Selbstoffenbarung: „Ich bin frustriert und fühle mich überfordert mit dem Wechsel."
-Beziehung: „Du als IT hast mir ein nicht funktionierendes Werkzeug gegeben." Appell:
-„Hilf mir, oder gib mir das alte System zurück." Ungeeignete Antwort: „Bei mir geht
-es" (Sach-Ohr verfehlt den Frust). Geeignete Antwort: „Verstehe, das blockiert dich —
-ich schaue mir das mit dir gemeinsam an" (Beziehung anerkannt, Appell beantwortet,
-Sachinhalt folgt).
-</Tipp>
-
----
-
-## Merkbilder
-
-Die beiden Skizzen helfen dir beim Wiedererkennen in Prüfungsaufgaben: Vier-Ohren
-gehört zur Interpretation einer Aussage, AIDA zur Dramaturgie einer Präsentation.
-
-<svg
-  viewBox="0 0 760 360"
-  role="img"
-  aria-label="Skizze: Vier-Ohren-Modell nach Schulz von Thun. Links der Sender mit vier Schnäbeln (Sachinhalt, Selbstoffenbarung, Beziehung, Appell), rechts der Empfänger mit vier Ohren in derselben Anordnung. Eine Beispiel-Aussage 'Das System ist wieder mal langsam' wird in der Mitte gezeigt."
-  className="my-8 w-full max-w-3xl border border-rule bg-paper"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <defs>
-    <style>{`
-      .lbl { font: 500 12px 'IBM Plex Sans', sans-serif; fill: #1a2332; }
-      .sub { font: 400 10px 'IBM Plex Sans', sans-serif; fill: #4a5568; }
-      .hdr { font: 600 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
-      .col { font: 600 12px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.05em; }
-      .step { font: 600 11px 'JetBrains Mono', monospace; fill: #8b2f1d; }
-      .arrow { stroke: #1a2332; stroke-width: 1.2; fill: none; }
-      .accent { stroke: #8b2f1d; stroke-width: 1.5; fill: none; }
-      .body { fill: none; stroke: #1a2332; stroke-width: 1.4; }
-      .head { fill: none; stroke: #1a2332; stroke-width: 1.4; }
-      .sayBg { fill: #ffffff; stroke: #8b2f1d; stroke-width: 1.2; }
-    `}</style>
-    <marker id="four-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#1a2332" />
-    </marker>
-  </defs>
-
-  <text className="hdr" x="20" y="28">Vier-Ohren-Modell · vier Schnäbel, vier Ohren, eine Aussage</text>
-
-  <text className="col" x="60" y="62">SENDER</text>
-  <text className="col" x="640" y="62">EMPFAENGER</text>
-
-  <circle className="head" cx="100" cy="180" r="46" />
-  <circle className="head" cx="660" cy="180" r="46" />
-
-  <line className="arrow" x1="146" y1="120" x2="280" y2="115" markerEnd="url(#four-arrow)" />
-  <text className="step" x="156" y="112">SACH</text>
-  <text className="sub" x="156" y="128">„System ist langsam"</text>
-
-  <line className="arrow" x1="146" y1="160" x2="280" y2="155" markerEnd="url(#four-arrow)" />
-  <text className="step" x="156" y="152">SELBST</text>
-  <text className="sub" x="156" y="168">„Ich bin frustriert"</text>
-
-  <line className="accent" x1="146" y1="200" x2="280" y2="205" markerEnd="url(#four-arrow)" />
-  <text className="step" x="156" y="194">BEZIEHUNG</text>
-  <text className="sub" x="156" y="218">„Du IT bist verantwortlich"</text>
-
-  <line className="arrow" x1="146" y1="240" x2="280" y2="245" markerEnd="url(#four-arrow)" />
-  <text className="step" x="156" y="234">APPELL</text>
-  <text className="sub" x="156" y="258">„Mach es schneller"</text>
-
-  <rect className="sayBg" x="280" y="135" width="200" height="90" rx="6" ry="6" />
-  <text className="lbl" x="296" y="158">„Das System ist</text>
-  <text className="lbl" x="296" y="178">  wieder mal langsam."</text>
-  <text className="sub" x="296" y="206">Eine Aussage,</text>
-  <text className="sub" x="296" y="218">vier Lesarten</text>
-
-  <line className="arrow" x1="480" y1="120" x2="614" y2="125" markerEnd="url(#four-arrow)" />
-  <text className="step" x="500" y="112">Sach-Ohr</text>
-  <text className="sub" x="500" y="128">höre Information</text>
-
-  <line className="arrow" x1="480" y1="160" x2="614" y2="165" markerEnd="url(#four-arrow)" />
-  <text className="step" x="500" y="152">Selbst-Ohr</text>
-  <text className="sub" x="500" y="168">höre Befindlichkeit</text>
-
-  <line className="accent" x1="480" y1="200" x2="614" y2="205" markerEnd="url(#four-arrow)" />
-  <text className="step" x="500" y="194">Beziehungs-Ohr</text>
-  <text className="sub" x="500" y="218">höre Wertschätzung</text>
-
-  <line className="arrow" x1="480" y1="240" x2="614" y2="245" markerEnd="url(#four-arrow)" />
-  <text className="step" x="500" y="234">Appell-Ohr</text>
-  <text className="sub" x="500" y="258">höre Aufforderung</text>
-
-  <text className="sub" x="20" y="338">Friedemann Schulz von Thun · „Miteinander reden", Band 1, 1981</text>
-</svg>
-
-<svg
-  viewBox="0 0 760 360"
-  role="img"
-  aria-label="Skizze: AIDA-Pyramide mit vier Stufen. Von oben breit (Attention) nach unten schmal (Action). Akzent rot markiert die Action-Stufe als Ziel."
-  className="my-8 w-full max-w-3xl border border-rule bg-paper"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <defs>
-    <style>{`
-      .lbl { font: 600 14px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
-      .sub { font: 400 11px 'IBM Plex Sans', sans-serif; fill: #4a5568; }
-      .hdr { font: 600 13px 'IBM Plex Sans', sans-serif; fill: #1a2332; letter-spacing: 0.04em; }
-      .step { font: 600 13px 'JetBrains Mono', monospace; fill: #8b2f1d; }
-      .layer { fill: none; stroke: #1a2332; stroke-width: 1.3; }
-      .layer-top { fill: none; stroke: #8b2f1d; stroke-width: 2; }
-      .arrow { stroke: #8b2f1d; stroke-width: 1.6; fill: none; }
-    `}</style>
-    <marker id="aida-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#8b2f1d" />
-    </marker>
-  </defs>
-
-  <text className="hdr" x="20" y="28">AIDA · vier Stufen einer wirksamen Präsentation</text>
-
-  <polygon className="layer" points="120,80 640,80 580,140 180,140" />
-  <text className="step" x="200" y="106">A</text>
-  <text className="lbl" x="240" y="106">Attention</text>
-  <text className="sub" x="240" y="124">Aufmerksamkeit wecken — Aufmacher, Zahl, Frage</text>
-
-  <polygon className="layer" points="180,140 580,140 520,200 240,200" />
-  <text className="step" x="260" y="166">I</text>
-  <text className="lbl" x="300" y="166">Interest</text>
-  <text className="sub" x="300" y="184">Interesse halten — Relevanz, Sprache der Hörer</text>
-
-  <polygon className="layer" points="240,200 520,200 460,260 300,260" />
-  <text className="step" x="320" y="226">D</text>
-  <text className="lbl" x="360" y="226">Desire</text>
-  <text className="sub" x="360" y="244">Wunsch erzeugen — Vorher/Nachher, Beispiel</text>
-
-  <polygon className="layer-top" points="300,260 460,260 420,320 340,320" />
-  <text className="step" x="350" y="288">A</text>
-  <text className="lbl" x="380" y="288">Action</text>
-  <text className="sub" x="350" y="308">Konkreter nächster Schritt</text>
-
-  <line className="arrow" x1="690" y1="100" x2="690" y2="295" markerEnd="url(#aida-arrow)" />
-  <text className="step" x="708" y="200">Reihenfolge</text>
-
-  <text className="sub" x="20" y="345">E. St. Elmo Lewis, 1898 · klassisches Werbewirkungs-Modell</text>
-</svg>
+| ID | Anforderung | Quelle | Priorität | Prüfung |
+|---|---|---|---|---|
+| A-01 | Die Fachanwendung ist nach erfolgreicher Anmeldung spätestens nach 30 Sekunden nutzbar. | Sachbearbeitung, Messung | Muss | definierter Starttest mit Standardprofil |
+| A-02 | Jedes Gerät betreibt zwei vorhandene Monitore über die vorhandene Dockinglösung oder einen vollständig kompatiblen Ersatz. | Arbeitsplatzbeobachtung, Inventar | Muss | Anschluss- und Funktionstest |
+| A-03 | Zwei gekennzeichnete Arbeitsplätze unterstützen die vorhandenen Signaturkarten. | Fachbereich | Muss | Signaturtest mit freigegebener Software |
+| A-04 | Geräte werden zentral verwaltet und Datenträger nach betrieblicher Vorgabe verschlüsselt. | IT-Betrieb, Sicherheitsvorgabe | Muss | Verwaltungs- und Konfigurationsnachweis |
+| A-05 | Beschaffung, Garantie, notwendige Adapter und Rollout überschreiten zusammen 32.000 € nicht. | Geschäftsführung | Muss | vollständige Kostenaufstellung |
+| A-06 | Akkulaufzeit reicht im festgelegten Office-Test mindestens acht Stunden. | mobile Nutzer | Soll | dokumentierter Test oder vergleichbarer Hersteller-/Labornachweis |
+| A-07 | Geräte sind ohne Spezialwerkzeug wartbar und Ersatzteile für den geplanten Nutzungszeitraum beschaffbar. | IT-Betrieb, Nachhaltigkeitsziel | Soll | Anbieterbeleg und Wartungskonzept |
+
+„Schnell“ und „kompatibel“ wurden in prüfbare Ergebnisse übersetzt. Jede
+Anforderung besitzt eine Quelle und eine vorgesehene Kontrolle.
+
+### 3. Konflikt und Entscheidung
+
+Ein besonders leichtes Premiumgerät erfüllt Mobilitätswunsch und Leistung,
+überschreitet mit Adaptern aber das Gesamtbudget. Eine aufrüstbare Geräteserie
+ist schwerer, erfüllt die Muss-Anforderungen und bleibt im Budget. Die
+Geschäftsführung entscheidet:
+
+- 18 betroffene Geräte werden ersetzt,
+- sieben neuere Geräte bleiben nach bestandenem Leistungstest im Einsatz,
+- für sechs regelmäßig mobile Rollen wird die leichtere Variante beschafft,
+- für die übrigen zwölf Rollen die wirtschaftlichere, wartbare Variante.
+
+Die Entscheidung folgt Rollen und Bedarf statt dem ursprünglichen pauschalen
+Wunsch nach 25 identischen Neugeräten.
+
+### 4. Validierung
+
+Geschäftsführung, zwei Benutzerrollen und IT-Dienstleister prüfen die Liste:
+
+- Sind alle relevanten Rollen und Schnittstellen enthalten?
+- Ist jede Muss-Anforderung verständlich und einzeln prüfbar?
+- Widersprechen sich Budget, Leistung und Kompatibilität?
+- Fehlt eine Rechts-, Sicherheits- oder Betriebsanforderung?
+- Ist dokumentiert, wer die Abnahme durchführt?
+
+Erst nach dieser Rückmeldung wird die Anforderungsliste freigegeben und für
+Angebotsvergleich und Beschaffung verwendet.
+
+## Typische Fehler und Gegenmittel
+
+### Wunsch direkt umsetzen
+
+„25 neue Notebooks“ kann Ergebnis der Analyse sein, darf aber nicht unbesehen
+deren Ausgangspunkt und Ergebnis zugleich sein. Problem und Ziel zuerst klären.
+
+### Nur eine Rolle befragen
+
+Geschäftsführung, Benutzer, Betrieb und Datenschutz sehen unterschiedliche
+Teile des Systems. Relevante Quellen bestimmen und Ergebnisse abgleichen.
+
+### Begriffe ohne Messregel verwenden
+
+„Schnell“ und „einfach“ brauchen Nutzungssituation und Prüfkriterium. Eine Zahl
+allein genügt ebenfalls nicht, wenn Messbeginn, Umgebung oder Stichprobe fehlen.
+
+### Methode mit Wahrheit verwechseln
+
+Ein Fragebogen ist nicht automatisch objektiv, ein Log nicht automatisch
+vollständig und ein Interview nicht automatisch repräsentativ. Jede Quelle hat
+einen Ausschnitt und mögliche Verzerrungen.
+
+### Datenschutz nachträglich behandeln
+
+Beobachtung, Monitoring und Befragung können personenbezogene Daten oder
+Leistungskontrolle betreffen. Zweck, Datenumfang, Zugriff, Aufbewahrung,
+Mitbestimmung und Rechtsgrundlage werden vor der Erhebung geklärt.
+
+### Keine Validierung einplanen
+
+Dokumentierte Anforderungen können trotzdem falsch, unvollständig,
+widersprüchlich oder unprüfbar sein. Betroffene Beteiligte müssen sie vor der
+Umsetzung kontrollieren und Konflikte entscheiden.
+
+## Kurzer Selbstcheck
+
+1. Worin unterscheiden sich Wunsch, Bedarf, Anforderung und Lösung?
+2. Warum ist „Bedarf = Soll minus Ist“ keine universelle Rechenformel?
+3. Nenne je eine menschliche, dokumentarische und technische
+   Anforderungsquelle.
+4. Welche Technik eignet sich, um einen tatsächlichen Arbeitsablauf und
+   vorhandene Workarounds zu erkennen?
+5. Verbessere die Aussage „Das System muss benutzerfreundlich sein“ zu einer
+   prüfbaren Anforderung für einen konkreten Arbeitsschritt.
+6. Warum sind ausschließlich Interviews für 400 gleichartige Benutzerrollen
+   meist keine wirtschaftliche Erhebungsstrategie?
+7. Welche Angaben braucht eine Muss-Anforderung zusätzlich zur Formulierung?
+8. Was wird bei der Validierung von Anforderungen geprüft?
+
+### Lösungen
+
+1. Ein Wunsch ist die spontan genannte Forderung. Bedarf ist die zu schließende
+   Lücke zum Ziel. Eine Anforderung beschreibt eine prüfbare Eigenschaft oder
+   Randbedingung. Die Lösung setzt Anforderungen konkret um.
+2. Nicht jede Lücke ist numerisch subtrahierbar. Recht, Barrierefreiheit,
+   Sicherheit oder Zuständigkeit können qualitative Soll-Ist-Unterschiede sein.
+3. Beispiel: Benutzer, Servicevertrag und Systemprotokoll.
+4. Beobachtung oder kontextnahe Vorführung; anschließend werden die Befunde mit
+   den Beteiligten geklärt.
+5. Beispiel: „Eine geschulte Sachbearbeitung erfasst einen Standardmandanten
+   anhand des bereitgestellten Falls in höchstens drei Minuten ohne Hilfe und
+   ohne Validierungsfehler.“ Testfall, Rolle und Messregel müssen vereinbart
+   werden.
+6. Interviews liefern Tiefe, benötigen bei 400 Personen aber viel Zeit. Eine
+   sinnvolle Kombination kann Rolleninterviews und Beobachtung für Tiefe mit
+   einem geprüften Fragebogen oder Systemdaten für Breite verbinden.
+7. Quelle, Begründung, Prioritätsentscheidung, Abhängigkeiten und vorgesehene
+   Prüfmethode beziehungsweise Abnahmekriterium.
+8. Unter anderem Richtigkeit, Vollständigkeit, Verständlichkeit, Konsistenz,
+   Umsetzbarkeit und Prüfbarkeit sowie das gemeinsame Verständnis der
+   betroffenen Beteiligten.
+
+## Zusammenhang und Transfer
+
+Die Bedarfsanalyse liefert Eingaben für
+[Hardware- und Schnittstellenauswahl](/lernen/hardware/komponenten/hardware-schnittstellen),
+[Angebotsvergleich](/lernen/wirtschaft/beschaffung/angebotsvergleich) und
+[Lasten- und Pflichtenheft](/lernen/projekt/dokumente/lastenheft-pflichtenheft).
+Sie ersetzt diese Schritte nicht: Erst Anforderungen klären, danach Lösungen
+entwerfen, vergleichen, dokumentieren und prüfen.
+
+## Kernzusammenfassung
+
+- Wunsch, Problem, Ziel, Bedarf, Anforderung und Lösung sind verschiedene
+  Ebenen einer Entscheidung.
+- Bedarfsanalyse beginnt mit Auftragsgrenze, Beteiligten,
+  Anforderungsquellen und belegtem Ist-Zustand.
+- Interviews, Fragebogen, Beobachtung, Workshops, Dokumente, Systeme und
+  Prototypen liefern unterschiedliche Ausschnitte und werden passend kombiniert.
+- Anforderungen nennen Gegenstand, Bedingung und prüfbares Ergebnis; unklare
+  Adjektive reichen nicht.
+- Funktion, Qualität, Technik, Organisation, Recht, Sicherheit, Wirtschaft,
+  Ökologie und soziale Nutzung können relevante Anforderungsarten sein.
+- Prioritäten brauchen Begründung. Konflikte werden sichtbar entschieden und
+  dokumentiert.
+- Validierung prüft, ob Anforderungen richtig, vollständig, verständlich,
+  konsistent und prüfbar sind und von den relevanten Beteiligten verstanden
+  werden.
 
 <Glossar
   einträge={[
     {
       term: 'Bedarfsanalyse',
-      definition: 'Strukturierte Erhebung dessen, was ein Kunde wirklich braucht — getrennt vom geäußerten Wunsch. Sechs Schritte: Ausgangslage, Ziele, Anforderungen, Daten, Priorisierung, Maßnahme.'
+      definition: 'Systematische Klärung von Ausgangslage, Ziel, Beteiligten, Randbedingungen und der Lücke, die eine Lösung schließen soll.'
     },
     {
       term: 'Ist-Soll-Vergleich',
-      definition: 'Gegenüberstellung des aktuellen Zustands (Ist) und des Ziel-Zustands (Soll). Differenz ergibt den Bedarf. Setzt voraus, dass beide Zahlen messbar definiert sind.'
-    },
-    {
-      term: 'Sender-Empfänger-Modell',
-      definition: 'Grundmodell der Kommunikation nach Shannon und Weaver: Kodierung beim Sender, Übertragung über einen Kanal, Dekodierung beim Empfänger — mit möglichen Störungen.'
-    },
-    {
-      term: 'Vier-Ohren-Modell',
-      definition: 'Modell von Schulz von Thun (1981). Jede Aussage hat vier Schichten: Sachinhalt, Selbstoffenbarung, Beziehung, Appell — beim Sender als Schnabel, beim Empfänger als Ohr.'
-    },
-    {
-      term: 'AIDA-Modell',
-      definition: 'Werbewirkungs-Modell von 1898 (E. St. Elmo Lewis): Attention, Interest, Desire, Action. Klassische Reihenfolge für Werbung und Präsentation. Erweiterungen: AIDCAS, AIDA(L).'
-    },
-    {
-      term: 'SBI-Feedback',
-      definition: 'Strukturmuster für Rückmeldung: Situation (wann/wo), Behavior (beobachtbares Verhalten), Impact (Auswirkung in Ich-Form). Vermeidet Pauschalurteile und Du-Botschaften.'
-    },
-    {
-      term: 'Aktives Zuhören',
-      definition: 'Gesprächstechnik nach Carl Rogers: Spiegeln, Paraphrasieren, Zusammenfassen, Nachfragen. Sichert Verständnis und reduziert Missverständnisse, besonders im Interview.'
+      definition: 'Gegenüberstellung des belegten Ausgangszustands und des abgestimmten Zielzustands; die Lücke kann quantitativ oder qualitativ sein.'
     },
     {
       term: 'Interview',
-      definition: 'Strukturiertes oder halbstrukturiertes Gespräch mit Einzelpersonen. Liefert qualitative Tiefe und Ursachen, eignet sich für Key User und Fachverantwortliche.'
+      definition: 'Befragung einer oder mehrerer Personen mit vorbereiteten Themen und möglichen Rückfragen zur Vertiefung.'
     },
     {
       term: 'Fragebogen',
-      definition: 'Standardisierte schriftliche Befragung vieler Personen. Liefert vergleichbare quantitative Ergebnisse. Erfolg hängt an Fragequalität — keine Suggestiv- oder Mehrfachfragen.'
+      definition: 'Einheitlicher Satz schriftlicher Fragen für mehrere Personen; Reichweite und Vergleichbarkeit hängen von Fragen, Stichprobe und Rücklauf ab.'
     },
     {
       term: 'Beobachtung',
-      definition: 'Direkte Erfassung tatsächlicher Arbeitsabläufe am Arbeitsplatz. Zeigt Workarounds und Routinen, die in Befragungen übersehen werden — Datenschutz und Mitbestimmung beachten.'
-    },
-    {
-      term: 'Likert-Skala',
-      definition: 'Antwortformat in Fragebogen mit fünf oder sieben Stufen für Zustimmungsgrade. Standard in Mitarbeiter-, Kunden- und Usability-Befragungen.'
-    },
-    {
-      term: 'Offene vs. geschlossene Frage',
-      definition: 'Geschlossene Fragen liefern zählbare Antworten (ja/nein, Skala), offene Fragen Texte. Saubere Erhebung mischt beide; Suggestiv- und Mehrfachfragen sind tabu.'
-    },
-    {
-      term: 'Muss / Soll / Kann',
-      definition: 'Drei-Stufen-Priorisierung von Anforderungen. Muss = zwingend, Soll = wichtig aber nicht startblockierend, Kann = nice-to-have. „Alles Muss" ist keine Priorisierung.'
-    },
-    {
-      term: 'Quantitativ vs. qualitativ',
-      definition: 'Quantitativ = messbar, zählbar (Zeiten, Häufigkeiten, Skalen). Qualitativ = beschreibend, erklärend (Aussagen, Beobachtungen). Beide gehören zusammen.'
-    },
-    {
-      term: 'Storytelling',
-      definition: 'Inhalts-Verpackung mit Held, Konflikt, Wendung, Ergebnis. Erhöht Erinnerbarkeit von Präsentationen, ohne den Inhalt aufzuweichen — füllt die AIDA-Struktur.'
-    },
-  ]}
-/>
-
-<Quellen
-  quellen={[
-    {
-      label: 'Schulz von Thun — Miteinander reden, Band 1: Störungen und Klärungen',
-      href: 'https://www.rowohlt.de/buch/friedemann-schulz-von-thun-miteinander-reden-1-9783499174896',
-      detail: 'Standardwerk zum Vier-Ohren-Modell. Beschreibt die vier Schichten Sachinhalt, Selbstoffenbarung, Beziehung und Appell mit Beispielen aus Beruf und Alltag.'
-    },
-    {
-      label: 'BIBB — Berufsprofil Fachinformatiker und Rahmenlehrplan',
-      href: 'https://www.bibb.de/de/berufeinfo.php',
-      detail: 'Bundesinstitut für Berufsbildung mit dem Rahmenlehrplan zu Lernfeld 1 (Das Unternehmen und die eigene Rolle) und Lernfeld 6 (Serviceanfragen bearbeiten).'
-    },
-    {
-      label: 'DIN EN ISO 9241-110 — Grundsätze der Dialoggestaltung',
-      href: 'https://www.beuth.de/de/norm/din-en-iso-9241-110/325245665',
-      detail: 'Sieben Dialogprinzipien (Aufgabenangemessenheit, Selbstbeschreibungsfähigkeit, Steuerbarkeit, Erwartungskonformität, Fehlertoleranz, Individualisierbarkeit, Lernförderlichkeit) — Grundlage für Bedarfserhebung im Software-Kontext.'
-    },
-    {
-      label: 'VDI 2519 — Vorgehensweise bei der Erstellung von Lasten- und Pflichtenheften',
-      href: 'https://www.vdi.de/richtlinien/details/vdi-2519-blatt-1-vorgehensweise-bei-der-erstellung-von-lasten-pflichtenheften',
-      detail: 'Verein Deutscher Ingenieure: strukturierte Anforderungserfassung als Übergabepunkt zwischen Bedarfsanalyse und Umsetzung — Lastenheft (Auftraggeber) versus Pflichtenheft (Auftragnehmer).'
-    },
-    {
-      label: 'Center for Creative Leadership — SBI Feedback Model',
-      href: 'https://www.ccl.org/articles/leading-effectively-articles/closing-the-gap-between-intent-vs-impact-sbii/',
-      detail: 'Original-Definition des SBI-Modells (Situation, Behavior, Impact). Beschreibt die Methode als Werkzeug für klare Rückmeldungen ohne Pauschalurteile.'
-    },
-    {
-      label: 'Lewis, E. St. Elmo — Catch-Line and Argument',
-      href: 'https://en.wikipedia.org/wiki/AIDA_(marketing)',
-      detail: 'Historische Quelle des AIDA-Modells (1898). Übersicht inklusive der Erweiterungen AIDCAS und AIDA(L), wie sie heute in Marketing-Lehrbüchern referenziert werden.'
-    },
-    {
-      label: 'Projektmagazin — Bedarfsanalyse und Anforderungserhebung',
-      href: 'https://www.projektmagazin.de/methoden/bedarfsanalyse',
-      detail: 'Fachportal mit kompakten Erklärungen zu Bedarfsermittlung, Stakeholder-Interviews und Workshop-Methoden im Projektkontext.'
-    },
-    {
-      label: 'Elektronik-Kompendium — Kommunikationsmodelle und Kundengespräch',
-      href: 'https://www.elektronik-kompendium.de/sites/kom/0301301.htm',
-      detail: 'Fachportal mit Übersichten zu Sender-Empfänger-Modell, Vier-Ohren-Modell und Praxis-Hinweisen zur Kundenkommunikation in IT-Berufen.'
+      definition: 'Geplante Erfassung tatsächlicher Abläufe oder Nutzungssituationen; Datenschutz, Mitbestimmung und Beobachtungseffekt müssen berücksichtigt werden.'
     },
   ]}
 />

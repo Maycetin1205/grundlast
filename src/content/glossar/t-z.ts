@@ -463,15 +463,15 @@ export const tBisZ: GlossarEintrag[] = [
     },
   {
       id: 'vier-ohren',
-      begriff: 'Vier-Ohren-Modell',
-      kurzdefinition: 'Modell von Friedemann Schulz von Thun: Jede Aussage hat vier Botschaften - Sachebene, Selbstoffenbarung, Beziehung, Appell.',
+      begriff: 'Vier-Ohren-Modell / Kommunikationsquadrat',
+      kurzdefinition: 'Analysemodell von Friedemann Schulz von Thun mit Sachinhalt, Selbstkundgabe, Beziehungshinweis und Appell.',
       definition: [
-        'Schulz von Thun (1981) zeigt, dass jede Aussage gleichzeitig auf vier Ebenen wirkt: 1) Sachinhalt - die nüchterne Information, 2) Selbstoffenbarung - was der Sender über sich preisgibt, 3) Beziehung - wie er den Empfänger sieht, 4) Appell - was er erreichen will. Jede Ebene hat einen "Schnabel" beim Sender und ein "Ohr" beim Empfänger.',
-        'Prüfungsrelevant: Die typische Aufgabe gibt eine Beispiel-Aussage und fragt nach den vier möglichen Lesarten. Beispiel: "Das System ist wieder mal langsam." Sachinhalt: Performance-Beobachtung. Selbstoffenbarung: Frust. Beziehung: "Du als IT bist verantwortlich". Appell: "Mach was dagegen".',
+        'Das Kommunikationsquadrat betrachtet eine Nachricht unter vier Aspekten: Sachinhalt, Selbstkundgabe, Beziehungshinweis und Appell. Auf Senderseite heißen sie vier Schnäbel, auf Empfängerseite vier Ohren.',
+        'Die vier Lesarten sind Deutungshypothesen, keine Gedankenleserei. Sachverhalt, Kontext und Signale begründen eine Hypothese; Rückfragen klären, was der Sender tatsächlich meinte oder erwartete.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
-        href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+        titel: 'Kommunikation, aktives Zuhören & Feedback',
+        href: '/lernen/projekt/service-management/schulz-von-thun',
       },
     },
   {

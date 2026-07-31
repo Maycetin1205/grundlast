@@ -52,10 +52,10 @@ export const fiausbvFirst18MonthScopeItems: readonly ScopeItem[] = [
     'marktformen', 'angebotsvergleich',
   ]),
   fia('2.b', [1, 2, 6], 'ermitteln', 'Bedarfe feststellen und Zielgruppen unterscheiden.', [
-    'bedarfsanalyse-feedback', 'hardware-schnittstellen', 'marktformen',
+    'bedarfsanalyse-feedback', 'schulz-von-thun', 'hardware-schnittstellen', 'marktformen',
   ]),
   fia('2.c', [1, 6], 'kommunizieren', 'Sachverhalte regelgerecht präsentieren und deutsche wie englische Fachbegriffe adressatengerecht verwenden.', [
-    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun', 'bedarfsanalyse-feedback',
+    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun',
   ]),
   fia('2.d', [1], 'umsetzen', 'Marketing- und Vertriebsmaßnahmen im eigenen Aufgabenbereich unterstützen.', [
     'marktformen',

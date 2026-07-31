@@ -147,10 +147,10 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 |---|---|---|---|---|---|
 | `serviceanfragen-support-level` | ja | ready | ungeprueft | P2 | ITIL-Begriffe nicht aufblasen |
 | `fehlermanagement-stoerungsannahme` | ja | ready | ungeprueft | P2 | Ablauf und Dokumentation pruefen |
-| `bedarfsanalyse-feedback` | ja | ready | ungeprueft | P2 | Kundenfall und Fragen pruefen |
+| `bedarfsanalyse-feedback` | ja | ready | ungeprueft | P2 | auf Bedarf/Anforderungen fokussiert; eigener Inhaltsaudit folgt bei LF2-01 |
 | `mitarbeitermotivation-teamphasen-change` | ja | ready | ungeprueft | P3 | AP1-Tiefe kritisch pruefen |
 | `schulung-einweisung-key-user` | ja | ready | ungeprueft | P2 | Einweisung/Doku-Aufgabentyp |
-| `schulz-von-thun` | ja | ready | ungeprueft | P3 | nur pruefungsnah halten |
+| `schulz-von-thun` | ja | ready | teilgeprueft | P1 | Lernpaket LF1-07 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
 | `netzplan` | ja | draft | ungeprueft | P2 | Rechenaufgaben pruefen |
 | `gantt-diagramm` | ja | ready | ungeprueft | P2 | Darstellungsaufgaben pruefen |
 | `vorgehensmodelle` | ja | ready | ungeprueft | P2 | Wasserfall/V/agil sauber trennen |
@@ -3156,3 +3156,110 @@ Bearbeiter: Codex
   unabhängige Prüfpass, ein belastbarer Q3-Abgleich und die vollständigen
   Prüfungskataloge 6392/6393. Der Eintrag in `KAPITELPLAN_LF1_LF9.md` bleibt
   deshalb offen.
+
+## Inhaltsaudit: schulz-von-thun / LF1-07 (2026-07-31)
+
+Bearbeiter: Codex
+
+### Scope-Gate und Eigentumsentscheidung
+
+- Das Lernpaket unterstützt `kmk-lf1-07`, `kmk-lf1-08`, `kmk-lf6-06` und
+  `kmk-lf6-07`. Aus den ersten 18 Ausbildungsmonaten sind insbesondere die
+  FIAusbV-Positionen 1.g, 2.b und 2.c betroffen. Im gesetzlichen AP1-Modell
+  trägt das Kapitel zu Kundenbedarf und verständlicher Einweisung bei.
+- LF1-07 ist der alleinige Eigentümer für Sender-Empfänger-Schema,
+  Kommunikationsquadrat, aktives Zuhören, Fragetechnik, Feedback und
+  Deeskalation. AIDA bleibt in LF1-06; Bedarfserhebung und Requirements
+  Engineering bleiben im fokussierten Kapitel `bedarfsanalyse-feedback`.
+- Entscheidung: **behalten und vollständig neu aufbauen**, Bezug
+  `Lehrplan/Prüfung`, Form `Kapitel`. Tiefenpsychologische Deutung,
+  Kommunikationstheorie als Studium, manipulative Verkaufstechniken und eine
+  Sammlung beliebiger Modelle gehören nicht in den Pflichtkern.
+
+### Quellen- und Benchmark-Matrix
+
+| Bereich | Quellen | Was fachlich folgt | Konsequenz fürs Kapitel |
+|---|---|---|---|
+| Offizieller Ausbildungsrahmen | KMK-Rahmenlehrplan LF1/LF6, FIAusbV Anlage erste 18 Monate und § 9, BIBB-Berufsprofil | Im Team und mit Kunden abstimmen, Kommunikationsregeln beachten, Bedarf situationsgerecht ermitteln, verständlich informieren und Gesprächsverhalten reflektieren. | Vollständige Handlung von Wahrnehmung und Klärung über Antwort und Feedback bis zur verbindlichen nächsten Handlung. |
+| Kommunikationsquadrat | Schulz von Thun Institut | Sachinhalt, Selbstkundgabe, Beziehungshinweis und Appell; Senderseite mit vier Schnäbeln, Empfängerseite mit vier Ohren. Selbstkundgabe kann gewollt oder unfreiwillig, explizit oder implizit sein. | Offizielle Begriffe nutzen; mögliche Lesarten als Hypothesen formulieren und durch Rückfragen klären. |
+| Technisches Übertragungsschema | Claude E. Shannon, „A Mathematical Theory of Communication“ (1948) | Informationsquelle, Sender, Kanal, Störung, Empfänger und Ziel beschreiben ein technisches Übertragungsproblem; semantische Bedeutung ist ausdrücklich ausgeschlossen. | Sender-Empfänger-Schema nur als vereinfachte Basis lehren und für menschliche Kommunikation transparent um Kontext, Deutung und Rückkopplung ergänzen. |
+| Aktives Zuhören | Carl R. Rogers und Richard E. Farson, „Active Listening“ | Wirksames Zuhören setzt eine respektvolle Haltung voraus und dient dem Erfassen der Perspektive; äußerliche Technik ohne diese Haltung reicht nicht. | Aufmerksamkeit, Paraphrase, vorsichtige Spiegelung, Rückfrage und bestätigte Zusammenfassung; Verstehen nicht mit Zustimmung verwechseln. |
+| Strukturiertes Feedback | Center for Creative Leadership, SBI/SBII | SBI besteht aus Situation, beobachtbarem Verhalten und Auswirkung. Eine Frage nach der Absicht verwandelt die einseitige Rückmeldung in einen Dialog. | Motiv nicht unterstellen; Vereinbarung als berufliche Ergänzung nach SBI kennzeichnen, nicht als vierten SBI-Buchstaben ausgeben. |
+| Lokales Unterrichtsmaterial | `material/AP1_Lernzettel.pdf`, Metadatenstand 01.03.2025, Seiten 60 und 91–92 | Schlagwörter zu Feedbackkultur, Kommunikationsarten, Deeskalation, Vier-Ohren- und Sender-Empfänger-Modell; keine ausreichende Lern- oder Aufgabenabdeckung. | Nur als Themencheck genutzt. Fehlende Fragetechnik, aktives Zuhören und Feedbackverfahren ergänzt; Eisberg-Psychoanalyse und übernommene Fremdgrafik nicht verwendet. |
+
+### Bestands- und Dublettenbefund
+
+| Altbestand | Problem | Änderung |
+|---|---|---|
+| `schulz-von-thun.mdx` | 146 Zeilen, unbelegte Versprechen zu Klausurpunkten, mögliche Deutungen wurden als sichere Absichten formuliert, keine Fragetechnik und kein vollständiger Feedbackprozess. | Von Grund auf als 50-Minuten-Lernpaket mit Modellgrenzen, Anwendung und Lösungen neu geschrieben. |
+| `bedarfsanalyse-feedback.mdx` | 858 Zeilen als Sammelkapitel mit Vier-Ohren, SBI, AIDA, Präsentation, Bedarfsanalyse, erfundenen Häufigkeiten und starren Feedbackregeln. | Auf Bedarfsanalyse und Anforderungsklärung fokussiert; Kommunikationsmodelle entfernt und per Test gegen Rückkehr gesichert. |
+| AIDA | Nach der LF1-06-Konsolidierung erneut im Sammelkapitel erklärt und als feste Präsentationsdramaturgie überdehnt. | Nur interne Verknüpfung zu LF1-06; keine zweite AIDA-Lehre in LF1-07 oder der Bedarfsanalyse. |
+| Glossar | Aktives Zuhören versprach korrektes Verstehen; SBI wurde fälschlich „gewaltfrei“ genannt; Shannon und Weaver sowie Psychologie wurden vermischt. | Zentrale Definitionen, Links und Grenzen korrigiert; neue Einträge für Frageformen, Paraphrase und Ich-Botschaft ergänzt. |
+
+### Fakten-Gate
+
+1. Shannons Modell von 1948 behandelt technische Nachrichtenübertragung; die
+   Bedeutung einer Nachricht gehört ausdrücklich nicht zu seinem technischen
+   Problem.
+2. Kontext, Deutung und Rückkopplung sind im Kapitel als didaktische Erweiterung
+   für zwischenmenschliche Kommunikation gekennzeichnet, nicht als wörtlicher
+   Bestandteil der Shannon-Primärquelle.
+3. Verbale Kommunikation nutzt Sprache; paraverbale Signale umfassen unter
+   anderem Stimme, Betonung und Sprechtempo; nonverbale Signale umfassen etwa
+   Mimik, Gestik und Körperhaltung. Ihre Verfügbarkeit hängt vom Kanal ab.
+4. Das Kommunikationsquadrat verwendet Sachinhalt, Selbstkundgabe,
+   Beziehungshinweis und Appell sowie vier Schnäbel und vier Ohren.
+5. Selbstkundgabe kann laut Institut bewusst oder unbewusst, ausdrücklich oder
+   indirekt erfolgen. Sie ist nicht nur das absichtlich Erzählte.
+6. Eine Lesart des Kommunikationsquadrats ist eine kontextgestützte Hypothese.
+   Absicht, Gefühl und Beziehung werden nicht ohne Klärung als Tatsache
+   ausgegeben.
+7. Aktives Zuhören wird als respektvolle Haltung mit überprüfbarer Rückmeldung
+   gelehrt. Paraphrasieren ist mehr als wörtliches Nachsprechen; Verstehen ist
+   nicht automatisch Zustimmung.
+8. Offene Fragen erschließen unbekannte Informationen, geschlossene Fragen
+   bestätigen konkrete Angaben; Suggestivfragen legen eine Antwort nahe und
+   können eine neutrale Erhebung verzerren.
+9. SBI besteht aus Situation, beobachtbarem Verhalten und Auswirkung. Die
+   Absicht wird anschließend erfragt; Bitte und Vereinbarung sind als
+   berufliche Ergänzung getrennt gekennzeichnet.
+10. Eine Ich-Botschaft markiert die eigene Wahrnehmung, verwandelt aber ein
+    Pauschalurteil nicht automatisch in eine beobachtbare Rückmeldung.
+
+### Didaktik-, Aufgaben- und Umfangs-Gate
+
+- Didaktik: Ein durchgehender VPN-Beschwerdefall verbindet Übertragungsmodell,
+  vier Nachrichtenseiten, aktives Zuhören, Gesprächstrichter, Deeskalation und
+  internes SBI-Feedback. Ein zugängliches Kommunikationsquadrat, Tabellen,
+  Verfahren, Fehlvorstellungen, Selbstcheck und vollständige Lösungen tragen
+  den Lernweg ohne Vorwissen.
+- Aufgaben: Signalarten und Fragetypen zuordnen, mögliche Nachrichtenseiten
+  begründen, sichere Fakten von Hypothesen trennen, paraphrasieren, Fragen
+  formulieren, SBI-Rückmeldung bilden und eine begrenzende Deeskalationsreaktion
+  entwerfen. Keine Originalprüfungsaufgabe oder Punktebehauptung.
+- Pflicht: Sender-Empfänger-Schema mit Grenze, verbal/paraverbal/nonverbal,
+  Kommunikationsquadrat, aktives Zuhören, offene/geschlossene/Suggestivfrage,
+  SBI, Ich-Botschaft und Deeskalationsablauf. Kann: technische Herkunft des
+  Übertragungsschemas und SBII-Einordnung. Extra/Raus: Eisbergmodell,
+  Psychoanalyse, Watzlawick-Vertiefung, NLP, Verkaufstricks und umfassende
+  Kommunikationswissenschaft.
+
+### Technik-Gate und Entscheidung
+
+- `npm run emit:status`: bestanden; LF1-07 und fokussierte Bedarfsanalyse sind
+  in der generierten Navigation eindeutig benannt.
+- `npm run emit:scope`: bestanden; Kommunikations- und Bedarfskompetenzen sind
+  ohne alte Dublettenbezüge neu zugeordnet.
+- `npm run test`: bestanden (3 Testdateien, 30 Tests, 2026-07-31). Darin sichern
+  Katalog-, Quellen-, Glossar- und Eigentumstests die Trennung ab.
+- `npm run check`: bestanden; Katalogvalidator, Tests, ESLint, TypeScript und
+  Vite-Produktions-Build erfolgreich (2026-07-31).
+- `npm run build:single`: bestanden; Offline-Einzeldatei erzeugt
+  (2026-07-31).
+- `git diff --check`: bestanden.
+- Vertrauen `schulz-von-thun`: `teilgeprueft`. Fachtext, Quellen-, Fakten-,
+  Didaktik-, Aufgaben-, Umfangs- und Technik-Gate sind abgeschlossen. Es fehlen
+  unabhängiger Prüfpass, belastbarer Q3-Abgleich und Vollkataloge 6392/6393.
+- `bedarfsanalyse-feedback` bleibt trotz der notwendigen Entflechtung
+  `ausgearbeitet`; der eigene Vollaudit erfolgt geordnet bei LF2-01. Die Haken
+  für LF1-07 und LF2-01 bleiben bis zu ihren Abschlussgates offen.

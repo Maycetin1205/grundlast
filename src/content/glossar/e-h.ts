@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const eBisH: GlossarEintrag[] = [
   {
+    id: 'geschlossene-frage',
+    begriff: 'Geschlossene Frage',
+    kurzdefinition: 'Frage mit begrenztem Antwortbereich, etwa Ja/Nein, einem Wert oder einer vorgegebenen Auswahl.',
+    definition: [
+      'Geschlossene Fragen eignen sich, um eine konkrete Tatsache zu bestätigen oder eine Auswahl einzugrenzen. Beispiel: "Trat der Fehler heute dreimal auf?"',
+      'Sie liefern wenig neue Tiefe. In einem Gesprächstrichter folgen sie deshalb typischerweise auf offene Fragen und werden nicht als Ersatz für die freie Problemschilderung verwendet.',
+    ],
+    kapitel: {
+      titel: 'Kommunikation, aktives Zuhören & Feedback',
+      href: '/lernen/projekt/service-management/schulz-von-thun',
+    },
+  },
+  {
     id: 'handlungsvollmacht',
     begriff: 'Handlungsvollmacht',
     kurzdefinition: 'Betriebliche Vollmacht für die gewöhnlichen Geschäfte eines übertragenen Handelsbereichs.',
@@ -329,13 +342,13 @@ export const eBisH: GlossarEintrag[] = [
   {
       id: 'fragebogen',
       begriff: 'Fragebogen (Erhebungsmethode)',
-      kurzdefinition: 'Standardisierte schriftliche Befragung vieler Personen mit festem Fragenkatalog - liefert quantitativ vergleichbare Ergebnisse.',
+      kurzdefinition: 'Einheitlicher schriftlicher Fragensatz für mehrere Personen, der je nach Fragetyp vergleichbare Werte oder freie Antworten liefern kann.',
       definition: [
-        'Der Fragebogen erlaubt es, viele Personen mit identischen Fragen zu befragen und ihre Antworten zu zählen, zu vergleichen und statistisch auszuwerten. Frageformen: geschlossen (vorgegebene Antworten), offen (Freitext), Likert-Skala (Zustimmungsgrad in 5 oder 7 Stufen).',
-        'Stärken: Skaliert, vergleichbar, anonym. Schwächen: keine Tiefe, abhängig von Fragequalität, suggestive Formulierungen verzerren das Ergebnis. Prüfungsfallen: Mehrfachfragen ("Finden Sie das System schnell und benutzerfreundlich?") und suggestive Fragen ("Stimmen Sie auch zu, dass...").',
+        'Geschlossene Fragen und Skalen erleichtern eine strukturierte Auswertung. Offene Felder können neue Hinweise liefern, benötigen aber mehr Auswertungsaufwand.',
+        'Aussagekraft hängt von Zielgruppe, Stichprobe, Rücklauf, Formulierung und Antwortoptionen ab. Ein Fragebogen ist nicht automatisch anonym oder objektiv; Mehrfach- und Suggestivfragen können Ergebnisse verzerren.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
+        titel: 'Bedarfsanalyse & Anforderungsklärung',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },

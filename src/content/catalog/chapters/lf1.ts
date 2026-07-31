@@ -308,10 +308,10 @@ export const lf1 = [
   },
   {
     "slug": "schulz-von-thun",
-    "titel": "4-Seiten-Modell nach Schulz von Thun",
+    "titel": "Kommunikation, aktives Zuhören & Feedback",
     "primaryLf": 1,
     "relatedLfs": [
-      8
+      6
     ],
     "lfReihenfolge": 7,
     "themen": [
@@ -319,20 +319,32 @@ export const lf1 = [
     ],
     "ap1Kompetenzen": [
       "ap1-kundenbedarf",
-      "ap1-auswahl-beschaffung"
+      "ap1-einweisung"
     ],
     "ap1Relevanz": "hoch",
     "voraussetzungen": [
       "marktformen"
     ],
-    "lernzeit": 14,
+    "lernzeit": 50,
     "aufgabenfamilien": [
+      "zuordnen",
+      "anwenden",
+      "diagnostizieren",
       "begruenden"
     ],
-    "inhaltsstatus": "ausgearbeitet",
+    "inhaltsstatus": "teilgeprueft",
     "quellen": {
-      "q1_scope": [],
-      "q2_fachquelle": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan",
+        "fiausbv",
+        "bibb-fachinformatiker"
+      ],
+      "q2_fachquelle": [
+        "schulz-von-thun-kommunikationsquadrat",
+        "shannon-1948-communication",
+        "rogers-farson-active-listening",
+        "ccl-sbi-feedback"
+      ],
       "q3_pruefungsrealitaet": []
     },
     "route": {

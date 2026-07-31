@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const iBisL: GlossarEintrag[] = [
   {
+    id: 'ich-botschaft',
+    begriff: 'Ich-Botschaft',
+    kurzdefinition: 'Aussage, die eine eigene Wahrnehmung, Wirkung oder ein Bedürfnis kenntlich macht, statt dem Gegenüber pauschal Eigenschaften zuzuschreiben.',
+    definition: [
+      'Eine Ich-Botschaft kann eine konkrete Wirkung benennen: "Ich konnte den Termin danach nicht bestätigen." Sie sollte mit einer beobachtbaren Situation verbunden werden.',
+      'Die Formulierung mit "ich" macht ein Urteil nicht automatisch sachlich. "Ich finde dich unfähig" bleibt eine pauschale Bewertung der Person.',
+    ],
+    kapitel: {
+      titel: 'Kommunikation, aktives Zuhören & Feedback',
+      href: '/lernen/projekt/service-management/schulz-von-thun',
+    },
+  },
+  {
     id: 'kundennutzen',
     begriff: 'Kundennutzen',
     kurzdefinition: 'Für einen konkreten Kundenbedarf relevante Verbesserung, die ein Angebot bewirkt.',
@@ -139,13 +152,13 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'interview',
       begriff: 'Interview (Erhebungsmethode)',
-      kurzdefinition: 'Strukturiertes oder halbstrukturiertes Gespräch mit Einzelpersonen, das tiefe qualitative Einblicke in Bedarf und Ursachen liefert.',
+      kurzdefinition: 'Vorbereitetes Gespräch mit einer oder mehreren Personen, in dem Anforderungen oder Hintergründe erhoben und durch Rückfragen vertieft werden.',
       definition: [
-        'Das Interview ist die Methode der Wahl, wenn Ursachen, Sonderfälle oder Hintergründe erfragt werden sollen, die ein Fragebogen nicht abdeckt. Drei Formen: strukturiert (fester Fragenkatalog), halbstrukturiert (Leitfaden mit offenen Fragen), unstrukturiert (freies Gespräch).',
-        'Stärken: Tiefe, Anpassbarkeit an die Antwort, Sichtbarkeit nonverbaler Hinweise. Schwächen: Zeitaufwendig, subjektiv, nur mit wenigen Personen möglich. Prüfungsrelevant: Methodenwahl begründen - Interview eignet sich für Key User und Führungskräfte, Fragebogen eher für breite Mitarbeiterkreise.',
+        'Interviews eignen sich für Ursachen, Sonderfälle und Wissen einzelner Rollen. Ein fester Leitfaden erhöht Vergleichbarkeit; offene Fragen und Rückfragen ermöglichen zusätzliche Tiefe.',
+        'Antworten zeigen die Perspektive der befragten Personen und werden dokumentiert, mit anderen Quellen abgeglichen und von beobachtbaren Tatsachen getrennt.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
+        titel: 'Bedarfsanalyse & Anforderungsklärung',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },
@@ -258,11 +271,11 @@ export const iBisL: GlossarEintrag[] = [
       begriff: 'Ist-Soll-Vergleich',
       kurzdefinition: 'Gegenüberstellung des aktuellen Zustands (Ist) und des angestrebten Zielzustands (Soll), aus der sich der Bedarf ableitet.',
       definition: [
-        'Der Ist-Soll-Vergleich ist die mathematische Form der Bedarfsdefinition: Bedarf = Soll minus Ist. Beispiel: Soll-Bearbeitungszeit pro Ticket 8 Minuten, Ist 14 Minuten - Bedarf ist die Schließung der Lücke von 6 Minuten.',
-        'In Prüfungen wird der Vergleich oft mit Kennzahlen oder Tabellen abgefragt. Wichtig: Soll-Werte müssen vorher messbar definiert sein, sonst ist der Vergleich nicht belastbar. Auch im PDCA- und im Projekt-Controlling-Kontext findet sich dieselbe Logik wieder.',
+        'Die Lücke kann quantitativ sein, etwa 14 statt 8 Minuten Bearbeitungszeit, oder qualitativ, etwa fehlende Barrierefreiheit, ungeklärte Zuständigkeit oder eine nicht erfüllte Rechtsvorgabe.',
+        '"Bedarf = Soll minus Ist" ist deshalb ein Denkbild und keine universelle Rechenformel. Ist und Soll brauchen Quellen, Kontext und ein abgestimmtes Prüfkriterium.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
+        titel: 'Bedarfsanalyse & Anforderungsklärung',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },
@@ -555,13 +568,13 @@ export const iBisL: GlossarEintrag[] = [
   {
       id: 'likert-skala',
       begriff: 'Likert-Skala',
-      kurzdefinition: 'Antwortformat in Fragebogen, das Zustimmungsgrade in meist fünf oder sieben Stufen abbildet (von "stimme gar nicht zu" bis "stimme voll zu").',
+      kurzdefinition: 'Geordnete Antwortstufen zu einer Aussage, beispielsweise von starker Ablehnung bis starker Zustimmung.',
       definition: [
-        'Die Skala wurde 1932 von Rensis Likert eingeführt und ist heute Standard in Mitarbeiter-, Kunden- und Usability-Befragungen. Typisch sind Skalen mit fünf Stufen (sehr unzufrieden - unzufrieden - neutral - zufrieden - sehr zufrieden) oder mit sieben für feinere Differenzierung.',
-        'Prüfungsrelevant: Die mittlere Stufe ("neutral") ist umstritten - manche Skalen lassen sie weg, um Antwort-Tendenzen zur Mitte zu vermeiden. Auswertung erfolgt entweder als Durchschnitt (mit Vorsicht, da Ordinaldaten) oder als Verteilung pro Stufe.',
+        'Ein einzelnes Likert-Item verbindet eine Aussage mit geordneten Antwortmöglichkeiten. Fragebogen verwenden häufig fünf oder sieben Stufen; Zahl, Beschriftung und mögliche neutrale Mitte müssen zum Erhebungsziel passen.',
+        'Die Stufen besitzen eine Reihenfolge, aber gleiche numerische Abstände sind nicht automatisch belegt. Verteilungen und Stichprobengröße sollten deshalb sichtbar bleiben, statt nur einen Durchschnitt ohne Kontext zu nennen.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
+        titel: 'Bedarfsanalyse & Anforderungsklärung',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },

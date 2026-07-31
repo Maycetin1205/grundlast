@@ -234,14 +234,14 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'aktives-zuhoeren',
       begriff: 'Aktives Zuhören',
-      kurzdefinition: 'Gesprächstechnik, die durch Spiegeln, Paraphrasieren und Nachfragen sicherstellt, dass eine Aussage richtig verstanden wurde.',
+      kurzdefinition: 'Zuhörhaltung und Gesprächstechnik, die das eigene Verständnis durch Paraphrase, vorsichtige Spiegelung und Rückfragen überprüfbar macht.',
       definition: [
-        'Aktives Zuhören wurde von Carl Rogers geprägt und ist die Grundtechnik in Interview, Beratung und Konfliktgespräch. Vier Werkzeuge: Spiegeln (das Gehörte zurückgeben), Paraphrasieren (in eigenen Worten wiederholen), Zusammenfassen (mehrere Aussagen bündeln), Nachfragen (Verstehenslücken schließen).',
-        'Prüfungsrelevant: Aktives Zuhören reduziert Missverständnisse und ist Voraussetzung für eine saubere Bedarfsanalyse. Kombiniert mit dem Vier-Ohren-Modell schützt es vor reinen Sach-Interpretationen, wenn die Botschaft eigentlich eine Beziehungs- oder Appell-Schicht hat.',
+        'Carl Rogers und Richard Farson beschreiben aktives Zuhören als Haltung echten Interesses, nicht als bloßen Trick. Im beruflichen Gespräch helfen Aufmerksamkeit, Paraphrase, vorsichtige Spiegelung, Rückfragen und eine bestätigte Zusammenfassung.',
+        'Aktives Zuhören bedeutet nicht automatisch Zustimmung. Es macht sichtbar, ob Inhalt, Wirkung und Erwartung korrekt verstanden wurden, bevor eine Lösung oder Bewertung folgt.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
-        href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+        titel: 'Kommunikation, aktives Zuhören & Feedback',
+        href: '/lernen/projekt/service-management/schulz-von-thun',
       },
     },
   {
@@ -507,13 +507,13 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'bedarfsanalyse',
       begriff: 'Bedarfsanalyse',
-      kurzdefinition: 'Strukturierte Erhebung dessen, was ein Kunde oder Anwender wirklich braucht, getrennt vom geäusserten Wunsch.',
+      kurzdefinition: 'Systematische Klärung von Ausgangslage, Ziel, Beteiligten, Randbedingungen und der Lücke, die eine Lösung schließen soll.',
       definition: [
-        'Eine Bedarfsanalyse übersetzt einen Wunsch ("wir brauchen neue Tablets") in ein Problem, eine Anforderung und schließlich eine begründete Lösung. Sie verhindert, dass eine konkrete Lösung gekauft wird, bevor das eigentliche Problem verstanden ist.',
-        'Im Kern besteht sie aus sechs Schritten: Ausgangslage klären, Ziele formulieren, Anforderungen sammeln, Daten erheben, bewerten und priorisieren, Maßnahmen ableiten. Prüfungsrelevant: Methodenwahl (Interview, Fragebogen, Beobachtung) und die Trennung quantitativ/qualitativ.',
+        'Eine Bedarfsanalyse trennt spontanen Lösungswunsch, beobachtbares Problem, Ziel, Bedarf, prüfbare Anforderungen und konkrete Lösung. Dadurch wird nicht vorschnell das falsche Produkt ausgewählt.',
+        'Relevante Anforderungsquellen werden mit passenden Techniken untersucht. Anforderungen werden dokumentiert, priorisiert, auf Konflikte geprüft und mit den Beteiligten validiert.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
+        titel: 'Bedarfsanalyse & Anforderungsklärung',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },
@@ -533,13 +533,13 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'beobachtung',
       begriff: 'Beobachtung (Erhebungsmethode)',
-      kurzdefinition: 'Direkte Erfassung tatsächlicher Arbeitsabläufe und Handlungen, oft am Arbeitsplatz - zeigt unausgesprochene Probleme.',
+      kurzdefinition: 'Geplante Erfassung tatsächlicher Abläufe oder Nutzungssituationen, die Aussagen aus Interviews und Dokumenten ergänzen kann.',
       definition: [
-        'Die Beobachtung erfasst, was Anwender tatsächlich tun, statt was sie sagen. Sie ist besonders wertvoll, wenn Routinen übersehen werden ("das mache ich seit Jahren so") oder wenn Anwender eigene Workarounds entwickelt haben, die kein Interview offenbart hätte.',
-        'Stärken: Echte Abläufe, blinde Flecken sichtbar machen. Schwächen: Beobachtung kann das Verhalten verändern (Hawthorne-Effekt), zeitaufwendig, und Datenschutz/Mitbestimmung sind zu beachten - nicht jede Beobachtung am Arbeitsplatz ist ohne Zustimmung des Betriebsrats erlaubt.',
+        'Beobachtung kann Arbeitsschritte, Kontext und Workarounds sichtbar machen, die Beteiligte im Gespräch nicht erwähnen. Der Befund wird anschließend mit ihnen geklärt und nicht ohne Rückfrage als Absicht gedeutet.',
+        'Die Anwesenheit eines Beobachters kann Verhalten verändern. Zweck, Umfang, personenbezogene Daten, Datenschutz und betriebliche Mitbestimmung müssen vor der Erhebung geprüft werden.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse, Kommunikation & Feedback',
+        titel: 'Bedarfsanalyse & Anforderungsklärung',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },

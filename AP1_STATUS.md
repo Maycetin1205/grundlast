@@ -8,11 +8,11 @@
 - Kapitel im Katalog: **120**
 - MDX-Lerntexte: **83**
 - Geprüft: **6**
-- Teilgeprüft: **13**
-- Ungeprüft ausgearbeitet: **64**
+- Teilgeprüft: **14**
+- Ungeprüft ausgearbeitet: **63**
 - Geplant: **37**
 - Gesperrt: **0**
-- Quellenabdeckung: Q1 **48**, Q2 **27**, Q3 **4**
+- Quellenabdeckung: Q1 **50**, Q2 **29**, Q3 **4**
 - Scope-Pakete mit allen Lerntexten: **47/107**
 - Scope-Pakete vollständig über geprüfte Kapitel belegt: **2/107**
 - Release-Gate: **nicht bestanden**
@@ -38,7 +38,7 @@ Katalog: **9** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
 | 4 | Rechtsformen sicher unterscheiden | geprüft | pflicht | ✓ | ✓ | ✓ | ✓ |
 | 5 | Vollmachten im Betrieb | geprüft | pflicht | ✓ | ✓ | ✓ | ✓ |
 | 6 | Markt, Wettbewerb & Kundennutzen | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 7 | 4-Seiten-Modell nach Schulz von Thun | ungeprüft | hoch | – | – | – | ✓ |
+| 7 | Kommunikation, aktives Zuhören & Feedback | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
 | 9 | Organisationsformen, Leitbild, Nachhaltigkeit & ESG | ungeprüft | hoch | – | – | – | ✓ |
 | 10 | Arbeitnehmerrechte & Kündigungsschutz | geplant | mittel | – | – | – | – |
 
@@ -152,7 +152,7 @@ Katalog: **17** Kapitel · Mindestpakete: **14** · Zeitrichtwert: **40 Stunden*
 |---:|---|---|---|:---:|:---:|:---:|:---:|
 | 1 | Serviceanfragen, Ticketsystem & Support-Level | ungeprüft | hoch | – | – | – | ✓ |
 | 2 | Fehlermanagement & Störungsannahme | ungeprüft | hoch | – | – | – | ✓ |
-| 3 | Bedarfsanalyse, Kommunikation & Feedback | ungeprüft | hoch | – | – | – | ✓ |
+| 3 | Bedarfsanalyse & Anforderungsklärung | ungeprüft | hoch | ✓ | ✓ | – | ✓ |
 | 4 | Schulung, Einweisung, Key User & Multiplikatoren | ungeprüft | hoch | – | – | – | ✓ |
 | 5 | Lastenheft & Pflichtenheft | ungeprüft | hoch | – | – | – | ✓ |
 | 6 | Vorgehensmodelle (Wasserfall, V-Modell, Agil) | ungeprüft | hoch | – | – | – | ✓ |

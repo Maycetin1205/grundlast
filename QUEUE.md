@@ -51,12 +51,16 @@ GitHub-Kontoeinstellung und keine Codeänderung.
 
 ## Aktueller Schritt 2 — Kapitelproduktion und unabhängige Prüfung
 
-Reihenfolge: erster offene Eintrag in `KAPITELPLAN_LF1_LF9.md`, aktuell
-`LF1-06 Markt, Wettbewerb und Kundennutzen`.
+Reihenfolge: Die ersten formal offenen Einträge in
+`KAPITELPLAN_LF1_LF9.md` bleiben wegen der unabhängigen Freigaben LF1-06 und
+LF1-07. Der nächste Inhaltsproduktionsschritt ist LF1-08 Präsentation und
+Dokumentation.
 
-LF1-06 hat den vollständigen ersten Inhalts-, Quellen- und Technikpass
-bestanden und bleibt bis zum unabhängigen Prüfpass sowie Q3-/Vollkatalogabgleich
-korrekt als `teilgeprueft` offen. Danach folgt LF1-07.
+LF1-06 und LF1-07 haben den vollständigen ersten Inhalts-, Quellen- und
+Technikpass bestanden und bleiben bis zum unabhängigen Prüfpass sowie
+Q3-/Vollkatalogabgleich korrekt als `teilgeprueft` offen. Die in LF1-07
+entdeckte Sammelkapitel-Dublette wurde auf Bedarfsanalyse und
+Anforderungsklärung fokussiert; ihr eigener Vollaudit folgt bei LF2-01.
 
 Pro Kapitel:
 

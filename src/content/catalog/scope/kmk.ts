@@ -198,10 +198,10 @@ export const kmkScopeItems: readonly ScopeItem[] = [
     'fehlermanagement-stoerungsannahme', 'serviceanfragen-support-level',
   ]),
   kmk(6, 6, 'kommunizieren', 'Mit Prozessbeteiligten situationsgerecht, bei Bedarf fremdsprachlich und deeskalierend kommunizieren.', [
-    'bedarfsanalyse-feedback', 'schulung-einweisung-key-user',
+    'schulz-von-thun', 'schulung-einweisung-key-user',
   ]),
   kmk(6, 7, 'reflektieren', 'Bearbeitung und Gesprächsverhalten reflektieren und konkrete Qualitätsverbesserungen vorschlagen.', [
-    'bedarfsanalyse-feedback', 'pdca-zyklus',
+    'schulz-von-thun', 'pdca-zyklus',
   ]),
 
   // LF7

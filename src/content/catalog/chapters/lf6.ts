@@ -69,31 +69,40 @@ export const lf6 = [
   },
   {
     "slug": "bedarfsanalyse-feedback",
-    "titel": "Bedarfsanalyse, Kommunikation & Feedback",
+    "titel": "Bedarfsanalyse & Anforderungsklärung",
     "primaryLf": 6,
     "relatedLfs": [
-      8
+      1,
+      2
     ],
     "lfReihenfolge": 3,
     "themen": [
       "projekt"
     ],
     "ap1Kompetenzen": [
-      "ap1-einweisung",
-      "ap1-kontrolle-protokoll"
+      "ap1-kundenbedarf"
     ],
     "ap1Relevanz": "hoch",
     "voraussetzungen": [
-      "fehlermanagement-stoerungsannahme"
+      "schulz-von-thun"
     ],
-    "lernzeit": 30,
+    "lernzeit": 45,
     "aufgabenfamilien": [
-      "diagnostizieren"
+      "zuordnen",
+      "diagnostizieren",
+      "anwenden",
+      "begruenden"
     ],
     "inhaltsstatus": "ausgearbeitet",
     "quellen": {
-      "q1_scope": [],
-      "q2_fachquelle": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan",
+        "fiausbv",
+        "bibb-fachinformatiker"
+      ],
+      "q2_fachquelle": [
+        "ireb-cpre-foundation-3-3"
+      ],
       "q3_pruefungsrealitaet": []
     },
     "route": {

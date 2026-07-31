@@ -32,6 +32,13 @@ function result() {
   })
 }
 
+function expectKnownLessonTerms(slug: string) {
+  const lesson = fs.readFileSync(new URL(`../lessons/${slug}.mdx`, import.meta.url), 'utf8')
+  const termIds = Array.from(lesson.matchAll(/<Term id="([^"]+)">/g), (match) => match[1])
+  const glossaryIds = new Set(glossarEintraege.map((entry) => entry.id))
+  expect(termIds.filter((id) => !glossaryIds.has(id))).toEqual([])
+}
+
 describe('zentraler Kapitelkatalog', () => {
   it('entspricht vollständig dem Laufzeitschema', () => {
     for (const chapter of chapters) expect(chapterSchema.safeParse(chapter).success).toBe(true)
@@ -95,9 +102,30 @@ describe('zentraler Kapitelkatalog', () => {
     expect(chapters.some((item) => item.slug === 'aida-formel')).toBe(false)
     expect(mdxSlugs.has('aida-formel')).toBe(false)
 
-    const lesson = fs.readFileSync(new URL('../lessons/marktformen.mdx', import.meta.url), 'utf8')
-    const termIds = Array.from(lesson.matchAll(/<Term id="([^"]+)">/g), (match) => match[1])
-    const glossaryIds = new Set(glossarEintraege.map((entry) => entry.id))
-    expect(termIds.filter((id) => !glossaryIds.has(id))).toEqual([])
+    expectKnownLessonTerms('marktformen')
+  })
+
+  it('führt LF1-07 als belegtes Kommunikationspaket ohne tote Term-IDs', () => {
+    const chapter = chapters.find((item) => item.slug === 'schulz-von-thun')
+    expect(chapter?.titel).toBe('Kommunikation, aktives Zuhören & Feedback')
+    expect(chapter?.inhaltsstatus).toBe('teilgeprueft')
+    expect(chapter?.relatedLfs).toContain(6)
+    expect(chapter?.quellen.q2_fachquelle).toEqual(expect.arrayContaining([
+      'schulz-von-thun-kommunikationsquadrat',
+      'shannon-1948-communication',
+      'rogers-farson-active-listening',
+      'ccl-sbi-feedback',
+    ]))
+    expectKnownLessonTerms('schulz-von-thun')
+  })
+
+  it('hält Kommunikationsmodelle aus der Bedarfsanalyse heraus', () => {
+    const chapter = chapters.find((item) => item.slug === 'bedarfsanalyse-feedback')
+    expect(chapter?.titel).toBe('Bedarfsanalyse & Anforderungsklärung')
+    const lesson = fs.readFileSync(new URL('../lessons/bedarfsanalyse-feedback.mdx', import.meta.url), 'utf8')
+    expect(lesson).not.toContain('<Term id="vier-ohren">')
+    expect(lesson).not.toContain('<Term id="sbi-feedback">')
+    expect(lesson).not.toContain('<Term id="aida">')
+    expectKnownLessonTerms('bedarfsanalyse-feedback')
   })
 })

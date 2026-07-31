@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const mBisP: GlossarEintrag[] = [
   {
+    id: 'offene-frage',
+    begriff: 'Offene Frage',
+    kurzdefinition: 'Frage ohne vorgegebenen engen Antwortbereich, die eine Beschreibung in eigenen Worten ermöglicht.',
+    definition: [
+      'Offene Fragen beginnen häufig mit was, wie, wann oder welche und eignen sich, um Abläufe, Bedürfnisse und unbekannte Ursachen zu erschließen.',
+      'Sie können breite Antworten erzeugen. Danach helfen Klärungs- und geschlossene Fragen, Beispiele, Mengen, Zeitpunkte und Randbedingungen zu präzisieren.',
+    ],
+    kapitel: {
+      titel: 'Kommunikation, aktives Zuhören & Feedback',
+      href: '/lernen/projekt/service-management/schulz-von-thun',
+    },
+  },
+  {
+    id: 'paraphrasieren',
+    begriff: 'Paraphrasieren',
+    kurzdefinition: 'Eine Aussage mit eigenen Worten wiedergeben, damit das Gegenüber das Verständnis bestätigen oder korrigieren kann.',
+    definition: [
+      'Eine Paraphrase bündelt den sachlichen Kern, ohne ihn bloß wörtlich nachzusprechen. Beispiel: "Sie melden drei VPN-Abbrüche seit dem Update und sind auf beiden Notebooks betroffen."',
+      'Sie ist ein Werkzeug des aktiven Zuhörens. Eine gute Paraphrase bleibt als Verständnisprüfung offen: "Habe ich das richtig erfasst?"',
+    ],
+    kapitel: {
+      titel: 'Kommunikation, aktives Zuhören & Feedback',
+      href: '/lernen/projekt/service-management/schulz-von-thun',
+    },
+  },
+  {
     id: 'markt',
     begriff: 'Markt',
     kurzdefinition: 'Zusammentreffen von Angebot und Nachfrage für bestimmte Güter.',

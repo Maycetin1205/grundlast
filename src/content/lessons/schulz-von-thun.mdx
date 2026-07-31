@@ -1,146 +1,622 @@
-# 4-Seiten-Modell nach Schulz von Thun
+# Kommunikation, aktives Zuhören und Feedback
 
-<MetaBar
-  lernfeld="LF 6 — Serviceanfragen bearbeiten, Kommunikation"
-/>
+## Worum geht es?
 
-## Was du danach kannst
+Fachlich richtige Informationen reichen nicht aus, wenn Sender und Empfänger sie
+unterschiedlich verstehen. In diesem Kapitel lernst du, ein Gespräch planvoll zu
+führen, mögliche Missverständnisse zu analysieren, mit passenden Fragen zu
+klären, aktiv zuzuhören und konkrete Rückmeldungen zu geben. Danach kannst du
+Kommunikationsmodelle nicht nur benennen, sondern in Kunden-, Team- und
+Supportfällen begründet anwenden.
 
-Nach diesem Kapitel kannst du jede Nachricht in vier Bedeutungsebenen zerlegen: **Sachinhalt**, **Selbstoffenbarung**, **Beziehung** und **Appell**. Du kennst die Quadrate „Vier-Schnäbel" und „Vier-Ohren" und erkennst, warum Missverständnisse meist auf Schicht-Verwechslungen beruhen. Du kannst typische Klausuraussagen wie *„Die Server-Antwortzeit ist wieder unterirdisch"* in die vier Seiten zerlegen und passende Antwortstrategien benennen.
+## Ausgangssituation
 
-## 01 · Warum existiert das überhaupt?
+Nach einem Softwareupdate ruft eine Kundin beim IT-Service an:
 
-Friedemann Schulz von Thun hat das Modell 1981 in seinem Buch *Miteinander reden* veröffentlicht. Der Gedanke: jede gesprochene Aussage trägt **gleichzeitig** vier Botschaften — und Sender und Empfänger gewichten diese vier oft unterschiedlich. Genau dort entstehen Konflikte.
+> „Seit dem Update bricht die VPN-Verbindung ständig ab. Die IT hat das offenbar
+> wieder nicht richtig getestet.“
 
-In der Prüfung wird das Modell als **Analyseaufgabe** gestellt: Du bekommst eine kurze Kunden- oder Kollegenaussage und sollst die vier Seiten herausarbeiten. Wer das Schema sauber beherrscht, holt sich 3 bis 5 Punkte fast geschenkt — das Modell ist überschaubar, die Anwendung mechanisch.
+Eine vorschnelle Antwort wäre:
 
-Im Betrieb hilft es vor allem in **eskalierten Service-Situationen**: Wenn ein Kunde brüllt „Schon wieder funktioniert das WLAN nicht!", liest ein guter Support-Mitarbeiter nicht nur den Sachinhalt, sondern auch Frustration (Selbstoffenbarung), Anklage (Beziehung) und versteckten Wunsch (Appell).
+> „Das kann nicht sein. Unsere Tests waren erfolgreich.“
 
-<Analogie>
-Jede Aussage ist wie eine Postkarte mit vier Briefmarken — vier unabhängige „Frankaturen", die parallel gültig sind. Auf der Vorderseite steht der Text, das ist der Sachinhalt. Hinten drauf hat der Schreiber automatisch etwas über sich verraten — Ärger, Frust, Stolz (Selbstoffenbarung). Mit der Wahl der Worte hat er gleichzeitig gesagt, wie er zum Empfänger steht (Beziehung). Und unausgesprochen liegt ein Wunsch dazwischen — was soll der Empfänger jetzt tun? (Appell). Wer eine Postkarte nur an der Vorderseite liest, übersieht drei Viertel der Information.
-</Analogie>
+Diese Antwort verteidigt die eigene Arbeit, bevor der konkrete Fehler verstanden
+ist. Noch offen sind unter anderem:
 
----
+- Was bedeutet „ständig“ in beobachtbaren Zahlen?
+- Welche VPN-Verbindung, Geräte und Zeitpunkte sind betroffen?
+- Welche Auswirkung hat die Störung auf die Arbeit der Kundin?
+- Ist „nicht richtig getestet“ eine überprüfte Tatsache oder ihre Vermutung?
+- Welche Rückmeldung und welcher nächste Schritt helfen jetzt?
 
-## 02 · Die vier Seiten einer Nachricht
+Kommunikationskompetenz bedeutet hier nicht, der Kundin automatisch recht zu
+geben. Sie bedeutet, Aussage, Wirkung und überprüfbare Fakten zu trennen und das
+Gespräch zu einer belastbaren nächsten Handlung zu führen.
 
-| Seite | Frage des Empfängers | Was wird übermittelt? |
+## Vorwissensbrücke
+
+Im Kapitel
+[Markt, Wettbewerb und Kundennutzen](/lernen/wirtschaft/markt/marktformen)
+hast du gelernt, eine Zielgruppe und ihren Nutzen zu bestimmen. Eine gute
+Botschaft muss diesen Nutzen verständlich ausdrücken. Dieses Kapitel betrachtet
+die andere Seite: Wie prüfst du, was tatsächlich verstanden wurde, und wie
+klärst du mehrdeutige Aussagen?
+
+## Grundprinzip: gemeint ist nicht automatisch verstanden
+
+Das vereinfachte <Term id="sender-empfaenger">Sender-Empfänger-Modell</Term>
+ordnet einen Kommunikationsvorgang in Schritte:
+
+```text
+Absicht → sprachlich oder nonverbal kodierte Nachricht → Kanal
+        → Wahrnehmung und Deutung → Reaktion oder Rückfrage
+```
+
+Der Sender wählt Zeichen, beispielsweise Wörter, Tonfall oder eine Grafik. Die
+Nachricht wird über einen Kanal übertragen, etwa Gespräch, Telefon, Chat oder
+E-Mail. Der Empfänger nimmt nur die verfügbaren Signale wahr und deutet sie mit
+seinem Wissen, seiner Situation und seinen Erwartungen. Seine Reaktion liefert
+dem Sender eine Rückmeldung darüber, was angekommen sein könnte.
+
+Das technische Grundschema geht auf Claude Shannons Nachrichtentheorie zurück.
+Shannon untersuchte 1948 Informationsquelle, Sender, Kanal, Störung, Empfänger
+und Ziel aus nachrichtentechnischer Sicht. Er schloss die Bedeutung einer
+Nachricht ausdrücklich aus seinem technischen Problem aus. Für menschliche
+Gespräche wird das Schema deshalb **didaktisch erweitert**: Kontext, Bedeutung,
+Beziehung und Rückmeldung müssen zusätzlich betrachtet werden.
+
+<Warnung titel="Kein Modell kann Gedanken lesen">
+Aus einer Äußerung lässt sich die Absicht eines Menschen nicht sicher ablesen.
+Modelle erzeugen begründete Deutungshypothesen. Ob eine Hypothese stimmt, wird
+durch Kontext, beobachtbare Signale und vor allem durch eine Rückfrage geklärt.
+</Warnung>
+
+### Drei Signalarten
+
+| Signalart | Was gehört dazu? | Was fehlt bei manchen Kanälen? |
 |---|---|---|
-| **Sachinhalt** | „Worüber informiere ich?" | Reine Fakten, Daten, Sachverhalt |
-| **Selbstoffenbarung** | „Was gebe ich von mir kund?" | Gefühle, Werte, Stimmung des Senders |
-| **Beziehung** | „Was halte ich vom Empfänger?" | Wie der Sender zum Empfänger steht |
-| **Appell** | „Wozu möchte ich veranlassen?" | Wunsch, Aufforderung, Erwartung |
+| verbal | gesprochene oder geschriebene Sprache | Fachbegriffe oder mehrdeutige Wörter können verschieden verstanden werden |
+| paraverbal | Stimme, Betonung, Lautstärke, Sprechtempo und Pausen | bei reiner Schrift weitgehend nicht verfügbar |
+| nonverbal | Mimik, Gestik, Körperhaltung, Blick und räumliches Verhalten | bei Telefon und Schrift teilweise oder vollständig nicht verfügbar |
 
-### Die zwei Quadrate
+Ein Ausrufezeichen ist ein schriftliches Zeichen und keine Stimme. Es kann
+paraverbale Wirkung andeuten, ersetzt Tonfall aber nicht. Ebenso beweist eine
+verschränkte Körperhaltung allein weder Ablehnung noch Ärger. Einzelne Signale
+werden erst im Zusammenhang vorsichtig gedeutet.
 
-Schulz von Thun nutzt zwei spiegelbildliche Quadrate:
+### Störungen systematisch unterscheiden
 
-- **Vier-Schnäbel-Modell** — auf der Sender-Seite. Mit welchen vier „Mündern" rede ich gleichzeitig?
-- **Vier-Ohren-Modell** — auf der Empfänger-Seite. Mit welchen vier „Ohren" höre ich?
-
-Sender und Empfänger können auf jeder der vier Ebenen anders sprechen oder hören. Genau dort entstehen Missverständnisse: der Sender betont den Sachinhalt, der Empfänger hört den Beziehungs-Vorwurf.
-
----
-
-## 03 · Eine Aussage zerlegen — Beispiel im Service-Kontext
-
-<Beispiel titel="Aussage eines Kunden">
-Ein Kunde sagt im Telefonat zum First-Level-Support: *„Schon wieder funktioniert das WLAN nicht!"*
-
-| Seite | Was steckt drin? |
-|---|---|
-| **Sachinhalt** | Das WLAN funktioniert aktuell nicht. Es ist nicht das erste Mal. |
-| **Selbstoffenbarung** | „Ich bin frustriert. Ich verliere Zeit. Ich fühle mich nicht ernst genommen." |
-| **Beziehung** | „Ihr habt mein Problem letztes Mal nicht nachhaltig gelöst." Oder: „Ihr seid in meinen Augen nicht zuverlässig." |
-| **Appell** | „Bitte löse das jetzt — und zwar dauerhaft." Eventuell auch: „Nimm mich ernst." |
-
-**Passende Antwortstrategie:**
-- **Sachebene** bedienen: „Ich sehe Ihr Ticket — ich schaue gleich nach, was zuletzt geprüft wurde."
-- **Selbstoffenbarung anerkennen**: „Ich verstehe, dass das frustriert."
-- **Beziehung stabilisieren**: „Wir nehmen das ernst, und ich kümmere mich persönlich darum."
-- **Appell beantworten**: „Ich gebe Ihnen heute noch Rückmeldung mit einem dauerhaften Lösungsweg."
-</Beispiel>
-
----
-
-## 04 · Vier-Ohren-Modell — Hörfallen
-
-Der Empfänger hat vier Ohren — und kann je nach Stimmung und Beziehung mit einem davon dominant hören. Daraus entstehen typische **Hörfehler**:
-
-| Dominantes Ohr | Typisches Hörverhalten | Risiko |
+| Stelle | Beispiel | Geeignete Klärung |
 |---|---|---|
-| **Sach-Ohr** | „Welche Fakten stecken drin?" | übersieht Emotion, wirkt kühl |
-| **Selbstoffenbarungs-Ohr** | „Was sagt das über den Sender aus?" | überanalysiert, vergisst Inhalt |
-| **Beziehungs-Ohr** | „Was sagt das über mich?" | fühlt sich schnell angegriffen |
-| **Appell-Ohr** | „Was soll ich jetzt tun?" | reagiert reflexartig, übergeht Gefühl |
+| Kodierung | „Das System ist langsam“ ohne Messwert oder Bezug | „Welche Aktion dauert wie lange?“ |
+| Kanal | abgehacktes Telefonat oder unvollständiger Chatverlauf | Kanal wechseln oder Nachricht wiederholen lassen |
+| Fachsprache | „Client“ wird als Kunde statt als Endgerät verstanden | Begriff erklären und am konkreten System zeigen |
+| Kontext | Empfänger kennt die vorherige Änderung nicht | fehlenden Hintergrund knapp ergänzen |
+| Deutung | sachliche Rückfrage wird als Vorwurf gehört | Wahrnehmung offen ansprechen und Absicht klären |
+| fehlende Rückkopplung | lange Einweisung ohne Rückfrage oder Anwendung | zusammenfassen lassen oder Handlung demonstrieren lassen |
 
-<Tipp titel="Klassische Konflikteskalation: Beziehungsohr dominant">
-Der Klassiker im Service-Konflikt: der Mitarbeiter hört eine sachliche Kritik („Das Ticket ist seit 3 Tagen offen") mit dominantem Beziehungs-Ohr („Du wirfst mir vor, schlecht zu arbeiten!") und reagiert verteidigend. Der Kunde wollte aber nur eine Statusabfrage. Wer das eigene Beziehungs-Ohr kennt, kann sich beobachten und bewusst auf das Sach-Ohr umschalten.
+## Das Kommunikationsquadrat
+
+Das Kommunikationsquadrat von Friedemann Schulz von Thun betrachtet eine
+Nachricht im Modell unter vier gleichzeitig relevanten Aspekten. Auf Senderseite
+werden sie auch „vier Schnäbel“, auf Empfängerseite „vier Ohren“ genannt.
+
+<svg
+  viewBox="0 0 760 360"
+  role="img"
+  aria-label="Kommunikationsquadrat mit den vier Seiten Sachinhalt, Selbstkundgabe, Beziehungshinweis und Appell zwischen Sender und Empfänger"
+  className="my-8 w-full max-w-3xl"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <marker id="kommunikation-pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="210" y="45" width="340" height="260" rx="12" />
+    <line x1="380" y1="45" x2="380" y2="305" />
+    <line x1="210" y1="175" x2="550" y2="175" />
+    <line x1="80" y1="175" x2="190" y2="175" markerEnd="url(#kommunikation-pfeil)" />
+    <line x1="570" y1="175" x2="680" y2="175" markerEnd="url(#kommunikation-pfeil)" />
+  </g>
+  <g fill="currentColor" fontFamily="system-ui, sans-serif" textAnchor="middle">
+    <text x="80" y="155" fontSize="20" fontWeight="700">Sender</text>
+    <text x="680" y="155" fontSize="20" fontWeight="700">Empfänger</text>
+    <text x="295" y="100" fontSize="18" fontWeight="700">Sachinhalt</text>
+    <text x="295" y="128" fontSize="14">Daten und Fakten</text>
+    <text x="465" y="100" fontSize="18" fontWeight="700">Selbstkundgabe</text>
+    <text x="465" y="128" fontSize="14">Was zeigt der Sender?</text>
+    <text x="295" y="230" fontSize="18" fontWeight="700">Beziehung</text>
+    <text x="295" y="258" fontSize="14">Wie stehe ich zu dir?</text>
+    <text x="465" y="230" fontSize="18" fontWeight="700">Appell</text>
+    <text x="465" y="258" fontSize="14">Was soll geschehen?</text>
+    <text x="380" y="338" fontSize="14">Eine Nachricht · vier Analyseperspektiven</text>
+  </g>
+</svg>
+
+Die vier Aspekte lauten:
+
+| Seite | Perspektive des Senders | Perspektive des Empfängers | Was ist zu prüfen? |
+|---|---|---|---|
+| Sachinhalt | Worüber informiere ich? | Welche Daten und Sachverhalte höre ich? | wahr oder unwahr, relevant oder irrelevant, hinreichend oder unzureichend |
+| Selbstkundgabe | Was gebe ich gewollt oder ungewollt von mir zu erkennen? | Was könnte die Äußerung über Situation, Haltung oder Gefühl des Senders zeigen? | explizite Aussage von vorsichtiger Deutung trennen |
+| Beziehungshinweis | Wie behandle und bewerte ich mein Gegenüber? | Wie fühle ich mich angesprochen oder behandelt? | Wortwahl, Ton, Kontext und bisherige Beziehung berücksichtigen |
+| Appell | Wozu möchte ich veranlassen? | Was soll ich tun, denken oder unterlassen? | offenen von verdecktem Appell unterscheiden |
+
+Das [Schulz-von-Thun-Institut](https://www.schulz-von-thun.de/die-modelle/das-kommunikationsquadrat)
+betont, dass Selbstkundgabe bewusst oder unbewusst sowie ausdrücklich oder
+indirekt erfolgen kann. „Selbstkundgabe“ bedeutet deshalb nicht nur, was der
+Sender absichtlich über sich erzählen will.
+
+### Eine Aussage richtig analysieren
+
+Für den Satz „Die IT hat das offenbar wieder nicht richtig getestet“ sind
+mehrere Lesarten möglich:
+
+| Seite | Begründete Hypothese | Noch keine gesicherte Tatsache |
+|---|---|---|
+| Sachinhalt | Es gab nach dem Update VPN-Abbrüche; die Kundin bezweifelt die Testabdeckung. | Ob tatsächlich unzureichend getestet wurde. |
+| Selbstkundgabe | Die Kundin ist vermutlich verärgert oder besorgt, weil ihre Arbeit unterbrochen wird. | Ihr genauer emotionaler Zustand oder ihre Motivation. |
+| Beziehung | Sie könnte der IT im Moment wenig Vertrauen entgegenbringen. | Dass sie alle IT-Beschäftigten dauerhaft für unfähig hält. |
+| Appell | Sie möchte wahrscheinlich Fehleranalyse, verlässliche Abhilfe und eine Erklärung. | Welche Maßnahme oder Frist sie konkret erwartet. |
+
+Die Analyse endet deshalb nicht mit vier Behauptungen, sondern mit einer
+Klärung. Eine passende Reaktion wäre:
+
+> „Die Abbrüche beeinträchtigen Ihre Arbeit, und Sie möchten wissen, ob der
+> Fehler vor der Freigabe hätte auffallen müssen. Habe ich das richtig
+> verstanden? Bitte nennen Sie mir zuerst Gerät, Uhrzeit und die Meldung beim
+> letzten Abbruch. Dann prüfe ich Protokolle und Testumfang und melde mich bis
+> 14 Uhr mit dem Befund.“
+
+Diese Antwort bestätigt die **Wirkung**, nicht automatisch den Vorwurf. Sie
+prüft das Verständnis, erhebt Fakten und macht den nächsten Schritt messbar.
+
+## Aktives Zuhören
+
+<Term id="aktives-zuhoeren">Aktives Zuhören</Term> bedeutet, die Perspektive
+des Gegenübers aufmerksam zu erfassen und das eigene Verständnis überprüfbar
+zurückzumelden. Carl Rogers und Richard Farson beschreiben es nicht als
+oberflächlichen Trick, sondern als Haltung, die echtes Interesse und Respekt
+voraussetzt.
+
+Aktives Zuhören besteht im beruflichen Gespräch aus mehreren Werkzeugen:
+
+1. **Aufmerksamkeit geben:** ausreden lassen, Störquellen reduzieren und nicht
+   währenddessen bereits die Verteidigung formulieren.
+2. **Inhalt <Term id="paraphrasieren">paraphrasieren</Term>:** die Kernaussage
+   in eigenen Worten wiedergeben, statt sie nur wörtlich zu wiederholen.
+3. **Wirkung oder Gefühl vorsichtig spiegeln:** „Das klingt, als ob die
+   Unterbrechungen Sie gerade stark aufhalten.“ Als Hypothese formulieren, nicht
+   als Diagnose.
+4. **Gezielt nachfragen:** fehlende Begriffe, Beispiele, Mengen, Zeitpunkte und
+   Erwartungen klären.
+5. **Zusammenfassen und bestätigen lassen:** „Habe ich die drei Punkte korrekt
+   erfasst?“
+
+<Tipp titel="Verstehen ist nicht dasselbe wie zustimmen">
+Du kannst korrekt zusammenfassen, warum jemand verärgert ist, ohne seine
+Ursachenannahme zu bestätigen. „Ich verstehe, dass die Abbrüche Ihren Termin
+gefährden“ ist etwas anderes als „Sie haben recht, wir haben schlecht getestet“.
 </Tipp>
 
----
+### Paraphrase, Spiegelung und Zusammenfassung
 
-## 05 · Vorgehen: eine Aussage analysieren
+| Werkzeug | Zweck | Beispiel |
+|---|---|---|
+| Paraphrase | sachlichen Inhalt mit eigenen Worten prüfen | „Die Verbindung trennt sich seit dem Update mehrmals pro Vormittag.“ |
+| Spiegelung | wahrgenommene Wirkung vorsichtig ansprechen | „Sie wirken besorgt, weil die Frist heute endet.“ |
+| Zusammenfassung | mehrere Aussagen ordnen und Vollständigkeit prüfen | „Betroffen sind zwei Notebooks, nur im Homeoffice und seit Version 4.2 — korrekt?“ |
+| Rückfrage | eine konkrete Lücke schließen | „Welche Fehlermeldung erscheint unmittelbar vor dem Abbruch?“ |
+
+Papageienhaftes Wiederholen ist noch kein aktives Zuhören. Entscheidend ist,
+dass die Rückmeldung das Verständnis prüfbar macht und dem Gegenüber eine
+Korrektur ermöglicht.
+
+## Fragetechniken
+
+Fragen steuern, welche Informationen ein Gespräch hervorbringt. Die passende
+Form hängt vom Gesprächsziel ab:
+
+| Fragetyp | Kennzeichen | Geeigneter Einsatz | Risiko |
+|---|---|---|---|
+| <Term id="offene-frage">offene Frage</Term> | lässt eine freie Antwort zu | Einstieg, Ablauf, Bedürfnisse und unbekannte Ursachen | kann zu breiten oder langen Antworten führen |
+| <Term id="geschlossene-frage">geschlossene Frage</Term> | begrenzte Antwort, etwa Ja/Nein oder ein Wert | konkrete Tatsache bestätigen | liefert wenig neue Tiefe |
+| Klärungsfrage | fragt Begriff, Beispiel oder Widerspruch nach | Mehrdeutigkeit auflösen | kann konfrontativ wirken, wenn der Ton wertend ist |
+| Alternativfrage | bietet tatsächlich vorhandene Optionen | Auswahl eingrenzen | manipulativ, wenn wichtige Optionen fehlen |
+| <Term id="suggestivfrage">Suggestivfrage</Term> | legt eine gewünschte Antwort nahe | für neutrale Bedarfserhebung ungeeignet | verzerrt Antwort und Gespräch |
+| rhetorische Frage | erwartet keine echte Antwort | Vortrag oder Betonung | hilft nicht bei der Datenerhebung |
+
+Ein belastbarer Gesprächstrichter geht vom Offenen zum Konkreten:
 
 <Schritte
   items={[
-    { titel: '1. Aussage wörtlich notieren', text: 'Was wurde exakt gesagt? Nicht paraphrasieren, sondern den Originaltext nehmen.' },
-    { titel: '2. Sachinhalt rausziehen', text: 'Welche Fakten oder Sachverhalte enthält die Aussage? Was ist objektiv überprüfbar?' },
-    { titel: '3. Selbstoffenbarung formulieren', text: 'Was gibt der Sender — oft unbewusst — über sich preis? Frustration? Stolz? Unsicherheit?' },
-    { titel: '4. Beziehungsebene benennen', text: 'Was sagt die Aussage über das Verhältnis zwischen Sender und Empfänger? Vorwurf? Respekt? Misstrauen?' },
-    { titel: '5. Appell identifizieren', text: 'Was möchte der Sender, dass der Empfänger jetzt tut? Manchmal explizit, manchmal versteckt.' },
-    { titel: '6. Eigene Antwortstrategie wählen', text: 'Auf welche Ebene reagiere ich? Nicht alle vier gleichzeitig — Priorität setzen, meist Sach + Beziehung zuerst.' },
+    {
+      titel: 'Erzählen lassen',
+      text: 'Beginne offen: Was genau passiert, wenn Sie die VPN-Verbindung benutzen?',
+    },
+    {
+      titel: 'Ablauf und Beispiele klären',
+      text: 'Bitte beschreiben Sie den letzten Abbruch vom Verbindungsaufbau bis zur Fehlermeldung.',
+    },
+    {
+      titel: 'Messbare Angaben erheben',
+      text: 'Wie oft trat der Abbruch heute auf, auf welchen Geräten und zu welchen Uhrzeiten?',
+    },
+    {
+      titel: 'Hypothesen neutral prüfen',
+      text: 'Tritt es auch über eine andere Internetverbindung oder nur im Heimnetz auf?',
+    },
+    {
+      titel: 'Ergebnis bestätigen',
+      text: 'Ich habe zwei betroffene Geräte und drei Abbrüche zwischen 9 und 11 Uhr notiert. Fehlt etwas?',
+    },
   ]}
 />
 
----
+„Warum haben Sie das falsch gemacht?“ enthält bereits ein Urteil. Neutraler ist:
+„Welcher Ablauf führte zu dieser Einstellung?“ Das Wort „warum“ ist nicht
+grundsätzlich verboten; problematisch ist die eingebaute Schuldzuweisung.
 
-## 06 · Fehlerfallen
+## Feedback geben und annehmen
 
-<Warnung titel="Die fünf häufigsten Klausurfehler">
-1. **Sachinhalt und Appell vermischen.** Der Sachinhalt ist die objektive Information. Der Appell ist der Wunsch dahinter. „Es ist 8 Uhr" als reine Information vs. „Es ist 8 Uhr — du solltest los."
-2. **Selbstoffenbarung wegerklären.** Auch eine sachliche Aussage hat Selbstoffenbarung — der Sender entscheidet sich für Wortwahl, Tonfall, Dringlichkeit. Diese Wahl verrät immer etwas.
-3. **Beziehungs- und Appell-Ebene gleichsetzen.** Beziehungs-Ebene: *wie* steht der Sender zum Empfänger. Appell: *was* soll der Empfänger tun. Unterschied: Haltung vs. Handlung.
-4. **Nur eine Seite analysieren.** Klausuraufgabe verlangt fast immer alle vier — wer zwei vergisst, halbiert die Punktzahl.
-5. **Empfänger-Verständnis mit Sender-Absicht verwechseln.** Das Modell trennt: was der Sender meinte (Vier-Schnäbel) vs. was der Empfänger hörte (Vier-Ohren). Beides darf differieren — genau das ist die Quelle vieler Missverständnisse.
+Feedback beschreibt eine Wahrnehmung und ihre Wirkung, damit Verhalten oder
+Zusammenarbeit verstanden und gegebenenfalls verändert werden können. Es ist
+weder eine Charakterdiagnose noch automatisch eine disziplinarische Maßnahme.
+
+Das <Term id="sbi-feedback">SBI-Modell</Term> des Center for Creative
+Leadership strukturiert eine Rückmeldung in drei Teile:
+
+| SBI-Schritt | Leitfrage | Beispiel |
+|---|---|---|
+| Situation | Wann und in welchem Zusammenhang geschah es? | „Heute um 9 Uhr im Übergabemeeting …“ |
+| Behavior — Verhalten | Was war konkret sicht- oder hörbar, ohne Motiv zu unterstellen? | „… hast du die drei offenen VPN-Tickets nicht genannt …“ |
+| Impact — Auswirkung | Welche tatsächliche Wirkung hatte das Verhalten? | „… dadurch plante der Bereitschaftsdienst ohne diese Fälle und musste später neu priorisieren.“ |
+
+Das CCL empfiehlt anschließend eine Frage nach der Absicht. Dadurch wird aus
+der einseitigen Rückmeldung ein Dialog, ohne die Absicht vorher zu erfinden:
+
+> „Wie hast du die Situation erlebt, und was war dein Grund, die Tickets nicht
+> aufzunehmen?“
+
+Für die berufliche Umsetzung folgen danach eine konkrete Bitte oder gemeinsame
+Vereinbarung und ein Termin zur Kontrolle. Diese Ergänzung gehört nicht zu den
+drei Buchstaben SBI, macht die Veränderung aber handlungsfähig:
+
+> „Bitte nenne ab morgen alle offenen Priorität-1- und Priorität-2-Tickets in
+> der Übergabe. Wir prüfen am Freitag, ob die Liste vollständig war.“
+
+### Ich-Botschaften richtig verwenden
+
+Eine <Term id="ich-botschaft">Ich-Botschaft</Term> kennzeichnet die eigene
+Wahrnehmung oder Wirkung: „Ich konnte den Termin danach nicht bestätigen.“ Sie
+macht eine Behauptung nicht automatisch sachlich richtig. „Ich finde, du bist
+unzuverlässig“ bleibt ein Pauschalurteil über die Person.
+
+Trenne deshalb vier Elemente:
+
+```text
+beobachtbare Situation und Verhalten
+→ konkrete Wirkung
+→ offene Klärung der anderen Perspektive
+→ Bitte oder Vereinbarung
+```
+
+### Feedback annehmen
+
+Wer Feedback erhält, muss nicht sofort zustimmen. Ein konstruktiver Ablauf ist:
+
+1. ausreden lassen und den konkreten Fall erfassen,
+2. bei unklaren Urteilen nach beobachtbarem Verhalten fragen,
+3. Wirkung und beabsichtigte Absicht getrennt betrachten,
+4. das Verstandene zusammenfassen,
+5. sachlich Stellung nehmen und einen nächsten Schritt vereinbaren.
+
+Eine Wirkung kann real sein, obwohl sie nicht beabsichtigt war. Umgekehrt macht
+eine gute Absicht die entstandene Wirkung nicht ungeschehen.
+
+<Warnung titel="Keine starren Feedback-Rituale">
+„Kritik immer privat, Lob immer öffentlich“ ist keine universelle Regel.
+Vertraulichkeit, Schutz der Person, Teamkultur, Inhalt, Machtverhältnis und der
+Wunsch des Empfängers bestimmen den geeigneten Rahmen. Persönliche oder
+sensible Rückmeldungen gehören regelmäßig in einen geschützten Rahmen;
+öffentliches Lob kann für manche Menschen ebenfalls unangenehm sein.
 </Warnung>
 
----
+## Konflikte und Beschwerden deeskalieren
 
-## 07 · Typische Klausuraufgabe
+Deeskalation bedeutet, die Gesprächsfähigkeit wiederherzustellen. Sie bedeutet
+nicht, Beleidigungen, Drohungen oder unrealistische Forderungen zu akzeptieren.
 
-> **Aufgabe (Klausur-Stil):** Eine Kollegin sagt mit hörbarem Seufzen zum Kollegen am Nachbartisch: *„Du hast schon wieder vergessen, das Ticket zu schließen."* Analysiere die Aussage anhand der vier Seiten nach Schulz von Thun und schlage eine konstruktive Reaktion vor.
-
-**Musterantwort:**
-
-- **Sachinhalt:** Das Ticket wurde nicht abgeschlossen. Es ist nicht das erste Mal.
-- **Selbstoffenbarung:** „Ich bin genervt. Ich fühle mich übergangen oder belastet." Das Seufzen verstärkt die Botschaft.
-- **Beziehung:** „Du machst deine Arbeit nicht zuverlässig — und das geht mir auf die Nerven." Implizit: „Ich bin diejenige, die mit nachhängt."
-- **Appell:** „Bitte schließe deine Tickets selbst und denk daran — ich will das nicht jedes Mal nachhalten müssen."
-
-**Konstruktive Reaktion:**
-- Sachebene: „Stimmt, ich schließe es gleich."
-- Beziehung anerkennen: „Tut mir leid, das ist wirklich nervig für dich."
-- Appell beantworten: „Ich richte mir eine Erinnerung ein, damit das nicht mehr vorkommt."
-
----
-
-<Quellen
-  quellen={[
+<Schritte
+  items={[
     {
-      label: 'Schulz von Thun, F. (1981): Miteinander reden 1 — Störungen und Klärungen',
-      href: 'https://www.rowohlt.de/buch/friedemann-schulz-von-thun-miteinander-reden-1-9783499174896',
-      detail: 'Originaltext zum Vier-Seiten-Modell. Grundlagenwerk der Kommunikationspsychologie.'
+      titel: 'Eigenes Tempo senken',
+      text: 'Ruhig sprechen, nicht unterbrechen und keine Gegenanklage beginnen.',
     },
     {
-      label: 'Schulz von Thun Institut für Kommunikation',
-      href: 'https://www.schulz-von-thun.de/die-modelle/das-kommunikationsquadrat',
-      detail: 'Offizielle Erläuterung des Kommunikationsquadrats durch das Institut von Schulz von Thun.'
+      titel: 'Auswirkung anerkennen',
+      text: 'Benennen, was die Störung für das Gegenüber bewirkt, ohne eine ungeprüfte Schuldannahme zu bestätigen.',
     },
     {
-      label: 'KMK — Rahmenlehrplan Fachinformatiker',
-      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
-      detail: 'Verortet Kommunikationsmodelle in Lernfeld 6 (Serviceanfragen, Kundenkommunikation).'
+      titel: 'Fakten mit offenen Fragen erheben',
+      text: 'Ereignis, Umfang, Zeitpunkt, betroffene Systeme und bisherige Schritte erfassen.',
+    },
+    {
+      titel: 'Verständnis zusammenfassen',
+      text: 'Problem, Priorität und erwartetes Ergebnis zurückspiegeln und korrigieren lassen.',
+    },
+    {
+      titel: 'Machbare Optionen und Grenzen nennen',
+      text: 'Nur Maßnahmen, Zuständigkeiten und Fristen zusagen, die tatsächlich eingehalten werden können.',
+    },
+    {
+      titel: 'Nächsten Schritt bestätigen',
+      text: 'Verantwortliche Person, Handlung, Rückmeldezeit und Dokumentation eindeutig festhalten.',
+    },
+  ]}
+/>
+
+Bei persönlichen Angriffen setzt du eine sachliche Grenze: „Ich kläre das
+Problem gern. Wenn Sie mich beleidigen, kann ich das Gespräch so nicht
+fortsetzen.“ Bei Drohungen, Diskriminierung oder Sicherheitsrisiken gelten die
+betrieblichen Eskalations- und Schutzwege.
+
+## Wiederholbares Gesprächsverfahren
+
+Für Kunden-, Team- und Supportgespräche kannst du diese Reihenfolge verwenden:
+
+<Schritte
+  items={[
+    {
+      titel: 'Ziel und Rahmen klären',
+      text: 'Was soll am Ende geklärt oder entschieden sein, wer nimmt teil und welcher Kanal passt?',
+    },
+    {
+      titel: 'Mit einer offenen Frage starten',
+      text: 'Das Gegenüber beschreibt Situation, Bedarf oder Störung zunächst in eigenen Worten.',
+    },
+    {
+      titel: 'Aktiv zuhören',
+      text: 'Inhalt paraphrasieren, Wirkung vorsichtig spiegeln und nicht vorschnell bewerten.',
+    },
+    {
+      titel: 'Fakten und Begriffe präzisieren',
+      text: 'Beispiele, Mengen, Zeitpunkte, Systeme, Randbedingungen und Erwartungen erfragen.',
+    },
+    {
+      titel: 'Verständnis bestätigen lassen',
+      text: 'Die Kernaussagen strukturiert zusammenfassen und fehlende oder falsche Punkte korrigieren lassen.',
+    },
+    {
+      titel: 'Antwort oder Feedback begründen',
+      text: 'Beobachtbare Fakten, Auswirkungen, Optionen und Grenzen transparent voneinander trennen.',
+    },
+    {
+      titel: 'Verbindlich abschließen',
+      text: 'Wer macht was bis wann, wie erfolgt die Rückmeldung und was wird dokumentiert?',
+    },
+  ]}
+/>
+
+## Vollständig ausgearbeitetes Beispiel
+
+### 1. Gespräch eröffnen
+
+Die Servicekraft antwortet auf die Beschwerde:
+
+> „Ich höre, dass die Abbrüche Ihre Arbeit seit dem Update wiederholt
+> unterbrechen und dass Sie Zweifel an unseren Tests haben. Ich möchte beides
+> nachvollziehbar prüfen. Beschreiben Sie bitte den letzten Abbruch vom
+> Verbindungsaufbau bis zur Meldung.“
+
+Die Wirkung wird anerkannt. Die Behauptung „nicht richtig getestet“ wird nicht
+als Tatsache übernommen. Eine offene Frage lenkt auf einen beobachtbaren Ablauf.
+
+### 2. Angaben präzisieren
+
+Im Gespräch werden diese Angaben erhoben:
+
+- zwei Firmen-Notebooks mit VPN-Client 4.2,
+- drei Abbrüche zwischen 9:05 Uhr und 10:40 Uhr,
+- nur im Homeoffice der Kundin, nicht über den Mobilfunk-Hotspot,
+- Fehlermeldung `Tunnel timeout`,
+- Videokonferenz und Dateizugriff wurden dadurch unterbrochen,
+- Abgabefrist eines Kundenprojekts ist 16 Uhr.
+
+Eine Zwischenzusammenfassung lautet:
+
+> „Betroffen sind beide Notebooks im Heimnetz, nicht aber über den Hotspot. Seit
+> heute 9 Uhr gab es drei `Tunnel timeout`-Meldungen. Die Abbrüche gefährden Ihre
+> Abgabe um 16 Uhr. Ist das vollständig?“
+
+Die Kundin ergänzt, dass andere Webseiten währenddessen erreichbar blieben.
+Diese Rückkopplung liefert eine neue Diagnoseinformation.
+
+### 3. Nächsten Schritt vereinbaren
+
+> „Als kurzfristigen Test nutzen Sie für die Abgabe den Hotspot, sofern Ihre
+> betrieblichen Regeln das erlauben. Ich vergleiche bis 12 Uhr VPN-, Client- und
+> Gateway-Protokolle und prüfe den Testfall für Heimrouter. Um 12 Uhr erhalten
+> Sie einen Zwischenstand, auch wenn die Ursache dann noch nicht feststeht.“
+
+Die Servicekraft verspricht keine sofortige Lösung, sondern eine konkrete
+Prüfung und Rückmeldezeit. Der Workaround steht unter einer betrieblichen
+Bedingung.
+
+### 4. Internes Feedback nach SBI
+
+Später zeigt sich: Der Testplan enthielt Mobilfunk und Firmennetz, aber keinen
+typischen Heimrouter mit kurzer UDP-Zeitüberschreitung. Die Servicekraft gibt
+der Testverantwortlichen folgende Rückmeldung:
+
+> „Im Freigabetest für Client 4.2 am Dienstag [Situation] waren Firmennetz und
+> Mobilfunk dokumentiert, aber kein Heimrouter-Szenario [Verhalten]. Dadurch
+> blieb das Timeout-Risiko für Homeoffice-Nutzer unentdeckt und heute entstanden
+> drei dringende Tickets [Auswirkung]. Welche Randbedingung hat zur Auswahl der
+> Testumgebungen geführt? Lass uns für die nächste Version mindestens zwei
+> typische Heimrouter-Konfigurationen festlegen und den Testfall bis Freitag
+> ergänzen.“
+
+Situation, beobachtbares Verhalten und Wirkung sind getrennt. Die Absicht wird
+erfragt statt unterstellt; die Vereinbarung ist konkret.
+
+## Werkzeugauswahl
+
+| Aufgabe | Passendes Werkzeug | Ergebnis |
+|---|---|---|
+| Übertragungsweg oder Störung ordnen | Sender-Empfänger-Schema | Stelle der möglichen Störung und geeignete Rückkopplung |
+| Mehrdeutige Aussage analysieren | Kommunikationsquadrat | vier begründete Hypothesen, keine Gedankenleserei |
+| Bedarf oder Störung verstehen | aktives Zuhören und Gesprächstrichter | bestätigte, konkrete Angaben |
+| Wirkung eines Verhaltens rückmelden | SBI plus Klärungsfrage | beobachtbare Rückmeldung ohne erfundene Absicht |
+| Konflikt beruhigen | Deeskalationsfolge | Gesprächsfähigkeit und verbindlicher nächster Schritt |
+| Werbebotschaft strukturieren | AIDA im [vorherigen Kapitel](/lernen/wirtschaft/markt/marktformen) | Aufmerksamkeit, Interesse, Nutzen und Handlung |
+
+## Typische Fehler und Gegenmittel
+
+### Deutung als Tatsache ausgeben
+
+„Du hältst mich für unfähig“ ist eine mögliche Beziehungsdeutung, keine sichere
+Senderabsicht. Formuliere sie als Hypothese und frage nach.
+
+### Sachinhalt und Appell vermischen
+
+„Die VPN-Verbindung ist getrennt“ beschreibt einen Sachverhalt. „Stelle die
+Verbindung wieder her“ ist ein Appell. Beide können in derselben Nachricht
+stecken, bleiben aber analytisch verschieden.
+
+### Gefühle diagnostizieren
+
+„Sie sind wütend“ kann falsch und übergriffig wirken. Vorsichtiger ist: „Die
+Unterbrechungen scheinen Sie stark zu belasten — stimmt das?“
+
+### Zuhören mit Zustimmung verwechseln
+
+Ein Problem korrekt zusammenzufassen bestätigt nicht automatisch dessen
+Ursachenbehauptung. Wirkung anerkennen, Ursache prüfen.
+
+### Suggestiv fragen
+
+„Das Update ist also schuld, richtig?“ lenkt die Antwort. „Seit wann treten die
+Abbrüche auf, und was hat sich in diesem Zeitraum verändert?“ bleibt offen.
+
+### Eine Bewertung als Ich-Botschaft tarnen
+
+„Ich finde dich unprofessionell“ beschreibt weder Beobachtung noch Wirkung. SBI
+zwingt zur konkreten Situation und zum sichtbaren Verhalten.
+
+### Absicht aus Wirkung ableiten
+
+Eine Unterbrechung kann verletzend wirken, ohne verletzend gemeint zu sein. Die
+Wirkung wird benannt; die Absicht wird erfragt.
+
+### Unhaltbare Beruhigungsversprechen geben
+
+„In zehn Minuten läuft alles wieder“ ist ohne Befund riskant. Belastbar sind
+Prüfschritt, Zuständigkeit und Zeitpunkt der nächsten Rückmeldung.
+
+## Kurzer Selbstcheck
+
+1. Warum ist das Sender-Empfänger-Schema allein noch keine vollständige Theorie
+   zwischenmenschlicher Bedeutung?
+2. Ordne der Aussage „Der Drucker ist schon wieder leer“ je eine mögliche
+   Sach-, Selbstkundgabe-, Beziehungs- und Appellseite zu.
+3. Welche dieser vier Deutungen sind sicher, welche nur Hypothesen?
+4. Formuliere eine Paraphrase für: „Seit Montag warte ich auf eine Antwort und
+   niemand fühlt sich zuständig.“
+5. Formuliere zuerst eine offene und danach eine geschlossene Frage zu einem
+   WLAN-Abbruch.
+6. Warum ist „Sie wollen doch sicher eine günstigere Lösung?“ für eine neutrale
+   Bedarfserhebung ungeeignet?
+7. Formuliere aus „Du erklärst das immer viel zu kompliziert“ ein SBI-Feedback.
+8. Wie reagierst du, wenn ein Kunde trotz ruhiger Klärung persönlich beleidigt?
+
+### Lösungen
+
+1. Shannons Grundschema behandelt technische Übertragung und schließt Semantik
+   aus. Menschliche Kommunikation benötigt zusätzlich Kontext, Deutung,
+   Beziehung und Rückkopplung.
+2. Beispiel: Sachinhalt — im Drucker fehlt Verbrauchsmaterial; Selbstkundgabe —
+   die Person ist möglicherweise genervt oder kann nicht weiterarbeiten;
+   Beziehung — sie könnte dem zuständigen Gegenüber mangelnde Kontrolle
+   vorwerfen; Appell — Toner auffüllen oder Ersatz nennen.
+3. Sicher ist nur, was durch Aussage und Kontext beobachtbar belegt ist, hier
+   zunächst der gemeldete Leerstand. Gefühle, Beziehungshinweis und konkrete
+   Erwartung sind begründete Hypothesen und werden nachgefragt.
+4. „Sie haben am Montag angefragt, bisher keine Rückmeldung erhalten und wissen
+   nicht, wer Ihren Fall bearbeitet — habe ich das richtig verstanden?“
+5. Offen: „Was geschieht unmittelbar vor dem WLAN-Abbruch?“ Geschlossen: „War
+   das Notebook um 10:15 Uhr noch mit der SSID `Firma` verbunden?“
+6. Die Frage legt Kosten als gewünschtes Kriterium und Zustimmung als Antwort
+   nahe. Neutral wäre: „Welche Kriterien sind für Ihre Entscheidung wichtig?“
+7. Beispiel: „In der Einweisung gestern [Situation] hast du drei Fachkürzel
+   verwendet, ohne sie zu erklären [Verhalten]. Zwei Teilnehmende konnten den
+   folgenden Arbeitsschritt danach nicht selbst ausführen [Auswirkung]. Wie hast
+   du die Situation wahrgenommen? Bitte erkläre die Kürzel bei der nächsten
+   Einweisung beim ersten Auftreten.“
+8. Eine klare Grenze setzen, Gespräch gegebenenfalls beenden und nach
+   betrieblichem Prozess eskalieren. Deeskalation verlangt keine Duldung von
+   Beleidigungen oder Drohungen.
+
+## Zusammenhang und Transfer
+
+Das Kommunikationsquadrat hilft bei der **Analyse** einer mehrdeutigen
+Nachricht. Aktives Zuhören und Fragetechniken helfen bei der **Klärung**. SBI
+hilft bei einer konkreten **Rückmeldung**. Keines dieser Werkzeuge ersetzt die
+fachliche Bearbeitung des Problems.
+
+Im Kapitel
+[Bedarfsanalyse und Anforderungsklärung](/lernen/projekt/service-management/bedarfsanalyse-feedback)
+wird die Bedarfserhebung später als eigener Handlungsgang vertieft. Für eine
+Einweisung nutzt du dieselben Zuhör- und Rückkopplungsprinzipien, ergänzt aber
+praktische Demonstration und Erfolgskontrolle.
+
+## Kernzusammenfassung
+
+- Kommunikation umfasst Kodierung, Kanal, Wahrnehmung, Deutung und
+  Rückkopplung. Gemeint und verstanden können auseinanderfallen.
+- Verbale, paraverbale und nonverbale Signale sind je nach Kanal unterschiedlich
+  verfügbar und dürfen nicht isoliert überinterpretiert werden.
+- Das Kommunikationsquadrat unterscheidet Sachinhalt, Selbstkundgabe,
+  Beziehungshinweis und Appell.
+- Die vier Seiten liefern Deutungshypothesen. Absichten und Gefühle werden nicht
+  als sichere Tatsachen ausgegeben, sondern geklärt.
+- Aktives Zuhören nutzt Aufmerksamkeit, Paraphrase, vorsichtige Spiegelung,
+  Rückfragen und bestätigte Zusammenfassungen.
+- Offene Fragen erschließen, geschlossene Fragen bestätigen. Suggestivfragen
+  verzerren eine neutrale Erhebung.
+- SBI steht für Situation, beobachtbares Verhalten und Auswirkung. Die Frage
+  nach der Absicht macht daraus einen Dialog; eine Vereinbarung schafft den
+  nächsten Schritt.
+- Deeskalation verbindet Anerkennung der Wirkung mit Faktenklärung, realistischen
+  Optionen, Grenzen und verbindlicher Rückmeldung.
+
+<Glossar
+  einträge={[
+    {
+      term: 'Sender-Empfänger-Modell',
+      definition: 'Vereinfachtes Schema aus Sender, kodierter Nachricht, Kanal, möglicher Störung, Empfänger und Rückkopplung; für menschliche Bedeutung sind Kontext und Deutung zusätzlich nötig.'
+    },
+    {
+      term: 'Kommunikationsquadrat',
+      definition: 'Modell von Friedemann Schulz von Thun mit Sachinhalt, Selbstkundgabe, Beziehungshinweis und Appell sowie vier Schnäbeln und vier Ohren.'
+    },
+    {
+      term: 'Aktives Zuhören',
+      definition: 'Aufmerksames Erfassen der Perspektive mit Paraphrase, vorsichtiger Spiegelung, Rückfragen und bestätigter Zusammenfassung.'
+    },
+    {
+      term: 'Paraphrase',
+      definition: 'Wiedergabe einer Aussage mit eigenen Worten, um das Verständnis überprüfen und korrigieren zu lassen.'
+    },
+    {
+      term: 'SBI-Feedback',
+      definition: 'Rückmeldestruktur aus konkreter Situation, beobachtbarem Verhalten und tatsächlicher Auswirkung.'
+    },
+    {
+      term: 'Ich-Botschaft',
+      definition: 'Aussage, die eigene Wahrnehmung oder Wirkung kenntlich macht; sie ersetzt keine beobachtbare Beschreibung und beweist keine Ursache.'
     },
   ]}
 />

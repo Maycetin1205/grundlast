@@ -20,7 +20,7 @@ const ap1 = (
 
 export const ap1ScopeItems: readonly ScopeItem[] = [
   ap1('ap1-kundenbedarf', 1, 'ermitteln', 'Kundenbedarfe zielgruppen- und situationsgerecht ermitteln.', [
-    'bedarfsanalyse-feedback', 'hardware-schnittstellen', 'unternehmen-ziele-wertschoepfung',
+    'bedarfsanalyse-feedback', 'schulz-von-thun', 'hardware-schnittstellen', 'unternehmen-ziele-wertschoepfung',
   ]),
   ap1('ap1-auswahl-beschaffung', 2, 'auswaehlen', 'Geeignete Hard- und Software auswählen und die Beschaffung einleiten.', [
     'cpu-ram-speicher', 'hardware-schnittstellen', 'lizenzmodelle', 'angebotsvergleich',
@@ -32,7 +32,7 @@ export const ap1ScopeItems: readonly ScopeItem[] = [
     'firewall-dmz', 'teststrategien',
   ]),
   ap1('ap1-einweisung', 4, 'kommunizieren', 'Kundinnen und Kunden verständlich in die Nutzung des Arbeitsplatzes einweisen.', [
-    'schulung-einweisung-key-user', 'projektubergabe', 'bedarfsanalyse-feedback',
+    'schulung-einweisung-key-user', 'projektubergabe', 'schulz-von-thun',
   ]),
   ap1('ap1-kontrolle-protokoll', 5, 'dokumentieren', 'Die Leistungserbringung kontrollieren und nachvollziehbar protokollieren.', [
     'teststrategien', 'netzwerkdiagnose', 'serviceanfragen-support-level', 'projektubergabe',
