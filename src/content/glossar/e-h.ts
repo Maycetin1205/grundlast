@@ -374,7 +374,7 @@ export const eBisH: GlossarEintrag[] = [
         'Aussagekraft hängt von Zielgruppe, Stichprobe, Rücklauf, Formulierung und Antwortoptionen ab. Ein Fragebogen ist nicht automatisch anonym oder objektiv; Mehrfach- und Suggestivfragen können Ergebnisse verzerren.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse & Anforderungsklärung',
+        titel: 'Kundenbedarf und Anforderungen',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },

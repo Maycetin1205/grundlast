@@ -2,6 +2,45 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const qBisS: GlossarEintrag[] = [
   {
+    id: 'randbedingung',
+    begriff: 'Randbedingung',
+    kurzdefinition: 'Verbindliche oder vereinbarte Grenze, innerhalb der eine Lösung entstehen muss.',
+    definition: [
+      'Budget, Termin, vorhandene Schnittstelle, Betriebsstandard oder einzuhaltende Vorgabe können den Lösungsraum begrenzen, ohne selbst die gewünschte fachliche Leistung zu sein.',
+      'Randbedingungen erhalten Quelle und Begründung. Eine bloße Gewohnheit oder unbelegte Produktvorliebe wird als Annahme beziehungsweise Designentscheidung geprüft und nicht still zur verbindlichen Grenze gemacht.',
+    ],
+    kapitel: {
+      titel: 'Kundenbedarf und Anforderungen',
+      href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+    },
+  },
+  {
+    id: 'rueckverfolgbarkeit',
+    begriff: 'Rückverfolgbarkeit',
+    kurzdefinition: 'Nachvollziehbare Verbindung einer Anforderung zu ihrer Herkunft und zu nachfolgenden Arbeitsergebnissen.',
+    definition: [
+      'Rückwärts führt die Verbindung zu Bedarf, Quelle, Begründung und Entscheidung. Vorwärts führt sie zu Auswahlkriterium, Umsetzung, Testfall und Abnahmeergebnis.',
+      'Eindeutige IDs, Referenzen und ein Änderungsprotokoll reichen bei kleinen Aufträgen häufig aus. Sie zeigen unbelegte Zusatzforderungen und Bedarfe, die bei Auswahl oder Prüfung verloren gingen.',
+    ],
+    kapitel: {
+      titel: 'Kundenbedarf und Anforderungen',
+      href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+    },
+  },
+  {
+    id: 'stakeholder',
+    begriff: 'Stakeholder',
+    kurzdefinition: 'Person, Gruppe oder Organisation mit Einfluss auf eine Lösung oder Betroffenheit durch ihre Auswirkungen.',
+    definition: [
+      'Stakeholder können Auftraggeber, Nutzer, Betrieb, Entwicklung, Support, Einkauf, Aufsicht oder indirekt betroffene Gruppen sein. Menschen, Dokumente und bestehende Systeme sind unterschiedliche Anforderungsquellen.',
+      'Relevante Rollen und konkrete Vertreter werden während der Analyse wiederholt geprüft. Eine einzelne Person vertritt nicht automatisch alle Menschen eines Nutzungsprofils.',
+    ],
+    kapitel: {
+      titel: 'Kundenbedarf und Anforderungen',
+      href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+    },
+  },
+  {
     id: 'quellenangabe',
     begriff: 'Quellenangabe',
     kurzdefinition: 'Angabe, mit der Herkunft und genaue Fundstelle einer Information oder eines übernommenen Werks auffindbar werden.',

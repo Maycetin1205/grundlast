@@ -57,10 +57,10 @@ export const kmkScopeItems: readonly ScopeItem[] = [
 
   // LF2
   kmk(2, 1, 'ermitteln', 'Kundenwunsch aufnehmen und Anforderungen an Hard- und Software dokumentieren.', [
-    'hardware-schnittstellen', 'cpu-ram-speicher', 'homeoffice-ergonomie',
+    'bedarfsanalyse-feedback', 'hardware-schnittstellen', 'cpu-ram-speicher', 'homeoffice-ergonomie',
   ]),
   kmk(2, 2, 'planen', 'Aus dokumentierten Anforderungen überprüfbare Auswahlkriterien für die Beschaffung ableiten.', [
-    'hardware-schnittstellen', 'nutzwertanalyse', 'angebotsvergleich',
+    'bedarfsanalyse-feedback', 'hardware-schnittstellen', 'nutzwertanalyse', 'angebotsvergleich',
   ]),
   kmk(2, 3, 'pruefen', 'Normen, Kennzeichnungen und Sicherheitsvorgaben für elektrische Geräte und Komponenten bei der Auswahl berücksichtigen.', [
     'hardware-schnittstellen', 'usv-systeme', 'homeoffice-ergonomie',

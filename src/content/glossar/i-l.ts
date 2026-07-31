@@ -223,7 +223,7 @@ export const iBisL: GlossarEintrag[] = [
         'Antworten zeigen die Perspektive der befragten Personen und werden dokumentiert, mit anderen Quellen abgeglichen und von beobachtbaren Tatsachen getrennt.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse & Anforderungsklärung',
+        titel: 'Kundenbedarf und Anforderungen',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },
@@ -340,7 +340,7 @@ export const iBisL: GlossarEintrag[] = [
         '"Bedarf = Soll minus Ist" ist deshalb ein Denkbild und keine universelle Rechenformel. Ist und Soll brauchen Quellen, Kontext und ein abgestimmtes Prüfkriterium.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse & Anforderungsklärung',
+        titel: 'Kundenbedarf und Anforderungen',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },
@@ -639,7 +639,7 @@ export const iBisL: GlossarEintrag[] = [
         'Die Stufen besitzen eine Reihenfolge, aber gleiche numerische Abstände sind nicht automatisch belegt. Verteilungen und Stichprobengröße sollten deshalb sichtbar bleiben, statt nur einen Durchschnitt ohne Kontext zu nennen.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse & Anforderungsklärung',
+        titel: 'Kundenbedarf und Anforderungen',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },

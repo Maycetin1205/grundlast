@@ -1,25 +1,52 @@
-# Bedarfsanalyse und Anforderungsklärung
+# Kundenbedarf und Anforderungen
 
 ## Worum geht es?
 
 Kunden nennen häufig bereits eine Lösung: „Wir brauchen neue Notebooks“, „Wir
-möchten ein anderes Ticketsystem“ oder „Das WLAN muss schneller werden“. Bevor
-Produkte ausgewählt oder Änderungen umgesetzt werden, muss geklärt werden,
-welches Problem besteht, welcher Zielzustand erreicht werden soll und welche
-Randbedingungen gelten. Nach diesem Kapitel kannst du Bedarfe systematisch
-ermitteln, geeignete Erhebungstechniken auswählen, Anforderungen verständlich
-dokumentieren, priorisieren und mit Beteiligten validieren.
+möchten ein anderes Ticketsystem“ oder „Das drahtlose lokale Netzwerk
+(Wireless Local Area Network, WLAN) muss schneller werden“.
+Professionelles Handeln beginnt einen Schritt früher: Welches Problem besteht
+für welche Person in welcher Situation? Welcher Zielzustand soll erreicht
+werden? Welche Grenzen sind verbindlich? Und woran erkennen Auftraggeber und
+Nutzer später, dass das Ergebnis wirklich passt?
+
+Nach diesem Kapitel kannst du
+
+- Kundenwunsch, Problem, Ziel, Bedarf, Anforderung und Lösung sicher trennen,
+- Auftrag und seine Systemgrenze – was dazugehört und was nicht – sowie
+  Beteiligte und Anforderungsquellen bestimmen,
+- ein belastbares <Term id="nutzungsprofil">Nutzungsprofil</Term>, also eine
+  belegte Beschreibung relevanter Nutzungssituationen, statt eines
+  vermeintlichen „Durchschnittsnutzers“ erstellen,
+- Interviews, Fragebogen, Beobachtung, Workshops, Dokumente und Systemdaten
+  passend auswählen und ihre Grenzen erklären,
+- Beobachtungen, Aussagen, Annahmen und Entscheidungen auseinanderhalten,
+- Anforderungen an benötigte Funktionen und ihre Qualität sowie verbindliche
+  Grenzen wie Budget, Termin oder Schnittstelle als
+  <Term id="randbedingung">Randbedingungen</Term> formulieren,
+- Anforderungen priorisieren, auf Qualität prüfen und Konflikte bearbeiten,
+- für jede wichtige Anforderung ein vorab vereinbartes
+  <Term id="abnahmekriterium">Abnahmekriterium</Term> und eine geeignete
+  Prüfmethode festlegen,
+- Änderungen und die Herkunft einer Anforderung nachvollziehbar dokumentieren,
+- die fertige Anforderungsliste an Produktauswahl, Entwicklung oder
+  Systemintegration übergeben.
 
 ## Ausgangssituation
 
-Eine Kanzlei fordert 25 neue Notebooks, weil „die alten Geräte zu langsam“
-seien. Das Budget beträgt höchstens 32.000 €. Noch ist unklar:
+Die **Klarblick Steuerberatung** fordert 25 neue Notebooks, weil „die alten
+Geräte zu langsam“ seien. Das Budget beträgt höchstens 32.000 €. Noch ist
+unklar:
 
 - Welche Tätigkeiten sind tatsächlich zu langsam?
-- Liegt die Ursache an CPU, Arbeitsspeicher, Massenspeicher, Netzwerk,
-  Fachsoftware oder Prozess?
+- Liegt die Ursache am Prozessor (Central Processing Unit, CPU), am
+  Arbeitsspeicher (Random Access Memory, RAM), am Massenspeicher, am Netzwerk,
+  an der Fachsoftware oder am Prozess?
 - Welche Geräte und Benutzer sind betroffen?
 - Welche Sicherheits-, Datenschutz- und Supportvorgaben gelten?
+- Arbeiten alle 25 Personen gleich oder gibt es verschiedene Nutzungsprofile?
+- Sind die vorhandenen Docks, Monitore, Signaturkarten und Anwendungen Teil
+  der Systemgrenze?
 - Woran wird später geprüft, ob die Lösung den Bedarf erfüllt?
 
 Wer sofort ein Modell auswählt, verwechselt den genannten **Lösungswunsch** mit
@@ -43,7 +70,7 @@ Diese Begriffe müssen getrennt bleiben:
 | Problem | Welche unerwünschte Situation ist beobachtbar? | Der Start der Fachanwendung dauert auf 18 Geräten zwei bis vier Minuten. |
 | Ziel | Welcher Zustand soll erreicht werden? | Die Anwendung ist spätestens 30 Sekunden nach Anmeldung arbeitsbereit. |
 | Bedarf | Welche Lücke zwischen Ausgangs- und Zielzustand muss geschlossen werden? | Startzeit reduzieren und 18 Arbeitsplätze zuverlässig arbeitsfähig machen. |
-| Anforderung | Welche prüfbare Eigenschaft muss die Lösung besitzen oder welche Randbedingung einhalten? | „Auf jedem betroffenen Arbeitsplatz ist die Fachanwendung innerhalb von 30 Sekunden nach Anmeldung nutzbar.“ |
+| <Term id="anforderung">Anforderung</Term> | Welche prüfbare Eigenschaft muss die Lösung besitzen oder welche Randbedingung einhalten? | „Auf jedem betroffenen Arbeitsplatz ist die Fachanwendung innerhalb von 30 Sekunden nach Anmeldung nutzbar.“ |
 | Lösung | Womit wird die Anforderung umgesetzt? | Aufrüstung, Neuanschaffung, Softwareoptimierung oder eine Kombination. |
 
 Ein <Term id="ist-soll-vergleich">Ist-Soll-Vergleich</Term> stellt den
@@ -57,6 +84,88 @@ ist deshalb ein **Denkbild**, keine universelle Rechenformel.
 Bedarfsklärung ein. Eine solche Vorgabe kann berechtigt sein, muss dann aber als
 Randbedingung samt Entscheidungsgrund dokumentiert werden.
 </Warnung>
+
+## Mentales Modell: von der Aussage bis zur Abnahme
+
+<svg
+  viewBox="0 0 520 940"
+  role="img"
+  aria-label="Ablauf der Anforderungsklärung: erheben, belegen, Bedarf und Ziel klären, Anforderungen formulieren, Qualität und Konflikte prüfen sowie das Ergebnis abnehmen. Erkenntnisse führen zurück in den Ablauf. Annahmenregister und Entscheidungsprotokoll begleiten alle Schritte."
+  className="my-8 w-full max-w-lg"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <marker id="anforderung-pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="35" y="25" width="450" height="85" rx="14" />
+    <rect x="35" y="140" width="450" height="85" rx="14" />
+    <rect x="35" y="255" width="450" height="85" rx="14" />
+    <rect x="35" y="370" width="450" height="85" rx="14" />
+    <rect x="35" y="485" width="450" height="85" rx="14" />
+    <rect x="35" y="600" width="450" height="85" rx="14" />
+    <line x1="260" y1="110" x2="260" y2="130" markerEnd="url(#anforderung-pfeil)" />
+    <line x1="260" y1="225" x2="260" y2="245" markerEnd="url(#anforderung-pfeil)" />
+    <line x1="260" y1="340" x2="260" y2="360" markerEnd="url(#anforderung-pfeil)" />
+    <line x1="260" y1="455" x2="260" y2="475" markerEnd="url(#anforderung-pfeil)" />
+    <line x1="260" y1="570" x2="260" y2="590" markerEnd="url(#anforderung-pfeil)" />
+    <path d="M35 642 C5 642 5 67 25 67" markerEnd="url(#anforderung-pfeil)" />
+    <rect x="35" y="750" width="450" height="160" rx="14" strokeDasharray="7 7" />
+    <line x1="65" y1="830" x2="455" y2="830" strokeDasharray="7 7" />
+  </g>
+  <g fill="currentColor" textAnchor="middle" fontFamily="system-ui, sans-serif">
+    <text x="260" y="62" fontSize="22" fontWeight="700">1 · Erheben</text>
+    <text x="260" y="89" fontSize="17">Aussagen · Beobachtungen</text>
+    <text x="260" y="177" fontSize="22" fontWeight="700">2 · Belegen</text>
+    <text x="260" y="204" fontSize="17">Ist-Zustand · Kontext</text>
+    <text x="260" y="292" fontSize="22" fontWeight="700">3 · Klären</text>
+    <text x="260" y="319" fontSize="17">Bedarf · Ziel · Grenze</text>
+    <text x="260" y="407" fontSize="22" fontWeight="700">4 · Formulieren</text>
+    <text x="260" y="434" fontSize="17">Anforderung · Priorität</text>
+    <text x="260" y="522" fontSize="22" fontWeight="700">5 · Prüfen</text>
+    <text x="260" y="549" fontSize="17">Qualität · Konflikte</text>
+    <text x="260" y="637" fontSize="22" fontWeight="700">6 · Abnehmen</text>
+    <text x="260" y="664" fontSize="17">Kriterium · Ergebnis · Lernen</text>
+    <text x="260" y="724" fontSize="17" fontWeight="700">Begleitend in allen Schritten</text>
+    <text x="260" y="785" fontSize="20" fontWeight="700">Annahmenregister</text>
+    <text x="260" y="812" fontSize="16">offen · geprüft · widerlegt</text>
+    <text x="260" y="865" fontSize="20" fontWeight="700">Entscheidungsprotokoll</text>
+    <text x="260" y="892" fontSize="16">wer · was · warum · wann</text>
+  </g>
+</svg>
+
+Die Pfeile bilden keine starre Einbahnstraße. Wenn ein Abnahmekriterium nicht
+messbar ist, muss die Anforderung präzisiert werden. Wenn ein Test neue
+Nutzungssituationen aufdeckt, wird das Nutzungsprofil ergänzt. Das
+International Requirements Engineering Board (IREB) beschreibt veränderte
+Anforderungen als Normalfall; deshalb bleiben Quelle, Version und Entscheidung
+sichtbar.
+
+## Befund, Aussage, Annahme und Entscheidung
+
+In Gesprächen vermischen sich diese vier Informationsarten leicht. Für eine
+saubere Analyse erhalten sie einen unterschiedlichen Status:
+
+| Informationsart | Bedeutung | Beispiel | Umgang |
+|---|---|---|---|
+| Beobachtung oder Messwert | unter genannten Bedingungen festgestellter Befund | „Der Start dauerte bei drei Messungen 164, 178 und 191 Sekunden.“ | Messbedingung und Fundstelle dokumentieren |
+| Aussage | wiedergegebene Perspektive einer Quelle | „Frau König erlebt die Wartezeit morgens als besonders störend.“ | Quelle und Kontext nennen; nicht ungeprüft verallgemeinern |
+| Annahme | vorläufige Vermutung ohne ausreichenden Beleg | „Vermutlich ist zu wenig RAM die einzige Ursache.“ | als offen kennzeichnen, Risiko bewerten und Prüfung planen |
+| Entscheidung | autorisierte Festlegung zwischen Möglichkeiten | „Die Geschäftsführung setzt 32.000 € als Budgetobergrenze.“ | entscheidende Rolle, Datum, Begründung und Folgen festhalten |
+
+Eine Aussage kann korrekt sein, ohne für alle Nutzer zu gelten. Ein Messwert
+kann exakt sein, aber unter einer untypischen Bedingung entstanden sein. Eine
+Annahme ist nicht verboten; gefährlich wird sie erst, wenn sie unmarkiert wie
+ein Fakt behandelt wird.
+
+<Tipp titel="Aus Meinungen werden Forschungsfragen">
+„Die Anwendung ist wegen des Arbeitsspeichers langsam“ wird zunächst zu:
+„Welche Ressource begrenzt den Start unter dem produktiven Standardprofil?“
+Danach wird festgelegt, welche Messung, Beobachtung oder Vergleichsprobe die
+Frage beantworten kann.
+</Tipp>
 
 ## Systemgrenze, Kontext und Beteiligte
 
@@ -85,13 +194,113 @@ bestehende Systeme. Für den Lernfall können das sein:
 | Benutzer | Ablauf, Hindernisse, Nutzungssituation | beschreibt persönliche Perspektive, nicht automatisch alle Fälle |
 | Auftraggeber | Ziele, Budget und Priorität | kennt Detailabläufe möglicherweise nicht |
 | Administratoren und Support | technische Abhängigkeiten und häufige Fehler | sieht vor allem gemeldete oder messbare Fälle |
-| Dokumente und Verträge | Vorgaben, Lizenzen, SLA, Datenschutz, Prozesse | können veraltet oder widersprüchlich sein |
+| Dokumente und Verträge | Vorgaben, Lizenzen, Service-Level-Vereinbarung (SLA), Datenschutz, Prozesse | können veraltet oder widersprüchlich sein |
 | vorhandenes System und Protokolle | Konfiguration, Laufzeiten, Mengen und Ereignisse | Daten brauchen Kontext; Nicht-Gemeldetes bleibt unsichtbar |
 | Gesetze, Normen und Betriebsregeln | verbindliche oder vereinbarte Anforderungen | Geltungsbereich muss geprüft werden |
 
 Fehlt eine relevante Quelle, kann die Anforderungsliste unvollständig werden.
-Stakeholder werden deshalb nicht einmalig, sondern während der Analyse erneut
-geprüft.
+<Term id="stakeholder">Stakeholder</Term> werden deshalb nicht einmalig,
+sondern während der Analyse erneut geprüft. Das sind Personen, Gruppen oder
+Organisationen, die Einfluss auf die Lösung haben, sie nutzen oder von ihren
+Auswirkungen betroffen sind.
+
+### Beteiligung und Entscheidung nicht verwechseln
+
+Nicht jeder Beteiligte entscheidet alles. Eine kleine Rollenliste verhindert,
+dass Anforderungen von nicht autorisierten Personen freigegeben werden oder
+wichtige Betroffene gar nicht vorkommen:
+
+| Rolle im Auftrag | Typischer Beitrag | Darf entscheiden über |
+|---|---|---|
+| Auftraggeber | Geschäftsziel, Budget, Termin, Erfolg | Auftragsumfang und wirtschaftliche Prioritäten |
+| Nutzervertretung | Aufgaben, Nutzungskontext, Hindernisse | bestätigt Bedarf und Praxistauglichkeit, sofern beauftragt |
+| Betrieb der Informationstechnik (IT-Betrieb) | Infrastruktur, Betrieb, Sicherheit, Support | technische Betriebsfreigabe im eigenen Verantwortungsbereich |
+| Anwendungsentwicklung | Anwendungslogik, Schnittstellen, technische Machbarkeit | technische Umsetzung im vereinbarten Rahmen |
+| Datenschutz, Informationssicherheit, Interessenvertretung | rechtliche und betriebliche Schutzvorgaben | Freigaben nur nach tatsächlicher Zuständigkeit |
+| Einkauf/Controlling | Beschaffungsweg, Preise, Gesamtkosten | kaufmännische Freigabe nach betrieblicher Regel |
+| Abnahmeverantwortliche | prüfen vereinbarte Kriterien | Annahme oder dokumentierte Abweichung |
+
+Die letzte Spalte ist kein allgemeines Gesetz. Sie wird für den konkreten
+Betrieb festgelegt. Entscheidend ist, dass Beitrag, Verantwortung und
+Freigabeweg bekannt sind.
+
+### Systemgrenze sichtbar notieren
+
+Für einen kleinen Auftrag genügt oft eine Kontextliste:
+
+```text
+Im Auftrag:
+- 25 Benutzerarbeitsplätze, Fachanwendung, Standardprofil und Rollout
+- vorhandene Docks, Monitore, Signaturkarten und Geräteverwaltung als Schnittstellen
+
+Außerhalb des Auftrags:
+- Änderung der Fachanwendung selbst
+- Austausch der Netzwerkverkabelung
+- private Geräte der Beschäftigten
+
+Externe Bedingungen:
+- Budget 32.000 €, Einführung bis 30. September
+- bestehender Supportvertrag und freigegebenes Betriebssystem
+```
+
+„Außerhalb“ bedeutet nicht „unwichtig“. Eine externe Komponente kann eine
+Anforderung oder Abhängigkeit verursachen, ohne selbst verändert zu werden.
+Genau diese Unterscheidung schützt vor unbemerkter Auftragserweiterung.
+
+## Das Nutzungsprofil: Bedarf entsteht in einer Situation
+
+Ein **Nutzungsprofil** fasst keine erfundene Durchschnittsperson zusammen. Es
+beschreibt belegte, für die Auswahl oder Gestaltung relevante
+Nutzungssituationen. Menschen mit ähnlichen Aufgaben können gruppiert werden;
+entscheidende Unterschiede bleiben als eigene Profile erhalten.
+
+Erfasse je Profil mindestens:
+
+- **Rolle und Aufgabe:** Wer erledigt welchen Arbeitsschritt mit welchem Ziel?
+- **Häufigkeit und Menge:** Wie oft, wie lange, mit welchen Datenmengen oder
+  gleichzeitigen Vorgängen?
+- **Ort und Umgebung:** Büro, unterwegs, Werkhalle, Homeoffice, Licht, Lärm,
+  Netzqualität, Platz und Stromversorgung.
+- **Geräte und Schnittstellen:** Monitore, Drucker, Scanner, Dock,
+  Signaturkarte, Netzwerk, Fachsoftware und Fremdsysteme.
+- **Leistungsbedarf:** Reaktionszeit, Verfügbarkeit, Kapazität und mögliche
+  Lastspitzen.
+- **Schutz und Rechte:** Datenarten, Berechtigungen, Vertraulichkeit,
+  Protokollierung und betriebliche Vorgaben.
+- **Zugänglichkeit und Ergonomie:** Eingabemittel, Vergrößerung,
+  Screenreader (Vorlesesoftware), Untertitel, Kontrast, motorische oder sensorische
+  Anforderungen.
+- **Betrieb und Unterstützung:** Updates, zentrale Verwaltung, Wartungsfenster,
+  Supportzeiten, Schulung und vorgesehene Nutzungsdauer.
+
+Das GOV.UK Service Manual empfiehlt, nicht nur „typische“ Nutzer zu betrachten,
+sondern auch Menschen, die Probleme mit dem bestehenden Dienst haben, sowie
+Personen, die ihn bereitstellen oder andere unterstützen. Das World Wide Web
+Consortium (W3C) betont für Webprojekte die frühe Beteiligung von Menschen mit
+unterschiedlichen Behinderungen und assistiven Techniken. Eine einzelne Person
+vertritt dabei nicht automatisch alle Menschen mit ähnlichem Merkmal.
+
+### Beispielprofile der Steuerberatung
+
+| Profil | Anzahl | Prägende Nutzung | Daraus zu prüfender Bedarf |
+|---|---:|---|---|
+| stationäre Sachbearbeitung | 12 | zwei Monitore, Fachanwendung ganztägig, große Dokumente, kein Außeneinsatz | Start- und Reaktionszeit, Dock- und Monitor-Kompatibilität, leiser Dauerbetrieb |
+| mobile Beratung | 6 | mehrere Kundentermine pro Woche, betrieblicher Fernzugriff über ein Virtual Private Network (VPN), Videokonferenz, wechselnde Netze | Gewicht, reale Akkunutzung, Kamera/Audio, sichere mobile Verbindung |
+| Spezialarbeitsplatz Signatur | 2 | lokale Signaturkarte und freigegebene Treibersoftware | Kartenleser, Treiber, Testsignatur und Supportfreigabe |
+| Leitung/Assistenz | 5 | Office, Fachanwendung, Präsentation; teilweise mobil | Standardleistung, Docking, Datenschutzfilter nur bei belegtem Bedarf |
+
+Die Profile überlappen nicht zwingend mit Abteilungen. Entscheidend ist die
+Nutzung. Ändert sich ein relevanter Ablauf, wird das Profil versioniert und die
+Auswirkung auf Anforderungen geprüft.
+
+<Warnung titel="Persona ist kein Beleg">
+Eine Persona ist eine fiktive, aber auf Erkenntnissen beruhende Darstellung
+eines Nutzertyps. Sie oder eine Profilbeschreibung darf Forschungsergebnisse
+verdichten, aber keine fehlenden Daten erfinden. Kennzeichne Quelle,
+Geltungsbereich und offene Annahmen. „Alle Außendienstmitarbeiter brauchen
+acht Stunden Akku“ ist erst dann belastbar, wenn Tagesablauf,
+Ladegelegenheiten und Messbedingung geklärt sind.
+</Warnung>
 
 ## Erhebungstechniken passend auswählen
 
@@ -109,11 +318,51 @@ Situation die beste.
 | Systemanalyse | Logs, Konfiguration, Telemetrie, Tickets | messbare technische Befunde | Messung erklärt nicht automatisch Ursache oder Nutzerwirkung |
 | Prototyp oder Beispiel | unklare Oberfläche oder Ablaufidee | frühes gemeinsames Bild und Rückmeldung | kann zu früher Bindung an eine Lösung führen |
 
+Die Methode folgt der **Forschungsfrage**, nicht der persönlichen Vorliebe:
+
+| Zu klärende Frage | Sinnvoller erster Zugriff | Sinnvolle Ergänzung |
+|---|---|---|
+| „Wie läuft die Tätigkeit wirklich ab?“ | kontextnahe Beobachtung oder Vorführung | Interview zu Gründen und Ausnahmen |
+| „Wie häufig tritt ein bekanntes Problem auf?“ | geeignete Systemdaten oder klarer Fragebogen | Stichprobeninterviews zur Einordnung |
+| „Welche Regeln und Abhängigkeiten gelten?“ | Dokumenten- und Systemanalyse | Klärung mit verantwortlicher Rolle |
+| „Wo widersprechen sich Ziele mehrerer Rollen?“ | vorbereiteter Workshop | Einzelgespräche bei Machtgefälle oder sensiblen Themen |
+| „Ist ein Oberflächenablauf verständlich?“ | Aufgabenversuch mit Skizze oder Prototyp | Beobachtung und Rückfragen ohne Vorführen der Lösung |
+| „Welche unbekannten Probleme gibt es?“ | offene Interviews und Beobachtung | Tickets, Analytics und weitere Rollen gezielt prüfen |
+
+Vor jeder Erhebung werden **Ziel, Teilnehmende, Fragen, Methode,
+Dokumentationsform, Datenschutz und Auswertung** geplant. Nachher werden
+Originalbefund und Interpretation getrennt. Ein Protokoll kann beispielsweise
+so aussehen:
+
+```text
+Befund-Kennung (ID): B-014
+Quelle: Beobachtung Profil „mobile Beratung“, 12.06., Kundentermin
+Beobachtung: VPN-Verbindung brach beim Wechsel von WLAN zu Mobilfunk ab.
+Auswirkung laut Nutzer: Fachanwendung musste neu angemeldet werden; 4 Minuten Unterbrechung.
+Interpretation: Übergang zwischen Netzen könnte relevanter sein als maximale WLAN-Datenrate.
+Status: durch weitere Beobachtung und technische Analyse zu prüfen
+```
+
+Bei einem Fragebogen sind Zielgruppe, Verteilung, Rücklauf und genaue
+Frageformulierung Teil des Ergebnisses. 70 Prozent Zustimmung bedeutet wenig,
+wenn nur sieben von 400 angeschriebenen Personen geantwortet haben. Zeige
+deshalb mindestens absolute Anzahlen, Antwortverteilung sowie Größe und
+Zusammensetzung der antwortenden Gruppe statt nur einen Prozentwert oder
+Mittelwert ohne Kontext.
+
 <Tipp titel="Methoden kombinieren statt Wahrheit versprechen">
 Logs können zeigen, **wie oft** ein Programm lange startet. Interviews und
 Beobachtung zeigen, **welche Arbeit** dadurch behindert wird. Erst der Abgleich
 mehrerer Quellen macht Widersprüche und Lücken sichtbar.
 </Tipp>
+
+<Warnung titel="Datensparsam und fair erheben">
+Nur Daten erheben, die für die vereinbarte Frage nötig sind. Beteiligte über
+Zweck und Umgang informieren, sensible Gesprächssituationen schützen und
+Zugriff sowie Löschung klären. Ob Datenschutzbeauftragte, Betriebs- oder
+Personalrat einzubeziehen sind, richtet sich nach Erhebung und Betrieb; eine
+Bedarfsanalyse ersetzt keine rechtliche Prüfung.
+</Warnung>
 
 ### Fragen im Erhebungsgespräch
 
@@ -127,6 +376,15 @@ Beginne offen und werde schrittweise konkreter:
 6. „Habe ich richtig erfasst: 18 Geräte, zwei bis vier Minuten Ist-Zeit und
    höchstens 30 Sekunden als Ziel?“
 
+Zusätzlich helfen Fragen nach **Ausnahmen und Gegenbeispielen**:
+
+- „Wann tritt das Problem nicht auf?“
+- „Was geschieht bei fehlender Netzwerkverbindung?“
+- „Wer arbeitet anders als die bisher befragten Personen?“
+- „Welche Aufgabe ist selten, aber besonders kritisch?“
+- „Welche Vorgabe könnte dieser Aussage widersprechen?“
+- „Was wäre die Folge, wenn wir diese Anforderung nicht erfüllen?“
+
 Offene, geschlossene und suggestive Fragen werden im Kommunikationskapitel
 ausführlich unterschieden.
 
@@ -138,11 +396,46 @@ Eine Anforderung kann mehreren Perspektiven dienen:
 |---|---|---|
 | funktional | Was soll das System oder der Prozess tun? | Benutzer meldet sich mit dem vorhandenen Unternehmenskonto an. |
 | Qualität | Wie gut muss die Funktion arbeiten? | Fachanwendung ist innerhalb von 30 Sekunden nutzbar. |
-| technisch | Welche technische Umgebung oder Schnittstelle ist einzuhalten? | Geräte unterstützen vorhandene USB-C-Docks und das verwaltete Betriebssystem. |
+| technisch | Welche technische Umgebung oder Schnittstelle ist einzuhalten? | Geräte unterstützen vorhandene Docks mit Universal-Serial-Bus-Anschluss vom Typ C (USB-C) und das verwaltete Betriebssystem. |
 | organisatorisch | Welche Rollen oder Abläufe gelten? | Support übernimmt Geräte innerhalb der vereinbarten Servicezeiten. |
 | rechtlich und sicherheitsbezogen | Welche verbindlichen Schutz- und Rechtsvorgaben gelten? | Datenträger werden nach betrieblicher Schutzbedarfsentscheidung verschlüsselt. |
 | wirtschaftlich | Welche Kosten- oder Nutzengrenze gilt? | Gesamtbudget einschließlich Garantie und Docking beträgt höchstens 32.000 €. |
 | ökologisch und sozial | Welche Lebenszyklus- oder Nutzungsanforderung gilt? | Ersatzteile und Sicherheitsupdates sind für den vorgesehenen Nutzungszeitraum verfügbar. |
+
+**Funktionale Anforderungen** beschreiben eine Leistung oder ein Verhalten:
+Das System authentifiziert, speichert, überträgt, druckt oder warnt.
+**Qualitätsanforderungen** beschreiben, wie gut diese Leistung sein muss:
+beispielsweise schnell, verfügbar, zugänglich oder wartbar – jeweils mit
+konkretem Maßstab. Der umgangssprachliche Ausdruck „nicht-funktional“ umfasst
+meist Qualitätsanforderungen und weitere Randbedingungen; er bedeutet nicht
+„unwichtig“.
+
+Eine **Randbedingung** begrenzt den Lösungsraum, ohne selbst die gewünschte
+Leistung zu sein. Budget, Einführungstermin, vorhandene Schnittstelle oder ein
+verbindlicher Betriebsstandard sind typische Beispiele. Randbedingungen
+werden wie Anforderungen mit Quelle und Begründung dokumentiert. Eine nur aus
+Gewohnheit gesetzte Produktvorgabe wird als Annahme oder Designentscheidung
+geprüft, nicht als unveränderliche Wahrheit behandelt.
+
+### Die Anforderungskarte
+
+Für Schul- und kleine Betriebsaufträge reicht eine Tabelle oder Karte mit
+wenigen konsequent gepflegten Feldern:
+
+| Feld | Zweck | Beispiel |
+|---|---|---|
+| ID und Version | eindeutig verweisen und Änderungen erkennen | A-04, Version 2 |
+| Formulierung | geforderte Eigenschaft oder Grenze | „Der Datenträger ist … verschlüsselt.“ |
+| Quelle | Herkunft zurückverfolgen | Sicherheitsvorgabe S-12, IT-Betrieb |
+| Begründung/Nutzen | Zweck verstehen und unnötige Vorgaben erkennen | Schutz vertraulicher Mandantendaten |
+| Priorität | relative Wichtigkeit nach vereinbarter Regel | Muss wegen betrieblicher Freigabe |
+| Geltungsbereich | betroffene Profile, Fälle und Ausnahmen | alle mobilen Geräte |
+| Abhängigkeiten | Konflikte und Auswirkungen erkennen | Betriebssystemfreigabe, Geräteverwaltung |
+| Abnahmekriterium und Methode | später eindeutig prüfen | Konfigurationsnachweis plus Neustarttest |
+| Status und Verantwortung | offenen Weg sichtbar machen | in Prüfung; verantwortlich: IT-Betrieb |
+
+Nicht jedes Feld muss in jedem Projekt maximal detailliert sein. Je höher
+Schaden, Kosten oder Streitpotenzial, desto genauer wird dokumentiert.
 
 „Schnell“, „modern“, „benutzerfreundlich“ oder „sicher“ sind ohne Kontext nicht
 prüfbar. Eine gute Formulierung benennt Gegenstand, Bedingung und Kriterium:
@@ -166,6 +459,90 @@ Das Beispiel legt bereits ein Abnahmekriterium fest. Ob genau diese Messregel
 fachlich sinnvoll ist, muss mit Auftraggeber, Fachbereich und Technik abgestimmt
 werden.
 
+### Qualitätsgate für eine einzelne Anforderung
+
+IREB nennt für einzelne Anforderungen unter anderem Angemessenheit,
+Notwendigkeit, Eindeutigkeit, inhaltliche Vollständigkeit, Verständlichkeit und
+Prüfbarkeit. Übersetzt in handliche Kontrollfragen:
+
+| Prüffrage | Fehlerbeispiel | Bessere Fassung |
+|---|---|---|
+| Trifft sie einen belegten und abgestimmten Bedarf? | „Jedes Gerät braucht 64 Gigabyte (GB) RAM.“ | erst Arbeitslast und Zielwert angeben; RAM erst bei begründeter Vorgabe |
+| Ist sie notwendig? | „Gehäuse muss blau sein.“ | nur behalten, wenn ein Gestaltungs- oder Kennzeichnungskonzept belegt relevant ist |
+| Hat sie nur eine verständliche Lesart? | „schnelle Anmeldung“ | Startpunkt, Endpunkt, Profil und Zeitgrenze nennen |
+| Ist sie für sich ausreichend beschrieben? | „wie bisher“ | Version oder Referenz des verbindlichen Ist-Standards nennen |
+| Verstehen Fachbereich und Technik dasselbe? | „System muss sicher sein“ | Schutzobjekt, geforderte Wirkung und Nachweis präzisieren |
+| Kann sie nach Umsetzung objektiv beurteilt werden? | „hohe Akkulaufzeit“ | Nutzungsszenario, Mindestdauer und Prüfnachweis festlegen |
+
+Für eine **Liste** kommen weitere Fragen hinzu: Widersprechen sich Einträge?
+Ist derselbe Inhalt doppelt enthalten? Fehlt eine bekannte relevante
+Anforderung? Lassen sich Einträge ändern, ohne unbemerkt andere zu verfälschen?
+Sind Herkunft und nachfolgende Prüffälle nachvollziehbar?
+
+### Atomar formulieren
+
+Eine Anforderung sollte möglichst **einen prüfbaren Gedanken** enthalten. Der
+Satz „Das Notebook muss leicht, schnell, günstig und sicher sein“ enthält vier
+verschiedene Ziele, die einzeln erfüllt oder verletzt werden können. Teile ihn
+beispielsweise in Gewicht, Startzeit, Kostenobergrenze und
+Sicherheitskonfiguration. So lassen sich Priorität, Quelle und Prüfergebnis je
+Aspekt festhalten.
+
+Absolutwörter wie „immer“, „nie“, „alle“ und „fehlerfrei“ sind nur sinnvoll,
+wenn genau dieser Geltungsbereich beabsichtigt und prüfbar ist. „Das System ist
+immer verfügbar“ ist praktisch nicht vollständig testbar. „Im vereinbarten
+Servicezeitraum beträgt die monatliche Verfügbarkeit mindestens 99,5 Prozent;
+Berechnung und ausgeschlossene Wartungszeiten folgen SLA-Abschnitt 4“ ist
+abgrenzbar – die konkrete Prozentzahl muss allerdings aus dem Auftrag kommen.
+
+<Tipp titel="Technische Kennzahl erst aus dem Nutzungsergebnis ableiten">
+„Mindestens Prozessor X“ kann eine zulässige Randbedingung sein, ist aber häufig
+schlechter als ein prüfbares Arbeitsergebnis. Beschreibe zuerst benötigte
+Anwendungen, gleichzeitige Nutzung, Datenmengen und Reaktionszeit. Die
+Produktauswahl übersetzt das später in geeignete Hardwaremerkmale.
+</Tipp>
+
+## Abnahmekriterien und Prüfmethoden
+
+Ein Abnahmekriterium beantwortet vor der Umsetzung: **Welcher beobachtbare
+Befund gilt unter welchen Bedingungen als bestanden?** Es ist weder das
+spätere Testergebnis noch bloß die Wiederholung der Anforderung.
+
+Zu einem belastbaren Kriterium gehören je nach Fall:
+
+- Ausgangszustand und Testdaten,
+- Rolle oder Nutzungsprofil,
+- Systemkonfiguration und Umgebung,
+- auszuführende Handlung,
+- erwartetes Ergebnis mit Grenzwert oder eindeutigem Zustand,
+- Stichprobe oder Wiederholungen,
+- zulässige Abweichungen,
+- Prüfmethode und verantwortliche Abnahmerolle.
+
+Die Prüfmethode wird schon beim Formulieren mitgedacht. Die National
+Aeronautics and Space Administration (NASA) unterscheidet in ihrem
+Systems-Engineering-Handbuch vier allgemeine Wege:
+
+| Methode | Was geschieht? | Einfaches IT-Beispiel |
+|---|---|---|
+| Inspektion | Merkmal, Dokument oder Konfiguration ansehen | Seriennummer, Port, Lizenz- oder Konfigurationsnachweis prüfen |
+| Demonstration | Funktion ohne vollständige Messreihe vorführen | Gerät verbindet sich mit Dock und beiden Monitoren |
+| Test | unter festgelegten Bedingungen ausführen und Ergebnis messen | fünf Startzeiten mit Standardprofil erfassen |
+| Analyse | vorhandene Daten, Berechnung oder Modell auswerten | Gesamtkosten oder Kapazitätsreserve berechnen |
+
+Welche Methode genügt, hängt von Risiko und Anforderung ab. Ein Datenblatt kann
+einen vorhandenen Anschluss belegen, nicht aber automatisch die Kompatibilität
+mit einer konkreten Dock-Gerätesoftware (Firmware). Dann ist ein praktischer
+Test nötig.
+
+<Warnung titel="Verifikation und Validierung nicht verwechseln">
+**Verifikation** fragt vereinfacht: „Erfüllt das Ergebnis die dokumentierte
+Anforderung?“ **Validierung** fragt: „Sind Anforderung und Ergebnis für den
+tatsächlichen Bedarf und Nutzungskontext geeignet?“ Ein Produkt kann den
+festgelegten Starttest bestehen und trotzdem ungeeignet sein, wenn das falsche
+Nutzungsprofil geprüft wurde.
+</Warnung>
+
 ## Priorisieren und Konflikte sichtbar machen
 
 Nicht jede Anforderung besitzt dieselbe Bedeutung. Eine einfache
@@ -180,6 +557,19 @@ Muss-Soll-Kann-Einteilung funktioniert nur mit gemeinsam vereinbarten Regeln:
 „Alles ist Muss“ ist keine Priorisierung. Zu jeder Muss-Anforderung gehören
 Quelle, Begründung und Prüfmethode.
 
+Priorität kann aus mehreren Kriterien entstehen:
+
+- **Verbindlichkeit:** Gesetz, Vertrag oder freigegebene Betriebsregel,
+- **Schaden bei Nichterfüllung:** Sicherheit, Arbeitsausfall, Datenverlust,
+- **Nutzen:** Beitrag zum Ziel für betroffene Profile,
+- **Dringlichkeit:** Zeitpunkt, Frist oder Reihenfolge,
+- **Abhängigkeit:** Voraussetzung für andere Anforderungen,
+- **Aufwand und Risiko:** Machbarkeit und Ressourcen.
+
+Aufwand ist nicht dasselbe wie Wichtigkeit. Eine wichtige Anforderung kann
+teuer sein; dann muss der Auftraggeber Ziel, Budget oder Umfang entscheiden.
+Ebenso wird eine billige Zusatzfunktion nicht automatisch wichtig.
+
 Typische Konflikte sind:
 
 - maximale Leistung gegen begrenztes Budget,
@@ -191,107 +581,243 @@ Typische Konflikte sind:
 Konflikte werden nicht verdeckt. Betroffene Anforderungen, Beteiligte,
 Alternativen, Entscheidung und Begründung werden dokumentiert.
 
+Ein einfaches Konfliktprotokoll folgt fünf Fragen:
+
+1. **Worin besteht der Widerspruch genau?** Betroffene IDs und gemeinsamer
+   Kontext werden genannt.
+2. **Welche Interessen oder Belege stehen dahinter?** Personen werden nicht
+   mit Positionen gleichgesetzt.
+3. **Welche Randbedingungen sind wirklich verbindlich?** Eine alte Annahme
+   darf nicht heimlich wie ein Gesetz wirken.
+4. **Welche Möglichkeiten gibt es?** Anforderung präzisieren, Varianten für
+   Profile bilden, Zielwert ändern, Budget oder Termin anpassen.
+5. **Wer entscheidet und warum?** Ergebnis, abgelehnte Alternativen und Folgen
+   werden nachvollziehbar festgehalten.
+
+<Tipp titel="Unbekannt ist ein zulässiger Zwischenstand">
+Eine offene Frage ist besser als eine erfundene Sicherheit. Sie erhält eine
+verantwortliche Person, einen Klärungsweg, eine Frist und eine Auswirkung. Vor
+Freigabe wird entschieden, ob sie beantwortet, als akzeptiertes Risiko
+dokumentiert oder zum Ausschlusskriterium wird.
+</Tipp>
+
+## Herkunft, Änderung und Rückverfolgbarkeit
+
+<Term id="rueckverfolgbarkeit">Rückverfolgbarkeit</Term> bedeutet, dass eine
+Anforderung rückwärts zu Bedarf, Quelle und Begründung sowie vorwärts zu
+Auswahlkriterium, Umsetzung und Prüffall verfolgt werden kann. Für einen
+kleinen LF2-Auftrag genügt oft eine Tabelle:
+
+| Bedarf/Beleg | Anforderung | Auswahl oder Umsetzung | Abnahme |
+|---|---|---|---|
+| B-003: Startzeit 120–240 s | A-01: höchstens 30 s im Standardprofil | Kriterium Leistung; Probegerät konfigurieren | T-01: fünf definierte Starttests |
+| Inventar I-02: zwei Monitore je Platz | A-02: beide vorhandenen Monitore am Dock | Port- und Dock-Kompatibilität | T-02: Anschluss-/Auflösungstest |
+| Vorgabe S-12: verwaltete Verschlüsselung | A-04: zentrale Verwaltung und Verschlüsselung | Geräte-/Betriebssystemfreigabe | I-04: Konfigurationsinspektion |
+
+Dadurch lassen sich zwei gefährliche Fälle erkennen:
+
+- Eine Anforderung ohne Quelle oder Begründung kann unbeabsichtigtes
+  „Gold Plating“, also eine nicht beauftragte Zusatzleistung, sein.
+- Ein belegter Bedarf ohne zugeordnete Anforderung oder Prüfung kann bei
+  Auswahl und Abnahme verloren gehen.
+
+Anforderungen ändern sich. Deshalb wird nicht still überschrieben. Mindestens
+festhalten:
+
+```text
+Änderung: A-06 von Version 1 auf Version 2
+Anlass: Beobachtung zeigt Ladepause am Mittag für Profil „mobile Beratung“
+Alt: mindestens 8 Stunden Akkulaufzeit
+Neu: mindestens 6 Stunden im vereinbarten Nutzungstest; Laden auf 80 % in der Mittagspause möglich
+Auswirkung: mehr Gerätevarianten können geprüft werden; Test T-06 wird angepasst
+Entscheidung: Auftraggeber und Nutzervertretung, 18.06.
+```
+
+Eine **freigegebene Fassung** ist der gemeinsame Bezugspunkt für den nächsten
+Arbeitsschritt. Änderungen danach brauchen erneut Auswirkungsprüfung und die
+zuständige Freigabe. Das muss kein schweres Spezialwerkzeug sein: eindeutige
+IDs, Versionsstand, Änderungsprotokoll und Zugriffsrechte reichen bei kleinen
+Aufträgen häufig aus.
+
 ## Wiederholbares Verfahren
 
 <Schritte
   items={[
     {
-      titel: 'Auftrag und Systemgrenze klären',
-      text: 'Ziel, Ergebnis, Termin, Budget, einbezogene Systeme und ausdrückliche Ausschlüsse festhalten.',
+      titel: 'Auftrag, Ziel und Entscheidungsweg klären',
+      text: 'Erwartetes Ergebnis, Auftraggeber, Freigaben, Termin, Budget und Erfolg des Analyseauftrags festhalten.',
     },
     {
-      titel: 'Beteiligte und Quellen bestimmen',
-      text: 'Nutzer, Entscheider, Betrieb, Support, Dokumente, Systeme und verbindliche Vorgaben erfassen.',
+      titel: 'Systemgrenze und Kontext abgrenzen',
+      text: 'Einbezogene Prozesse, Systeme und Schnittstellen sowie ausdrückliche Ausschlüsse und externe Bedingungen notieren.',
     },
     {
-      titel: 'Ist-Zustand belegen',
-      text: 'Ablauf, Mengen, Zeiten, Fehler, Workarounds und bestehende Randbedingungen aus passenden Quellen erheben.',
+      titel: 'Stakeholder und Quellen bestimmen',
+      text: 'Nutzende, Betroffene, Entscheider, Betrieb, Support, Dokumente, bestehende Systeme und verbindliche Vorgaben erfassen.',
     },
     {
-      titel: 'Ziel und Nutzen klären',
-      text: 'Beschreiben, was für wen besser sein soll und woran die Verbesserung erkannt wird.',
+      titel: 'Nutzungsprofile und Forschungsfragen planen',
+      text: 'Relevante Rollen, Aufgaben, Mengen, Umgebungen und Sonderfälle bilden; offene Annahmen in prüfbare Fragen übersetzen.',
     },
     {
-      titel: 'Techniken kombinieren',
-      text: 'Interviews, Beobachtung, Workshop, Fragebogen, Dokumente oder Systemdaten passend zu Quelle und Fragestellung wählen.',
+      titel: 'Ist-Zustand mit passenden Methoden belegen',
+      text: 'Interviews, Beobachtung, Workshop, Fragebogen, Dokumente und Systemdaten passend kombinieren; Befund und Deutung trennen.',
     },
     {
-      titel: 'Anforderungen dokumentieren',
-      text: 'Eindeutige Kennung, Quelle, Formulierung, Priorität, Begründung, Abhängigkeit und Prüfkriterium festhalten.',
+      titel: 'Bedarf, Ziel und Nutzen abstimmen',
+      text: 'Je Profil beschreiben, welche belegte Lücke geschlossen werden soll und woran die Verbesserung erkennbar ist.',
     },
     {
-      titel: 'Konflikte lösen und priorisieren',
-      text: 'Widersprüche sichtbar machen, Alternativen bewerten und Entscheidungen mit Zuständigkeit dokumentieren.',
+      titel: 'Anforderungen und Randbedingungen formulieren',
+      text: 'Eindeutige ID, Quelle, Begründung, Geltungsbereich, atomare Formulierung, Priorität und Abhängigkeiten festhalten.',
     },
     {
-      titel: 'Validieren und freigeben',
-      text: 'Beteiligte prüfen Richtigkeit, Vollständigkeit, Verständlichkeit, Konsistenz und Prüfbarkeit; Änderungen bleiben nachvollziehbar.',
+      titel: 'Abnahmekriterien und Prüfmethoden ergänzen',
+      text: 'Für wichtige Anforderungen Testbedingung, erwartetes Ergebnis, Methode und verantwortliche Rolle vor der Auswahl festlegen.',
+    },
+    {
+      titel: 'Qualität, Konflikte und Machbarkeit prüfen',
+      text: 'Einträge auf Bedarf, Notwendigkeit, Eindeutigkeit, Vollständigkeit, Verständlichkeit und Prüfbarkeit prüfen; Widersprüche entscheiden lassen.',
+    },
+    {
+      titel: 'Validieren, freigeben und übergeben',
+      text: 'Relevante Beteiligte prüfen Liste und Nutzungsprofile; freigegebene Version, offene Punkte und Rückverfolgbarkeit an den nächsten Schritt übergeben.',
     },
   ]}
 />
 
 ## Vollständig ausgearbeitetes Beispiel
 
-### 1. Auftrag und Ist-Zustand
+### 1. Analyseauftrag und Grenze
 
-Die Kanzlei möchte 25 neue Notebooks. Interviews mit Geschäftsführung,
-Sachbearbeitung und IT-Dienstleister sowie Messungen an den Geräten ergeben:
+Der Auftrag lautet zunächst: „25 neue Notebooks bis 30. September für maximal
+32.000 € beschaffen.“ Im Startgespräch wird das Ergebnis korrigiert, ohne die
+Entscheidung der Geschäftsführung vorwegzunehmen:
 
-- 18 von 25 Geräten starten die Fachanwendung in 120 bis 240 Sekunden.
-- Auf sieben neueren Geräten dauert derselbe Ablauf 22 bis 35 Sekunden.
-- Die 18 betroffenen Geräte besitzen 8 GB RAM und langsame SATA-SSDs; während
-  des Starts ist der Arbeitsspeicher nahezu ausgelastet.
-- Zwei Spezialarbeitsplätze benötigen zusätzlich lokale Signaturkarten.
-- Vorhandene USB-C-Docks und zwei Monitore pro Platz sollen weiterverwendet
-  werden.
-- Betriebssystem, Geräteverwaltung, Datenträgerverschlüsselung und
-  Supportprozess müssen den betrieblichen Standards entsprechen.
+> Bis 30. September soll eine freigegebene, kalkulierbare Arbeitsplatzlösung
+> für 25 Personen vorliegen. Zunächst werden Bedarf und Anforderungen geklärt.
+> Danach werden Weiternutzung, Aufrüstung und Austausch bedarfsgerecht
+> verglichen. Auftraggeber und Budgetverantwortung liegen bei der
+> Geschäftsführung; technische Betriebsfreigabe und Abnahmetests verantwortet
+> der IT-Dienstleister gemeinsam mit benannten Nutzern.
 
-Diese Befunde beweisen noch nicht, dass Neuanschaffung die einzige Lösung ist.
-Deshalb werden Aufrüstung, Austausch und gestaffelte Kombination verglichen.
+Im Auftrag liegen Geräte, Standardsoftware, Fachanwendung als unveränderte
+Abhängigkeit, Rollout, vorhandene Peripherie und zentrale Verwaltung. Eine
+Entwicklung der Fachanwendung und eine Erneuerung des Netzwerks sind
+ausgeschlossen. Zeigt die Analyse dort eine Ursache, wird sie als Abhängigkeit
+oder neuer Entscheidungsbedarf gemeldet.
 
-### 2. Ziel und Anforderungen
+### 2. Quellen, Profile und belegter Ist-Zustand
 
-| ID | Anforderung | Quelle | Priorität | Prüfung |
+Die Analyse nutzt Inventarliste und Betriebsstandard, drei Interviews,
+Beobachtungen je Nutzungsprofil, vorhandene Tickets und wiederholte
+Startmessungen. Sie ergibt:
+
+- 18 ältere Geräte starten die Fachanwendung im festgelegten Standardprofil in
+  120 bis 240 Sekunden. Sie besitzen 8 GB RAM; während des Starts sind RAM und
+  Datenträger stark ausgelastet. Das ist ein Hinweis, noch kein eindeutiger
+  Ursachennachweis.
+- Sieben neuere Geräte erreichen im selben Test 22 bis 35 Sekunden. Zwei davon
+  überschreiten den später gewünschten Grenzwert von 30 Sekunden in einzelnen
+  Läufen.
+- Stationäre Sachbearbeitung nutzt zwei Monitore und verarbeitet große
+  Dokumente. Mobile Beratung arbeitet an mehreren Tagen außerhalb des Büros
+  mit VPN und Videokonferenzen.
+- Zwei Arbeitsplätze brauchen Signaturkarte, freigegebenen Treiber und eine
+  vollständige Testsignatur. Der bloße Anschluss eines Kartenlesers reicht
+  nicht.
+- Docks und Monitore sind inventarisiert; für zwei ältere Stände der
+  Dock-Gerätesoftware (Firmware) ist die Kompatibilität mit aktuellen Geräten
+  offen.
+- Zentrale Verwaltung, freigegebenes Betriebssystem,
+  Datenträgerverschlüsselung und Supportprozess sind verbindliche
+  Betriebsbedingungen.
+
+Die pauschale Aussage „alle Geräte sind zu langsam“ ist damit widerlegt. Der
+Bedarf besteht für unterschiedliche Profile und mindestens 18 Geräte; bei den
+sieben neueren Geräten muss die Leistung unter einheitlichen Bedingungen
+geprüft werden.
+
+### 3. Offene Annahmen und Klärungsplan
+
+| ID | Annahme oder offene Frage | Bedeutung | Klärung | Verantwortlich/Frist |
 |---|---|---|---|---|
-| A-01 | Die Fachanwendung ist nach erfolgreicher Anmeldung spätestens nach 30 Sekunden nutzbar. | Sachbearbeitung, Messung | Muss | definierter Starttest mit Standardprofil |
-| A-02 | Jedes Gerät betreibt zwei vorhandene Monitore über die vorhandene Dockinglösung oder einen vollständig kompatiblen Ersatz. | Arbeitsplatzbeobachtung, Inventar | Muss | Anschluss- und Funktionstest |
-| A-03 | Zwei gekennzeichnete Arbeitsplätze unterstützen die vorhandenen Signaturkarten. | Fachbereich | Muss | Signaturtest mit freigegebener Software |
-| A-04 | Geräte werden zentral verwaltet und Datenträger nach betrieblicher Vorgabe verschlüsselt. | IT-Betrieb, Sicherheitsvorgabe | Muss | Verwaltungs- und Konfigurationsnachweis |
-| A-05 | Beschaffung, Garantie, notwendige Adapter und Rollout überschreiten zusammen 32.000 € nicht. | Geschäftsführung | Muss | vollständige Kostenaufstellung |
-| A-06 | Akkulaufzeit reicht im festgelegten Office-Test mindestens acht Stunden. | mobile Nutzer | Soll | dokumentierter Test oder vergleichbarer Hersteller-/Labornachweis |
-| A-07 | Geräte sind ohne Spezialwerkzeug wartbar und Ersatzteile für den geplanten Nutzungszeitraum beschaffbar. | IT-Betrieb, Nachhaltigkeitsziel | Soll | Anbieterbeleg und Wartungskonzept |
+| O-01 | Ist RAM die Hauptursache oder wirken Massenspeicher, Software und Profil zusammen? | entscheidet über Aufrüstung oder Austausch | Testgerät schrittweise aufrüsten und Messwerte vergleichen | IT-Dienstleister, 14.06. |
+| O-02 | Funktionieren vorhandene Docks nach Firmwareupdate zuverlässig? | beeinflusst Adapter- und Dockkosten | zwei Dockstände mit Probegerät testen | IT-Dienstleister, 16.06. |
+| O-03 | Benötigt mobile Beratung acht Stunden ohne Laden? | beeinflusst Gewicht, Akku und Preis | zwei reale Tagesabläufe beobachten; Ladegelegenheiten erfassen | Nutzervertretung, 18.06. |
+| O-04 | Ist 30 Sekunden der passende Zielwert? | bestimmt Leistungsanforderung und Auswahl | Wert mit Arbeitsauswirkung und Messreihe validieren | Auftraggeber + Fachbereich, 18.06. |
 
-„Schnell“ und „kompatibel“ wurden in prüfbare Ergebnisse übersetzt. Jede
-Anforderung besitzt eine Quelle und eine vorgesehene Kontrolle.
+Offene Punkte verhindern nicht jede weitere Arbeit. Sie verhindern aber die
+Freigabe betroffener Anforderungen, bis eine Entscheidung oder ein bewusst
+akzeptiertes Risiko dokumentiert ist.
 
-### 3. Konflikt und Entscheidung
+### 4. Ziel- und Anforderungsliste
 
-Ein besonders leichtes Premiumgerät erfüllt Mobilitätswunsch und Leistung,
-überschreitet mit Adaptern aber das Gesamtbudget. Eine aufrüstbare Geräteserie
-ist schwerer, erfüllt die Muss-Anforderungen und bleibt im Budget. Die
-Geschäftsführung entscheidet:
+Das abgestimmte Ziel lautet: Alle 25 Personen können ihre typischen Aufgaben
+mit freigegebener, verwaltbarer und zum Profil passender Ausstattung erledigen;
+die nachgewiesenen Wartezeiten werden auf den vereinbarten Zielwert reduziert,
+Schnittstellen funktionieren, und die Gesamtlösung bleibt innerhalb der
+freigegebenen Kosten- und Terminbedingungen.
 
-- 18 betroffene Geräte werden ersetzt,
-- sieben neuere Geräte bleiben nach bestandenem Leistungstest im Einsatz,
-- für sechs regelmäßig mobile Rollen wird die leichtere Variante beschafft,
-- für die übrigen zwölf Rollen die wirtschaftlichere, wartbare Variante.
+| ID | Anforderung oder Randbedingung | Geltung/Quelle | Priorität | Abnahmekriterium und Methode |
+|---|---|---|---|---|
+| A-01 | Die Fachanwendung ist nach erfolgreicher Anmeldung spätestens nach 30 Sekunden nutzbar. | alle Profile; Messung und Fachbereich | Muss | je freigegebenem Gerät fünf vollständige Neustarts mit demselben freigegebenen Benutzer- und Anwendungsprofil; mindestens vier Läufe ≤ 30 s; Test |
+| A-02 | Zwei vorhandene Monitore arbeiten am jeweiligen Arbeitsplatz mit vorgesehener Auflösung und ohne wiederholten Verbindungsabbruch. | stationäre Profile; Inventar/Beobachtung | Muss | Dock, beide Monitore, Neustart und 30-minütige Nutzung; Test |
+| A-03 | Die zwei Signaturarbeitsplätze erzeugen mit freigegebener Karte, Treiber- und Fachsoftwareversion eine gültige Testsignatur. | Spezialprofil; Fachbereich | Muss | dokumentierter vollständiger Test vom Kartenleser bis zur gültigen Signatur eines Testdokuments |
+| A-04 | Jedes ausgegebene Gerät wird in der zentralen Geräteverwaltung geführt und erhält die freigegebenen Richtlinien. | alle Geräte; Betriebsstandard S-12 | Muss | Geräteeintrag und Richtlinienstatus nach Neustart; Inspektion plus Funktionstest |
+| A-05 | Der interne Datenträger jedes ausgegebenen Geräts setzt die betriebliche Verschlüsselungsvorgabe um. | alle Geräte; Sicherheitsvorgabe S-12 | Muss | Verschlüsselungsstatus und Wiederherstellungsprozess am Testgerät; Inspektion plus Test |
+| A-06 | Die Lösung unterstützt das freigegebene Betriebssystem und die Fachanwendung über den geplanten betrieblichen Nutzungszeitraum. | alle Geräte; IT-Betrieb | Muss | Hersteller- und Anwendungsfreigabe mit Versionsstand; Inspektion |
+| A-07 | Die Gesamtkosten aus erforderlicher Hardware, Docks/Adaptern, Garantie und Rollout überschreiten 32.000 € nicht. | Auftrag; Geschäftsführung | Muss | vollständige, auf gleichen Umfang abgegrenzte Kalkulation; Analyse |
+| A-08 | Das Profil „mobile Beratung“ erreicht im vereinbarten Mischtest mindestens sechs Stunden ohne Nachladen. | sechs mobile Rollen; validierter Tagesablauf | Muss | 40 % Fachanwendung/VPN, 30 % Videokonferenz, 30 % Office bei festgelegter Helligkeit; Test |
+| A-09 | Kamera, Mikrofon und Lautsprecher ermöglichen im freigegebenen Konferenzdienst ein verständliches Gespräch. | mobile Beratung; Beobachtung | Soll | definierter Testanruf mit Gegenstelle; Demonstration/Test |
+| A-10 | Für den geplanten Nutzungszeitraum sind Sicherheitsupdates und ein dokumentierter Reparatur- oder Austauschweg verfügbar. | IT-Betrieb/Nachhaltigkeitsziel | Soll | Anbieterbeleg und Supportprozess mit Laufzeit; Inspektion |
+| A-11 | Rollout und Einweisung sind bis 30. September abgeschlossen, ohne mehr als fünf gleichzeitig unbenutzbare Arbeitsplätze. | Auftrag/Betrieb | Muss | Rolloutplan und Übergabeprotokolle; Inspektion |
 
-Die Entscheidung folgt Rollen und Bedarf statt dem ursprünglichen pauschalen
-Wunsch nach 25 identischen Neugeräten.
+Die Zahlen für Testmix, Helligkeit und Wiederholungen werden nicht aus einer
+allgemeinen Regel erfunden. Im realen Auftrag gehören die vollständigen Werte
+in die Testbeschreibung; hier sind sie als vereinbarte Lernfallwerte genannt.
 
-### 4. Validierung
+### 5. Qualitätsprüfung und Konflikt
 
-Geschäftsführung, zwei Benutzerrollen und IT-Dienstleister prüfen die Liste:
+Bei der Prüfung fallen drei Punkte auf:
 
-- Sind alle relevanten Rollen und Schnittstellen enthalten?
-- Ist jede Muss-Anforderung verständlich und einzeln prüfbar?
-- Widersprechen sich Budget, Leistung und Kompatibilität?
-- Fehlt eine Rechts-, Sicherheits- oder Betriebsanforderung?
-- Ist dokumentiert, wer die Abnahme durchführt?
+1. A-01 galt zunächst nur für „neue“ Geräte. Das hätte die sieben weiter
+   genutzten Geräte ausgeschlossen, obwohl das Arbeitsergebnis für alle gilt.
+   Die Formulierung wird auf jedes freigegebene Gerät erweitert.
+2. A-04 enthielt zunächst Verwaltung **und** Verschlüsselung in einem Satz.
+   Beide können getrennt scheitern und werden mit unterschiedlichen Nachweisen
+   geprüft. Deshalb entstehen daraus A-04 und A-05.
+3. Acht Stunden Akku standen im Konflikt mit Budget und Gerätegewicht. Die
+   Beobachtung zeigt eine sichere Lademöglichkeit in der Mittagspause. Der
+   Zielwert wird mit Nutzervertretung und Auftraggeber auf sechs Stunden im
+   realistischen Mischtest geändert. Diese Entscheidung wird versioniert.
 
-Erst nach dieser Rückmeldung wird die Anforderungsliste freigegeben und für
-Angebotsvergleich und Beschaffung verwendet.
+Noch wird **kein Produkt** zum Sieger erklärt. Aus A-01 bis A-11 entstehen
+Mindestkriterien und spätere Bewertungskriterien. Erst die Kapitel zu Hardware,
+Angebotsvergleich und Nutzwertanalyse zeigen, wie Alternativen technisch und
+wirtschaftlich verglichen werden.
+
+### 6. Validierung, Freigabe und Übergabe
+
+Geschäftsführung, Vertretungen der vier Nutzungsprofile und IT-Dienstleister
+gehen Nutzungsprofile, offene Punkte und Anforderungsliste gemeinsam Schritt
+für Schritt durch. Sie prüfen:
+
+- Sind Ziel und Systemgrenze richtig verstanden?
+- Sind alle relevanten Profile, Schnittstellen und Betriebsbedingungen
+  enthalten?
+- Ist jede Muss-Anforderung notwendig, eindeutig und einzeln beurteilbar?
+- Sind Bedingungen und Grenzwerte realistisch und fachlich abgestimmt?
+- Widersprechen sich Kosten, Termin, Leistung und Kompatibilität?
+- Besitzt jede Anforderung Quelle, Begründung, Prüfmethode und
+  Abnahmeverantwortung?
+- Bleibt eine offene Annahme mit hohem Risiko ohne Klärungsweg?
+
+Die freigegebene Übergabe enthält Version und Datum, Kontextgrenze,
+Nutzungsprofile, Befunde, Anforderungen, Abnahmekriterien, offene Punkte und
+Entscheidungen. Sie wird Grundlage für Produktauswahl, Kalkulation und spätere
+Abnahme. Ändert eine Produktprüfung die Erkenntnisse, wird nicht die alte Liste
+heimlich ersetzt, sondern die Änderung mit Auswirkungen erneut freigegeben.
 
 ## Typische Fehler und Gegenmittel
 
@@ -305,16 +831,39 @@ deren Ausgangspunkt und Ergebnis zugleich sein. Problem und Ziel zuerst klären.
 Geschäftsführung, Benutzer, Betrieb und Datenschutz sehen unterschiedliche
 Teile des Systems. Relevante Quellen bestimmen und Ergebnisse abgleichen.
 
+### Einen Durchschnittsnutzer erfinden
+
+Ein Durchschnitt kann kritische Profile unsichtbar machen. Aufgaben,
+Umgebungen, Mengen und Zugänglichkeitsbedarf gruppieren; relevante Sonderfälle
+bewusst erhalten und reale Vertreter früh beteiligen.
+
 ### Begriffe ohne Messregel verwenden
 
 „Schnell“ und „einfach“ brauchen Nutzungssituation und Prüfkriterium. Eine Zahl
 allein genügt ebenfalls nicht, wenn Messbeginn, Umgebung oder Stichprobe fehlen.
+
+### Lösung und Anforderung vermischen
+
+„Notebook mit Prozessor X und 32 GB RAM“ kann die Auswahl ohne belegten Grund
+verengen. Zuerst Arbeitsergebnis und Nutzungslast beschreiben. Ist eine
+Technikvorgabe wirklich verbindlich, wird sie als Randbedingung mit Begründung
+geführt.
+
+### Mehrere Forderungen in einen Satz packen
+
+„Leicht, schnell, sicher und günstig“ kann teilweise erfüllt sein und besitzt
+mehrere Quellen. In atomare Anforderungen teilen und Beziehungen verknüpfen.
 
 ### Methode mit Wahrheit verwechseln
 
 Ein Fragebogen ist nicht automatisch objektiv, ein Log nicht automatisch
 vollständig und ein Interview nicht automatisch repräsentativ. Jede Quelle hat
 einen Ausschnitt und mögliche Verzerrungen.
+
+### Annahmen und offene Fragen verstecken
+
+Unbekanntes nicht erraten. Annahme, Auswirkung, Klärungsmethode,
+Verantwortlichkeit und Frist sichtbar führen.
 
 ### Datenschutz nachträglich behandeln
 
@@ -327,6 +876,51 @@ Mitbestimmung und Rechtsgrundlage werden vor der Erhebung geklärt.
 Dokumentierte Anforderungen können trotzdem falsch, unvollständig,
 widersprüchlich oder unprüfbar sein. Betroffene Beteiligte müssen sie vor der
 Umsetzung kontrollieren und Konflikte entscheiden.
+
+### Änderungen still überschreiben
+
+Ohne Version und Änderungsgrund passen Auswahl, Umsetzung und Test plötzlich
+nicht mehr zusammen. Alte und neue Fassung, Anlass, Auswirkung und Freigabe
+dokumentieren.
+
+## Transfer für Anwendungsentwicklung und Systemintegration
+
+Für die Fachrichtungen Fachinformatiker/in Anwendungsentwicklung (FIAE) und
+Fachinformatiker/in Systemintegration (FISI) ist der Handlungsgang gleich. Nur
+die späteren Lösungsobjekte unterscheiden sich:
+
+| Schritt | Anwendungsentwicklung (FIAE) | Systemintegration (FISI) |
+|---|---|---|
+| Nutzung verstehen | Rollen, Geschäftsabläufe, Eingaben, Ausgaben, Fehler- und Ausnahmefälle | Arbeitsplätze, Orte, Anwendungen, Datenmengen, Geräte und Betriebsabläufe |
+| funktionale Anforderungen | speichern, suchen, berechnen, freigeben, exportieren | anmelden, verbinden, drucken, sichern, zentral verwalten |
+| Qualitätsanforderungen | Reaktionszeit, Zugänglichkeit, Datenqualität, Wartbarkeit | Leistung, Verfügbarkeit, Kapazität, Sicherheit, Supportbarkeit |
+| Schnittstellen | Programmierschnittstelle (Application Programming Interface, API), Dateiimport, Datenbank, Fremdsystem | Netzwerk, Dock, Peripherie, Verzeichnisdienst, Geräteverwaltung |
+| früher Nachweis | Ablaufskizze, Datenbeispiel, Prototyp, Testfall | Probegerät, Konfigurationstest, Messung, Pilotarbeitsplatz |
+| spätere Übergabe | Backlog/Spezifikation, Daten- und Testfälle | Kriterienliste, Integrations- und Abnahmeplan |
+
+Ein FIAE muss nicht sofort programmieren, ein FISI nicht sofort Hardware
+bestellen. Beide beginnen mit derselben Frage: Welches nachweisbare Ergebnis
+wird im tatsächlichen Nutzungskontext gebraucht?
+
+## Eine Begründung vollständig aufbauen
+
+Ob im Gespräch, in einer Entscheidungsvorlage oder im Übergabedokument: Es
+zählt nicht die längste Wunschliste, sondern eine nachvollziehbare Ableitung.
+Ein robuster Aufbau ist:
+
+1. Kundenwunsch als Ausgangsaussage nennen, nicht als fertige Lösung behandeln.
+2. mindestens eine passende Rückfrage zu Aufgabe, Nutzung, Menge oder Umgebung
+   formulieren,
+3. relevante Quellen oder Erhebungsmethoden mit Begründung auswählen,
+4. Bedarf und Randbedingungen trennen,
+5. eine eindeutige, prüfbare Anforderung mit Priorität formulieren,
+6. Abnahmekriterium und Prüfmethode ergänzen,
+7. bei Konflikten Entscheidung, Rolle und Begründung sichtbar machen.
+
+Schon zwei präzise, unterschiedliche Rückfragen können mehr klären als eine
+Liste aus zehn Varianten. Zu einer Begründung gehört die Wirkung:
+„Beobachtung, **weil** sie den tatsächlichen Ablauf und nicht nur die
+Erinnerung daran sichtbar macht.“
 
 ## Kurzer Selbstcheck
 
@@ -342,6 +936,13 @@ Umsetzung kontrollieren und Konflikte entscheiden.
    meist keine wirtschaftliche Erhebungsstrategie?
 7. Welche Angaben braucht eine Muss-Anforderung zusätzlich zur Formulierung?
 8. Was wird bei der Validierung von Anforderungen geprüft?
+9. Unterscheide Verifikation und Validierung an einem Docking-Beispiel.
+10. Warum ist „64 GB RAM“ möglicherweise eine Lösungsvorgabe statt einer guten
+    Anforderung?
+11. Eine Anforderung ändert sich nach Freigabe. Welche Angaben hältst du
+    mindestens fest?
+12. Formuliere aus „Das Notebook soll lange halten“ eine prüfbare Anforderung
+    und nenne eine mögliche Prüfmethode.
 
 ### Lösungen
 
@@ -365,6 +966,20 @@ Umsetzung kontrollieren und Konflikte entscheiden.
 8. Unter anderem Richtigkeit, Vollständigkeit, Verständlichkeit, Konsistenz,
    Umsetzbarkeit und Prüfbarkeit sowie das gemeinsame Verständnis der
    betroffenen Beteiligten.
+9. Verifikation: Das ausgewählte Gerät betreibt am festgelegten Dock beide
+   Monitore entsprechend A-02. Validierung: Die festgelegte Dock-/Monitorlösung
+   passt auch zum realen Arbeitsablauf und zu allen betroffenen Profilen.
+10. Die Größe schreibt bereits ein technisches Mittel vor. Ohne belegte
+    Arbeitslast ist nicht klar, ob 64 GB notwendig sind. Zuerst Anwendungen,
+    Gleichzeitigkeit, Datenmengen und gewünschte Reaktionszeit beschreiben.
+11. Alte und neue Fassung, Anlass, Quelle oder Entscheider, Datum,
+    Auswirkungen auf andere Anforderungen, Auswahl, Umsetzung und Tests sowie
+    den Freigabestatus.
+12. Beispiel: „Für das Gerät sind Sicherheitsupdates und ein dokumentierter
+    Reparatur- oder Austauschweg bis zum Ende der vorgesehenen fünfjährigen
+    Nutzung verfügbar.“ Prüfung durch datierten Hersteller-/Vertragsnachweis
+    und Kontrolle des Supportprozesses. Der konkrete Zeitraum muss aus dem
+    Auftrag stammen.
 
 ## Zusammenhang und Transfer
 
@@ -373,31 +988,68 @@ Die Bedarfsanalyse liefert Eingaben für
 [Angebotsvergleich](/lernen/wirtschaft/beschaffung/angebotsvergleich) und
 [Lasten- und Pflichtenheft](/lernen/projekt/dokumente/lastenheft-pflichtenheft).
 Sie ersetzt diese Schritte nicht: Erst Anforderungen klären, danach Lösungen
-entwerfen, vergleichen, dokumentieren und prüfen.
+entwerfen, vergleichen, dokumentieren und prüfen. Testfälle greifen die
+Abnahmekriterien später wieder auf; ohne diese Verbindung wäre nicht
+nachvollziehbar, ob die ausgewählte Lösung den ursprünglichen Bedarf erfüllt.
 
 ## Kernzusammenfassung
 
 - Wunsch, Problem, Ziel, Bedarf, Anforderung und Lösung sind verschiedene
   Ebenen einer Entscheidung.
-- Bedarfsanalyse beginnt mit Auftragsgrenze, Beteiligten,
+- Bedarfsanalyse beginnt mit Analyseauftrag, Systemgrenze, Stakeholdern,
   Anforderungsquellen und belegtem Ist-Zustand.
+- Ein Nutzungsprofil beschreibt Rolle, Aufgabe, Menge, Umgebung,
+  Schnittstellen, Zugänglichkeit und Betrieb; ein erfundener
+  Durchschnittsnutzer reicht nicht.
 - Interviews, Fragebogen, Beobachtung, Workshops, Dokumente, Systeme und
   Prototypen liefern unterschiedliche Ausschnitte und werden passend kombiniert.
-- Anforderungen nennen Gegenstand, Bedingung und prüfbares Ergebnis; unklare
-  Adjektive reichen nicht.
+- Befunde, Aussagen, Annahmen und Entscheidungen erhalten unterschiedliche
+  Kennzeichnung und Behandlung.
+- Anforderungen nennen Gegenstand, Geltungsbereich, Bedingung und prüfbares
+  Ergebnis; unklare Adjektive und unnötige Lösungsvorgaben reichen nicht.
 - Funktion, Qualität, Technik, Organisation, Recht, Sicherheit, Wirtschaft,
   Ökologie und soziale Nutzung können relevante Anforderungsarten sein.
+- Gute einzelne Anforderungen sind bedarfsgerecht, notwendig, eindeutig,
+  verständlich, inhaltlich vollständig und prüfbar; die Liste muss zusätzlich
+  konsistent, möglichst ohne Dubletten und rückverfolgbar sein.
 - Prioritäten brauchen Begründung. Konflikte werden sichtbar entschieden und
   dokumentiert.
-- Validierung prüft, ob Anforderungen richtig, vollständig, verständlich,
-  konsistent und prüfbar sind und von den relevanten Beteiligten verstanden
-  werden.
+- Abnahmekriterien und Prüfmethoden entstehen mit der Anforderung, nicht erst
+  nach der Umsetzung.
+- Validierung prüft Bedarf und Eignung mit den richtigen Beteiligten;
+  Verifikation prüft das Ergebnis gegen die dokumentierte Anforderung.
+- IDs, Quellen, Versionen und Änderungsprotokoll verbinden Bedarf,
+  Anforderung, Auswahl, Umsetzung und Abnahme.
 
 <Glossar
   einträge={[
     {
       term: 'Bedarfsanalyse',
       definition: 'Systematische Klärung von Ausgangslage, Ziel, Beteiligten, Randbedingungen und der Lücke, die eine Lösung schließen soll.'
+    },
+    {
+      term: 'Anforderung',
+      definition: 'Dokumentierte, abgestimmte und prüfbare Eigenschaft oder Randbedingung, die eine Lösung erfüllen muss oder soll.'
+    },
+    {
+      term: 'Nutzungsprofil',
+      definition: 'Belegte Beschreibung einer relevanten Nutzungssituation mit Rolle, Aufgabe, Häufigkeit, Umgebung, Schnittstellen und besonderen Bedingungen.'
+    },
+    {
+      term: 'Randbedingung',
+      definition: 'Verbindliche oder vereinbarte Grenze des Lösungsraums, etwa Budget, Termin, Schnittstelle oder Betriebsstandard.'
+    },
+    {
+      term: 'Abnahmekriterium',
+      definition: 'Vorab vereinbarter beobachtbarer Befund, der unter festgelegten Bedingungen als bestanden oder nicht bestanden beurteilt wird.'
+    },
+    {
+      term: 'Stakeholder',
+      definition: 'Person, Gruppe oder Organisation, die Einfluss auf die Lösung hat, sie nutzt oder von ihren Auswirkungen betroffen ist.'
+    },
+    {
+      term: 'Rückverfolgbarkeit',
+      definition: 'Nachvollziehbare Verbindung einer Anforderung zu Bedarf, Quelle und Begründung sowie zu Auswahl, Umsetzung und Prüffall.'
     },
     {
       term: 'Ist-Soll-Vergleich',

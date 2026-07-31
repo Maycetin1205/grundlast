@@ -119,13 +119,42 @@ describe('zentraler Kapitelkatalog', () => {
     expectKnownLessonTerms('schulz-von-thun')
   })
 
-  it('hält Kommunikationsmodelle aus der Bedarfsanalyse heraus', () => {
+  it('führt LF2-01 als belegtes Paket für Kundenbedarf und Anforderungen', () => {
     const chapter = chapters.find((item) => item.slug === 'bedarfsanalyse-feedback')
-    expect(chapter?.titel).toBe('Bedarfsanalyse & Anforderungsklärung')
+    expect(chapter?.titel).toBe('Kundenbedarf und Anforderungen')
+    expect(chapter?.primaryLf).toBe(2)
+    expect(chapter?.relatedLfs).toEqual(expect.arrayContaining([3, 5, 6]))
+    expect(chapter?.lfReihenfolge).toBe(1)
+    expect(chapter?.inhaltsstatus).toBe('teilgeprueft')
+    expect(chapter?.quellen.q2_fachquelle).toEqual(expect.arrayContaining([
+      'ireb-cpre-foundation-3-3',
+      'iso-iec-ieee-29148-2018',
+      'nasa-se-handbook-requirements',
+      'govuk-user-needs-research',
+      'govuk-plan-user-research',
+      'w3c-involving-users',
+    ]))
+
     const lesson = fs.readFileSync(new URL('../lessons/bedarfsanalyse-feedback.mdx', import.meta.url), 'utf8')
     expect(lesson).not.toContain('<Term id="vier-ohren">')
     expect(lesson).not.toContain('<Term id="sbi-feedback">')
     expect(lesson).not.toContain('<Term id="aida">')
+    expect(lesson).toContain('<Term id="nutzungsprofil">')
+    expect(lesson).toContain('<Term id="abnahmekriterium">')
+    expect(lesson).toContain('<Term id="rueckverfolgbarkeit">')
+    expect(lesson).toContain('role="img"')
+
+    const needsScope = scopeItems.find((item) => item.id === 'kmk-lf2-01')
+    const criteriaScope = scopeItems.find((item) => item.id === 'kmk-lf2-02')
+    const ap1NeedsScope = scopeItems.find((item) => item.id === 'ap1-kundenbedarf')
+    expect(needsScope?.chapterSlugs).toContain('bedarfsanalyse-feedback')
+    expect(criteriaScope?.chapterSlugs).toContain('bedarfsanalyse-feedback')
+    expect(ap1NeedsScope?.chapterSlugs).toContain('bedarfsanalyse-feedback')
+
+    expect(chapters.filter((item) => item.primaryLf === 2).map((item) => item.lfReihenfolge))
+      .toEqual(Array.from({ length: 36 }, (_, index) => index + 1))
+    expect(chapters.filter((item) => item.primaryLf === 6).map((item) => item.lfReihenfolge))
+      .toEqual(Array.from({ length: 16 }, (_, index) => index + 1))
     expectKnownLessonTerms('bedarfsanalyse-feedback')
   })
 

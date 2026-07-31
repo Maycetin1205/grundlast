@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const mBisP: GlossarEintrag[] = [
   {
+    id: 'nutzungsprofil',
+    begriff: 'Nutzungsprofil',
+    kurzdefinition: 'Belegte Beschreibung einer für Bedarf oder Auswahl relevanten Nutzungssituation.',
+    definition: [
+      'Ein Nutzungsprofil verbindet Rolle und Aufgabe mit Häufigkeit, Menge, Umgebung, Geräten, Schnittstellen, Leistungsbedarf, Schutz, Zugänglichkeit und Unterstützung.',
+      'Es darf Forschungsergebnisse verdichten, aber keine fehlenden Daten erfinden. Relevante Unterschiede bleiben als eigene Profile erhalten, statt in einem vermeintlichen Durchschnittsnutzer zu verschwinden.',
+    ],
+    kapitel: {
+      titel: 'Kundenbedarf und Anforderungen',
+      href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+    },
+  },
+  {
     id: 'praesentation',
     begriff: 'Präsentation',
     kurzdefinition: 'Geführte Darstellung, die Inhalt, Medium und Vortrag für bestimmte Adressaten und einen bestimmten Zweck verbindet.',

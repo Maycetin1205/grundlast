@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const aBisD: GlossarEintrag[] = [
   {
+    id: 'abnahmekriterium',
+    begriff: 'Abnahmekriterium',
+    kurzdefinition: 'Vorab vereinbarter, beobachtbarer Befund, mit dem eine Anforderung unter festgelegten Bedingungen beurteilt wird.',
+    definition: [
+      'Ein Abnahmekriterium beschreibt Ausgangslage, Handlung oder Prüfgegenstand, erwartetes Ergebnis und gegebenenfalls Grenzwert, Stichprobe und zulässige Abweichung.',
+      'Es wird möglichst zusammen mit der Anforderung festgelegt. So erkennen Beteiligte früh, ob dieselbe Erwartung besteht und ob das Ergebnis später durch Inspektion, Demonstration, Test oder Analyse geprüft werden kann.',
+    ],
+    kapitel: {
+      titel: 'Kundenbedarf und Anforderungen',
+      href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+    },
+  },
+  {
+    id: 'anforderung',
+    begriff: 'Anforderung',
+    kurzdefinition: 'Dokumentierte, abgestimmte und prüfbare Eigenschaft oder Randbedingung einer benötigten Lösung.',
+    definition: [
+      'Eine Anforderung übersetzt einen belegten Bedarf in eine Aussage, die für Auswahl, Umsetzung und Prüfung verwendet werden kann. Sie nennt Gegenstand, Geltungsbereich, Bedingung und ein beurteilbares Ergebnis.',
+      'Quelle, Begründung, Priorität, Abhängigkeiten und Abnahmekriterium machen die Aussage nachvollziehbar. Eine konkrete Produktvorgabe ist nur dann eine zulässige Randbedingung, wenn ihre Notwendigkeit belegt ist.',
+    ],
+    kapitel: {
+      titel: 'Kundenbedarf und Anforderungen',
+      href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
+    },
+  },
+  {
     id: 'alternativtext',
     begriff: 'Alternativtext',
     kurzdefinition: 'Textliche Alternative, die Zweck und relevante Aussage eines nichttextlichen Inhalts vermittelt.',
@@ -539,7 +565,7 @@ export const aBisD: GlossarEintrag[] = [
         'Relevante Anforderungsquellen werden mit passenden Techniken untersucht. Anforderungen werden dokumentiert, priorisiert, auf Konflikte geprüft und mit den Beteiligten validiert.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse & Anforderungsklärung',
+        titel: 'Kundenbedarf und Anforderungen',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },
@@ -565,7 +591,7 @@ export const aBisD: GlossarEintrag[] = [
         'Die Anwesenheit eines Beobachters kann Verhalten verändern. Zweck, Umfang, personenbezogene Daten, Datenschutz und betriebliche Mitbestimmung müssen vor der Erhebung geprüft werden.',
       ],
       kapitel: {
-        titel: 'Bedarfsanalyse & Anforderungsklärung',
+        titel: 'Kundenbedarf und Anforderungen',
         href: '/lernen/projekt/service-management/bedarfsanalyse-feedback',
       },
     },

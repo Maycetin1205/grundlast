@@ -53,14 +53,15 @@ GitHub-Kontoeinstellung und keine Codeänderung.
 
 Reihenfolge: Die ersten formal offenen Einträge in
 `KAPITELPLAN_LF1_LF9.md` bleiben wegen der unabhängigen Freigaben LF1-06 bis
-LF1-09. Der nächste Inhaltsproduktionsschritt ist LF2-01 Kundenbedarf und
-Anforderungen.
+LF2-01. Der nächste Inhaltsproduktionsschritt ist LF2-02 Bit, Byte und
+Informationsmenge.
 
-LF1-06 bis LF1-09 haben den vollständigen ersten Inhalts-, Quellen- und
+LF1-06 bis LF2-01 haben den vollständigen ersten Inhalts-, Quellen- und
 Technikpass bestanden und bleiben bis zum unabhängigen Prüfpass sowie
-Q3-/Vollkatalogabgleich korrekt als `teilgeprueft` offen. Die in LF1-07
-entdeckte Sammelkapitel-Dublette wurde auf Bedarfsanalyse und
-Anforderungsklärung fokussiert; ihr eigener Vollaudit folgt bei LF2-01.
+Q3-/Vollkatalogabgleich korrekt als `teilgeprueft` offen. LF2-01 ist nun
+eindeutig Eigentümer für Kundenbedarf, Nutzungsprofile, Anforderungen,
+Abnahmekriterien und Rückverfolgbarkeit; die frühere LF6-Fehlzuordnung ist
+aufgelöst.
 
 Pro Kapitel:
 

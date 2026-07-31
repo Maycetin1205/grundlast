@@ -2,11 +2,60 @@ import type { Chapter } from '../types'
 
 export const lf2 = [
   {
+    "slug": "bedarfsanalyse-feedback",
+    "titel": "Kundenbedarf und Anforderungen",
+    "primaryLf": 2,
+    "relatedLfs": [
+      3,
+      5,
+      6
+    ],
+    "lfReihenfolge": 1,
+    "themen": [
+      "projekt"
+    ],
+    "ap1Kompetenzen": [
+      "ap1-kundenbedarf"
+    ],
+    "ap1Relevanz": "hoch",
+    "voraussetzungen": [
+      "schulz-von-thun"
+    ],
+    "lernzeit": 90,
+    "aufgabenfamilien": [
+      "zuordnen",
+      "diagnostizieren",
+      "anwenden",
+      "begruenden"
+    ],
+    "inhaltsstatus": "teilgeprueft",
+    "quellen": {
+      "q1_scope": [
+        "kmk-rahmenlehrplan",
+        "fiausbv",
+        "bibb-fachinformatiker"
+      ],
+      "q2_fachquelle": [
+        "ireb-cpre-foundation-3-3",
+        "iso-iec-ieee-29148-2018",
+        "nasa-se-handbook-requirements",
+        "govuk-user-needs-research",
+        "govuk-plan-user-research",
+        "w3c-involving-users"
+      ],
+      "q3_pruefungsrealitaet": []
+    },
+    "route": {
+      "bereich": "projekt",
+      "modul": "service-management"
+    }
+  },
+  {
     "slug": "bit-byte",
     "titel": "Bit & Byte - die kleinsten Einheiten",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 1,
+    "lfReihenfolge": 2,
     "themen": [
       "grundlagen"
     ],
@@ -47,7 +96,7 @@ export const lf2 = [
     "titel": "Zahlensysteme (Dual, Hex, Dezimal)",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 2,
+    "lfReihenfolge": 3,
     "themen": [
       "grundlagen"
     ],
@@ -91,7 +140,7 @@ export const lf2 = [
     "titel": "SI- und Binärpräfixe (KB vs. KiB)",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 3,
+    "lfReihenfolge": 4,
     "themen": [
       "grundlagen"
     ],
@@ -134,7 +183,7 @@ export const lf2 = [
     "titel": "Von-Neumann-Architektur",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 4,
+    "lfReihenfolge": 5,
     "themen": [
       "grundlagen"
     ],
@@ -174,7 +223,7 @@ export const lf2 = [
       7,
       9
     ],
-    "lfReihenfolge": 5,
+    "lfReihenfolge": 6,
     "themen": [
       "hardware"
     ],
@@ -219,7 +268,7 @@ export const lf2 = [
       7,
       9
     ],
-    "lfReihenfolge": 6,
+    "lfReihenfolge": 7,
     "themen": [
       "hardware"
     ],
@@ -253,7 +302,7 @@ export const lf2 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 7,
+    "lfReihenfolge": 8,
     "themen": [
       "betriebssysteme"
     ],
@@ -287,7 +336,7 @@ export const lf2 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 8,
+    "lfReihenfolge": 9,
     "themen": [
       "betriebssysteme"
     ],
@@ -321,7 +370,7 @@ export const lf2 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 9,
+    "lfReihenfolge": 10,
     "themen": [
       "betriebssysteme"
     ],
@@ -355,7 +404,7 @@ export const lf2 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 10,
+    "lfReihenfolge": 11,
     "themen": [
       "betriebssysteme"
     ],
@@ -390,7 +439,7 @@ export const lf2 = [
       7,
       9
     ],
-    "lfReihenfolge": 11,
+    "lfReihenfolge": 12,
     "themen": [
       "hardware"
     ],
@@ -433,7 +482,7 @@ export const lf2 = [
     "titel": "Energiekosten, Wirkungsgrad & Amortisation",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 12,
+    "lfReihenfolge": 13,
     "themen": [
       "wirtschaft"
     ],
@@ -467,7 +516,7 @@ export const lf2 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 13,
+    "lfReihenfolge": 14,
     "themen": [
       "netzwerke"
     ],
@@ -513,7 +562,7 @@ export const lf2 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 14,
+    "lfReihenfolge": 15,
     "themen": [
       "netzwerke"
     ],
@@ -564,7 +613,7 @@ export const lf2 = [
       7,
       9
     ],
-    "lfReihenfolge": 15,
+    "lfReihenfolge": 16,
     "themen": [
       "hardware"
     ],
@@ -599,7 +648,7 @@ export const lf2 = [
       7,
       9
     ],
-    "lfReihenfolge": 16,
+    "lfReihenfolge": 17,
     "themen": [
       "hardware"
     ],
@@ -631,7 +680,7 @@ export const lf2 = [
       7,
       9
     ],
-    "lfReihenfolge": 17,
+    "lfReihenfolge": 18,
     "themen": [
       "hardware"
     ],
@@ -665,7 +714,7 @@ export const lf2 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 18,
+    "lfReihenfolge": 19,
     "themen": [
       "aktuell"
     ],
@@ -697,7 +746,7 @@ export const lf2 = [
     "titel": "Angebotsvergleich (quantitativ & qualitativ)",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 19,
+    "lfReihenfolge": 20,
     "themen": [
       "wirtschaft"
     ],
@@ -729,7 +778,7 @@ export const lf2 = [
     "titel": "Nutzwertanalyse",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 20,
+    "lfReihenfolge": 21,
     "themen": [
       "wirtschaft"
     ],
@@ -761,7 +810,7 @@ export const lf2 = [
     "titel": "Kaufmännische Rechenaufgaben (Kosten, Leasing, Skonto)",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 21,
+    "lfReihenfolge": 22,
     "themen": [
       "wirtschaft"
     ],
@@ -793,7 +842,7 @@ export const lf2 = [
     "titel": "Variable & fixe Kosten",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 22,
+    "lfReihenfolge": 23,
     "themen": [
       "wirtschaft"
     ],
@@ -825,7 +874,7 @@ export const lf2 = [
     "titel": "Gewinnermittlung & Deckungsbeitrag",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 23,
+    "lfReihenfolge": 24,
     "themen": [
       "wirtschaft"
     ],
@@ -857,7 +906,7 @@ export const lf2 = [
     "titel": "Break-Even-Analyse",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 24,
+    "lfReihenfolge": 25,
     "themen": [
       "wirtschaft"
     ],
@@ -889,7 +938,7 @@ export const lf2 = [
     "titel": "Kauf, Leasing & Miete im Vergleich",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 25,
+    "lfReihenfolge": 26,
     "themen": [
       "wirtschaft"
     ],
@@ -921,7 +970,7 @@ export const lf2 = [
     "titel": "Make-or-Buy-Entscheidung",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 26,
+    "lfReihenfolge": 27,
     "themen": [
       "wirtschaft"
     ],
@@ -953,7 +1002,7 @@ export const lf2 = [
     "titel": "Eigen- & Fremdfinanzierung",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 27,
+    "lfReihenfolge": 28,
     "themen": [
       "wirtschaft"
     ],
@@ -985,7 +1034,7 @@ export const lf2 = [
     "titel": "AfA – lineare Abschreibung",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 28,
+    "lfReihenfolge": 29,
     "themen": [
       "wirtschaft"
     ],
@@ -1017,7 +1066,7 @@ export const lf2 = [
     "titel": "Handelskalkulation (Vorwärts/Rückwärts)",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 29,
+    "lfReihenfolge": 30,
     "themen": [
       "wirtschaft"
     ],
@@ -1049,7 +1098,7 @@ export const lf2 = [
     "titel": "Vertragsarten: Kaufvertrag, Dienstvertrag & Werkvertrag",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 30,
+    "lfReihenfolge": 31,
     "themen": [
       "vertragsrecht"
     ],
@@ -1081,7 +1130,7 @@ export const lf2 = [
     "titel": "Zweiseitiger Handelskauf",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 31,
+    "lfReihenfolge": 32,
     "themen": [
       "vertragsrecht"
     ],
@@ -1113,7 +1162,7 @@ export const lf2 = [
     "titel": "Gewährleistung & Garantie",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 32,
+    "lfReihenfolge": 33,
     "themen": [
       "vertragsrecht"
     ],
@@ -1152,7 +1201,7 @@ export const lf2 = [
     "titel": "Mängelrüge im Handelskauf",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 33,
+    "lfReihenfolge": 34,
     "themen": [
       "vertragsrecht"
     ],
@@ -1184,7 +1233,7 @@ export const lf2 = [
     "titel": "Vertragsstörungen (Verzug, Mängel, Unmöglichkeit)",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 34,
+    "lfReihenfolge": 35,
     "themen": [
       "vertragsrecht"
     ],
@@ -1216,7 +1265,7 @@ export const lf2 = [
     "titel": "Rechnung, Zahlungsziel & Aufbewahrungsfristen",
     "primaryLf": 2,
     "relatedLfs": [],
-    "lfReihenfolge": 35,
+    "lfReihenfolge": 36,
     "themen": [
       "vertragsrecht"
     ],

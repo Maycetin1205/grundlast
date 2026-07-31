@@ -68,56 +68,13 @@ export const lf6 = [
     }
   },
   {
-    "slug": "bedarfsanalyse-feedback",
-    "titel": "Bedarfsanalyse & Anforderungsklärung",
-    "primaryLf": 6,
-    "relatedLfs": [
-      1,
-      2
-    ],
-    "lfReihenfolge": 3,
-    "themen": [
-      "projekt"
-    ],
-    "ap1Kompetenzen": [
-      "ap1-kundenbedarf"
-    ],
-    "ap1Relevanz": "hoch",
-    "voraussetzungen": [
-      "schulz-von-thun"
-    ],
-    "lernzeit": 45,
-    "aufgabenfamilien": [
-      "zuordnen",
-      "diagnostizieren",
-      "anwenden",
-      "begruenden"
-    ],
-    "inhaltsstatus": "ausgearbeitet",
-    "quellen": {
-      "q1_scope": [
-        "kmk-rahmenlehrplan",
-        "fiausbv",
-        "bibb-fachinformatiker"
-      ],
-      "q2_fachquelle": [
-        "ireb-cpre-foundation-3-3"
-      ],
-      "q3_pruefungsrealitaet": []
-    },
-    "route": {
-      "bereich": "projekt",
-      "modul": "service-management"
-    }
-  },
-  {
     "slug": "schulung-einweisung-key-user",
     "titel": "Schulung, Einweisung, Key User & Multiplikatoren",
     "primaryLf": 6,
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 4,
+    "lfReihenfolge": 3,
     "themen": [
       "projekt"
     ],
@@ -151,7 +108,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 5,
+    "lfReihenfolge": 4,
     "themen": [
       "projekt"
     ],
@@ -185,7 +142,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 6,
+    "lfReihenfolge": 5,
     "themen": [
       "projekt"
     ],
@@ -219,7 +176,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 7,
+    "lfReihenfolge": 6,
     "themen": [
       "projekt"
     ],
@@ -253,7 +210,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 8,
+    "lfReihenfolge": 7,
     "themen": [
       "projekt"
     ],
@@ -287,7 +244,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 9,
+    "lfReihenfolge": 8,
     "themen": [
       "projekt"
     ],
@@ -321,7 +278,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 10,
+    "lfReihenfolge": 9,
     "themen": [
       "projekt"
     ],
@@ -355,7 +312,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 11,
+    "lfReihenfolge": 10,
     "themen": [
       "projekt"
     ],
@@ -389,7 +346,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 12,
+    "lfReihenfolge": 11,
     "themen": [
       "projekt"
     ],
@@ -421,7 +378,7 @@ export const lf6 = [
     "titel": "EFQM-Modell",
     "primaryLf": 6,
     "relatedLfs": [],
-    "lfReihenfolge": 13,
+    "lfReihenfolge": 12,
     "themen": [
       "qualitaet"
     ],
@@ -453,7 +410,7 @@ export const lf6 = [
     "titel": "ISO 9000–9004",
     "primaryLf": 6,
     "relatedLfs": [],
-    "lfReihenfolge": 14,
+    "lfReihenfolge": 13,
     "themen": [
       "qualitaet"
     ],
@@ -482,7 +439,7 @@ export const lf6 = [
     "titel": "ISO 25010 – Softwarequalität",
     "primaryLf": 6,
     "relatedLfs": [],
-    "lfReihenfolge": 15,
+    "lfReihenfolge": 14,
     "themen": [
       "qualitaet"
     ],
@@ -511,7 +468,7 @@ export const lf6 = [
     "titel": "PDCA-Zyklus",
     "primaryLf": 6,
     "relatedLfs": [],
-    "lfReihenfolge": 16,
+    "lfReihenfolge": 15,
     "themen": [
       "qualitaet"
     ],
@@ -545,7 +502,7 @@ export const lf6 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 17,
+    "lfReihenfolge": 16,
     "themen": [
       "projekt"
     ],

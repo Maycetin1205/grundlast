@@ -147,7 +147,7 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 |---|---|---|---|---|---|
 | `serviceanfragen-support-level` | ja | ready | ungeprueft | P2 | ITIL-Begriffe nicht aufblasen |
 | `fehlermanagement-stoerungsannahme` | ja | ready | ungeprueft | P2 | Ablauf und Dokumentation pruefen |
-| `bedarfsanalyse-feedback` | ja | ready | ungeprueft | P2 | auf Bedarf/Anforderungen fokussiert; eigener Inhaltsaudit folgt bei LF2-01 |
+| `bedarfsanalyse-feedback` | ja | final | teilgeprueft | P1 | Lernpaket LF2-01 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
 | `mitarbeitermotivation-teamphasen-change` | ja | ready | ungeprueft | P3 | AP1-Tiefe kritisch pruefen |
 | `schulung-einweisung-key-user` | ja | ready | ungeprueft | P2 | Einweisung/Doku-Aufgabentyp |
 | `schulz-von-thun` | ja | ready | teilgeprueft | P1 | Lernpaket LF1-07 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
@@ -3520,3 +3520,151 @@ Bearbeiter: Codex
   Umfangs- und Technikpass sind abgeschlossen. Für `geprueft` fehlen ein
   unabhängiger Fachprüfpass, ein belastbarer Q3-Abgleich und die Vollkataloge
   6392/6393. Der Haken für LF1-09 bleibt deshalb offen.
+
+## Inhaltsaudit: bedarfsanalyse-feedback / LF2-01 (2026-07-31)
+
+Bearbeiter: Codex
+
+### Scope-Gate und Eigentumsentscheidung
+
+- Das Lernpaket trägt `kmk-lf2-01`: Kundenwunsch aufnehmen und Anforderungen
+  an Hard- und Software dokumentieren. Es trägt außerdem `kmk-lf2-02`, weil
+  aus den dokumentierten Anforderungen überprüfbare Auswahlkriterien abgeleitet
+  werden. Im gesetzlichen Rahmen unterstützt es FIAusbV-Positionen 1.e, 1.g
+  und 2.b der ersten 18 Monate sowie direkt `ap1-kundenbedarf`.
+- Das Kapitel war historisch mit `primaryLf: 6` katalogisiert, obwohl der
+  verbindliche Kapitelplan und der KMK-Handlungsgang es als LF2-01 führen.
+  Diese Fehlzuordnung ist behoben: `primaryLf: 2`, Reihenfolge 1; LF3, LF5 und
+  LF6 bleiben als Anschlusslernfelder vermerkt. LF2 läuft nun lückenlos 1 bis
+  36, LF6 nach der Entnahme lückenlos 1 bis 16.
+- LF2-01 ist Eigentümer für Trennung von Wunsch, Problem, Ziel, Bedarf,
+  Anforderung und Lösung, Systemgrenze, Stakeholder/Quellen, Nutzungsprofile,
+  Erhebungsmethoden, Anforderungsqualität, Priorität, Abnahmekriterien,
+  Validierung und schlanke Rückverfolgbarkeit.
+- Gesprächsmodelle, aktives Zuhören und Fragetypen bleiben bei
+  `schulz-von-thun`; konkrete Hardwaremerkmale bei
+  `hardware-schnittstellen`/`cpu-ram-speicher`; Angebots- und
+  Nutzwertvergleich bei `angebotsvergleich`/`nutzwertanalyse`; formale
+  Lasten-/Pflichtenhefte bei `lastenheft-pflichtenheft`; Teststrategie und
+  Testautomatisierung im LF5-Testpaket.
+- Entscheidung: **stabilen Slug und Route behalten, Titel und Katalogbesitz auf
+  „Kundenbedarf und Anforderungen“ korrigieren und das fokussierte Kapitel als
+  vollständige LF2-Handlung ausbauen**. Kein CPRE-Vorbereitungskurs, keine
+  UML-/Use-Case-Modellierung, keine juristische Abnahmeberatung und keine
+  Produktauswahl im Kapitel.
+
+### Quellen- und Benchmark-Matrix
+
+| Bereich | Quellen | Was fachlich folgt | Konsequenz fürs Kapitel |
+|---|---|---|---|
+| Offizieller Ausbildungsrahmen | KMK-Rahmenlehrplan LF2; FIAusbV §§ 8–9; BIBB-Umsetzungshilfe | Kundenwunsch und Anforderungen aufnehmen, Hard-/Software bedarfsgerecht bestimmen, Kriterien ableiten und Kundenbedarfe zielgruppen- und situationsgerecht ermitteln. | Vollständige Handlung vom Auftrag bis zur freigegebenen, abnahmefähigen Anforderung; keine isolierte Methodenliste. |
+| Requirements Engineering | IREB CPRE Foundation Syllabus 3.3.0; offizielle ISO-Seite zu ISO/IEC/IEEE 29148:2018 | Quellen umfassen Stakeholder, Dokumente und Systeme; Grenzen, Erhebung, Konflikte, Qualitätskriterien, Validierung, Priorisierung, Änderung und Traceability gehören zusammen. | Fachbegriffe korrekt übernehmen, aber auf kleine LF2-Aufträge, Tabellen und eindeutige Kontrollfragen reduzieren. |
+| Formulierung und Prüfung | NASA Systems Engineering Handbook, Revision 2 | Eindeutige ID, Begründung, Herkunft und Prüfmethode sind nützliche Anforderungsmetadaten; allgemeine Prüfwege sind Analyse, Inspektion, Demonstration und Test. | Anforderungskarte und Abnahmekriterium früh verbinden; Verifikation von Validierung abgrenzen; keine Raumfahrt-Prozessorganisation lehren. |
+| Nutzerbedarf und Annahmen | GOV.UK Service Manual: Learning about users and their needs; Plan user research | Unterschiedliche Nutzer und unterstützende Rollen berücksichtigen; unbelegte Annahmen in Forschungsfragen umwandeln; Methode nach Frage und Aufwand auswählen. | Belegtes Nutzungsprofil, Forschungsfrage, Methodenwahl und Annahmenregister als Pflichtkern aufnehmen. |
+| Zugängliche Nutzung | W3C WAI: Involving Users in Web Projects | Menschen mit unterschiedlichen Behinderungen und assistiven Techniken früh einbeziehen; eine Person repräsentiert nicht automatisch alle ähnlichen Nutzer. | Zugänglichkeit im Nutzungsprofil und in der Stichprobe berücksichtigen, ohne Einzelfeedback zu verallgemeinern. |
+| Lokales Community-Material | `material/AP1_Lernzettel.pdf`, PDF-Seiten 61–63; `material/AP1_Lernplan.md` | Lernzettel bietet drei Bedarfsanalyse-Schritte, Anforderungsarten, generische Konflikte/Änderungen und technische Merkmale. Nutzungsprofil, Belegstatus, Systemgrenze, Qualitätsgate, atomare Formulierung, Abnahmekriterium, Prüfmethode und Traceability fehlen. Lernplan nennt nur ein K.-o.-/Soll-Kriterium. | Nur als Lücken- und Tiefenhinweis verwendet. Keine Definition oder Formulierung daraus übernommen; fehlende prüfbare Handlung aus Primärquellen aufgebaut. |
+
+### Bestands- und Abgrenzungsbefund
+
+| Bestand | Befund | Änderung |
+|---|---|---|
+| Vorheriger fokussierter Text | 419 Zeilen und 2.614 Wörter; brauchbare Trennung von Wunsch/Bedarf/Anforderung, Methodenübersicht, einfache Priorisierung und Notebookbeispiel. Es fehlten vor allem Nutzungsprofil, Beleg-/Annahmenstatus, Qualitätsgate, detaillierte Abnahmekriterien, Prüfmethoden, Versionierung und Rückverfolgbarkeit. | Auf 1.071 Zeilen und 7.282 Wörter als 90-Minuten-Kompendium ausgebaut; Einstieg bleibt ohne Vorwissen verständlich, jeder zusätzliche Abschnitt schließt eine Scope- oder Übergabelücke. |
+| Katalog | Kapitel lag physisch und fachlich unter LF6; LF2 begann direkt mit Bit/Byte. | Kapitelobjekt nach LF2 verschoben, Titel/Status/Lernzeit/Quellen korrigiert, beide Lernfeldreihenfolgen lückenlos nachgezogen und per Regressionstest gesichert. |
+| Kommunikationskapitel | Aktives Zuhören, offene/geschlossene Fragen und Feedback sind dort bereits vollständig erklärt. | Nur Vorwissenslink und anwendungsbezogene Frageleiter; kein Vier-Ohren-, SBI- oder AIDA-Rückfall, durch Test gesichert. |
+| Folgekapitel | Hardware-, Angebots-, Nutzwert-, Lasten-/Pflichtenheft- und Testkapitel besitzen eigenen Stoff. | LF2-01 endet bewusst mit freigegebener Übergabe und Auswahlkriterien; es wählt kein Produkt und lehrt kein zweites Beschaffungs- oder Spezifikationsverfahren. |
+| Legacy-Prüfungsmatrixskript | `build_exam_matrix.py` ordnete Präsentationsbegriffe noch dem früheren Sammel-Slug zu. | Keywords getrennt: Kundenbedarf/Anforderung zu LF2-01, Folien/PowerPoint/Quellenangabe zu `praesentation-dokumentation`. |
+| Glossar | Bedarfsanalyse, Beobachtung, Fragebogen, Interview, Ist-Soll-Vergleich und Likert-Skala bestanden; Kernbegriffe der neuen Handlung fehlten. | Anforderung, Nutzungsprofil, Randbedingung, Abnahmekriterium, Stakeholder und Rückverfolgbarkeit zentral ergänzt; alte Kapiteltitel in vorhandenen Links aktualisiert. |
+
+### Fakten- und Konsistenz-Gate
+
+1. IREB 3.3.0 führt Stakeholder, Dokumente und Systeme als Typen von
+   Anforderungsquellen und beschreibt deren Identifikation als iterativen,
+   wiederholt zu prüfenden Vorgang. Das Kapitel übernimmt genau diese
+   Dreiteilung und ergänzt betriebliche Beispiele.
+2. IREB empfiehlt für einzelne Anforderungen unter anderem Angemessenheit,
+   Notwendigkeit, Eindeutigkeit, inhaltliche Vollständigkeit,
+   Verständlichkeit und Prüfbarkeit; für Sammlungen zusätzlich Konsistenz,
+   Nichtredundanz, Vollständigkeit, Änderbarkeit und Traceability. Das
+   Qualitätsgate übersetzt diese Punkte in anfängergerechte Kontrollfragen und
+   behauptet keine abschließende Normliste.
+3. IREB trennt Validierung von bloßer Dokumentation, fordert die richtigen
+   Stakeholder und unterschiedliche Sichten sowie wiederholte Validierung. Es
+   behandelt Änderungen als Normalfall und verbindet Traceability rückwärts
+   zur Herkunft und vorwärts zu Folgeartefakten wie Tests. Genau diese
+   Beziehungen bilden Versionsbeispiel und kleine Trace-Tabelle ab.
+4. Das NASA-Handbuch nennt Requirement-ID, Rationale, Trace, Verantwortung und
+   Verification Method als Metadaten und unterscheidet Analyse, Inspektion,
+   Demonstration und Test. Das Kapitel verwendet diese Methoden nur als
+   allgemeines LF2-Werkzeug und übernimmt keine NASA-Prozesspflicht.
+5. GOV.UK fordert den Blick auf unterschiedliche Nutzergruppen und macht aus
+   unbelegten Annahmen Forschungsfragen. W3C warnt davor, die Rückmeldung einer
+   einzelnen Person auf alle Menschen mit ähnlicher Behinderung zu übertragen.
+   Nutzungsprofile sind deshalb belegte Situationen statt erfundene Personas.
+6. Funktionale Anforderung, Qualitätsanforderung und Randbedingung werden
+   getrennt. „Nicht-funktional“ wird nicht mit unwichtig gleichgesetzt; eine
+   technische Lösungsvorgabe braucht Quelle und Begründung.
+7. Abnahmekriterium, Verifikation und Validierung sind konsistent: Kriterium
+   legt den späteren Erfolgsbefund fest, Verifikation prüft gegen die
+   dokumentierte Anforderung, Validierung prüft Bedarf und Eignung im
+   Nutzungskontext.
+8. Der Lernfall ist intern konsistent: vier Profile umfassen 12 + 6 + 2 + 5 =
+   25 Personen; 18 ältere und sieben neuere Geräte ergeben ebenfalls 25. Die
+   sechs mobilen Rollen sind ein Nutzungsprofil und keine zusätzliche
+   Gerätemenge.
+9. Muss/Soll/Kann wird ausdrücklich als einfache, nur mit vereinbarten Regeln
+   brauchbare Priorisierung dargestellt. Es wird weder als universelle Norm
+   noch als vollständige MoSCoW-Lehre ausgegeben.
+10. Der Beispieltest weist seine Zahlen als vereinbarte Lernfallwerte aus.
+    Keine erfundene Akkulaufzeit, Startzeit oder Stichprobe wird als allgemeine
+    Fachregel behauptet.
+
+### Didaktik-, Aufgaben- und Umfangs-Gate
+
+- Didaktik: Ein durchgehender Auftrag für 25 Kanzleiarbeitsplätze verbindet
+  spontanen Lösungswunsch, vier Informationsstatus, Systemgrenze,
+  Stakeholderrollen, vier Nutzungsprofile, Methodenwahl, Qualitätsprüfung,
+  Abnahmekriterien, Konflikt, Version und Übergabe. Ein zugängliches
+  Kreislaufschaubild, Vergleichstabellen, ein Zehn-Schritte-Verfahren,
+  vollständige Artefakte, FIAE/FISI-Transfer, Fehlerdiagnosen und zwölf gelöste
+  Selbstchecks tragen den Lernweg ohne Vorwissen.
+- Aufgabenfamilien: Begriffe/Informationsstatus zuordnen, unklare
+  Ausgangslage diagnostizieren, Erhebungsmethode und Stichprobe begründen,
+  Nutzungsprofil anwenden, eine atomare Anforderung plus Abnahmekriterium
+  formulieren, Konflikt und Änderung begründen. Keine Originalprüfungsaufgabe,
+  Punktebehauptung oder geschützter Katalogtext.
+- Pflicht: Auftrag/Systemgrenze, Stakeholder und Quellen, belegter Ist-Zustand,
+  Nutzungsprofile, Methodenwahl, Bedarf/Ziel, funktionale/Qualitätsanforderung
+  und Randbedingung, atomare und prüfbare Formulierung, Priorität, Konflikt,
+  Abnahmekriterium, Validierung, Änderung und Übergabe. Kann:
+  Anforderungskarte, vier Prüfmethoden, kleine Trace-Tabelle und
+  Annahmenregister. Extra/Raus: vollständiges CPRE-Curriculum, Kano,
+  formale Reviewprozesse, modellbasierte Spezifikation, UML, Agile-Backlog-
+  Vertiefung, juristische Vertragsabnahme und Requirements-Toolkunde.
+
+### Technik-Gate und Entscheidung
+
+- `npm run emit:status`: bestanden; 121 Kapitel und sechs ehrliche
+  Qualitätsbefunde ausgegeben (2026-07-31). LF2 besitzt nun 36, LF6 16
+  lückenlos nummerierte Kapitel; 17 Kapitel sind `teilgeprueft`.
+- `npm run emit:scope`: bestanden; 107 Pflichtatome, davon 47 mit vollständigem
+  Lerntextpaket und zwei vollständig geprüft (2026-07-31). `kmk-lf2-01` und
+  `kmk-lf2-02` führen LF2-01 nun explizit.
+- `npm run test`: bestanden (3 Testdateien, 32 Tests, 2026-07-31). Der
+  Regressionstest sichert LF2-Eigentum, Quellen, Scope, Reihenfolgen,
+  Kommunikationsabgrenzung, SVG und Glossar-Terme.
+- `npm run lint`: bestanden (2026-07-31).
+- `npm run build`: bestanden; TypeScript und Vite-Produktions-Build
+  einschließlich MDX/SVG erfolgreich. Kapitelchunk 89,17 kB, gzip 24,57 kB
+  (2026-07-31).
+- Der isolierte SVG-Render wurde visuell geprüft: vertikaler responsiver
+  Ablauf, sechs lesbare Schritte, geschlossene Rückführung, keine
+  abgeschnittenen Beschriftungen; `role="img"` und vollständige
+  `aria-label`-Textalternative vorhanden. Das globale Browser-/Screenshot-Gate
+  der gesamten App bleibt getrennt in `QUEUE.md` Schritt 4 offen.
+- `npm run build:single`: bestanden; Offline-Einzeldatei mit 3.066,96 kB,
+  gzip 811,06 kB erzeugt (2026-07-31).
+- `git diff --check`: bestanden (2026-07-31).
+- Vertrauen `teilgeprueft`. Quellen-, Fakten-, Konsistenz-, Didaktik-,
+  Aufgaben-, Umfangs- und Technikpass sind abgeschlossen. Für
+  `geprueft` fehlen ein unabhängiger Fachprüfpass, ein belastbarer Q3-Abgleich
+  und die Vollkataloge 6392/6393. Der Haken für LF2-01 bleibt deshalb offen.

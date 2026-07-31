@@ -35,7 +35,7 @@ export const slugTags: Record<string, string[]> = {
   'stamm-bewegungsdaten': ['ordnung', 'daten', 'datenart', 'stammdaten', 'bewegungsdaten', 'bestandsdaten', 'referenzdaten', 'transaktionsdaten', 'datenqualitaet', 'datenbank', 'erp', 'crm', 'datenschutz', 'dsgvo'],
   'serviceanfragen-support-level': ['service', 'support', 'incident', 'service-request', 'sla'],
   'fehlermanagement-stoerungsannahme': ['service', 'support', 'incident', 'service-request', 'sla', 'prozess'],
-  'bedarfsanalyse-feedback': ['bedarf', 'bedarfsanalyse', 'anforderung', 'requirements', 'interview', 'fragebogen', 'beobachtung', 'workshop', 'service', 'support', 'prozess'],
+  'bedarfsanalyse-feedback': ['ordnung', 'ausbildung', 'ap1', 'lf2', 'bedarf', 'bedarfsanalyse', 'anforderung', 'requirements', 'requirements-engineering', 'stakeholder', 'nutzungsprofil', 'randbedingung', 'annahme', 'forschungsfrage', 'interview', 'fragebogen', 'beobachtung', 'workshop', 'abnahmekriterium', 'verifikation', 'validierung', 'rueckverfolgbarkeit', 'barrierefreiheit', 'test', 'service', 'support', 'prozess'],
   'mitarbeitermotivation-teamphasen-change': ['motivation', 'team', 'teamphasen', 'change', 'kommunikation', 'prozess'],
   'schulung-einweisung-key-user': ['schulung', 'kompetenz', 'service', 'support', 'change', 'kommunikation', 'prozess'],
   'schulz-von-thun': ['kommunikation', 'kommunikationsquadrat', 'vier-ohren', 'schulz-von-thun', 'sender-empfaenger', 'aktives-zuhoeren', 'paraphrasieren', 'feedback', 'sbi', 'ich-botschaft', 'gespraech'],
@@ -79,6 +79,17 @@ export const slugTags: Record<string, string[]> = {
 }
 
 export const lessonSourceIds: Record<string, string[]> = {
+  'bedarfsanalyse-feedback': [
+    'kmk-rahmenlehrplan',
+    'fiausbv',
+    'bibb-fachinformatiker',
+    'ireb-cpre-foundation-3-3',
+    'iso-iec-ieee-29148-2018',
+    'nasa-se-handbook-requirements',
+    'govuk-user-needs-research',
+    'govuk-plan-user-research',
+    'w3c-involving-users',
+  ],
   'vollmachten-im-betrieb': [
     'kmk-rahmenlehrplan',
     'fiausbv',

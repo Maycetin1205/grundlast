@@ -8,8 +8,8 @@
 - Kapitel im Katalog: **121**
 - MDX-Lerntexte: **84**
 - Geprüft: **6**
-- Teilgeprüft: **16**
-- Ungeprüft ausgearbeitet: **62**
+- Teilgeprüft: **17**
+- Ungeprüft ausgearbeitet: **61**
 - Geplant: **37**
 - Gesperrt: **0**
 - Quellenabdeckung: Q1 **52**, Q2 **31**, Q3 **4**
@@ -45,45 +45,46 @@ Katalog: **10** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
 
 ## LF2
 
-Katalog: **35** Kapitel · Mindestpakete: **20** · Zeitrichtwert: **80 Stunden**
+Katalog: **36** Kapitel · Mindestpakete: **20** · Zeitrichtwert: **80 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
-| 1 | Bit & Byte - die kleinsten Einheiten | geprüft | hoch | ✓ | ✓ | – | ✓ |
-| 2 | Zahlensysteme (Dual, Hex, Dezimal) | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 3 | SI- und Binärpräfixe (KB vs. KiB) | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 4 | Von-Neumann-Architektur | ungeprüft | hoch | – | ✓ | – | ✓ |
-| 5 | CPU, RAM und Massenspeicher | ungeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 6 | Hardware, Schnittstellen & Peripherie auswählen | ungeprüft | hoch | – | – | – | ✓ |
-| 7 | Dateisysteme (FAT32, NTFS, ext4, APFS) | ungeprüft | hoch | – | – | – | ✓ |
-| 8 | Prozesse, Threads & Tasks | ungeprüft | hoch | – | – | – | ✓ |
-| 9 | Virtualisierung & Hypervisor | ungeprüft | hoch | – | – | – | ✓ |
-| 10 | Zentrale vs. dezentrale IT-Systeme | ungeprüft | hoch | – | – | – | ✓ |
-| 11 | Ergonomie, Barrierefreiheit & Telearbeit | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 12 | Energiekosten, Wirkungsgrad & Amortisation | ungeprüft | hoch | – | – | – | ✓ |
-| 13 | Datenrate & Downloadzeit berechnen | geprüft | hoch | ✓ | ✓ | – | ✓ |
-| 14 | Datenmengen, Scan & Übertragung — komplett rechnen | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 15 | Scan- & Bilddaten rechnen (DPI, Farbtiefe) | ungeprüft | hoch | – | – | – | ✓ |
-| 16 | RAID-Systeme (0, 1, 5, 6, 10) | ungeprüft | raus | – | – | – | ✓ |
-| 17 | USV-Systeme | ungeprüft | hoch | – | – | – | ✓ |
-| 18 | Lizenzmodelle (Open Source, proprietär, SaaS) | ungeprüft | hoch | – | – | – | ✓ |
-| 19 | Angebotsvergleich (quantitativ & qualitativ) | ungeprüft | hoch | – | – | – | ✓ |
-| 20 | Nutzwertanalyse | ungeprüft | hoch | – | – | – | ✓ |
-| 21 | Kaufmännische Rechenaufgaben (Kosten, Leasing, Skonto) | ungeprüft | hoch | – | – | – | ✓ |
-| 22 | Variable & fixe Kosten | ungeprüft | hoch | – | – | – | ✓ |
-| 23 | Gewinnermittlung & Deckungsbeitrag | ungeprüft | hoch | – | – | – | ✓ |
-| 24 | Break-Even-Analyse | ungeprüft | hoch | – | – | – | ✓ |
-| 25 | Kauf, Leasing & Miete im Vergleich | ungeprüft | hoch | – | – | – | ✓ |
-| 26 | Make-or-Buy-Entscheidung | ungeprüft | hoch | – | – | – | ✓ |
-| 27 | Eigen- & Fremdfinanzierung | ungeprüft | hoch | – | – | – | ✓ |
-| 28 | AfA – lineare Abschreibung | ungeprüft | hoch | – | – | – | ✓ |
-| 29 | Handelskalkulation (Vorwärts/Rückwärts) | ungeprüft | hoch | – | – | – | ✓ |
-| 30 | Vertragsarten: Kaufvertrag, Dienstvertrag & Werkvertrag | ungeprüft | hoch | – | – | – | ✓ |
-| 31 | Zweiseitiger Handelskauf | geplant | hoch | – | – | – | – |
-| 32 | Gewährleistung & Garantie | ungeprüft | hoch | – | ✓ | – | ✓ |
-| 33 | Mängelrüge im Handelskauf | ungeprüft | hoch | – | – | – | ✓ |
-| 34 | Vertragsstörungen (Verzug, Mängel, Unmöglichkeit) | ungeprüft | hoch | – | – | – | ✓ |
-| 35 | Rechnung, Zahlungsziel & Aufbewahrungsfristen | ungeprüft | hoch | – | – | – | ✓ |
+| 1 | Kundenbedarf und Anforderungen | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 2 | Bit & Byte - die kleinsten Einheiten | geprüft | hoch | ✓ | ✓ | – | ✓ |
+| 3 | Zahlensysteme (Dual, Hex, Dezimal) | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 4 | SI- und Binärpräfixe (KB vs. KiB) | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 5 | Von-Neumann-Architektur | ungeprüft | hoch | – | ✓ | – | ✓ |
+| 6 | CPU, RAM und Massenspeicher | ungeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 7 | Hardware, Schnittstellen & Peripherie auswählen | ungeprüft | hoch | – | – | – | ✓ |
+| 8 | Dateisysteme (FAT32, NTFS, ext4, APFS) | ungeprüft | hoch | – | – | – | ✓ |
+| 9 | Prozesse, Threads & Tasks | ungeprüft | hoch | – | – | – | ✓ |
+| 10 | Virtualisierung & Hypervisor | ungeprüft | hoch | – | – | – | ✓ |
+| 11 | Zentrale vs. dezentrale IT-Systeme | ungeprüft | hoch | – | – | – | ✓ |
+| 12 | Ergonomie, Barrierefreiheit & Telearbeit | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 13 | Energiekosten, Wirkungsgrad & Amortisation | ungeprüft | hoch | – | – | – | ✓ |
+| 14 | Datenrate & Downloadzeit berechnen | geprüft | hoch | ✓ | ✓ | – | ✓ |
+| 15 | Datenmengen, Scan & Übertragung — komplett rechnen | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 16 | Scan- & Bilddaten rechnen (DPI, Farbtiefe) | ungeprüft | hoch | – | – | – | ✓ |
+| 17 | RAID-Systeme (0, 1, 5, 6, 10) | ungeprüft | raus | – | – | – | ✓ |
+| 18 | USV-Systeme | ungeprüft | hoch | – | – | – | ✓ |
+| 19 | Lizenzmodelle (Open Source, proprietär, SaaS) | ungeprüft | hoch | – | – | – | ✓ |
+| 20 | Angebotsvergleich (quantitativ & qualitativ) | ungeprüft | hoch | – | – | – | ✓ |
+| 21 | Nutzwertanalyse | ungeprüft | hoch | – | – | – | ✓ |
+| 22 | Kaufmännische Rechenaufgaben (Kosten, Leasing, Skonto) | ungeprüft | hoch | – | – | – | ✓ |
+| 23 | Variable & fixe Kosten | ungeprüft | hoch | – | – | – | ✓ |
+| 24 | Gewinnermittlung & Deckungsbeitrag | ungeprüft | hoch | – | – | – | ✓ |
+| 25 | Break-Even-Analyse | ungeprüft | hoch | – | – | – | ✓ |
+| 26 | Kauf, Leasing & Miete im Vergleich | ungeprüft | hoch | – | – | – | ✓ |
+| 27 | Make-or-Buy-Entscheidung | ungeprüft | hoch | – | – | – | ✓ |
+| 28 | Eigen- & Fremdfinanzierung | ungeprüft | hoch | – | – | – | ✓ |
+| 29 | AfA – lineare Abschreibung | ungeprüft | hoch | – | – | – | ✓ |
+| 30 | Handelskalkulation (Vorwärts/Rückwärts) | ungeprüft | hoch | – | – | – | ✓ |
+| 31 | Vertragsarten: Kaufvertrag, Dienstvertrag & Werkvertrag | ungeprüft | hoch | – | – | – | ✓ |
+| 32 | Zweiseitiger Handelskauf | geplant | hoch | – | – | – | – |
+| 33 | Gewährleistung & Garantie | ungeprüft | hoch | – | ✓ | – | ✓ |
+| 34 | Mängelrüge im Handelskauf | ungeprüft | hoch | – | – | – | ✓ |
+| 35 | Vertragsstörungen (Verzug, Mängel, Unmöglichkeit) | ungeprüft | hoch | – | – | – | ✓ |
+| 36 | Rechnung, Zahlungsziel & Aufbewahrungsfristen | ungeprüft | hoch | – | – | – | ✓ |
 
 ## LF3
 
@@ -147,27 +148,26 @@ Katalog: **18** Kapitel · Mindestpakete: **16** · Zeitrichtwert: **80 Stunden*
 
 ## LF6
 
-Katalog: **17** Kapitel · Mindestpakete: **14** · Zeitrichtwert: **40 Stunden**
+Katalog: **16** Kapitel · Mindestpakete: **14** · Zeitrichtwert: **40 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
 | 1 | Serviceanfragen, Ticketsystem & Support-Level | ungeprüft | hoch | – | – | – | ✓ |
 | 2 | Fehlermanagement & Störungsannahme | ungeprüft | hoch | – | – | – | ✓ |
-| 3 | Bedarfsanalyse & Anforderungsklärung | ungeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 4 | Schulung, Einweisung, Key User & Multiplikatoren | ungeprüft | hoch | – | – | – | ✓ |
-| 5 | Lastenheft & Pflichtenheft | ungeprüft | hoch | – | – | – | ✓ |
-| 6 | Vorgehensmodelle (Wasserfall, V-Modell, Agil) | ungeprüft | hoch | – | – | – | ✓ |
-| 7 | Scrum – Accountabilities, Events, Artefakte | ungeprüft | hoch | – | – | – | ✓ |
-| 8 | Gantt-Diagramm — Balkenplan | ungeprüft | hoch | – | – | – | ✓ |
-| 9 | Netzplantechnik (FAZ/FEZ/SAZ/SEZ) | ungeprüft | hoch | – | – | – | ✓ |
-| 10 | Machbarkeitsanalyse | geplant | hoch | – | – | – | – |
-| 11 | BPMN – Prozesse modellieren | ungeprüft | hoch | – | – | – | ✓ |
-| 12 | Mitarbeitermotivation, Teamphasen und Change | ungeprüft | hoch | – | – | – | ✓ |
-| 13 | EFQM-Modell | geplant | mittel | – | – | – | – |
-| 14 | ISO 9000–9004 | geplant | raus | – | – | – | – |
-| 15 | ISO 25010 – Softwarequalität | geplant | raus | – | – | – | – |
-| 16 | PDCA-Zyklus | geplant | hoch | – | – | – | – |
-| 17 | Projektübergabe & Abnahme | geplant | hoch | – | – | – | – |
+| 3 | Schulung, Einweisung, Key User & Multiplikatoren | ungeprüft | hoch | – | – | – | ✓ |
+| 4 | Lastenheft & Pflichtenheft | ungeprüft | hoch | – | – | – | ✓ |
+| 5 | Vorgehensmodelle (Wasserfall, V-Modell, Agil) | ungeprüft | hoch | – | – | – | ✓ |
+| 6 | Scrum – Accountabilities, Events, Artefakte | ungeprüft | hoch | – | – | – | ✓ |
+| 7 | Gantt-Diagramm — Balkenplan | ungeprüft | hoch | – | – | – | ✓ |
+| 8 | Netzplantechnik (FAZ/FEZ/SAZ/SEZ) | ungeprüft | hoch | – | – | – | ✓ |
+| 9 | Machbarkeitsanalyse | geplant | hoch | – | – | – | – |
+| 10 | BPMN – Prozesse modellieren | ungeprüft | hoch | – | – | – | ✓ |
+| 11 | Mitarbeitermotivation, Teamphasen und Change | ungeprüft | hoch | – | – | – | ✓ |
+| 12 | EFQM-Modell | geplant | mittel | – | – | – | – |
+| 13 | ISO 9000–9004 | geplant | raus | – | – | – | – |
+| 14 | ISO 25010 – Softwarequalität | geplant | raus | – | – | – | – |
+| 15 | PDCA-Zyklus | geplant | hoch | – | – | – | – |
+| 16 | Projektübergabe & Abnahme | geplant | hoch | – | – | – | – |
 
 ## LF7
 
