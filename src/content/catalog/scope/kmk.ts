@@ -34,7 +34,7 @@ export const kmkScopeItems: readonly ScopeItem[] = [
     'unternehmen-ziele-wertschoepfung', 'organisationsformen-leitbild-nachhaltigkeit-esg',
   ]),
   kmk(1, 2, 'analysieren', 'Marktstruktur, Marktbeziehungen und Kundenbeziehungen der eigenen Branche untersuchen.', [
-    'marktformen', 'aida-formel', 'unternehmen-ziele-wertschoepfung',
+    'marktformen', 'unternehmen-ziele-wertschoepfung',
   ]),
   kmk(1, 3, 'dokumentieren', 'Wertschöpfungskette, Leistungsschwerpunkte und eigene Rolle im Betrieb nachvollziehbar beschreiben.', [
     'unternehmen-ziele-wertschoepfung', 'bbig-ausbildungsvertrag',
@@ -49,7 +49,7 @@ export const kmkScopeItems: readonly ScopeItem[] = [
     'bbig-ausbildungsvertrag', 'arbeitnehmerrechte',
   ]),
   kmk(1, 7, 'kommunizieren', 'Eine adressatengerechte multimediale Unternehmensdarstellung im Team planen, erstellen und präsentieren.', [
-    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun', 'aida-formel',
+    'unternehmen-ziele-wertschoepfung', 'schulz-von-thun', 'marktformen',
   ]),
   kmk(1, 8, 'reflektieren', 'Qualität eines Arbeitsergebnisses kriteriengeleitet prüfen, Verbesserungen ableiten und das eigene Handeln reflektieren.', [
     'schulz-von-thun', 'aufbauorganisation',

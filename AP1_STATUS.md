@@ -5,14 +5,14 @@
 
 ## Gesamtstand
 
-- Kapitel im Katalog: **121**
-- MDX-Lerntexte: **84**
+- Kapitel im Katalog: **120**
+- MDX-Lerntexte: **83**
 - Geprüft: **6**
-- Teilgeprüft: **12**
-- Ungeprüft ausgearbeitet: **66**
+- Teilgeprüft: **13**
+- Ungeprüft ausgearbeitet: **64**
 - Geplant: **37**
 - Gesperrt: **0**
-- Quellenabdeckung: Q1 **47**, Q2 **26**, Q3 **4**
+- Quellenabdeckung: Q1 **48**, Q2 **27**, Q3 **4**
 - Scope-Pakete mit allen Lerntexten: **47/107**
 - Scope-Pakete vollständig über geprüfte Kapitel belegt: **2/107**
 - Release-Gate: **nicht bestanden**
@@ -28,7 +28,7 @@
 
 ## LF1
 
-Katalog: **10** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
+Katalog: **9** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
@@ -37,10 +37,9 @@ Katalog: **10** Kapitel · Mindestpakete: **9** · Zeitrichtwert: **40 Stunden**
 | 3 | Aufbau- und Ablauforganisation | ungeprüft | hoch | ✓ | ✓ | ✓ | ✓ |
 | 4 | Rechtsformen sicher unterscheiden | geprüft | pflicht | ✓ | ✓ | ✓ | ✓ |
 | 5 | Vollmachten im Betrieb | geprüft | pflicht | ✓ | ✓ | ✓ | ✓ |
-| 6 | Organisationsformen, Leitbild, Nachhaltigkeit & ESG | ungeprüft | hoch | – | – | – | ✓ |
-| 7 | Marktformen (Monopol, Polypol, Oligopol) | ungeprüft | hoch | – | – | – | ✓ |
-| 8 | AIDA-Formel & Werbewirkung | ungeprüft | hoch | – | – | – | ✓ |
-| 9 | 4-Seiten-Modell nach Schulz von Thun | ungeprüft | hoch | – | – | – | ✓ |
+| 6 | Markt, Wettbewerb & Kundennutzen | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 7 | 4-Seiten-Modell nach Schulz von Thun | ungeprüft | hoch | – | – | – | ✓ |
+| 9 | Organisationsformen, Leitbild, Nachhaltigkeit & ESG | ungeprüft | hoch | – | – | – | ✓ |
 | 10 | Arbeitnehmerrechte & Kündigungsschutz | geplant | mittel | – | – | – | – |
 
 ## LF2

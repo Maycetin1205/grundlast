@@ -2,6 +2,123 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const mBisP: GlossarEintrag[] = [
   {
+    id: 'markt',
+    begriff: 'Markt',
+    kurzdefinition: 'Zusammentreffen von Angebot und Nachfrage für bestimmte Güter.',
+    definition: [
+      'Ein Markt muss kein physischer Ort sein. Entscheidend ist, dass Anbieter und Nachfrager für eine bestimmte Leistung wirtschaftlich aufeinandertreffen.',
+      'Für eine Analyse wird der Markt sachlich und räumlich sowie für einen passenden Zeitraum abgegrenzt.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'marktgleichgewicht',
+    begriff: 'Marktgleichgewicht',
+    kurzdefinition: 'Angebotene und nachgefragte Menge stimmen beim betrachteten Preis überein.',
+    definition: [
+      'Das Marktgleichgewicht ist eine Modellsituation. Der zugehörige Preis heißt Gleichgewichtspreis, die gehandelte Menge Gleichgewichtsmenge.',
+      'In realen Märkten verändern sich Angebot und Nachfrage fortlaufend; das Gleichgewicht ist deshalb kein garantiert dauerhafter Zustand.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'marktsegmentierung',
+    begriff: 'Marktsegmentierung',
+    kurzdefinition: 'Aufteilung eines Gesamtmarkts in Gruppen mit ähnlichen kaufrelevanten Merkmalen.',
+    definition: [
+      'Ein Segment soll in wichtigen Merkmalen intern möglichst ähnlich und von anderen Segmenten unterscheidbar sein.',
+      'Segmentierung hilft, Angebot und Ansprache an tatsächlichen Unterschieden im Bedarf auszurichten.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'marktmacht',
+    begriff: 'Marktmacht',
+    kurzdefinition: 'Fähigkeit eines Marktteilnehmers, Marktbedingungen in spürbarem Umfang unabhängig zu beeinflussen.',
+    definition: [
+      'Die Anbieterzahl liefert nur einen Hinweis auf Marktmacht. Zusätzlich zählen unter anderem Marktanteile, Wechselmöglichkeiten, Eintrittsbarrieren und potenzieller Wettbewerb.',
+      'Marktform und tatsächliche Marktmacht dürfen deshalb nicht gleichgesetzt werden.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'monopol',
+    begriff: 'Monopol',
+    kurzdefinition: 'Marktform mit nur einem Marktteilnehmer auf einer abgegrenzten Marktseite.',
+    definition: [
+      'Bei einem Angebotsmonopol steht ein Anbieter vielen Nachfragern gegenüber. Beim Nachfragemonopol trifft ein Nachfrager auf viele Anbieter.',
+      'Ein Monopol bedeutet nicht, dass Preis und Menge ohne jede Grenze festgelegt werden können.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'nachfrage',
+    begriff: 'Nachfrage',
+    kurzdefinition: 'Menge, die Nachfrager bei einem bestimmten Preis in einem bestimmten Zeitraum kaufen wollen und können.',
+    definition: [
+      'Nachfrage setzt im Marktmodell neben einem Bedürfnis auch Kaufbereitschaft und Kaufmöglichkeit voraus.',
+      'Sie ist auf ein bestimmtes Gut, einen Preis und einen Zeitraum bezogen.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'nachfrageueberhang',
+    begriff: 'Nachfrageüberhang',
+    kurzdefinition: 'Die nachgefragte Menge ist beim betrachteten Preis größer als die angebotene Menge.',
+    definition: [
+      'Bei einem Nachfrageüberhang reicht das Angebot im vereinfachten Marktmodell nicht für alle Kaufwünsche.',
+      'Die Nachfrager konkurrieren dadurch häufiger um das knappe Gut. Diese Situation wird auch Verkäufermarkt genannt.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'oligopol',
+    begriff: 'Oligopol',
+    kurzdefinition: 'Marktform mit wenigen Marktteilnehmern auf mindestens einer Marktseite.',
+    definition: [
+      'In einem Angebotsoligopol treffen wenige Anbieter auf viele Nachfrager. Die Anbieter beobachten und beeinflussen sich häufig stark gegenseitig.',
+      'Feste Zahlen grenzen „wenige“ nicht für jeden Markt gleich ab; der relevante Markt muss zuerst bestimmt werden.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'polypol',
+    begriff: 'Polypol',
+    kurzdefinition: 'Marktform mit vielen Anbietern und vielen Nachfragern.',
+    definition: [
+      'Im Polypol kann kein einzelner Marktteilnehmer allein aus der bloßen Anzahl eine Monopolstellung ableiten.',
+      'Viele Anbieter bedeuten nicht automatisch vollständige Konkurrenz; Güter, Informationen und Wechselmöglichkeiten können sich unterscheiden.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
     id: 'prokura',
     begriff: 'Prokura',
     kurzdefinition: 'Ausdrücklich erteilte handelsrechtliche Vollmacht mit gesetzlich festgelegtem, besonders weitem Umfang.',

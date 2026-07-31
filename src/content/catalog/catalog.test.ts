@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import { sourceBank } from '../quellen/sourceBank'
+import { glossarEintraege } from '../glossar'
 import { validateCatalog } from '../../lib/learning/validation'
 import { chapterSchema } from '../../lib/learning/schema'
 import { validateScopeMatrix } from '../../lib/learning/scopeValidation'
@@ -85,5 +86,18 @@ describe('zentraler Kapitelkatalog', () => {
     const coverage = result().counts.scopeCoverage
     expect(coverage.ap1Total).toBe(32)
     expect(coverage.ap1Verified).toBeLessThan(coverage.ap1Total)
+  })
+
+  it('führt LF1-06 ohne AIDA-Dublette und ohne tote Term-IDs', () => {
+    const chapter = chapters.find((item) => item.slug === 'marktformen')
+    expect(chapter?.titel).toBe('Markt, Wettbewerb & Kundennutzen')
+    expect(chapter?.inhaltsstatus).toBe('teilgeprueft')
+    expect(chapters.some((item) => item.slug === 'aida-formel')).toBe(false)
+    expect(mdxSlugs.has('aida-formel')).toBe(false)
+
+    const lesson = fs.readFileSync(new URL('../lessons/marktformen.mdx', import.meta.url), 'utf8')
+    const termIds = Array.from(lesson.matchAll(/<Term id="([^"]+)">/g), (match) => match[1])
+    const glossaryIds = new Set(glossarEintraege.map((entry) => entry.id))
+    expect(termIds.filter((id) => !glossaryIds.has(id))).toEqual([])
   })
 })

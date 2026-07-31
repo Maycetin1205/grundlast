@@ -35,7 +35,7 @@ Offener Sicherheitsblocker: Das Repository muss privat gestellt werden,
 solange fremdes Community-Material enthalten ist. Dies ist eine
 GitHub-Kontoeinstellung und keine Codeänderung.
 
-## Aktueller Schritt: 1 — Atomare Scope-Matrix
+## Blockierter Rest aus Schritt 1 — Atomare Scope-Matrix
 
 - [x] KMK-Kompetenzen LF1–LF9 in eindeutige Scope-IDs zerlegen.
 - [x] FIAusbV-Kompetenzen der ersten 18 Monate und die fünf AP1-Handlungen
@@ -49,10 +49,14 @@ GitHub-Kontoeinstellung und keine Codeänderung.
 - [x] fehlende Pakete für LF3, LF4 und LF7–LF9 als ehrliche `geplant`-Einträge
       in den Katalog aufnehmen.
 
-## Schritt 2 — Kapitelproduktion und unabhängige Prüfung
+## Aktueller Schritt 2 — Kapitelproduktion und unabhängige Prüfung
 
 Reihenfolge: erster offene Eintrag in `KAPITELPLAN_LF1_LF9.md`, aktuell
 `LF1-06 Markt, Wettbewerb und Kundennutzen`.
+
+LF1-06 hat den vollständigen ersten Inhalts-, Quellen- und Technikpass
+bestanden und bleibt bis zum unabhängigen Prüfpass sowie Q3-/Vollkatalogabgleich
+korrekt als `teilgeprueft` offen. Danach folgt LF1-07.
 
 Pro Kapitel:
 

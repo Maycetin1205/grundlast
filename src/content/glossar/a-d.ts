@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const aBisD: GlossarEintrag[] = [
   {
+    id: 'angebot',
+    begriff: 'Angebot',
+    kurzdefinition: 'Menge, die Anbieter bei einem bestimmten Preis in einem bestimmten Zeitraum verkaufen wollen und können.',
+    definition: [
+      'Angebot ist im vereinfachten Marktmodell immer auf einen Preis, ein Gut und einen Zeitraum bezogen.',
+      'Das Angebot darf nicht mit einer einzelnen Offerte verwechselt werden: In der Volkswirtschaft beschreibt es die angebotene Menge aller betrachteten Anbieter.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'angebotsueberhang',
+    begriff: 'Angebotsüberhang',
+    kurzdefinition: 'Die angebotene Menge ist beim betrachteten Preis größer als die nachgefragte Menge.',
+    definition: [
+      'Bei einem Angebotsüberhang bleiben im vereinfachten Marktmodell angebotene Einheiten ohne Nachfrager.',
+      'Die Anbieter konkurrieren dadurch häufig stärker um Käufer. Diese Situation wird auch Käufermarkt genannt.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
     id: 'aussenverhaeltnis',
     begriff: 'Außenverhältnis',
     kurzdefinition: 'Rechtliche Beziehung des Unternehmens zu außenstehenden Geschäftspartnern.',
@@ -133,11 +159,11 @@ export const aBisD: GlossarEintrag[] = [
       kurzdefinition: 'Vierte AIDA-Stufe: konkrete Handlung der Zielgruppe auslösen.',
       definition: [
         'Action ist die eindeutige Handlungsaufforderung am Ende einer Werbung, Präsentation oder Angebotsvorstellung. Beispiele: Termin buchen, Pilot starten, Angebot freigeben, QR-Code scannen oder Rückmeldung geben.',
-        'Prüfungsfalle: "Vielen Dank" oder "Bei Fragen melden" ist meist zu schwach. Eine gute Action nennt Handlung, Kanal und bei Bedarf Frist.',
+        '„Vielen Dank“ oder „Bei Fragen melden“ ist als nächster Schritt meist zu unbestimmt. Eine gute Action nennt Handlung, Kanal und bei Bedarf Frist.',
       ],
       kapitel: {
-        titel: 'AIDA-Formel & Werbewirkung',
-        href: '/lernen/wirtschaft/markt/aida-formel',
+        titel: 'Markt, Wettbewerb & Kundennutzen',
+        href: '/lernen/wirtschaft/markt/marktformen',
       },
     },
   {
@@ -182,14 +208,14 @@ export const aBisD: GlossarEintrag[] = [
   {
       id: 'aida',
       begriff: 'AIDA-Modell',
-      kurzdefinition: 'Vier-Stufen-Modell der Werbe- und Präsentationswirkung: Attention, Interest, Desire, Action.',
+      kurzdefinition: 'Klassische Kommunikationscheckliste mit Attention, Interest, Desire und Action.',
       definition: [
-        'AIDA ist ein klassisches Werbewirkungsmodell und strukturiert Botschaften in vier Stufen: Attention (Aufmerksamkeit wecken), Interest (Interesse erzeugen), Desire (Wunsch auslösen), Action (zur Handlung bewegen).',
-        'Prüfungsrelevant: Reihenfolge merken, Beispiele zuordnen und AIDA als Checkliste verstehen, nicht als garantierten linearen Kaufprozess. Typische Falle: Interest und Desire werden verwechselt - Interest = "klingt relevant", Desire = "will ich haben".',
+        'AIDA strukturiert Botschaften in vier Stufen: Attention (Aufmerksamkeit), Interest (Interesse), Desire (Wunsch nach der Lösung) und Action (Handlung).',
+        'Das Modell gilt als veraltet, wenn es als zwingend linearer Wirkungsablauf verstanden wird. Es eignet sich als Schreibcheckliste, nicht als garantierter Kaufprozess.',
       ],
       kapitel: {
-        titel: 'AIDA-Formel & Werbewirkung',
-        href: '/lernen/wirtschaft/markt/aida-formel',
+        titel: 'Markt, Wettbewerb & Kundennutzen',
+        href: '/lernen/wirtschaft/markt/marktformen',
       },
     },
   {
@@ -354,11 +380,11 @@ export const aBisD: GlossarEintrag[] = [
       kurzdefinition: 'Erste AIDA-Stufe: Aufmerksamkeit der Zielgruppe gewinnen.',
       definition: [
         'Attention bedeutet, dass die Zielgruppe eine Botschaft überhaupt wahrnimmt. Das gelingt durch einen relevanten Aufmacher, etwa eine Frage, eine Zahl, ein Risiko, ein Bild oder eine kurze Szene.',
-        'Prüfungsrelevant: Attention ist nicht einfach laut oder bunt. Der Einstieg muss zur Zielgruppe und zum Problem passen, sonst wirkt er unseriös oder beliebig.',
+        'Attention bedeutet nicht einfach laut oder bunt. Der Einstieg muss zur Zielgruppe und zum Problem passen, sonst wirkt er unseriös oder beliebig.',
       ],
       kapitel: {
-        titel: 'AIDA-Formel & Werbewirkung',
-        href: '/lernen/wirtschaft/markt/aida-formel',
+        titel: 'Markt, Wettbewerb & Kundennutzen',
+        href: '/lernen/wirtschaft/markt/marktformen',
       },
     },
   {
@@ -1056,11 +1082,11 @@ export const aBisD: GlossarEintrag[] = [
       kurzdefinition: 'Dritte AIDA-Stufe: Wunsch nach der angebotenen Lösung auslösen.',
       definition: [
         'Desire übersetzt Merkmale in konkreten Nutzen. Statt nur Funktionen zu nennen, zeigt die Botschaft, wie die Lösung Zeit spart, Risiken senkt, Kosten reduziert oder Arbeit erleichtert.',
-        'Prüfungsrelevant: Desire wird oft durch Vorher-nachher-Vergleiche, Belege, Referenzen, kurze Demos oder anschauliche Nutzenargumente erzeugt.',
+        'Desire kann durch nachvollziehbare Vorher-nachher-Vergleiche, Belege, Referenzen, kurze Demos oder anschauliche Nutzenargumente unterstützt werden.',
       ],
       kapitel: {
-        titel: 'AIDA-Formel & Werbewirkung',
-        href: '/lernen/wirtschaft/markt/aida-formel',
+        titel: 'Markt, Wettbewerb & Kundennutzen',
+        href: '/lernen/wirtschaft/markt/marktformen',
       },
     },
   {

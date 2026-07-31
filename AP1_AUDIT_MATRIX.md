@@ -175,9 +175,9 @@ Ein Kapitel darf erst `geprueft` werden, wenn diese Punkte dokumentiert sind:
 | `make-or-buy` | ja | ready | ungeprueft | P3 | Aufgabenrelevanz pruefen |
 | `angebotsvergleich` | ja | ready | ungeprueft | P2 | Skonto/Rabatt/Nutzwert pruefen |
 | `kauf-leasing-miete` | ja | ready | ungeprueft | P2 | Entscheidungskriterien pruefen |
-| `marktformen` | ja | draft | ungeprueft | P3 | nur Grundunterscheidung |
+| `marktformen` | ja | draft | teilgeprueft | P1 | Lernpaket LF1-06 fertig; unabhängiger Q3-Prüfpass und Vollkatalog fehlen |
 | `eigenfremdfinanzierung` | ja | ready | ungeprueft | P3 | AP1-Tiefe pruefen |
-| `aida-formel` | ja | ready | ungeprueft | P3 | Relevanz kritisch pruefen |
+| `aida-formel` | ja | ready | gesperrt | Parken | in `marktformen` konsolidiert; kein separates Laufzeitkapitel mehr |
 | `organisationsformen-leitbild-nachhaltigkeit-esg` | ja | ready | ungeprueft | P3 | zu breites Kapitel pruefen |
 | `aufbauorganisation` | ja | ready | ungeprueft | P2 | Vollmachten/Prokura pruefen |
 | `vertragsarten` | ja | ready | ungeprueft | P2 | Rechtsquellen und Beispiele |
@@ -3067,3 +3067,92 @@ Bearbeiter: Codex
 - Queue-Eintrag abgeschlossen; unabhängiger Prüf-Pass gesammelt in
   `QUEUE.md` Abschnitt 2b vorgemerkt.
 - Nächster Queue-Eintrag: `datenvolumen-berechnung`.
+
+## Inhaltsaudit: marktformen / LF1-06 (2026-07-31)
+
+Bearbeiter: Codex
+
+### Scope-Gate und Strukturentscheidung
+
+- Das Kapitel deckt `kmk-lf1-02` und `kmk-lf1-07` sowie die Positionen 2.a,
+  2.b und 2.d der ersten 18 Ausbildungsmonate aus der FIAusbV ab. Im
+  AP1-Kompetenzmodell trägt es zu Kundenbedarf und Auswahl/Beschaffung bei.
+- Angebot und Nachfrage, Marktformen, Zielgruppen, Kundennutzen, Wettbewerb und
+  AIDA bilden eine Lernkette: Markt verstehen, Zielgruppe bestimmen, Nutzen
+  formulieren und Kommunikation prüfen. Das alte Einzelkapitel `aida-formel`
+  wurde deshalb ohne Stoffverlust in `marktformen` konsolidiert.
+- Entscheidung: **behalten und neu aufbauen**, Bezug `Lehrplan/Prüfung`, Form
+  `Kapitel`. Spezialthemen wie Elastizitäten, Wohlfahrtsanalyse,
+  Spieltheorie und Kartellrechtsverfahren gehören nicht in den Pflichtkern.
+
+### Quellen- und Benchmark-Matrix
+
+| Bereich | Quellen | Was fachlich folgt | Konsequenz fürs Kapitel |
+|---|---|---|---|
+| Offizieller Ausbildungsrahmen | KMK-Rahmenlehrplan LF1, FIAusbV Anlage erste 18 Monate, BIBB-Berufsprofil | Marktbeziehungen und Kundenbeziehungen untersuchen, Bedarfe und Zielgruppen ermitteln, Wettbewerb vergleichen sowie Marketingmaßnahmen unterstützen. | Vollständige Handlung vom Marktmodell bis zur begründeten Kundenansprache; keine isolierte Begriffsliste. |
+| Markt und Preisbildung | Bundeszentrale für politische Bildung: Markt, Preisbildung und Marktformen | Markt als Zusammentreffen von Angebot und Nachfrage; Preis und Menge wirken zusammen; Zahl der Marktteilnehmer beschreibt Marktformen. | Gleichgewicht, Angebots-/Nachfrageüberhang und 3×3-Marktformenschema mit Grenzen erklären. |
+| Wettbewerb und Marktmacht | Bundeskartellamt zum Wettbewerbsschutz; GWB § 18 | Wettbewerb fördert Auswahl, Innovation und günstige Konditionen. Marktbeherrschung hängt nicht allein von der Anbieterzahl ab, sondern unter anderem von Marktanteil, Finanzkraft und Marktzutritt. | Marktform nicht mit tatsächlicher Marktmacht verwechseln; Monopolpreise nicht als beliebig darstellen. |
+| Zielgruppen und Nutzen | Springer Gabler: Zielgruppe, Marktsegmentierung und Kundennutzen | Zielgruppen werden nach entscheidungsrelevanten Merkmalen segmentiert; Nutzen ist der wahrgenommene Beitrag zur Bedürfnisbefriedigung. | Merkmale nur verwenden, wenn sie die Entscheidung beeinflussen; Produktmerkmal konsequent in Kundenwirkung übersetzen. |
+| Kommunikationsmodell | Springer Gabler: AIDA-Regel | AIDA ist ein bekanntes, aber lineares und überholtes Wirkungsmodell. | Als vierstufige Qualitätscheckliste lehren, nicht als Erfolgsgesetz oder vollständige Customer Journey. |
+| Lokales Unterrichtsmaterial | `material/AP1_Lernzettel.pdf`, Metadatenstand 01.03.2025, Seiten 48–49 | Themenhinweise zu Marktformen, Käufer-/Verkäufermarkt und Zielgruppen; enthält eine vertauschte Zuordnung von Käufer-/Verkäufermarkt und eine zu absolute Monopolaussage. | Nur als Themen- und Aufgabencheckliste genutzt. Fehler nicht übernommen; keine Formulierungen oder Aufgaben kopiert. |
+
+### Fakten-Gate
+
+1. Ein Markt ist kein bestimmter Ort, sondern das Zusammentreffen von Angebot
+   und Nachfrage für ein abgrenzbares Gut oder eine Leistung.
+2. Unter sonst gleichen Bedingungen steigt die angebotene Menge typischerweise
+   mit dem Preis und die nachgefragte Menge sinkt; das Kapitel kennzeichnet
+   dieses Modell ausdrücklich als Vereinfachung.
+3. Im Marktgleichgewicht stimmen angebotene und nachgefragte Menge überein.
+   Ein Angebotsüberhang erzeugt typischerweise Preisdruck nach unten, ein
+   Nachfrageüberhang Preisdruck nach oben.
+4. Angebotsüberhang bedeutet Käufermarkt; Nachfrageüberhang bedeutet
+   Verkäufermarkt. Die umgekehrte Zuordnung im Community-PDF ist falsch.
+5. Monopol, Oligopol und Polypol benennen zunächst die Zahl der Anbieter oder
+   Nachfrager. Das 3×3-Schema unterscheidet beide Marktseiten.
+6. Die Marktform allein beweist keine Marktbeherrschung. GWB § 18 verlangt eine
+   Gesamtbetrachtung weiterer Wettbewerbsbedingungen.
+7. Auch ein Monopolist kann Preis und Menge nicht grenzenlos bestimmen:
+   Zahlungsbereitschaft, Ersatzlösungen, potenzieller Wettbewerb, Regulierung
+   und Kosten begrenzen die Entscheidung.
+8. Marktsegmentierung zerlegt einen heterogenen Markt in möglichst intern
+   ähnliche Gruppen. Eine Zielgruppe ist die für eine Maßnahme ausgewählte
+   Personengruppe.
+9. Kundennutzen beantwortet die Wirkung aus Kundensicht; ein technisches
+   Merkmal allein ist noch kein Nutzenargument.
+10. AIDA ordnet Aufmerksamkeit, Interesse, Wunsch und Handlung. Es eignet sich
+    als Checkliste, garantiert aber weder eine lineare Wirkung noch einen Kauf.
+
+### Didaktik-, Aufgaben- und Umfangs-Gate
+
+- Didaktik: Ein durchgehender Fall eines Managed-Workplace-Angebots verbindet
+  Marktanalyse, Zielgruppe, Nutzenargument und AIDA. Begriffe werden jeweils
+  vor der Anwendung eingeführt; ein Denkmodell, Fehlvorstellungen,
+  Selbstchecks mit Lösungen und Transfer schließen das Kapitel ab.
+- Aufgaben: Zuordnung im Marktformenschema, Gleichgewichtsrechnung,
+  Käufer-/Verkäufermarkt, Segmentierungsentscheidung, Nutzenformulierung und
+  begründete Kommunikationsanalyse sind mit vollständigen Lösungswegen
+  enthalten. Es werden keine Originalprüfungsaufgaben reproduziert.
+- Pflicht: Angebot/Nachfrage, Gleichgewicht, Überhänge, 3×3-Marktformen,
+  Wettbewerb/Marktmacht, Zielgruppe, Kundennutzen und AIDA-Grenzen.
+  Kann: relevante Marktabgrenzung und einfache Kurvenverschiebung.
+  Extra/Raus: Elastizitätsrechnung, Produzenten-/Konsumentenrente,
+  mikroökonomische Optimierung, vertieftes Kartellrecht und Marketingtheorie.
+
+### Technik-Gate und Entscheidung
+
+- `npm run emit:status`: bestanden; der separate AIDA-Doppeleintrag ist aus
+  Laufzeitkatalog und Statusausgabe entfernt.
+- `npm run emit:scope`: bestanden; alle Kapitelbezüge zeigen auf das
+  konsolidierte Lernpaket.
+- `npm run test`: bestanden (3 Testdateien, 28 Tests, 2026-07-31).
+- `npm run check`: bestanden; Katalogvalidator, Tests, ESLint, TypeScript und
+  Vite-Produktions-Build erfolgreich (2026-07-31).
+- `npm run build:single`: bestanden; Offline-Einzeldatei erzeugt
+  (2026-07-31).
+- `git diff --check`: bestanden.
+- Vertrauen: `teilgeprueft`. Fachtext, Quellen-, Fakten-, Didaktik-, Aufgaben-,
+  Umfangs- und Technik-Gate sind abgeschlossen. Für `geprueft` fehlen der
+  unabhängige Prüfpass, ein belastbarer Q3-Abgleich und die vollständigen
+  Prüfungskataloge 6392/6393. Der Eintrag in `KAPITELPLAN_LF1_LF9.md` bleibt
+  deshalb offen.

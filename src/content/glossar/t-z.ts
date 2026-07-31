@@ -2,6 +2,32 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const tBisZ: GlossarEintrag[] = [
   {
+    id: 'wettbewerb',
+    begriff: 'Wettbewerb',
+    kurzdefinition: 'Konkurrenz von Marktteilnehmern um Geschäftsabschlüsse oder knappe Angebote.',
+    definition: [
+      'Anbieter können über Preis, Qualität, Service, Lieferzeit, Innovation oder andere für Kunden relevante Merkmale konkurrieren.',
+      'Funktionsfähiger Wettbewerb kann Auswahl und Innovation fördern, garantiert aber nicht in jedem Einzelfall ein bestimmtes Ergebnis.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
+    id: 'zielgruppe',
+    begriff: 'Zielgruppe',
+    kurzdefinition: 'Tatsächliche oder mögliche Adressaten einer bestimmten Maßnahme.',
+    definition: [
+      'Eine Zielgruppe wird nach Merkmalen abgegrenzt, die Bedarf, Kaufentscheidung oder Ansprache tatsächlich beeinflussen.',
+      'Die Beschreibung „alle Unternehmen“ ist meist zu breit, weil sie keine gemeinsame Situation und keinen konkreten Bedarf erkennen lässt.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
     id: 'vollmacht',
     begriff: 'Vollmacht',
     kurzdefinition: 'Durch Rechtsgeschäft erteilte Befugnis, für eine andere Person oder Organisation rechtlich zu handeln.',
@@ -519,11 +545,11 @@ export const tBisZ: GlossarEintrag[] = [
       kurzdefinition: 'Auswirkung einer Werbemassnahme auf Wahrnehmung, Einstellung oder Verhalten der Zielgruppe.',
       definition: [
         'Werbewirkung beschreibt, was eine Werbe- oder Kommunikationsmassnahme bei der Zielgruppe auslöst. Psychische Wirkung betrifft Wahrnehmung, Erinnerung, Einstellung oder Kaufabsicht; ökonomische Wirkung betrifft messbares Verhalten wie Anfragen, Bestellungen oder Umsatz.',
-        'Prüfungsrelevant: Eine Wirkung muss zur Zielsetzung passen. Bekanntheit misst man anders als Umsatz; Klicks, Leads oder Freigaben sind nur sinnvoll, wenn sie zur Aufgabe passen.',
+        'Eine Wirkung muss zur Zielsetzung passen. Bekanntheit misst man anders als Umsatz; Klicks, Anfragen oder Freigaben sind nur sinnvoll, wenn sie zum Kommunikationsziel passen.',
       ],
       kapitel: {
-        titel: 'AIDA-Formel & Werbewirkung',
-        href: '/lernen/wirtschaft/markt/aida-formel',
+        titel: 'Markt, Wettbewerb & Kundennutzen',
+        href: '/lernen/wirtschaft/markt/marktformen',
       },
     },
   {

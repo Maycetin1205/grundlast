@@ -230,7 +230,7 @@ export const lf1 = [
     "titel": "Organisationsformen, Leitbild, Nachhaltigkeit & ESG",
     "primaryLf": 1,
     "relatedLfs": [],
-    "lfReihenfolge": 6,
+    "lfReihenfolge": 9,
     "themen": [
       "wirtschaft"
     ],
@@ -259,10 +259,10 @@ export const lf1 = [
   },
   {
     "slug": "marktformen",
-    "titel": "Marktformen (Monopol, Polypol, Oligopol)",
+    "titel": "Markt, Wettbewerb & Kundennutzen",
     "primaryLf": 1,
     "relatedLfs": [],
-    "lfReihenfolge": 7,
+    "lfReihenfolge": 6,
     "themen": [
       "wirtschaft"
     ],
@@ -272,48 +272,33 @@ export const lf1 = [
     ],
     "ap1Relevanz": "hoch",
     "voraussetzungen": [
-      "organisationsformen-leitbild-nachhaltigkeit-esg"
+      "vollmachten-im-betrieb"
     ],
-    "lernzeit": 10,
+    "lernzeit": 45,
     "aufgabenfamilien": [
+      "zuordnen",
+      "rechnen",
+      "anwenden",
       "begruenden"
     ],
-    "inhaltsstatus": "ausgearbeitet",
+    "inhaltsstatus": "teilgeprueft",
     "quellen": {
-      "q1_scope": [],
-      "q2_fachquelle": [],
-      "q3_pruefungsrealitaet": []
-    },
-    "route": {
-      "bereich": "wirtschaft",
-      "modul": "markt"
-    }
-  },
-  {
-    "slug": "aida-formel",
-    "titel": "AIDA-Formel & Werbewirkung",
-    "primaryLf": 1,
-    "relatedLfs": [],
-    "lfReihenfolge": 8,
-    "themen": [
-      "wirtschaft"
-    ],
-    "ap1Kompetenzen": [
-      "ap1-kundenbedarf",
-      "ap1-auswahl-beschaffung"
-    ],
-    "ap1Relevanz": "hoch",
-    "voraussetzungen": [
-      "marktformen"
-    ],
-    "lernzeit": 8,
-    "aufgabenfamilien": [
-      "begruenden"
-    ],
-    "inhaltsstatus": "ausgearbeitet",
-    "quellen": {
-      "q1_scope": [],
-      "q2_fachquelle": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan",
+        "fiausbv",
+        "bibb-fachinformatiker"
+      ],
+      "q2_fachquelle": [
+        "bpb-markt",
+        "bpb-preisbildung",
+        "bpb-marktformen",
+        "bundeskartellamt-wettbewerb-verbraucher",
+        "gwb-18-marktbeherrschung",
+        "gabler-zielgruppe",
+        "gabler-marktsegmentierung",
+        "gabler-kundennutzen",
+        "gabler-aida-regel"
+      ],
       "q3_pruefungsrealitaet": []
     },
     "route": {
@@ -328,7 +313,7 @@ export const lf1 = [
     "relatedLfs": [
       8
     ],
-    "lfReihenfolge": 9,
+    "lfReihenfolge": 7,
     "themen": [
       "projekt"
     ],
@@ -338,7 +323,7 @@ export const lf1 = [
     ],
     "ap1Relevanz": "hoch",
     "voraussetzungen": [
-      "aida-formel"
+      "marktformen"
     ],
     "lernzeit": 14,
     "aufgabenfamilien": [

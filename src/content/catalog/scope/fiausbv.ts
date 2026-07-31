@@ -52,13 +52,13 @@ export const fiausbvFirst18MonthScopeItems: readonly ScopeItem[] = [
     'marktformen', 'angebotsvergleich',
   ]),
   fia('2.b', [1, 2, 6], 'ermitteln', 'Bedarfe feststellen und Zielgruppen unterscheiden.', [
-    'bedarfsanalyse-feedback', 'hardware-schnittstellen', 'aida-formel',
+    'bedarfsanalyse-feedback', 'hardware-schnittstellen', 'marktformen',
   ]),
   fia('2.c', [1, 6], 'kommunizieren', 'Sachverhalte regelgerecht präsentieren und deutsche wie englische Fachbegriffe adressatengerecht verwenden.', [
     'unternehmen-ziele-wertschoepfung', 'schulz-von-thun', 'bedarfsanalyse-feedback',
   ]),
   fia('2.d', [1], 'umsetzen', 'Marketing- und Vertriebsmaßnahmen im eigenen Aufgabenbereich unterstützen.', [
-    'aida-formel', 'marktformen',
+    'marktformen',
   ]),
   fia('2.e', [1, 2, 3], 'analysieren', 'Aufgabenbezogene Informationsquellen auch in englischer Sprache auswerten und für Kundeninformationen nutzen.', [
     'hardware-schnittstellen', 'cpu-ram-speicher', 'osi-modell',

@@ -2,6 +2,19 @@ import type { GlossarEintrag } from "../../lib/glossar/types"
 
 export const iBisL: GlossarEintrag[] = [
   {
+    id: 'kundennutzen',
+    begriff: 'Kundennutzen',
+    kurzdefinition: 'Für einen konkreten Kundenbedarf relevante Verbesserung, die ein Angebot bewirkt.',
+    definition: [
+      'Kundennutzen entsteht nicht durch ein Merkmal allein, sondern durch dessen Wirkung in der Situation eines Kunden.',
+      'Eine belastbare Nutzenaussage nennt Zielgruppe, Verbesserung und einen nachvollziehbaren Beleg oder eine Grenze.',
+    ],
+    kapitel: {
+      titel: 'Markt, Wettbewerb & Kundennutzen',
+      href: '/lernen/wirtschaft/markt/marktformen',
+    },
+  },
+  {
     id: 'innenverhaeltnis',
     begriff: 'Innenverhältnis',
     kurzdefinition: 'Interne Beziehung zwischen Unternehmen und bevollmächtigter Person.',
@@ -103,11 +116,11 @@ export const iBisL: GlossarEintrag[] = [
       kurzdefinition: 'Zweite AIDA-Stufe: Interesse durch Relevanz für die Zielgruppe aufbauen.',
       definition: [
         'Interest entsteht, wenn die Zielgruppe erkennt, dass das Thema sie betrifft. In IT-Aufgaben gelingt das zum Beispiel über Ausfallzeiten, Kosten, Bedienaufwand, Sicherheitsrisiken oder Servicequalität.',
-        'Prüfungsfalle: Interest ist noch kein Kaufwunsch. Es beantwortet die Frage "Warum ist das für mich wichtig?", nicht "Warum will ich genau diese Lösung?".',
+        'Interest ist noch kein Wunsch nach einer bestimmten Lösung. Es beantwortet die Frage „Warum ist das für mich wichtig?“, nicht „Warum will ich genau diese Lösung?“.',
       ],
       kapitel: {
-        titel: 'AIDA-Formel & Werbewirkung',
-        href: '/lernen/wirtschaft/markt/aida-formel',
+        titel: 'Markt, Wettbewerb & Kundennutzen',
+        href: '/lernen/wirtschaft/markt/marktformen',
       },
     },
   {
