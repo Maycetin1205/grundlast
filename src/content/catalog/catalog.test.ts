@@ -4,9 +4,11 @@ import { describe, expect, it } from 'vitest'
 import { sourceBank } from '../quellen/sourceBank'
 import { validateCatalog } from '../../lib/learning/validation'
 import { chapterSchema } from '../../lib/learning/schema'
+import { validateScopeMatrix } from '../../lib/learning/scopeValidation'
 import { trustForChapters } from '../../lib/learning/trust'
 import { chapters, ap1Competencies, topics } from './index'
 import { learningFieldExpectations } from './curriculumExpectations'
+import { examCatalogDeltas, examCatalogEvidence, scopeItems } from './scope'
 
 const lessonDirectory = fileURLToPath(new URL('../lessons', import.meta.url))
 const mdxSlugs = new Set(
@@ -23,6 +25,9 @@ function result() {
     sourceIds: new Set(sourceBank.map((source) => source.id)),
     mdxSlugs,
     expectations: learningFieldExpectations,
+    scopeItems,
+    examCatalogDeltas,
+    examCatalogComplete: examCatalogEvidence.complete,
   })
 }
 
@@ -38,7 +43,7 @@ describe('zentraler Kapitelkatalog', () => {
   it('macht bekannte Abdeckungslücken sichtbar und verhindert eine Vollständigkeitsfreigabe', () => {
     const validation = result()
     expect(validation.releaseReady).toBe(false)
-    expect(validation.warnings).toContain('LF7 unvollständig: 0/5 erwartete Kapitelpakete')
+    expect(validation.warnings).toContain('Vollständiger Prüfungskatalog 2025 fehlt; derzeit ist nur das öffentliche IHK/ZPA-Delta modelliert.')
   })
 
   it('erlaubt geprüft oder teilgeprüft nur mit Scope- und Fachquelle', () => {
@@ -55,5 +60,30 @@ describe('zentraler Kapitelkatalog', () => {
     expect(trust.available).toBeGreaterThan(trust.verified)
     expect(trust.verifiedPercent).toBeLessThan(trust.availablePercent)
   })
-})
 
+  it('bildet jedes Kapitel auf mindestens eine offizielle Kompetenz ab', () => {
+    const matrix = validateScopeMatrix({
+      chapters,
+      scopeItems,
+      examCatalogDeltas,
+      sourceIds: new Set(sourceBank.map((source) => source.id)),
+      examCatalogComplete: examCatalogEvidence.complete,
+    })
+    expect(matrix.errors).toEqual([])
+    expect(matrix.chaptersWithoutMapping).toEqual([])
+    expect(new Set(scopeItems.map((item) => item.id)).size).toBe(scopeItems.length)
+  })
+
+  it('behandelt LF7 bis LF9 und die belegten SQL-/RAID-Deltas nicht als AP1', () => {
+    const laterFields = chapters.filter((chapter) => chapter.primaryLf >= 7)
+    expect(laterFields.every((chapter) => chapter.ap1Relevanz === 'raus')).toBe(true)
+    expect(chapters.find((chapter) => chapter.slug === 'sql-grundlagen')?.ap1Relevanz).toBe('raus')
+    expect(chapters.find((chapter) => chapter.slug === 'raid-systeme')?.ap1Relevanz).toBe('raus')
+  })
+
+  it('blockiert AP1-Vollständigkeit bis alle 32 direkten Atome belegt sind', () => {
+    const coverage = result().counts.scopeCoverage
+    expect(coverage.ap1Total).toBe(32)
+    expect(coverage.ap1Verified).toBeLessThan(coverage.ap1Total)
+  })
+})

@@ -1,7 +1,9 @@
 import type { Ap1Competency, Chapter } from '../../content/catalog'
 import type { LearningFieldExpectation } from '../../content/catalog/curriculumExpectations.ts'
+import type { ExamCatalogDelta, ScopeItem } from '../../content/catalog/scope/types.ts'
 import type { Topic } from '../../content/catalog/topics'
 import { chapterSchema } from './schema.ts'
+import { validateScopeMatrix } from './scopeValidation.ts'
 
 export interface CatalogValidationInput {
   chapters: readonly Chapter[]
@@ -10,6 +12,9 @@ export interface CatalogValidationInput {
   sourceIds: ReadonlySet<string>
   mdxSlugs: ReadonlySet<string>
   expectations: readonly LearningFieldExpectation[]
+  scopeItems: readonly ScopeItem[]
+  examCatalogDeltas: readonly ExamCatalogDelta[]
+  examCatalogComplete: boolean
 }
 
 export function validateCatalog(input: CatalogValidationInput) {
@@ -59,6 +64,9 @@ export function validateCatalog(input: CatalogValidationInput) {
     if (!competency.quellen.length) errors.push(`Kompetenz ohne Quelle: ${competency.id}`)
     for (const id of competency.quellen) if (!input.sourceIds.has(id)) errors.push(`Unbekannte Kompetenzquelle ${id}: ${competency.id}`)
   }
+  const ap1ScopeIds = new Set(input.scopeItems.filter((item) => item.origin === 'fiausbv-ap1').map((item) => item.id))
+  for (const competency of input.competencies) if (!ap1ScopeIds.has(competency.id)) errors.push(`AP1-Kompetenz ohne gesetzliches Scope-Atom: ${competency.id}`)
+  for (const id of ap1ScopeIds) if (!competencyIds.has(id)) errors.push(`Gesetzliches AP1-Scope-Atom ohne Kompetenzansicht: ${id}`)
 
   for (const expectation of input.expectations) {
     const actual = input.chapters.filter((chapter) => chapter.primaryLf === expectation.lf).length
@@ -82,6 +90,15 @@ export function validateCatalog(input: CatalogValidationInput) {
     q2: input.chapters.filter((chapter) => chapter.quellen.q2_fachquelle.length > 0).length,
     q3: input.chapters.filter((chapter) => chapter.quellen.q3_pruefungsrealitaet.length > 0).length,
   }
+  const scope = validateScopeMatrix({
+    chapters: input.chapters,
+    scopeItems: input.scopeItems,
+    examCatalogDeltas: input.examCatalogDeltas,
+    sourceIds: input.sourceIds,
+    examCatalogComplete: input.examCatalogComplete,
+  })
+  errors.push(...scope.errors)
+  warnings.push(...scope.warnings)
   return {
     ok: errors.length === 0,
     releaseReady: errors.length === 0 && warnings.length === 0,
@@ -93,6 +110,7 @@ export function validateCatalog(input: CatalogValidationInput) {
       topics: topicIds.size,
       competencies: competencyIds.size,
       sourceCoverage,
+      scopeCoverage: scope.counts,
     },
   }
 }

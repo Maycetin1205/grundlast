@@ -1,5 +1,8 @@
 # Curriculum-Mapping
 
+> **Historisches Mapping.** Die kanonische Kapitelzuordnung steht in
+> `src/content/catalog/scope/` und wird als `SCOPE_STATUS.md` ausgegeben.
+
 Stand: 04.06.2026
 
 Diese Datei ist die Arbeitsmatrix fuer vorhandene Kapitel. Die vollstaendige

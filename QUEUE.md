@@ -22,15 +22,14 @@ Qualitätssicherung dieselbe Wahrheit verwenden.
 - [x] vollständigen Diff prüfen, alle Checks erneut ausführen und Draft-PR
       gegen `design-redesign` veröffentlichen.
 
-Bekannte, nun automatisch sichtbare Befunde:
+Aktuelle, automatisch sichtbare Qualitätsbefunde:
 
-- LF3: 7/10 Mindestpakete
-- LF4: 10/11 Mindestpakete
-- LF7: 0/5 Mindestpakete
-- LF8: 2/6 Mindestpakete
-- LF9: 4/8 Mindestpakete
-- drei als geprüft markierte Kapitel ohne dokumentierten Q3-Prüfungsabgleich
-- sechs Kapitel in LF8/LF9 mit noch ungeklärter AP1-Relevanz
+- 60 von 107 Pflichtatomen haben noch kein vollständiges Lerntextpaket,
+- 105 von 107 Pflichtatomen sind noch nicht vollständig durch geprüfte
+  Kapitel belegt; bei den 32 direkt AP1-relevanten Atomen sind es 0,
+- drei als geprüft markierte Kapitel haben noch keinen dokumentierten
+  Q3-Prüfungsabgleich,
+- der vollständige Prüfungskatalog 2025 fehlt.
 
 Offener Sicherheitsblocker: Das Repository muss privat gestellt werden,
 solange fremdes Community-Material enthalten ist. Dies ist eine
@@ -38,13 +37,16 @@ GitHub-Kontoeinstellung und keine Codeänderung.
 
 ## Aktueller Schritt: 1 — Atomare Scope-Matrix
 
-- [ ] KMK-Kompetenzen LF1–LF9 in eindeutige Scope-IDs zerlegen.
-- [ ] FIAusbV/BIBB-Kompetenzen der ersten 18 Monate ergänzen.
-- [ ] aktuellen, legal erworbenen AP1-Prüfungskatalog versionsgebunden mappen.
-- [ ] jedes Kapitel mit den abgedeckten Scope-IDs verbinden.
-- [ ] Validator so erweitern, dass nicht nur Kapitelzahlen, sondern jede
+- [x] KMK-Kompetenzen LF1–LF9 in eindeutige Scope-IDs zerlegen.
+- [x] FIAusbV-Kompetenzen der ersten 18 Monate und die fünf AP1-Handlungen
+      ergänzen.
+- [ ] vollständige, legal erworbene Prüfungskataloge 6392 (FIAE) und 6393
+      (FISI) bereitstellen und versionsgebunden mappen. Das öffentliche
+      IHK/ZPA-Delta ist bereits erfasst; die Vollkataloge fehlen im Workspace.
+- [x] jedes Kapitel mit den abgedeckten Scope-IDs verbinden.
+- [x] Validator so erweitern, dass nicht nur Kapitelzahlen, sondern jede
       einzelne Pflichtkompetenz auf Abdeckung geprüft wird.
-- [ ] fehlende Pakete für LF3, LF4 und LF7–LF9 als ehrliche `geplant`-Einträge
+- [x] fehlende Pakete für LF3, LF4 und LF7–LF9 als ehrliche `geplant`-Einträge
       in den Katalog aufnehmen.
 
 ## Schritt 2 — Kapitelproduktion und unabhängige Prüfung

@@ -25,7 +25,9 @@ normale notwendige Integrationsschritte.
 - Aendere keine Routing-, Navigations- oder Designarchitektur.
 
 3. QUELLEN VOR TEXT
-- Bestimme Scope und Tiefe mit KMK, FIAusbV/BIBB und bei AP1-Bezug IHK/AkA.
+- Bestimme Scope und Tiefe zuerst über die passenden IDs in
+  `src/content/catalog/scope/`; gleiche anschließend die dort verlinkten
+  Primärquellen ab.
 - Recherchiere mindestens eine aktuelle fachliche Primaerquelle und eine zweite
   unabhaengige serioese Fachquelle. Alter MDX-Text, Lernzettel, Suchtreffer und
   KI-Antworten sind keine Faktenanker.
@@ -52,7 +54,8 @@ normale notwendige Integrationsschritte.
 5. ABSCHLUSS UND HAKEN
 - Fuehre die sieben Schlussdurchgaenge aus: Scope, Fakten, Rechnen/Logik,
   Nullwissen, Didaktik, Dichte und Integration. Behebe jeden Fund.
-- Führe `npm run check`, `npm run build:single` und `npm run emit:status` aus.
+- Führe `npm run check`, `npm run build:single`, `npm run emit:status` und bei
+  Scope-Änderungen `npm run emit:scope` aus.
   Alle technischen Befehle müssen Exitcode 0 haben. Kontrolliere danach den
   Diff auf unbeabsichtigte Änderungen und Statusdrift.
 - Erst wenn Inhalt, Quellen, Glossar, App-Integration und alle Checks komplett

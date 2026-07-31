@@ -5,14 +5,16 @@
 
 ## Gesamtstand
 
-- Kapitel im Katalog: **103**
+- Kapitel im Katalog: **121**
 - MDX-Lerntexte: **84**
 - Geprüft: **6**
 - Teilgeprüft: **12**
 - Ungeprüft ausgearbeitet: **66**
-- Geplant: **19**
+- Geplant: **37**
 - Gesperrt: **0**
-- Quellenabdeckung: Q1 **23**, Q2 **26**, Q3 **4**
+- Quellenabdeckung: Q1 **47**, Q2 **26**, Q3 **4**
+- Scope-Pakete mit allen Lerntexten: **47/107**
+- Scope-Pakete vollständig über geprüfte Kapitel belegt: **2/107**
 - Release-Gate: **nicht bestanden**
 
 ## Offene Qualitätsbefunde
@@ -20,17 +22,9 @@
 - Geprüftes Kapitel ohne dokumentierten Prüfungsabgleich: unternehmen-ziele-wertschoepfung
 - Geprüftes Kapitel ohne dokumentierten Prüfungsabgleich: bit-byte
 - Geprüftes Kapitel ohne dokumentierten Prüfungsabgleich: datenrate-berechnung
-- AP1-Relevanz ungeklärt: crm-erp-dms
-- AP1-Relevanz ungeklärt: cloud-konzepte
-- AP1-Relevanz ungeklärt: imap-pop3-smtp
-- AP1-Relevanz ungeklärt: linux-chmod
-- AP1-Relevanz ungeklärt: ssh-telnet
-- AP1-Relevanz ungeklärt: mtbf-mttf
-- LF3 unvollständig: 7/10 erwartete Kapitelpakete
-- LF4 unvollständig: 10/11 erwartete Kapitelpakete
-- LF7 unvollständig: 0/5 erwartete Kapitelpakete
-- LF8 unvollständig: 2/6 erwartete Kapitelpakete
-- LF9 unvollständig: 4/8 erwartete Kapitelpakete
+- Pflichtatome ohne verfügbaren Lerntext: 60/107
+- Pflichtatome ohne fachlich geprüftes Kapitel: 105/107
+- Vollständiger Prüfungskatalog 2025 fehlt; derzeit ist nur das öffentliche IHK/ZPA-Delta modelliert.
 
 ## LF1
 
@@ -93,34 +87,38 @@ Katalog: **35** Kapitel · Mindestpakete: **20** · Zeitrichtwert: **80 Stunden*
 
 ## LF3
 
-Katalog: **7** Kapitel · Mindestpakete: **10** · Zeitrichtwert: **80 Stunden**
+Katalog: **10** Kapitel · Mindestpakete: **10** · Zeitrichtwert: **80 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
-| 1 | OSI-Modell – sieben Schichten | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 2 | TCP vs. UDP | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 3 | Netzwerkkonfiguration, DHCP, DNS & Diagnose | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 1 | Netzwerkgrundbegriffe, Komponenten & Topologien | geplant | hoch | ✓ | – | – | – |
+| 2 | OSI-Modell – sieben Schichten | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 3 | IPv4-Grundlagen: Adresse, Maske, CIDR & Gateway | geplant | hoch | ✓ | – | – | – |
 | 4 | IPv4 & Subnetting | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 5 | WLAN-Standards und WLAN-Sicherheit | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 6 | IPv6 – Aufbau & Adressierung | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 7 | Port Forwarding und NAT | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 5 | Netzwerkkonfiguration, DHCP, DNS & Diagnose | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 6 | TCP vs. UDP | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 7 | WLAN-Standards und WLAN-Sicherheit | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 8 | Netzwerkdiagnose systematisch durchführen | geplant | hoch | ✓ | – | – | – |
+| 9 | IPv6 – Aufbau & Adressierung | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 10 | Port Forwarding und NAT | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
 
 ## LF4
 
-Katalog: **10** Kapitel · Mindestpakete: **11** · Zeitrichtwert: **40 Stunden**
+Katalog: **11** Kapitel · Mindestpakete: **11** · Zeitrichtwert: **40 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
 | 1 | Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz | ungeprüft | hoch | – | – | – | ✓ |
-| 2 | DSGVO – die sieben Grundsätze | ungeprüft | hoch | – | – | – | ✓ |
-| 3 | Backup-Strategien (Voll, Inkrementell, Differenziell) | ungeprüft | hoch | – | – | – | ✓ |
-| 4 | Malware — Viren, Würmer, Trojaner, Ransomware | ungeprüft | hoch | – | – | – | ✓ |
-| 5 | Endpoint-Security & Schutzmaßnahmen | ungeprüft | hoch | – | – | – | ✓ |
-| 6 | Firewall und DMZ | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
-| 7 | Passwörter & Hashing (Salt, Pepper) | ungeprüft | hoch | – | – | – | ✓ |
-| 8 | Verschlüsselung & IT-Sicherheit | ungeprüft | hoch | – | – | – | ✓ |
-| 9 | Verschlüsselung, Hashing, Zertifikate, Signatur & VPN | ungeprüft | hoch | – | – | – | ✓ |
-| 10 | PKI, CA & Zertifikate | ungeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 2 | Schutzbedarf und Risikoanalyse durchführen | geplant | hoch | ✓ | – | – | – |
+| 3 | DSGVO – die sieben Grundsätze | ungeprüft | hoch | – | – | – | ✓ |
+| 4 | Backup-Strategien (Voll, Inkrementell, Differenziell) | ungeprüft | hoch | – | – | – | ✓ |
+| 5 | Malware — Viren, Würmer, Trojaner, Ransomware | ungeprüft | hoch | – | – | – | ✓ |
+| 6 | Endpoint-Security & Schutzmaßnahmen | ungeprüft | hoch | – | – | – | ✓ |
+| 7 | Firewall und DMZ | teilgeprüft | hoch | ✓ | ✓ | – | ✓ |
+| 8 | Passwörter & Hashing (Salt, Pepper) | ungeprüft | hoch | – | – | – | ✓ |
+| 9 | Verschlüsselung & IT-Sicherheit | ungeprüft | hoch | – | – | – | ✓ |
+| 10 | Verschlüsselung, Hashing, Zertifikate, Signatur & VPN | ungeprüft | hoch | – | – | – | ✓ |
+| 11 | PKI, CA & Zertifikate | ungeprüft | hoch | ✓ | ✓ | – | ✓ |
 
 ## LF5
 
@@ -173,27 +171,41 @@ Katalog: **17** Kapitel · Mindestpakete: **14** · Zeitrichtwert: **40 Stunden*
 
 ## LF7
 
-Katalog: **0** Kapitel · Mindestpakete: **5** · Zeitrichtwert: **80 Stunden**
+Katalog: **5** Kapitel · Mindestpakete: **5** · Zeitrichtwert: **80 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
+| 1 | Cyber-physische Systeme verstehen | geplant | raus | ✓ | – | – | – |
+| 2 | Sensoren, Aktoren und Messwerte | geplant | raus | ✓ | – | – | – |
+| 3 | CPS-Schnittstellen, Protokolle und Datenfluss | geplant | raus | ✓ | – | – | – |
+| 4 | CPS-Energieversorgung und Betriebssicherheit | geplant | raus | ✓ | – | – | – |
+| 5 | CPS integrieren und Funktion kontrollieren | geplant | raus | ✓ | – | – | – |
 
 ## LF8
 
-Katalog: **2** Kapitel · Mindestpakete: **6** · Zeitrichtwert: **80 Stunden**
+Katalog: **7** Kapitel · Mindestpakete: **6** · Zeitrichtwert: **80 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
-| 1 | CRM, ERP, DMS & CMS – Unternehmenssoftware | ungeprüft | unklar | – | – | – | ✓ |
-| 2 | Cloud-Konzepte (IaaS, PaaS, SaaS) | geplant | unklar | – | – | – | – |
+| 1 | Datenquellen und Systemgrenzen analysieren | geplant | raus | ✓ | – | – | – |
+| 2 | Schnittstellen und APIs sicher nutzen | geplant | raus | ✓ | – | – | – |
+| 3 | Authentifizierung, Rollen und Berechtigungen | geplant | raus | ✓ | – | – | – |
+| 4 | Datenqualität, Mapping und Transformation | geplant | raus | ✓ | – | – | – |
+| 5 | Datenschutz bei der Datenbereitstellung | geplant | raus | ✓ | – | – | – |
+| 6 | Cloud-Konzepte (IaaS, PaaS, SaaS) | geplant | raus | ✓ | – | – | – |
+| 7 | CRM, ERP, DMS & CMS – Unternehmenssoftware | ungeprüft | raus | ✓ | – | – | ✓ |
 
 ## LF9
 
-Katalog: **4** Kapitel · Mindestpakete: **8** · Zeitrichtwert: **80 Stunden**
+Katalog: **8** Kapitel · Mindestpakete: **8** · Zeitrichtwert: **80 Stunden**
 
 | Nr. | Kapitel | Status | AP1 | Q1 | Q2 | Q3 | MDX |
 |---:|---|---|---|:---:|:---:|:---:|:---:|
-| 1 | E-Mail-Protokolle (IMAP, POP3, SMTP) | ungeprüft | unklar | – | – | – | ✓ |
-| 2 | Linux-Dateiberechtigungen (chmod, rwx) | ungeprüft | unklar | – | ✓ | – | ✓ |
-| 3 | SSH vs. Telnet | geplant | unklar | – | – | – | – |
-| 4 | MTBF & MTTF – Ausfallwahrscheinlichkeit | ungeprüft | unklar | – | – | – | ✓ |
+| 1 | Netzwerkdienste im Zusammenspiel | geplant | raus | ✓ | – | – | – |
+| 2 | Serverdienste bereitstellen und prüfen | geplant | raus | ✓ | – | – | – |
+| 3 | Routing, NAT und Firewallregeln | geplant | raus | ✓ | – | – | – |
+| 4 | VLAN und Netzwerksegmentierung | geplant | raus | ✓ | – | – | – |
+| 5 | Linux-Dateiberechtigungen (chmod, rwx) | ungeprüft | raus | ✓ | ✓ | – | ✓ |
+| 6 | SSH vs. Telnet | geplant | raus | ✓ | – | – | – |
+| 7 | MTBF & MTTF – Ausfallwahrscheinlichkeit | ungeprüft | raus | ✓ | – | – | ✓ |
+| 8 | E-Mail-Protokolle (IMAP, POP3, SMTP) | ungeprüft | raus | ✓ | – | – | ✓ |

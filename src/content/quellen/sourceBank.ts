@@ -1467,8 +1467,8 @@ export const sourceBank: SourceEntry[] = [
   {
     id: 'ihk-aka-pruefungs-news-2024',
     label: 'IHK-AkA – Prüfungs-News 09/24 zu IT-Prüfungskatalogen',
-    href: 'https://www.ihk-aka.de/aktuelles/pruefungsnews/detail/202409',
-    detail: 'Offizielle Prüfungsinformation: Die zweite Auflage der IT-Prüfungskataloge gilt für Abschlussprüfung Teil 1 ab Frühjahr 2025.',
+    href: 'https://www.ihk-zpa.de/export/sites/default/LinkRepository/IHK-Pruefungs-News/IHK-Pruefungs-News_09-24.pdf',
+    detail: 'Offizielle Prüfungsinformation zur zweiten Auflage ab AP1 Frühjahr 2025: SQL und RAID nur AP2, PAP und Struktogramm gestrichen sowie Übergang zu UML/BPMN und neuen KI-Themen.',
     tags: ['ausbildung', 'ap1', 'pruefung', 'pruefungskatalog', 'pruefungsrealitaet'],
   },
 ]

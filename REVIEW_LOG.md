@@ -3,6 +3,8 @@
 > **Status-Uebersicht:** `AP1_STATUS.md` (generiert aus dem Code via `npm run emit:status`).
 > Dieses Log ist das **Beleg-/Begruendungsarchiv** der Faktenchecks (Quellen-Matrix,
 > Abschnitts-Audit, Aenderungen pro Kapitel) — kein Status-Verzeichnis.
+> Alte Freigabezahlen und Statusbegriffe weiter unten sind historisch und
+> dürfen nicht gegen den Kapitelkatalog ausgewertet werden.
 
 Dieses Log dokumentiert Kapitel, die nach dem neuen Goldstandard formal als
 `review-final` freigegeben sind.

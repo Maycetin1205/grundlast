@@ -1,6 +1,52 @@
 import type { Chapter } from '../types'
+import { plannedChapter } from './planned.ts'
 
 export const lf3 = [
+  plannedChapter({
+    slug: 'netzwerkgrundlagen-komponenten',
+    titel: 'Netzwerkgrundbegriffe, Komponenten & Topologien',
+    primaryLf: 3,
+    relatedLfs: [9],
+    lfReihenfolge: 1,
+    themen: ['netzwerke'],
+    ap1Kompetenzen: ['ap1-auswahl-beschaffung', 'ap1-konfiguration-test'],
+    ap1Relevanz: 'hoch',
+    voraussetzungen: ['hardware-schnittstellen'],
+    lernzeit: 35,
+    aufgabenfamilien: ['zuordnen', 'begruenden'],
+    q1Scope: ['kmk-rahmenlehrplan', 'fiausbv'],
+    route: { bereich: 'netzwerke', modul: 'grundlagen-netz' },
+  }),
+  plannedChapter({
+    slug: 'ipv4-grundlagen',
+    titel: 'IPv4-Grundlagen: Adresse, Maske, CIDR & Gateway',
+    primaryLf: 3,
+    relatedLfs: [9],
+    lfReihenfolge: 3,
+    themen: ['netzwerke'],
+    ap1Kompetenzen: ['ap1-konfiguration-test'],
+    ap1Relevanz: 'hoch',
+    voraussetzungen: ['netzwerkgrundlagen-komponenten', 'zahlensysteme'],
+    lernzeit: 35,
+    aufgabenfamilien: ['zuordnen', 'rechnen'],
+    q1Scope: ['kmk-rahmenlehrplan', 'fiausbv'],
+    route: { bereich: 'netzwerke', modul: 'ip-adressierung' },
+  }),
+  plannedChapter({
+    slug: 'netzwerkdiagnose',
+    titel: 'Netzwerkdiagnose systematisch durchführen',
+    primaryLf: 3,
+    relatedLfs: [6, 9],
+    lfReihenfolge: 8,
+    themen: ['netzwerke'],
+    ap1Kompetenzen: ['ap1-konfiguration-test', 'ap1-kontrolle-protokoll'],
+    ap1Relevanz: 'hoch',
+    voraussetzungen: ['netzwerkkonfiguration', 'tcp-udp'],
+    lernzeit: 40,
+    aufgabenfamilien: ['diagnostizieren', 'begruenden'],
+    q1Scope: ['kmk-rahmenlehrplan', 'fiausbv'],
+    route: { bereich: 'netzwerke', modul: 'diagnose' },
+  }),
   {
     "slug": "osi-modell",
     "titel": "OSI-Modell – sieben Schichten",
@@ -8,7 +54,7 @@ export const lf3 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 1,
+    "lfReihenfolge": 2,
     "themen": [
       "netzwerke"
     ],
@@ -53,7 +99,7 @@ export const lf3 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 2,
+    "lfReihenfolge": 6,
     "themen": [
       "netzwerke"
     ],
@@ -100,7 +146,7 @@ export const lf3 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 3,
+    "lfReihenfolge": 5,
     "themen": [
       "netzwerke"
     ],
@@ -193,7 +239,7 @@ export const lf3 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 5,
+    "lfReihenfolge": 7,
     "themen": [
       "netzwerke"
     ],
@@ -239,7 +285,7 @@ export const lf3 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 6,
+    "lfReihenfolge": 9,
     "themen": [
       "netzwerke"
     ],
@@ -285,7 +331,7 @@ export const lf3 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 7,
+    "lfReihenfolge": 10,
     "themen": [
       "netzwerke"
     ],

@@ -1,8 +1,12 @@
 # AP1-Inhaltsverzeichnis nach Lernfeldern mit Inhaltstiefe
 
+> **Historische Planungshypothese.** Verbindlich sind heute
+> `src/content/catalog/scope/` und der generierte Bericht `SCOPE_STATUS.md`.
+> Diese Datei darf nicht als aktueller Prüfungskatalog ausgelegt werden.
+
 Stand: 2026-06-16
 
-Diese Datei legt das AP1-Inhaltsverzeichnis verbindlich nach Lernfeldern fest.
+Diese Datei dokumentiert die frühere AP1-Planung nach Lernfeldern.
 Sie ist keine Lektion. Sie sagt, welche Themen in welcher Tiefe abgedeckt
 werden muessen.
 

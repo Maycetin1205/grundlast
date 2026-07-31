@@ -16,11 +16,12 @@ gerade dran?) steht in `QUEUE.md`.
 | `PROJEKT.md` | Regeln, Qualitätsstandard, Arbeitsablauf (diese Datei) |
 | `QUEUE.md` | Arbeitsstand, Warteschlange, Lücken-Audit, Start-Prompt |
 | `AP1_STATUS.md` | **generiert** (`npm run emit:status`) — nicht von Hand editieren |
+| `SCOPE_STATUS.md` | **generiert** (`npm run emit:scope`) — atomare KMK-/FIAusbV-/AP1-Abdeckung |
 | `KAPITELPLAN_LF1_LF9.md` | verbindliche Kapitelpakete und Reihenfolge für LF1–LF9 |
 | `AP1_AUDIT_MATRIX.md` | Beleg-Archiv der Audits (Begründungen, Fakten, Quellen je Kapitel) |
-| `INHALTSVERZEICHNIS_JAHR_1_2.md` | Themenlandkarte Jahr 1/2 (Bezug/Form je Thema) |
-| `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md` | AP1-Scope mit Inhaltstiefe D1–D5 |
-| `CURRICULUM_MAPPING.md` | historische Mapping-Matrix; wird schrittweise durch den Katalog ersetzt |
+| `INHALTSVERZEICHNIS_JAHR_1_2.md` | historische Themenplanung; nicht kanonisch |
+| `AP1_INHALTSVERZEICHNIS_LERNFELDER_DICHTE.md` | historische AP1-Tiefenhypothese; nicht kanonisch |
+| `CURRICULUM_MAPPING.md` | historische Mapping-Matrix; nicht kanonisch |
 | `REVIEW_LOG.md` | historische Freigabeakte; kein Laufzeitstatus |
 | `material/` | externe Zusammenfassungen (Lernzettel, Lernplan) — Rohstoff, siehe Abschnitt 9 |
 | `../Lerndateien/Informationen/` | lokales Quellenarchiv außerhalb der App — klassifizieren, nicht direkt veröffentlichen, siehe Abschnitt 9 |
@@ -65,26 +66,26 @@ erklärt, später kurz erinnert und verlinkt.
 
 ## 3. Offizieller Rahmen
 
-- **AP1** „Einrichten eines IT-gestützten Arbeitsplatzes" (§§ 7–9 FIAusbV) ist
+- **AP1** „Einrichten eines IT-gestützten Arbeitsplatzes" (§§ 8–9 FIAusbV) ist
   eine Prüfungs- und Prioritätssicht auf den Gesamtlernweg:
-  geprüft im 4. Ausbildungshalbjahr, Inhalt der **ersten 18 Monate** plus
-  Berufsschulstoff (im Kern LF1–LF6). 90 Minuten, schriftlich, **ungebundene
-  Aufgaben** (ca. 4 Blöcke, 100 Punkte), 20 % der Gesamtnote, keine Wiederholung.
+  geprüft im 4. Ausbildungshalbjahr, Inhalt der **ersten 18 Monate** aus den
+  Berufsbildpositionen § 4 Abs. 2 Nr. 1–7 plus dazu passender
+  Berufsschulstoff. Die Prüfung ist praxisbezogen, schriftlich, dauert 90
+  Minuten und zählt 20 % der Gesamtnote.
 - Aufgabenbasis ist der **IHK-AkA/ZPA-Prüfungskatalog** (2. Auflage, gültig ab
-  Frühjahr 2025). Katalog-Deltas (neu: Barrierefreiheit, KI, Englisch-Anteile,
-  mehr Projektmanagement und Datenschutz; raus/geparkt: RAID-Konfiguration,
-  SAN, komplexes SQL, Struktogramm/PAP, ISO 2700x, NoSQL, OOP-Vererbung,
-  LTE/5G-Tiefe) stehen mit Quellen im Lücken-Audit in `QUEUE.md`.
-- Kanonischer lokaler Scope-Beleg ist
-  `../Lerndateien/Informationen/Prüfungen_AP2/Fachinformatiker für Systemintegration.pdf`.
-  Für AP1 gelten 90 Minuten, vier ungebundene Aufgaben und 100 Punkte; SQL und
-  RAID sind dort ausdrücklich AP2 zugeordnet.
+  Frühjahr 2025). Öffentlich belegt sind derzeit nur die in
+  `src/content/catalog/scope/examCatalog.ts` dokumentierten Deltas: SQL und
+  RAID ausschließlich AP2, PAP und Struktogramm gestrichen sowie der Übergang
+  zu UML/BPMN und KI als neuer Themenbereich. Weitergehende Detailbehauptungen
+  sind ohne die vollständigen Kataloge 6392 und 6393 unzulässig.
+- Die vollständigen, legal erworbenen Kataloge 6392 (FIAE) und 6393 (FISI)
+  liegen im Workspace derzeit **nicht** vor. Bis sie bereitgestellt und
+  versionsgebunden erfasst sind, bleibt das Release-Gate rot.
 - Lernfelder LF1–LF9 (KMK) sind der Rahmen für Jahr 1/2; interne App-Bereiche
   wie „Grundlagen & Rechnen" sind Werkzeugbereiche, keine offiziellen Lernfelder.
-- AP2-Inhalte sind derzeit kein aktiver Scope. Material mit AP2-FISI-Spezialtiefe
-  wird geparkt und darf den Lernweg für Jahr 1/2 nicht aufblasen. Gemeinsame
-  Grundlagen dürfen als Vergleichshinweis dienen, wenn sie bereits im Scope
-  liegen; daraus werden jetzt keine AP2-Kapitel gebaut.
+- Ein AP2-Hinweis entscheidet nicht allein über den Lernfeld-Scope. Für die
+  Aufnahme in LF1–LF9 zählt die KMK-Kompetenz; die Prüfungszuordnung wird davon
+  getrennt geführt, damit AP2-Spezialtiefe den Lernweg nicht aufbläht.
 
 ## 4. Quellenhierarchie
 
@@ -98,7 +99,7 @@ Quellen werden nach Rolle getrennt; keine Rolle ersetzt eine andere:
 | Prüfungsrealität | legal erworbene Aufgaben, U-Form/IHK-nahe Trainer, Material in `material/` | Aufgabenform, Tiefe, Timing — **nie** Faktenanker |
 
 Ohne passende Ausbildungsquelle **und** fachliche Quelle darf ein Kapitel nicht
-auf `ready`/`final` stehen. Bei Recht, Sicherheit, Normen, Protokollen und
+auf `geprueft` stehen. Bei Recht, Sicherheit, Normen, Protokollen und
 Zahlenwerten hat die Primärquelle Vorrang vor jeder Lernseite.
 
 ## 5. Arbeitsablauf pro Kapitel
@@ -109,7 +110,8 @@ nächste beginnt („mach weiter" setzt am dokumentierten offenen Punkt an).
 
 ### Schritt 0 — Scope klären
 
-- Steht das Thema in der Themenlandkarte (`INHALTSVERZEICHNIS_JAHR_1_2.md`)?
+- Welchen IDs in `src/content/catalog/scope/` dient das Kapitel? Der lesbare
+  Stand steht in `SCOPE_STATUS.md`.
 - `Bezug`: `Lehrplan` / `Pruefung` / `Grundlage` / `Extra` / `Raus`
 - `Form`: `Kapitel` / `Abschnitt` / `Box` / `Glossar` / `Raus`
 - Überschneidet es sich mit einem anderen Kapitel?
@@ -162,7 +164,9 @@ Schreibregeln:
 - Quellen: neue Quellen in `src/content/quellen/sourceBank.ts` anlegen und ihre
   IDs im Feld `quellen` des Kapitelkatalogs eintragen. Automatische Tag-Treffer
   oder pauschale Fallbackquellen zählen nicht als Beleg.
-- Mapping: Lernfeld/Jahr/AP1/Bezug/Form in `CURRICULUM_MAPPING.md` pflegen.
+- Mapping: Kapitelzuordnung in `src/content/catalog/scope/` pflegen und
+  `SCOPE_STATUS.md` neu erzeugen. Historische Mapping-Dokumente sind kein
+  Laufzeitstatus.
 
 ### Schritt 4 — Freigabecheck
 
@@ -177,7 +181,7 @@ Schreibregeln:
 | echte Umlaute im Fließtext | ja |
 | Technische Checks (Abschnitt 8) | exit 0 |
 | Audit in `AP1_AUDIT_MATRIX.md` dokumentiert | ja |
-| `REVIEW_LOG.md` aktualisiert | bei `final` |
+| `REVIEW_LOG.md` aktualisiert | bei `geprueft` |
 | Arbeitsstand + Haken in `QUEUE.md` aktualisiert | ja |
 
 ### Audit-Gates (für den Inhaltsaudit-Status)
@@ -185,7 +189,7 @@ Schreibregeln:
 Ein Kapitel wird erst `geprüft`, wenn dokumentiert sind: **Scope-Gate**
 (warum relevant), **Quellen-Gate**, **Fakten-Gate** (5–10 harte Aussagen gegen
 Quellen), **Didaktik-Gate** (ohne Vorwissen verständlich), **Aufgaben-Gate**
-(welcher AP1-nahe Aufgabentyp ist danach lösbar), **Umfangs-Gate**
+(welcher prüfungs- oder klausurnahe Aufgabentyp ist danach lösbar), **Umfangs-Gate**
 (Pflicht/Kann/Extra/Raus), **Technik-Gate**. Kein Gate darf durch „klingt
 plausibel" ersetzt werden. Beleg-Format: siehe `AP1_AUDIT_MATRIX.md`.
 
@@ -233,16 +237,18 @@ npm run build           # tsc + vite
 npm run check           # Katalog + Tests + Lint + Produktions-Build
 npm run build:single    # lokale Offline-Ausgabe
 npm run emit:status     # AP1_STATUS.md neu generieren (nach Statusänderungen)
+npm run emit:scope      # SCOPE_STATUS.md neu generieren (nach Scope-Änderungen)
 npm run validate:release # strenges Gesamtfreigabe-Gate
 ```
 
 - `scripts/validate-catalog.mjs` prüft Schema, Slugs, URLs, Voraussetzungen,
-  MDX-Zuordnung, Quellen-IDs, Audit-Mindestquellen und LF-Mindestabdeckung.
+  MDX-Zuordnung, Quellen-IDs, Audit-Mindestquellen, LF-Mindestabdeckung und die
+  atomare Scope-Matrix einschließlich öffentlich belegter Katalog-Deltas.
 - Normale Entwicklungschecks dürfen bekannte, ausdrücklich ausgegebene
   Qualitätslücken enthalten. Eine Gesamtfreigabe ist nur mit erfolgreichem
   `npm run validate:release` zulässig.
 - Die GitHub-Actions-Pipeline führt Katalogprüfung, Tests, Lint, beide Builds
-  und einen Driftcheck für `AP1_STATUS.md` aus.
+  und einen Driftcheck für `AP1_STATUS.md` und `SCOPE_STATUS.md` aus.
 
 ## 9. Material-Regeln (Lernzettel, Probeprüfungen)
 

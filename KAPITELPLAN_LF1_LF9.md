@@ -40,7 +40,10 @@ Fachquelle fuer technische, rechtliche oder normative Aussagen.
 
 ### 2.2 Lokale Lern-PDFs
 
-Diese Kerndokumente bilden den bevorzugten lokalen Suchpool:
+Die folgenden Pfade stammen aus dem beschriebenen lokalen Quellenarchiv und
+dienen als Suchhinweise. Sie sind in diesem Repository nicht enthalten und
+müssen vor jeder Verwendung tatsächlich vorhanden sein; Dateiname, Seitenzahl
+und Inhalt sind sonst nicht als belegt zu behandeln:
 
 - `../Lerndateien/Lernkatalog AP1.pdf` - 69 Seiten
 - `../Lerndateien/Pruefungsvorbereitung (1).pdf` - 165 Seiten
@@ -48,13 +51,14 @@ Diese Kerndokumente bilden den bevorzugten lokalen Suchpool:
 - `../Lerndateien/Informationen/FISI AP1 & AP2/Pruefungskatalog/Fachinformatiker Pruefungskatalog 2025.pdf` - 11 Seiten
 - `../Lerndateien/Informationen/Pruefungen_AP2/DIHK-Umsetzungshilfe_IT-Berufe (Dezember 2022).pdf` - 65 Seiten
 
-Die echten Dateinamen enthalten teilweise Umlaute. Die Schreibweise oben dient
-nur als robuste Suchhilfe. Der Chat sucht gezielt per Textindex, Textextraktion
-oder OCR und liest nur relevante Trefferseiten, nicht jedes PDF vollstaendig.
-Im Arbeitsnachweis werden Originalpfad und verwendete Seiten genannt.
+Die echten Dateinamen können Umlaute enthalten. Die Schreibweise oben dient
+nur als robuste Suchhilfe. Sobald das Archiv im jeweiligen Workspace verfügbar
+ist, sucht der Chat gezielt per Textindex, Textextraktion oder OCR und liest nur
+relevante Trefferseiten, nicht jedes PDF vollständig. Im Arbeitsnachweis werden
+der überprüfte Originalpfad und die tatsächlich verwendeten Seiten genannt.
 
-Im Archiv liegen insgesamt 719 PDFs. Pro Kapitel werden nur passende PDFs
-verwendet. Weitere Dateien werden nur herangezogen, wenn Dateiname,
+Pro Kapitel werden nur passende PDFs verwendet. Weitere Dateien werden nur
+herangezogen, wenn Dateiname,
 Inhaltsverzeichnis oder Textsuche einen direkten Themenbezug zeigen.
 Lernzettel und alte Aufgaben liefern Themen, typische Stolperstellen und
 Aufgabenformen. Jede Sachbehauptung daraus braucht zusaetzlich eine aktuelle,
@@ -331,7 +335,8 @@ Ein Kapitelpaket ist erst fertig, wenn alle folgenden Punkte erfuellt sind:
 - Layout, Design-Tokens und allgemeine Routing- oder Navigationsarchitektur
   bleiben unveraendert. Es findet kein themenfremder Umbau statt.
 - `npm run check` endet mit Exitcode 0.
-- `npm run build:single` und `npm run emit:status` enden mit Exitcode 0.
+- `npm run build:single`, `npm run emit:status` und bei Scope-Änderungen
+  `npm run emit:scope` enden mit Exitcode 0.
 - Der Chat nennt geaenderte Dateien, zentrale Quellen, verwendete PDF-Seiten,
   ausgefuehrte Checks und den naechsten offenen Eintrag.
 

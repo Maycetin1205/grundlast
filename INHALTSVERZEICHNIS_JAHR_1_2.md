@@ -1,8 +1,12 @@
 # Inhaltsverzeichnis Jahr 1/2
 
+> **Historische Planungsdatei.** Der aktuelle verbindliche Scope liegt in
+> `src/content/catalog/scope/`; die lesbare Ausgabe ist `SCOPE_STATUS.md`.
+> Aussagen und Tiefenstufen weiter unten können veraltet sein.
+
 Stand: 2026-06-04
 
-Diese Datei ist die zentrale Themenlandkarte fuer Grundlast. Sie beantwortet:
+Diese Datei war die zentrale Themenlandkarte fuer Grundlast. Sie beantwortete:
 
 - Welche Themen behandeln wir?
 - In welchem Umfang behandeln wir sie?

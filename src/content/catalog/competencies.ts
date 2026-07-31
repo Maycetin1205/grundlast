@@ -1,3 +1,5 @@
+import { ap1ScopeItems } from './scope/ap1.ts'
+
 export interface Ap1Competency {
   id: string
   titel: string
@@ -5,12 +7,17 @@ export interface Ap1Competency {
   quellen: string[]
 }
 
-const officialSources = ['fiausbv', 'kmk-rahmenlehrplan', 'bibb-fachinformatiker', 'ihk-aka-pruefungs-news-2024']
+const titles: Record<string, string> = {
+  'ap1-kundenbedarf': 'Kundenbedarfe ermitteln',
+  'ap1-auswahl-beschaffung': 'Hard- und Software auswählen',
+  'ap1-konfiguration-test': 'Arbeitsplatz konfigurieren und testen',
+  'ap1-einweisung': 'Nutzung einweisen',
+  'ap1-kontrolle-protokoll': 'Leistung kontrollieren und protokollieren',
+}
 
-export const ap1Competencies: Ap1Competency[] = [
-  { id: 'ap1-kundenbedarf', titel: 'Kundenbedarfe ermitteln', beschreibung: 'Kundenbedarfe zielgruppengerecht ermitteln.', quellen: officialSources },
-  { id: 'ap1-auswahl-beschaffung', titel: 'Hard- und Software auswählen', beschreibung: 'Hard- und Software auswählen und ihre Beschaffung einleiten.', quellen: officialSources },
-  { id: 'ap1-konfiguration-test', titel: 'Arbeitsplatz konfigurieren und testen', beschreibung: 'Einen IT-Arbeitsplatz konfigurieren und testen und dabei Datenschutz, IT-Sicherheit und Qualitätssicherung einhalten.', quellen: officialSources },
-  { id: 'ap1-einweisung', titel: 'Nutzung einweisen', beschreibung: 'Kundinnen und Kunden in die Nutzung des Arbeitsplatzes einweisen.', quellen: officialSources },
-  { id: 'ap1-kontrolle-protokoll', titel: 'Leistung kontrollieren und protokollieren', beschreibung: 'Die Leistungserbringung kontrollieren und protokollieren.', quellen: officialSources },
-]
+export const ap1Competencies: Ap1Competency[] = ap1ScopeItems.map((item) => ({
+  id: item.id,
+  titel: titles[item.id],
+  beschreibung: item.outcome,
+  quellen: Array.from(new Set(item.sourceRefs.map((source) => source.sourceId))),
+}))

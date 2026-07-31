@@ -1,6 +1,22 @@
 import type { Chapter } from '../types'
+import { plannedChapter } from './planned.ts'
 
 export const lf4 = [
+  plannedChapter({
+    slug: 'schutzbedarf-risikoanalyse',
+    titel: 'Schutzbedarf und Risikoanalyse durchführen',
+    primaryLf: 4,
+    relatedLfs: [9],
+    lfReihenfolge: 2,
+    themen: ['sicherheit'],
+    ap1Kompetenzen: ['ap1-konfiguration-test'],
+    ap1Relevanz: 'hoch',
+    voraussetzungen: ['schutzziele'],
+    lernzeit: 40,
+    aufgabenfamilien: ['anwenden', 'begruenden'],
+    q1Scope: ['kmk-rahmenlehrplan', 'fiausbv'],
+    route: { bereich: 'sicherheit', modul: 'schutzbedarf' },
+  }),
   {
     "slug": "schutzziele",
     "titel": "Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz",
@@ -39,7 +55,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 2,
+    "lfReihenfolge": 3,
     "themen": [
       "sicherheit"
     ],
@@ -72,7 +88,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 3,
+    "lfReihenfolge": 4,
     "themen": [
       "sicherheit"
     ],
@@ -105,7 +121,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 4,
+    "lfReihenfolge": 5,
     "themen": [
       "sicherheit"
     ],
@@ -138,7 +154,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 5,
+    "lfReihenfolge": 6,
     "themen": [
       "sicherheit"
     ],
@@ -171,7 +187,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 6,
+    "lfReihenfolge": 7,
     "themen": [
       "netzwerke"
     ],
@@ -214,7 +230,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 7,
+    "lfReihenfolge": 8,
     "themen": [
       "sicherheit"
     ],
@@ -247,7 +263,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 8,
+    "lfReihenfolge": 9,
     "themen": [
       "sicherheit"
     ],
@@ -280,7 +296,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 9,
+    "lfReihenfolge": 10,
     "themen": [
       "sicherheit"
     ],
@@ -313,7 +329,7 @@ export const lf4 = [
     "relatedLfs": [
       9
     ],
-    "lfReihenfolge": 10,
+    "lfReihenfolge": 11,
     "themen": [
       "sicherheit"
     ],

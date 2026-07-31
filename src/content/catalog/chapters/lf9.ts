@@ -1,25 +1,87 @@
 import type { Chapter } from '../types'
+import { plannedChapter } from './planned.ts'
 
 export const lf9 = [
+  plannedChapter({
+    slug: 'netzwerkdienste-zusammenspiel',
+    titel: 'Netzwerkdienste im Zusammenspiel',
+    primaryLf: 9,
+    relatedLfs: [3],
+    lfReihenfolge: 1,
+    themen: ['netzwerke'],
+    ap1Kompetenzen: [],
+    ap1Relevanz: 'raus',
+    voraussetzungen: ['netzwerkkonfiguration', 'tcp-udp'],
+    lernzeit: 40,
+    aufgabenfamilien: ['zuordnen', 'begruenden'],
+    route: { bereich: 'netzwerke', modul: 'dienste' },
+  }),
+  plannedChapter({
+    slug: 'serverdienste-bereitstellen',
+    titel: 'Serverdienste bereitstellen und prüfen',
+    primaryLf: 9,
+    relatedLfs: [3, 6],
+    lfReihenfolge: 2,
+    themen: ['netzwerke', 'betriebssysteme'],
+    ap1Kompetenzen: [],
+    ap1Relevanz: 'raus',
+    voraussetzungen: ['netzwerkdienste-zusammenspiel'],
+    lernzeit: 45,
+    aufgabenfamilien: ['anwenden', 'diagnostizieren'],
+    route: { bereich: 'netzwerke', modul: 'dienste' },
+  }),
+  plannedChapter({
+    slug: 'routing-nat-firewallregeln',
+    titel: 'Routing, NAT und Firewallregeln',
+    primaryLf: 9,
+    relatedLfs: [3, 4],
+    lfReihenfolge: 3,
+    themen: ['netzwerke', 'sicherheit'],
+    ap1Kompetenzen: [],
+    ap1Relevanz: 'raus',
+    voraussetzungen: ['ipv4-subnetting', 'port-forwarding', 'firewall-dmz'],
+    lernzeit: 45,
+    aufgabenfamilien: ['anwenden', 'diagnostizieren'],
+    route: { bereich: 'netzwerke', modul: 'routing-segmentierung' },
+  }),
+  plannedChapter({
+    slug: 'vlan-segmentierung',
+    titel: 'VLAN und Netzwerksegmentierung',
+    primaryLf: 9,
+    relatedLfs: [3, 4],
+    lfReihenfolge: 4,
+    themen: ['netzwerke', 'sicherheit'],
+    ap1Kompetenzen: [],
+    ap1Relevanz: 'raus',
+    voraussetzungen: ['routing-nat-firewallregeln'],
+    lernzeit: 40,
+    aufgabenfamilien: ['zuordnen', 'begruenden'],
+    route: { bereich: 'netzwerke', modul: 'routing-segmentierung' },
+  }),
   {
     "slug": "imap-pop3-smtp",
     "titel": "E-Mail-Protokolle (IMAP, POP3, SMTP)",
     "primaryLf": 9,
     "relatedLfs": [],
-    "lfReihenfolge": 1,
+    "lfReihenfolge": 8,
     "themen": [
       "netzwerke"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "unklar",
-    "voraussetzungen": [],
+    "ap1Relevanz": "raus",
+    "voraussetzungen": [
+      "netzwerkdienste-zusammenspiel",
+      "pki-zertifikate"
+    ],
     "lernzeit": 12,
     "aufgabenfamilien": [
       "zuordnen"
     ],
     "inhaltsstatus": "ausgearbeitet",
     "quellen": {
-      "q1_scope": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan"
+      ],
       "q2_fachquelle": [],
       "q3_pruefungsrealitaet": []
     },
@@ -33,14 +95,14 @@ export const lf9 = [
     "titel": "Linux-Dateiberechtigungen (chmod, rwx)",
     "primaryLf": 9,
     "relatedLfs": [],
-    "lfReihenfolge": 2,
+    "lfReihenfolge": 5,
     "themen": [
       "betriebssysteme"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "unklar",
+    "ap1Relevanz": "raus",
     "voraussetzungen": [
-      "imap-pop3-smtp"
+      "dateisysteme"
     ],
     "lernzeit": 18,
     "aufgabenfamilien": [
@@ -48,7 +110,9 @@ export const lf9 = [
     ],
     "inhaltsstatus": "ausgearbeitet",
     "quellen": {
-      "q1_scope": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan"
+      ],
       "q2_fachquelle": [
         "posix-chmod",
         "gnu-coreutils-chmod",
@@ -66,12 +130,12 @@ export const lf9 = [
     "titel": "SSH vs. Telnet",
     "primaryLf": 9,
     "relatedLfs": [],
-    "lfReihenfolge": 3,
+    "lfReihenfolge": 6,
     "themen": [
       "sicherheit"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "unklar",
+    "ap1Relevanz": "raus",
     "voraussetzungen": [
       "linux-chmod"
     ],
@@ -81,7 +145,9 @@ export const lf9 = [
     ],
     "inhaltsstatus": "geplant",
     "quellen": {
-      "q1_scope": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan"
+      ],
       "q2_fachquelle": [],
       "q3_pruefungsrealitaet": []
     },
@@ -95,14 +161,14 @@ export const lf9 = [
     "titel": "MTBF & MTTF – Ausfallwahrscheinlichkeit",
     "primaryLf": 9,
     "relatedLfs": [],
-    "lfReihenfolge": 4,
+    "lfReihenfolge": 7,
     "themen": [
       "sicherheit"
     ],
     "ap1Kompetenzen": [],
-    "ap1Relevanz": "unklar",
+    "ap1Relevanz": "raus",
     "voraussetzungen": [
-      "ssh-telnet"
+      "serverdienste-bereitstellen"
     ],
     "lernzeit": 12,
     "aufgabenfamilien": [
@@ -110,7 +176,9 @@ export const lf9 = [
     ],
     "inhaltsstatus": "ausgearbeitet",
     "quellen": {
-      "q1_scope": [],
+      "q1_scope": [
+        "kmk-rahmenlehrplan"
+      ],
       "q2_fachquelle": [],
       "q3_pruefungsrealitaet": []
     },

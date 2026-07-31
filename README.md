@@ -20,12 +20,14 @@ Die Anwendung zeigt diesen Status sichtbar an. Persönliche Selbsteinschätzung
 und fachlicher Inhaltsstatus sind getrennte Werte.
 
 Der aktuelle, aus dem Katalog erzeugte Stand steht in `AP1_STATUS.md`.
+Die atomare Zuordnung zu KMK, FIAusbV und AP1 steht in `SCOPE_STATUS.md`.
 
 ## Aktive Architektur
 
 | Bereich | Kanonische Quelle |
 |---|---|
 | Kapitel, Reihenfolge, Lernfelder, AP1-Zuordnung, Quellen und Status | `src/content/catalog/` |
+| atomare Pflichtkompetenzen und Prüfungskatalog-Deltas | `src/content/catalog/scope/` |
 | Lerntexte | `src/content/lessons/*.mdx` |
 | zentrale Quellenbank | `src/content/quellen/sourceBank.ts` |
 | Glossar | `src/content/glossar/` |
@@ -52,6 +54,7 @@ Vollständiger technischer Check:
 npm run check
 npm run build:single
 npm run emit:status
+npm run emit:scope
 ```
 
 `npm run validate:catalog` prüft die strukturelle Integrität und meldet

@@ -3,6 +3,7 @@ import { sourceBank } from '../src/content/quellen/sourceBank.ts'
 import { ap1Competencies } from '../src/content/catalog/competencies.ts'
 import { topics } from '../src/content/catalog/topics.ts'
 import { learningFieldExpectations } from '../src/content/catalog/curriculumExpectations.ts'
+import { examCatalogDeltas, examCatalogEvidence, scopeItems } from '../src/content/catalog/scope/index.ts'
 import { validateCatalog } from '../src/lib/learning/validation.ts'
 
 const chapterModules = await Promise.all(
@@ -22,6 +23,9 @@ const validation = validateCatalog({
   sourceIds: new Set(sourceBank.map((source) => source.id)),
   mdxSlugs,
   expectations: learningFieldExpectations,
+  scopeItems,
+  examCatalogDeltas,
+  examCatalogComplete: examCatalogEvidence.complete,
 })
 
 const statusLabels = {
@@ -50,6 +54,8 @@ const lines = [
   `- Geplant: **${count('geplant')}**`,
   `- Gesperrt: **${count('gesperrt')}**`,
   `- Quellenabdeckung: Q1 **${validation.counts.sourceCoverage.q1}**, Q2 **${validation.counts.sourceCoverage.q2}**, Q3 **${validation.counts.sourceCoverage.q3}**`,
+  `- Scope-Pakete mit allen Lerntexten: **${validation.counts.scopeCoverage.available}/${validation.counts.scopeCoverage.total}**`,
+  `- Scope-Pakete vollständig über geprüfte Kapitel belegt: **${validation.counts.scopeCoverage.verified}/${validation.counts.scopeCoverage.total}**`,
   `- Release-Gate: **${validation.releaseReady ? 'bestanden' : 'nicht bestanden'}**`,
   '',
   '## Offene Qualitätsbefunde',
