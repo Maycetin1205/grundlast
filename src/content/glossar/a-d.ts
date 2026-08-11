@@ -535,6 +535,19 @@ export const aBisD: GlossarEintrag[] = [
       },
     },
   {
+      id: 'cache',
+      begriff: 'Cache',
+      kurzdefinition: 'Kleiner, sehr schneller Zwischenspeicher, der haeufig gebrauchte Daten naeher an die CPU holt.',
+      definition: [
+        'Ein Cache puffert Daten, die gerade oder gleich wieder gebraucht werden, damit die CPU nicht auf den viel langsameren Arbeitsspeicher warten muss. Moderne Prozessoren haben mehrere Stufen: L1 liegt direkt im Kern und ist am schnellsten, L2 ist groesser, L3 teilen sich meist alle Kerne.',
+        'Die Regel lautet: je naeher am Kern, desto schneller und desto kleiner. Der Cache ist kein zusaetzlicher Arbeitsspeicher, sondern eine Kopie ausgewaehlter Inhalte. Findet die CPU ein Datum im Cache, spricht man von einem Treffer (Cache Hit), sonst von einem Fehlgriff (Cache Miss).',
+      ],
+      kapitel: {
+        titel: 'CPU, RAM und Speicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
+      },
+    },
+  {
       id: 'carrier-grade-nat',
       begriff: 'Carrier-Grade NAT',
       kurzdefinition: 'Carrier-Grade NAT ist NAT beim Provider, bei dem mehrere Kunden oeffentliche IPv4-Adressen teilen.',

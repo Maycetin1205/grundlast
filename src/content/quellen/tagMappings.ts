@@ -9,7 +9,7 @@ export const slugTags: Record<string, string[]> = {
   'bit-byte': ['ordnung', 'bit', 'byte', 'binaer', 'ascii', 'praefix', 'datenmenge', 'zeichenkodierung'],
   'zahlensysteme': ['ordnung', 'bit', 'byte', 'binaer', 'hex', 'hexadezimal', 'oktal', 'dezimal', 'stellenwert', 'nibble', 'chmod', 'dateirechte', 'mac-adresse', 'eui-48', 'cidr', 'subnetting', 'farbe', 'css', 'rgb', 'python', 'javascript', 'ecmascript', 'literal'],
   'prefixe': ['ordnung', 'bit', 'byte', 'binaer', 'iec', 'praefix', 'datenmenge', 'si', 'dezimal'],
-  'cpu-ram-speicher': ['ordnung'],
+  'cpu-ram-speicher': ['ordnung', 'cpu', 'ram', 'ssd', 'hdd', 'cache', 'takt', 'ddr', 'nvme', 'pcie', 'speicher', 'speicherhierarchie'],
   'hardware-schnittstellen': ['ordnung', 'sicherheit', 'ergonomie'],
   'raid-systeme': ['sicherheit', 'backup'],
   'usv-systeme': ['sicherheit', 'verfuegbarkeit'],

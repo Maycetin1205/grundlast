@@ -1,18 +1,35 @@
 ﻿# CPU, RAM und Speicher
 
+<MetaBar
+  lernfeld="LF 2 - Arbeitsplätze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT · 5/5"
+/>
+
 ## Worum geht's
 
 Du lernst die drei wichtigsten Hardwarekomponenten eines Computers kennen:
-CPU (Prozessor), RAM (Arbeitsspeicher) und Massenspeicher (HDD/SSD).
+<Term id="cpu">CPU</Term> (Prozessor), <Term id="ram">RAM</Term> (Arbeitsspeicher)
+und Massenspeicher (<Term id="hdd">HDD</Term>/<Term id="ssd">SSD</Term>).
 Du kannst erklären, was jede Komponente tut, wie sie zusammenspielen
 und was die wichtigsten Kennwerte sind.
-Diese Grundlagen kommen in der Prüfung regelmäßig vor.
+
+Diese Grundlagen kommen in der Prüfung regelmäßig vor — meistens nicht als
+Definitionsfrage, sondern eingebettet in eine Beratungssituation: Ein Kunde
+beschreibt seine Arbeit, du sollst passende Hardware vorschlagen **und
+begründen**. Die Begründung bringt die Punkte, nicht die Zahl.
 
 ---
 
 ## Die Analogie: Küche
 
-Stell dir einen Computer wie eine Küche vor:
+<Analogie>
+Stell dir einen Computer wie eine Küche vor: Der **Koch** ist die CPU, die
+**Arbeitsfläche** ist der Arbeitsspeicher und der **Vorratsschrank** ist die
+Festplatte. Zum Kochen holst du Zutaten aus dem Schrank auf die Arbeitsfläche —
+denn direkt aus dem Schrank heraus kann niemand schneiden. Ist die Arbeitsfläche
+zu klein, räumst du ständig hin und her, und das Kochen dauert länger, obwohl
+der Koch gleich schnell geblieben ist.
+</Analogie>
 
 | Komponente | Küchen-Analogie | Was sie tut |
 |---|---|---|
@@ -39,16 +56,22 @@ Die CPU ist das **Gehirn** des Computers — sie führt alle Berechnungen durch.
 
 | Kennwert | Bedeutung | Beispiel |
 |---|---|---|
-| **Taktfrequenz** | Wie viele Operationen pro Sekunde — gemessen in GHz | 3,5 GHz = 3,5 Milliarden Takte pro Sekunde |
-| **Kerne (Cores)** | Wie viele Aufgaben gleichzeitig bearbeitet werden können | 8 Kerne = bis zu 8 Aufgaben parallel |
-| **Threads** | Virtuelle Kerne — erlauben jedem Kern, zwei Aufgaben scheinbar gleichzeitig zu bearbeiten | 8 Kerne, 16 Threads |
-| **Cache** | Kleiner, ultraschneller Zwischenspeicher direkt auf der CPU | L1, L2, L3 Cache (L1 am schnellsten, L3 am größten) |
+| **<Term id="taktfrequenz">Taktfrequenz</Term>** | Wie viele Arbeitstakte pro Sekunde — gemessen in GHz | 3,5 GHz = 3,5 Milliarden Takte pro Sekunde |
+| **<Term id="prozessorkern">Kerne (Cores)</Term>** | Wie viele Aufgaben echt gleichzeitig bearbeitet werden können | 8 Kerne = bis zu 8 Aufgaben parallel |
+| **<Term id="thread">Threads</Term>** | Ausführungsstränge — erlauben jedem Kern, zwei Stränge verschränkt zu bearbeiten | 8 Kerne, 16 Threads |
+| **<Term id="cache">Cache</Term>** | Kleiner, ultraschneller Zwischenspeicher direkt auf der CPU | L1, L2, L3 Cache (L1 am schnellsten, L3 am größten) |
 
 **Was ist ein GHz?**
 - **Hz** (Hertz) = 1 Takt pro Sekunde
 - **MHz** = 1 Million Takte pro Sekunde (Mega = 10⁶)
 - **GHz** = 1 Milliarde Takte pro Sekunde (Giga = 10⁹)
-- 3,5 GHz bedeutet: Die CPU kann 3.500.000.000 (3,5 Milliarden) einfache Operationen pro Sekunde ausführen.
+- 3,5 GHz bedeutet: Die CPU durchläuft 3.500.000.000 (3,5 Milliarden) Takte pro Sekunde.
+
+**Achtung — häufiger Denkfehler:** Ein Takt ist nicht dasselbe wie eine Operation.
+Je nach Architektur und Befehl braucht ein Befehl mehrere Takte, oder es werden
+mehrere Befehle pro Takt fertig. Deshalb sind GHz-Angaben nur **innerhalb derselben
+CPU-Generation** vergleichbar. Eine neuere CPU mit 3,0 GHz kann schneller sein als
+eine ältere mit 3,5 GHz.
 
 ### Kerne und Threads erklärt
 
@@ -86,7 +109,7 @@ Der RAM ist der **kurzfristige** Speicher — hier liegen alle Daten, die gerade
 
 | Eigenschaft | Bedeutung |
 |---|---|
-| **Flüchtig (volatil)** | Daten gehen beim Ausschalten verloren! |
+| **<Term id="volatil">Flüchtig (volatil)</Term>** | Daten gehen beim Ausschalten verloren! |
 | **Schnell** | Viel schneller als SSD/HDD — Zugriff in Nanosekunden |
 | **Begrenzt** | Typisch: 8 GB, 16 GB, 32 GB, 64 GB |
 | **Wahlfreier Zugriff** | Jede Speicherstelle kann direkt angesprochen werden (daher „Random Access") |
@@ -96,10 +119,14 @@ RAM speichert Daten als elektrische Ladungen in winzigen Kondensatoren. Wenn der
 
 ### Was passiert bei zu wenig RAM?
 
+Der Fachbegriff dafür ist <Term id="swapping">Swapping</Term>. Er ist prüfungsrelevant,
+weil er die typische Beratungsantwort trägt: „Der Rechner ist langsam" heißt oft nicht
+„zu schwache CPU", sondern „zu wenig Arbeitsspeicher".
+
 ```
 Viele Programme offen → RAM voll
     ↓
-Betriebssystem lagert Daten auf die SSD/HDD aus (= „Swapping" / „Auslagerung")
+Betriebssystem lagert Speicherseiten auf die SSD/HDD aus (= Swapping)
     ↓
 SSD/HDD ist VIEL langsamer als RAM
     ↓
@@ -178,11 +205,17 @@ SSD: Elektronischer Zugriff → jede Speicherstelle sofort erreichbar, keine War
 | Anschluss | Geschwindigkeit | Erklärung |
 |---|---|---|
 | **SATA-SSD** | ~500 MB/s | Nutzt denselben Anschluss wie HDDs — wird durch den Anschluss gebremst |
-| **NVMe-SSD** | ~3.000–7.000 MB/s | Nutzt den PCIe-Bus direkt (M.2-Steckplatz) — viel schneller |
+| **<Term id="nvme">NVMe-SSD</Term>** | ~3.000–7.000 MB/s | Nutzt den <Term id="pcie">PCIe</Term>-Bus direkt (M.2-Steckplatz) — viel schneller |
 
 ---
 
 ## Die Speicherhierarchie
+
+Alle Speicherarten zusammen bilden eine Pyramide. Ganz oben sitzen die
+<Term id="register">Register</Term> direkt im Rechenwerk — winzig und blitzschnell.
+Ganz unten liegt der Massenspeicher — riesig und langsam. Die CPU kann **nur** auf
+Werte rechnen, die in Registern stehen; alles andere muss vorher nach oben
+durchgereicht werden.
 
 Vom schnellsten zum langsamsten Speicher:
 
@@ -228,3 +261,100 @@ Eine HDD braucht also ca. 5.000.000 ns (5 ms) für einen Zugriff — RAM nur ca.
 
 ---
 
+## Typische Aufgabe mit Musterlösung
+
+<Beispiel titel="Beratungsfall: Arbeitsplatz für Videoschnitt">
+Eine Mediengestalterin klagt, ihr drei Jahre alter Rechner sei „beim Schneiden
+zäh". Ausstattung: 4-Kern-CPU mit 3,2 GHz, 8 GB DDR4-RAM, 1-TB-SATA-SSD.
+Beim Arbeiten meldet der Task-Manager 97 % Speicherauslastung, die CPU-Last
+liegt bei 45 %. Empfehlen Sie eine Maßnahme und begründen Sie sie.
+</Beispiel>
+
+**Lösungsweg:**
+
+<StepByStep titel="Vom Messwert zur begründeten Empfehlung">
+  <Schritt titel="Engpass identifizieren">
+    Zwei Zahlen stehen gegeneinander: RAM bei 97 %, CPU bei 45 %. Der Flaschenhals
+    ist der Speicher, nicht der Prozessor. Eine schnellere CPU würde hier kaum
+    etwas bringen — sie wartet ohnehin.
+  </Schritt>
+  <Schritt titel="Wirkung erklären">
+    Bei 97 % Belegung lagert das Betriebssystem laufend Speicherseiten auf die SSD
+    aus. Dieses Swapping kostet Größenordnungen: RAM antwortet in rund 50 ns, eine
+    SATA-SSD in rund 100 000 ns. Genau das erlebt die Kundin als „zäh".
+  </Schritt>
+  <Schritt titel="Maßnahme dimensionieren">
+    Videoschnitt gilt als speicherhungrig; 32 GB sind hier der übliche Richtwert.
+    Prüfen: Wie viele Steckplätze hat das Mainboard, wie viele sind belegt, und
+    welche maximale Kapazität unterstützt es? Neue Riegel müssen DDR4 sein — DDR5
+    passt mechanisch nicht.
+  </Schritt>
+  <Ergebnis>
+    Aufrüstung von 8 GB auf 32 GB DDR4. Begründung: Der Engpass liegt nachweislich
+    beim Arbeitsspeicher (97 % gegen 45 % CPU-Last), das Auslagern auf die SSD ist
+    rund zweitausendmal langsamer als ein RAM-Zugriff. Ein CPU-Tausch wäre teurer
+    und würde den gemessenen Engpass nicht beheben.
+  </Ergebnis>
+</StepByStep>
+
+<Tipp titel="Was in solchen Aufgaben die Punkte bringt">
+Nicht die Empfehlung, sondern die **Begründung mit Bezug auf die genannten Zahlen**.
+Wer nur „mehr RAM einbauen" schreibt, bekommt einen Bruchteil der Punkte. Wer
+schreibt „RAM-Auslastung 97 % bei nur 45 % CPU-Last, also ist der Arbeitsspeicher
+der Engpass", hat die Aufgabe verstanden.
+</Tipp>
+
+---
+
+## Was du danach kannst
+
+- **CPU, RAM und Massenspeicher gegeneinander abgrenzen** — nach Aufgabe,
+  Geschwindigkeit, Kapazität und danach, ob der Inhalt einen Stromausfall
+  übersteht.
+- Die **Speicherhierarchie** von den Registern bis zur HDD in der richtigen
+  Reihenfolge aufsagen und begründen, warum schnell immer auch klein und teuer
+  bedeutet.
+- Erklären, warum **RAM volatil** ist und Massenspeicher nicht — und was daraus
+  für ungespeicherte Arbeit folgt.
+- **Swapping** als Symptom für zu wenig Arbeitsspeicher erkennen und den
+  Leistungseinbruch mit dem Geschwindigkeitsunterschied RAM gegen SSD begründen.
+- Die CPU-Kennwerte **Taktfrequenz, Kerne, Threads und Cache** auseinanderhalten
+  und sagen, welcher davon bei welcher Art von Aufgabe überhaupt hilft.
+- Begründen, warum mehr Kerne einem **rein sequenziellen** Programm nichts
+  bringen.
+- **SATA-SSD und NVMe-SSD** unterscheiden und den Unterschied auf den Anschluss
+  zurückführen statt auf den Speicherchip.
+- Erkennen, dass **DDR4 und DDR5** nicht mischbar sind, und das mit der
+  abweichenden Modulgeometrie begründen.
+- Aus gemessenen Werten (CPU-Last gegen Speicherauslastung) den **Engpass eines
+  Systems bestimmen** und eine begründete Aufrüstempfehlung formulieren.
+
+<Quellen
+  quellen={[
+    {
+      label: 'JEDEC - DDR5 SDRAM Standard (JESD79-5)',
+      href: 'https://www.jedec.org/standards-documents/docs/jesd79-5',
+      detail: 'Offizieller Industriestandard für DDR5-Arbeitsspeicher. Legt Signalführung, Spannung und Modulgeometrie fest — die technische Begründung dafür, dass DDR4- und DDR5-Module nicht in denselben Steckplatz passen.'
+    },
+    {
+      label: 'NVM Express - NVMe Base Specification',
+      href: 'https://nvmexpress.org/specifications/',
+      detail: 'Offizielle Spezifikation des NVMe-Protokolls für den direkten Anschluss von Flash-Speicher an PCIe. Erklärt, warum NVMe-SSDs die Bandbreitengrenze von SATA überwinden.'
+    },
+    {
+      label: 'SNIA - Solid State Storage Performance Test Specification',
+      href: 'https://www.snia.org/tech_activities/standards/curr_standards/pts',
+      detail: 'Herstellerneutrale Messvorschrift der Storage Networking Industry Association für SSD-Leistungswerte. Grundlage dafür, dass Durchsatzangaben überhaupt vergleichbar sind.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Lernfeld 2 „Arbeitsplätze nach Kundenwunsch ausstatten" mit der Handlungssituation Hardwareauswahl und Beratung, an der sich der Beratungsfall in diesem Kapitel orientiert.'
+    },
+    {
+      label: 'BIBB - Fachinformatiker/Fachinformatikerin, Umsetzungshilfe',
+      href: 'https://www.bibb.de/dienst/publikationen/de/16661',
+      detail: 'Ordnet die Berufsbildposition zur Bedarfsermittlung und Systemauswahl ein und begründet, warum in der Prüfung die Begründung und nicht die Produktnennung bewertet wird.'
+    },
+  ]}
+/>

@@ -11,7 +11,7 @@ export const hardware: Lernfeld = {
       slug: "komponenten",
       title: "PC-Komponenten",
       lessons: [
-        { slug: "cpu-ram-speicher", title: "CPU, RAM und Speicher", minutes: 18, importance: 5, exam: true, status: "draft" },
+        { slug: "cpu-ram-speicher", title: "CPU, RAM und Speicher", minutes: 18, importance: 5, exam: true, status: "ready" },
       ],
     },
     {

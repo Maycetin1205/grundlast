@@ -665,6 +665,19 @@ export const mBisP: GlossarEintrag[] = [
       },
     },
   {
+      id: 'prozessorkern',
+      begriff: 'Prozessorkern (Core)',
+      kurzdefinition: 'Eigenstaendige Recheneinheit innerhalb einer CPU, die unabhaengig Befehle ausfuehren kann.',
+      definition: [
+        'Eine Mehrkern-CPU enthaelt mehrere vollstaendige Recheneinheiten auf einem Chip. Jeder Kern kann einen eigenen Befehlsstrom abarbeiten, dadurch laufen mehrere Aufgaben echt gleichzeitig statt nur abwechselnd.',
+        'Pruefungsfalle: Mehr Kerne machen ein Programm nur schneller, wenn es sich in parallele Teilaufgaben zerlegen laesst. Ein einzelner, streng sequenzieller Rechenweg profitiert nicht von zusaetzlichen Kernen, sondern nur von hoeherer Taktfrequenz.',
+      ],
+      kapitel: {
+        titel: 'CPU, RAM und Speicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
+      },
+    },
+  {
       id: 'pseudocode',
       begriff: 'Pseudocode',
       kurzdefinition: 'Pseudocode ist eine sprachneutrale, menschenlesbare Schreibweise für Algorithmen.',

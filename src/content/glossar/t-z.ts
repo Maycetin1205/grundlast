@@ -15,6 +15,19 @@ export const tBisZ: GlossarEintrag[] = [
       },
     },
   {
+      id: 'taktfrequenz',
+      begriff: 'Taktfrequenz',
+      kurzdefinition: 'Anzahl der Arbeitstakte einer CPU pro Sekunde, angegeben in Hertz (meist GHz).',
+      definition: [
+        'Der Takt gibt den Rhythmus vor, in dem die CPU Arbeitsschritte ausfuehrt. 3,5 GHz bedeuten 3,5 Milliarden Takte pro Sekunde. Innerhalb eines Taktes wird je nach Befehl und Architektur unterschiedlich viel erledigt.',
+        'Pruefungsfalle: Taktfrequenzen sind nur innerhalb derselben Architektur direkt vergleichbar. Eine neuere CPU mit weniger GHz kann schneller sein, weil sie pro Takt mehr Befehle abarbeitet. Fuer sequenzielle Aufgaben zaehlt der Takt, fuer parallele die Anzahl der Kerne.',
+      ],
+      kapitel: {
+        titel: 'CPU, RAM und Speicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
+      },
+    },
+  {
       id: 'tcp',
       begriff: 'TCP',
       kurzdefinition: 'TCP ist ein verbindungsorientiertes Transportprotokoll mit Zustellkontrolle.',
@@ -363,6 +376,19 @@ export const tBisZ: GlossarEintrag[] = [
       kapitel: {
         titel: 'Vorgehensmodelle (Wasserfall, V-Modell, Agil)',
         href: '/lernen/projekt/projektplanung/vorgehensmodelle',
+      },
+    },
+  {
+      id: 'volatil',
+      begriff: 'Volatil (fluechtig)',
+      kurzdefinition: 'Eigenschaft eines Speichers, seinen Inhalt beim Abschalten der Stromversorgung zu verlieren.',
+      definition: [
+        'RAM speichert Bits als elektrische Ladung in winzigen Kondensatoren, die staendig aufgefrischt werden muessen. Faellt die Spannung weg, entladen sie sich und der Inhalt ist verloren. Solcher Speicher heisst volatil oder fluechtig.',
+        'Massenspeicher wie SSD und HDD ist dagegen nicht volatil: Flash-Zellen und magnetisierte Bereiche behalten ihren Zustand ohne Strom. Genau diese Unterscheidung begruendet, warum ein Rechner beides braucht und warum ungespeicherte Arbeit bei einem Stromausfall weg ist.',
+      ],
+      kapitel: {
+        titel: 'CPU, RAM und Speicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
       },
     },
   {

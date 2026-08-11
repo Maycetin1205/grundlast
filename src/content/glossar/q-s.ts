@@ -80,6 +80,19 @@ export const qBisS: GlossarEintrag[] = [
       },
     },
   {
+      id: 'register',
+      begriff: 'Register',
+      kurzdefinition: 'Kleinster und schnellster Speicher direkt in der CPU, in dem die aktuell bearbeiteten Werte liegen.',
+      definition: [
+        'Register sind wenige Byte grosse Speicherplaetze unmittelbar im Rechenwerk. Die CPU kann nur auf Werte rechnen, die in Registern stehen; alles andere muss vorher aus Cache oder Arbeitsspeicher geladen werden.',
+        'In der Speicherhierarchie stehen Register ganz oben: schnellster Zugriff, kleinste Kapazitaet. Sie sind der Grund, warum Daten staendig zwischen Massenspeicher, RAM, Cache und CPU hin und her wandern.',
+      ],
+      kapitel: {
+        titel: 'CPU, RAM und Speicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
+      },
+    },
+  {
       id: 'restrisiko',
       begriff: 'Restrisiko',
       kurzdefinition: 'Risiko, das nach Umsetzung der Sicherheitsmassnahmen verbleibt und vom Management formell akzeptiert wird.',
@@ -571,6 +584,19 @@ export const qBisS: GlossarEintrag[] = [
       kapitel: {
         titel: 'IPv4 & Subnetting',
         href: '/lernen/netzwerke/adressierung/ipv4-subnetting',
+      },
+    },
+  {
+      id: 'swapping',
+      begriff: 'Swapping (Auslagerung)',
+      kurzdefinition: 'Auslagern von Speicherinhalten aus dem RAM auf den Massenspeicher, wenn der Arbeitsspeicher nicht ausreicht.',
+      definition: [
+        'Reicht der Arbeitsspeicher nicht, verschiebt das Betriebssystem gerade nicht benoetigte Speicherseiten in eine Auslagerungsdatei beziehungsweise Swap-Partition auf SSD oder HDD. Der Platz im RAM wird dadurch frei.',
+        'Weil Massenspeicher um Groessenordnungen langsamer ist als RAM, wird das System dabei spuerbar traege. Staendiges Swapping ist deshalb das klassische Symptom fuer zu wenig Arbeitsspeicher und ein haeufiger Anlass fuer eine Aufruestempfehlung.',
+      ],
+      kapitel: {
+        titel: 'CPU, RAM und Speicher',
+        href: '/lernen/hardware/komponenten/cpu-ram-speicher',
       },
     },
   {
