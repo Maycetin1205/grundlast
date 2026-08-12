@@ -457,6 +457,19 @@ export const eBisH: GlossarEintrag[] = [
       },
     },
   {
+      id: 'hot-spare',
+      begriff: 'Hot Spare',
+      kurzdefinition: 'Reserveplatte, die im RAID-Verbund mitlaeuft und bei einem Ausfall automatisch einspringt.',
+      definition: [
+        'Ein Hot Spare ist eine eingebaute, aber im Normalbetrieb ungenutzte Platte. Faellt eine aktive Platte aus, startet der Controller den Rebuild sofort auf die Reserveplatte, ohne dass jemand das Geraet oeffnen muss.',
+        'Der Nutzen liegt in der verkuerzten Risikozeit: Waehrend eines Rebuilds ist ein RAID 5 ungeschuetzt, ein zweiter Ausfall waere fatal. Je frueher der Rebuild beginnt, desto kuerzer dieses Fenster.',
+      ],
+      kapitel: {
+        titel: 'RAID-Systeme (0, 1, 5, 6, 10)',
+        href: '/lernen/hardware/speichersysteme/raid-systeme',
+      },
+    },
+  {
       id: 'hybrides-it-system',
       begriff: 'Hybrides IT-System',
       kurzdefinition: 'IT-Architektur, die zentrale und dezentrale Anteile bewusst kombiniert.',

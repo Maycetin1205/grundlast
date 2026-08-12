@@ -9,8 +9,11 @@
     "build:single": "tsc -b && vite build --mode single",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:content:strict": "node scripts/validate-content.mjs --strict",
-    "check": "npm run lint && npm run validate:content && npm run build",
-    "check:strict": "npm run lint && npm run validate:content:strict && npm run build",
+    "lernfelder": "node scripts/build-lernfelder.mjs",
+    "lernfelder:check": "node scripts/build-lernfelder.mjs --check",
+    "check:links": "node scripts/check-links.mjs",
+    "check": "npm run lint && npm run validate:content && npm run lernfelder:check && npm run build",
+    "check:strict": "npm run lint && npm run validate:content:strict && npm run lernfelder:check && npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

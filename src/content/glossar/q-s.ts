@@ -93,6 +93,32 @@ export const qBisS: GlossarEintrag[] = [
       },
     },
   {
+      id: 'rebuild',
+      begriff: 'Rebuild (Wiederherstellung)',
+      kurzdefinition: 'Wiederaufbau der Daten einer ausgefallenen Platte auf eine Ersatzplatte im laufenden RAID-Betrieb.',
+      definition: [
+        'Nach dem Tausch einer defekten Platte rekonstruiert der RAID-Controller deren Inhalt: bei Mirroring durch Kopieren, bei Paritaets-Leveln durch Zurueckrechnen aus den verbleibenden Platten und der Paritaet.',
+        'Pruefungsrelevant ist das Risiko waehrend des Rebuilds. Ein RAID 5 hat in dieser Zeit keine Redundanz mehr; ein zweiter Plattenausfall bedeutet Totalverlust. Weil ein Rebuild bei grossen Platten Stunden bis Tage dauert, ist das ein Hauptargument fuer RAID 6 statt RAID 5.',
+      ],
+      kapitel: {
+        titel: 'RAID-Systeme (0, 1, 5, 6, 10)',
+        href: '/lernen/hardware/speichersysteme/raid-systeme',
+      },
+    },
+  {
+      id: 'redundanz',
+      begriff: 'Redundanz',
+      kurzdefinition: 'Bewusst mehrfach vorhandene Komponenten oder Daten, damit ein Einzelausfall den Betrieb nicht stoppt.',
+      definition: [
+        'Redundanz bedeutet, eine Ressource mehrfach vorzuhalten: gespiegelte Platten, zwei Netzteile, zwei Internetanbindungen, ein zweiter Server. Faellt eines aus, uebernimmt das andere.',
+        'Abgrenzung, die in Pruefungen zaehlt: Redundanz schuetzt vor Ausfall, nicht vor Fehlern im Inhalt. Wird eine Datei geloescht oder verschluesselt, passiert das auf allen redundanten Kopien gleichzeitig. Deshalb ersetzt Redundanz niemals eine Datensicherung.',
+      ],
+      kapitel: {
+        titel: 'RAID-Systeme (0, 1, 5, 6, 10)',
+        href: '/lernen/hardware/speichersysteme/raid-systeme',
+      },
+    },
+  {
       id: 'restrisiko',
       begriff: 'Restrisiko',
       kurzdefinition: 'Risiko, das nach Umsetzung der Sicherheitsmassnahmen verbleibt und vom Management formell akzeptiert wird.',
@@ -558,6 +584,19 @@ export const qBisS: GlossarEintrag[] = [
       kapitel: {
         titel: 'Mitarbeitermotivation, Teamphasen und Change',
         href: '/lernen/projekt/service-management/mitarbeitermotivation-teamphasen-change',
+      },
+    },
+  {
+      id: 'striping',
+      begriff: 'Striping (Streifenbildung)',
+      kurzdefinition: 'RAID-Prinzip, bei dem ein Datenstrom in Bloecke zerlegt und reihum auf mehrere Platten verteilt wird.',
+      definition: [
+        'Beim Striping schreibt der Controller Block 1 auf Platte A, Block 2 auf Platte B, Block 3 wieder auf Platte A und so weiter. Weil mehrere Platten gleichzeitig lesen und schreiben, steigt der Durchsatz naeherungsweise mit der Anzahl der Platten.',
+        'Striping allein erzeugt keine Sicherheit, sondern verringert sie: In RAID 0 zerstoert der Ausfall einer einzigen Platte den gesamten Verbund, weil jede Datei ueber alle Platten verteilt liegt. Erst kombiniert mit Spiegelung (RAID 10) oder Paritaet (RAID 5, 6) entsteht Ausfallsicherheit.',
+      ],
+      kapitel: {
+        titel: 'RAID-Systeme (0, 1, 5, 6, 10)',
+        href: '/lernen/hardware/speichersysteme/raid-systeme',
       },
     },
   {

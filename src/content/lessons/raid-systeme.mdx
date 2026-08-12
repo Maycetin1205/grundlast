@@ -1,20 +1,33 @@
 ﻿# RAID-Systeme (0, 1, 5, 6, 10)
 
+<MetaBar
+  lernfeld="LF 2 - Arbeitsplätze nach Kundenwunsch ausstatten"
+  prüfungsrelevanz="PFLICHT · 5/5"
+/>
+
 ## Worum geht's
 
-Du lernst, wie mehrere Festplatten zu einem RAID-Verbund zusammengeschaltet werden — und warum
-das in Firmen Standard ist. In der Prüfung musst du RAID-Level unterscheiden, Kapazitäten ausrechnen
-und wissen: **RAID ist kein Backup.**
+Du lernst, wie mehrere Festplatten zu einem <Term id="raid">RAID</Term>-Verbund
+zusammengeschaltet werden — und warum das in Firmen Standard ist. In der Prüfung
+musst du RAID-Level unterscheiden, Kapazitäten ausrechnen und wissen:
+**RAID ist kein Backup.**
+
+Das ist eine der zuverlässigsten Punktequellen der AP1, weil die Aufgabe fast
+immer dieselbe Form hat: Ein Szenario nennt Plattenanzahl, Plattengröße und eine
+Anforderung („Ausfall einer Platte muss verkraftet werden"), und du sollst ein
+Level auswählen, die nutzbare Kapazität berechnen und die Wahl begründen.
 
 ---
 
 ## Erklärung
 
-**RAID** = **R**edundant **A**rray of **I**ndependent **D**isks  
+**RAID** = **R**edundant **A**rray of **I**ndependent **D**isks
 Übersetzt: Mehrere Festplatten werden zu einem logischen Laufwerk zusammengeschaltet.
 
-Je nach RAID-Level bekommst du entweder mehr **Geschwindigkeit**, mehr **Ausfallsicherheit**
-oder beides — aber immer auf Kosten von Kapazität oder Geschwindigkeit.
+Je nach RAID-Level bekommst du entweder mehr **Geschwindigkeit**, mehr
+**Ausfallsicherheit** oder beides — aber immer auf Kosten von Kapazität oder
+Geschwindigkeit. Das gemeinsame Ziel heißt <Term id="redundanz">Redundanz</Term>:
+eine Komponente darf sterben, ohne den Betrieb zu stoppen.
 
 ### Die Grundidee: Striping vs. Mirroring
 
@@ -22,23 +35,27 @@ Zwei Grundprinzipien stecken hinter allen RAID-Leveln:
 
 | Prinzip | Bedeutung | Merkwort |
 |---|---|---|
-| **Striping** (Streifen) | Daten werden auf mehrere Platten aufgeteilt → schneller | „Verteilen" |
-| **Mirroring** (Spiegelung) | Dieselben Daten liegen auf mehreren Platten → sicherer | „Kopieren" |
-| **Parität** | Wiederherstellungs-Info wird mitgespeichert → 1 Platte darf ausfallen | „Versicherung" |
+| **<Term id="striping">Striping</Term>** (Streifen) | Daten werden auf mehrere Platten aufgeteilt → schneller | „Verteilen" |
+| **<Term id="mirroring">Mirroring</Term>** (Spiegelung) | Dieselben Daten liegen auf mehreren Platten → sicherer | „Kopieren" |
+| **<Term id="paritaet">Parität</Term>** | Wiederherstellungs-Info wird mitgespeichert → 1 Platte darf ausfallen | „Versicherung" |
 
 ### Analogie: Pakete ausliefern
 
-**RAID 0 — Zwei schnelle Motorräder:**
-Du teilst deine Pakete auf 2 Fahrer auf → doppelt so schnell!
-Problem: Fällt ein Fahrer aus → die Hälfte der Pakete ist weg. Kein Sicherheitsnetz.
+<Analogie>
+**RAID 0 — zwei schnelle Motorräder:** Du teilst deine Pakete auf zwei Fahrer auf,
+also ist die Tour doppelt so schnell fertig. Fällt ein Fahrer aus, ist die Hälfte
+aller Pakete weg — und weil jede Sendung zerlegt wurde, ist am Ende *jedes* Paket
+unvollständig. Kein Sicherheitsnetz.
 
-**RAID 1 — Zwei Autos mit denselben Paketen:**
-Beide Autos haben dieselben Pakete (Spiegelung).
-Ein Auto kaputt? Das andere hat noch alles. Aber du brauchst doppelt so viele Pakete.
+**RAID 1 — zwei Autos mit denselben Paketen:** Beide fahren die identische Ladung.
+Ein Auto fällt aus? Das andere hat noch alles. Dafür transportierst du jedes Paket
+doppelt und brauchst die doppelte Ladefläche.
 
-**RAID 5 — Drei Autos mit cleverer Aufteilung:**
-Pakete werden aufgeteilt + Ersatzinfo wird mitgenommen.
-Ein Auto kaputt? Die anderen zwei können die fehlenden Pakete wiederherstellen.
+**RAID 5 — drei Autos mit clever berechneter Ersatzinfo:** Die Pakete werden
+aufgeteilt, zusätzlich fährt eine Prüfsumme mit. Fällt ein Auto aus, rekonstruieren
+die anderen beiden dessen Ladung daraus. Du zahlst nur eine Ladefläche für die
+Sicherheit statt der Hälfte.
+</Analogie>
 
 ### Die RAID-Level im Überblick
 
@@ -50,9 +67,33 @@ Ein Auto kaputt? Die anderen zwei können die fehlenden Pakete wiederherstellen.
 | **RAID 6** | Doppelte Parität | 4 | (n−2)/n | JA — **2 Platten** dürfen ausfallen | Mittel |
 | **RAID 10** | RAID 1+0 (kombiniert) | 4 | 50 % | JA — pro Spiegelpaar 1 Platte | Sehr schnell |
 
-**Wichtig:** RAID ist **kein Backup!**
-RAID schützt nur vor Festplattenausfall — nicht vor Viren, versehentlichem Löschen,
-Bränden oder Hackerangriffen. Ein separates Backup bleibt zwingend erforderlich.
+<Warnung titel="RAID ist kein Backup">
+RAID schützt vor **Plattenausfall** — nicht vor versehentlichem Löschen, Ransomware,
+Brand, Diebstahl oder einem fehlerhaften Programm, das Daten überschreibt. Der Grund
+ist strukturell: Redundanz spiegelt jede Änderung sofort mit. Wird eine Datei
+verschlüsselt, ist sie auf allen Platten gleichzeitig verschlüsselt. Ein separates,
+getrenntes Backup bleibt zwingend erforderlich.
+</Warnung>
+
+### Der Rebuild — und warum RAID 5 in Ungnade gefallen ist
+
+Fällt eine Platte aus, läuft das Array zunächst weiter, aber ungeschützt. Nach dem
+Tausch startet der <Term id="rebuild">Rebuild</Term>: Der Controller rechnet den
+Inhalt der neuen Platte aus den verbleibenden Platten zurück.
+
+Zwei Dinge machen diese Phase gefährlich, und beide sind prüfungsrelevant:
+
+1. **Es gibt keine Redundanz mehr.** Ein RAID 5 verkraftet genau einen Ausfall.
+   Während des Rebuilds ist dieser eine schon verbraucht — die nächste defekte
+   Platte bedeutet Totalverlust.
+2. **Der Rebuild dauert lange und belastet alle Platten.** Bei großen Platten
+   Stunden bis Tage, unter Volllast. Genau dann fallen Platten gleichen Alters
+   gern zusätzlich aus.
+
+Daraus folgen zwei gängige Gegenmaßnahmen: ein
+<Term id="hot-spare">Hot Spare</Term>, der den Rebuild sofort statt erst nach dem
+Technikerbesuch startet, und bei großen Arrays der Griff zu RAID 6 statt RAID 5,
+weil dort auch während des Rebuilds noch eine Platte ausfallen darf.
 
 ---
 
@@ -130,3 +171,90 @@ Bränden oder Hackerangriffen. Ein separates Backup bleibt zwingend erforderlich
 
 ---
 
+## Typische Aufgabe mit Musterlösung
+
+<Beispiel titel="Auslegung eines Fileservers">
+Ein Handwerksbetrieb braucht einen Fileserver. Vorhanden sind **6 Festplatten
+à 4 TB**. Anforderung der Geschäftsführung: mindestens 14 TB nutzbar, und der
+Ausfall einer Platte darf den Betrieb nicht unterbrechen. Welches RAID-Level
+empfehlen Sie? Berechnen Sie die nutzbare Kapazität und begründen Sie Ihre Wahl.
+</Beispiel>
+
+**Lösungsweg:**
+
+<StepByStep titel="Vom Anforderungstext zum RAID-Level">
+  <Schritt titel="Anforderungen herausschreiben">
+    Zwei harte Bedingungen stehen im Text: nutzbar ≥ 14 TB und mindestens ein
+    Plattenausfall muss verkraftet werden. Damit fällt RAID 0 sofort aus — es
+    bietet keine Ausfallsicherheit.
+  </Schritt>
+  <Schritt titel="Verbleibende Level durchrechnen">
+    RAID 1 bzw. RAID 10: 50 % von 24 TB = **12 TB**. Zu wenig, Anforderung verfehlt.
+    RAID 5: (6 − 1) × 4 TB = **20 TB**. Erfüllt beide Bedingungen.
+    RAID 6: (6 − 2) × 4 TB = **16 TB**. Erfüllt ebenfalls beide Bedingungen.
+  </Schritt>
+  <Schritt titel="Zwischen den Kandidaten entscheiden">
+    RAID 5 und RAID 6 erfüllen die Vorgabe. RAID 6 verliert 4 TB mehr, verkraftet
+    dafür zwei gleichzeitige Ausfälle — auch während eines Rebuilds. Bei 4-TB-Platten
+    dauert ein Rebuild viele Stunden unter Volllast; das ist genau das Fenster, in
+    dem eine zweite Platte gleichen Alters ausfällt.
+  </Schritt>
+  <Ergebnis>
+    **RAID 6 mit 16 TB nutzbar.** Begründung: erfüllt die geforderten 14 TB mit
+    Reserve und behält im Gegensatz zu RAID 5 auch während des Rebuilds noch
+    Redundanz. RAID 5 wäre mit 20 TB die kapazitätsstärkere Wahl und ebenfalls
+    zulässig — wer sich dafür entscheidet, muss ein Hot Spare und ein Monitoring
+    der Plattengesundheit mitplanen. Unabhängig vom Level bleibt ein getrenntes
+    Backup erforderlich, da RAID nicht vor Löschung oder Ransomware schützt.
+  </Ergebnis>
+</StepByStep>
+
+<Tipp titel="Der Punktebringer in RAID-Aufgaben">
+Fast alle Punkte hängen an der **Begründung**, nicht am Level. Wer „RAID 6" hinschreibt,
+bekommt einen Bruchteil. Wer die Kapazität ausrechnet, gegen die geforderte Mindestgröße
+hält und den Ausfallschutz benennt, bekommt die volle Punktzahl. Und der Satz „RAID
+ersetzt kein Backup" ist in solchen Aufgaben fast immer eigens bepunktet — schreib ihn hin.
+</Tipp>
+
+---
+
+## Was du danach kannst
+
+- Die RAID-Level **0, 1, 5, 6 und 10** nach Mindestplattenzahl, nutzbarer Kapazität,
+  erlaubtem Ausfall und Geschwindigkeit auseinanderhalten.
+- Die drei Grundprinzipien **Striping, Mirroring und Parität** erklären und sagen,
+  welches Level welche davon kombiniert.
+- Die nutzbare Kapazität sicher berechnen: `n × Größe` bei RAID 0,
+  `50 %` bei RAID 1 und 10, `(n−1) × Größe` bei RAID 5, `(n−2) × Größe` bei RAID 6.
+- Aus einem Anforderungstext das **passende Level ableiten** und die Wahl mit
+  Kapazität und Ausfallschutz begründen.
+- Erklären, warum **RAID kein Backup ersetzt** — mit dem strukturellen Argument,
+  dass Redundanz jede Änderung sofort mitspiegelt.
+- Das Risiko während eines **Rebuilds** beschreiben und begründen, warum bei großen
+  Platten RAID 6 gegenüber RAID 5 bevorzugt wird.
+- **Hot Spare** als Maßnahme zur Verkürzung des ungeschützten Zeitfensters einordnen.
+
+<Quellen
+  quellen={[
+    {
+      label: 'SNIA - Common RAID Disk Data Format Specification',
+      href: 'https://www.snia.org/tech_activities/standards/curr_standards/ddf',
+      detail: 'Herstellerneutrale Spezifikation der Storage Networking Industry Association zu RAID-Datenformaten. Referenz für die Definition der Level und die Verteilung von Paritätsinformationen.'
+    },
+    {
+      label: 'BSI IT-Grundschutz-Kompendium',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/it-grundschutz-kompendium_node.html',
+      detail: 'Bausteine zu Speicherlösungen und Datensicherung. Amtliche Grundlage für die Abgrenzung von Redundanz gegenüber Datensicherung — RAID erfüllt keine Backup-Anforderung.'
+    },
+    {
+      label: 'BSI - Leitfaden Datensicherung und Notfallvorsorge',
+      href: 'https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz_node.html',
+      detail: 'Begründet, warum gegen Ransomware und versehentliches Löschen nur getrennte, idealerweise offline gehaltene Sicherungen wirken und nicht die Redundanz im Speichersystem.'
+    },
+    {
+      label: 'KMK - Rahmenlehrplan Fachinformatiker/Fachinformatikerin',
+      href: 'https://www.kmk.org/fileadmin/Dateien/pdf/Bildung/BeruflicheBildung/rlp/Fachinformatiker_19-12-13_EL.pdf',
+      detail: 'Lernfeld 2 „Arbeitsplätze nach Kundenwunsch ausstatten" mit der Handlungssituation Auswahl und Dimensionierung von Speichersystemen.'
+    },
+  ]}
+/>

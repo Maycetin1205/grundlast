@@ -132,6 +132,19 @@ export const mBisP: GlossarEintrag[] = [
       },
     },
   {
+      id: 'mirroring',
+      begriff: 'Mirroring (Spiegelung)',
+      kurzdefinition: 'RAID-Prinzip, bei dem dieselben Daten gleichzeitig auf mehrere Platten geschrieben werden.',
+      definition: [
+        'Beim Mirroring haelt jede Platte eine vollstaendige Kopie des Datenbestands. Faellt eine aus, laeuft der Betrieb ohne Datenverlust weiter, weil die Spiegelplatte alles enthaelt. Das ist das Prinzip hinter RAID 1.',
+        'Der Preis ist Kapazitaet: Von der Rohkapazitaet bleibt nur die Haelfte nutzbar. Dafuer ist der Rebuild einfach, weil nur kopiert und nichts berechnet werden muss.',
+      ],
+      kapitel: {
+        titel: 'RAID-Systeme (0, 1, 5, 6, 10)',
+        href: '/lernen/hardware/speichersysteme/raid-systeme',
+      },
+    },
+  {
       id: 'mitarbeitermotivation',
       begriff: 'Mitarbeitermotivation',
       kurzdefinition: 'Gruende, aus denen Mitarbeitende Aufgaben annehmen, ausdauernd bearbeiten und Verantwortung übernehmen.',
@@ -467,6 +480,19 @@ export const mBisP: GlossarEintrag[] = [
       kapitel: {
         titel: 'Firewall und DMZ',
         href: '/lernen/netzwerke/netz-sicherheit/firewall-dmz',
+      },
+    },
+  {
+      id: 'paritaet',
+      begriff: 'Paritaet',
+      kurzdefinition: 'Aus den Nutzdaten berechnete Pruefinformation, mit der ein fehlender Datenblock rekonstruiert werden kann.',
+      definition: [
+        'Paritaet entsteht durch eine XOR-Verknuepfung der Datenbloecke eines Streifens. Faellt ein Block weg, laesst er sich aus den verbleibenden Bloecken und der Paritaet exakt zurueckrechnen. RAID 5 nutzt eine Paritaet, RAID 6 zwei unabhaengige.',
+        'In RAID 5 und 6 liegt die Paritaet nicht auf einer festen Platte, sondern rotiert ueber alle Platten. Kapazitaetsmaessig geht trotzdem das Aequivalent einer Platte (RAID 5) beziehungsweise zweier Platten (RAID 6) verloren.',
+      ],
+      kapitel: {
+        titel: 'RAID-Systeme (0, 1, 5, 6, 10)',
+        href: '/lernen/hardware/speichersysteme/raid-systeme',
       },
     },
   {
