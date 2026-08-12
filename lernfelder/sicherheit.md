@@ -75,7 +75,7 @@ mechanisch. Das ersetzt keine fachliche Pruefung.
 | Kapitel | Slug | AP1 | Wicht. | Status | Offen fuer ready |
 |---|---|:--:|:--:|---|---|
 | DSGVO – die sieben Grundsätze | `dsgvo-basics` | ja | 5 | `draft` | Ziele, Analogie, Terme, Schritte, Quellen |
-| Verschlüsselung, Hashing, Zertifikate, Signatur & VPN | `verschluesselung-hash-vpn` | ja | 5 | `ready` | Ziele, Fehler |
+| Verschlüsselung, Hashing, Zertifikate, Signatur & VPN | `verschluesselung-hash-vpn` | ja | 5 | `ready` | — |
 | Verschlüsselung & IT-Sicherheit | `verschluesselung-sicherheit` | ja | 5 | `draft` | Ziele, Analogie, Terme, Schritte, Quellen |
 | Passwörter & Hashing (Salt, Pepper) | `passwoerter-hashing` | ja | 5 | `draft` | Ziele, Analogie, Terme, Schritte, Quellen |
 | PKI, CA & Zertifikate | `pki-zertifikate` | ja | 4 | `stub` | **keine MDX-Datei** |
@@ -84,12 +84,12 @@ mechanisch. Das ersetzt keine fachliche Pruefung.
 
 | Kapitel | Slug | AP1 | Wicht. | Status | Offen fuer ready |
 |---|---|:--:|:--:|---|---|
-| Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz | `schutzziele` | ja | 5 | `ready` | Ziele, Fehler |
+| Schutzziele, Schutzbedarf, ISMS & BSI-Grundschutz | `schutzziele` | ja | 5 | `ready` | — |
 | Backup-Strategien (Voll, Inkrementell, Differenziell) | `backup-strategien` | ja | 5 | `draft` | Ziele, Terme, Quellen |
 | MTBF & MTTF – Ausfallwahrscheinlichkeit | `mtbf-mttf` | ja | 4 | `draft` | Ziele, Analogie, Schritte, Quellen |
 | SSH vs. Telnet | `ssh-telnet` | ja | 4 | `stub` | **keine MDX-Datei** |
-| Endpoint-Security & Schutzmaßnahmen | `endpoint-security` | ja | 5 | `ready` | Terme, Schritte, Fehler |
-| Malware — Viren, Würmer, Trojaner, Ransomware | `malware-grundlagen` | ja | 5 | `ready` | Terme, Schritte, Fehler |
+| Endpoint-Security & Schutzmaßnahmen | `endpoint-security` | ja | 5 | `ready` | — |
+| Malware — Viren, Würmer, Trojaner, Ransomware | `malware-grundlagen` | ja | 5 | `ready` | — |
 
 <!-- /GENERIERT:kapitel -->
 

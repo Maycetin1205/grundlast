@@ -158,7 +158,7 @@ mechanisch. Das ersetzt keine fachliche Pruefung.
 | Kapitel | Slug | AP1 | Wicht. | Status | Offen fuer ready |
 |---|---|:--:|:--:|---|---|
 | Datenrate & Downloadzeit berechnen | `datenrate-berechnung` | ja | 5 | `ready` | — |
-| Datenmengen, Scan & Übertragung — komplett rechnen | `datenvolumen-berechnung` | ja | 5 | `ready` | Ziele, Fehler |
+| Datenmengen, Scan & Übertragung — komplett rechnen | `datenvolumen-berechnung` | ja | 5 | `ready` | — |
 
 <!-- /GENERIERT:kapitel -->
 

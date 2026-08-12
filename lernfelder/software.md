@@ -74,7 +74,7 @@ mechanisch. Das ersetzt keine fachliche Pruefung.
 
 | Kapitel | Slug | AP1 | Wicht. | Status | Offen fuer ready |
 |---|---|:--:|:--:|---|---|
-| Pseudocode, Algorithmen & Kontrollstrukturen | `pseudocode-einstieg` | ja | 5 | `ready` | Ziele, Fehler |
+| Pseudocode, Algorithmen & Kontrollstrukturen | `pseudocode-einstieg` | ja | 5 | `ready` | — |
 | UML-Aktivitätsdiagramm | `uml-aktivitaet` | ja | 5 | `draft` | Ziele, Analogie, Terme, Quellen |
 
 ### Modul: UML-Diagramme  `uml-diagramme`
