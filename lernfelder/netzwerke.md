@@ -105,6 +105,7 @@ seinem `## Typische Fehler`-Abschnitt abdecken.
 
 Diese Dateien darf ein Chat fuer dieses Lernfeld heranziehen:
 
+- `material/zusammenfassungen/gesamt-kmk-rahmenlehrplan.md`
 - `material/zusammenfassungen/gesamt-lernkatalog-ap1.md`
 - `material/zusammenfassungen/gesamt-lernzettel-ap1-2024.md`
 - `material/zusammenfassungen/gesamt-pruefungsvorbereitung-technik.md`
