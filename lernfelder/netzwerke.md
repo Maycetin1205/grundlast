@@ -103,10 +103,11 @@ seinem `## Typische Fehler`-Abschnitt abdecken.
 
 <!-- GENERIERT:material — nicht von Hand aendern, wird ueberschrieben -->
 
-Noch kein Material zugeordnet.
+Diese Dateien darf ein Chat fuer dieses Lernfeld heranziehen:
 
-Sobald Dateien mit dem Praefix `netzwerke-` unter `material/` liegen,
-erscheinen sie hier automatisch. Namensschema siehe `material/README.md`.
+- `material/zusammenfassungen/gesamt-lernkatalog-ap1.md`
+- `material/zusammenfassungen/gesamt-lernzettel-ap1-2024.md`
+- `material/zusammenfassungen/gesamt-pruefungsvorbereitung-technik.md`
 
 <!-- /GENERIERT:material -->
 

@@ -94,10 +94,15 @@ function findeMaterial(lernfeldName) {
     if (!existsSync(dir)) continue
     for (const datei of readdirSync(dir)) {
       if (datei.startsWith('.')) continue
-      // Pruefungen gelten fuer alle Lernfelder, der Rest nur bei Namensprefix.
-      if (unterordner === 'pruefungen' || datei.startsWith(`${lernfeldName}-`)) {
-        treffer.push(`material/${unterordner}/${datei}`)
-      }
+      // PDFs sind fuer einen Chat nicht lesbar. Nur der extrahierte Text zaehlt.
+      if (datei.toLowerCase().endsWith('.pdf')) continue
+      // Pruefungen und `gesamt-`-Dateien gelten lernfelduebergreifend,
+      // alles andere nur bei passendem Namenspraefix.
+      const gehoertDazu =
+        unterordner === 'pruefungen' ||
+        datei.startsWith('gesamt-') ||
+        datei.startsWith(`${lernfeldName}-`)
+      if (gehoertDazu) treffer.push(`material/${unterordner}/${datei}`)
     }
   }
   return treffer
