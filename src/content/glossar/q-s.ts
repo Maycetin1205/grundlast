@@ -349,7 +349,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -362,7 +362,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -453,7 +453,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Serviceprozess & Support-Level',
-        href: '/lernen/projekt/dokumente/serviceprozess-support',
+        href: '/lernen/projekt/service-management/serviceanfragen-support-level',
       },
     },
   {
@@ -479,7 +479,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -492,7 +492,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -505,7 +505,7 @@ export const qBisS: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {

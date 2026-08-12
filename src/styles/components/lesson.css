@@ -75,6 +75,19 @@
     padding-left: 1.45rem;
   }
 
+  /* Tailwind-Preflight entfernt list-style global; hier wiederherstellen */
+  .lesson-body ul {
+    list-style: disc;
+  }
+
+  .lesson-body ol {
+    list-style: decimal;
+  }
+
+  .lesson-body li::marker {
+    color: var(--color-muted);
+  }
+
   .lesson-body li {
     margin: 0.45rem 0;
     padding-left: 0.15rem;

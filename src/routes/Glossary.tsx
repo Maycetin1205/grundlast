@@ -2,6 +2,13 @@ import { Link } from 'react-router-dom'
 import { BookMarked } from 'lucide-react'
 import { useGlossarStore } from '../lib/glossar'
 import type { GlossarEintrag } from '../lib/glossar'
+import { findLesson, isLessonAvailable } from '../lib/toc'
+
+function istKapitelVerfügbar(eintrag: GlossarEintrag) {
+  const slug = eintrag.kapitel.href.split('/').pop()
+  const meta = slug ? findLesson(slug) : null
+  return Boolean(meta && isLessonAvailable(meta.lesson))
+}
 
 export default function Glossary() {
   const einträge = useGlossarStore((state) => state.einträge)
@@ -128,27 +135,10 @@ export default function Glossary() {
                     overflow: 'hidden',
                   }}
                 >
-                  {grouped[letter].map((eintrag) => (
-                    <li key={eintrag.id} style={{ background: 'var(--color-paper)' }}>
-                      <Link
-                        to={eintrag.kapitel.href}
-                        className="no-underline"
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'minmax(160px, 200px) 1fr',
-                          alignItems: 'baseline',
-                          gap: 18,
-                          padding: '14px 22px',
-                          color: 'inherit',
-                          transition: 'background 0.15s',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'var(--color-bg-2)'
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'transparent'
-                        }}
-                      >
+                  {grouped[letter].map((eintrag) => {
+                    const verfügbar = istKapitelVerfügbar(eintrag)
+                    const zeilenInhalt = (
+                      <>
                         <div
                           style={{
                             fontFamily: 'var(--font-display)',
@@ -171,12 +161,44 @@ export default function Glossary() {
                             className="m-0 mt-1 font-mono uppercase text-ink-3"
                             style={{ fontSize: 10.5, letterSpacing: '0.06em' }}
                           >
-                            → {eintrag.kapitel.titel}
+                            {verfügbar
+                              ? `→ ${eintrag.kapitel.titel}`
+                              : `${eintrag.kapitel.titel} · Kapitel in Arbeit`}
                           </p>
                         </div>
-                      </Link>
-                    </li>
-                  ))}
+                      </>
+                    )
+                    const zeilenLayout = {
+                      display: 'grid',
+                      gridTemplateColumns: 'minmax(160px, 200px) 1fr',
+                      alignItems: 'baseline',
+                      gap: 18,
+                      padding: '14px 22px',
+                      color: 'inherit',
+                    } as const
+
+                    return (
+                      <li key={eintrag.id} style={{ background: 'var(--color-paper)' }}>
+                        {verfügbar ? (
+                          <Link
+                            to={eintrag.kapitel.href}
+                            className="no-underline"
+                            style={{ ...zeilenLayout, transition: 'background 0.15s' }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.background = 'var(--color-bg-2)'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.background = 'transparent'
+                            }}
+                          >
+                            {zeilenInhalt}
+                          </Link>
+                        ) : (
+                          <div style={zeilenLayout}>{zeilenInhalt}</div>
+                        )}
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             ))}

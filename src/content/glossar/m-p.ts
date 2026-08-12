@@ -648,7 +648,7 @@ export const mBisP: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -661,7 +661,7 @@ export const mBisP: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {
@@ -674,7 +674,7 @@ export const mBisP: GlossarEintrag[] = [
       ],
       kapitel: {
         titel: 'Scrum – Accountabilities, Events, Artefakte',
-        href: '/lernen/projekt/agile-vorgehen/scrum',
+        href: '/lernen/projekt/projektplanung/scrum',
       },
     },
   {

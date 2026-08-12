@@ -85,6 +85,51 @@ function extractLessons(tocText) {
   return lessons
 }
 
+function extractLessonPaths(dir) {
+  const validPaths = new Set()
+  if (!existsSync(dir)) return validPaths
+
+  const modulPattern = /\{\s*slug:\s*"([^"]+)"\s*,\s*title:\s*"[^"]*"\s*,\s*lessons:\s*\[([\s\S]*?)\]/g
+  const lessonSlugPattern = /\{\s*slug:\s*"([^"]+)"/g
+
+  for (const file of readdirSync(dir).filter((f) => f.endsWith('.ts') && f !== 'index.ts')) {
+    const text = readFileSync(path.join(dir, file), 'utf8')
+    const lernfeldSlug = text.match(/slug:\s*"([^"]+)"/)?.[1]
+    if (!lernfeldSlug) continue
+
+    let modulMatch
+    while ((modulMatch = modulPattern.exec(text))) {
+      const modulSlug = modulMatch[1]
+      let lessonMatch
+      while ((lessonMatch = lessonSlugPattern.exec(modulMatch[2]))) {
+        validPaths.add(`/lernen/${lernfeldSlug}/${modulSlug}/${lessonMatch[1]}`)
+      }
+    }
+  }
+
+  return validPaths
+}
+
+function checkInternalLinks(label, text, validPaths, statusBySlug) {
+  const hrefPattern = /['"(]#?(\/lernen\/[^'")#?]+)['")]/g
+  let match
+
+  while ((match = hrefPattern.exec(text))) {
+    const href = match[1]
+
+    if (!validPaths.has(href)) {
+      errors.push(`${label}: interner Link zeigt auf nicht existierenden Pfad: ${href}`)
+      continue
+    }
+
+    const slug = href.split('/').pop()
+    const status = statusBySlug.get(slug)
+    if (status === 'stub' || status === 'draft') {
+      warnings.push(`${label}: interner Link zeigt auf ${status}-Kapitel (noch nicht freigegeben): ${href}`)
+    }
+  }
+}
+
 function extractIds(text) {
   const ids = []
   const pattern = /\bid:\s*['"]([^'"]+)['"]/g
@@ -268,6 +313,16 @@ for (const slug of mdxSlugs) {
   if (!lessonBySlug.has(slug)) {
     errors.push(`${slug}: MDX-Datei existiert, aber kein Eintrag in src/lib/toc/data/*.ts`)
   }
+}
+
+// Interne Kapitel-Links (Glossar + MDX) gegen die realen TOC-Pfade pruefen.
+const validLessonPaths = extractLessonPaths(paths.tocDataDir)
+const statusBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson.status]))
+checkInternalLinks('glossar', glossarText, validLessonPaths, statusBySlug)
+for (const file of mdxFiles) {
+  const slug = file.replace(/\.mdx$/, '')
+  if (lessonFilter && slug !== lessonFilter) continue
+  checkInternalLinks(slug, readFileSync(path.join(paths.lessonsDir, file), 'utf8'), validLessonPaths, statusBySlug)
 }
 
 const readyCount = lessons.filter((lesson) => lesson.status === 'ready' || lesson.status === 'final').length
