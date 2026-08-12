@@ -1015,4 +1015,56 @@ export const aBisD: GlossarEintrag[] = [
         href: '/lernen/netzwerke/rechnen-netz/datenvolumen-berechnung',
       },
     },
+  {
+      id: 'adware',
+      begriff: 'Adware',
+      kurzdefinition: 'Schadsoftware, die unerwünschte Werbung einblendet und teils Nutzungsdaten sammelt.',
+      definition: [
+        'Adware zeigt aggressive Werbung an, oft im Browser oder als Pop-ups. Sie gelangt meist zusammen mit kostenloser Software (Freeware) aufs System.',
+        'Manche Adware sammelt zusätzlich Nutzungsdaten und geht damit in Richtung Spyware. Der Hauptschaden ist Belästigung und Tracking.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'application-whitelisting',
+      begriff: 'Application Whitelisting',
+      kurzdefinition: 'Härtungsmaßnahme, bei der nur ausdrücklich freigegebene Programme ausgeführt werden dürfen.',
+      definition: [
+        'Beim Application Whitelisting (Allowlisting) darf nur Software starten, die auf einer Freigabeliste steht – alles andere wird blockiert. Umgesetzt wird das unter Windows z. B. mit AppLocker oder Software Restriction Policies (SRP).',
+        'Der Ansatz kehrt die Logik des klassischen Virenscanners um: Statt Bekanntes Böses zu sperren, wird nur Bekanntes Gutes erlaubt. Das reduziert die Angriffsfläche gegen unbekannte Schadsoftware deutlich.',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
+  {
+      id: 'backdoor',
+      begriff: 'Backdoor',
+      kurzdefinition: 'Versteckter Zugang, über den ein Angreifer ein kompromittiertes System jederzeit wieder erreichen kann.',
+      definition: [
+        'Eine Backdoor (Hintertür) wird meist nach einem erfolgreichen Angriff installiert, etwa über einen Trojaner. Sie hält den Zugang offen, selbst nach Passwortwechsel oder System-Update.',
+        'Auch in legitimer Software oder Firmware können versteckte Hintertüren stecken, etwa durch Lieferketten-Angriffe.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'dropper',
+      begriff: 'Dropper',
+      kurzdefinition: 'Kleines Schadprogramm, dessen einziger Zweck das Nachladen weiterer Malware ist.',
+      definition: [
+        'Ein Dropper ist bei der Erstinfektion bewusst klein und unauffällig, um Virenscannern zu entgehen. Nach dem Start lädt er die eigentliche Schadsoftware aus dem Internet nach.',
+        'Typisch ist der Weg über ein aktiviertes Office-Makro, das den Dropper ausführt, der dann z. B. einen Trojaner oder Ransomware installiert.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
 ]

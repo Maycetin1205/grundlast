@@ -716,4 +716,56 @@ export const mBisP: GlossarEintrag[] = [
         href: '/lernen/software/logik/pseudocode-einstieg',
       },
     },
+  {
+      id: 'malware',
+      begriff: 'Malware',
+      kurzdefinition: 'Oberbegriff für Schadsoftware jeder Art – Viren, Würmer, Trojaner, Ransomware und mehr.',
+      definition: [
+        'Malware (malicious software) ist jede Software, die gegen den Willen des Nutzers Schaden anrichtet. Die Typen unterscheiden sich in Verbreitungsweg, Tarnung und Schadensziel.',
+        'Wichtig ist die Trennung von Verbreitungsart (Virus braucht Wirt, Wurm verbreitet sich selbst, Trojaner tarnt sich) und Schadenstyp (z. B. Ransomware = Erpressung, Spyware = Datenabfluss).',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
+  {
+      id: 'mdm',
+      begriff: 'Mobile Device Management (MDM)',
+      kurzdefinition: 'Zentrale Verwaltung mobiler Endgeräte inklusive Richtlinien und Remote-Wipe.',
+      definition: [
+        'Mit MDM verteilt die IT Konfigurationen und Sicherheitsrichtlinien zentral auf Smartphones und Tablets und kann Apps steuern.',
+        'Bei Verlust oder Diebstahl lässt sich ein Gerät aus der Ferne sperren oder löschen (Remote-Wipe). MDM ist damit ein zentraler Baustein der Endpoint-Security für mobile Geräte.',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
+  {
+      id: 'patch-management',
+      begriff: 'Patch-Management',
+      kurzdefinition: 'Geregelter Prozess, um Sicherheitsupdates zu erfassen, zu testen und zeitnah auszurollen.',
+      definition: [
+        'Patches korrigieren Sicherheitslücken in Betriebssystem und Anwendungen. Ein Patch-Management-Prozess umfasst Inventarisierung, Monitoring neuer Patches, Risikobewertung, Test in einer Pilotgruppe, Rollout und Verifikation.',
+        'Als Faustregel gilt: kritische, aktiv ausgenutzte Lücken innerhalb von 24–72 Stunden, hohe innerhalb einer Woche. Die meisten großen Vorfälle nutzten bekannte, längst gepatchte Lücken.',
+      ],
+      kapitel: {
+        titel: 'Endpoint-Security – Härtung, Updates, Schutzmaßnahmen',
+        href: '/lernen/sicherheit/betrieb-sicherheit/endpoint-security',
+      },
+    },
+  {
+      id: 'phishing',
+      begriff: 'Phishing',
+      kurzdefinition: 'Täuschungsangriff, der über gefälschte Mails oder Seiten Zugangsdaten abgreift oder Malware verteilt.',
+      definition: [
+        'Phishing zielt auf den Menschen: Eine gefälschte, oft dringlich formulierte Nachricht bringt das Opfer dazu, auf einen Link zu klicken, Zugangsdaten einzugeben oder einen Anhang zu öffnen.',
+        'Phishing ist einer der häufigsten Erstinfektionswege für Malware. Wirksamste Gegenmaßnahmen sind Awareness-Schulungen, Phishing-Simulationen, Mail-Filter und Multi-Faktor-Authentifizierung.',
+      ],
+      kapitel: {
+        titel: 'Malware – Viren, Würmer, Trojaner und Co.',
+        href: '/lernen/sicherheit/betrieb-sicherheit/malware-grundlagen',
+      },
+    },
 ]

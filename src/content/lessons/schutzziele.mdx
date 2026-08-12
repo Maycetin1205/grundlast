@@ -5,6 +5,22 @@
   prüfungsrelevanz="PFLICHT · 5/5"
 />
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Trenne beim Lesen konsequent drei Ebenen: **Schutzziel** (*was* schützen wir?),
+**Schutzbedarf** (*wie streng*?) und **Maßnahme** (*womit*?). Fast jede Aufgabe in
+Lernfeld 4 lässt sich lösen, wenn du zuerst diese drei Ebenen sauber auseinanderhältst
+und danach die Mechanik — Schutzbedarfsfeststellung, Risikomatrix, PDCA — anlegst.
+</Tipp>
+
+| Wenn in der Aufgabe steht ... | Denk zuerst an ... | Nächster Schritt |
+|---|---|---|
+| „nur Berechtigte dürfen lesen" | Vertraulichkeit | Verschlüsselung, Berechtigungen |
+| „Daten dürfen nicht unbemerkt geändert werden" | Integrität | Hashwert, Signatur, Schreibrechte |
+| „System muss erreichbar sein" | Verfügbarkeit | Redundanz, USV, Backup + Restore |
+| „wie schlimm wäre der Schaden?" | Schutzbedarf einstufen | normal / hoch / sehr hoch je Ziel |
+| „mehrere Systeme auf einem Host" | Maximumprinzip | höchsten Bedarf übernehmen |
+| „was tun mit dem Risiko?" | Reaktion wählen | vermeiden, vermindern, übertragen, akzeptieren |
+
 ## 01 · Warum existiert das überhaupt?
 
 Bevor du in einem Unternehmen etwas absicherst, musst du wissen, **was** geschützt werden
@@ -391,7 +407,26 @@ sogar ausdrücklich genannt.
 
 ---
 
-## 06 · Typische Fehler
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- die drei klassischen Schutzziele (Vertraulichkeit, Integrität, Verfügbarkeit) und
+  die erweiterten Ziele (Authentizität, Nicht-Abstreitbarkeit) sicher unterscheiden.
+- für ein System je Schutzziel einen Schutzbedarf (normal, hoch, sehr hoch) vergeben
+  und die Einstufung mit Schadensszenarien begründen.
+- das Maximumprinzip anwenden und Kumulations- sowie Verteilungseffekt erkennen.
+- eine Bedrohung mit Eintrittswahrscheinlichkeit und Schadenshöhe in eine Risikoklasse
+  einordnen und die passende Reaktion (vermeiden, vermindern, übertragen, akzeptieren)
+  wählen.
+- Maßnahmen den vier Kategorien (organisatorisch, personell, technisch,
+  infrastrukturell) zuordnen und dem primär geschützten Schutzziel zuweisen.
+- den Aufbau eines ISMS über den PDCA-Zyklus erklären und die BSI-Standards 200-1/2/3
+  gegen die ISO/IEC 27001 abgrenzen.
+
+---
+
+## Typische Fehler
 
 - **CIA durcheinanderbringen.** Verschlüsselung schützt primär die Vertraulichkeit, nicht
   die Integrität oder Verfügbarkeit. Hashwert schützt die Integrität, nicht die
@@ -424,41 +459,49 @@ sogar ausdrücklich genannt.
 
 ---
 
-## 07 · So fragt die IHK das
+## 07 · Übungsblock
 
-**Aufgabe 1 — Schutzbedarf einordnen (8 Punkte).**
+Bearbeite die Aufgaben in der Reihenfolge. Sie führen dich vom Einstufen des
+Schutzbedarfs über die Zuordnung von Maßnahmen bis zur Risikobewertung und zum ISMS —
+also genau den Weg, den die Prüfung in Lernfeld 4 abfragt.
+
+### Aufgabe 1 · Schutzbedarf einordnen
+
 Eine Steuerberatungskanzlei betreibt drei IT-Systeme: (a) das DATEV-Buchhaltungssystem
 mit Mandantendaten, (b) das interne Lernportal für Mitarbeiterschulungen, (c) das
 Webportal, über das Mandanten ihre Belege hochladen. Bewerte für jedes System den
 Schutzbedarf je Schutzziel (normal, hoch, sehr hoch) und begründe je Bewertung in einem
-Satz. Erläutere, welcher Schutzbedarf der Datenbank-Server übernimmt, falls alle drei
-Systeme dort liegen.
+Satz. Erläutere, welchen Schutzbedarf der Datenbank-Server übernimmt, falls alle drei
+Systeme dort liegen. **8 Punkte.**
 
-**Aufgabe 2 — Maßnahmen einem Schutzziel zuordnen (6 Punkte).**
+### Aufgabe 2 · Maßnahmen einem Schutzziel zuordnen
+
 Ordne folgende Maßnahmen dem primär geschützten Schutzziel zu (Vertraulichkeit,
 Integrität, Verfügbarkeit oder Authentizität) und begründe in je einem Halbsatz: digitale
 Signatur, USV, Vollverschlüsselung der Festplatte, Hashwert nach Datentransfer,
-Multi-Faktor-Authentifizierung, redundante Internetanbindung.
+Multi-Faktor-Authentifizierung, redundante Internetanbindung. **6 Punkte.**
 
-**Aufgabe 3 — Risikobewertung mit Reaktion (7 Punkte).**
+### Aufgabe 3 · Risikobewertung mit Reaktion
+
 Stelle für die folgenden zwei Bedrohungen je eine Risikoklasse fest (Kombination aus
 Eintrittswahrscheinlichkeit und Schadenshöhe) und schlage je zwei konkrete Maßnahmen
-vor (organisatorisch, technisch oder beides):
-(a) Diebstahl eines unverschlüsselten Notebooks aus einem Hotelzimmer eines Aussendienst-
-mitarbeiters,
-(b) Ausfall der Internetverbindung im Hauptstandort eines Online-Shops für drei Stunden
-während der Kernzeit.
+vor (organisatorisch, technisch oder beides): (a) Diebstahl eines unverschlüsselten
+Notebooks aus einem Hotelzimmer eines Aussendienstmitarbeiters, (b) Ausfall der
+Internetverbindung im Hauptstandort eines Online-Shops für drei Stunden während der
+Kernzeit. **7 Punkte.**
 
-**Aufgabe 4 — ISMS und PDCA (6 Punkte).**
+### Aufgabe 4 · ISMS und PDCA
+
 Beschreibe in eigenen Worten den Aufbau eines ISMS nach BSI-Standard 200-1 und ordne den
 vier Phasen Plan, Do, Check, Act jeweils zwei beispielhafte Tätigkeiten zu. Begründe
-abschliessend in zwei Sätzen, warum ein ISMS nie als "fertig" gilt.
+abschliessend in zwei Sätzen, warum ein ISMS nie als "fertig" gilt. **6 Punkte.**
 
-**Aufgabe 5 — BSI-Grundschutz vs. ISO/IEC 27001 (5 Punkte).**
+### Aufgabe 5 · BSI-Grundschutz vs. ISO/IEC 27001
+
 Erläutere kurz die Beziehung zwischen BSI IT-Grundschutz und ISO/IEC 27001. Nenne zwei
 Gemeinsamkeiten und zwei Unterschiede. Erläutere, in welcher Situation eine Organisation
 sich primär für den IT-Grundschutz und in welcher Situation primär für ISO/IEC 27001
-entscheiden würde.
+entscheiden würde. **5 Punkte.**
 
 <Tipp titel="Lösungsansatz zu Aufgabe 2 (Kurzform)">
 - Digitale Signatur: Authentizität und Integrität (echter Absender, unveränderter Inhalt).
@@ -471,6 +514,12 @@ entscheiden würde.
 </Tipp>
 
 ---
+
+## 08 · Merkbilder
+
+Die beiden Skizzen fassen den Stoff zusammen: einmal die Schutzziele als CIA-Triade mit
+den erweiterten Zielen, einmal der Schutzbedarf als Drei-Stufen-Modell. Wenn du im Text
+den Überblick verlierst, spring hierher zurück.
 
 <svg
   viewBox="0 0 760 360"

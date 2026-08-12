@@ -7,6 +7,22 @@
 
 In Aufgaben werden *<Term id="verschluesselung">Verschlüsselung</Term>*, *<Term id="hashfunktion">Hashing</Term>*, *<Term id="zertifikat">Zertifikate</Term>*, *<Term id="digitale-signatur">digitale Signaturen</Term>* und *<Term id="vpn">VPN</Term>* selten isoliert abgefragt. Meist sollst du unterscheiden, welches Werkzeug welches Schutzziel bedient und wie die Verfahren in HTTPS, Passwortspeicherung, Software-Updates oder Standortkopplung zusammenspielen.
 
+<Tipp titel="So benutzt du dieses Kapitel">
+Lies jede Aufgabe zuerst über das **Schutzziel** und wähle danach das **Werkzeug**. Die
+Tabelle unten ist der schnelle Router; die Abschnitte 02 bis 05 erklären dann, *warum*
+das jeweilige Werkzeug passt. Merke dir vor allem die vier klassischen Verwechslungen:
+verschlüsseln ≠ hashen ≠ signieren ≠ tunneln.
+</Tipp>
+
+| Wenn die Aufgabe fragt ... | Werkzeug | Schutzziel primär |
+|---|---|---|
+| „Unbefugte sollen den Inhalt nicht lesen" | Verschlüsselung (AES symmetrisch, RSA/ECC asymmetrisch) | Vertraulichkeit |
+| „Veränderung soll erkannt werden" | Hashwert (SHA-256) | Integrität |
+| „Absender/Datei soll beweisbar echt sein" | Digitale Signatur | Integrität + Authentizität + Nicht-Abstreitbarkeit |
+| „Gehört dieser Public Key zu dieser Identität?" | Zertifikat + PKI | Authentizität |
+| „Passwort sicher speichern" | Passwort-Hash mit Salt (Argon2id/bcrypt) | Schutz bei Datenbankabfluss |
+| „entfernte Standorte/Clients sicher verbinden" | VPN (IPsec, TLS-VPN) | Vertraulichkeit + Integrität der Übertragung |
+
 ---
 
 ## 01 · Warum existiert das überhaupt?
@@ -368,7 +384,25 @@ Ein VPN erzeugt einen geschützten Weg, aber oft auch eine gefährliche Annahme:
 
 ---
 
-## 06 · Typische Fehler
+## Was du danach kannst
+
+Nach diesem Kapitel kannst du:
+
+- symmetrische, asymmetrische und hybride Verschlüsselung unterscheiden und je einen
+  typischen Einsatz nennen.
+- erklären, warum Passwörter gehasht und nicht verschlüsselt werden, und die Rolle von
+  Salt und Pepper begründen.
+- eine digitale Signatur vom Verschlüsseln abgrenzen und ihre drei Schutzziele nennen.
+- ein Zertifikat als Vertrauensnachweis für einen Public Key einordnen und die Prüfpunkte
+  Name, Gültigkeit, Kette, CA-Signatur und Widerruf aufzählen.
+- HTTPS/TLS als hybrides Verfahren Schritt für Schritt erklären.
+- Site-to-Site- und Remote-Access-VPN unterscheiden und benennen, welche Maßnahmen
+  (Rechte, MFA, Patchstand, Logging) ein VPN nicht ersetzt.
+- eine Maßnahme sicher dem primär geschützten Schutzziel zuordnen.
+
+---
+
+## Typische Fehler
 
 ### Verschlüsseln vs. Hashen vs. Signieren
 
@@ -397,37 +431,51 @@ Ein VPN erzeugt einen geschützten Weg, aber oft auch eine gefährliche Annahme:
 
 ---
 
-## 07 · So fragt die IHK das
+## 07 · Übungsblock
+
+Bearbeite die Aufgaben der Reihe nach und formuliere deine Antwort erst vollständig,
+bevor du den jeweiligen Lösungsansatz aufklappst. Die Aufgaben führen vom Zuordnen der
+Verfahren über TLS und Signaturprüfung bis zu VPN-Entscheidung und Passwortspeicherung.
 
 ### Aufgabe 1 · Verfahren zuordnen
 
-Ein Unternehmen möchte Kundendaten auf Notebooks schützen, Software-Downloads auf Veränderung prüfen und Anmeldedaten sicher speichern. Ordne jeweils ein geeignetes Verfahren zu und begründe das passende Schutzziel.
+Ein Unternehmen möchte Kundendaten auf Notebooks schützen, Software-Downloads auf Veränderung prüfen und Anmeldedaten sicher speichern. Ordne jeweils ein geeignetes Verfahren zu und begründe das passende Schutzziel. **6 Punkte.**
 
-**Lösungsansatz:** Notebookdaten: symmetrische Datenträgerverschlüsselung, Vertraulichkeit. Software-Download: digitale Signatur oder signierter Hash, Integrität und Authentizität. Anmeldedaten: Passwort-Hash mit Salt und langsamem Verfahren, Schutz bei Datenbankabfluss.
+<Tipp titel="Lösungsansatz zu Aufgabe 1">
+Notebookdaten: symmetrische Datenträgerverschlüsselung, Vertraulichkeit. Software-Download: digitale Signatur oder signierter Hash, Integrität und Authentizität. Anmeldedaten: Passwort-Hash mit Salt und langsamem Verfahren, Schutz bei Datenbankabfluss.
+</Tipp>
 
 ### Aufgabe 2 · TLS erklären
 
-Erkläre, warum HTTPS nicht „nur asymmetrische Verschlüsselung" ist. Nenne die Rolle des Zertifikats und den Grund für symmetrische Nutzdatenverschlüsselung.
+Erkläre, warum HTTPS nicht „nur asymmetrische Verschlüsselung" ist. Nenne die Rolle des Zertifikats und den Grund für symmetrische Nutzdatenverschlüsselung. **5 Punkte.**
 
-**Lösungsansatz:** Zertifikat bestätigt Identität und Public Key des Servers. Der Handshake handelt Sitzungsschlüssel aus. Nutzdaten werden symmetrisch verschlüsselt, weil das für große Datenmengen schneller und praktisch ist.
+<Tipp titel="Lösungsansatz zu Aufgabe 2">
+Zertifikat bestätigt Identität und Public Key des Servers. Der Handshake handelt Sitzungsschlüssel aus. Nutzdaten werden symmetrisch verschlüsselt, weil das für große Datenmengen schneller und praktisch ist.
+</Tipp>
 
 ### Aufgabe 3 · Signatur prüfen
 
-Ein Hersteller liefert ein Update, eine Signaturdatei und ein Zertifikat. Beschreibe vier Prüfschritte, bevor das Update installiert wird.
+Ein Hersteller liefert ein Update, eine Signaturdatei und ein Zertifikat. Beschreibe vier Prüfschritte, bevor das Update installiert wird. **6 Punkte.**
 
-**Lösungsansatz:** Zertifikatskette und Gültigkeit prüfen, Name/Herstellerbezug prüfen, Hash des Downloads berechnen, Signatur mit Public Key verifizieren, Widerruf und Zweck des Zertifikats beachten.
+<Tipp titel="Lösungsansatz zu Aufgabe 3">
+Zertifikatskette und Gültigkeit prüfen, Name/Herstellerbezug prüfen, Hash des Downloads berechnen, Signatur mit Public Key verifizieren, Widerruf und Zweck des Zertifikats beachten.
+</Tipp>
 
 ### Aufgabe 4 · VPN-Fall entscheiden
 
-Eine Firma hat eine Zentrale und eine Zweigstelle. Zusätzlich arbeiten drei Servicetechniker mobil. Welche zwei VPN-Arten passen und welche Zusatzmaßnahmen bleiben trotz VPN notwendig?
+Eine Firma hat eine Zentrale und eine Zweigstelle. Zusätzlich arbeiten drei Servicetechniker mobil. Welche zwei VPN-Arten passen und welche Zusatzmaßnahmen bleiben trotz VPN notwendig? **6 Punkte.**
 
-**Lösungsansatz:** Zentrale-Zweigstelle: Site-to-Site-VPN. Servicetechniker: Remote-Access-VPN. Zusatzmaßnahmen: MFA, Rollen/Rechte, Firewall-Regeln, Patchstand, Logging, Geräteverschlüsselung.
+<Tipp titel="Lösungsansatz zu Aufgabe 4">
+Zentrale-Zweigstelle: Site-to-Site-VPN. Servicetechniker: Remote-Access-VPN. Zusatzmaßnahmen: MFA, Rollen/Rechte, Firewall-Regeln, Patchstand, Logging, Geräteverschlüsselung.
+</Tipp>
 
 ### Aufgabe 5 · Salt, Pepper und Rainbow Table
 
-In einer Datenbank stehen pro Nutzer ein Salt und ein Passwort-Hash. Ein Prüfer behauptet: „Der Salt ist sichtbar, also bringt er nichts." Widerlege die Aussage und grenze Pepper ab.
+In einer Datenbank stehen pro Nutzer ein Salt und ein Passwort-Hash. Ein Prüfer behauptet: „Der Salt ist sichtbar, also bringt er nichts." Widerlege die Aussage und grenze Pepper ab. **5 Punkte.**
 
-**Lösungsansatz:** Salt muss nicht geheim sein. Er sorgt dafür, dass gleiche Passwörter unterschiedliche Hashes ergeben und vorgefertigte Rainbow Tables unbrauchbar werden. Pepper ist ein zusätzliches Geheimnis außerhalb der Datenbank und schützt nur, wenn es getrennt bleibt.
+<Tipp titel="Lösungsansatz zu Aufgabe 5">
+Salt muss nicht geheim sein. Er sorgt dafür, dass gleiche Passwörter unterschiedliche Hashes ergeben und vorgefertigte Rainbow Tables unbrauchbar werden. Pepper ist ein zusätzliches Geheimnis außerhalb der Datenbank und schützt nur, wenn es getrennt bleibt.
+</Tipp>
 
 <Glossar
   einträge={[
