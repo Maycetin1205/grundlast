@@ -179,6 +179,13 @@ input[type=range]:focus-visible{outline:2px solid var(--akzent);outline-offset:3
 .kn.leise:hover{background:var(--papier2)}
 .kn:focus-visible{outline:2px solid var(--akzent);outline-offset:2px}
 
+/* ---------- Begriffsliste ---------- */
+.glossarliste{display:grid;gap:1px;background:oklch(0.89 0.012 70)}
+.glossarliste div{background:var(--karte);padding:13px 16px;display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:16px}
+.glossarliste b{font-weight:700;font-size:14.5px}
+.glossarliste span{font-size:14.5px;color:var(--tinte2);line-height:1.55}
+@media (max-width:640px){.glossarliste div{grid-template-columns:1fr;gap:3px}}
+
 /* ---------- Merksätze ---------- */
 .merkfeld{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px 40px}
 .merk{border-left:2px solid var(--akzent);padding:4px 0 4px 18px;display:grid;gap:5px}
@@ -267,7 +274,7 @@ footer ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px;color:v
     Vier Oktette zu je acht Bit ergeben <strong>32 Bit</strong>. Die
     <button class="bg" data-b="maske">Subnetzmaske</button> schneidet diese Kette in zwei
     Teile: Der linke Teil ist die <em>Straße</em>, der rechte die <em>Hausnummer</em>.
-    Wer dieselbe Straße hat, wohnt im selben Netz.
+    Wer dieselbe Straße hat, wohnt im selben <button class="bg" data-b="subnetz">Subnetz</button>.
   </p>
 
   <div class="karte">
@@ -275,7 +282,7 @@ footer ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px;color:v
     <div class="kleib">
       <div class="regler">
         <div class="reglerzeile">
-          <label for="rPre">Präfix</label>
+          <label for="rPre"><button class="bg" data-b="praefix">Präfix</button></label>
           <span class="gross" id="preAnz">/27</span>
           <span class="mono" style="font-size:13px;color:var(--tinte2)" id="maskeAnz">255.255.255.224</span>
         </div>
@@ -312,7 +319,7 @@ footer ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px;color:v
   <div class="notiz">
     <span class="tag">FALLE</span>
     <p><span class="mono">127.0.0.1</span> ist keine private Adresse, sondern
-    <strong>Loopback</strong> — das Gerät selbst, für Diagnose.
+    <button class="bg" data-b="loopback"><strong>Loopback</strong></button> — das Gerät selbst, für Diagnose.
     <span class="mono">0.0.0.0</span> steht für „unbekanntes Netz" und wird bei
     DHCP-Anfragen als Absender genutzt. Fragt eine Aufgabe nach einer gültigen Serveradresse,
     scheiden beide aus — ebenso Netz- und Broadcastadresse.</p>
@@ -353,7 +360,7 @@ footer ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px;color:v
         <div class="wert frei"><span class="lbl">2 · Erste nutzbare</span><span class="v" id="pErst">192.168.45.129</span></div>
         <div class="wert frei"><span class="lbl">3 · Letzte nutzbare</span><span class="v" id="pLetzt">192.168.45.158</span></div>
         <div class="wert sperr"><span class="lbl">4 · Broadcast</span><span class="v" id="pBc">192.168.45.159</span></div>
-        <div class="wert"><span class="lbl">Nutzbare Hosts</span><span class="v" id="pHosts">30</span></div>
+        <div class="wert"><span class="lbl">Nutzbare <button class="bg" data-b="host">Hosts</button></span><span class="v" id="pHosts">30</span></div>
       </div>
       <p style="font-size:15px;color:var(--tinte2)">
         Zieh den Regler: Die Nadel wandert, aber die <strong>Blockgrenzen bleiben</strong>.
@@ -372,14 +379,14 @@ footer ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px;color:v
   </p>
   <div class="rech">Nutzbare Hosts = 2^h − 2        (h = Anzahl der Host-Bits)</div>
 
-  <h3>Die drei Übertragungsarten</h3>
+  <h3>Die drei <button class="bg" data-b="uebertragung">Übertragungsarten</button></h3>
   <div class="tabelle">
     <table>
       <thead><tr><th>Art</th><th>Funktion</th><th>Analogie</th></tr></thead>
       <tbody>
         <tr><td><strong>Unicast</strong></td><td>1 zu 1 — direkt an einen bestimmten Empfänger</td><td>Ein privater Brief</td></tr>
         <tr><td><strong>Multicast</strong></td><td>1 zu Gruppe — Empfänger melden sich vorher an</td><td>Ein abonnierter Newsletter</td></tr>
-        <tr><td><strong>Broadcast</strong></td><td>1 zu alle im lokalen Netz. Router leiten das nicht weiter</td><td>Die Ortssirene im Dorf</td></tr>
+        <tr><td><strong>Broadcast</strong></td><td>1 zu alle im lokalen Netz. <button class="bg" data-b="router">Router</button> leiten das nicht weiter</td><td>Die Ortssirene im Dorf</td></tr>
       </tbody>
     </table>
   </div>
@@ -427,7 +434,7 @@ footer ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px;color:v
       <div class="rech">Maske 255.255.255.224  →  4. Oktett       172.16.50 bleibt fix</div>
     </div></div>
     <div class="stufe"><span class="s">02</span><div class="inh">
-      <b>Schrittweite berechnen (Magic Number)</b>
+      <b><button class="bg" data-b="schrittweite">Schrittweite berechnen (Magic Number)</button></b>
       <p>256 minus dem Maskenwert im interessanten Oktett.</p>
       <div class="rech">256 − 224 = 32     →  Netze bei .0 .32 .64 .96 .128 …</div>
     </div></div>
@@ -530,7 +537,7 @@ letzte = Broadcast − 1 = 172.16.50.94</div>
 
 <!-- ===== 08 VLSM ===== -->
 <section id="typ3">
-  <div class="kopf"><span class="knr">08</span><h2>Aufgabentyp 3 · VLSM für Abteilungen</h2></div>
+  <div class="kopf"><span class="knr">08</span><h2>Aufgabentyp 3 · <button class="bg" data-b="vlsm">VLSM</button> für Abteilungen</h2></div>
   <div class="aufgabenkasten">
     <span class="marke">Aufgabe · der IHK-Favorit</span>
     <p class="serifp">
@@ -660,6 +667,17 @@ fe80::1</div>
   </div>
 </section>
 
+<section id="begriffe">
+  <div class="kopf"><span class="knr">11</span><h2>Alle Begriffe</h2></div>
+  <p>
+    Alle Fachbegriffe dieses Kapitels zum Nachschlagen. Im Text sind sie unterstrichen und
+    anklickbar — hier stehen sie noch einmal vollständig untereinander.
+  </p>
+  <div class="tabelle" style="border:none">
+    <div class="glossarliste" id="glossarliste"></div>
+  </div>
+</section>
+
 <footer>
   <div class="l">Quellen und Herkunft</div>
   <ol>
@@ -693,7 +711,16 @@ const B={
  broadcast:{t:"Broadcastadresse",d:["Die <b>letzte</b> Adresse eines Subnetzes. Ein Paket dorthin geht an alle Hosts im Subnetz.","Binär sind im Hostteil alle Bits auf <b>1</b> gesetzt.","<b>Darf niemals an ein Endgerät vergeben werden.</b> Router leiten Broadcasts nicht weiter."]},
  nat:{t:"NAT",d:["Network Address Translation — die Adressübersetzung am Router.","Private Adressen werden im Internet nicht geroutet. Damit ein ganzes Firmennetz trotzdem nach außen kommt, tauscht der Router die private Absenderadresse gegen seine eine öffentliche.","Deshalb teilen sich hunderte Geräte eine einzige öffentliche IP."]},
  cidr:{t:"CIDR",d:["Classless Inter-Domain Routing — die klassenlose Schreibweise mit Schrägstrich.","Das Suffix sagt, wie viele Bits der Maske von links auf 1 stehen: <span class='mono'>/27</span> heißt 27 Einsen.","Eingeführt, weil die alten Klassen A/B/C zu starr waren und massiv Adressen verschwendet haben."]},
- nibble:{t:"Nibble-Grenze",d:["Ein Nibble ist ein halbes Byte, also <b>4 Bit</b>.","Eine Hex-Ziffer in IPv6 ist genau 4 Bit groß (0 bis F). Deshalb entspricht jede Präfix-Verschiebung um 4 Bit exakt einer Hex-Stelle.","Von /56 auf /60 heißt also: eine Stelle wird frei, die du von 0 bis F durchzählst — 16 Subnetze ohne Binärrechnen."]}
+ nibble:{t:"Nibble-Grenze",d:["Ein Nibble ist ein halbes Byte, also <b>4 Bit</b>.","Eine Hex-Ziffer in IPv6 ist genau 4 Bit groß (0 bis F). Deshalb entspricht jede Präfix-Verschiebung um 4 Bit exakt einer Hex-Stelle.","Von /56 auf /60 heißt also: eine Stelle wird frei, die du von 0 bis F durchzählst — 16 Subnetze ohne Binärrechnen."]},
+ subnetz:{t:"Subnetz",d:["Ein abgetrennter Bereich innerhalb eines größeren Netzwerks. Alle Geräte darin dürfen <b>direkt</b> miteinander reden.","Firmen teilen ihr Netz auf, damit nicht jedes Gerät jedes andere erreicht: Buchhaltung, Produktion und Gäste-WLAN sitzen getrennt. Das erhöht Sicherheit und reduziert unnötigen Datenverkehr.","Wer zu welchem Subnetz gehört, entscheidet allein die Subnetzmaske — nicht, wie ähnlich die Adressen aussehen oder wo die Geräte stehen."]},
+ praefix:{t:"Präfix",d:["Die Zahl hinter dem Schrägstrich, zum Beispiel <span class='mono'>/27</span>. Sie sagt: <b>die ersten 27 Bits gehören zum Netz</b>.","„Präfix“ heißt Vorsilbe — der vordere Teil der Adresse.","Faustregel, die sich falsch anfühlt und trotzdem stimmt: <b>große Zahl = kleines Netz</b>. Je mehr Bits das Netz beansprucht, desto weniger bleiben für Geräte übrig."]},
+ schrittweite:{t:"Schrittweite (Magic Number)",d:["Der <b>Abstand</b>, in dem die Subnetze aufeinanderfolgen. Bei Schrittweite 32 fangen die Netze bei 0, 32, 64, 96, 128 … an.","Berechnet als <b>256 minus dem Maskenwert im interessanten Oktett</b>. Bei Maske 255.255.255.224 also 256 − 224 = 32.","„Magic Number“ ist kein offizieller Begriff, sondern ein Spitzname aus der Praxis — weil diese eine Zahl fast jede Subnetting-Aufgabe löst, ganz ohne Binärrechnen."]},
+ vlsm:{t:"VLSM",d:["Variable Length Subnet Mask — Subnetze <b>unterschiedlicher</b> Größe aus demselben Netz schneiden.","Beim normalen Subnetting sind alle Teilnetze gleich groß. Braucht eine Abteilung 100 Geräte und eine andere nur 10, verschwendet das massiv Adressen.","Die goldene Regel: <b>immer mit dem größten Bedarf anfangen</b>, dann vom Rest weiter. Wer klein zuerst vergibt, bekommt überlappende Netze."]},
+ router:{t:"Router",d:["Ein Gerät, das <b>zwischen</b> verschiedenen Netzen vermittelt. Es kennt mehrere Netze gleichzeitig und entscheidet für jedes Paket die Richtung.","Abgrenzung zum <b>Switch</b>: Der Switch verteilt Pakete <i>innerhalb</i> eines Netzes, der Router <i>zwischen</i> Netzen.","Der Router im eigenen Subnetz ist das Standardgateway — dort gibt ein Gerät alles ab, was nicht ins eigene Subnetz gehört."]},
+ routing:{t:"Routing",d:["Das Weiterleiten von Datenpaketen zwischen verschiedenen Netzen — die Aufgabe des Routers.","Wie eine Weiche: Für jedes Paket wird entschieden, in welche Richtung es weitergeht.","Ohne Routing bleiben zwei Subnetze voneinander getrennt, selbst wenn die Geräte im selben Raum am selben Switch hängen."]},
+ loopback:{t:"Loopback",d:["<span class='mono'>127.0.0.1</span> — eine virtuelle Adresse, die immer auf <b>das Gerät selbst</b> zeigt.","Sie dient zum Testen: Antwortet 127.0.0.1, funktioniert der Netzwerk-Stack des Rechners, unabhängig von Kabel, Router und Netz.","In Prüfungsaufgaben ist sie eine Falle. Fragt eine Aufgabe „welche Adresse kann der Server bekommen?“, scheidet 127.0.0.1 immer aus."]},
+ uebertragung:{t:"Unicast, Multicast, Broadcast",d:["Die drei Arten, wie ein Paket adressiert sein kann.","<b>Unicast</b> — 1 zu 1, direkt an einen bestimmten Empfänger. Wie ein privater Brief.","<b>Multicast</b> — 1 zu Gruppe. Die Empfänger müssen sich vorher anmelden. Wie ein abonnierter Newsletter.","<b>Broadcast</b> — 1 zu allen im lokalen Netz. Wie die Ortssirene im Dorf. Router leiten Broadcasts <b>nicht</b> weiter — das ist der Grund, warum Subnetting den Datenverkehr beruhigt."]},
+ host:{t:"Host",d:["Jedes Gerät im Netzwerk, das eine eigene IP-Adresse hat: Notebook, Server, Drucker, Telefon, Kamera.","„Host“ ist einfach das Fachwort für „Teilnehmer im Netz“.","Fragt eine Aufgabe „wie viele Hosts sind möglich?“, meint sie: wie viele Geräte kann ich anschließen? Also die Zahl <b>nach</b> dem Abzug der zwei reservierten Adressen."]}
 };
 const tafel=document.createElement("div");
 tafel.id="tafel";tafel.setAttribute("role","dialog");tafel.setAttribute("aria-label","Begriff");
@@ -708,6 +735,17 @@ tafel.querySelector(".zu").addEventListener("click",zuB);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")zuB();});
 document.addEventListener("click",e=>{const t=e.target.closest(".bg");
   if(t){zeigB(t.dataset.b);return;} if(!e.target.closest("#tafel"))zuB();});
+
+// Begriffsliste am Seitenende aus derselben Quelle fuellen — kein zweiter Pflegeort.
+(function(){
+  const ziel=document.getElementById("glossarliste");
+  if(!ziel) return;
+  Object.values(B).forEach(b=>{
+    const d=document.createElement("div");
+    d.innerHTML="<b>"+b.t+"</b><span>"+b.d[0]+"</span>";
+    ziel.appendChild(d);
+  });
+})();
 
 /* ========== 01 Lichtschalter ========== */
 const WERTE=[128,64,32,16,8,4,2,1];
