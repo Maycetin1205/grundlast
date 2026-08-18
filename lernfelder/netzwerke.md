@@ -109,6 +109,7 @@ Diese Dateien darf ein Chat fuer dieses Lernfeld heranziehen:
 - `material/zusammenfassungen/gesamt-lernkatalog-ap1.md`
 - `material/zusammenfassungen/gesamt-lernzettel-ap1-2024.md`
 - `material/zusammenfassungen/gesamt-pruefungsvorbereitung-technik.md`
+- `material/zusammenfassungen/netzwerke-subnetting-meisterklasse.md`
 
 <!-- /GENERIERT:material -->
 
