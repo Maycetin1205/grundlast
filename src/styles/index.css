@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
+/* Fraunces ist eine Variable Font. Die Achsenliste vor dem @ und die Werte
+   dahinter muessen gleich viele Eintraege haben. Zuvor stand hier
+   "opsz,wght,SOFT@9..144,400" -- drei Achsen, aber nur zwei Werte je Tupel.
+   Google beantwortet das mit HTTP 400, die Schrift wurde also nie geladen und
+   die Seite lief im Georgia-Fallback. SOFT wurde ohnehin nicht variiert und
+   ist deshalb entfernt. */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @import "./tokens.css";
