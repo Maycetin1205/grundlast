@@ -1,0 +1,1366 @@
+<title>AP1 Frühjahr 2024</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#FFF; --ink:#1B1B1B; --ink2:#454545; --ink3:#6B6B6B;
+  --rule:#DCDCDC; --rule2:#B4B4B4;
+  --blau:#17457F; --blau-t:#EDF2F8; --blau-l:#C3D4E6;
+  --rot:#A32A20; --rot-t:#FBEFED; --rot-l:#E8C4BF;
+  --gruen:#1F6340; --gruen-t:#EDF5F0;
+  --gelb-t:#FDF6E7; --gelb:#8A6209;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
+  --mono:"Source Code Pro",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--sans);font-weight:700;line-height:1.2;margin:0;text-wrap:balance;letter-spacing:-.012em}
+p{margin:0 0 1em}p:last-child{margin-bottom:0}
+strong{font-weight:600}
+:focus-visible{outline:2px solid var(--blau);outline-offset:3px}
+.seite{max-width:1040px;margin:0 auto;padding:0 26px 90px}
+.spalte{max-width:670px}
+.band{display:grid;grid-template-columns:minmax(0,670px) minmax(0,250px);gap:0 38px;align-items:start}
+@media(max-width:900px){.band{grid-template-columns:1fr}}
+
+/* Kopf */
+.kopf{padding:52px 0 26px;border-bottom:3px solid var(--ink)}
+.kopf .ihk{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--rot);font-weight:600;margin-bottom:12px}
+.kopf h1{font-size:clamp(34px,5.6vw,54px);letter-spacing:-.028em}
+.kopf .unter{font-family:var(--sans);font-size:19px;color:var(--ink2);margin-top:10px}
+.fakten{display:flex;flex-wrap:wrap;gap:0;margin-top:26px;border:1.5px solid var(--ink)}
+.fakten div{flex:1 1 118px;padding:11px 15px;border-right:1px solid var(--rule)}
+.fakten div:last-child{border-right:0}
+.fakten .z{font-family:var(--sans);font-size:24px;font-weight:700;line-height:1.1;display:block}
+.fakten .b{font-family:var(--sans);font-size:12.5px;color:var(--ink3)}
+
+/* Inhalt */
+.toc{margin:30px 0 0;padding-bottom:34px;border-bottom:1px solid var(--rule)}
+.toc h2{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:5px 30px}
+.toc a{font-family:var(--sans);font-size:16px;text-decoration:none;color:var(--ink);display:flex;gap:10px;align-items:baseline;padding:3px 0}
+.toc a:hover{color:var(--blau);text-decoration:underline}
+.toc .p{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--rot);font-weight:600;flex:0 0 auto}
+
+/* Teil / Kapitel */
+.teil{margin:56px 0 0;padding-top:22px;border-top:3px solid var(--ink)}
+.teil-kopf{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;margin-bottom:6px}
+.teil-kopf h2{font-size:clamp(23px,3.4vw,30px)}
+.teil-kopf .pkt{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--rot);margin-left:auto}
+.teil .intro{font-family:var(--sans);font-size:16.5px;color:var(--ink2);margin-bottom:4px}
+.kap{padding:34px 0 0;scroll-margin-top:16px}
+.kap-kopf{display:flex;gap:13px;align-items:baseline;margin-bottom:14px}
+.kap-nr{font-family:var(--mono);font-size:12px;font-weight:600;color:#FFF;background:var(--ink);padding:3px 8px;flex:0 0 auto;transform:translateY(-2px)}
+.kap h3{font-size:21px}
+.kap .wert{font-family:var(--mono);font-size:12.5px;color:var(--rot);font-weight:600;margin-left:auto;white-space:nowrap}
+h4{font-size:17px;margin:24px 0 9px}
+
+/* Kästen */
+.merke,.beispiel,.achtung,.falle{margin:22px 0;padding:16px 20px;font-size:17px}
+.merke{background:var(--rot-t);border-left:4px solid var(--rot)}
+.beispiel{background:var(--blau-t);border-left:4px solid var(--blau)}
+.achtung{background:var(--gelb-t);border-left:4px solid var(--gelb)}
+.falle{background:#F4F4F4;border-left:4px solid var(--ink3)}
+.merke .l,.beispiel .l,.achtung .l,.falle .l{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:6px}
+.merke .l{color:var(--rot)}.beispiel .l{color:var(--blau)}.achtung .l{color:var(--gelb)}.falle .l{color:var(--ink3)}
+
+code,.m{font-family:var(--mono);font-size:.9em;font-variant-numeric:tabular-nums}
+.ip{font-family:var(--mono);font-size:.93em;font-weight:600;color:var(--blau);white-space:nowrap}
+table.t{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:15.5px;margin:18px 0}
+table.t th,table.t td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
+table.t thead th{border-bottom:2px solid var(--ink);font-size:13.5px;font-weight:700}
+table.t td.n,table.t th.n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:14px;text-align:right}
+table.t tbody tr:hover{background:var(--blau-t)}
+.scroll{overflow-x:auto;margin:18px 0}.scroll table.t{margin:0}
+
+ol.weg{font-family:var(--sans);font-size:16.5px;counter-reset:w;list-style:none;margin:16px 0;padding:0}
+ol.weg li{counter-increment:w;display:flex;gap:13px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:flex-start}
+ol.weg li:last-child{border-bottom:0}
+ol.weg li::before{content:counter(w);font-family:var(--mono);font-size:11px;font-weight:600;color:#FFF;background:var(--rot);width:19px;height:19px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;margin-top:3px}
+ul.pl{font-family:var(--sans);font-size:16.5px;padding-left:20px;margin:14px 0}
+ul.pl li{margin-bottom:6px}
+
+.rand{font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink3);border-top:2px solid var(--rule2);padding-top:8px;margin-top:38px}
+.rand b{color:var(--ink2);font-weight:600;display:block;margin-bottom:2px}
+.rand+.rand{margin-top:18px}
+@media(max-width:900px){.rand{border-top:0;border-left:2px solid var(--rule2);padding:0 0 0 13px;margin:4px 0 20px}}
+
+/* Werkzeug */
+.tool{border:1.5px solid var(--rule2);background:#FCFCFC;padding:19px;margin:24px 0}
+.tool .l{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:3px}
+.tool h4{font-family:var(--sans);font-size:16.5px;margin:0 0 13px}
+.tool p{font-family:var(--sans);font-size:15.5px}
+.feld{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.feld label{font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink2)}
+.feld input,.feld select{font-family:var(--mono);font-size:14.5px;padding:8px 10px;border:1.5px solid var(--rule2);background:#FFF;color:var(--ink);width:100%;font-variant-numeric:tabular-nums}
+.feld input:focus,.feld select:focus{border-color:var(--blau);outline:none}
+.gitter{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:11px}
+.erg{margin-top:14px;padding:13px 16px;background:var(--blau-t);border-left:3px solid var(--blau);font-family:var(--mono);font-size:14.5px;line-height:1.75;overflow-x:auto}
+.erg b{font-family:var(--sans);font-weight:700}
+.erg .gross{font-size:19px;font-weight:600;color:var(--blau)}
+.knopf{font-family:var(--sans);font-size:15.5px;font-weight:600;padding:9px 18px;border:1.5px solid var(--ink);background:#FFF;color:var(--ink);cursor:pointer}
+.knopf:hover{background:var(--ink);color:#FFF}
+.knopf.voll{background:var(--rot);border-color:var(--rot);color:#FFF}
+.knopf.voll:hover{background:#8A231A}
+.reihe{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:12px}
+
+/* Selbsttest */
+.test{border-top:2px solid var(--ink);margin-top:28px;padding-top:16px}
+.test .l{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:10px}
+.test .f{font-family:var(--sans);font-size:16.5px;font-weight:600;margin-bottom:10px}
+.wahlen{display:flex;flex-direction:column;gap:6px}
+.wahl{font-family:var(--sans);font-size:15.5px;text-align:left;padding:9px 13px;border:1.5px solid var(--rule2);background:#FFF;color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline}
+.wahl:hover:not(:disabled){border-color:var(--blau);background:var(--blau-t)}
+.wahl .b{font-family:var(--mono);font-size:12.5px;color:var(--ink3);font-weight:600}
+.wahl.ja{border-color:var(--gruen);background:var(--gruen-t)}
+.wahl.nein{border-color:var(--rot);background:var(--rot-t)}
+.wahl:disabled{cursor:default}
+.aufl{font-family:var(--sans);font-size:15.5px;margin-top:11px;padding:12px 15px;background:var(--blau-t);border-left:3px solid var(--blau)}
+.schluss{margin-top:54px;padding-top:20px;border-top:3px solid var(--ink);font-family:var(--sans);font-size:14.5px;color:var(--ink3)}
+.schluss p{margin-bottom:.6em}
+.hidden{display:none!important}
+</style>
+
+<div class="seite">
+
+<header class="kopf spalte">
+  <div class="ihk">Abschlussprüfung Teil 1 &middot; Frühjahr 2024 &middot; ZPA Nord-West</div>
+  <h1>Einrichten eines IT&#8209;gestützten Arbeitsplatzes</h1>
+  <div class="unter">Alle Themen dieser Prüfung, erklärt und durchgerechnet &mdash;
+  mit eigenen Beispielen, nicht mit den Originalaufgaben.</div>
+  <div class="fakten">
+    <div><span class="z">4</span><span class="b">Aufgaben</span></div>
+    <div><span class="z">90</span><span class="b">Minuten</span></div>
+    <div><span class="z">100</span><span class="b">Punkte</span></div>
+    <div><span class="z">20 %</span><span class="b">der Endnote</span></div>
+  </div>
+</header>
+
+<nav class="toc spalte">
+  <h2>Was drankam</h2>
+  <ol>
+    <li><a href="#technik">Prüfungstechnik<span class="p">vorweg</span></a></li>
+    <li><a href="#nwa">Nutzwertanalyse &amp; KO&#8209;Kriterien<span class="p">6 P</span></a></li>
+    <li><a href="#leasing">Laufende Kosten &amp; Leasing<span class="p">7 P</span></a></li>
+    <li><a href="#anschluss">Monitoranschlüsse<span class="p">4 P</span></a></li>
+    <li><a href="#vertrag">Kaufvertrag &amp; Willenserklärung<span class="p">5 P</span></a></li>
+    <li><a href="#stoerung">Vertragsstörungen<span class="p">4 P</span></a></li>
+    <li><a href="#led">LED am Netzwerkport<span class="p">4 P</span></a></li>
+    <li><a href="#osi">OSI&#8209;Schichten zuordnen<span class="p">4 P</span></a></li>
+    <li><a href="#ipv6">IPv6 ausschreiben<span class="p">5 P</span></a></li>
+    <li><a href="#diagnose">ARP, ping, tracert<span class="p">7 P</span></a></li>
+    <li><a href="#ascii">ASCII&#8209; vs. Binärdatei<span class="p">4 P</span></a></li>
+    <li><a href="#bild">Bildgröße &amp; Farbtiefe<span class="p">8 P</span></a></li>
+    <li><a href="#netzteil">Netzteil &amp; Stromkosten<span class="p">7 P</span></a></li>
+    <li><a href="#schutz">Schutzmaßnahmen &amp; Folgen<span class="p">6 P</span></a></li>
+    <li><a href="#vpn">VPN<span class="p">2 P</span></a></li>
+    <li><a href="#backup">Datensicherung<span class="p">4 P</span></a></li>
+    <li><a href="#malware">Schadsoftware<span class="p">6 P</span></a></li>
+  </ol>
+</nav>
+
+<!-- ═══════ PRÜFUNGSTECHNIK ═══════ -->
+<section class="teil" id="technik">
+ <div class="band">
+  <div class="spalte">
+    <div class="teil-kopf"><h2>Vorweg: Punkte, die nichts mit Fachwissen zu tun haben</h2></div>
+    <p class="intro">Diese Regeln stehen auf dem Deckblatt jeder AP1. Sie kosten jedes Jahr
+    Punkte, weil sie niemand liest.</p>
+
+    <div class="merke">
+      <span class="l">Die teuerste Regel</span>
+      <p><strong>Zu viele Angaben schaden.</strong> Werden <em>vier</em> Angaben gefordert und
+      du schreibst <em>sechs</em> hin, werden nur die <strong>ersten vier</strong> bewertet.</p>
+      <p>Das heißt: Wenn deine ersten zwei falsch sind und die letzten vier richtig, bekommst du
+      zwei von vier Punkten &mdash; obwohl du alles wusstest. Schreib nicht alles auf, was dir
+      einfällt. Schreib das Sicherste zuerst und hör dann auf.</p>
+    </div>
+
+    <table class="t">
+      <thead><tr><th>Regel</th><th>Was sie für dich bedeutet</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Stichworte sind erlaubt</strong></td><td>Ganze Sätze nur, wenn ausdrücklich verlangt („Formulieren Sie ein Schreiben“). Sonst kostet Ausformulieren nur Zeit.</td></tr>
+        <tr><td><strong>Gerundet weiterrechnen</strong></td><td>Trägst du 44,53 € ein, rechnest du auch im Taschenrechner mit 44,53 weiter &mdash; nicht mit 44,53125.</td></tr>
+        <tr><td><strong>Folgefehler zählen nur einmal</strong></td><td>Ein falscher Zwischenwert kostet den Punkt für diesen Schritt. Die Folgeschritte werden mit <em>deinem</em> Wert bewertet. Also: weiterrechnen, nie abbrechen.</td></tr>
+        <tr><td><strong>Rechenweg angeben</strong></td><td>Steht „Geben Sie den Rechenweg an“, gibt es Punkte für Zwischenschritte. Nur ein Endergebnis hinschreiben verschenkt sie.</td></tr>
+        <tr><td><strong>Unleserlich = falsch</strong></td><td>Wörtlich so auf dem Deckblatt.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="achtung">
+      <span class="l">Zeitrechnung</span>
+      <p>90 Minuten für 100 Punkte sind <strong>0,9 Minuten pro Punkt</strong>. Eine 7‑Punkte‑Aufgabe
+      darf also rund 6 Minuten kosten. Wer bei einer 2‑Punkte‑Frage zehn Minuten grübelt, hat
+      das Rennen schon verloren. Erst alles einsammeln, was schnell geht, dann zurück.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>Aufbau</b>
+    Eine durchgehende Ausgangssituation trägt alle vier Aufgaben &mdash; 2024 war es ein
+    Industriebetrieb, in dem CAD‑Arbeitsplätze eingerichtet wurden. Lies sie einmal
+    gründlich, dann kennst du den Kontext für alle 100 Punkte.
+    <b style="margin-top:14px">Taschenrechner</b>
+    Erlaubt, aber nicht programmierbar und ohne Funkverbindung.
+  </aside>
+ </div>
+</section>
+
+<!-- ═══════ TEIL 1 ═══════ -->
+<section class="teil">
+ <div class="band">
+  <div class="spalte">
+    <div class="teil-kopf"><h2>Aufgabe 1 &mdash; Beschaffung und Kaufvertrag</h2><span class="pkt">26 Punkte</span></div>
+    <p class="intro">Angebote vergleichen, Kosten rechnen, Vertrag einordnen. Der punktstärkste
+    Block der Prüfung &mdash; und der berechenbarste.</p>
+  </div>
+ </div>
+</section>
+
+<section class="kap" id="nwa">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">1</span><h3>Nutzwertanalyse und KO&#8209;Kriterien</h3><span class="wert">6 P</span></div>
+
+    <p>Du sollst mehrere Angebote vergleichen, bei denen nicht nur der Preis zählt. Die
+    Nutzwertanalyse macht das nachvollziehbar: Jedes Kriterium bekommt eine <strong>Gewichtung</strong>,
+    jedes Angebot eine <strong>Bewertung</strong>. Multipliziert und addiert ergibt das den Nutzwert.</p>
+
+    <div class="merke">
+      <span class="l">Die Formel</span>
+      <p style="text-align:center;font-size:21px;margin:6px 0" class="m">
+        Nutzwert = Σ (Gewichtung × Bewertung)</p>
+      <p>Kontrolle vorweg: <strong>Die Gewichtungen müssen zusammen 100 % ergeben.</strong>
+      Stimmt das nicht, hast du eine übersehen.</p>
+    </div>
+
+    <h4>Durchgerechnet</h4>
+    <p>Ein Betrieb vergleicht drei Angebote für Arbeitsplatzrechner. Bewertet wird von 1 bis 5,
+    hohe Zahl ist gut.</p>
+
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Kriterium</th><th class="n">Gew.</th><th class="n">A</th><th class="n">A gew.</th><th class="n">B</th><th class="n">B gew.</th><th class="n">C</th><th class="n">C gew.</th></tr></thead>
+      <tbody>
+        <tr><td>Leistung</td><td class="n">40</td><td class="n">3</td><td class="n">120</td><td class="n">5</td><td class="n">200</td><td class="n">4</td><td class="n">160</td></tr>
+        <tr><td>Preis</td><td class="n">35</td><td class="n">5</td><td class="n">175</td><td class="n">2</td><td class="n">70</td><td class="n">4</td><td class="n">140</td></tr>
+        <tr><td>Garantie</td><td class="n">15</td><td class="n">4</td><td class="n">60</td><td class="n">4</td><td class="n">60</td><td class="n">3</td><td class="n">45</td></tr>
+        <tr><td>Lieferzeit</td><td class="n">10</td><td class="n">2</td><td class="n">20</td><td class="n">4</td><td class="n">40</td><td class="n">5</td><td class="n">50</td></tr>
+        <tr style="border-top:2px solid var(--ink)"><td><strong>Summe</strong></td><td class="n"><strong>100</strong></td><td class="n"></td><td class="n"><strong>375</strong></td><td class="n"></td><td class="n"><strong>370</strong></td><td class="n"></td><td class="n"><strong>395</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p><strong>Rangfolge:</strong> C (395) &rarr; A (375) &rarr; B (370). Angebot C gewinnt.</p>
+
+    <h4>Und jetzt das KO&#8209;Kriterium</h4>
+
+    <p>In der Prüfung 2024 folgte direkt danach eine zweite Teilaufgabe: Eine Bedingung wurde
+    nachgeschoben, und das bestplatzierte Angebot fiel dadurch komplett raus.</p>
+
+    <div class="merke">
+      <span class="l">So funktioniert ein KO&#8209;Kriterium</span>
+      <p>Ein KO&#8209;Kriterium ist eine <strong>Bedingung, die erfüllt sein muss</strong>. Sie wird
+      <em>nicht</em> mitgerechnet. Wer sie verletzt, <strong>scheidet aus</strong> &mdash; egal wie
+      hoch sein Nutzwert ist.</p>
+      <p>Dann gewinnt der Beste <em>der übrigen</em>.</p>
+    </div>
+
+    <div class="beispiel">
+      <span class="l">Weiter im Beispiel</span>
+      <p>Nachträglich wird festgelegt: <em>Nur Geräte mit Vor‑Ort‑Service innerhalb von 24 Stunden
+      kommen in Frage.</em> Angebot C bietet nur Einsendeservice.</p>
+      <p>&rarr; <strong>C scheidet aus</strong>, obwohl es mit 395 Punkten vorne lag.<br>
+      &rarr; Den Zuschlag bekommt <strong>Angebot A</strong> mit 375 Punkten.</p>
+      <p>In der Antwort musst du <strong>beides</strong> hinschreiben: wer gewinnt <em>und</em>
+      warum der eigentliche Sieger rausfällt. Das sind zwei getrennte Punkte.</p>
+    </div>
+
+    <div class="falle">
+      <span class="l">Typische Fehler</span>
+      <p><strong>Gewichtung als ganze Zahl statt Prozent.</strong> Beides geht, aber halte es
+      durch. 40 % kannst du als 0,40 oder als 40 rechnen &mdash; nur nicht gemischt.</p>
+      <p><strong>KO&#8209;Kriterium mit einbauen.</strong> Es wird nicht bewertet, es schließt aus.</p>
+      <p><strong>Rangfolge vergessen.</strong> Auf die Rangfolge gibt es einen eigenen Punkt,
+      auch wenn die Zahlen schon dastehen.</p>
+    </div>
+
+    <div class="tool">
+      <span class="l">Werkzeug</span>
+      <h4>Nutzwerte selbst ausrechnen</h4>
+      <p>Gewichtungen und Bewertungen eintragen, der Rest läuft mit. Leere Felder zählen als 0.</p>
+      <div class="scroll">
+      <table class="t" id="nwa-tab" style="font-size:14px"></table>
+      </div>
+      <div class="erg" id="nwa-erg"></div>
+    </div>
+
+    <div class="test" id="t-nwa"></div>
+  </div>
+  <aside class="rand">
+    <b>Punkteverteilung 2024</b>
+    4 Punkte für die Berechnung samt Rangfolge, 2 Punkte für die KO&#8209;Entscheidung.
+    Bei der Berechnung gab es Teilpunkte je richtiger Zahl &mdash; also unbedingt alle
+    Zwischenwerte hinschreiben, auch wenn die Summe daneben liegt.
+    <b style="margin-top:14px">Folgefehler</b>
+    Die Musterlösung weist hier ausdrücklich aus, dass Folgefehler berücksichtigt werden.
+    Ein falscher Zwischenwert kostet dich nicht die ganze Aufgabe.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="leasing">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">2</span><h3>Laufende Kosten und Leasing</h3><span class="wert">7 P</span></div>
+
+    <p>Die punktstärkste Einzelaufgabe der Prüfung. Gefragt sind die <strong>monatlichen
+    Gesamtkosten</strong> einer Anschaffung &mdash; und die Tücke liegt darin, dass die einzelnen
+    Positionen <strong>unterschiedliche Laufzeiten</strong> haben.</p>
+
+    <div class="merke">
+      <span class="l">Das Verfahren</span>
+      <p>Bring <strong>jede Position auf denselben Zeitraum</strong>, hier auf einen Monat.
+      Erst danach darfst du addieren.</p>
+    </div>
+
+    <ol class="weg">
+      <li><strong>Rabatt abziehen</strong> &mdash; und zwar nur auf die Positionen, für die er gilt.</li>
+      <li><strong>Menge einrechnen.</strong> Fünf Arbeitsplätze heißt fünfmal den Gerätepreis.</li>
+      <li><strong>Durch die Nutzungsdauer teilen</strong> &mdash; in Monaten, je Position einzeln.</li>
+      <li><strong>Jahresbeträge auf Monat umrechnen</strong> (÷ 12).</li>
+      <li><strong>Pro-Platz-Beträge hochrechnen</strong> (× Anzahl Plätze).</li>
+      <li><strong>Alles addieren.</strong></li>
+    </ol>
+
+    <h4>Durchgerechnet</h4>
+    <div class="beispiel">
+      <span class="l">Beispiel</span>
+      <p>Vier Arbeitsplätze werden ausgestattet:</p>
+      <p><span class="m">PC 900 € je Stück, Nutzungsdauer 3 Jahre<br>
+      Monitor 300 € je Stück, Nutzungsdauer 5 Jahre<br>
+      Rabatt 10 % auf PC und Monitor<br>
+      Softwaremiete 40 € pro Monat und Arbeitsplatz<br>
+      Wartung 960 € pro Jahr für alle Geräte zusammen</span></p>
+    </div>
+
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Position</th><th>Rechnung</th><th class="n">€ / Monat</th></tr></thead>
+      <tbody>
+        <tr><td>PCs</td><td class="m">(4 × 900 €) − 10 % = 3.240 € ÷ 36 Mon.</td><td class="n">90,00</td></tr>
+        <tr><td>Monitore</td><td class="m">(4 × 300 €) − 10 % = 1.080 € ÷ 60 Mon.</td><td class="n">18,00</td></tr>
+        <tr><td>Software</td><td class="m">40 € × 4 Plätze</td><td class="n">160,00</td></tr>
+        <tr><td>Wartung</td><td class="m">960 € ÷ 12 Mon.</td><td class="n">80,00</td></tr>
+        <tr style="border-top:2px solid var(--ink)"><td><strong>Summe</strong></td><td></td><td class="n"><strong>348,00</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="falle">
+      <span class="l">Typische Fehler</span>
+      <p><strong>Beide Geräte durch dieselbe Laufzeit teilen.</strong> Der teuerste Fehler hier.
+      3 Jahre sind 36 Monate, 5 Jahre sind 60 &mdash; das steht in der Aufgabe, nicht in der Formel.</p>
+      <p><strong>Rabatt auf alles anwenden.</strong> Er gilt oft nur für Hardware, nicht für
+      Software oder Wartung. Lies genau, worauf er sich bezieht.</p>
+      <p><strong>Jahrespauschale vergessen umzurechnen.</strong> 960 € pro Jahr sind 80 € pro
+      Monat, nicht 960 €.</p>
+      <p><strong>„pro Arbeitsplatz“ überlesen.</strong> 40 € pro Monat <em>und Arbeitsplatz</em>
+      sind bei vier Plätzen 160 €.</p>
+    </div>
+
+    <div class="tool">
+      <span class="l">Werkzeug</span>
+      <h4>Monatliche Gesamtkosten rechnen</h4>
+      <div class="gitter">
+        <div class="feld"><label for="l-anz">Arbeitsplätze</label><input id="l-anz" type="text" inputmode="numeric" value="4"></div>
+        <div class="feld"><label for="l-pc">PC-Preis je Stück (€)</label><input id="l-pc" type="text" inputmode="decimal" value="900"></div>
+        <div class="feld"><label for="l-pcj">Nutzungsdauer PC (Jahre)</label><input id="l-pcj" type="text" inputmode="numeric" value="3"></div>
+        <div class="feld"><label for="l-mo">Monitor-Preis je Stück (€)</label><input id="l-mo" type="text" inputmode="decimal" value="300"></div>
+        <div class="feld"><label for="l-moj">Nutzungsdauer Monitor (Jahre)</label><input id="l-moj" type="text" inputmode="numeric" value="5"></div>
+        <div class="feld"><label for="l-rab">Rabatt auf Hardware (%)</label><input id="l-rab" type="text" inputmode="decimal" value="10"></div>
+        <div class="feld"><label for="l-sw">Software € / Monat &amp; Platz</label><input id="l-sw" type="text" inputmode="decimal" value="40"></div>
+        <div class="feld"><label for="l-wa">Wartung € / Jahr gesamt</label><input id="l-wa" type="text" inputmode="decimal" value="960"></div>
+      </div>
+      <div class="erg" id="l-erg"></div>
+    </div>
+
+    <div class="test" id="t-leasing"></div>
+  </div>
+  <aside class="rand">
+    <b>Rechenweg angeben</b>
+    Die Aufgabe verlangte 2024 ausdrücklich den Rechenweg. Von den 7 Punkten entfielen
+    je 2 auf die beiden Gerätepositionen und je 1 auf Wartung, Software und Summe.
+    Wer nur die Summe hinschreibt, verschenkt 6 Punkte.
+    <b style="margin-top:14px">Monate statt Jahre</b>
+    Nutzungsdauer steht in Jahren, gerechnet wird in Monaten. × 12, immer.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="anschluss">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">3</span><h3>Monitoranschlüsse erkennen</h3><span class="wert">4 P</span></div>
+    <p>Reines Wissen, keine Rechnung. Vier Punkte in unter einer Minute, wenn man die Stecker kennt.</p>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Anschluss</th><th>Form</th><th>Überträgt</th><th>Merkmal</th></tr></thead>
+      <tbody>
+        <tr><td><strong>HDMI</strong></td><td>flach, oben breiter als unten</td><td>Bild + Ton</td><td>Der Standard an Fernsehern</td></tr>
+        <tr><td><strong>DisplayPort</strong></td><td>wie HDMI, aber <strong>eine Ecke abgeschrägt</strong></td><td>Bild + Ton</td><td>Meist an PC-Grafikkarten; kann mehrere Monitore in Reihe (Daisy Chain)</td></tr>
+        <tr><td><strong>DVI</strong></td><td>breit, viele Pins, zwei Schrauben</td><td>nur Bild</td><td>Älter, kein Ton</td></tr>
+        <tr><td><strong>USB&#8209;C</strong></td><td>klein, oval, verdrehsicher</td><td>Bild + Ton + Daten + <strong>Strom</strong></td><td>Ein Kabel für alles; im Notebook-Umfeld führend</td></tr>
+        <tr><td>VGA</td><td>trapezförmig, 15 Pins, blau</td><td>nur Bild, <strong>analog</strong></td><td>Veraltet; Qualitätsverlust bei langen Kabeln</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="merke">
+      <span class="l">Die zwei Unterscheidungen, die zählen</span>
+      <p><strong>Ton oder kein Ton:</strong> DVI und VGA übertragen <em>keinen</em> Ton.</p>
+      <p><strong>Analog oder digital:</strong> Nur VGA ist analog. Alles andere ist digital.</p>
+    </div>
+    <div class="falle">
+      <span class="l">Typischer Fehler</span>
+      <p>DisplayPort und HDMI verwechseln. Erkennungsmerkmal: <strong>DisplayPort hat eine
+      abgeschrägte Ecke</strong>, HDMI ist symmetrisch trapezförmig.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>Warum das drankommt</b>
+    Lernfeld 2 verlangt, Arbeitsplätze „nach Kundenwunsch auszustatten“ und dabei
+    technische Merkmale aus Datenblättern zu vergleichen. Anschlussarten sind der
+    einfachste prüfbare Fall davon.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="vertrag">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">4</span><h3>Kaufvertrag und Willenserklärung</h3><span class="wert">5 P</span></div>
+
+    <div class="merke">
+      <span class="l">Der Kernsatz</span>
+      <p>Ein Kaufvertrag kommt durch <strong>zwei übereinstimmende Willenserklärungen</strong>
+      zustande: <strong>Antrag</strong> und <strong>Annahme</strong>.</p>
+      <p>Er entsteht in dem Moment, in dem die zweite Erklärung abgegeben wird &mdash; nicht bei
+      Bezahlung, nicht bei Rechnungsstellung.</p>
+    </div>
+
+    <p>Die Prüfungsfrage lautet fast immer: <em>Wann genau ist der Vertrag zustande gekommen?</em>
+    Du musst den Zeitpunkt nennen <strong>und begründen</strong>, welche Handlung welche
+    Willenserklärung war. Das sind zwei getrennte Punkte.</p>
+
+    <div class="beispiel">
+      <span class="l">Der Klassiker</span>
+      <p>Ein Betrieb bestellt am 2. Oktober Geräte. Der Lieferant bestätigt nichts, liefert aber
+      am 7. Oktober. Die Rechnung kommt am 12. Oktober.</p>
+      <p><strong>Antwort:</strong> Der Vertrag kam am <strong>7. Oktober</strong> zustande.<br>
+      <strong>Begründung:</strong> Die Bestellung ist der <strong>Antrag</strong> (1. Willenserklärung).
+      Die Lieferung ist die <strong>Annahme</strong> durch <strong>schlüssiges Handeln</strong>
+      (konkludent) &mdash; die 2. Willenserklärung. Eine ausdrückliche Bestätigung ist nicht nötig.</p>
+    </div>
+
+    <h4>Bestandteile eines Kaufvertrags</h4>
+    <p>Werden drei gefordert, nenne drei. Nicht sechs &mdash; siehe Prüfungstechnik.</p>
+    <ul class="pl">
+      <li><strong>Kaufgegenstand</strong> &mdash; was genau, in welcher Beschaffenheit</li>
+      <li><strong>Menge</strong></li>
+      <li><strong>Kaufpreis</strong></li>
+      <li><strong>Zahlungsbedingungen</strong> &mdash; Ziel, Skonto</li>
+      <li><strong>Lieferbedingungen</strong> &mdash; Ort, Kostenträger</li>
+      <li><strong>Liefertermin</strong></li>
+    </ul>
+
+    <div class="falle">
+      <span class="l">Typische Fehler</span>
+      <p><strong>Bezahlung als Vertragsschluss.</strong> Der Vertrag steht vorher &mdash; die
+      Zahlung ist bereits die Erfüllung.</p>
+      <p><strong>Nur den Zeitpunkt nennen.</strong> Ohne Begründung fehlt der halbe Punktwert.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>Schlüssiges Handeln</b>
+    Auch „konkludentes Handeln“ genannt: Man erklärt seinen Willen durch eine Handlung
+    statt durch Worte. Wer im Bus einsteigt, schließt einen Beförderungsvertrag, ohne
+    etwas zu sagen.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="stoerung">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">5</span><h3>Vertragsstörungen und Gegenmaßnahmen</h3><span class="wert">4 P</span></div>
+    <p>Gefragt sind erst die Störungen, dann je Störung eine Maßnahme. Zwei Teilaufgaben,
+    je 2 Punkte.</p>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Störung</th><th>Was passiert</th><th>Was der Betrieb tun kann</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lieferverzug</strong></td><td>Ware kommt zu spät</td><td>Mahnung mit Nachfrist · Konventionalstrafe vereinbaren · zweiten Lieferanten aufbauen · Deckungskauf</td></tr>
+        <tr><td><strong>Mangelhafte Lieferung</strong></td><td>Ware ist beschädigt, falsch oder unvollständig</td><td>Sofortige Wareneingangskontrolle · <strong>Mängelrüge</strong> · sorgfältige Lieferantenauswahl</td></tr>
+        <tr><td><strong>Annahmeverzug</strong></td><td>Der Käufer nimmt nicht ab</td><td>Lagerkosten weiterberechnen</td></tr>
+        <tr><td><strong>Zahlungsverzug</strong></td><td>Rechnung wird nicht bezahlt</td><td>Mahnverfahren · Verzugszinsen</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="merke">
+      <span class="l">Fristen bei der Mängelrüge</span>
+      <p>Im <strong>Handelskauf</strong> (Betrieb kauft bei Betrieb) gilt: Ware
+      <strong>unverzüglich</strong> untersuchen und Mängel <strong>sofort</strong> rügen.
+      Wer schweigt, gilt als einverstanden &mdash; die Ware ist genehmigt.</p>
+      <p><strong>Offene Mängel:</strong> sofort. <strong>Versteckte Mängel:</strong> sofort nach
+      Entdeckung.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>Die Aufgabe ist zweistufig</b>
+    Erst nennen, dann handeln. Wer nur Störungen aufzählt, bekommt die Hälfte.
+    Ordne jede Maßnahme sichtbar einer Störung zu.
+  </aside>
+ </div>
+</section>
+
+<!-- ═══════ TEIL 2 ═══════ -->
+<section class="teil">
+ <div class="band"><div class="spalte">
+   <div class="teil-kopf"><h2>Aufgabe 2 &mdash; Netzwerk anschließen und prüfen</h2><span class="pkt">24 Punkte</span></div>
+   <p class="intro">Vom Stecker bis zur Diagnose. Auffällig 2024: <strong>IPv6 statt IPv4-Subnetting</strong>.</p>
+ </div></div>
+</section>
+
+<section class="kap" id="led">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">6</span><h3>Die LEDs am Netzwerkport</h3><span class="wert">4 P</span></div>
+    <p>Jede RJ45-Buchse hat zwei Leuchtdioden. Sie sind das erste Diagnosewerkzeug &mdash; noch
+    vor jedem Befehl.</p>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Anzeige</th><th>Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Leuchtet durchgehend</strong></td><td><strong>Link:</strong> Es besteht eine funktionierende <strong>physikalische Verbindung</strong> zwischen Netzwerkkarte und Switch. Kabel und Ports sind in Ordnung. Manche Geräte zeigen über die Farbe zusätzlich die ausgehandelte Geschwindigkeit an.</td></tr>
+        <tr><td><strong>Blinkt unregelmäßig</strong></td><td><strong>Aktivität:</strong> Es fließen gerade Daten. Unregelmäßig deshalb, weil echter Datenverkehr in Schüben kommt.</td></tr>
+        <tr><td><strong>Aus</strong></td><td>Keine Verbindung. Kabel, Port oder Gegenstelle prüfen.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="achtung">
+      <span class="l">Was die LED nicht sagt</span>
+      <p>Eine leuchtende Link-LED heißt <strong>nur</strong>, dass die Leitung steht. Über
+      IP-Adresse, Gateway, DNS oder Firewall sagt sie nichts. Ein Rechner kann Link haben und
+      trotzdem nirgends hinkommen &mdash; das ist genau der Fall, den die Prüfung gern
+      konstruiert.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>Diagnosereihenfolge</b>
+    Von unten nach oben durch das Schichtmodell: Kabel und LED (Schicht 1), dann
+    Adresse und Gateway (Schicht 3), dann Dienst und Anwendung. Wer oben anfängt,
+    sucht lange.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="osi">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">7</span><h3>OSI-Schichten zuordnen</h3><span class="wert">4 P</span></div>
+    <p>Ein Begriff steht da, du trägst <strong>Schichtnummer und Schichtname</strong> ein.
+    Beides wird verlangt.</p>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th class="n">Nr.</th><th>Name (deutsch / englisch)</th><th>Was dort passiert</th><th>Typische Begriffe</th></tr></thead>
+      <tbody>
+        <tr><td class="n">7</td><td>Anwendung / Application</td><td>Dienste für den Nutzer</td><td><strong>DHCP</strong>, DNS, HTTP, SMTP, FTP</td></tr>
+        <tr><td class="n">6</td><td>Darstellung / Presentation</td><td>Format, Kodierung, Verschlüsselung</td><td>ASCII, TLS-Verschlüsselung</td></tr>
+        <tr><td class="n">5</td><td>Sitzung / Session</td><td>Verbindung auf- und abbauen</td><td>Sitzungssteuerung</td></tr>
+        <tr><td class="n">4</td><td>Transport</td><td>Ende-zu-Ende, Ports</td><td><strong>TCP</strong>, UDP, Portnummer</td></tr>
+        <tr><td class="n">3</td><td>Vermittlung / Network</td><td>Wegwahl zwischen Netzen</td><td><strong>IP-Adresse</strong>, Router, ICMP</td></tr>
+        <tr><td class="n">2</td><td>Sicherung / Data Link</td><td>Adressierung im lokalen Netz</td><td><strong>MAC-Adresse</strong>, Switch, Frame</td></tr>
+        <tr><td class="n">1</td><td>Bitübertragung / Physical</td><td>Signale auf der Leitung</td><td><strong>Kabel, RJ45-Buchse</strong>, Hub, Repeater</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="merke">
+      <span class="l">Merkhilfe von unten nach oben</span>
+      <p style="font-family:var(--sans);font-size:16px"><strong>P</strong>lease <strong>D</strong>o
+      <strong>N</strong>ot <strong>T</strong>hrow <strong>S</strong>alami
+      <strong>P</strong>izza <strong>A</strong>way<br>
+      Physical · Data Link · Network · Transport · Session · Presentation · Application</p>
+    </div>
+    <div class="falle">
+      <span class="l">Die drei sicheren Punkte</span>
+      <p><strong>MAC-Adresse → Schicht 2.</strong> <strong>IP-Adresse → Schicht 3.</strong>
+      <strong>Buchse/Kabel → Schicht 1.</strong> Diese drei kommen immer und werden am
+      häufigsten vertauscht: MAC ist <em>unter</em> IP, nicht darüber.</p>
+      <p><strong>DHCP → Schicht 7</strong>, obwohl es Adressen der Schicht 3 verteilt. Entscheidend
+      ist, wo der Dienst arbeitet, nicht womit er hantiert.</p>
+    </div>
+    <div class="test" id="t-osi"></div>
+  </div>
+  <aside class="rand">
+    <b>Beide Angaben</b>
+    2024 wurde je Zeile Nummer <em>und</em> Name verlangt. Nur die Zahl gibt nicht
+    den vollen Punkt. Der englische Name gilt genauso.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="ipv6">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">8</span><h3>IPv6 &mdash; kürzen und ausschreiben</h3><span class="wert">5 P</span></div>
+
+    <p>2024 kam <strong>kein IPv4-Subnetting</strong>. Stattdessen sollte eine gekürzte
+    IPv6-Adresse von Hand <strong>ungekürzt</strong> ausgeschrieben werden. Das ist reine
+    Mechanik &mdash; wer die zwei Regeln kann, holt die Punkte in zwei Minuten.</p>
+
+    <div class="merke">
+      <span class="l">Der Aufbau</span>
+      <p>Eine IPv6-Adresse ist <strong>128 Bit</strong> lang. Geschrieben wird sie als
+      <strong>acht Blöcke zu je vier Hexadezimalziffern</strong>, getrennt durch Doppelpunkte.</p>
+      <p>8 Blöcke × 4 Ziffern × 4 Bit je Ziffer = 128 Bit.</p>
+    </div>
+
+    <h4>Die zwei Kürzungsregeln &mdash; und wie du sie rückwärts anwendest</h4>
+    <ol class="weg">
+      <li><strong>Führende Nullen im Block entfallen.</strong> <span class="m">00a3</span> wird
+      zu <span class="m">a3</span>. Rückwärts: <strong>jeden Block auf vier Ziffern mit Nullen
+      auffüllen &mdash; von links.</strong></li>
+      <li><strong>Eine Folge von Nullblöcken wird zu <span class="m">::</span></strong> &mdash;
+      und das <strong>höchstens einmal</strong> pro Adresse. Rückwärts: zähle die vorhandenen
+      Blöcke, ergänze so viele <span class="m">0000</span>-Blöcke, dass es acht werden.</li>
+    </ol>
+
+    <div class="beispiel">
+      <span class="l">Durchgerechnet</span>
+      <p>Gegeben: <span class="ip">fe80::1a2b:0:c5ff:fe12</span></p>
+      <p><strong>Schritt 1 &mdash; Blöcke zählen.</strong> Links vom <span class="m">::</span>
+      steht 1 Block (<span class="m">fe80</span>), rechts stehen 4
+      (<span class="m">1a2b, 0, c5ff, fe12</span>). Macht 5 von 8.</p>
+      <p><strong>Schritt 2 &mdash; fehlende Blöcke ergänzen.</strong> 8 − 5 = <strong>3 Blöcke</strong>
+      <span class="m">0000</span> anstelle des <span class="m">::</span>.</p>
+      <p><strong>Schritt 3 &mdash; jeden Block auf vier Stellen auffüllen.</strong>
+      <span class="m">0</span> wird zu <span class="m">0000</span>.</p>
+      <p><strong>Ergebnis:</strong><br>
+      <span class="ip">fe80:0000:0000:0000:1a2b:0000:c5ff:fe12</span></p>
+    </div>
+
+    <div class="falle">
+      <span class="l">Typische Fehler</span>
+      <p><strong>Nullen rechts anhängen statt links.</strong> <span class="m">a3</span> wird zu
+      <span class="m">00a3</span>, nicht zu <span class="m">a300</span>. Das ändert die Adresse
+      komplett.</p>
+      <p><strong>Blöcke falsch gezählt.</strong> Am Ende müssen es <strong>immer genau acht</strong>
+      sein &mdash; zähl nach, bevor du abgibst.</p>
+      <p><strong>Zweimal <span class="m">::</span> verwenden.</strong> Nicht erlaubt, weil dann
+      nicht mehr eindeutig wäre, wie viele Nullblöcke wohin gehören.</p>
+    </div>
+
+    <h4>Was sonst gefragt wird</h4>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Begriff</th><th>Antwort</th></tr></thead>
+      <tbody>
+        <tr><td>Länge</td><td><strong>128 Bit</strong></td></tr>
+        <tr><td>Präfixlänge, üblich im LAN</td><td><strong>/64</strong> &mdash; die ersten 64 Bit sind der Netzanteil</td></tr>
+        <tr><td>Interface-Identifier</td><td>Die <strong>hinteren 64 Bit</strong>. Sie identifizieren die Schnittstelle im Netz &mdash; oft aus der MAC-Adresse abgeleitet oder zufällig vergeben (Privacy Extensions)</td></tr>
+        <tr><td><span class="m">fe80::/10</span></td><td><strong>Link-Local</strong>: gilt nur im lokalen Segment, wird nicht geroutet. Jede Schnittstelle hat automatisch eine</td></tr>
+        <tr><td><span class="m">::1</span></td><td>Loopback &mdash; das Gegenstück zu 127.0.0.1</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="tool">
+      <span class="l">Werkzeug</span>
+      <h4>IPv6-Adresse ausschreiben</h4>
+      <p>Gekürzte Adresse eintippen, der Rechenweg erscheint darunter. Probier
+      <span class="m">fe80::1</span> oder <span class="m">2001:db8::c5ff:fe12:38b7</span>.</p>
+      <div class="feld"><label for="v6">Gekürzte IPv6-Adresse</label>
+        <input id="v6" type="text" spellcheck="false" autocomplete="off" value="fe80::1a2b:0:c5ff:fe12"></div>
+      <div class="erg" id="v6-erg"></div>
+    </div>
+
+    <div class="test" id="t-ipv6"></div>
+  </div>
+  <aside class="rand">
+    <b>Punkteverteilung 2024</b>
+    1 Punkt Länge in Bit · <strong>2 Punkte</strong> für die ungekürzte Darstellung ·
+    1 Punkt Präfixlänge · 1 Punkt Interface-Identifier. Das Ausschreiben ist die
+    Hälfte der Aufgabe.
+    <b style="margin-top:14px">Hex-Ziffern</b>
+    0–9 und a–f. Ein Hex-Zeichen = 4 Bit. Groß- oder Kleinschreibung ist egal.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="diagnose">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">9</span><h3>ARP, ping und tracert</h3><span class="wert">7 P</span></div>
+
+    <h4>ARP &mdash; von der IP-Adresse zur MAC-Adresse</h4>
+    <p>Ein Rechner kennt die IP-Adresse des Ziels, braucht zum Senden im lokalen Netz aber
+    dessen <strong>MAC-Adresse</strong>. Genau diese Übersetzung macht <strong>ARP</strong>
+    (Address Resolution Protocol).</p>
+
+    <div class="merke">
+      <span class="l">Der Satz für die Prüfung</span>
+      <p>ARP ermittelt zu einer bekannten <strong>IP-Adresse</strong> die zugehörige
+      <strong>MAC-Adresse</strong> im lokalen Netz.</p>
+      <p>Der Rechner fragt per Broadcast „Wer hat 192.168.0.1?“, das Zielgerät antwortet mit
+      seiner MAC-Adresse. Das Ergebnis landet im <strong>ARP-Cache</strong>, abrufbar mit
+      <span class="m">arp -a</span>.</p>
+    </div>
+
+    <h4>Die Diagnosebefehle</h4>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Befehl</th><th>Was er tut</th><th>Wofür</th></tr></thead>
+      <tbody>
+        <tr><td class="m">ping &lt;ziel&gt;</td><td>Sendet Echo-Anfragen und misst die Antwortzeit</td><td>Ist das Ziel überhaupt erreichbar?</td></tr>
+        <tr><td class="m">tracert &lt;ziel&gt;</td><td>Zeigt jede Zwischenstation auf dem Weg</td><td><strong>Wo</strong> bleibt es hängen? Unter Linux/macOS: <span class="m">traceroute</span></td></tr>
+        <tr><td class="m">ipconfig /all</td><td>Zeigt IP, Maske, Gateway, DNS, MAC</td><td>Stimmt meine eigene Konfiguration? Linux: <span class="m">ip a</span></td></tr>
+        <tr><td class="m">arp -a</td><td>Zeigt den ARP-Cache</td><td>Welche MAC gehört zu welcher IP?</td></tr>
+        <tr><td class="m">nslookup &lt;name&gt;</td><td>Fragt den DNS-Server</td><td>Ist es ein Namens- oder ein Netzproblem?</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="achtung">
+      <span class="l">Wenn ping fehlschlägt</span>
+      <p>Das heißt <strong>nicht</strong> zwingend, dass das Ziel aus ist. Viele Systeme und
+      Firewalls beantworten ICMP grundsätzlich nicht. Ein fehlgeschlagener ping ist ein Hinweis,
+      kein Beweis.</p>
+    </div>
+
+    <h4>Was ein Client mindestens braucht</h4>
+    <ul class="pl">
+      <li><strong>IP-Adresse</strong> &mdash; die eigene Adresse im Netz</li>
+      <li><strong>Subnetzmaske</strong> &mdash; trennt Netz- und Hostanteil</li>
+      <li><strong>Default-Gateway</strong> &mdash; für alles außerhalb des eigenen Netzes</li>
+      <li><strong>DNS-Server</strong> &mdash; um Namen in Adressen aufzulösen</li>
+    </ul>
+    <p>Die ersten beiden reichen für das lokale Netz. Ohne Gateway kein Internet, ohne DNS
+    keine Namen &mdash; dann geht nur noch die direkte IP.</p>
+
+    <div class="falle">
+      <span class="l">Der Klassiker</span>
+      <p>Ein Client hat <span class="ip">169.254.x.x</span>: Er hat sich die Adresse
+      <strong>selbst gegeben (APIPA)</strong>, weil <strong>kein DHCP-Server geantwortet hat</strong>.
+      Prüfen: DHCP-Dienst, Kabel, Switchport, VLAN, Adresspool erschöpft.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>2024 verteilt</b>
+    LED 4 P · IPv4-Konfigurationsangaben 2 P · ARP 3 P · Befehle 2 P ·
+    Netzwerkdiagramm ausfüllen 4 P. Zusammen 15 der 24 Punkte dieser Aufgabe &mdash;
+    ohne eine einzige Rechnung.
+    <b style="margin-top:14px">Diagramm ausfüllen</b>
+    Bei der Diagrammaufgabe werden IP- und MAC-Adressen aus dem Aufgabentext
+    übertragen. Reine Sorgfalt, volle Punkte.
+  </aside>
+ </div>
+</section>
+
+<!-- ═══════ TEIL 3 ═══════ -->
+<section class="teil">
+ <div class="band"><div class="spalte">
+   <div class="teil-kopf"><h2>Aufgabe 3 &mdash; Daten, Speicher und Energie</h2><span class="pkt">24 Punkte</span></div>
+   <p class="intro">Der rechenlastigste Block. Zwei Themen dominieren: Speicherbedarf und Stromkosten.</p>
+ </div></div>
+</section>
+
+<section class="kap" id="ascii">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">10</span><h3>ASCII-Datei oder Binärdatei</h3><span class="wert">4 P</span></div>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th></th><th>ASCII-Datei (Textdatei)</th><th>Binärdatei</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Inhalt</strong></td><td>Nur darstellbare Zeichen</td><td>Beliebige Bytefolgen</td></tr>
+        <tr><td><strong>Öffnen mit</strong></td><td><strong>Jedem Texteditor</strong>, lesbar und bearbeitbar</td><td><strong>Nur mit der passenden Anwendung</strong></td></tr>
+        <tr><td><strong>Beispiele</strong></td><td>.txt, .csv, .xml, .json, Quellcode</td><td>.exe, .jpg, .mp3, .zip, .docx</td></tr>
+        <tr><td><strong>Vorteil</strong></td><td>Plattformunabhängig, versionierbar, mit einfachen Werkzeugen prüfbar</td><td>Kompakter, schneller zu verarbeiten</td></tr>
+        <tr><td><strong>Nachteil</strong></td><td>Größer, langsamer zu parsen</td><td>Ohne passendes Programm unbrauchbar</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="merke">
+      <span class="l">Die zwei Sätze, die zwei mal zwei Punkte bringen</span>
+      <p><strong>ASCII-Datei:</strong> speichert Daten als Zeichen, die sich mit jedem Texteditor
+      öffnen und bearbeiten lassen.</p>
+      <p><strong>Binärdatei:</strong> speichert Daten in einem binären Format, das nur die
+      zugehörige Anwendung verarbeiten kann.</p>
+    </div>
+    <h4>Wenn zwei Programme verschiedene Formate sprechen</h4>
+    <ul class="pl">
+      <li><strong>Exportfunktion</strong> des Quellprogramms nutzen</li>
+      <li><strong>Importfunktion</strong> des Zielprogramms prüfen</li>
+      <li><strong>Konverter</strong> einsetzen (online oder lokal)</li>
+      <li>Auf ein <strong>neutrales Austauschformat</strong> ausweichen (z. B. STEP bei CAD, CSV bei Tabellen)</li>
+      <li>Im Notfall: eigenen Konverter schreiben</li>
+    </ul>
+  </div>
+  <aside class="rand">
+    <b>Warum das drankommt</b>
+    Lernfeld 5 verlangt „Software zur Verwaltung von Daten anpassen“ &mdash; und der
+    häufigste Praxisfall ist, dass zwei Programme sich nicht verstehen.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="bild">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">11</span><h3>Bildgröße, Farbtiefe, Speichervergleich</h3><span class="wert">8 P</span></div>
+
+    <div class="merke">
+      <span class="l">Die Grundformel</span>
+      <p style="text-align:center;font-size:19px;margin:8px 0" class="m">
+        Größe in Bit = Breite × Höhe × Farbtiefe</p>
+      <p>Dann <strong>÷ 8</strong> für Byte. Für KiB weiter <strong>÷ 1024</strong>,
+      für MiB nochmals <strong>÷ 1024</strong>.</p>
+    </div>
+
+    <div class="achtung">
+      <span class="l">KiB oder KB &mdash; hier fallen die meisten durch</span>
+      <p><strong>KiB</strong> = 1024 Byte (binär). <strong>KB</strong> = 1000 Byte (dezimal).</p>
+      <p>Steht in der Aufgabe <strong>KiB</strong>, teilst du durch <strong>1024</strong>. Wer
+      durch 1000 teilt, hat ein plausibel aussehendes, aber falsches Ergebnis &mdash; und merkt
+      es nicht.</p>
+    </div>
+
+    <div class="beispiel">
+      <span class="l">Durchgerechnet</span>
+      <p>Ein Bild ist <strong>800 × 600</strong> Pixel groß, die Farbtiefe beträgt
+      <strong>24 Bit</strong>. Wie groß ist es unkomprimiert in KiB?</p>
+      <p><span class="m">800 × 600 = 480.000 Pixel<br>
+      480.000 × 24 Bit = 11.520.000 Bit<br>
+      11.520.000 ÷ 8 = 1.440.000 Byte<br>
+      1.440.000 ÷ 1024 = <strong>1.406,25 KiB</strong> (≈ 1,37 MiB)</span></p>
+    </div>
+
+    <h4>Farbtiefe &mdash; wie viele Farben sind das?</h4>
+    <p>Die Farbtiefe sagt, wie viele Bit <em>pro Pixel</em> zur Verfügung stehen. Die Anzahl
+    möglicher Farben ist <strong>2<sup>Farbtiefe</sup></strong>.</p>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th class="n">Bit</th><th>Rechnung</th><th class="n">Farben</th><th>Gebräuchlich als</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td class="m">2¹</td><td class="n">2</td><td>Schwarzweiß</td></tr>
+        <tr><td class="n">8</td><td class="m">2⁸</td><td class="n">256</td><td>Graustufen oder Palette</td></tr>
+        <tr><td class="n">16</td><td class="m">2¹⁶</td><td class="n">65.536</td><td>High Color</td></tr>
+        <tr><td class="n">24</td><td class="m">2²⁴ = 256 × 256 × 256</td><td class="n">16.777.216</td><td><strong>True Color</strong> &mdash; 8 Bit je Kanal R, G, B</td></tr>
+        <tr><td class="n">32</td><td class="m">2²⁴ Farben + 8 Bit Alpha</td><td class="n">16.777.216</td><td>True Color mit Transparenz</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="falle">
+      <span class="l">Denkfalle bei 32 Bit</span>
+      <p>32 Bit bedeuten <strong>nicht</strong> mehr Farben als 24 Bit. Die zusätzlichen 8 Bit
+      sind der <strong>Alphakanal</strong> für Transparenz. Die Farbanzahl bleibt bei
+      16.777.216 &mdash; der Speicherbedarf steigt aber um ein Drittel.</p>
+    </div>
+
+    <h4>Mehrbedarf in Prozent</h4>
+    <p>2024 sollte verglichen werden, wie viel <em>mehr</em> Speicher eine Variante braucht.</p>
+    <div class="beispiel">
+      <span class="l">Durchgerechnet</span>
+      <p>Variante A braucht 12 Byte je Datensatz, Variante B braucht 15 Byte.</p>
+      <p><span class="m">(15 − 12) ÷ 12 = 0,25 = <strong>25 % mehr</strong></span></p>
+      <p><strong>Immer durch den Ausgangswert teilen</strong>, nicht durch den neuen. Sonst
+      kommst du auf 20 % &mdash; und das ist die Antwort auf eine andere Frage.</p>
+    </div>
+
+    <div class="tool">
+      <span class="l">Werkzeug</span>
+      <h4>Bildgröße berechnen</h4>
+      <div class="gitter">
+        <div class="feld"><label for="b-w">Breite (Pixel)</label><input id="b-w" type="text" inputmode="numeric" value="800"></div>
+        <div class="feld"><label for="b-h">Höhe (Pixel)</label><input id="b-h" type="text" inputmode="numeric" value="600"></div>
+        <div class="feld"><label for="b-t">Farbtiefe (Bit)</label><input id="b-t" type="text" inputmode="numeric" value="24"></div>
+      </div>
+      <div class="erg" id="b-erg"></div>
+    </div>
+
+    <div class="test" id="t-bild"></div>
+  </div>
+  <aside class="rand">
+    <b>2024 verteilt</b>
+    Bildgröße in KiB 3 P · Farbanzahl 2 P · Mehrbedarf in Prozent 3 P.
+    <b style="margin-top:14px">Einheit prüfen</b>
+    Bit oder Byte? Farbtiefe steht in <strong>Bit</strong>, Dateigrößen in
+    <strong>Byte</strong>. Der Faktor 8 dazwischen ist der häufigste Fehler
+    dieser Aufgabengattung.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="netzteil">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">12</span><h3>Netzteil auslegen und Stromkosten rechnen</h3><span class="wert">7 P</span></div>
+
+    <h4>Teil 1 &mdash; Welches Netzteil?</h4>
+    <ol class="weg">
+      <li><strong>Leistungsaufnahme aller Komponenten addieren</strong> &mdash; CPU, Grafikkarte,
+      Laufwerke, Lüfter, Mainboard.</li>
+      <li><strong>Reserve aufschlagen.</strong> Ein Netzteil soll nicht am Anschlag laufen: es
+      wird heiß, laut und ineffizient. Üblich sind 20 bis 30 % Puffer.</li>
+      <li><strong>Nächstgrößeres handelsübliches Netzteil wählen</strong> &mdash; 450, 550, 650,
+      750 W.</li>
+    </ol>
+    <div class="beispiel">
+      <span class="l">Durchgerechnet</span>
+      <p><span class="m">CPU 125 W + Grafikkarte 220 W + Board 40 W + 2 SSD à 8 W + Lüfter 10 W
+      = 411 W</span></p>
+      <p>Mit 25 % Reserve: <span class="m">411 × 1,25 = 513,75 W</span> &rarr; gewählt wird ein
+      <strong>550-W-Netzteil</strong>.</p>
+      <p>Nenne in der Prüfung <strong>die Summe und die gewählte Größe</strong>. Beides wird
+      getrennt bepunktet.</p>
+    </div>
+
+    <h4>Teil 2 &mdash; Stromkosten mit Wirkungsgrad</h4>
+    <p>Hier liegt der Punkt, an dem es kippt: Das Netzteil zieht aus der Steckdose
+    <strong>mehr</strong>, als der Rechner verbraucht. Die Differenz wird zu Wärme.</p>
+
+    <div class="merke">
+      <span class="l">Die Formel</span>
+      <p style="text-align:center;font-size:19px;margin:8px 0" class="m">
+        P<sub>ein</sub> = P<sub>aus</sub> ÷ η</p>
+      <p>η (eta) ist der Wirkungsgrad. Bei 90 % rechnest du <strong>÷ 0,90</strong>.</p>
+      <p><strong>Geteilt, nicht multipliziert.</strong> Ein Netzteil mit 90 % Wirkungsgrad zieht
+      bei 450 W Last <span class="m">450 ÷ 0,9 = 500 W</span> aus der Steckdose &mdash; nicht 405 W.
+      Der Wert muss <em>größer</em> werden.</p>
+    </div>
+
+    <div class="beispiel">
+      <span class="l">Durchgerechnet</span>
+      <p>60 Rechner laufen an 220 Arbeitstagen je 8 Stunden. Jeder zieht 300 W bei einem
+      Netzteil-Wirkungsgrad von 85 %. Der Strom kostet 0,35 € je kWh.</p>
+      <p><span class="m">Aufnahme je Gerät: 0,300 kW ÷ 0,85 = 0,35294 kW<br>
+      Stunden gesamt: 220 × 8 = 1.760 h<br>
+      Energie je Gerät: 0,35294 × 1.760 = 621,18 kWh<br>
+      Alle Geräte: 621,18 × 60 = 37.270,59 kWh<br>
+      Kosten: 37.270,59 × 0,35 € = <strong>13.044,71 €</strong></span></p>
+    </div>
+
+    <div class="falle">
+      <span class="l">Typische Fehler</span>
+      <p><strong>Watt nicht in Kilowatt umrechnen.</strong> Der Strompreis steht je
+      <strong>kWh</strong>. 300 W sind 0,3 kW &mdash; teile durch 1000.</p>
+      <p><strong>Mit dem Wirkungsgrad multiplizieren.</strong> Dann wird das Ergebnis kleiner,
+      und das ist physikalisch verkehrt.</p>
+      <p><strong>Arbeitstage durch Kalendertage ersetzen.</strong> Stehen 220 Arbeitstage in der
+      Aufgabe, rechne mit 220 &mdash; nicht mit 365.</p>
+    </div>
+
+    <div class="tool">
+      <span class="l">Werkzeug</span>
+      <h4>Stromkosten rechnen</h4>
+      <div class="gitter">
+        <div class="feld"><label for="s-anz">Anzahl Geräte</label><input id="s-anz" type="text" inputmode="numeric" value="60"></div>
+        <div class="feld"><label for="s-w">Leistung je Gerät (W)</label><input id="s-w" type="text" inputmode="decimal" value="300"></div>
+        <div class="feld"><label for="s-eta">Wirkungsgrad (%)</label><input id="s-eta" type="text" inputmode="decimal" value="85"></div>
+        <div class="feld"><label for="s-h">Stunden pro Tag</label><input id="s-h" type="text" inputmode="decimal" value="8"></div>
+        <div class="feld"><label for="s-t">Tage</label><input id="s-t" type="text" inputmode="numeric" value="220"></div>
+        <div class="feld"><label for="s-p">Preis € je kWh</label><input id="s-p" type="text" inputmode="decimal" value="0.35"></div>
+      </div>
+      <div class="erg" id="s-erg"></div>
+    </div>
+
+    <div class="test" id="t-strom"></div>
+  </div>
+  <aside class="rand">
+    <b>2024 verteilt</b>
+    3 Punkte für die Leistungsberechnung, 1 Punkt für die Netzteilauswahl,
+    3 Punkte für die Stromkosten.
+    <b style="margin-top:14px">Zwei gültige Antworten</b>
+    Die Musterlösung akzeptierte bei den Stromkosten zwei Ergebnisse &mdash; je nachdem,
+    welches Netzteil zuvor gewählt wurde. Genau das meint „Folgefehler werden
+    berücksichtigt“.
+  </aside>
+ </div>
+</section>
+
+<!-- ═══════ TEIL 4 ═══════ -->
+<section class="teil">
+ <div class="band"><div class="spalte">
+   <div class="teil-kopf"><h2>Aufgabe 4 &mdash; Sicherheit und Datenschutz</h2><span class="pkt">26 Punkte</span></div>
+   <p class="intro">Kein Rechnen, nur Wissen &mdash; und der zweitgrößte Block. Hier holt man
+   Punkte am schnellsten.</p>
+ </div></div>
+</section>
+
+<section class="kap" id="schutz">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">13</span><h3>Schutzmaßnahmen &mdash; und die Folge der Nichtbeachtung</h3><span class="wert">6 P</span></div>
+
+    <div class="achtung">
+      <span class="l">Die Aufgabenform verstehen</span>
+      <p>Gefragt war 2024 eine <strong>zweispaltige Tabelle</strong>: links die Maßnahme, rechts
+      <strong>was passiert, wenn man sie unterlässt</strong>.</p>
+      <p>Wer nur Maßnahmen aufzählt, bekommt die Hälfte. Jede Zeile braucht beides.</p>
+    </div>
+
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Maßnahme</th><th>Folge der Nichtbeachtung</th></tr></thead>
+      <tbody>
+        <tr><td>Blickschutzfolie am Notebook</td><td>Bildschirminhalt kann von Unbefugten mitgelesen werden</td></tr>
+        <tr><td>Bildschirmsperre beim Verlassen</td><td>Fremde erhalten Zugriff auf die offene Sitzung</td></tr>
+        <tr><td>Sicheres Passwort, Zugangskontrolle</td><td>Unbefugte können Gerät und Daten nutzen</td></tr>
+        <tr><td>Festplattenverschlüsselung</td><td>Bei Verlust oder Diebstahl sind alle Daten lesbar</td></tr>
+        <tr><td>VPN in fremden Netzen</td><td>Datenübertragung kann abgehört werden</td></tr>
+        <tr><td>Regelmäßige Sicherung</td><td>Daten sind nach Defekt oder Verlust unwiederbringlich weg</td></tr>
+        <tr><td>Keine dienstlichen Daten auf privaten Geräten</td><td>Kontrolle über die Daten geht verloren, DSGVO-Verstoß</td></tr>
+        <tr><td>Updates zeitnah einspielen</td><td>Bekannte Sicherheitslücken bleiben offen</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="merke">
+      <span class="l">Die drei Schutzziele</span>
+      <p><strong>Vertraulichkeit</strong> &mdash; nur Berechtigte sehen die Daten.<br>
+      <strong>Integrität</strong> &mdash; die Daten sind unverändert und korrekt.<br>
+      <strong>Verfügbarkeit</strong> &mdash; sie sind da, wenn man sie braucht.</p>
+      <p>Jede Maßnahme lässt sich einem dieser Ziele zuordnen. Verschlüsselung schützt die
+      Vertraulichkeit, Backup die Verfügbarkeit, Prüfsummen die Integrität.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>Sechs Punkte, drei Zeilen</b>
+    2024 gab es je vollständiger Zeile (Maßnahme + Folge) volle Punkte. Drei saubere
+    Zeilen sind mehr wert als sechs halbe.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="vpn">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">14</span><h3>VPN</h3><span class="wert">2 P</span></div>
+    <div class="merke">
+      <span class="l">Zwei Punkte, ein Satz</span>
+      <p>Ein <strong>VPN (Virtual Private Network)</strong> baut über ein öffentliches Netz
+      &mdash; das Internet &mdash; eine <strong>verschlüsselte Verbindung</strong> zu einem
+      entfernten Netzwerk auf. Für Unbefugte ist der Inhalt nicht einsehbar, obwohl keine eigene
+      physische Leitung existiert.</p>
+    </div>
+    <p>Das Bild dazu: ein <strong>Tunnel</strong> durch das offene Netz. Von außen sieht man,
+    dass Daten fließen, aber nicht welche.</p>
+    <ul class="pl">
+      <li><strong>Wozu:</strong> Zugriff aufs Firmennetz aus dem Homeoffice oder aus fremdem WLAN</li>
+      <li><strong>Was es schützt:</strong> die <strong>Vertraulichkeit</strong> der Übertragung</li>
+      <li><strong>Was es nicht schützt:</strong> vor Schadsoftware auf dem eigenen Gerät. Ein
+      infiziertes Notebook bleibt infiziert &mdash; und ist über den Tunnel jetzt im Firmennetz</li>
+    </ul>
+  </div>
+  <aside class="rand">
+    <b>Formulierung</b>
+    „Verschlüsselte Verbindung über ein öffentliches Netz“ ist der Kern. Wer nur
+    „sichere Verbindung“ schreibt, sagt nicht, <em>warum</em> sie sicher ist.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="backup">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">15</span><h3>Datensicherung und Generationenprinzip</h3><span class="wert">4 P</span></div>
+
+    <div class="merke">
+      <span class="l">Großvater&#8209;Vater&#8209;Sohn</span>
+      <p>Es werden <strong>mehrere Sicherungsstände unterschiedlichen Alters</strong> parallel
+      aufbewahrt:</p>
+      <p><strong>Sohn</strong> &mdash; die tägliche Sicherung<br>
+      <strong>Vater</strong> &mdash; die wöchentliche<br>
+      <strong>Großvater</strong> &mdash; die monatliche</p>
+      <p><strong>Der Zweck:</strong> Wenn ein Fehler erst spät auffällt &mdash; etwa eine
+      Verschlüsselung durch Ransomware oder ein stiller Datenverlust &mdash; kann man auf einen
+      <em>älteren, noch sauberen</em> Stand zurückgehen. Mit nur einer Sicherung überschreibt
+      man den heilen Stand irgendwann mit dem kaputten.</p>
+    </div>
+
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Verfahren</th><th>Was wird gesichert</th><th>Sicherung</th><th>Rücksicherung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Vollsicherung</strong></td><td>Alle Daten</td><td>langsam, viel Platz</td><td>schnell &mdash; nur ein Satz nötig</td></tr>
+        <tr><td><strong>Differenziell</strong></td><td>Alles seit der <strong>letzten Vollsicherung</strong></td><td>mittel, wächst täglich</td><td>Vollsicherung + <strong>letzte</strong> differenzielle</td></tr>
+        <tr><td><strong>Inkrementell</strong></td><td>Alles seit der <strong>letzten Sicherung</strong> jeder Art</td><td>schnell, wenig Platz</td><td>Vollsicherung + <strong>alle</strong> inkrementellen der Reihe nach</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="falle">
+      <span class="l">Der klassische Verwechsler</span>
+      <p><strong>Differenziell</strong> bezieht sich immer auf die letzte <em>Voll</em>sicherung
+      &mdash; die Sicherungen werden täglich größer, die Rücksicherung braucht nur zwei Sätze.</p>
+      <p><strong>Inkrementell</strong> bezieht sich auf die letzte Sicherung <em>überhaupt</em>
+      &mdash; die Sicherungen bleiben klein, aber zur Rücksicherung brauchst du lückenlos alle.
+      Fehlt eine, ist die Kette unterbrochen.</p>
+    </div>
+
+    <div class="merke">
+      <span class="l">3&#8209;2&#8209;1&#8209;Regel</span>
+      <p><strong>3</strong> Kopien der Daten · auf <strong>2</strong> verschiedenen Medien ·
+      <strong>1</strong> davon außer Haus.</p>
+      <p>Und der Satz, der in jeder Prüfung zieht: <strong>Eine Sicherung, die nie
+      zurückgespielt wurde, ist keine Sicherung.</strong> Restore regelmäßig testen.</p>
+    </div>
+  </div>
+  <aside class="rand">
+    <b>Warum außer Haus</b>
+    Feuer, Wasser, Diebstahl und Ransomware treffen alles, was am selben Ort steht.
+    Eine Sicherung im Serverraum neben dem Server schützt nur gegen Plattendefekte.
+  </aside>
+ </div>
+</section>
+
+<section class="kap" id="malware">
+ <div class="band">
+  <div class="spalte">
+    <div class="kap-kopf"><span class="kap-nr">16</span><h3>Schadsoftware unterscheiden</h3><span class="wert">6 P</span></div>
+    <p>Gefragt sind kurze, trennscharfe Beschreibungen. Je Art ein Punkt &mdash; sechs Arten,
+    sechs Punkte. Das ist der schnellste Punkteblock der ganzen Prüfung.</p>
+    <div class="scroll">
+    <table class="t">
+      <thead><tr><th>Art</th><th>Das entscheidende Merkmal</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Virus</strong></td><td>Hängt sich an ein vorhandenes Programm und verbreitet sich mit dessen Ausführung. <strong>Braucht ein Wirtsprogramm.</strong></td></tr>
+        <tr><td><strong>Wurm</strong></td><td>Verbreitet sich <strong>selbstständig</strong> über das Netz &mdash; ohne Wirt und ohne Zutun des Nutzers.</td></tr>
+        <tr><td><strong>Trojaner</strong></td><td>Versteckt sich in scheinbar <strong>nützlicher Software</strong>. Wird aktiv, wenn der Nutzer sie startet.</td></tr>
+        <tr><td><strong>Spyware</strong></td><td>Späht <strong>Inhalte und Aktivitäten</strong> aus und meldet sie weiter.</td></tr>
+        <tr><td><strong>Keylogger</strong></td><td>Unterform der Spyware: zeichnet <strong>Tastatureingaben</strong> auf &mdash; Passwörter, Kontodaten.</td></tr>
+        <tr><td><strong>Ransomware</strong></td><td><strong>Verschlüsselt Daten</strong> oder sperrt das System und fordert <strong>Lösegeld</strong>.</td></tr>
+        <tr><td><strong>Backdoor</strong></td><td>Öffnet einen <strong>versteckten Zugang</strong> unter Umgehung der normalen Anmeldung.</td></tr>
+        <tr><td><strong>Scareware</strong></td><td>Verunsichert den Nutzer mit falschen Warnungen, um ihn zu Installation oder Zahlung zu verleiten.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="merke">
+      <span class="l">Die Unterscheidung, auf die es ankommt</span>
+      <p><strong>Virus, Wurm und Trojaner</strong> unterscheiden sich <em>nicht</em> durch den
+      Schaden, den sie anrichten, sondern durch die <strong>Art der Verbreitung</strong>:</p>
+      <p>Virus <em>braucht einen Wirt</em> · Wurm <em>verbreitet sich allein</em> ·
+      Trojaner <em>wird vom Nutzer selbst gestartet</em>.</p>
+    </div>
+    <div class="falle">
+      <span class="l">Typischer Fehler</span>
+      <p>„Ransomware ist ein Virus.“ Ransomware beschreibt, <em>was</em> die Software tut, Virus
+      beschreibt, <em>wie</em> sie sich verbreitet. Das sind zwei verschiedene Einteilungen &mdash;
+      eine Ransomware kann sich als Wurm oder als Trojaner verbreiten.</p>
+    </div>
+    <div class="test" id="t-malware"></div>
+  </div>
+  <aside class="rand">
+    <b>Antwortlänge</b>
+    Ein Satz je Art reicht. Werden sechs verlangt, schreib genau sechs &mdash;
+    Nummer sieben und acht werden nicht mehr gelesen.
+  </aside>
+ </div>
+</section>
+
+<footer class="schluss spalte">
+  <p><strong>Grundlage:</strong> Abschlussprüfung Teil 1, Frühjahr 2024, Prüfungsbereich
+  „Einrichten eines IT-gestützten Arbeitsplatzes“ (ZPA Nord-West, Satz 1201).</p>
+  <p>Diese Seite gibt <strong>keine Prüfungsaufgaben und keine Musterlösungen wieder</strong>.
+  Sie erklärt die Themen, die in diesem Satz vorkamen, und rechnet sie an <strong>eigenen
+  Beispielen</strong> vor. Alle Zahlenwerte sind maschinell nachgerechnet.</p>
+  <p>Ein Prüfungssatz zeigt, was <em>einmal</em> gefragt wurde &mdash; nicht, was immer gefragt
+  wird. Dass 2024 kein IPv4-Subnetting vorkam, heißt nicht, dass es nie vorkommt.</p>
+</footer>
+</div>
+
+<script>
+"use strict";
+const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
+const zahl=v=>{const n=parseFloat(String(v).replace(',','.'));return isFinite(n)?n:0};
+const de=(n,k=2)=>n.toLocaleString('de-DE',{minimumFractionDigits:k,maximumFractionDigits:k});
+const r2=x=>Math.round((x+Number.EPSILON)*100)/100;
+
+/* ── Nutzwertanalyse ───────────────────────────────── */
+const KRIT=[["Leistung",40,3,5,4],["Preis",35,5,2,4],["Garantie",15,4,4,3],["Lieferzeit",10,2,4,5]];
+function nwaBau(){
+  $("#nwa-tab").innerHTML=
+    `<thead><tr><th>Kriterium</th><th class="n">Gew.</th>`+
+    `<th class="n">A</th><th class="n">A gew.</th><th class="n">B</th><th class="n">B gew.</th><th class="n">C</th><th class="n">C gew.</th></tr></thead><tbody>`+
+    KRIT.map((k,i)=>`<tr><td>${k[0]}</td>
+      <td class="n"><input data-r="${i}" data-c="g" value="${k[1]}" style="width:52px;padding:4px 6px;text-align:right"></td>
+      ${[2,3,4].map((c,j)=>`<td class="n"><input data-r="${i}" data-c="${j}" value="${k[c]}" style="width:44px;padding:4px 6px;text-align:right"></td><td class="n" data-out="${i}-${j}"></td>`).join("")}
+    </tr>`).join("")+
+    `<tr style="border-top:2px solid var(--ink)"><td><b>Summe</b></td><td class="n" id="nwa-gsum"></td>
+      <td class="n"></td><td class="n" id="nwa-s0"></td><td class="n"></td><td class="n" id="nwa-s1"></td><td class="n"></td><td class="n" id="nwa-s2"></td></tr></tbody>`;
+  $$("#nwa-tab input").forEach(el=>el.addEventListener("input",nwaRech));
+  nwaRech();
+}
+function nwaRech(){
+  const g=[0,1,2,3].map(i=>zahl($(`#nwa-tab input[data-r="${i}"][data-c="g"]`).value));
+  const gs=g.reduce((a,b)=>a+b,0);
+  const s=[0,0,0];
+  for(let i=0;i<4;i++) for(let j=0;j<3;j++){
+    const b=zahl($(`#nwa-tab input[data-r="${i}"][data-c="${j}"]`).value);
+    const v=g[i]*b; s[j]+=v;
+    $(`[data-out="${i}-${j}"]`).textContent = v ? de(v,0) : "";
+  }
+  $("#nwa-gsum").innerHTML = `<b>${de(gs,0)}</b>`;
+  [0,1,2].forEach(j=>$("#nwa-s"+j).innerHTML=`<b>${de(s[j],0)}</b>`);
+  const namen=["A","B","C"];
+  const rang=namen.map((n,j)=>({n,v:s[j]})).sort((a,b)=>b.v-a.v);
+  const warn = Math.abs(gs-100)>0.001
+    ? `<b style="color:var(--rot)">Achtung:</b> Die Gewichtungen ergeben ${de(gs,0)} statt 100. In der Prüfung wäre das ein Fehler.<br>` : "";
+  $("#nwa-erg").innerHTML = warn +
+    `<b>Rangfolge:</b> `+rang.map((r,i)=>`${i+1}. ${r.n} <span class="gross">${de(r.v,0)}</span>`).join(" &nbsp;·&nbsp; ")+
+    `<br><b>Sieger:</b> Angebot ${rang[0].n}` +
+    (rang[0].v===rang[1].v ? ` — <b style="color:var(--rot)">Gleichstand mit ${rang[1].n}</b>` : "") +
+    `<br><span style="color:var(--ink3)">Fällt ${rang[0].n} durch ein KO-Kriterium weg, gewinnt ${rang[1].n} mit ${de(rang[1].v,0)}.</span>`;
+}
+nwaBau();
+
+/* ── Laufende Kosten ───────────────────────────────── */
+function leasing(){
+  const a=zahl($("#l-anz").value), pc=zahl($("#l-pc").value), pj=zahl($("#l-pcj").value),
+        mo=zahl($("#l-mo").value), mj=zahl($("#l-moj").value), rab=zahl($("#l-rab").value)/100,
+        sw=zahl($("#l-sw").value), wa=zahl($("#l-wa").value);
+  const pcGes=r2(a*pc*(1-rab)), moGes=r2(a*mo*(1-rab));
+  const pcM=pj>0?r2(pcGes/(pj*12)):0, moM=mj>0?r2(moGes/(mj*12)):0;
+  const swM=r2(sw*a), waM=r2(wa/12);
+  const sum=r2(pcM+moM+swM+waM);
+  $("#l-erg").innerHTML=
+    `PCs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${a} × ${de(pc)} €) − ${de(rab*100,0)} % = ${de(pcGes)} € ÷ ${pj*12} Mon. = <b>${de(pcM)} €</b><br>`+
+    `Monitore (${a} × ${de(mo)} €) − ${de(rab*100,0)} % = ${de(moGes)} € ÷ ${mj*12} Mon. = <b>${de(moM)} €</b><br>`+
+    `Software ${de(sw)} € × ${a} Plätze = <b>${de(swM)} €</b><br>`+
+    `Wartung&nbsp; ${de(wa)} € ÷ 12 Mon. = <b>${de(waM)} €</b><br>`+
+    `<span style="border-top:1px solid var(--blau-l);display:block;margin-top:6px;padding-top:6px">`+
+    `<b>Monatlich gesamt:</b> <span class="gross">${de(sum)} €</span></span>`+
+    `<span style="color:var(--ink3);font-size:13px">Über die gesamte PC-Laufzeit: ${de(sum*pj*12)} €</span>`;
+}
+["#l-anz","#l-pc","#l-pcj","#l-mo","#l-moj","#l-rab","#l-sw","#l-wa"].forEach(q=>$(q).addEventListener("input",leasing));
+leasing();
+
+/* ── IPv6 ausschreiben ─────────────────────────────── */
+function ipv6(){
+  const roh=$("#v6").value.trim();
+  const raus=t=>{$("#v6-erg").innerHTML=t};
+  if(!roh) return raus('<span style="color:var(--ink3)">Adresse eingeben …</span>');
+  if((roh.match(/::/g)||[]).length>1)
+    return raus('<b style="color:var(--rot)">Ungültig:</b> <span class="m">::</span> darf nur einmal vorkommen — sonst wäre nicht eindeutig, wie viele Nullblöcke wohin gehören.');
+  let links, rechts;
+  if(roh.includes("::")){
+    const [l,r]=roh.split("::");
+    links = l? l.split(":") : [];
+    rechts = r? r.split(":") : [];
+  } else { links=roh.split(":"); rechts=[]; }
+  const alle=[...links,...rechts];
+  if(alle.some(b=>!/^[0-9a-fA-F]{1,4}$/.test(b)))
+    return raus('<b style="color:var(--rot)">Ungültig:</b> Jeder Block besteht aus 1 bis 4 Hex-Ziffern (0–9, a–f).');
+  const fehlt = 8 - alle.length;
+  if(!roh.includes("::") && alle.length!==8)
+    return raus(`<b style="color:var(--rot)">Ungültig:</b> Ohne <span class="m">::</span> müssen es genau 8 Blöcke sein, hier sind es ${alle.length}.`);
+  if(fehlt<0) return raus(`<b style="color:var(--rot)">Ungültig:</b> ${alle.length} Blöcke — mehr als 8 geht nicht.`);
+  const bloecke=[...links, ...Array(fehlt).fill("0"), ...rechts];
+  const voll=bloecke.map(b=>b.toLowerCase().padStart(4,"0"));
+  const bits=voll.join("").split("").map(h=>parseInt(h,16).toString(2).padStart(4,"0")).join("");
+  raus(
+    `<b>Schritt 1 — Blöcke zählen.</b> ${links.length} links, ${rechts.length} rechts = ${alle.length} von 8.<br>`+
+    `<b>Schritt 2 — ergänzen.</b> 8 − ${alle.length} = <b>${fehlt}</b> Block${fehlt===1?"":"e"} <span class="m">0000</span> anstelle von <span class="m">::</span>.<br>`+
+    `<b>Schritt 3 — auf 4 Stellen auffüllen</b> (Nullen <b>links</b>).<br>`+
+    `<span style="border-top:1px solid var(--blau-l);display:block;margin-top:7px;padding-top:7px">`+
+    `<b>Ungekürzt:</b><br><span class="gross">${voll.join(":")}</span></span>`+
+    `<span style="color:var(--ink3);font-size:13px">${voll.length} Blöcke × 4 Ziffern × 4 Bit = ${bits.length} Bit`+
+    (voll[0]==="fe80"?" · Link-Local (fe80::/10), wird nicht geroutet":"")+
+    (voll.join("")==="0".repeat(31)+"1"?" · Loopback ::1":"")+`</span>`);
+}
+$("#v6").addEventListener("input",ipv6); ipv6();
+
+/* ── Bildgröße ─────────────────────────────────────── */
+function bild(){
+  const w=zahl($("#b-w").value), h=zahl($("#b-h").value), t=zahl($("#b-t").value);
+  const px=w*h, bit=px*t, byte=bit/8, kib=byte/1024, mib=kib/1024, kb=byte/1000;
+  $("#b-erg").innerHTML=
+    `${de(w,0)} × ${de(h,0)} = <b>${de(px,0)}</b> Pixel<br>`+
+    `× ${de(t,0)} Bit = <b>${de(bit,0)}</b> Bit<br>`+
+    `÷ 8 = <b>${de(byte,0)}</b> Byte<br>`+
+    `÷ 1024 = <span class="gross">${de(kib)} KiB</span>`+
+    `&nbsp;&nbsp;<span style="color:var(--ink3)">(= ${de(mib)} MiB)</span><br>`+
+    `<span style="color:var(--ink3);font-size:13px">Zum Vergleich dezimal: ${de(kb)} KB — `+
+    `wer durch 1000 statt 1024 teilt, liegt um ${de((kb/kib-1)*100,1)} % daneben.<br>`+
+    `Farbtiefe ${de(t,0)} Bit ergibt ${t<=32?de(Math.pow(2,t),0):"sehr viele"} mögliche Farben`+
+    (t===32?" (24 Bit Farbe + 8 Bit Alpha — nicht mehr Farben als bei 24 Bit)":"")+`</span>`;
+}
+["#b-w","#b-h","#b-t"].forEach(q=>$(q).addEventListener("input",bild)); bild();
+
+/* ── Stromkosten ───────────────────────────────────── */
+function strom(){
+  const n=zahl($("#s-anz").value), w=zahl($("#s-w").value), eta=zahl($("#s-eta").value)/100,
+        h=zahl($("#s-h").value), tg=zahl($("#s-t").value), p=zahl($("#s-p").value);
+  if(eta<=0) return $("#s-erg").innerHTML='<b style="color:var(--rot)">Der Wirkungsgrad muss größer als 0 sein.</b>';
+  const kw=w/1000, auf=kw/eta, std=h*tg, je=auf*std, ges=je*n, kosten=ges*p;
+  const ohne=kw*std*n*p;
+  $("#s-erg").innerHTML=
+    `Aufnahme je Gerät: ${de(kw,3)} kW ÷ ${de(eta,2)} = <b>${de(auf,5)} kW</b><br>`+
+    `Betriebsstunden: ${de(h,0)} h × ${de(tg,0)} Tage = <b>${de(std,0)} h</b><br>`+
+    `Energie je Gerät: ${de(auf,5)} × ${de(std,0)} = <b>${de(je)} kWh</b><br>`+
+    `Alle ${de(n,0)} Geräte: <b>${de(ges)} kWh</b><br>`+
+    `<span style="border-top:1px solid var(--blau-l);display:block;margin-top:6px;padding-top:6px">`+
+    `<b>Kosten:</b> ${de(ges)} × ${de(p)} € = <span class="gross">${de(kosten)} €</span></span>`+
+    `<span style="color:var(--ink3);font-size:13px">Ohne Wirkungsgrad gerechnet käme ${de(ohne)} € heraus — `+
+    `<b>${de(kosten-ohne)} € zu wenig</b>. Genau dieser Verlust wird im Netzteil zu Wärme.</span>`;
+}
+["#s-anz","#s-w","#s-eta","#s-h","#s-t","#s-p"].forEach(q=>$(q).addEventListener("input",strom)); strom();
+
+/* ── Selbsttests ───────────────────────────────────── */
+function test(ziel,frage,opt,richtig,erkl){
+  const el=$(ziel); if(!el) return;
+  el.innerHTML=`<span class="l">Kurz nachgefragt</span><div class="f">${frage}</div>
+    <div class="wahlen">${opt.map((o,i)=>`<button class="wahl" type="button" data-i="${i}"><span class="b">${"ABCD"[i]}</span><span>${o}</span></button>`).join("")}</div>
+    <div class="aufl hidden"></div>`;
+  el.addEventListener("click",e=>{
+    const b=e.target.closest(".wahl"); if(!b||b.disabled) return;
+    const i=+b.dataset.i;
+    el.querySelectorAll(".wahl").forEach((w,j)=>{w.disabled=true;
+      if(j===richtig) w.classList.add("ja"); else if(j===i) w.classList.add("nein");});
+    const a=el.querySelector(".aufl");
+    a.innerHTML=(i===richtig?"<b>Richtig.</b> ":"<b>Nicht ganz.</b> ")+erkl;
+    a.classList.remove("hidden");
+  });
+}
+test("#t-nwa","Angebot X hat den höchsten Nutzwert, erfüllt aber ein KO-Kriterium nicht. Was folgt daraus?",
+ ["X gewinnt trotzdem, der Nutzwert zählt","X scheidet aus, der Zweitplatzierte gewinnt","Der Nutzwert von X wird halbiert","Die Analyse muss neu gewichtet werden"],1,
+ "Ein KO-Kriterium ist eine <b>Muss-Bedingung</b>. Wer sie verletzt, fällt raus — unabhängig von der Punktzahl. Es wird nichts umgerechnet, der Nächstbeste bekommt den Zuschlag. In der Antwort musst du <b>beides</b> nennen: den Gewinner und den Grund für den Ausschluss.");
+
+test("#t-leasing","Geräte für 4.800 € werden über 4 Jahre genutzt. Was ist der monatliche Anteil?",
+ ["120,00 €","100,00 €","400,00 €","1.200,00 €"],1,
+ "4 Jahre sind <b>48 Monate</b>, nicht 4. 4.800 € ÷ 48 = <b>100,00 €</b>. Der Klassiker ist, durch die Jahre statt durch die Monate zu teilen — dann kommt 1.200 € heraus, der Jahresanteil.");
+
+test("#t-osi","Auf welcher OSI-Schicht arbeitet die MAC-Adresse?",
+ ["Schicht 1 — Bitübertragung","Schicht 2 — Sicherung","Schicht 3 — Vermittlung","Schicht 4 — Transport"],1,
+ "Die MAC-Adresse gehört zur <b>Schicht 2 (Sicherung / Data Link)</b> und adressiert Geräte im lokalen Netz. Die <b>IP-Adresse</b> sitzt darüber auf Schicht 3. Merke: MAC ist <em>unter</em> IP — der Switch arbeitet auf 2, der Router auf 3.");
+
+test("#t-ipv6","Wie viele Nullblöcke ersetzt das <span class='m'>::</span> in <span class='ip'>2001:db8::1</span>?",
+ ["4","5","6","7"],1,
+ "Vorhanden sind 3 Blöcke (<span class='m'>2001</span>, <span class='m'>db8</span>, <span class='m'>1</span>). 8 − 3 = <b>5 Blöcke</b> <span class='m'>0000</span>. Ungekürzt: <span class='m'>2001:0db8:0000:0000:0000:0000:0000:0001</span>. Achte auf <span class='m'>0db8</span> — die Null kommt <b>nach links</b>.");
+
+test("#t-bild","Ein Bild belegt 2.048.000 Byte. Wie groß ist es in KiB?",
+ ["2.048,00 KiB","2.000,00 KiB","2,05 KiB","1.953,13 KiB"],1,
+ "KiB heißt Division durch <b>1024</b>: 2.048.000 ÷ 1024 = <b>2.000,00 KiB</b>. Wer durch 1000 teilt, landet bei 2.048 KB — das ist die dezimale Angabe und hier nicht gefragt. Achte im Aufgabentext genau auf <b>KiB</b> gegen <b>KB</b>.");
+
+test("#t-strom","Ein Gerät braucht 400 W. Das Netzteil hat 80 % Wirkungsgrad. Wie viel zieht es aus der Steckdose?",
+ ["320 W","400 W","480 W","500 W"],3,
+ "P<sub>ein</sub> = P<sub>aus</sub> ÷ η = 400 ÷ 0,80 = <b>500 W</b>. Der Wert wird <b>größer</b>, weil das Netzteil selbst Verluste hat — 100 W werden hier zu Wärme. Wer multipliziert, kommt auf 320 W und hat das Vorzeichen der Physik vertauscht.");
+
+test("#t-malware","Was unterscheidet einen Wurm von einem Virus?",
+ ["Der Wurm richtet größeren Schaden an","Der Wurm verbreitet sich selbstständig ohne Wirtsprogramm","Der Wurm verschlüsselt Daten","Der Wurm wird vom Nutzer gestartet"],1,
+ "Die Einteilung richtet sich nach der <b>Verbreitung</b>, nicht nach dem Schaden. Ein <b>Virus braucht ein Wirtsprogramm</b>, ein <b>Wurm verbreitet sich selbst</b> über das Netz, ein <b>Trojaner</b> wird vom Nutzer gestartet, weil er nützlich aussieht. Verschlüsseln ist Ransomware — das beschreibt die Wirkung, nicht den Verbreitungsweg.");
+</script>
