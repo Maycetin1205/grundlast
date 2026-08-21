@@ -1,174 +1,185 @@
 <title>AP1 Frühjahr 2024</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
 <style>
 :root{
-  --paper:#FFF; --ink:#1B1B1B; --ink2:#454545; --ink3:#6B6B6B;
-  --rule:#DCDCDC; --rule2:#B4B4B4;
-  --blau:#17457F; --blau-t:#EDF2F8; --blau-l:#C3D4E6;
-  --rot:#A32A20; --rot-t:#FBEFED; --rot-l:#E8C4BF;
-  --gruen:#1F6340; --gruen-t:#EDF5F0;
-  --gelb-t:#FDF6E7; --gelb:#8A6209;
-  --serif:"Source Serif 4",Georgia,serif;
-  --sans:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
-  --mono:"Source Code Pro",ui-monospace,Menlo,monospace;
+  /* Grund: kühles Papier, leicht zum Anker-Blau gekippt */
+  --grund:#EDF0F4; --flaeche:#FFFFFF; --flaeche2:#F5F7FA;
+  --linie:#D3D9E2; --linie2:#AEB8C6;
+  --text:#141A21; --text2:#4A5563; --text3:#727E8D;
+
+  /* Vier Aufgaben, vier Reviere */
+  --a1:#0B5C8A; --a1-t:#E4EEF5; --a1-l:#A9C8DC;
+  --a2:#0E7A63; --a2-t:#E1F0EC; --a2-l:#A3CDC2;
+  --a3:#A8620F; --a3-t:#F7ECDF; --a3-l:#DCBE96;
+  --a4:#8E2F4A; --a4-t:#F5E5EA; --a4-l:#D6A9B6;
+  --a0:#3D4956; --a0-t:#E8EAEE; --a0-l:#B7BEC8;
+
+  --gut:#1C6B45; --gut-t:#E3F0E9;
+  --schlecht:#A32A20; --schlecht-t:#F8E7E5;
+
+  --f:"IBM Plex Sans",-apple-system,"Segoe UI",sans-serif;
+  --fk:"IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;
+  --fm:"JetBrains Mono",ui-monospace,Menlo,monospace;
+
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+  --rail:266px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:var(--sans);font-weight:700;line-height:1.2;margin:0;text-wrap:balance;letter-spacing:-.012em}
-p{margin:0 0 1em}p:last-child{margin-bottom:0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--grund);color:var(--text);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;font-family:var(--fk);font-weight:700;line-height:1.15;letter-spacing:-.005em;text-wrap:balance}
+p{margin:0 0 .85em}p:last-child{margin-bottom:0}
 strong{font-weight:600}
-:focus-visible{outline:2px solid var(--blau);outline-offset:3px}
-.seite{max-width:1040px;margin:0 auto;padding:0 26px 90px}
-.spalte{max-width:670px}
-.band{display:grid;grid-template-columns:minmax(0,670px) minmax(0,250px);gap:0 38px;align-items:start}
-@media(max-width:900px){.band{grid-template-columns:1fr}}
+a{color:var(--a1)}
+:focus-visible{outline:2px solid var(--a1);outline-offset:2px}
 
-/* Kopf */
-.kopf{padding:52px 0 26px;border-bottom:3px solid var(--ink)}
-.kopf .ihk{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--rot);font-weight:600;margin-bottom:12px}
-.kopf h1{font-size:clamp(34px,5.6vw,54px);letter-spacing:-.028em}
-.kopf .unter{font-family:var(--sans);font-size:19px;color:var(--ink2);margin-top:10px}
-.fakten{display:flex;flex-wrap:wrap;gap:0;margin-top:26px;border:1.5px solid var(--ink)}
-.fakten div{flex:1 1 118px;padding:11px 15px;border-right:1px solid var(--rule)}
-.fakten div:last-child{border-right:0}
-.fakten .z{font-family:var(--sans);font-size:24px;font-weight:700;line-height:1.1;display:block}
-.fakten .b{font-family:var(--sans);font-size:12.5px;color:var(--ink3)}
+/* Revierfarbe je Panel */
+[data-a="1"]{--c:var(--a1);--ct:var(--a1-t);--cl:var(--a1-l)}
+[data-a="2"]{--c:var(--a2);--ct:var(--a2-t);--cl:var(--a2-l)}
+[data-a="3"]{--c:var(--a3);--ct:var(--a3-t);--cl:var(--a3-l)}
+[data-a="4"]{--c:var(--a4);--ct:var(--a4-t);--cl:var(--a4-l)}
+[data-a="0"]{--c:var(--a0);--ct:var(--a0-t);--cl:var(--a0-l)}
 
-/* Inhalt */
-.toc{margin:30px 0 0;padding-bottom:34px;border-bottom:1px solid var(--rule)}
-.toc h2{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
-.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:5px 30px}
-.toc a{font-family:var(--sans);font-size:16px;text-decoration:none;color:var(--ink);display:flex;gap:10px;align-items:baseline;padding:3px 0}
-.toc a:hover{color:var(--blau);text-decoration:underline}
-.toc .p{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--rot);font-weight:600;flex:0 0 auto}
+/* ── Kopfleiste ── */
+.topbar{position:sticky;top:0;z-index:40;background:var(--text);color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5);padding:var(--s3) var(--s5)}
+.topbar .marke{font-family:var(--fk);font-weight:700;font-size:17px;letter-spacing:.01em}
+.topbar .marke span{color:#8FA6BC;font-weight:600}
+.topbar .meta{font-family:var(--fm);font-size:12px;color:#9AABBC;display:flex;gap:var(--s4);flex-wrap:wrap}
+.topbar .tally{margin-left:auto;display:flex;gap:2px;align-items:center}
+.topbar .tally i{width:5px;height:20px;display:block}
+.topbar .tally b{font-family:var(--fm);font-size:13px;margin-left:var(--s2);color:#C6D3DE;font-weight:400}
 
-/* Teil / Kapitel */
-.teil{margin:56px 0 0;padding-top:22px;border-top:3px solid var(--ink)}
-.teil-kopf{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;margin-bottom:6px}
-.teil-kopf h2{font-size:clamp(23px,3.4vw,30px)}
-.teil-kopf .pkt{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--rot);margin-left:auto}
-.teil .intro{font-family:var(--sans);font-size:16.5px;color:var(--ink2);margin-bottom:4px}
-.kap{padding:34px 0 0;scroll-margin-top:16px}
-.kap-kopf{display:flex;gap:13px;align-items:baseline;margin-bottom:14px}
-.kap-nr{font-family:var(--mono);font-size:12px;font-weight:600;color:#FFF;background:var(--ink);padding:3px 8px;flex:0 0 auto;transform:translateY(-2px)}
-.kap h3{font-size:21px}
-.kap .wert{font-family:var(--mono);font-size:12.5px;color:var(--rot);font-weight:600;margin-left:auto;white-space:nowrap}
-h4{font-size:17px;margin:24px 0 9px}
+/* ── Raster ── */
+.layout{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:0;align-items:start}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}}
+
+.rail{position:sticky;top:52px;max-height:calc(100vh - 52px);overflow-y:auto;background:var(--flaeche);border-right:1px solid var(--linie);padding:var(--s5) 0 var(--s6)}
+@media(max-width:1000px){.rail{position:static;max-height:none;border-right:0;border-bottom:1px solid var(--linie)}}
+.rail h2{font-family:var(--fk);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:0 var(--s5) var(--s2)}
+.rail-grp{margin-bottom:var(--s4)}
+.rail-grp>.kopf{display:flex;align-items:baseline;gap:var(--s2);white-space:nowrap;padding:var(--s2) var(--s5);border-left:4px solid var(--c);background:var(--ct)}
+.rail-grp>.kopf .n{font-family:var(--fm);font-size:11px;font-weight:700;color:var(--c)}
+.rail-grp>.kopf .t{font-family:var(--fk);font-size:13.5px;font-weight:700;color:var(--text)}
+.rail-grp>.kopf .p{margin-left:auto;font-family:var(--fm);font-size:11.5px;color:var(--c);font-weight:700}
+.rail a{display:flex;gap:var(--s2);align-items:baseline;padding:5px var(--s5) 5px calc(var(--s5) + 4px);font-size:13.5px;color:var(--text2);text-decoration:none;border-left:4px solid transparent}
+.rail a:hover{background:var(--flaeche2);color:var(--text)}
+.rail a.aktiv{border-left-color:var(--c);background:var(--ct);color:var(--text);font-weight:600}
+.rail a .p{margin-left:auto;font-family:var(--fm);font-size:11px;color:var(--text3)}
+
+/* ── Inhalt ── */
+.main{padding:var(--s5);display:flex;flex-direction:column;gap:var(--s5);min-width:0}
+@media(max-width:600px){.main{padding:var(--s4)}}
+
+/* Einstieg: Punktekarte */
+.hero{background:var(--flaeche);border:1px solid var(--linie);padding:var(--s6)}
+.hero h1{font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;margin-bottom:var(--s2)}
+.hero .sub{font-size:17px;color:var(--text2);max-width:62ch;margin-bottom:var(--s5)}
+.punktekarte{display:grid;grid-template-columns:repeat(25,minmax(0,1fr));gap:3px;margin-bottom:var(--s4);max-width:700px}
+.punktekarte button{aspect-ratio:1;width:100%;height:auto}
+.punktekarte button{width:22px;height:22px;border:0;padding:0;cursor:pointer;background:var(--c);opacity:.85;transition:opacity .12s,transform .12s}
+.punktekarte button:hover{opacity:1;transform:scale(1.28)}
+.legende{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5)}
+.legende div{display:flex;align-items:center;gap:var(--s2);font-size:14px;color:var(--text2)}
+.legende i{width:12px;height:12px;background:var(--c);display:block;flex:0 0 auto}
+.legende b{font-family:var(--fm);font-size:12.5px;color:var(--text);font-weight:700}
+
+/* Abschnittstrenner je Aufgabe */
+.teil{background:var(--c);color:#fff;padding:var(--s4) var(--s5);display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s4)}
+.teil .n{font-family:var(--fm);font-size:12px;font-weight:700;opacity:.75}
+.teil h2{font-size:22px;color:#fff}
+.teil .p{margin-left:auto;font-family:var(--fm);font-size:14px;font-weight:700}
+.teil .sub{flex:1 1 100%;font-size:15px;opacity:.9;margin:0}
+
+/* Panel */
+.panel{background:var(--flaeche);border:1px solid var(--linie);scroll-margin-top:64px}
+.panel>.kopf{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s3);padding:var(--s3) var(--s5);background:var(--ct);border-bottom:2px solid var(--c)}
+.panel>.kopf .n{font-family:var(--fm);font-size:11px;font-weight:700;color:#fff;background:var(--c);padding:2px 7px}
+.panel>.kopf h3{font-size:19px;color:var(--text)}
+.panel>.kopf .p{margin-left:auto;font-family:var(--fm);font-size:13px;font-weight:700;color:var(--c)}
+.panel>.leib{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0}
+@media(max-width:1150px){.panel>.leib{grid-template-columns:1fr}}
+.haupt{padding:var(--s5);min-width:0}
+.haupt>*+*{margin-top:var(--s4)}
+.haupt p,.haupt ul{max-width:70ch}
+.seiten{padding:var(--s5);background:var(--flaeche2);border-left:1px solid var(--linie);display:flex;flex-direction:column;gap:var(--s4);min-width:0}
+@media(max-width:1150px){.seiten{border-left:0;border-top:1px solid var(--linie)}}
+.seiten .blk{font-size:13.5px;line-height:1.5;color:var(--text2)}
+.seiten .blk b{display:block;font-family:var(--fk);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-bottom:var(--s1)}
+
+h4{font-family:var(--fk);font-size:16px;margin:0;color:var(--text)}
 
 /* Kästen */
-.merke,.beispiel,.achtung,.falle{margin:22px 0;padding:16px 20px;font-size:17px}
-.merke{background:var(--rot-t);border-left:4px solid var(--rot)}
-.beispiel{background:var(--blau-t);border-left:4px solid var(--blau)}
-.achtung{background:var(--gelb-t);border-left:4px solid var(--gelb)}
-.falle{background:#F4F4F4;border-left:4px solid var(--ink3)}
-.merke .l,.beispiel .l,.achtung .l,.falle .l{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:6px}
-.merke .l{color:var(--rot)}.beispiel .l{color:var(--blau)}.achtung .l{color:var(--gelb)}.falle .l{color:var(--ink3)}
+.merke,.beispiel,.achtung,.falle{padding:var(--s4);font-size:15.5px}
+.merke{background:var(--ct);border-left:4px solid var(--c)}
+.beispiel{background:var(--flaeche2);border:1px solid var(--linie)}
+.achtung{background:#FCF2DF;border-left:4px solid #9A6B0C}
+.falle{background:var(--schlecht-t);border-left:4px solid var(--schlecht)}
+.merke>.l,.beispiel>.l,.achtung>.l,.falle>.l{font-family:var(--fk);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:var(--s2)}
+.merke>.l{color:var(--c)}.beispiel>.l{color:var(--text3)}.achtung>.l{color:#8A5F0A}.falle>.l{color:var(--schlecht)}
 
-code,.m{font-family:var(--mono);font-size:.9em;font-variant-numeric:tabular-nums}
-.ip{font-family:var(--mono);font-size:.93em;font-weight:600;color:var(--blau);white-space:nowrap}
-table.t{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:15.5px;margin:18px 0}
-table.t th,table.t td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
-table.t thead th{border-bottom:2px solid var(--ink);font-size:13.5px;font-weight:700}
-table.t td.n,table.t th.n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:14px;text-align:right}
-table.t tbody tr:hover{background:var(--blau-t)}
-.scroll{overflow-x:auto;margin:18px 0}.scroll table.t{margin:0}
+code,.m{font-family:var(--fm);font-size:.88em;font-variant-numeric:tabular-nums}
+.ip{font-family:var(--fm);font-size:.9em;font-weight:700;color:var(--c);white-space:nowrap}
 
-ol.weg{font-family:var(--sans);font-size:16.5px;counter-reset:w;list-style:none;margin:16px 0;padding:0}
-ol.weg li{counter-increment:w;display:flex;gap:13px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:flex-start}
+/* Tabellen */
+.scroll{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:14.5px}
+table.t th,table.t td{text-align:left;padding:7px 11px;border-bottom:1px solid var(--linie);vertical-align:top}
+table.t thead th{background:var(--c);color:#fff;font-family:var(--fk);font-size:12.5px;font-weight:700;letter-spacing:.03em;border-bottom:0;position:sticky;top:0}
+table.t tbody tr:nth-child(even){background:var(--flaeche2)}
+table.t tbody tr:hover{background:var(--ct)}
+table.t td.n,table.t th.n{font-family:var(--fm);font-variant-numeric:tabular-nums;font-size:13.5px;text-align:right;white-space:nowrap}
+
+/* Listen */
+ol.weg{counter-reset:w;list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+ol.weg li{counter-increment:w;display:flex;gap:var(--s3);padding:var(--s2) 0;border-bottom:1px solid var(--linie);align-items:flex-start;font-size:15.5px}
 ol.weg li:last-child{border-bottom:0}
-ol.weg li::before{content:counter(w);font-family:var(--mono);font-size:11px;font-weight:600;color:#FFF;background:var(--rot);width:19px;height:19px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;margin-top:3px}
-ul.pl{font-family:var(--sans);font-size:16.5px;padding-left:20px;margin:14px 0}
-ul.pl li{margin-bottom:6px}
-
-.rand{font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink3);border-top:2px solid var(--rule2);padding-top:8px;margin-top:38px}
-.rand b{color:var(--ink2);font-weight:600;display:block;margin-bottom:2px}
-.rand+.rand{margin-top:18px}
-@media(max-width:900px){.rand{border-top:0;border-left:2px solid var(--rule2);padding:0 0 0 13px;margin:4px 0 20px}}
+ol.weg li::before{content:counter(w);font-family:var(--fm);font-size:11px;font-weight:700;color:#fff;background:var(--c);width:19px;height:19px;display:grid;place-items:center;flex:0 0 auto;margin-top:2px}
+ul.pl{padding-left:18px;margin:0;font-size:15.5px}
+ul.pl li{margin-bottom:5px}
 
 /* Werkzeug */
-.tool{border:1.5px solid var(--rule2);background:#FCFCFC;padding:19px;margin:24px 0}
-.tool .l{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:3px}
-.tool h4{font-family:var(--sans);font-size:16.5px;margin:0 0 13px}
-.tool p{font-family:var(--sans);font-size:15.5px}
-.feld{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
-.feld label{font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink2)}
-.feld input,.feld select{font-family:var(--mono);font-size:14.5px;padding:8px 10px;border:1.5px solid var(--rule2);background:#FFF;color:var(--ink);width:100%;font-variant-numeric:tabular-nums}
-.feld input:focus,.feld select:focus{border-color:var(--blau);outline:none}
-.gitter{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:11px}
-.erg{margin-top:14px;padding:13px 16px;background:var(--blau-t);border-left:3px solid var(--blau);font-family:var(--mono);font-size:14.5px;line-height:1.75;overflow-x:auto}
-.erg b{font-family:var(--sans);font-weight:700}
-.erg .gross{font-size:19px;font-weight:600;color:var(--blau)}
-.knopf{font-family:var(--sans);font-size:15.5px;font-weight:600;padding:9px 18px;border:1.5px solid var(--ink);background:#FFF;color:var(--ink);cursor:pointer}
-.knopf:hover{background:var(--ink);color:#FFF}
-.knopf.voll{background:var(--rot);border-color:var(--rot);color:#FFF}
-.knopf.voll:hover{background:#8A231A}
-.reihe{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:12px}
+.tool{border:1px solid var(--linie2);background:var(--flaeche2)}
+.tool>.l{display:block;background:var(--c);color:#fff;font-family:var(--fk);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:5px var(--s4)}
+.tool>.leib{padding:var(--s4);display:flex;flex-direction:column;gap:var(--s3)}
+.tool h4{margin:0}
+.tool p{font-size:14.5px;color:var(--text2);max-width:none}
+.gitter{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s3)}
+.feld{display:flex;flex-direction:column;gap:3px}
+.feld label{font-size:12.5px;font-weight:600;color:var(--text2)}
+.feld input{font-family:var(--fm);font-size:14px;padding:7px 9px;border:1px solid var(--linie2);background:#fff;color:var(--text);width:100%;font-variant-numeric:tabular-nums}
+.feld input:focus{border-color:var(--c);outline:none;box-shadow:inset 0 0 0 1px var(--c)}
+.erg{background:var(--text);color:#DCE5EE;padding:var(--s4);font-family:var(--fm);font-size:13.5px;line-height:1.8;overflow-x:auto}
+.erg b{color:#fff}
+.erg .gross{font-size:20px;font-weight:700;color:#7FD4B8}
 
 /* Selbsttest */
-.test{border-top:2px solid var(--ink);margin-top:28px;padding-top:16px}
-.test .l{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:10px}
-.test .f{font-family:var(--sans);font-size:16.5px;font-weight:600;margin-bottom:10px}
-.wahlen{display:flex;flex-direction:column;gap:6px}
-.wahl{font-family:var(--sans);font-size:15.5px;text-align:left;padding:9px 13px;border:1.5px solid var(--rule2);background:#FFF;color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline}
-.wahl:hover:not(:disabled){border-color:var(--blau);background:var(--blau-t)}
-.wahl .b{font-family:var(--mono);font-size:12.5px;color:var(--ink3);font-weight:600}
-.wahl.ja{border-color:var(--gruen);background:var(--gruen-t)}
-.wahl.nein{border-color:var(--rot);background:var(--rot-t)}
+.test{border-top:2px solid var(--c);padding-top:var(--s4)}
+.test>.l{font-family:var(--fk);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--c);display:block;margin-bottom:var(--s2)}
+.test .f{font-size:16px;font-weight:600;margin-bottom:var(--s3)}
+.wahlen{display:flex;flex-direction:column;gap:var(--s1)}
+.wahl{font-family:var(--f);font-size:15px;text-align:left;padding:9px var(--s3);border:1px solid var(--linie2);background:#fff;color:var(--text);cursor:pointer;display:flex;gap:var(--s3);align-items:baseline}
+.wahl:hover:not(:disabled){border-color:var(--c);background:var(--ct)}
+.wahl>.b{font-family:var(--fm);font-size:12px;color:var(--text3);font-weight:700}
+.wahl.ja{border-color:var(--gut);background:var(--gut-t);border-width:2px}
+.wahl.nein{border-color:var(--schlecht);background:var(--schlecht-t);border-width:2px}
 .wahl:disabled{cursor:default}
-.aufl{font-family:var(--sans);font-size:15.5px;margin-top:11px;padding:12px 15px;background:var(--blau-t);border-left:3px solid var(--blau)}
-.schluss{margin-top:54px;padding-top:20px;border-top:3px solid var(--ink);font-family:var(--sans);font-size:14.5px;color:var(--ink3)}
-.schluss p{margin-bottom:.6em}
+.aufl{font-size:14.5px;margin-top:var(--s3);padding:var(--s3);background:var(--ct);border-left:4px solid var(--c)}
+
+.fuss{padding:var(--s5);background:var(--flaeche);border:1px solid var(--linie);font-size:13.5px;color:var(--text3)}
+.fuss p{max-width:80ch}
 .hidden{display:none!important}
 </style>
 
-<div class="seite">
 
-<header class="kopf spalte">
-  <div class="ihk">Abschlussprüfung Teil 1 &middot; Frühjahr 2024 &middot; ZPA Nord-West</div>
-  <h1>Einrichten eines IT&#8209;gestützten Arbeitsplatzes</h1>
-  <div class="unter">Alle Themen dieser Prüfung, erklärt und durchgerechnet &mdash;
-  mit eigenen Beispielen, nicht mit den Originalaufgaben.</div>
-  <div class="fakten">
-    <div><span class="z">4</span><span class="b">Aufgaben</span></div>
-    <div><span class="z">90</span><span class="b">Minuten</span></div>
-    <div><span class="z">100</span><span class="b">Punkte</span></div>
-    <div><span class="z">20 %</span><span class="b">der Endnote</span></div>
-  </div>
-</header>
-
-<nav class="toc spalte">
-  <h2>Was drankam</h2>
-  <ol>
-    <li><a href="#technik">Prüfungstechnik<span class="p">vorweg</span></a></li>
-    <li><a href="#nwa">Nutzwertanalyse &amp; KO&#8209;Kriterien<span class="p">6 P</span></a></li>
-    <li><a href="#leasing">Laufende Kosten &amp; Leasing<span class="p">7 P</span></a></li>
-    <li><a href="#anschluss">Monitoranschlüsse<span class="p">4 P</span></a></li>
-    <li><a href="#vertrag">Kaufvertrag &amp; Willenserklärung<span class="p">5 P</span></a></li>
-    <li><a href="#stoerung">Vertragsstörungen<span class="p">4 P</span></a></li>
-    <li><a href="#led">LED am Netzwerkport<span class="p">4 P</span></a></li>
-    <li><a href="#osi">OSI&#8209;Schichten zuordnen<span class="p">4 P</span></a></li>
-    <li><a href="#ipv6">IPv6 ausschreiben<span class="p">5 P</span></a></li>
-    <li><a href="#diagnose">ARP, ping, tracert<span class="p">7 P</span></a></li>
-    <li><a href="#ascii">ASCII&#8209; vs. Binärdatei<span class="p">4 P</span></a></li>
-    <li><a href="#bild">Bildgröße &amp; Farbtiefe<span class="p">8 P</span></a></li>
-    <li><a href="#netzteil">Netzteil &amp; Stromkosten<span class="p">7 P</span></a></li>
-    <li><a href="#schutz">Schutzmaßnahmen &amp; Folgen<span class="p">6 P</span></a></li>
-    <li><a href="#vpn">VPN<span class="p">2 P</span></a></li>
-    <li><a href="#backup">Datensicherung<span class="p">4 P</span></a></li>
-    <li><a href="#malware">Schadsoftware<span class="p">6 P</span></a></li>
-  </ol>
-</nav>
-
-<!-- ═══════ PRÜFUNGSTECHNIK ═══════ -->
-<section class="teil" id="technik">
- <div class="band">
-  <div class="spalte">
-    <div class="teil-kopf"><h2>Vorweg: Punkte, die nichts mit Fachwissen zu tun haben</h2></div>
-    <p class="intro">Diese Regeln stehen auf dem Deckblatt jeder AP1. Sie kosten jedes Jahr
+<div class="topbar"><span class="marke">AP1 <span>Frühjahr 2024</span></span><span class="meta"><span>Einrichten eines IT-gestützten Arbeitsplatzes</span><span>90 Minuten</span><span>100 Punkte</span><span>20 % der Endnote</span></span><span class="tally"><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a1)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a2)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a3)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><i style="background:var(--a4)"></i><b>100 P</b></span></div><div class="layout"><nav class="rail"><h2>Alle Themen</h2><div class="rail-grp" data-a="0"><div class="kopf"><span class="n">—</span><span class="t">Vorweg</span></div><a href="#technik" data-ziel="technik">Prüfungstechnik</a></div><div class="rail-grp" data-a="1"><div class="kopf"><span class="n">A1</span><span class="t">Beschaffung</span><span class="p">26 P</span></div><a href="#nwa" data-ziel="nwa">Nutzwertanalyse &amp; KO<span class="p">6 P</span></a><a href="#leasing" data-ziel="leasing">Laufende Kosten<span class="p">7 P</span></a><a href="#anschluss" data-ziel="anschluss">Monitoranschlüsse<span class="p">4 P</span></a><a href="#vertrag" data-ziel="vertrag">Kaufvertrag<span class="p">5 P</span></a><a href="#stoerung" data-ziel="stoerung">Vertragsstörungen<span class="p">4 P</span></a></div><div class="rail-grp" data-a="2"><div class="kopf"><span class="n">A2</span><span class="t">Netzwerk</span><span class="p">24 P</span></div><a href="#led" data-ziel="led">LEDs am Port<span class="p">4 P</span></a><a href="#osi" data-ziel="osi">OSI-Schichten<span class="p">4 P</span></a><a href="#ipv6" data-ziel="ipv6">IPv6 ausschreiben<span class="p">5 P</span></a><a href="#diagnose" data-ziel="diagnose">ARP, ping, tracert<span class="p">11 P</span></a></div><div class="rail-grp" data-a="3"><div class="kopf"><span class="n">A3</span><span class="t">Daten &amp; Strom</span><span class="p">24 P</span></div><a href="#ascii" data-ziel="ascii">ASCII vs. Binär<span class="p">6 P</span></a><a href="#bild" data-ziel="bild">Bildgröße &amp; Farbtiefe<span class="p">8 P</span></a><a href="#netzteil" data-ziel="netzteil">Netzteil &amp; Strom<span class="p">7 P</span></a></div><div class="rail-grp" data-a="4"><div class="kopf"><span class="n">A4</span><span class="t">Sicherheit</span><span class="p">26 P</span></div><a href="#schutz" data-ziel="schutz">Schutzmaßnahmen<span class="p">6 P</span></a><a href="#vpn" data-ziel="vpn">VPN<span class="p">2 P</span></a><a href="#backup" data-ziel="backup">Datensicherung<span class="p">4 P</span></a><a href="#malware" data-ziel="malware">Schadsoftware<span class="p">6 P</span></a></div></nav><main class="main"><section class="hero" data-a="1"><h1>Was in dieser Prüfung drankam</h1><p class="sub">Sechzehn Themen auf vier Aufgaben. Jedes Kästchen unten ist ein Punkt — klick eine Farbe an, um zur passenden Aufgabe zu springen. Alle Beispiele hier sind eigene, keine Originalaufgaben.</p><div class="punktekarte"><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="1" data-ziel="nwa" title="Aufgabe 1 · Beschaffung" aria-label="Zu Aufgabe 1: Beschaffung"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="2" data-ziel="led" title="Aufgabe 2 · Netzwerk" aria-label="Zu Aufgabe 2: Netzwerk"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="3" data-ziel="ascii" title="Aufgabe 3 · Daten &amp; Energie" aria-label="Zu Aufgabe 3: Daten &amp; Energie"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button><button data-a="4" data-ziel="schutz" title="Aufgabe 4 · Sicherheit" aria-label="Zu Aufgabe 4: Sicherheit"></button></div><div class="legende"><div data-a="1"><i></i><b>26 P</b> Aufgabe 1 · Beschaffung</div><div data-a="2"><i></i><b>24 P</b> Aufgabe 2 · Netzwerk</div><div data-a="3"><i></i><b>24 P</b> Aufgabe 3 · Daten &amp; Energie</div><div data-a="4"><i></i><b>26 P</b> Aufgabe 4 · Sicherheit</div></div></section><!-- ═══════ PRÜFUNGSTECHNIK ═══════ -->
+<section class="panel" data-a="0" id="technik">
+  <div class="kopf"><span class="n">0</span><h3>Vorweg: Punkte, die nichts mit Fachwissen zu tun haben</h3><span class="p">vorweg</span></div>
+  <div class="leib"><div class="haupt">
+    
+    <p>Diese Regeln stehen auf dem Deckblatt jeder AP1. Sie kosten jedes Jahr
     Punkte, weil sie niemand liest.</p>
 
     <div class="merke">
@@ -197,33 +208,20 @@ ul.pl li{margin-bottom:6px}
       darf also rund 6 Minuten kosten. Wer bei einer 2‑Punkte‑Frage zehn Minuten grübelt, hat
       das Rennen schon verloren. Erst alles einsammeln, was schnell geht, dann zurück.</p>
     </div>
-  </div>
-  <aside class="rand">
-    <b>Aufbau</b>
+  </div><div class="seiten"><div class="blk"><b>Aufbau</b>
     Eine durchgehende Ausgangssituation trägt alle vier Aufgaben &mdash; 2024 war es ein
     Industriebetrieb, in dem CAD‑Arbeitsplätze eingerichtet wurden. Lies sie einmal
-    gründlich, dann kennst du den Kontext für alle 100 Punkte.
-    <b style="margin-top:14px">Taschenrechner</b>
-    Erlaubt, aber nicht programmierbar und ohne Funkverbindung.
-  </aside>
- </div>
+    gründlich, dann kennst du den Kontext für alle 100 Punkte.</div><div class="blk"><b style="margin-top:14px">Taschenrechner</b>
+    Erlaubt, aber nicht programmierbar und ohne Funkverbindung.</div></div></div>
 </section>
 
 <!-- ═══════ TEIL 1 ═══════ -->
-<section class="teil">
- <div class="band">
-  <div class="spalte">
-    <div class="teil-kopf"><h2>Aufgabe 1 &mdash; Beschaffung und Kaufvertrag</h2><span class="pkt">26 Punkte</span></div>
-    <p class="intro">Angebote vergleichen, Kosten rechnen, Vertrag einordnen. Der punktstärkste
-    Block der Prüfung &mdash; und der berechenbarste.</p>
-  </div>
- </div>
-</section>
+<div class="teil" data-a="1"><span class="n">Aufgabe 1</span><h2>Beschaffung und Kaufvertrag</h2><span class="p">26 Punkte</span><p class="sub">Angebote vergleichen, Kosten rechnen, Vertrag einordnen. Der punktstärkste
+    Block der Prüfung &mdash; und der berechenbarste.</p></div>
 
-<section class="kap" id="nwa">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">1</span><h3>Nutzwertanalyse und KO&#8209;Kriterien</h3><span class="wert">6 P</span></div>
+<section class="panel" data-a="1" id="nwa">
+  <div class="kopf"><span class="n">1</span><h3>Nutzwertanalyse und KO&#8209;Kriterien</h3><span class="p">6 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <p>Du sollst mehrere Angebote vergleichen, bei denen nicht nur der Preis zählt. Die
     Nutzwertanalyse macht das nachvollziehbar: Jedes Kriterium bekommt eine <strong>Gewichtung</strong>,
@@ -288,34 +286,25 @@ ul.pl li{margin-bottom:6px}
       auch wenn die Zahlen schon dastehen.</p>
     </div>
 
-    <div class="tool">
-      <span class="l">Werkzeug</span>
+    <div class="tool"><span class="l">Werkzeug</span><div class="leib">
+      
       <h4>Nutzwerte selbst ausrechnen</h4>
       <p>Gewichtungen und Bewertungen eintragen, der Rest läuft mit. Leere Felder zählen als 0.</p>
       <div class="scroll">
       <table class="t" id="nwa-tab" style="font-size:14px"></table>
       </div>
       <div class="erg" id="nwa-erg"></div>
-    </div>
-
-    <div class="test" id="t-nwa"></div>
-  </div>
-  <aside class="rand">
-    <b>Punkteverteilung 2024</b>
+    </div></div><div class="test" id="t-nwa"></div></div><div class="seiten"><div class="blk"><b>Punkteverteilung 2024</b>
     4 Punkte für die Berechnung samt Rangfolge, 2 Punkte für die KO&#8209;Entscheidung.
     Bei der Berechnung gab es Teilpunkte je richtiger Zahl &mdash; also unbedingt alle
-    Zwischenwerte hinschreiben, auch wenn die Summe daneben liegt.
-    <b style="margin-top:14px">Folgefehler</b>
+    Zwischenwerte hinschreiben, auch wenn die Summe daneben liegt.</div><div class="blk"><b style="margin-top:14px">Folgefehler</b>
     Die Musterlösung weist hier ausdrücklich aus, dass Folgefehler berücksichtigt werden.
-    Ein falscher Zwischenwert kostet dich nicht die ganze Aufgabe.
-  </aside>
- </div>
+    Ein falscher Zwischenwert kostet dich nicht die ganze Aufgabe.</div></div></div>
 </section>
 
-<section class="kap" id="leasing">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">2</span><h3>Laufende Kosten und Leasing</h3><span class="wert">7 P</span></div>
+<section class="panel" data-a="1" id="leasing">
+  <div class="kopf"><span class="n">2</span><h3>Laufende Kosten und Leasing</h3><span class="p">7 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <p>Die punktstärkste Einzelaufgabe der Prüfung. Gefragt sind die <strong>monatlichen
     Gesamtkosten</strong> einer Anschaffung &mdash; und die Tücke liegt darin, dass die einzelnen
@@ -372,8 +361,8 @@ ul.pl li{margin-bottom:6px}
       sind bei vier Plätzen 160 €.</p>
     </div>
 
-    <div class="tool">
-      <span class="l">Werkzeug</span>
+    <div class="tool"><span class="l">Werkzeug</span><div class="leib">
+      
       <h4>Monatliche Gesamtkosten rechnen</h4>
       <div class="gitter">
         <div class="feld"><label for="l-anz">Arbeitsplätze</label><input id="l-anz" type="text" inputmode="numeric" value="4"></div>
@@ -386,25 +375,16 @@ ul.pl li{margin-bottom:6px}
         <div class="feld"><label for="l-wa">Wartung € / Jahr gesamt</label><input id="l-wa" type="text" inputmode="decimal" value="960"></div>
       </div>
       <div class="erg" id="l-erg"></div>
-    </div>
-
-    <div class="test" id="t-leasing"></div>
-  </div>
-  <aside class="rand">
-    <b>Rechenweg angeben</b>
+    </div></div><div class="test" id="t-leasing"></div></div><div class="seiten"><div class="blk"><b>Rechenweg angeben</b>
     Die Aufgabe verlangte 2024 ausdrücklich den Rechenweg. Von den 7 Punkten entfielen
     je 2 auf die beiden Gerätepositionen und je 1 auf Wartung, Software und Summe.
-    Wer nur die Summe hinschreibt, verschenkt 6 Punkte.
-    <b style="margin-top:14px">Monate statt Jahre</b>
-    Nutzungsdauer steht in Jahren, gerechnet wird in Monaten. × 12, immer.
-  </aside>
- </div>
+    Wer nur die Summe hinschreibt, verschenkt 6 Punkte.</div><div class="blk"><b style="margin-top:14px">Monate statt Jahre</b>
+    Nutzungsdauer steht in Jahren, gerechnet wird in Monaten. × 12, immer.</div></div></div>
 </section>
 
-<section class="kap" id="anschluss">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">3</span><h3>Monitoranschlüsse erkennen</h3><span class="wert">4 P</span></div>
+<section class="panel" data-a="1" id="anschluss">
+  <div class="kopf"><span class="n">3</span><h3>Monitoranschlüsse erkennen</h3><span class="p">4 P</span></div>
+  <div class="leib"><div class="haupt">
     <p>Reines Wissen, keine Rechnung. Vier Punkte in unter einer Minute, wenn man die Stecker kennt.</p>
     <div class="scroll">
     <table class="t">
@@ -427,21 +407,15 @@ ul.pl li{margin-bottom:6px}
       <span class="l">Typischer Fehler</span>
       <p>DisplayPort und HDMI verwechseln. Erkennungsmerkmal: <strong>DisplayPort hat eine
       abgeschrägte Ecke</strong>, HDMI ist symmetrisch trapezförmig.</p>
-    </div>
-  </div>
-  <aside class="rand">
-    <b>Warum das drankommt</b>
+    </div></div><div class="seiten"><div class="blk"><b>Warum das drankommt</b>
     Lernfeld 2 verlangt, Arbeitsplätze „nach Kundenwunsch auszustatten“ und dabei
     technische Merkmale aus Datenblättern zu vergleichen. Anschlussarten sind der
-    einfachste prüfbare Fall davon.
-  </aside>
- </div>
+    einfachste prüfbare Fall davon.</div></div></div>
 </section>
 
-<section class="kap" id="vertrag">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">4</span><h3>Kaufvertrag und Willenserklärung</h3><span class="wert">5 P</span></div>
+<section class="panel" data-a="1" id="vertrag">
+  <div class="kopf"><span class="n">4</span><h3>Kaufvertrag und Willenserklärung</h3><span class="p">5 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <div class="merke">
       <span class="l">Der Kernsatz</span>
@@ -481,21 +455,15 @@ ul.pl li{margin-bottom:6px}
       <p><strong>Bezahlung als Vertragsschluss.</strong> Der Vertrag steht vorher &mdash; die
       Zahlung ist bereits die Erfüllung.</p>
       <p><strong>Nur den Zeitpunkt nennen.</strong> Ohne Begründung fehlt der halbe Punktwert.</p>
-    </div>
-  </div>
-  <aside class="rand">
-    <b>Schlüssiges Handeln</b>
+    </div></div><div class="seiten"><div class="blk"><b>Schlüssiges Handeln</b>
     Auch „konkludentes Handeln“ genannt: Man erklärt seinen Willen durch eine Handlung
     statt durch Worte. Wer im Bus einsteigt, schließt einen Beförderungsvertrag, ohne
-    etwas zu sagen.
-  </aside>
- </div>
+    etwas zu sagen.</div></div></div>
 </section>
 
-<section class="kap" id="stoerung">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">5</span><h3>Vertragsstörungen und Gegenmaßnahmen</h3><span class="wert">4 P</span></div>
+<section class="panel" data-a="1" id="stoerung">
+  <div class="kopf"><span class="n">5</span><h3>Vertragsstörungen und Gegenmaßnahmen</h3><span class="p">4 P</span></div>
+  <div class="leib"><div class="haupt">
     <p>Gefragt sind erst die Störungen, dann je Störung eine Maßnahme. Zwei Teilaufgaben,
     je 2 Punkte.</p>
     <div class="scroll">
@@ -516,28 +484,17 @@ ul.pl li{margin-bottom:6px}
       Wer schweigt, gilt als einverstanden &mdash; die Ware ist genehmigt.</p>
       <p><strong>Offene Mängel:</strong> sofort. <strong>Versteckte Mängel:</strong> sofort nach
       Entdeckung.</p>
-    </div>
-  </div>
-  <aside class="rand">
-    <b>Die Aufgabe ist zweistufig</b>
+    </div></div><div class="seiten"><div class="blk"><b>Die Aufgabe ist zweistufig</b>
     Erst nennen, dann handeln. Wer nur Störungen aufzählt, bekommt die Hälfte.
-    Ordne jede Maßnahme sichtbar einer Störung zu.
-  </aside>
- </div>
+    Ordne jede Maßnahme sichtbar einer Störung zu.</div></div></div>
 </section>
 
 <!-- ═══════ TEIL 2 ═══════ -->
-<section class="teil">
- <div class="band"><div class="spalte">
-   <div class="teil-kopf"><h2>Aufgabe 2 &mdash; Netzwerk anschließen und prüfen</h2><span class="pkt">24 Punkte</span></div>
-   <p class="intro">Vom Stecker bis zur Diagnose. Auffällig 2024: <strong>IPv6 statt IPv4-Subnetting</strong>.</p>
- </div></div>
-</section>
+<div class="teil" data-a="2"><span class="n">Aufgabe 2</span><h2>Netzwerk anschließen und prüfen</h2><span class="p">24 Punkte</span><p class="sub">Vom Stecker bis zur Diagnose. Auffällig 2024: <strong>IPv6 statt IPv4-Subnetting</strong>.</p></div>
 
-<section class="kap" id="led">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">6</span><h3>Die LEDs am Netzwerkport</h3><span class="wert">4 P</span></div>
+<section class="panel" data-a="2" id="led">
+  <div class="kopf"><span class="n">6</span><h3>Die LEDs am Netzwerkport</h3><span class="p">4 P</span></div>
+  <div class="leib"><div class="haupt">
     <p>Jede RJ45-Buchse hat zwei Leuchtdioden. Sie sind das erste Diagnosewerkzeug &mdash; noch
     vor jedem Befehl.</p>
     <div class="scroll">
@@ -556,21 +513,15 @@ ul.pl li{margin-bottom:6px}
       IP-Adresse, Gateway, DNS oder Firewall sagt sie nichts. Ein Rechner kann Link haben und
       trotzdem nirgends hinkommen &mdash; das ist genau der Fall, den die Prüfung gern
       konstruiert.</p>
-    </div>
-  </div>
-  <aside class="rand">
-    <b>Diagnosereihenfolge</b>
+    </div></div><div class="seiten"><div class="blk"><b>Diagnosereihenfolge</b>
     Von unten nach oben durch das Schichtmodell: Kabel und LED (Schicht 1), dann
     Adresse und Gateway (Schicht 3), dann Dienst und Anwendung. Wer oben anfängt,
-    sucht lange.
-  </aside>
- </div>
+    sucht lange.</div></div></div>
 </section>
 
-<section class="kap" id="osi">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">7</span><h3>OSI-Schichten zuordnen</h3><span class="wert">4 P</span></div>
+<section class="panel" data-a="2" id="osi">
+  <div class="kopf"><span class="n">7</span><h3>OSI-Schichten zuordnen</h3><span class="p">4 P</span></div>
+  <div class="leib"><div class="haupt">
     <p>Ein Begriff steht da, du trägst <strong>Schichtnummer und Schichtname</strong> ein.
     Beides wird verlangt.</p>
     <div class="scroll">
@@ -602,20 +553,14 @@ ul.pl li{margin-bottom:6px}
       <p><strong>DHCP → Schicht 7</strong>, obwohl es Adressen der Schicht 3 verteilt. Entscheidend
       ist, wo der Dienst arbeitet, nicht womit er hantiert.</p>
     </div>
-    <div class="test" id="t-osi"></div>
-  </div>
-  <aside class="rand">
-    <b>Beide Angaben</b>
+    <div class="test" id="t-osi"></div></div><div class="seiten"><div class="blk"><b>Beide Angaben</b>
     2024 wurde je Zeile Nummer <em>und</em> Name verlangt. Nur die Zahl gibt nicht
-    den vollen Punkt. Der englische Name gilt genauso.
-  </aside>
- </div>
+    den vollen Punkt. Der englische Name gilt genauso.</div></div></div>
 </section>
 
-<section class="kap" id="ipv6">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">8</span><h3>IPv6 &mdash; kürzen und ausschreiben</h3><span class="wert">5 P</span></div>
+<section class="panel" data-a="2" id="ipv6">
+  <div class="kopf"><span class="n">8</span><h3>IPv6 &mdash; kürzen und ausschreiben</h3><span class="p">5 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <p>2024 kam <strong>kein IPv4-Subnetting</strong>. Stattdessen sollte eine gekürzte
     IPv6-Adresse von Hand <strong>ungekürzt</strong> ausgeschrieben werden. Das ist reine
@@ -677,33 +622,24 @@ ul.pl li{margin-bottom:6px}
     </table>
     </div>
 
-    <div class="tool">
-      <span class="l">Werkzeug</span>
+    <div class="tool"><span class="l">Werkzeug</span><div class="leib">
+      
       <h4>IPv6-Adresse ausschreiben</h4>
       <p>Gekürzte Adresse eintippen, der Rechenweg erscheint darunter. Probier
       <span class="m">fe80::1</span> oder <span class="m">2001:db8::c5ff:fe12:38b7</span>.</p>
       <div class="feld"><label for="v6">Gekürzte IPv6-Adresse</label>
         <input id="v6" type="text" spellcheck="false" autocomplete="off" value="fe80::1a2b:0:c5ff:fe12"></div>
       <div class="erg" id="v6-erg"></div>
-    </div>
-
-    <div class="test" id="t-ipv6"></div>
-  </div>
-  <aside class="rand">
-    <b>Punkteverteilung 2024</b>
+    </div></div><div class="test" id="t-ipv6"></div></div><div class="seiten"><div class="blk"><b>Punkteverteilung 2024</b>
     1 Punkt Länge in Bit · <strong>2 Punkte</strong> für die ungekürzte Darstellung ·
     1 Punkt Präfixlänge · 1 Punkt Interface-Identifier. Das Ausschreiben ist die
-    Hälfte der Aufgabe.
-    <b style="margin-top:14px">Hex-Ziffern</b>
-    0–9 und a–f. Ein Hex-Zeichen = 4 Bit. Groß- oder Kleinschreibung ist egal.
-  </aside>
- </div>
+    Hälfte der Aufgabe.</div><div class="blk"><b style="margin-top:14px">Hex-Ziffern</b>
+    0–9 und a–f. Ein Hex-Zeichen = 4 Bit. Groß- oder Kleinschreibung ist egal.</div></div></div>
 </section>
 
-<section class="kap" id="diagnose">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">9</span><h3>ARP, ping und tracert</h3><span class="wert">7 P</span></div>
+<section class="panel" data-a="2" id="diagnose">
+  <div class="kopf"><span class="n">9</span><h3>ARP, ping und tracert</h3><span class="p">11 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <h4>ARP &mdash; von der IP-Adresse zur MAC-Adresse</h4>
     <p>Ein Rechner kennt die IP-Adresse des Ziels, braucht zum Senden im lokalen Netz aber
@@ -755,32 +691,20 @@ ul.pl li{margin-bottom:6px}
       <p>Ein Client hat <span class="ip">169.254.x.x</span>: Er hat sich die Adresse
       <strong>selbst gegeben (APIPA)</strong>, weil <strong>kein DHCP-Server geantwortet hat</strong>.
       Prüfen: DHCP-Dienst, Kabel, Switchport, VLAN, Adresspool erschöpft.</p>
-    </div>
-  </div>
-  <aside class="rand">
-    <b>2024 verteilt</b>
+    </div></div><div class="seiten"><div class="blk"><b>2024 verteilt</b>
     LED 4 P · IPv4-Konfigurationsangaben 2 P · ARP 3 P · Befehle 2 P ·
     Netzwerkdiagramm ausfüllen 4 P. Zusammen 15 der 24 Punkte dieser Aufgabe &mdash;
-    ohne eine einzige Rechnung.
-    <b style="margin-top:14px">Diagramm ausfüllen</b>
+    ohne eine einzige Rechnung.</div><div class="blk"><b style="margin-top:14px">Diagramm ausfüllen</b>
     Bei der Diagrammaufgabe werden IP- und MAC-Adressen aus dem Aufgabentext
-    übertragen. Reine Sorgfalt, volle Punkte.
-  </aside>
- </div>
+    übertragen. Reine Sorgfalt, volle Punkte.</div></div></div>
 </section>
 
 <!-- ═══════ TEIL 3 ═══════ -->
-<section class="teil">
- <div class="band"><div class="spalte">
-   <div class="teil-kopf"><h2>Aufgabe 3 &mdash; Daten, Speicher und Energie</h2><span class="pkt">24 Punkte</span></div>
-   <p class="intro">Der rechenlastigste Block. Zwei Themen dominieren: Speicherbedarf und Stromkosten.</p>
- </div></div>
-</section>
+<div class="teil" data-a="3"><span class="n">Aufgabe 3</span><h2>Daten, Speicher und Energie</h2><span class="p">24 Punkte</span><p class="sub">Der rechenlastigste Block. Zwei Themen dominieren: Speicherbedarf und Stromkosten.</p></div>
 
-<section class="kap" id="ascii">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">10</span><h3>ASCII-Datei oder Binärdatei</h3><span class="wert">4 P</span></div>
+<section class="panel" data-a="3" id="ascii">
+  <div class="kopf"><span class="n">10</span><h3>ASCII-Datei oder Binärdatei</h3><span class="p">6 P</span></div>
+  <div class="leib"><div class="haupt">
     <div class="scroll">
     <table class="t">
       <thead><tr><th></th><th>ASCII-Datei (Textdatei)</th><th>Binärdatei</th></tr></thead>
@@ -807,20 +731,14 @@ ul.pl li{margin-bottom:6px}
       <li><strong>Konverter</strong> einsetzen (online oder lokal)</li>
       <li>Auf ein <strong>neutrales Austauschformat</strong> ausweichen (z. B. STEP bei CAD, CSV bei Tabellen)</li>
       <li>Im Notfall: eigenen Konverter schreiben</li>
-    </ul>
-  </div>
-  <aside class="rand">
-    <b>Warum das drankommt</b>
+    </ul></div><div class="seiten"><div class="blk"><b>Warum das drankommt</b>
     Lernfeld 5 verlangt „Software zur Verwaltung von Daten anpassen“ &mdash; und der
-    häufigste Praxisfall ist, dass zwei Programme sich nicht verstehen.
-  </aside>
- </div>
+    häufigste Praxisfall ist, dass zwei Programme sich nicht verstehen.</div></div></div>
 </section>
 
-<section class="kap" id="bild">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">11</span><h3>Bildgröße, Farbtiefe, Speichervergleich</h3><span class="wert">8 P</span></div>
+<section class="panel" data-a="3" id="bild">
+  <div class="kopf"><span class="n">11</span><h3>Bildgröße, Farbtiefe, Speichervergleich</h3><span class="p">8 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <div class="merke">
       <span class="l">Die Grundformel</span>
@@ -881,8 +799,8 @@ ul.pl li{margin-bottom:6px}
       kommst du auf 20 % &mdash; und das ist die Antwort auf eine andere Frage.</p>
     </div>
 
-    <div class="tool">
-      <span class="l">Werkzeug</span>
+    <div class="tool"><span class="l">Werkzeug</span><div class="leib">
+      
       <h4>Bildgröße berechnen</h4>
       <div class="gitter">
         <div class="feld"><label for="b-w">Breite (Pixel)</label><input id="b-w" type="text" inputmode="numeric" value="800"></div>
@@ -890,25 +808,16 @@ ul.pl li{margin-bottom:6px}
         <div class="feld"><label for="b-t">Farbtiefe (Bit)</label><input id="b-t" type="text" inputmode="numeric" value="24"></div>
       </div>
       <div class="erg" id="b-erg"></div>
-    </div>
-
-    <div class="test" id="t-bild"></div>
-  </div>
-  <aside class="rand">
-    <b>2024 verteilt</b>
-    Bildgröße in KiB 3 P · Farbanzahl 2 P · Mehrbedarf in Prozent 3 P.
-    <b style="margin-top:14px">Einheit prüfen</b>
+    </div></div><div class="test" id="t-bild"></div></div><div class="seiten"><div class="blk"><b>2024 verteilt</b>
+    Bildgröße in KiB 3 P · Farbanzahl 2 P · Mehrbedarf in Prozent 3 P.</div><div class="blk"><b style="margin-top:14px">Einheit prüfen</b>
     Bit oder Byte? Farbtiefe steht in <strong>Bit</strong>, Dateigrößen in
     <strong>Byte</strong>. Der Faktor 8 dazwischen ist der häufigste Fehler
-    dieser Aufgabengattung.
-  </aside>
- </div>
+    dieser Aufgabengattung.</div></div></div>
 </section>
 
-<section class="kap" id="netzteil">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">12</span><h3>Netzteil auslegen und Stromkosten rechnen</h3><span class="wert">7 P</span></div>
+<section class="panel" data-a="3" id="netzteil">
+  <div class="kopf"><span class="n">12</span><h3>Netzteil auslegen und Stromkosten rechnen</h3><span class="p">7 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <h4>Teil 1 &mdash; Welches Netzteil?</h4>
     <ol class="weg">
@@ -964,8 +873,8 @@ ul.pl li{margin-bottom:6px}
       Aufgabe, rechne mit 220 &mdash; nicht mit 365.</p>
     </div>
 
-    <div class="tool">
-      <span class="l">Werkzeug</span>
+    <div class="tool"><span class="l">Werkzeug</span><div class="leib">
+      
       <h4>Stromkosten rechnen</h4>
       <div class="gitter">
         <div class="feld"><label for="s-anz">Anzahl Geräte</label><input id="s-anz" type="text" inputmode="numeric" value="60"></div>
@@ -976,35 +885,21 @@ ul.pl li{margin-bottom:6px}
         <div class="feld"><label for="s-p">Preis € je kWh</label><input id="s-p" type="text" inputmode="decimal" value="0.35"></div>
       </div>
       <div class="erg" id="s-erg"></div>
-    </div>
-
-    <div class="test" id="t-strom"></div>
-  </div>
-  <aside class="rand">
-    <b>2024 verteilt</b>
+    </div></div><div class="test" id="t-strom"></div></div><div class="seiten"><div class="blk"><b>2024 verteilt</b>
     3 Punkte für die Leistungsberechnung, 1 Punkt für die Netzteilauswahl,
-    3 Punkte für die Stromkosten.
-    <b style="margin-top:14px">Zwei gültige Antworten</b>
+    3 Punkte für die Stromkosten.</div><div class="blk"><b style="margin-top:14px">Zwei gültige Antworten</b>
     Die Musterlösung akzeptierte bei den Stromkosten zwei Ergebnisse &mdash; je nachdem,
     welches Netzteil zuvor gewählt wurde. Genau das meint „Folgefehler werden
-    berücksichtigt“.
-  </aside>
- </div>
+    berücksichtigt“.</div></div></div>
 </section>
 
 <!-- ═══════ TEIL 4 ═══════ -->
-<section class="teil">
- <div class="band"><div class="spalte">
-   <div class="teil-kopf"><h2>Aufgabe 4 &mdash; Sicherheit und Datenschutz</h2><span class="pkt">26 Punkte</span></div>
-   <p class="intro">Kein Rechnen, nur Wissen &mdash; und der zweitgrößte Block. Hier holt man
-   Punkte am schnellsten.</p>
- </div></div>
-</section>
+<div class="teil" data-a="4"><span class="n">Aufgabe 4</span><h2>Sicherheit und Datenschutz</h2><span class="p">26 Punkte</span><p class="sub">Kein Rechnen, nur Wissen &mdash; und der zweitgrößte Block. Hier holt man
+   Punkte am schnellsten.</p></div>
 
-<section class="kap" id="schutz">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">13</span><h3>Schutzmaßnahmen &mdash; und die Folge der Nichtbeachtung</h3><span class="wert">6 P</span></div>
+<section class="panel" data-a="4" id="schutz">
+  <div class="kopf"><span class="n">13</span><h3>Schutzmaßnahmen &mdash; und die Folge der Nichtbeachtung</h3><span class="p">6 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <div class="achtung">
       <span class="l">Die Aufgabenform verstehen</span>
@@ -1036,20 +931,14 @@ ul.pl li{margin-bottom:6px}
       <strong>Verfügbarkeit</strong> &mdash; sie sind da, wenn man sie braucht.</p>
       <p>Jede Maßnahme lässt sich einem dieser Ziele zuordnen. Verschlüsselung schützt die
       Vertraulichkeit, Backup die Verfügbarkeit, Prüfsummen die Integrität.</p>
-    </div>
-  </div>
-  <aside class="rand">
-    <b>Sechs Punkte, drei Zeilen</b>
+    </div></div><div class="seiten"><div class="blk"><b>Sechs Punkte, drei Zeilen</b>
     2024 gab es je vollständiger Zeile (Maßnahme + Folge) volle Punkte. Drei saubere
-    Zeilen sind mehr wert als sechs halbe.
-  </aside>
- </div>
+    Zeilen sind mehr wert als sechs halbe.</div></div></div>
 </section>
 
-<section class="kap" id="vpn">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">14</span><h3>VPN</h3><span class="wert">2 P</span></div>
+<section class="panel" data-a="4" id="vpn">
+  <div class="kopf"><span class="n">14</span><h3>VPN</h3><span class="p">2 P</span></div>
+  <div class="leib"><div class="haupt">
     <div class="merke">
       <span class="l">Zwei Punkte, ein Satz</span>
       <p>Ein <strong>VPN (Virtual Private Network)</strong> baut über ein öffentliches Netz
@@ -1064,20 +953,14 @@ ul.pl li{margin-bottom:6px}
       <li><strong>Was es schützt:</strong> die <strong>Vertraulichkeit</strong> der Übertragung</li>
       <li><strong>Was es nicht schützt:</strong> vor Schadsoftware auf dem eigenen Gerät. Ein
       infiziertes Notebook bleibt infiziert &mdash; und ist über den Tunnel jetzt im Firmennetz</li>
-    </ul>
-  </div>
-  <aside class="rand">
-    <b>Formulierung</b>
+    </ul></div><div class="seiten"><div class="blk"><b>Formulierung</b>
     „Verschlüsselte Verbindung über ein öffentliches Netz“ ist der Kern. Wer nur
-    „sichere Verbindung“ schreibt, sagt nicht, <em>warum</em> sie sicher ist.
-  </aside>
- </div>
+    „sichere Verbindung“ schreibt, sagt nicht, <em>warum</em> sie sicher ist.</div></div></div>
 </section>
 
-<section class="kap" id="backup">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">15</span><h3>Datensicherung und Generationenprinzip</h3><span class="wert">4 P</span></div>
+<section class="panel" data-a="4" id="backup">
+  <div class="kopf"><span class="n">15</span><h3>Datensicherung und Generationenprinzip</h3><span class="p">4 P</span></div>
+  <div class="leib"><div class="haupt">
 
     <div class="merke">
       <span class="l">Großvater&#8209;Vater&#8209;Sohn</span>
@@ -1118,20 +1001,14 @@ ul.pl li{margin-bottom:6px}
       <strong>1</strong> davon außer Haus.</p>
       <p>Und der Satz, der in jeder Prüfung zieht: <strong>Eine Sicherung, die nie
       zurückgespielt wurde, ist keine Sicherung.</strong> Restore regelmäßig testen.</p>
-    </div>
-  </div>
-  <aside class="rand">
-    <b>Warum außer Haus</b>
+    </div></div><div class="seiten"><div class="blk"><b>Warum außer Haus</b>
     Feuer, Wasser, Diebstahl und Ransomware treffen alles, was am selben Ort steht.
-    Eine Sicherung im Serverraum neben dem Server schützt nur gegen Plattendefekte.
-  </aside>
- </div>
+    Eine Sicherung im Serverraum neben dem Server schützt nur gegen Plattendefekte.</div></div></div>
 </section>
 
-<section class="kap" id="malware">
- <div class="band">
-  <div class="spalte">
-    <div class="kap-kopf"><span class="kap-nr">16</span><h3>Schadsoftware unterscheiden</h3><span class="wert">6 P</span></div>
+<section class="panel" data-a="4" id="malware">
+  <div class="kopf"><span class="n">16</span><h3>Schadsoftware unterscheiden</h3><span class="p">6 P</span></div>
+  <div class="leib"><div class="haupt">
     <p>Gefragt sind kurze, trennscharfe Beschreibungen. Je Art ein Punkt &mdash; sechs Arten,
     sechs Punkte. Das ist der schnellste Punkteblock der ganzen Prüfung.</p>
     <div class="scroll">
@@ -1162,17 +1039,12 @@ ul.pl li{margin-bottom:6px}
       beschreibt, <em>wie</em> sie sich verbreitet. Das sind zwei verschiedene Einteilungen &mdash;
       eine Ransomware kann sich als Wurm oder als Trojaner verbreiten.</p>
     </div>
-    <div class="test" id="t-malware"></div>
-  </div>
-  <aside class="rand">
-    <b>Antwortlänge</b>
+    <div class="test" id="t-malware"></div></div><div class="seiten"><div class="blk"><b>Antwortlänge</b>
     Ein Satz je Art reicht. Werden sechs verlangt, schreib genau sechs &mdash;
-    Nummer sieben und acht werden nicht mehr gelesen.
-  </aside>
- </div>
+    Nummer sieben und acht werden nicht mehr gelesen.</div></div></div>
 </section>
 
-<footer class="schluss spalte">
+<footer class="fuss">
   <p><strong>Grundlage:</strong> Abschlussprüfung Teil 1, Frühjahr 2024, Prüfungsbereich
   „Einrichten eines IT-gestützten Arbeitsplatzes“ (ZPA Nord-West, Satz 1201).</p>
   <p>Diese Seite gibt <strong>keine Prüfungsaufgaben und keine Musterlösungen wieder</strong>.
@@ -1180,8 +1052,7 @@ ul.pl li{margin-bottom:6px}
   Beispielen</strong> vor. Alle Zahlenwerte sind maschinell nachgerechnet.</p>
   <p>Ein Prüfungssatz zeigt, was <em>einmal</em> gefragt wurde &mdash; nicht, was immer gefragt
   wird. Dass 2024 kein IPv4-Subnetting vorkam, heißt nicht, dass es nie vorkommt.</p>
-</footer>
-</div>
+</footer></main></div>
 
 <script>
 "use strict";
@@ -1363,4 +1234,29 @@ test("#t-strom","Ein Gerät braucht 400 W. Das Netzteil hat 80 % Wirkungsgrad. W
 test("#t-malware","Was unterscheidet einen Wurm von einem Virus?",
  ["Der Wurm richtet größeren Schaden an","Der Wurm verbreitet sich selbstständig ohne Wirtsprogramm","Der Wurm verschlüsselt Daten","Der Wurm wird vom Nutzer gestartet"],1,
  "Die Einteilung richtet sich nach der <b>Verbreitung</b>, nicht nach dem Schaden. Ein <b>Virus braucht ein Wirtsprogramm</b>, ein <b>Wurm verbreitet sich selbst</b> über das Netz, ein <b>Trojaner</b> wird vom Nutzer gestartet, weil er nützlich aussieht. Verschlüsseln ist Ransomware — das beschreibt die Wirkung, nicht den Verbreitungsweg.");
+
+/* ── Punktekarte und Seitenleiste ─────────────────── */
+document.addEventListener("click", e => {
+  const z = e.target.closest("[data-ziel]"); if(!z) return;
+  const ziel = document.getElementById(z.dataset.ziel); if(!ziel) return;
+  e.preventDefault();
+  ziel.scrollIntoView({behavior:"smooth", block:"start"});
+  history.replaceState(null, "", "#" + z.dataset.ziel);
+});
+
+/* Aktives Kapitel in der Seitenleiste mitführen */
+const railLinks = new Map([...document.querySelectorAll(".rail a[data-ziel]")].map(a => [a.dataset.ziel, a]));
+const panels = [...document.querySelectorAll(".panel[id]")];
+if("IntersectionObserver" in window && panels.length){
+  let sichtbar = new Set();
+  const beob = new IntersectionObserver(eintraege => {
+    for(const e of eintraege){
+      if(e.isIntersecting) sichtbar.add(e.target.id); else sichtbar.delete(e.target.id);
+    }
+    const erstes = panels.find(p => sichtbar.has(p.id));
+    railLinks.forEach(a => a.classList.remove("aktiv"));
+    if(erstes) railLinks.get(erstes.id)?.classList.add("aktiv");
+  }, {rootMargin: "-64px 0px -70% 0px"});
+  panels.forEach(p => beob.observe(p));
+}
 </script>
