@@ -42,3 +42,13 @@ kein einziges Mal vor. Die erforderliche Rechentiefe eines Kapitels lässt sich
 daraus nicht ableiten — dafür sind Altprüfungen und der Prüfungskatalog die
 maßgebliche Quelle. Der Rahmenlehrplan legt fest, *was* gekonnt werden muss;
 er legt nicht fest, *wie tief* gerechnet wird.
+
+## ap1-pruefungen/
+
+Auswertung echter AP1-Prüfungssätze: Themen, Punkte, geforderte Rechentiefe,
+Antwortformat und die Zuordnung auf die Kapitel dieses Projekts. Daraus entsteht
+das Themenraster für die Reihenfolge der Kapitelarbeit.
+
+Die Prüfungs-PDFs und die Aufgaben- und Lösungstexte selbst liegen dort **nicht** —
+die Sätze tragen ein ausdrückliches Vervielfältigungsverbot (© ZPA Nord-West).
+Details in `ap1-pruefungen/README.md`.

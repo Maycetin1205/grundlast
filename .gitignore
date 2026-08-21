@@ -28,3 +28,7 @@ tmp-vite.log
 *.njsproj
 *.sln
 *.sw?
+
+# Prüfungs-PDFs und Mitschriften bleiben lokal (Urheberrecht, Dateigröße).
+# Ausgewertet wird nach quellen/ap1-pruefungen/.
+material/
